@@ -133,7 +133,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(
                     OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
                     _left, _top, _width + _left, _top2, (ushort)((int)(COL_DARK_CYAN_GREY::instance.shortValue)));
-                _height = _height + -0xc;
+                _height = _height - 0xc;
             }
             if (((this->modalMenu).borderStyle & 1)) {
                 MACRO_CALL_MEMBER(
@@ -163,7 +163,7 @@ namespace UI {
                     DAT_PencilRenderCore::ptr)(_left, _top2, _width + _left, _height + _top2,
                     (ushort)((int)(COL_BLACK::instance.shortValue)), OpenSHC::UI::Enums::RBERL_STRONG);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdgesAndColor,
-                    DAT_PencilRenderCore::ptr)(_left + 3, _top2 + 3, _width + _left + -3, _height + _top2 + -3,
+                    DAT_PencilRenderCore::ptr)(_left + 3, _top2 + 3, _width + _left - 3, _height + _top2 - 3,
                     (ushort)((int)(_color)), OpenSHC::UI::Enums::RBERL_STRONG);
             }
             uVar1 = (this->modalMenu).borderStyle;
@@ -174,7 +174,7 @@ namespace UI {
                         if (!_height) {
                             _width = 1;
                         } else {
-                            _width = (-(uint)(_height != (this->modalMenu).height + -0x18) & 0xfffffffa) + 0xd;
+                            _width = (-(uint)(_height != (this->modalMenu).height - 0x18) & 0xfffffffa) + 0xd;
                         }
                         _x = 0;
                         if (0 < (this->modalMenu).width) {
@@ -189,7 +189,7 @@ namespace UI {
                                         OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, imageID + 3,
                                         (int)((int)(0x20 - this->disappearAfter)));
                                 } else {
-                                    if (_x == (this->modalMenu).width + -0x18) {
+                                    if (_x == (this->modalMenu).width - 0x18) {
                                         imageID = _width + 2;
                                         goto LAB_004b0e31;
                                     }
@@ -206,8 +206,8 @@ namespace UI {
                 }
                 _width = this->disappearAfter * 0x10;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
-                    DAT_PencilRenderCore::ptr)(_left + 0x18, _top2 + 0x18, _left + -0x19 + (this->modalMenu).width,
-                    (this->modalMenu).height + -0x19 + _top2, 0x20 - (_width / 32));
+                    DAT_PencilRenderCore::ptr)(_left + 0x18, _top2 + 0x18, _left - 0x19 + (this->modalMenu).width,
+                    (this->modalMenu).height - 0x19 + _top2, 0x20 - (_width / 32));
             }
             _areWeInAnInGameMenu
                 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();

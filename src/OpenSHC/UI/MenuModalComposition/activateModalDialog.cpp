@@ -53,7 +53,7 @@ namespace UI {
               just copy the menumodal into a fixed spot in memory.
              */
             for (_modalCopyLoopIndex = 10; pMVar1 = (MenuModalComposition*)&pMVar1->modalMenu, _modalCopyLoopIndex;
-                _modalCopyLoopIndex = _modalCopyLoopIndex + -1) {
+                _modalCopyLoopIndex = _modalCopyLoopIndex - 1) {
                 ((MenuModal*)pMVar1)->menuModalID = _modalMenu->menuModalID;
                 _modalMenu = (MenuModal*)&_modalMenu->x;
             }
@@ -61,8 +61,8 @@ namespace UI {
         _borderStyle = (this->modalMenu).borderStyle;
         this->modalDragDropUnk = 0;
         if ((_borderStyle & 0x220)) {
-            (this->modalMenu).width = (((this->modalMenu).width + -1) / 0x18 + 1) * 0x18;
-            (this->modalMenu).height = (((this->modalMenu).height + -1) / 0x18 + 1) * 0x18;
+            (this->modalMenu).width = (((this->modalMenu).width - 1) / 0x18 + 1) * 0x18;
+            (this->modalMenu).height = (((this->modalMenu).height - 1) / 0x18 + 1) * 0x18;
         }
         _areWeInAnInGameMenu
             = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
@@ -71,7 +71,7 @@ namespace UI {
             if (_modalMenuX == -1) {
                 _modalMenuX = DAT_WindowAndDirectDraw::instance.gameResolutionX / 2 - (this->modalMenu).width / 2;
             } else {
-                _modalMenuX = (DAT_WindowAndDirectDraw::instance.gameResolutionX + -800) / 2 + _modalMenuX;
+                _modalMenuX = (DAT_WindowAndDirectDraw::instance.gameResolutionX - 800) / 2 + _modalMenuX;
             }
             _modalMenuY = (this->modalMenu).y;
             (this->modalMenu).x = _modalMenuX;
@@ -82,17 +82,17 @@ namespace UI {
             if (_modalMenuX == -1) {
                 _modalMenuX = DAT_WindowAndDirectDraw::instance.gameResolutionX / 2 - (this->modalMenu).width / 2;
             } else {
-                _modalMenuX = (DAT_WindowAndDirectDraw::instance.gameResolutionX + -800) / 2 + _modalMenuX;
+                _modalMenuX = (DAT_WindowAndDirectDraw::instance.gameResolutionX - 800) / 2 + _modalMenuX;
             }
             _modalMenuY = (this->modalMenu).y;
             (this->modalMenu).x = _modalMenuX;
             if (_modalMenuY == -1) {
                 (this->modalMenu).y
-                    = (DAT_WindowAndDirectDraw::instance.gameResolutionY + -128) / 2 - (this->modalMenu).height / 2;
+                    = (DAT_WindowAndDirectDraw::instance.gameResolutionY - 128) / 2 - (this->modalMenu).height / 2;
                 goto LAB_004aa057;
             }
         LAB_004aa048:
-            _modalMenuY = (DAT_WindowAndDirectDraw::instance.gameResolutionY + -600) / 2 + _modalMenuY;
+            _modalMenuY = (DAT_WindowAndDirectDraw::instance.gameResolutionY - 600) / 2 + _modalMenuY;
         }
         (this->modalMenu).y = _modalMenuY;
     LAB_004aa057:

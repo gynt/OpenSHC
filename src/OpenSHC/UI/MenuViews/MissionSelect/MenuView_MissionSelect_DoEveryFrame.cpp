@@ -61,7 +61,6 @@ namespace UI {
                     0xf, DAT_MenuHandlerState::instance.x + 0xb8, DAT_MenuHandlerState::instance.y + 100, 0x1b0, 0x32);
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             }
-            return;
         }
 
     }

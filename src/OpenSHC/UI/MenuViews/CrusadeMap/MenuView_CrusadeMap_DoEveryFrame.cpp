@@ -114,7 +114,7 @@ namespace UI {
                 - DAT_TextureRenderCoreObject::instance.gmFileHeaderColorpaletteArray[0xcc].originX;
             iVar13 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight
                 - DAT_TextureRenderCoreObject::instance.gmFileHeaderColorpaletteArray[0xcc].originY;
-            iVar12 = iVar11 + -0xb;
+            iVar12 = iVar11 - 0xb;
             iVar14 = iVar13 + 0x12;
             local_4 = (int*)0x0;
             if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_FIRST_EDITION) {
@@ -127,7 +127,7 @@ namespace UI {
                             if ((dVar9 == 0x22)
                                 && (DAT_WindowAndDirectDraw::instance.currentGameResolution
                                     == OpenSHC::Rendering::SRE_800x600)) {
-                                iVar11 = DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[0x22][0] + -0x14;
+                                iVar11 = DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[0x22][0] - 0x14;
                                 iVar6 = DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[0x22][1];
                             } else {
                                 iVar6 = DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[dVar9][1];
@@ -135,7 +135,7 @@ namespace UI {
                             }
                             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                                 DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_SKIRMISH_TRAIL_ICONS,
-                                (int)((int)(piVar8 + 0x5e)), iVar11 + iVar12, iVar6 + -0x1a + iVar14, 0x10);
+                                (int)((int)(piVar8 + 0x5e)), iVar11 + iVar12, iVar6 - 0x1a + iVar14, 0x10);
                         }
                         if (DAT_GameCore::instance.skirmishTrailMonthsTakenOrChicken[dVar9] != -0x4b0) {
                             if ((dVar9 == 0x12) || (dVar9 == 0x22)) {
@@ -143,15 +143,17 @@ namespace UI {
                             }
                             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                                 DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_SKIRMISH_TRAIL_ICONS,
-                                (int)((int)(DAT_MissionDefinedData::instance.SkirmishTrailIconOffsets[dVar9] + 0x2d + local_4)),
+                                (int)((int)(DAT_MissionDefinedData::instance.SkirmishTrailIconOffsets[dVar9] + 0x2d
+                                    + local_4)),
                                 DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[dVar9][0] + iVar12,
-                                DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[dVar9][1] + iVar14, 0x10);
+                                DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[dVar9][1] + iVar14,
+                                0x10);
                         }
                         if (dVar9 == DAT_GameCore::instance.skirmishTrailProgress) {
                             if ((dVar9 == 0x22)
                                 && (DAT_WindowAndDirectDraw::instance.currentGameResolution
                                     == OpenSHC::Rendering::SRE_800x600)) {
-                                iVar11 = DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[0x22][0] + -0x14;
+                                iVar11 = DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[0x22][0] - 0x14;
                                 iVar6 = DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[0x22][1];
                             } else {
                                 iVar6 = DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[dVar9][1];
@@ -161,7 +163,7 @@ namespace UI {
                                 DAT_TextureRenderCoreObject::ptr)(
                                 (OpenSHC::DE::SHCDE::eGM)(OpenSHC::DE::SHCDE::GM_TREE_CACTII
                                     | OpenSHC::DE::SHCDE::GM_SEA_CHEVRONS),
-                                (int)((int)(piVar8 + 0x39)), iVar11 + iVar12, iVar6 + -0x1a + iVar14);
+                                (int)((int)(piVar8 + 0x39)), iVar11 + iVar12, iVar6 - 0x1a + iVar14);
                         }
                         if (DAT_GameCore::instance.skirmishTrailMonthsTakenOrChicken[dVar9] == -0x4b0) {
                             iVar6 = DAT_MissionDefinedData::instance.SkirmishTrailMissionRenderData[dVar9][3]
@@ -176,7 +178,8 @@ namespace UI {
                         } else {
                             iVar6 = DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[dVar9][1];
                             iVar7 = DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[dVar9][0];
-                            iVar11 = (OpenSHC::DE::SHCDE::eGM)(DAT_MissionDefinedData::instance.SkirmishTrailIconOffsets[dVar9]
+                            iVar11 = (OpenSHC::DE::SHCDE::eGM)(DAT_MissionDefinedData::instance
+                                                                   .SkirmishTrailIconOffsets[dVar9]
                                 + 0x21 + (int)local_4);
                             eVar18 = (OpenSHC::DE::SHCDE::eGM)(OpenSHC::DE::SHCDE::GM_TREE_CACTII
                                 | OpenSHC::DE::SHCDE::GM_SEA_CHEVRONS);
@@ -189,14 +192,14 @@ namespace UI {
                 if ((DAT_GameCore::instance.skirmishTrailProgress
                         == DAT_GameCore::instance.furthestSkirmishTrailMission)
                     || (DAT_GameCore::instance.skirmishTrailProgress == 0x31)) {
-                    paiVar2
-                        = DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions + DAT_GameCore::instance.skirmishTrailProgress;
-                    paiVar1
-                        = DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions + DAT_GameCore::instance.skirmishTrailProgress;
+                    paiVar2 = DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions
+                        + DAT_GameCore::instance.skirmishTrailProgress;
+                    paiVar1 = DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions
+                        + DAT_GameCore::instance.skirmishTrailProgress;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_SKIRMISH_TRAIL_ICONS,
                         (int)((int)(piVar8 + 0x5e)), (*paiVar1)[0] + 10 + iVar12,
-                        (int)((int)(iVar13 + -8
+                        (int)((int)(iVar13 - 8
                             + DAT_MissionDefinedData::instance
                                 .SkirmishTrailMissionPositions[DAT_GameCore::instance.skirmishTrailProgress][1])),
                         0x10);
@@ -204,7 +207,7 @@ namespace UI {
                         DAT_TextureRenderCoreObject::ptr)((OpenSHC::DE::SHCDE::eGM)(OpenSHC::DE::SHCDE::GM_TREE_CACTII
                                                               | OpenSHC::DE::SHCDE::GM_SEA_CHEVRONS),
                         (int)((int)(piVar8 + 0x39)), (*paiVar1)[0] + 10 + iVar12,
-                        (int)((int)(iVar13 + -8 + (*paiVar2)[1])));
+                        (int)((int)(iVar13 - 8 + (*paiVar2)[1])));
                 }
                 dVar9 = DAT_GameCore::instance.furthestSkirmishTrailMission;
                 if (0x31 < DAT_GameCore::instance.furthestSkirmishTrailMission) {
@@ -217,7 +220,8 @@ namespace UI {
                 if (dVar9 != DAT_GameCore::instance.skirmishTrailProgress) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_SKIRMISH_TRAIL_ICONS,
-                        (int)((int)(local_8 + 0x11)), DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[dVar9][0] + iVar12,
+                        (int)((int)(local_8 + 0x11)),
+                        DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[dVar9][0] + iVar12,
                         DAT_MissionDefinedData::instance.SkirmishTrailMissionPositions[dVar9][1] + iVar11, 0x10);
                 }
                 MACRO_CALL_MEMBER(
@@ -303,14 +307,17 @@ namespace UI {
                                 DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_SKIRMISH_TRAIL_ICONS,
                                 (int)((int)(piVar8 + 0x5e)),
                                 DAT_MissionDefinedData::instance.WarchestTrailMissionPositions[dVar9][0] + 10 + iVar12,
-                                DAT_MissionDefinedData::instance.WarchestTrailMissionPositions[dVar9][1] + -0x1a + iVar14, 0x10);
+                                DAT_MissionDefinedData::instance.WarchestTrailMissionPositions[dVar9][1] - 0x1a
+                                    + iVar14,
+                                0x10);
                         }
                         if (DAT_GameCore::instance.warchestTrailMonthsTakenOrChicken[dVar9] != -0x4b0) {
                             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                                 DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_SKIRMISH_TRAIL_ICONS,
                                 (int)((int)(DAT_MissionDefinedData::instance.SkirmishTrailIconOffsets[dVar9] + 0x2d)),
                                 DAT_MissionDefinedData::instance.WarchestTrailMissionPositions[dVar9][0] + iVar12,
-                                DAT_MissionDefinedData::instance.WarchestTrailMissionPositions[dVar9][1] + iVar14, 0x10);
+                                DAT_MissionDefinedData::instance.WarchestTrailMissionPositions[dVar9][1] + iVar14,
+                                0x10);
                         }
                         if (dVar9 == DAT_GameCore::instance.warchestTrailProgress) {
                             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
@@ -319,13 +326,15 @@ namespace UI {
                                     | OpenSHC::DE::SHCDE::GM_SEA_CHEVRONS),
                                 (OpenSHC::DE::SHCDE::eGM)((int)piVar8 + 0x39),
                                 DAT_MissionDefinedData::instance.WarchestTrailMissionPositions[dVar9][0] + 10 + iVar12,
-                                DAT_MissionDefinedData::instance.WarchestTrailMissionPositions[dVar9][1] + -0x1a + iVar14);
+                                DAT_MissionDefinedData::instance.WarchestTrailMissionPositions[dVar9][1] - 0x1a
+                                    + iVar14);
                         }
                         iVar11 = DAT_MissionDefinedData::instance.WarchestTrailMissionPositions[dVar9][1];
                         if (DAT_GameCore::instance.warchestTrailMonthsTakenOrChicken[dVar9] == -0x4b0) {
                             iVar11 = iVar11 + local_4[1];
-                            DAT_CurrentlyRenderedSpriteID::instance = (*(int (*)[4])(local_4 + -2))[0];
-                            iVar13 = DAT_MissionDefinedData::instance.WarchestTrailMissionPositions[dVar9][0] + *local_4;
+                            DAT_CurrentlyRenderedSpriteID::instance = (*(int (*)[4])(local_4 - 2))[0];
+                            iVar13
+                                = DAT_MissionDefinedData::instance.WarchestTrailMissionPositions[dVar9][0] + *local_4;
                             iVar6 = local_4[-1];
                             DAT_RenderedUnitOwner::instance = 0;
                             eVar18 = (OpenSHC::DE::SHCDE::eGM)(DAT_CurrentlyRenderedSpriteID::instance);
@@ -344,20 +353,21 @@ namespace UI {
                 if ((DAT_GameCore::instance.warchestTrailProgress
                         == DAT_GameCore::instance.furthestWarchestTrailMission)
                     || (DAT_GameCore::instance.warchestTrailProgress == 0x1d)) {
-                    paiVar2
-                        = DAT_MissionDefinedData::instance.WarchestTrailMissionPositions + DAT_GameCore::instance.warchestTrailProgress;
-                    paiVar1
-                        = DAT_MissionDefinedData::instance.WarchestTrailMissionPositions + DAT_GameCore::instance.warchestTrailProgress;
+                    paiVar2 = DAT_MissionDefinedData::instance.WarchestTrailMissionPositions
+                        + DAT_GameCore::instance.warchestTrailProgress;
+                    paiVar1 = DAT_MissionDefinedData::instance.WarchestTrailMissionPositions
+                        + DAT_GameCore::instance.warchestTrailProgress;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_SKIRMISH_TRAIL_ICONS,
                         (int)((int)(piVar8 + 0x5e)), (*paiVar1)[0] + 10 + iVar12,
-                        DAT_MissionDefinedData::instance.WarchestTrailMissionPositions[DAT_GameCore::instance.warchestTrailProgress][1]
-                            + -0x1a + iVar14,
+                        DAT_MissionDefinedData::instance
+                                .WarchestTrailMissionPositions[DAT_GameCore::instance.warchestTrailProgress][1]
+                            - 0x1a + iVar14,
                         0x10);
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                         DAT_TextureRenderCoreObject::ptr)((OpenSHC::DE::SHCDE::eGM)(OpenSHC::DE::SHCDE::GM_TREE_CACTII
                                                               | OpenSHC::DE::SHCDE::GM_SEA_CHEVRONS),
-                        (int)((int)(piVar8 + 0x39)), (*paiVar1)[0] + 10 + iVar12, (*paiVar2)[1] + -0x1a + iVar14);
+                        (int)((int)(piVar8 + 0x39)), (*paiVar1)[0] + 10 + iVar12, (*paiVar2)[1] - 0x1a + iVar14);
                 }
                 dVar9 = DAT_GameCore::instance.furthestWarchestTrailMission;
                 if (0x1d < DAT_GameCore::instance.furthestWarchestTrailMission) {
@@ -370,7 +380,8 @@ namespace UI {
                 if (dVar9 != DAT_GameCore::instance.warchestTrailProgress) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_SKIRMISH_TRAIL_ICONS,
-                        (int)((int)(local_8 + 0x11)), DAT_MissionDefinedData::instance.WarchestTrailMissionPositions[dVar9][0] + iVar12,
+                        (int)((int)(local_8 + 0x11)),
+                        DAT_MissionDefinedData::instance.WarchestTrailMissionPositions[dVar9][0] + iVar12,
                         DAT_MissionDefinedData::instance.WarchestTrailMissionPositions[dVar9][1] + iVar11, 0x10);
                 }
                 MACRO_CALL_MEMBER(
@@ -460,14 +471,17 @@ namespace UI {
                                 DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_SKIRMISH_TRAIL_ICONS,
                                 (int)((int)(piVar8 + 0x5e)),
                                 DAT_MissionDefinedData::instance.ExtremeTrailMissionPositions[iVar13][0] + 10 + iVar12,
-                                DAT_MissionDefinedData::instance.ExtremeTrailMissionPositions[iVar13][1] + -0x1a + iVar14, 0x10);
+                                DAT_MissionDefinedData::instance.ExtremeTrailMissionPositions[iVar13][1] - 0x1a
+                                    + iVar14,
+                                0x10);
                         }
                         if (DAT_GameCore::instance.extremeTrailMonthsTakenOrChicken[iVar13] != -0x4b0) {
                             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                                 DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_SKIRMISH_TRAIL_ICONS,
                                 (int)((int)(DAT_MissionDefinedData::instance.SkirmishTrailIconOffsets[iVar13] + 0x2d)),
                                 DAT_MissionDefinedData::instance.ExtremeTrailMissionPositions[iVar13][0] + iVar12,
-                                DAT_MissionDefinedData::instance.ExtremeTrailMissionPositions[iVar13][1] + iVar14, 0x10);
+                                DAT_MissionDefinedData::instance.ExtremeTrailMissionPositions[iVar13][1] + iVar14,
+                                0x10);
                         }
                         if (iVar13 == DAT_GameCore::instance.extremeTrailProgress) {
                             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
@@ -476,13 +490,15 @@ namespace UI {
                                     | OpenSHC::DE::SHCDE::GM_SEA_CHEVRONS),
                                 (OpenSHC::DE::SHCDE::eGM)((int)piVar8 + 0x39),
                                 DAT_MissionDefinedData::instance.ExtremeTrailMissionPositions[iVar13][0] + 10 + iVar12,
-                                DAT_MissionDefinedData::instance.ExtremeTrailMissionPositions[iVar13][1] + -0x1a + iVar14);
+                                DAT_MissionDefinedData::instance.ExtremeTrailMissionPositions[iVar13][1] - 0x1a
+                                    + iVar14);
                         }
                         iVar6 = DAT_MissionDefinedData::instance.ExtremeTrailMissionPositions[iVar13][1];
                         if (DAT_GameCore::instance.extremeTrailMonthsTakenOrChicken[iVar13] == -0x4b0) {
                             iVar6 = iVar6 + local_4[1];
-                            DAT_CurrentlyRenderedSpriteID::instance = (*(int (*)[4])(local_4 + -2))[0];
-                            drawX = DAT_MissionDefinedData::instance.ExtremeTrailMissionPositions[iVar13][0] + iVar12 + *local_4;
+                            DAT_CurrentlyRenderedSpriteID::instance = (*(int (*)[4])(local_4 - 2))[0];
+                            drawX = DAT_MissionDefinedData::instance.ExtremeTrailMissionPositions[iVar13][0] + iVar12
+                                + *local_4;
                             iVar7 = local_4[-1];
                             DAT_RenderedUnitOwner::instance = 0;
                             eVar18 = (OpenSHC::DE::SHCDE::eGM)(DAT_CurrentlyRenderedSpriteID::instance);
@@ -500,21 +516,22 @@ namespace UI {
                 }
                 if ((DAT_GameCore::instance.extremeTrailProgress == DAT_GameCore::instance.furthestExtremeTrailMission)
                     || (DAT_GameCore::instance.extremeTrailProgress == 0x13)) {
-                    paiVar2
-                        = DAT_MissionDefinedData::instance.ExtremeTrailMissionPositions + DAT_GameCore::instance.extremeTrailProgress;
-                    paiVar1
-                        = DAT_MissionDefinedData::instance.ExtremeTrailMissionPositions + DAT_GameCore::instance.extremeTrailProgress;
+                    paiVar2 = DAT_MissionDefinedData::instance.ExtremeTrailMissionPositions
+                        + DAT_GameCore::instance.extremeTrailProgress;
+                    paiVar1 = DAT_MissionDefinedData::instance.ExtremeTrailMissionPositions
+                        + DAT_GameCore::instance.extremeTrailProgress;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_SKIRMISH_TRAIL_ICONS,
-                        (int)((int)(piVar8 + 0x5e)), (int)((int)(iVar11 + -1 + (*paiVar1)[0])),
-                        DAT_MissionDefinedData::instance.ExtremeTrailMissionPositions[DAT_GameCore::instance.extremeTrailProgress][1]
-                            + -0x1a + iVar14,
+                        (int)((int)(piVar8 + 0x5e)), (int)((int)(iVar11 - 1 + (*paiVar1)[0])),
+                        DAT_MissionDefinedData::instance
+                                .ExtremeTrailMissionPositions[DAT_GameCore::instance.extremeTrailProgress][1]
+                            - 0x1a + iVar14,
                         0x10);
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                         DAT_TextureRenderCoreObject::ptr)((OpenSHC::DE::SHCDE::eGM)(OpenSHC::DE::SHCDE::GM_TREE_CACTII
                                                               | OpenSHC::DE::SHCDE::GM_SEA_CHEVRONS),
-                        (int)((int)(piVar8 + 0x39)), (int)((int)(iVar11 + -1 + (*paiVar1)[0])),
-                        (*paiVar2)[1] + -0x1a + iVar14);
+                        (int)((int)(piVar8 + 0x39)), (int)((int)(iVar11 - 1 + (*paiVar1)[0])),
+                        (*paiVar2)[1] - 0x1a + iVar14);
                 }
                 iVar11 = DAT_GameCore::instance.furthestExtremeTrailMission;
                 if (0x13 < DAT_GameCore::instance.furthestExtremeTrailMission) {

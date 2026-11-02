@@ -41,7 +41,6 @@ namespace UI {
                 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
             pMVar1->yPosition = DAT_MenuHandlerState::instance.y;
             DAT_TextEditorState::instance.pendingCreditsFadeBorder = TRUE;
-            return;
         }
 
     }

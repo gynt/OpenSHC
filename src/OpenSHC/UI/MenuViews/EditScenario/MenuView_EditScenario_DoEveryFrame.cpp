@@ -75,7 +75,6 @@ namespace UI {
                     iVar1 + 0x2ef, iVar2 + 0x1d5, x2_00, iVar2 + 0x1d5,
                     (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
             }
-            return;
         }
 
     }

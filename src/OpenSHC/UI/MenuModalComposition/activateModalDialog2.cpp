@@ -51,15 +51,15 @@ namespace UI {
             /*
               Makes found current. - TheRedDaemon
              */
-            for (iVar1 = 10; pMVar2 = (MenuModalComposition*)&pMVar2->modalMenu, iVar1; iVar1 = iVar1 + -1) {
+            for (iVar1 = 10; pMVar2 = (MenuModalComposition*)&pMVar2->modalMenu, iVar1; iVar1 = iVar1 - 1) {
                 ((MenuModal*)pMVar2)->menuModalID = _modalMenu->menuModalID;
                 _modalMenu = (MenuModal*)&_modalMenu->x;
             }
         }
         this->modalDragDropUnk = 0;
         if ((this->modalMenu.borderStyle & 0x220U)) {
-            this->modalMenu.width = ((this->modalMenu.width + -1) / 0x18 + 1) * 0x18;
-            this->modalMenu.height = ((this->modalMenu.height + -1) / 0x18 + 1) * 0x18;
+            this->modalMenu.width = ((this->modalMenu.width - 1) / 0x18 + 1) * 0x18;
+            this->modalMenu.height = ((this->modalMenu.height - 1) / 0x18 + 1) * 0x18;
         }
         _areWeInAnInGameMenu
             = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
@@ -67,7 +67,7 @@ namespace UI {
             if (this->modalMenu.x == -1) {
                 this->modalMenu.x = DAT_WindowAndDirectDraw::instance.gameResolutionX / 2 - this->modalMenu.width / 2;
             } else {
-                this->modalMenu.x = (DAT_WindowAndDirectDraw::instance.gameResolutionX + -800) / 2 + this->modalMenu.x;
+                this->modalMenu.x = (DAT_WindowAndDirectDraw::instance.gameResolutionX - 800) / 2 + this->modalMenu.x;
             }
             if (this->modalMenu.y == -1) {
                 this->modalMenu.y = DAT_WindowAndDirectDraw::instance.gameResolutionY / 2 - this->modalMenu.height / 2;
@@ -77,15 +77,15 @@ namespace UI {
             if (this->modalMenu.x == -1) {
                 this->modalMenu.x = DAT_WindowAndDirectDraw::instance.gameResolutionX / 2 - this->modalMenu.width / 2;
             } else {
-                this->modalMenu.x = (DAT_WindowAndDirectDraw::instance.gameResolutionX + -800) / 2 + this->modalMenu.x;
+                this->modalMenu.x = (DAT_WindowAndDirectDraw::instance.gameResolutionX - 800) / 2 + this->modalMenu.x;
             }
             if (this->modalMenu.y == -1) {
                 this->modalMenu.y
-                    = (DAT_WindowAndDirectDraw::instance.gameResolutionY + -0x80) / 2 - this->modalMenu.height / 2;
+                    = (DAT_WindowAndDirectDraw::instance.gameResolutionY - 0x80) / 2 - this->modalMenu.height / 2;
                 goto LAB_004b29a5;
             }
         }
-        this->modalMenu.y = (DAT_WindowAndDirectDraw::instance.gameResolutionY + -600) / 2 + this->modalMenu.y;
+        this->modalMenu.y = (DAT_WindowAndDirectDraw::instance.gameResolutionY - 600) / 2 + this->modalMenu.y;
     LAB_004b29a5:
         this->disappearAfter = 0x20;
         this->mbr_0x6c = 0;

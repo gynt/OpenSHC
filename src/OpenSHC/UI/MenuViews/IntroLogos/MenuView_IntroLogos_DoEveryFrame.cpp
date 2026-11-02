@@ -63,7 +63,7 @@ namespace UI {
                 _fontSIze = 0x10;
                 _color = 0xffffff;
                 alignment = OpenSHC::Text::TTA_CENTER;
-                _yParam = DAT_WindowAndDirectDraw::instance.resolutionY / 2 + -0x1e;
+                _yParam = DAT_WindowAndDirectDraw::instance.resolutionY / 2 - 0x1e;
                 _xPos = DAT_WindowAndDirectDraw::instance.resolutionX / 2;
                 /*
                   added by script: "Gameplay may change during online play"
@@ -119,7 +119,6 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
                 DAT_PencilRenderCore::ptr)(0, 0, DAT_WindowAndDirectDraw::instance.resolutionX,
                 DAT_WindowAndDirectDraw::instance.resolutionY, (int)((int)(DAT_IntroBlendStrength::instance)));
-            return;
         }
 
     }

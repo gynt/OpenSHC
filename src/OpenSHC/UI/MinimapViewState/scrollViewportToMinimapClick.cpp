@@ -32,7 +32,7 @@ namespace UI {
             && !DAT_MouseState::instance.rightClickState) {}
         DAT_ViewportRenderState::instance.viewportState.viewportX
             = ((((DAT_MouseState::instance.screenSpaceX - this->x) / this->widthFactor) * this->oneOrTwo
-                   - (DAT_ViewportRenderState::instance.viewportState.viewportHeight + -5) / 2)
+                   - (DAT_ViewportRenderState::instance.viewportState.viewportHeight - 5) / 2)
                   + this->tileOffsetX)
             * 0x20;
         DAT_ViewportRenderState::instance.viewportState.viewportY

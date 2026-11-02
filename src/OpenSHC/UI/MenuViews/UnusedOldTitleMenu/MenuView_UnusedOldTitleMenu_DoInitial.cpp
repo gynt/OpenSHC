@@ -38,8 +38,8 @@ namespace UI {
             pMVar1->yPosition = DAT_MenuHandlerState::instance.y;
             MACRO_CALL_MEMBER(
                 UI::Rendering::PencilRenderCore_Func::drawPixelPattern4x4OverWholeScreen, DAT_PencilRenderCore::ptr)();
-            top = (DAT_WindowAndDirectDraw::instance.resolutionY + -400) / 2;
-            left = (DAT_WindowAndDirectDraw::instance.resolutionX + -600) / 2;
+            top = (DAT_WindowAndDirectDraw::instance.resolutionY - 400) / 2;
+            left = (DAT_WindowAndDirectDraw::instance.resolutionX - 600) / 2;
             MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
                 left, top, left + 600, top + 400, (ushort)(COL_WHITE::instance.shortValue));
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderLoadedGfx, DAT_TextureRenderCoreObject::ptr)(

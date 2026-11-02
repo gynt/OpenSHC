@@ -31,7 +31,7 @@ namespace UI {
             char* pcVar3;
             DAT_MenuHandlerState::instance.x = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
             pMVar1 = DAT_MenuHandlerState::instance.currentMenu;
-            DAT_MenuHandlerState::instance.y = DAT_WindowAndDirectDraw::instance.resolutionY + -600;
+            DAT_MenuHandlerState::instance.y = DAT_WindowAndDirectDraw::instance.resolutionY - 600;
             if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_640x480) {
                 (DAT_MenuHandlerState::instance.currentMenu)->xPosition = 0;
                 pMVar1->yPosition = DAT_MenuHandlerState::instance.y;
@@ -52,7 +52,7 @@ namespace UI {
                 if (!DAT_WindowAndDirectDraw::instance.pendingMenuRedraw) {}
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                     DAT_PencilRenderCore::ptr)(0, (int)((int)(DAT_MenuHandlerState::instance.y + 406)),
-                    DAT_WindowAndDirectDraw::instance.resolutionX + -1,
+                    DAT_WindowAndDirectDraw::instance.resolutionX - 1,
                     (int)((int)(DAT_MenuHandlerState::instance.y + 471)),
                     (ushort)((int)(COL_MAGENTA::instance.shortValue)));
                 DAT_WindowAndDirectDraw::instance.pendingMenuRedraw = 0;
@@ -412,7 +412,7 @@ namespace UI {
                 if (!DAT_WindowAndDirectDraw::instance.pendingMenuRedraw) {}
                 MACRO_CALL_MEMBER(
                     OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(0,
-                    DAT_MenuHandlerState::instance.y + 0x196, DAT_WindowAndDirectDraw::instance.resolutionX + -1,
+                    DAT_MenuHandlerState::instance.y + 0x196, DAT_WindowAndDirectDraw::instance.resolutionX - 1,
                     DAT_MenuHandlerState::instance.y + 0x1d7, (ushort)((int)(COL_MAGENTA::instance.shortValue)));
                 DAT_WindowAndDirectDraw::instance.pendingMenuRedraw = 0;
                 if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)

@@ -92,7 +92,7 @@ namespace UI {
                 }
                 iVar2 = DAT_GameCore::instance.missionNumber1to20;
                 pIVar3 = DAT_MapPropertiesState::instance.SEC_EventsExtra[0].conditionIsTrue;
-                for (iVar1 = 8000; iVar1 != 0; iVar1 = iVar1 + -1) {
+                for (iVar1 = 8000; iVar1 != 0; iVar1 = iVar1 - 1) {
                     *pIVar3 = 0;
                     pIVar3 = pIVar3 + 1;
                 }
@@ -118,7 +118,6 @@ namespace UI {
                 DAT_00ed2794::instance = timeGetTime();
             }
             MACRO_CALL(UI::Helpers_Func::LoadTGX_shc_back)();
-            return;
         }
 
     }

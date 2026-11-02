@@ -117,7 +117,7 @@ namespace UI {
                 iVar3 = iVar3 + 1;
             }
             piVar1 = piVar1 + 5;
-            iVar2 = iVar2 + -1;
+            iVar2 = iVar2 - 1;
         } while (iVar2);
         if (DAT_GameCore::instance.gameMode_2 == Game::GM_CAMPAIGN_MISSION) {
             if (!iVar3) {}
@@ -135,7 +135,7 @@ namespace UI {
         if (!iVar3) {
             iVar3 = DAT_GameState::instance.playerDataArray[_currentPlayerSlotID].textYOffset;
             if (iVar3) {
-                DAT_GameState::instance.playerDataArray[_currentPlayerSlotID].textYOffset = iVar3 + -1;
+                DAT_GameState::instance.playerDataArray[_currentPlayerSlotID].textYOffset = iVar3 - 1;
             }
             goto LAB_00433fe5;
         }
@@ -175,7 +175,7 @@ namespace UI {
                       .someCount47;
         *piVar1 = *piVar1 + 2;
         iVar3 = DAT_GameState::instance.playerDataArray[_currentPlayerSlotID].someCount47;
-        iVar2 = iVar3 + -0x28;
+        iVar2 = iVar3 - 0x28;
         iVar3 = iVar3 >> 2;
         if (iVar2 < DAT_WindowAndDirectDraw::instance.resolutionX) {
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
@@ -237,7 +237,6 @@ namespace UI {
             _currentPlayerSlotID = _currentPlayerSlotID + 2;
             iVar3 = iVar3 + 1;
         } while (_currentPlayerSlotID < 0xbf);
-        return;
     }
 
 }

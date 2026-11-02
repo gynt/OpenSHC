@@ -26,7 +26,7 @@ namespace UI {
         local_214 = MACRO_CALL(OpenSHC::OS_Func::_malloc)(40000);
         pasVar4 = this->loadedMiniMap;
         puVar5 = local_210;
-        for (iVar2 = 0x80; iVar2 != 0; iVar2 = iVar2 + -1) {
+        for (iVar2 = 0x80; iVar2 != 0; iVar2 = iVar2 - 1) {
             *(undefined4*)puVar5 = *(undefined4*)*pasVar4;
             pasVar4 = (short (*)[200])(*pasVar4 + 2);
             puVar5 = puVar5 + 2;
@@ -43,14 +43,14 @@ namespace UI {
         psVar1 = this->loadedMiniMap[0] + 1;
         iVar2 = 8000;
         do {
-            (*(short (*)[200])(psVar1 + -1))[0] = local_210[pbVar3[-1]];
+            (*(short (*)[200])(psVar1 - 1))[0] = local_210[pbVar3[-1]];
             *psVar1 = local_210[*pbVar3];
             psVar1[1] = local_210[pbVar3[1]];
             psVar1[2] = local_210[pbVar3[2]];
             psVar1[3] = local_210[pbVar3[3]];
             psVar1 = psVar1 + 5;
             pbVar3 = pbVar3 + 5;
-            iVar2 = iVar2 + -1;
+            iVar2 = iVar2 - 1;
         } while (iVar2);
         MACRO_CALL(OpenSHC::OS_Func::_free_base)(local_214);
         ;

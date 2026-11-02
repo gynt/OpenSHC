@@ -90,7 +90,7 @@ namespace UI {
                         if (iVar11 < local_2c) {
                             uint uVar6 = (iVar11 - uVar3) * param_2 + iVar12;
                             local_50
-                                = DAT_ViewportRenderState::instance.screenPointToTileNumber + uVar3 + local_44 + -10;
+                                = DAT_ViewportRenderState::instance.screenPointToTileNumber + uVar3 + local_44 - 10;
                             local_2c = local_2c - iVar11;
                             do {
                                 _tile = *local_50;
@@ -127,8 +127,8 @@ namespace UI {
                                 }
                                 if (((DAT_TileMapState::instance.LuminesenceLayer[_tile] != 2) && ((short)param_4 != 0))
                                     && (!(_tile1003 & 2))) {
-                                    iVar12 = DAT_MiniMapDefinedData::instance
-                                                 .LuminescenceBrightnessPercent[DAT_TileMapState::instance.LuminesenceLayer[_tile]];
+                                    iVar12 = DAT_MiniMapDefinedData::instance.LuminescenceBrightnessPercent
+                                                 [DAT_TileMapState::instance.LuminesenceLayer[_tile]];
                                     if (!_isRGB565) {
                                         uVar9 = (int)((param_4 & 0x7c00) * iVar12) / 100;
                                         if (0x7c00 < (int)uVar9) {
@@ -202,13 +202,13 @@ namespace UI {
                                                 }
                                             }
                                             iVar12 = iVar12 + 2;
-                                            iVar11 = iVar11 + -1;
+                                            iVar11 = iVar11 - 1;
                                         } while (iVar11);
                                     }
                                 }
                                 uVar6 = uVar6 + param_2;
                                 local_50 = local_50 + 1;
-                                local_2c = local_2c + -1;
+                                local_2c = local_2c - 1;
                             } while (local_2c);
                         }
                     }

@@ -45,13 +45,13 @@ namespace UI {
                 DAT_PencilRenderCore::ptr)(0x4c, 6, x, y, width, height);
             if (DAT_GameSynchronyState::instance.kickedAtTime) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
-                    DAT_PencilRenderCore::ptr)(x, y + -0x3c, x + width, y + -0x12, 0x10);
+                    DAT_PencilRenderCore::ptr)(x, y - 0x3c, x + width, y - 0x12, 0x10);
                 iVar5 = 0;
                 keepOffsetX = FALSE;
                 iVar4 = 0x10;
                 color = 0xccfaff;
                 alignment = OpenSHC::Text::TTA_CENTER;
-                iVar3 = y + -0x32;
+                iVar3 = y - 0x32;
                 iVar1 = width / 2 + x;
                 /*
                   added by script: "You Were Ejected!"

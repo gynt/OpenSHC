@@ -59,40 +59,40 @@ namespace UI {
             pcVar2, iVar4);
         DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
         if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1024x768) {
-            posX = posX + -0x70;
+            posX = posX - 0x70;
         } else if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1280x1024) {
-            posX = posX + -0xf0;
+            posX = posX - 0xf0;
         } else if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1600x1200) {
-            posX = posX + -400;
+            posX = posX - 400;
         } else if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1280x720) {
-            posX = posX + -0xf0;
+            posX = posX - 0xf0;
         } else if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1440x900) {
-            posX = posX + -0x140;
+            posX = posX - 0x140;
         } else if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1920x1080) {
-            posX = posX + -0x230;
+            posX = posX - 0x230;
         } else if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1920x1200) {
-            posX = posX + -0x230;
+            posX = posX - 0x230;
         } else if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_2560x1440) {
-            posX = posX + -0x370;
+            posX = posX - 0x370;
         } else if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_2560x1600) {
-            posX = posX + -0x370;
+            posX = posX - 0x370;
         } else if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1366x768) {
-            posX = posX + -0x11b;
+            posX = posX - 0x11b;
         } else if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1680x1050) {
-            posX = posX + -0x1b8;
+            posX = posX - 0x1b8;
         } else if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1600x900) {
-            posX = posX + -400;
+            posX = posX - 400;
         } else if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1024x600) {
-            posX = posX + -0x70;
+            posX = posX - 0x70;
         } else if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1360x768) {
-            posX = posX + -0x118;
+            posX = posX - 0x118;
         }
         DAT_00df4290::instance = iVar4 + 0x10;
         iVar3 = iVar4 / 2;
         iVar1 = posX + 10 + iVar3;
         left = iVar1 - iVar3;
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
-            DAT_PencilRenderCore::ptr)(left + -7, posY + -5, iVar3 + 5 + iVar1, posY + 0x1e, 0x10);
+            DAT_PencilRenderCore::ptr)(left - 7, posY - 5, iVar3 + 5 + iVar1, posY + 0x1e, 0x10);
         blendStrength = 0;
         keepOffsetX = FALSE;
         fontSize = 0x12;
@@ -109,7 +109,7 @@ namespace UI {
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
             pcVar2, xParam, yParam, alignment, foregroundColor, backgroundColor, fontSize, keepOffsetX, blendStrength);
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
-            left + -1, posY + 0x12, iVar3 + 1 + iVar1, posY + 0x18, (ushort)((int)(COL_BLACK::instance.shortValue)));
+            left - 1, posY + 0x12, iVar3 + 1 + iVar1, posY + 0x18, (ushort)((int)(COL_BLACK::instance.shortValue)));
         if (DAT_MapPropertiesState::instance.SEC_Section1080 != DAT_MapPropertiesState::instance.SEC_Section1090) {
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
                 left, posY + 0x13,
@@ -121,7 +121,6 @@ namespace UI {
                 posY + 0x17, (ushort)((int)(COL_DARK_LIME::instance.shortValue)));
         }
         DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
-        return;
     }
 
 }

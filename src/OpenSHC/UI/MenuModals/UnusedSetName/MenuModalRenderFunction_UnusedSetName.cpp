@@ -32,7 +32,7 @@ namespace UI {
             int fontSize;
             BOOLEnum keepOffsetX;
             int blendStrength;
-            iVar1 = (width + -400) / 2;
+            iVar1 = (width - 400) / 2;
             MACRO_CALL_MEMBER(
                 OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdges, DAT_PencilRenderCore::ptr)(
                 iVar1 + x, y + 10, (x - iVar1) + width, y + 0x3c, OpenSHC::UI::Enums::RBERL_STRONG);

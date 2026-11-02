@@ -60,7 +60,7 @@ namespace UI {
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                 DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2,
-                (int)((int)(DAT_ProtocolDefinedData::instance.field135_0x474[uVar1] + 0x18e)), width / 2 + -0xe + x,
+                (int)((int)(DAT_ProtocolDefinedData::instance.field135_0x474[uVar1] + 0x18e)), width / 2 - 0xe + x,
                 y + 0x138);
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             if ((DAT_GameSynchronyState::instance.scrollBarIndex == -1)

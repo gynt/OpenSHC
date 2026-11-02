@@ -7,6 +7,7 @@
 #include "OpenSHC/UI/Rendering/PencilRenderCore.func.hpp"
 #include "OpenSHC/Commands/GameCommandType.hpp"
 #include "OpenSHC/DE/SHCDE/eTextSections.hpp"
+#include "OpenSHC/Rendering/Colors/BGR24.hpp"
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
@@ -25,17 +26,16 @@
 #include "OpenSHC/Globals/DAT_PencilRenderCore.hpp"
 #include "OpenSHC/Globals/DAT_TextManagerObject.hpp"
 #include "OpenSHC/Globals/DAT_ViewportRenderState.hpp"
-#include "OpenSHC/Rendering/Colors/BGR24.hpp"
 
 namespace OpenSHC {
 namespace UI {
 
     using OpenSHC::Commands::GameCommandType;
     using OpenSHC::DE::SHCDE::eTextSections;
+    using OpenSHC::Rendering::Colors::BGR24;
     using OpenSHC::Rendering::Enums::RenderTarget;
     using OpenSHC::Text::TextAlignment;
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
-    using OpenSHC::Rendering::Colors::BGR24;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004AFE10
     void DisplayElements::RenderSomeMultiplayerInfoUnkDisplayElement19(int posX, int posY, DWORD elementState)
@@ -56,7 +56,7 @@ namespace UI {
         }
         DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderedBoxWithBlendedBackground,
-            DAT_PencilRenderCore::ptr)(posX + -0xcc, posY, 0x198,
+            DAT_PencilRenderCore::ptr)(posX - 0xcc, posY, 0x198,
             (int)((int)((DAT_GameSynchronyState::instance.connectionInfoExpanded * 3 + 0xc) * 0x10)));
         iVar8 = 0;
         BVar7 = FALSE;
@@ -94,16 +94,16 @@ namespace UI {
             pcVar1, iVar8, iVar2, TVar3, BVar4, iVar6, BVar7, iVar9);
         DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
-            posX + -0xab, posY + 0x4a, posX + 0xab, posY + 0x5b, (ushort)((int)(COL_WHITE::instance.shortValue)));
+            posX - 0xab, posY + 0x4a, posX + 0xab, posY + 0x5b, (ushort)((int)(COL_WHITE::instance.shortValue)));
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::dimBox, DAT_PencilRenderCore::ptr)(
-            posX + -0xaa, posY + 0x4b, posX + 0xaa, posY + 0x5a);
+            posX - 0xaa, posY + 0x4b, posX + 0xaa, posY + 0x5a);
         if ((DAT_GameSynchronyState::instance.currentPacketTotalSize)
             && (DAT_GameSynchronyState::instance.resyncTransferTotalSize)) {
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
-                posX + -0xaa, posY + 0x4b,
+                posX - 0xaa, posY + 0x4b,
                 (DAT_GameSynchronyState::instance.currentPacketTotalSize * 0x154)
                         / DAT_GameSynchronyState::instance.resyncTransferTotalSize
-                    + -0xaa + posX,
+                    - 0xaa + posX,
                 posY + 0x5a, (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
         }
         DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
@@ -137,7 +137,7 @@ namespace UI {
               added by script: "Auto save is on"
              */
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                OpenSHC::DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, 0x36, posX + -3, iVar6, OpenSHC::Text::TTA_RIGHT,
+                OpenSHC::DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, 0x36, posX - 3, iVar6, OpenSHC::Text::TTA_RIGHT,
                 0xc2f0eb, 0x12, FALSE);
             /*
               added by script: "Last saved:"
@@ -160,7 +160,7 @@ namespace UI {
                 OpenSHC::DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, 0x38, posX + 10, iVar6, OpenSHC::Text::TTA_LEFT,
                 0xc2f0eb, 0x12, TRUE);
         }
-        iVar6 = posX + -100;
+        iVar6 = posX - 100;
         DAT_ButtonY::instance = posY + 0x96;
         DAT_ButtonW::instance = 200;
         DAT_ButtonH::instance = 0x1c;
@@ -184,11 +184,11 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     pcVar1, iVar5, iVar9, TVar3, BVar4, iVar8, BVar7, iVar2);
                 DAT_ButtonY::instance = posY + 0xc6;
-                DAT_ButtonX::instance = posX + -0x96;
+                DAT_ButtonX::instance = posX - 0x96;
                 DAT_ButtonW::instance = 100;
                 DAT_ButtonH::instance = 0x1c;
                 BVar7 = MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::isMouseInsideBox, DAT_MouseState::ptr)(
-                    (posX - DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetX) + -0x96,
+                    (posX - DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetX) - 0x96,
                     (posY - DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetY) + 0xc6, 0x96, 0x1c);
                 if (!BVar7) {
                     DAT_ButtonCurrentlyInteracting::instance = FALSE;
@@ -271,7 +271,7 @@ namespace UI {
                 goto LAB_004b0367;
             }
             BVar7 = MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::isMouseInsideBox, DAT_MouseState::ptr)(
-                (posX - DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetX) + -100,
+                (posX - DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetX) - 100,
                 (posY - DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetY) + 0x96, 200, 0x1c);
             if (BVar7) {
                 DAT_ButtonCurrentlyInteracting::instance = TRUE;
@@ -316,7 +316,6 @@ namespace UI {
             DAT_TextManagerObject::ptr)(offsetIndex, iVar9);
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             pcVar1, posX, iVar6, TVar3, BVar4, iVar5, BVar7, iVar8);
-        return;
     }
 
 }

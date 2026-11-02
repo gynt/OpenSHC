@@ -27,7 +27,7 @@ namespace UI {
             Menu* pMVar1;
             DAT_MenuHandlerState::instance.x = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
             pMVar1 = DAT_MenuHandlerState::instance.currentMenu;
-            DAT_MenuHandlerState::instance.y = DAT_WindowAndDirectDraw::instance.resolutionY + -600;
+            DAT_MenuHandlerState::instance.y = DAT_WindowAndDirectDraw::instance.resolutionY - 600;
             if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_640x480) {
                 (DAT_MenuHandlerState::instance.currentMenu)->xPosition = 0;
                 pMVar1->yPosition = DAT_MenuHandlerState::instance.y;

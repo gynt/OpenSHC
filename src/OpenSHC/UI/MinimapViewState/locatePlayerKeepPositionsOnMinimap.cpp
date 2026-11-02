@@ -91,26 +91,26 @@ namespace UI {
                         && (local_20 = ((int)(400 / (longlong)param_2) * iVar8) / local_24 - uVar5,
                             (int)uVar5 < local_20)) {
                         local_20 = local_20 - uVar5;
-                        piVar6 = DAT_ViewportRenderState::instance.screenPointToTileNumber + uVar5 + iVar7 + -8;
+                        piVar6 = DAT_ViewportRenderState::instance.screenPointToTileNumber + uVar5 + iVar7 - 8;
                         do {
                             iVar3 = (int)DAT_TileMapState::instance.BuildingLayer[*piVar6];
                             if (((iVar3)
                                     && ((int)(short)DAT_BuildingsState::instance.buildings[iVar3].buildingType - 0x28U
                                         < 5))
                                 && (iVar3 = (int)DAT_BuildingsState::instance.buildings[iVar3].owner,
-                                    this->DAT_MapU4B64.keepPositions[iVar3 + -1].x == -1)) {
+                                    this->DAT_MapU4B64.keepPositions[iVar3 - 1].x == -1)) {
                                 uVar4 = param_1;
                                 iVar11 = iVar10;
                                 if (local_34 != 1) {
                                     uVar4 = (int)param_1 / local_34;
                                     iVar11 = iVar10 / local_34;
                                 }
-                                this->DAT_MapU4B64.keepPositions[iVar3 + -1].x = iVar11;
-                                this->DAT_MapU4B64.keepPositions[iVar3 + -1].y = uVar4;
+                                this->DAT_MapU4B64.keepPositions[iVar3 - 1].x = iVar11;
+                                this->DAT_MapU4B64.keepPositions[iVar3 - 1].y = uVar4;
                             }
                             iVar10 = iVar10 + param_2;
                             piVar6 = piVar6 + 1;
-                            local_20 = local_20 + -1;
+                            local_20 = local_20 - 1;
                         } while (local_20);
                     }
                 }

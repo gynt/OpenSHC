@@ -32,7 +32,6 @@ namespace UI {
                 DAT_ARRAY_00ec0348::instance[iVar1].field7_0x1c = param_8;
             }
         }
-        return;
     }
 
 }

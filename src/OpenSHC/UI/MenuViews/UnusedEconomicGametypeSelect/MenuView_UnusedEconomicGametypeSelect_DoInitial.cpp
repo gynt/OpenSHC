@@ -38,7 +38,6 @@ namespace UI {
                 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
             pMVar1->yPosition = DAT_MenuHandlerState::instance.y;
             INT_00b95f68::instance = 0;
-            return;
         }
 
     }

@@ -50,11 +50,11 @@ namespace UI {
                     if (DAT_GameSynchronyState::instance.DAT_MapFileReceivingState) {
                         iVar2 = width / 2;
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox,
-                            DAT_PencilRenderCore::ptr)(iVar2 + x + -1, iVar1 + 0x52 + y, width + -0x13 + x,
+                            DAT_PencilRenderCore::ptr)(iVar2 + x - 1, iVar1 + 0x52 + y, width - 0x13 + x,
                             iVar1 + 99 + y, (ushort)((int)(COL_BLACK::instance.shortValue)));
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                             DAT_PencilRenderCore::ptr)(iVar2 + x, iVar1 + 0x53 + y,
-                            ((iVar2 + -0x14)
+                            ((iVar2 - 0x14)
                                 * *(int*)((int)DAT_GameSynchronyState::instance.mapSendingByteBufferAddress + local_10
                                     + 4))
                                     / DAT_GameSynchronyState::instance.mapSendingFileSize
@@ -66,7 +66,6 @@ namespace UI {
                 local_10 = local_10 + 4;
                 local_8 = local_8 + 1;
             } while ((int)local_8 < 0x1a27512);
-            return;
         }
 
     }

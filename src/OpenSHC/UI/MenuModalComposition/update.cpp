@@ -77,9 +77,9 @@ namespace UI {
                     (this->modalMenu).x = DAT_WindowAndDirectDraw::instance.gameResolutionX - _width;
                 }
                 int _height2 = (this->modalMenu).height;
-                if ((this->modalMenu).y + _height2 < DAT_WindowAndDirectDraw::instance.gameResolutionY + -0x80)
+                if ((this->modalMenu).y + _height2 < DAT_WindowAndDirectDraw::instance.gameResolutionY - 0x80)
                     goto LAB_004aa311;
-                _y = (DAT_WindowAndDirectDraw::instance.gameResolutionY - _height2) + -0x80;
+                _y = (DAT_WindowAndDirectDraw::instance.gameResolutionY - _height2) - 0x80;
             }
             (this->modalMenu).y = _y;
         }

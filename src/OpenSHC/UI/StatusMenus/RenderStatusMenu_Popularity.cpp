@@ -413,8 +413,8 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 pcVar8, iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar22);
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(DAT_MenuHandlerState::instance.x
-                    + -0x16 + DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_1c][1],
-                (int)((int)(DAT_MenuHandlerState::instance.y + -1
+                    - 0x16 + DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_1c][1],
+                (int)((int)(DAT_MenuHandlerState::instance.y - 1
                     + DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_1c][2])),
                 400, FALSE);
         }
@@ -439,9 +439,9 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 pcVar8, iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar22);
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
-                DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_18][1] + -0x16
+                DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_18][1] - 0x16
                     + DAT_MenuHandlerState::instance.x,
-                DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_18][2] + -1
+                DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_18][2] - 1
                     + DAT_MenuHandlerState::instance.y,
                 (int)((
                     int)(DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -469,9 +469,9 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 pcVar8, iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar22);
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
-                DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_14][1] + -0x16
+                DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_14][1] - 0x16
                     + DAT_MenuHandlerState::instance.x,
-                DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_14][2] + -1
+                DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_14][2] - 1
                     + DAT_MenuHandlerState::instance.y,
                 (int)((
                     int)(DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -499,9 +499,9 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 pcVar8, iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar22);
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
-                DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_10][1] + -0x16
+                DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_10][1] - 0x16
                     + DAT_MenuHandlerState::instance.x,
-                DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_10][2] + -1
+                DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_10][2] - 1
                     + DAT_MenuHandlerState::instance.y,
                 (int)((
                     int)(DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -529,8 +529,8 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 pcVar8, iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar22);
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(DAT_MenuHandlerState::instance.x
-                    + -0x16 + DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_c][1],
-                (int)((int)(DAT_MenuHandlerState::instance.y + -1
+                    - 0x16 + DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_c][1],
+                (int)((int)(DAT_MenuHandlerState::instance.y - 1
                     + DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_c][2])),
                 (int)((
                     int)(DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -558,9 +558,9 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 pcVar8, iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar22);
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
-                DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_8][1] + -0x16
+                DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_8][1] - 0x16
                     + DAT_MenuHandlerState::instance.x,
-                DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_8][2] + -1
+                DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_8][2] - 1
                     + DAT_MenuHandlerState::instance.y,
                 (int)((
                     int)(DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -588,9 +588,9 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 pcVar8, iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar22);
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
-                DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_4][1] + -0x16
+                DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_4][1] - 0x16
                     + DAT_MenuHandlerState::instance.x,
-                DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_4][2] + -1
+                DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_4][2] - 1
                     + DAT_MenuHandlerState::instance.y,
                 (int)((
                     int)(DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]

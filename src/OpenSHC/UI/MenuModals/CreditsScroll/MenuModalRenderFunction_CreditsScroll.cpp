@@ -20,7 +20,7 @@ namespace UI {
             if (DAT_TextEditorState::instance.pendingCreditsFadeBorder) {
                 DAT_TextEditorState::instance.pendingCreditsFadeBorder = FALSE;
                 MACRO_CALL_MEMBER(Text::TextEditorState_Func::setTextRenderingLogic, DAT_TextEditorState::ptr)();
-                int right = x + -1 + width;
+                int right = x - 1 + width;
                 int local_58 = 0;
                 int left = x + 1;
                 int local_10 = -600;
@@ -105,7 +105,7 @@ namespace UI {
                     local_14 = local_14 + 0x13;
                     local_10 = local_10 + 0x14;
                     local_58 = local_58 + 1;
-                    local_c = local_c + -1;
+                    local_c = local_c - 1;
                     local_54 = local_54 + 2;
                     iVar2 = iVar2 + 4;
                 } while (local_54 < 0);
@@ -194,9 +194,9 @@ namespace UI {
                     local_50 = local_50 + 0x14;
                     local_54 = local_54 + 4;
                     local_58 = local_58 + 1;
-                    local_8 = local_8 + -1;
+                    local_8 = local_8 - 1;
                     local_c = local_c + 2;
-                    iVar2 = iVar2 + -4;
+                    iVar2 = iVar2 - 4;
                 } while (local_c < 0);
             }
         }

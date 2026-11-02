@@ -62,7 +62,7 @@ namespace UI {
                 DAT_00ec02f4::instance.field18_0x48 = DAT_MissionDefinedData::instance.field13_0x28.sub.field18_0x48;
                 DAT_00ec02f4::instance.field19_0x4c = DAT_MissionDefinedData::instance.field13_0x28.sub.field19_0x4c;
             } else {
-                iVar6 = (DAT_GameCore::instance.missionNumber1to20 + -2) * 0x58;
+                iVar6 = (DAT_GameCore::instance.missionNumber1to20 - 2) * 0x58;
                 piVar2 = (int*)((int)DAT_MissionDefinedData::ptr + iVar6 + 0x28);
                 iVar4 = 3;
                 piVar5 = piVar2;
@@ -71,11 +71,11 @@ namespace UI {
                         /*
                           fixme:this doesn't make sense, clashes with floats
                          */
-                        INT_ARRAY_00eb9afc::instance[iVar3] = iVar4 + -2;
+                        INT_ARRAY_00eb9afc::instance[iVar3] = iVar4 - 2;
                         iVar3 = iVar3 + 1;
                     }
                     if (piVar5[0x17] != piVar5[1]) {
-                        INT_ARRAY_00eb9afc::instance[iVar3] = iVar4 + -1;
+                        INT_ARRAY_00eb9afc::instance[iVar3] = iVar4 - 1;
                         iVar3 = iVar3 + 1;
                     }
                     if (piVar5[0x18] != piVar5[2]) {
@@ -125,59 +125,58 @@ namespace UI {
             INT_00ed3068::instance = 0;
             INT_00ec0838::instance = 0;
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                DAT_TextureRenderCoreObject::ptr)("campaign_map_england.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
-                DAT_TextureRenderCoreObject::ptr)("campaign_map_england_01.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
-                DAT_TextureRenderCoreObject::ptr)("campaign_map_england_02.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
-                DAT_TextureRenderCoreObject::ptr)("campaign_map_england_03.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
-                DAT_TextureRenderCoreObject::ptr)("campaign_map_england_04.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
-                DAT_TextureRenderCoreObject::ptr)("campaign_map_england_05.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
-                DAT_TextureRenderCoreObject::ptr)("campaign_map_england_06.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
-                DAT_TextureRenderCoreObject::ptr)("campaign_map_england_07.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
-                DAT_TextureRenderCoreObject::ptr)("campaign_map_england_08.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
-                DAT_TextureRenderCoreObject::ptr)("campaign_map_england_09.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
-                DAT_TextureRenderCoreObject::ptr)("campaign_map_england_10.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
-                DAT_TextureRenderCoreObject::ptr)("campaign_map_england_11.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
-                DAT_TextureRenderCoreObject::ptr)("campaign_map_england_12.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
-                DAT_TextureRenderCoreObject::ptr)("campaign_map_england_13.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
-                DAT_TextureRenderCoreObject::ptr)("campaign_map_england_14.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
-                DAT_TextureRenderCoreObject::ptr)("campaign_map_england_15.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
-                DAT_TextureRenderCoreObject::ptr)("campaign_map_england_16.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
-                DAT_TextureRenderCoreObject::ptr)("campaign_map_england_17.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
-                DAT_TextureRenderCoreObject::ptr)("campaign_map_england_18.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
-                DAT_TextureRenderCoreObject::ptr)("campaign_map_england_19.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8,
-                DAT_TextureRenderCoreObject::ptr)("campaign_map_england_20.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                DAT_TextureRenderCoreObject::ptr)("map_pig.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                DAT_TextureRenderCoreObject::ptr)("map_rat.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                DAT_TextureRenderCoreObject::ptr)("map_snake.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                DAT_TextureRenderCoreObject::ptr)("map_wolf.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
+                "campaign_map_england.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8, DAT_TextureRenderCoreObject::ptr)(
+                "campaign_map_england_01.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8, DAT_TextureRenderCoreObject::ptr)(
+                "campaign_map_england_02.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8, DAT_TextureRenderCoreObject::ptr)(
+                "campaign_map_england_03.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8, DAT_TextureRenderCoreObject::ptr)(
+                "campaign_map_england_04.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8, DAT_TextureRenderCoreObject::ptr)(
+                "campaign_map_england_05.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8, DAT_TextureRenderCoreObject::ptr)(
+                "campaign_map_england_06.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8, DAT_TextureRenderCoreObject::ptr)(
+                "campaign_map_england_07.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8, DAT_TextureRenderCoreObject::ptr)(
+                "campaign_map_england_08.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8, DAT_TextureRenderCoreObject::ptr)(
+                "campaign_map_england_09.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8, DAT_TextureRenderCoreObject::ptr)(
+                "campaign_map_england_10.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8, DAT_TextureRenderCoreObject::ptr)(
+                "campaign_map_england_11.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8, DAT_TextureRenderCoreObject::ptr)(
+                "campaign_map_england_12.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8, DAT_TextureRenderCoreObject::ptr)(
+                "campaign_map_england_13.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8, DAT_TextureRenderCoreObject::ptr)(
+                "campaign_map_england_14.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8, DAT_TextureRenderCoreObject::ptr)(
+                "campaign_map_england_15.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8, DAT_TextureRenderCoreObject::ptr)(
+                "campaign_map_england_16.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8, DAT_TextureRenderCoreObject::ptr)(
+                "campaign_map_england_17.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8, DAT_TextureRenderCoreObject::ptr)(
+                "campaign_map_england_18.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8, DAT_TextureRenderCoreObject::ptr)(
+                "campaign_map_england_19.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGFX8, DAT_TextureRenderCoreObject::ptr)(
+                "campaign_map_england_20.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
+                "map_pig.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
+                "map_rat.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
+                "map_snake.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
+                "map_wolf.tgx");
             MACRO_CALL(UI::Helpers_Func::LoadTGX_shc_back)();
             MACRO_CALL(Rendering_Func::TicksStartCounter)();
-            return;
         }
 
     }

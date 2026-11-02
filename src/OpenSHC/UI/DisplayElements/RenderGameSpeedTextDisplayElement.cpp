@@ -33,16 +33,15 @@ namespace UI {
         backgroundColor = 0;
         foregroundColor = 0xc2f0eb;
         alignment = Text::TTA_RIGHT;
-        xParam = posX + -3;
+        xParam = posX - 3;
         yParam = posY;
         /*
           added by script: "Game Speed"
          */
         textAddress = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
             DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_FEEDBACK, 0x17);
-        MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
-            textAddress, xParam, yParam, alignment, foregroundColor, backgroundColor, fontSize, keepOffsetX,
-            blendStrength);
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(textAddress,
+            xParam, yParam, alignment, foregroundColor, backgroundColor, fontSize, keepOffsetX, blendStrength);
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
             DAT_GameCore::instance.gameSpeedLevel, posX, posY, Text::TTA_LEFT, 0xc2f0eb, 0, 0x11, FALSE, 0);
     }

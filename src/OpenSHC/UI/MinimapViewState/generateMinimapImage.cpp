@@ -63,7 +63,7 @@ namespace UI {
                 }
                 puVar6 = local_204;
                 pasVar5 = local_20c->loadedMiniMap;
-                for (iVar3 = 0x80; iVar3 != 0; iVar3 = iVar3 + -1) {
+                for (iVar3 = 0x80; iVar3 != 0; iVar3 = iVar3 - 1) {
                     *(undefined4*)*pasVar5 = *(undefined4*)puVar6;
                     puVar6 = puVar6 + 2;
                     pasVar5 = (short (*)[200])(*pasVar5 + 2);

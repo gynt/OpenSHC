@@ -22,7 +22,7 @@ namespace UI {
         int xOffset;
         int widthFactor;
         int heightFactor;
-        xOffset = (DAT_ViewportRenderState::instance.viewportState.viewportHeight + -5) / 2
+        xOffset = (DAT_ViewportRenderState::instance.viewportState.viewportHeight - 5) / 2
             + (DAT_ViewportRenderState::instance.viewportState.viewportX / 32);
         yOffset = DAT_ViewportRenderState::instance.viewportState.viewportWidth / 2
             + (DAT_ViewportRenderState::instance.viewportState.viewportY / 8);

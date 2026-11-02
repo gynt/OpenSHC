@@ -123,7 +123,7 @@ namespace UI {
                         if (!DAT_GameCore::instance.mapType
                             && DAT_MapPropertiesState::instance.scenarionMissionType == DAT_MapMissionType::instance
                             && (int)DAT_GameCore::instance.savedMapLocked < 2) {
-                            DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar8 + -1] = id;
+                            DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar8 - 1] = id;
                             pcVar3 = DAT_GameCore::instance.standaloneFilename;
                             DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar8 + 499] = id;
                             DAT_MenuTextInputState::instance.DAT_ArrayOfMapU3EndInt2[id] = iVar4;
@@ -155,7 +155,7 @@ namespace UI {
                             DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset = iVar8,
                             0xc < DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected) {
                             iVar8 = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + 1;
-                            iVar7 = DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected + -1;
+                            iVar7 = DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected - 1;
                         }
                     }
                     MACRO_CALL(UI::MenuItems::SinglePlayerMapChoice_Func::
@@ -172,7 +172,7 @@ namespace UI {
             if (DAT_MapMissionType::instance != 2) {
                 iVar7 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x8c;
             }
-            iVar5 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x10;
+            iVar5 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x10;
             int top = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0xfd;
             local_3f8 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x294;
             bottom = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x216;
@@ -180,7 +180,7 @@ namespace UI {
                 iVar7, top, DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x280, bottom, (iVar5 / 32) + 0x20);
             if (!DAT_00b960dc::instance) {
                 iVar8 = iVar8 + 0x295;
-                iVar7 = iVar7 + -1;
+                iVar7 = iVar7 - 1;
                 MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
                     iVar7, iVar4 + 0xfc, iVar8, iVar4 + 0xfc, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                 MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
@@ -192,13 +192,12 @@ namespace UI {
                 MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
                     iVar8, top, iVar8, bottom, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                 MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                    local_3f8 + -0x14, top, (int)(local_3f8 + -0x14), bottom,
+                    local_3f8 - 0x14, top, (int)(local_3f8 - 0x14), bottom,
                     (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                 MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                    local_3f8 + -0x13, iVar4 + 0x202, (int)(local_3f8), iVar4 + 0x202,
+                    local_3f8 - 0x13, iVar4 + 0x202, (int)(local_3f8), iVar4 + 0x202,
                     (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             };
-            return;
         }
 
     }

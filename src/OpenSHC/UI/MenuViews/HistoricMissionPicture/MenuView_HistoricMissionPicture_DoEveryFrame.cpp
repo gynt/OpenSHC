@@ -89,7 +89,6 @@ namespace UI {
                     DAT_00ed2780::instance = 0;
                 }
             }
-            return;
         }
 
     }

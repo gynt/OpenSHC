@@ -32,7 +32,7 @@ namespace UI {
         int blendStrength;
         DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderedBoxWithBlendedBackground,
-            DAT_PencilRenderCore::ptr)(posX + -0xf0, posY + -0x13, 0x1e0, 0x48);
+            DAT_PencilRenderCore::ptr)(posX - 0xf0, posY - 0x13, 0x1e0, 0x48);
         blendStrength = 0;
         keepOffsetX = FALSE;
         fontSize = 0xf;

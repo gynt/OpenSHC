@@ -34,7 +34,6 @@ namespace UI {
         DAT_00ed2bd8::instance = 0;
         INT_00eb1230::instance = 0;
         INT_00eb9ac0::instance = 0;
-        return;
     }
 
 }

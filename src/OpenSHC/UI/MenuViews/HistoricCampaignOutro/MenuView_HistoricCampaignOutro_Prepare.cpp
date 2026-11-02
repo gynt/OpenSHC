@@ -48,11 +48,11 @@ namespace UI {
             DAT_NumberOfStoredMenuStrings::instance = 0;
             pcVar1
                 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
-                    DE::SHCDE::TEXT_CAMPAIGN_INFO, (int)(DAT_GameCore::instance.historicCampaignNumber * 6 + -2));
+                    DE::SHCDE::TEXT_CAMPAIGN_INFO, (int)(DAT_GameCore::instance.historicCampaignNumber * 6 - 2));
             MACRO_CALL(UI::Helpers_Func::StoreStringInMenuStringArray)(pcVar1);
             pcVar1
                 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
-                    DE::SHCDE::TEXT_CAMPAIGN_INFO, (int)(DAT_GameCore::instance.historicCampaignNumber * 6 + -1));
+                    DE::SHCDE::TEXT_CAMPAIGN_INFO, (int)(DAT_GameCore::instance.historicCampaignNumber * 6 - 1));
             MACRO_CALL(UI::Helpers_Func::StoreStringInMenuStringArray)(pcVar1);
             FLOAT_00ec0834::instance = 0.0;
             DAT_00ed2780::instance = 1;

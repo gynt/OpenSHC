@@ -57,7 +57,7 @@ namespace UI {
             if (((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
                     && (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER))
                 && (DAT_GameSynchronyState::instance.saveRelated)) {
-                iVar1 = (width + -300) / 2;
+                iVar1 = (width - 300) / 2;
                 iVar2 = iVar1 + x;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                     DAT_PencilRenderCore::ptr)(iVar2, y + 0x41, (x - iVar1) + width, y + 0x50,
@@ -65,7 +65,7 @@ namespace UI {
                 DAT_MenuTextInputState::instance.progressBarY = y + 0x41;
                 DAT_MenuTextInputState::instance.progressBarX = iVar2;
             }
-            iVar1 = (width + -300) / 2;
+            iVar1 = (width - 300) / 2;
             iVar2 = iVar1 + x;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::dimBox, DAT_PencilRenderCore::ptr)(
                 iVar2, y + 0x41, (x - iVar1) + width, y + 0x50);

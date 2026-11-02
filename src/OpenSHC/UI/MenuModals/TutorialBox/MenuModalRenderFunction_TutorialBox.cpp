@@ -9,6 +9,7 @@
 #include "OpenSHC/Audio/MSS/enums/SHC_SoundStream.hpp"
 #include "OpenSHC/DE/SHCDE/eTextSections.hpp"
 #include "OpenSHC/IO/Graphics/GmID.hpp"
+#include "OpenSHC/Rendering/Colors/BGR24.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
@@ -24,7 +25,6 @@
 #include "OpenSHC/Globals/INT_00df5648.hpp"
 #include "OpenSHC/Globals/INT_ARRAY_00df5598.hpp"
 #include "OpenSHC/Globals/MSVC_SecurityCookie.hpp"
-#include "OpenSHC/Rendering/Colors/BGR24.hpp"
 
 namespace OpenSHC {
 namespace UI {
@@ -33,9 +33,9 @@ namespace UI {
         using OpenSHC::Audio::MSS::enums::SHC_SoundStream;
         using OpenSHC::DE::SHCDE::eTextSections;
         using OpenSHC::IO::Graphics::GmID;
+        using OpenSHC::Rendering::Colors::BGR24;
         using OpenSHC::Text::TextAlignment;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
-        using OpenSHC::Rendering::Colors::BGR24;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x004BCBA0
         void TutorialBox::MenuModalRenderFunction_TutorialBox(int x, int y, int width, int height)
@@ -68,13 +68,13 @@ namespace UI {
                 goto LAB_004bceab;
             local_28 = INT_ARRAY_00df5598::instance[DAT_TutorialCurrentStep::instance];
             local_38 = x + 0x10;
-            local_34 = width + -0x20;
+            local_34 = width - 0x20;
             keepOffsetX = FALSE;
             if (DAT_00df5540::instance) {
                 keepOffsetX = DAT_00df5544::instance;
             }
-            iVar3 = ((height + -1) / 0x18 + 1) * 0x18;
-            iVar13 = ((width + -1) / 0x18 + 1) * 0x18;
+            iVar3 = ((height - 1) / 0x18 + 1) * 0x18;
+            iVar13 = ((width - 1) / 0x18 + 1) * 0x18;
             local_30 = 0;
             local_3c = iVar13;
             local_2c = iVar3;
@@ -83,7 +83,7 @@ namespace UI {
                     if (!local_30) {
                         iVar5 = 1;
                     } else {
-                        iVar5 = (-(uint)(local_30 != iVar3 + -0x18) & 0xfffffffa) + 0xd;
+                        iVar5 = (-(uint)(local_30 != iVar3 - 0x18) & 0xfffffffa) + 0xd;
                     }
                     iVar4 = 0;
                     if (0 < iVar13) {
@@ -94,7 +94,7 @@ namespace UI {
                             LAB_004bcca6:
                                 iVar13 = iVar3 + 3;
                             } else {
-                                if (iVar4 == iVar13 + -0x18) {
+                                if (iVar4 == iVar13 - 0x18) {
                                     iVar3 = iVar5 + 2;
                                     goto LAB_004bcca6;
                                 }

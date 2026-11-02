@@ -46,7 +46,7 @@ namespace UI {
             /*
               Just memcopies it into current modal menu? -TheRedDaemon
              */
-            for (iVar4 = 10; pMVar5 = (MenuModalComposition*)&pMVar5->modalMenu, iVar4; iVar4 = iVar4 + -1) {
+            for (iVar4 = 10; pMVar5 = (MenuModalComposition*)&pMVar5->modalMenu, iVar4; iVar4 = iVar4 - 1) {
                 ((MenuModal*)pMVar5)->menuModalID = _modalMenu->menuModalID;
                 _modalMenu = (MenuModal*)&_modalMenu->x;
             }
@@ -56,8 +56,8 @@ namespace UI {
         (this->modalMenu).x = dialogX;
         (this->modalMenu).y = dialogY;
         if ((uVar1 & 0x220)) {
-            (this->modalMenu).width = (((this->modalMenu).width + -1) / 0x18 + 1) * 0x18;
-            (this->modalMenu).height = (((this->modalMenu).height + -1) / 0x18 + 1) * 0x18;
+            (this->modalMenu).width = (((this->modalMenu).width - 1) / 0x18 + 1) * 0x18;
+            (this->modalMenu).height = (((this->modalMenu).height - 1) / 0x18 + 1) * 0x18;
         }
         if (dialogX < 0) {
             (this->modalMenu).x = 0;

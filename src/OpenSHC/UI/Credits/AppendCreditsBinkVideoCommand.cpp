@@ -27,7 +27,6 @@ namespace UI {
             DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].field13_0x28 = 0;
             DAT_UnknownBinkCount::instance = DAT_UnknownBinkCount::instance + 1;
         }
-        return;
     }
 
 }

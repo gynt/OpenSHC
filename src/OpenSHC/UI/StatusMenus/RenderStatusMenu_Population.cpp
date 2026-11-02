@@ -4,6 +4,7 @@
 #include "OpenSHC/UI/Rendering/PencilRenderCore.func.hpp"
 #include "OpenSHC/UI/Rendering/TextureRenderCore.func.hpp"
 #include "OpenSHC/DE/SHCDE/eTextSections.hpp"
+#include "OpenSHC/Rendering/Colors/BGR24.hpp"
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
@@ -16,16 +17,15 @@
 #include "OpenSHC/Globals/DAT_TextManagerObject.hpp"
 #include "OpenSHC/Globals/DAT_TextureRenderCoreObject.hpp"
 #include "OpenSHC/Globals/DAT_WindowAndDirectDraw.hpp"
-#include "OpenSHC/Rendering/Colors/BGR24.hpp"
 
 namespace OpenSHC {
 namespace UI {
 
     using OpenSHC::DE::SHCDE::eTextSections;
+    using OpenSHC::Rendering::Colors::BGR24;
     using OpenSHC::Rendering::Enums::RenderTarget;
     using OpenSHC::Text::TextAlignment;
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
-    using OpenSHC::Rendering::Colors::BGR24;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0043F6A0
     void StatusMenus::RenderStatusMenu_Population()
@@ -116,7 +116,7 @@ namespace UI {
                     sVar4 = (*pasVar7)[0];
                 }
                 pasVar7 = (short (*)[300])(*pasVar7 + 1);
-                iVar9 = iVar9 + -1;
+                iVar9 = iVar9 - 1;
             } while (iVar9);
             if (0x32 < sVar4) {
                 if (sVar4 < 0x65) {
@@ -150,7 +150,7 @@ namespace UI {
         iVar12 = 0;
         iVar9 = 0;
         do {
-            uVar1 = (DAT_GameState::instance.mapAndTime.populationIndex + -300) / 0xc;
+            uVar1 = (DAT_GameState::instance.mapAndTime.populationIndex - 300) / 0xc;
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                 (((int)uVar1 < 0) - 1 & uVar1) + iVar12, iVar9 / 0x19 + 0xbe + iVar2, iVar3 + 0x241,
                 OpenSHC::Text::TTA_LEFT, 0, 0x13, FALSE, 0);

@@ -56,11 +56,11 @@ namespace UI {
         int iVar3 = 0;
         if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILDING_AND_STATUS_MENU) {
             if (DAT_GameCore::instance.activeMenuTab.tabType == UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM) {
-                posY = posY + -0x28;
+                posY = posY - 0x28;
             } else if (DAT_GameCore::instance.activeMenuTab.tabType == UI::Enums::BASMTT_MERCENARYPOST) {
-                posY = posY + -0x28;
+                posY = posY - 0x28;
             } else {
-                posY = posY + -0x14;
+                posY = posY - 0x14;
             }
         }
         if ((!DAT_ViewportRenderState::instance.viewportState.mouseRayBuildingID)
@@ -115,7 +115,7 @@ namespace UI {
             MACRO_CALL_MEMBER(Text::TextManager_Func::computeTextWidthForTextGroup, DAT_TextManagerObject::ptr)(
                 DE::SHCDE::TEXT_BUBBLE_HELP_TEXT, DAT_00df5530::instance + 0xcc, 0x10);
             MACRO_CALL_MEMBER(Text::TextManager_Func::renderText, DAT_TextManagerObject::ptr)(
-                DE::SHCDE::TEXT_BUBBLE_HELP_TEXT, DAT_00df5530::instance + 0xcc, posX, posY + -0x14, Text::TTA_CENTER,
+                DE::SHCDE::TEXT_BUBBLE_HELP_TEXT, DAT_00df5530::instance + 0xcc, posX, posY - 0x14, Text::TTA_CENTER,
                 0xc2f0eb, 0, 0x10, FALSE);
         }
         if (!DAT_00df5530::instance) {}
@@ -130,7 +130,7 @@ namespace UI {
             if (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[DAT_00df5530::instance] == -1) {
                 iVar4 = DAT_GameSynchronyState::instance.currentAIArray[DAT_00df5530::instance];
             }
-            iVar5 = posY + -0x26;
+            iVar5 = posY - 0x26;
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                 DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_2, DAT_00df5530::instance + 0x222,
                 iVar3, iVar5, (int)(blendStrength));
@@ -145,7 +145,7 @@ namespace UI {
                                 IO::Graphics::GID_INTERFACE_ICONS_2, 0x21d, iVar3, iVar5, (int)(blendStrength));
                             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::drawBitmapFaceWithBlendUnk,
                                 DAT_TextureRenderCoreObject::ptr)(
-                                DAT_00df5530::instance + 0x13, iVar3 + 4, posY + -0x22, (int)(blendStrength));
+                                DAT_00df5530::instance + 0x13, iVar3 + 4, posY - 0x22, (int)(blendStrength));
                         }
                         goto LAB_004b0782;
                     }
@@ -171,7 +171,7 @@ namespace UI {
         if (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[DAT_00df5530::instance] == -1) {
             iVar4 = DAT_GameSynchronyState::instance.currentAIArray[DAT_00df5530::instance];
         }
-        iVar5 = posY + -0x26;
+        iVar5 = posY - 0x26;
         MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
             DE::SHCDE::GM_INTERFACE_ICONS2, DAT_00df5530::instance + 0x222, iVar3, iVar5);
         if (!iVar4) {
@@ -183,7 +183,7 @@ namespace UI {
                         MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM,
                             DAT_TextureRenderCoreObject::ptr)(DE::SHCDE::GM_INTERFACE_ICONS2, 0x21d, iVar3, iVar5);
                         MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::drawBitmapFace,
-                            DAT_TextureRenderCoreObject::ptr)(DAT_00df5530::instance + 0x13, iVar3 + 4, posY + -0x22);
+                            DAT_TextureRenderCoreObject::ptr)(DAT_00df5530::instance + 0x13, iVar3 + 4, posY - 0x22);
                     }
                     goto LAB_004b0659;
                 }

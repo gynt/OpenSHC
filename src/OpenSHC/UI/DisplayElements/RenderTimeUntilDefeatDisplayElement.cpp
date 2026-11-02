@@ -49,7 +49,8 @@ namespace UI {
         int iVar6;
         int local_c;
         if (DAT_GameCore::instance.section1095 == 2) {
-            MACRO_CALL(OpenSHC::UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(OpenSHC::UI::Enums::DEID_TIME_UNTIL_DEFEAT, 0);
+            MACRO_CALL(OpenSHC::UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
+                OpenSHC::UI::Enums::DEID_TIME_UNTIL_DEFEAT, 0);
         }
         iVar6 = 0x12;
         /*
@@ -60,44 +61,45 @@ namespace UI {
         iVar6 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(
             _textAddr, iVar6);
         if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1024x768) {
-            posX = posX + -0x70;
+            posX = posX - 0x70;
         } else if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1280x1024) {
-            posX = posX + -0xf0;
+            posX = posX - 0xf0;
         } else if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1600x1200) {
-            posX = posX + -400;
+            posX = posX - 400;
         } else if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1280x720) {
-            posX = posX + -0xf0;
+            posX = posX - 0xf0;
         } else if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1440x900) {
-            posX = posX + -0x140;
+            posX = posX - 0x140;
         } else if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1920x1080) {
-            posX = posX + -0x230;
+            posX = posX - 0x230;
         } else if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1920x1200) {
-            posX = posX + -0x230;
+            posX = posX - 0x230;
         } else if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_2560x1440) {
-            posX = posX + -0x370;
+            posX = posX - 0x370;
         } else if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_2560x1600) {
-            posX = posX + -0x370;
+            posX = posX - 0x370;
         } else if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1366x768) {
-            posX = posX + -0x11b;
+            posX = posX - 0x11b;
         } else if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1680x1050) {
-            posX = posX + -0x1b8;
+            posX = posX - 0x1b8;
         } else if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1600x900) {
-            posX = posX + -400;
+            posX = posX - 400;
         } else if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1024x600) {
-            posX = posX + -0x70;
+            posX = posX - 0x70;
         } else if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1360x768) {
-            posX = posX + -0x118;
+            posX = posX - 0x118;
         }
         iVar2 = iVar6 / 2;
         iVar3 = posX + 10 + iVar2;
-        _stateNotZero = MACRO_CALL(OpenSHC::UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(OpenSHC::UI::Enums::DEID_TIME_UNTIL_VICTORY);
+        _stateNotZero = MACRO_CALL(OpenSHC::UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(
+            OpenSHC::UI::Enums::DEID_TIME_UNTIL_VICTORY);
         if (_stateNotZero) {
             iVar3 = iVar3 + DAT_00df4290::instance;
         }
         left = iVar3 - iVar2;
         DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
-            DAT_PencilRenderCore::ptr)(left + -7, posY + -5, iVar2 + 5 + iVar3, posY + 0x1e, 0x10);
+            DAT_PencilRenderCore::ptr)(left - 7, posY - 5, iVar2 + 5 + iVar3, posY + 0x1e, 0x10);
         blendStrength = 0;
         _stateNotZero = FALSE;
         iVar5 = 0x12;
@@ -123,7 +125,8 @@ namespace UI {
                     - iVar4)
             * 800;
         if (!DAT_GameCore::instance.isTimeHalted) {
-            _stateNotZero = MACRO_CALL(OpenSHC::UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(OpenSHC::UI::Enums::DEID_KEEP_AND_GRANERY_PLACEMENT_INFO);
+            _stateNotZero = MACRO_CALL(OpenSHC::UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(
+                OpenSHC::UI::Enums::DEID_KEEP_AND_GRANERY_PLACEMENT_INFO);
             if (!_stateNotZero) {
                 local_c = ((iVar4 + DAT_GameState::instance.mapAndTime.week * -200)
                               - DAT_GameState::instance.gameTicksLoadBalancer)
@@ -137,7 +140,7 @@ namespace UI {
             local_c = 0;
         }
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
-            left + -1, posY + 0x12, iVar2 + 1 + iVar3, posY + 0x18, (ushort)((int)(COL_BLACK::instance.shortValue)));
+            left - 1, posY + 0x12, iVar2 + 1 + iVar3, posY + 0x18, (ushort)((int)(COL_BLACK::instance.shortValue)));
         if (local_c != iVar4) {
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
                 left, posY + 0x13, (((iVar4 - local_c) * iVar6) / iVar4 - iVar2) + iVar3, posY + 0x17,

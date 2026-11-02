@@ -51,7 +51,6 @@ namespace UI {
                 DAT_MenuHandlerState::instance.x = DAT_MenuHandlerState::instance.x + 0x18;
             }
             pMVar1->xPosition = DAT_MenuHandlerState::instance.x;
-            return;
         }
 
     }

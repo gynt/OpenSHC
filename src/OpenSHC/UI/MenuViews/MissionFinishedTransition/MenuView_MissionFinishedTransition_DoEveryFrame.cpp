@@ -313,7 +313,6 @@ namespace UI {
         LAB_004dc9bd:
             MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(menuID, 0);
             DAT_GameCore::instance.skipStoreSKMasters = 0;
-            return;
         }
 
     }

@@ -60,7 +60,7 @@ namespace UI {
                 OpenSHC::Text::UserTextHandler_Func::getTextWidthUntilCurrentCursor, DAT_UserTextHandlerState::ptr)();
             MACRO_CALL_MEMBER(
                 OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdges, DAT_PencilRenderCore::ptr)(
-                x + 0x14, y + 0xbf, x + -0x14a + width, y + 0xd8, OpenSHC::UI::Enums::RBERL_SLIGHT);
+                x + 0x14, y + 0xbf, x - 0x14a + width, y + 0xd8, OpenSHC::UI::Enums::RBERL_SLIGHT);
             if (!DAT_GameSynchronyState::instance.DAT_InsultTextIndex) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                     DAT_PencilRenderCore::ptr)(x + 0x19 + iVar5, y + 0xc1, x + 0x1a + iVar5, y + 0xd5,

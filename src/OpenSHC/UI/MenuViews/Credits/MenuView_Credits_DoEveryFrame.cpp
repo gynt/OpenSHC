@@ -68,12 +68,12 @@ namespace UI {
             SHORT SVar1 = GetAsyncKeyState(VK_DOWN);
             if (SVar1) {
                 if (!DAT_ModifierKeyState::instance.shift) {
-                    INT_00b960d4::instance = INT_00b960d4::instance + -0x3c;
+                    INT_00b960d4::instance = INT_00b960d4::instance - 0x3c;
                 } else {
-                    INT_00b960d4::instance = INT_00b960d4::instance + -200;
+                    INT_00b960d4::instance = INT_00b960d4::instance - 200;
                 }
             }
-            int iVar3 = (int)(DVar2 - INT_00b960d4::instance) / 0x1e + -600;
+            int iVar3 = (int)(DVar2 - INT_00b960d4::instance) / 0x1e - 600;
             if (iVar3 == DAT_TextEditorState::instance.helpContentScrollOffsetY) {
                 if (!DAT_TextEditorState::instance.pendingCreditsFadeBorder)
                     goto LAB_0042653a;
@@ -118,7 +118,6 @@ namespace UI {
                 MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
                     UI::Enums::MMT_NONE, FALSE);
             }
-            return;
         }
 
     }

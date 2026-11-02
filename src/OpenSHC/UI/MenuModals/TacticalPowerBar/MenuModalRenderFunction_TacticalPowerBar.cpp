@@ -37,9 +37,9 @@ namespace UI {
             iVar1 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .tacticalPowersBarLevel;
             MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
-                x + 0x28, y + -10, x + 0x2d, y + 0x12e, (ushort)(COL_BLACK::instance.shortValue));
+                x + 0x28, y - 10, x + 0x2d, y + 0x12e, (ushort)(COL_BLACK::instance.shortValue));
             MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
-                x + 0x28, y + -10, x + 0x2d, y + 0x12e, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
+                x + 0x28, y - 10, x + 0x2d, y + 0x12e, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(x + 0x2a,
                 (y - (iVar1 * 0x134) / 7000) + 300, x + 0x2b, y + 300, (ushort)(COL_WHITE::instance.shortValue));
             if (DAT_TacticalPowersHelpTextDisplayBool::instance != false) {
@@ -49,7 +49,7 @@ namespace UI {
                 color1 = 0xffffff;
                 maxWidth = 0xc3;
                 iVar1 = y + 0xfa;
-                xPos = x + -200;
+                xPos = x - 200;
                 /*
                   added by script: "Click on an Icon to use Tactical Powers"
                  */
@@ -58,7 +58,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText6Unk, DAT_TextManagerObject::ptr)(
                     text, xPos, iVar1, maxWidth, color1, color2, fontSize, blendStrength);
                 MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
-                    DE::SHCDE::GM_INTERFACE_ICONS2, 0x1d4, x + -0x1b, y + 0x10b);
+                    DE::SHCDE::GM_INTERFACE_ICONS2, 0x1d4, x - 0x1b, y + 0x10b);
             }
         }
 

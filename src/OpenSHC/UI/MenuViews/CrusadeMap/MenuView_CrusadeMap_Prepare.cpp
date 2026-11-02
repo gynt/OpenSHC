@@ -32,8 +32,8 @@ namespace UI {
                 tgxFileName = "skirmish_trail.tgx";
             }
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                DAT_TextureRenderCoreObject::ptr)(tgxFileName);
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
+                tgxFileName);
             MACRO_CALL(UI::Helpers_Func::LoadTGX_shc_back)();
             if (0x31 < DAT_GameCore::instance.skirmishTrailProgress) {
                 DAT_GameCore::instance.skirmishTrailProgress = 0x31;
@@ -55,7 +55,7 @@ namespace UI {
                 }
                 do {
                     if (DAT_GameCore::instance.skirmishTrailMonthsTakenOrChicken[iVar1] == -0x4b0) {
-                        DAT_SkirmishTrailRelated1::instance = DAT_SkirmishTrailRelated1::instance + -1;
+                        DAT_SkirmishTrailRelated1::instance = DAT_SkirmishTrailRelated1::instance - 1;
                     }
                     iVar1 = iVar1 + 1;
                 } while (iVar1 < DAT_GameCore::instance.furthestSkirmishTrailMission);
@@ -67,7 +67,7 @@ namespace UI {
                 }
                 do {
                     if (DAT_GameCore::instance.warchestTrailMonthsTakenOrChicken[iVar1] == -0x4b0) {
-                        DAT_SkirmishTrailRelated1::instance = DAT_SkirmishTrailRelated1::instance + -1;
+                        DAT_SkirmishTrailRelated1::instance = DAT_SkirmishTrailRelated1::instance - 1;
                     }
                     iVar1 = iVar1 + 1;
                 } while (iVar1 < DAT_GameCore::instance.furthestWarchestTrailMission);
@@ -83,7 +83,7 @@ namespace UI {
                 }
                 do {
                     if (DAT_GameCore::instance.extremeTrailMonthsTakenOrChicken[iVar1] == -0x4b0) {
-                        DAT_SkirmishTrailRelated1::instance = DAT_SkirmishTrailRelated1::instance + -1;
+                        DAT_SkirmishTrailRelated1::instance = DAT_SkirmishTrailRelated1::instance - 1;
                     }
                     iVar1 = iVar1 + 1;
                 } while (iVar1 < DAT_GameCore::instance.furthestExtremeTrailMission);

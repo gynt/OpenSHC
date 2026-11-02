@@ -446,7 +446,7 @@ namespace UI {
                                 0xccfaff, 0x12, FALSE, 0);
                             iVar2 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x20a;
                             iVar9 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0xaf;
-                            iVar4 = pSVar5->score + -0x32;
+                            iVar4 = pSVar5->score - 0x32;
                         }
                     } else {
                         MACRO_CALL_MEMBER(
@@ -456,7 +456,7 @@ namespace UI {
                             0xccfaff, 0x12, FALSE, 0);
                         iVar2 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x20a;
                         iVar9 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0xaf;
-                        iVar4 = pSVar5->score + -0x50;
+                        iVar4 = pSVar5->score - 0x50;
                     }
                     MACRO_CALL_MEMBER(
                         OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(

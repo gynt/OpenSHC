@@ -34,7 +34,7 @@ namespace UI {
                         piVar1 = piVar1 + 1;
                     } while (_nextIndex < this->spawnMomentCount);
                 }
-                this->spawnMomentCount = this->spawnMomentCount + -1;
+                this->spawnMomentCount = this->spawnMomentCount - 1;
             }
         }
     }

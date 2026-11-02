@@ -81,7 +81,6 @@ namespace UI {
                 DAT_MenuHandlerState::instance.x + 2, (int)((int)(DAT_MenuHandlerState::instance.y + 588)),
                 OpenSHC::Text::TTA_LEFT, 0x7caaaf, 0x13, FALSE, 0);
             ;
-            return;
         }
 
     }

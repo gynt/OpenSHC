@@ -118,7 +118,6 @@ namespace UI {
         } else {
             MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, this)();
         };
-        return;
     }
 
 }

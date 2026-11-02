@@ -19,7 +19,7 @@ namespace UI {
             iVar1 = 0;
         }
         int iVar2 = ((iVar1 / 2) / 2 + 1) * 0x20;
-        iVar2 = (iVar2 / 32) + (DAT_ViewportRenderState::instance.viewportState.viewportHeight + -5) / 2;
+        iVar2 = (iVar2 / 32) + (DAT_ViewportRenderState::instance.viewportState.viewportHeight - 5) / 2;
         iVar1 = (iVar1 / 2) * 8 + 8;
         iVar1 = (iVar1 / 8) + DAT_ViewportRenderState::instance.viewportState.viewportWidth / 2;
         MACRO_CALL(OS_Func::_memset)(this->loadedMiniMap, 0, 80000);

@@ -72,7 +72,7 @@ namespace UI {
             iVar14 = iVar12 / 4;
             local_2c = iVar12 / 2 + 2;
             iVar13 = 400 - iVar12 / 2;
-            iVar6 = iVar13 / 2 + -2;
+            iVar6 = iVar13 / 2 - 2;
             local_30 = iVar14 + 1;
         } else {
             local_2c = iVar12 / 2;
@@ -103,7 +103,7 @@ namespace UI {
                     this->field13_0x34, 2);
                 this->field13_0x34 = this->field13_0x34 + 2;
                 if (99 < (int)this->field13_0x34) {
-                    this->field14_0x38 = this->field14_0x38 + -1;
+                    this->field14_0x38 = this->field14_0x38 - 1;
                     if (this->field14_0x38 <= 0) {
                         this->field14_0x38 = 0;
                     } else {
@@ -132,9 +132,9 @@ namespace UI {
         this->y = yPos;
         this->height = height;
         this->widthFactor = widthFactor;
-        int iVar7 = DAT_ViewportRenderState::instance.viewportState.viewportHeight + -5;
-        local_1c = (iVar7 * widthFactor) / this->oneOrTwo + -1 + widthFactor / local_8;
-        int local_44 = (DAT_ViewportRenderState::instance.viewportState.viewportWidth * heightFactor) / local_8 + -1;
+        int iVar7 = DAT_ViewportRenderState::instance.viewportState.viewportHeight - 5;
+        local_1c = (iVar7 * widthFactor) / this->oneOrTwo - 1 + widthFactor / local_8;
+        int local_44 = (DAT_ViewportRenderState::instance.viewportState.viewportWidth * heightFactor) / local_8 - 1;
         int iVar8 = (width / widthFactor) * local_8;
         int iVar9 = (height / heightFactor) * local_8;
         _isRGB16 = (uint)(DAT_WindowAndDirectDraw::instance.colorBitMode == 1381);
@@ -170,7 +170,7 @@ namespace UI {
                 xOffset = iVar14;
             }
             this->tileOffsetY = local_2c;
-            if ((local_2c <= iVar12) && (iVar14 = (iVar13 - iVar9) + -1, this->tileOffsetY = iVar12, iVar14 < iVar12)) {
+            if ((local_2c <= iVar12) && (iVar14 = (iVar13 - iVar9) - 1, this->tileOffsetY = iVar12, iVar14 < iVar12)) {
                 this->tileOffsetY = iVar14;
             }
             if ((local_10 < local_30)
@@ -181,7 +181,7 @@ namespace UI {
             if (yOffset < local_2c) {
                 yOffset = local_2c;
             } else {
-                iVar12 = (iVar13 - DAT_ViewportRenderState::instance.viewportState.viewportWidth) + -1;
+                iVar12 = (iVar13 - DAT_ViewportRenderState::instance.viewportState.viewportWidth) - 1;
                 if (iVar12 < yOffset) {
                     yOffset = iVar12;
                 }
@@ -213,12 +213,12 @@ namespace UI {
         xOffset = iVar7;
         if (param_10) {
             if (DAT_TileMapState::instance.mapSize == 160) {
-                local_18 = width + -5;
+                local_18 = width - 5;
                 xPos = xPos + 3;
             } else if (DAT_TileMapState::instance.mapSize == 200) {
                 xPos = xPos + 3;
                 xOffset = iVar7 + 1;
-                local_18 = width + -4;
+                local_18 = width - 4;
             }
         }
         iVar7 = (int)DAT_PencilRenderCore::instance.surfacePtr
@@ -230,14 +230,14 @@ namespace UI {
             do {
                 *(undefined2*)(iVar7 + iVar15) = *(undefined2*)(iVar14 + iVar15);
                 iVar15 = iVar15 + 2;
-                iVar10 = iVar10 + -1;
+                iVar10 = iVar10 - 1;
             } while (iVar10);
             iVar14 = iVar14 + 400;
             iVar7 = iVar7 + DAT_PencilRenderCore::instance.horizontalByteSize;
-            height = height + -1;
+            height = height - 1;
         } while (height);
         if (param_10 && DAT_TileMapState::instance.mapSize != 160 && DAT_TileMapState::instance.mapSize == 200) {
-            xPos = xPos + -2;
+            xPos = xPos - 2;
         }
         _mapSize = iVar13;
         if (!DAT_GameCore::instance.altRToggleMinimapHideWildlife) {
@@ -256,14 +256,14 @@ namespace UI {
                     }
                     if (((local_8 != 2) || (!(local_34 & 1))) && (xOffset = -2, -2 < iVar8)) {
                         local_24 = iVar14 + widthFactor * -2;
-                        _tile = DAT_ViewportRenderState::instance.screenPointToTileNumber + local_c + -10;
+                        _tile = DAT_ViewportRenderState::instance.screenPointToTileNumber + local_c - 10;
                         do {
                             int _unitID = (int)(short)DAT_TileMapState::instance.UnitLayer[*_tile];
                             if (_unitID
                                 || (local_8 == 2
                                     && (_unitID = (int)(short)
                                             DAT_TileMapState::instance.UnitLayer[DAT_ViewportRenderState::instance
-                                                    .screenPointToTileNumber[xOffset + param_10 + local_c + -8]],
+                                                    .screenPointToTileNumber[xOffset + param_10 + local_c - 8]],
                                         _unitID != 0))) {
                                 _player = DAT_UnitsState::instance.units[_unitID].owner;
                                 if (!_player) {
@@ -373,7 +373,7 @@ namespace UI {
                                                 }
                                             }
                                             iVar14 = iVar14 + 2;
-                                            iVar7 = iVar7 + -1;
+                                            iVar7 = iVar7 - 1;
                                         } while (iVar7);
                                     }
                                 }
@@ -386,7 +386,7 @@ namespace UI {
                     }
                     local_34 = local_34 + heightFactor;
                     local_c = local_c + param_10;
-                    local_4c = local_4c + -1;
+                    local_4c = local_4c - 1;
                 } while (local_4c);
             }
         } else {
@@ -424,14 +424,14 @@ namespace UI {
                     }
                     if (((local_8 != 2) || (!(local_34 & 1))) && (xOffset = -2, -2 < iVar8)) {
                         local_24 = iVar7 + widthFactor * -2;
-                        _tile = DAT_ViewportRenderState::instance.screenPointToTileNumber + local_c + -10;
+                        _tile = DAT_ViewportRenderState::instance.screenPointToTileNumber + local_c - 10;
                         do {
                             iVar7 = (int)(short)DAT_TileMapState::instance.UnitLayer[*_tile];
                             if (((iVar7)
                                     || ((local_8 == 2
                                         && (iVar7 = (int)(short)
                                                 DAT_TileMapState::instance.UnitLayer[DAT_ViewportRenderState::instance
-                                                        .screenPointToTileNumber[xOffset + param_10 + local_c + -8]],
+                                                        .screenPointToTileNumber[xOffset + param_10 + local_c - 8]],
                                             iVar7 != 0))))
                                 && (sVar3 = DAT_UnitsState::instance.units[iVar7].owner, sVar3)) {
                                 switch (DAT_UnitsState::instance.units[iVar7].unitType) {
@@ -484,7 +484,7 @@ namespace UI {
                                                     }
                                                 }
                                                 iVar7 = iVar7 + 2;
-                                                iVar9 = iVar9 + -1;
+                                                iVar9 = iVar9 - 1;
                                                 iVar14 = DAT_GameSynchronyState::instance.currentPlayerSlotID;
                                             } while (iVar9);
                                         }
@@ -509,7 +509,7 @@ namespace UI {
                     }
                     local_34 = local_34 + heightFactor;
                     local_c = local_c + param_10;
-                    _isRGB16 = _isRGB16 + -1;
+                    _isRGB16 = _isRGB16 - 1;
                 } while (_isRGB16);
             }
         }
@@ -522,7 +522,7 @@ namespace UI {
                 local_1c = local_1c + (iVar6 - xPos);
                 iVar6 = xPos;
             } else if (local_18 + xPos <= iVar6 + local_1c) {
-                local_1c = (local_18 - iVar6) + -1 + xPos;
+                local_1c = (local_18 - iVar6) - 1 + xPos;
             }
             if (iVar12 < yPos) {
                 if (iVar5 + yPos <= iVar12 + local_44) {}

@@ -50,7 +50,6 @@ namespace UI {
             DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + DAT_00eb9b30::instance,
             DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + DAT_00eb9b34::instance, DAT_00eb9b38::instance,
             DAT_00eb9b3c::instance, DAT_00eb9b40::instance, 0);
-        return;
     }
 
 }

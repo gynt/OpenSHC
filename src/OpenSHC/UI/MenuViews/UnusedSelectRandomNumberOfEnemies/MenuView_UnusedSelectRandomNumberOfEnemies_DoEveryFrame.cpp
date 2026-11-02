@@ -78,7 +78,6 @@ namespace UI {
                 DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_NEW_TEXT, 2);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
                 pcVar2, iVar3, iVar1, iVar4, color_00, iVar5, blendStrength);
-            return;
         }
 
     }

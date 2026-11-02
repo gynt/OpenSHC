@@ -77,7 +77,7 @@ namespace UI {
                     if ((iVar2 * 400) / 100 <= (int)param_1) {}
                     if (((local_54 != 2) || (!(local_3c & 1)))
                         && (local_24 = iVar3 / local_38 - uVar4, (int)uVar4 < local_24)) {
-                        local_40 = DAT_ViewportRenderState::instance.screenPointToTileNumber + uVar4 + local_50 + -8;
+                        local_40 = DAT_ViewportRenderState::instance.screenPointToTileNumber + uVar4 + local_50 - 8;
                         local_24 = local_24 - uVar4;
                         do {
                             _tile = *local_40;
@@ -113,23 +113,26 @@ namespace UI {
                                                                                 && (!(_tile1003 & 8))) {
                                                                                 _tileColor
                                                                                     = (uint)DAT_MiniMapDefinedData::
-                                                                                          instance
-                                                                                              .EarthMinimapColors[_colorMode
+                                                                                          instance.EarthMinimapColors
+                                                                                              [_colorMode
                                                                                                   + (_tileRandom & 7)
                                                                                                       * 2];
                                                                             } else {
                                                                                 _tileColor
                                                                                     = (uint)DAT_MiniMapDefinedData::
                                                                                           instance
-                                                                                              .EarthAndStonesMinimapColors[_colorMode
-                                                                                                  + (_tileRandom & 7)
-                                                                                                      * 2];
+                                                                                              .EarthAndStonesMinimapColors
+                                                                                                  [_colorMode
+                                                                                                      + (_tileRandom
+                                                                                                            & 7)
+                                                                                                          * 2];
                                                                             }
                                                                         } else {
                                                                             _tileColor
                                                                                 = (uint)DAT_MiniMapDefinedData::instance
-                                                                                      .MarshOrOilMinimapColors[_colorMode
-                                                                                          + (_tileRandom & 3) * 2];
+                                                                                      .MarshOrOilMinimapColors
+                                                                                          [_colorMode
+                                                                                              + (_tileRandom & 3) * 2];
                                                                         }
                                                                     } else {
                                                                         _tileColor
@@ -148,23 +151,25 @@ namespace UI {
                                                                                      + (_tileRandom & 3) * 2];
                                                             }
                                                         } else {
-                                                            _tileColor
-                                                                = (uint)DAT_MiniMapDefinedData::instance
-                                                                      .BeachMinimapColors[_colorMode + (_tileRandom & 3) * 2];
+                                                            _tileColor = (uint)DAT_MiniMapDefinedData::instance
+                                                                             .BeachMinimapColors[_colorMode
+                                                                                 + (_tileRandom & 3) * 2];
                                                         }
                                                     } else {
                                                     LAB_004b5bbe:
-                                                        _tileColor
-                                                            = (uint)DAT_MiniMapDefinedData::instance
-                                                                  .StonesOrDrivenSandMinimapColors[_colorMode + (_tileRandom & 3) * 2];
+                                                        _tileColor = (uint)DAT_MiniMapDefinedData::instance
+                                                                         .StonesOrDrivenSandMinimapColors[_colorMode
+                                                                             + (_tileRandom & 3) * 2];
                                                     }
                                                 } else {
-                                                    _tileColor = (uint)DAT_MiniMapDefinedData::instance
-                                                                     .PebblesMinimapColors[_colorMode + (_tileRandom & 3) * 2];
+                                                    _tileColor
+                                                        = (uint)DAT_MiniMapDefinedData::instance
+                                                              .PebblesMinimapColors[_colorMode + (_tileRandom & 3) * 2];
                                                 }
                                             } else {
-                                                _tileColor = (uint)DAT_MiniMapDefinedData::instance
-                                                                 .BouldersMinimapColors[_colorMode + (_tileRandom & 7) * 2];
+                                                _tileColor
+                                                    = (uint)DAT_MiniMapDefinedData::instance
+                                                          .BouldersMinimapColors[_colorMode + (_tileRandom & 7) * 2];
                                             }
                                         } else {
                                             _tileColor = (uint)DAT_MiniMapDefinedData::instance
@@ -183,8 +188,8 @@ namespace UI {
                             }
                             (*(short*)&param_4) = (ushort)_tileColor;
                             if (DAT_TileMapState::instance.LuminesenceLayer[_tile] != 2) {
-                                iVar5 = DAT_MiniMapDefinedData::instance
-                                            .LuminescenceBrightnessPercent[DAT_TileMapState::instance.LuminesenceLayer[_tile]];
+                                iVar5 = DAT_MiniMapDefinedData::instance.LuminescenceBrightnessPercent
+                                            [DAT_TileMapState::instance.LuminesenceLayer[_tile]];
                                 if (!_colorMode) {
                                     iVar8 = (int)((_tileColor & 0x7c00) * iVar5) / 100;
                                     if (0x7c00 < iVar8) {
@@ -242,13 +247,13 @@ namespace UI {
                                             }
                                         }
                                         iVar5 = iVar5 + 2;
-                                        iVar8 = iVar8 + -1;
+                                        iVar8 = iVar8 - 1;
                                     } while (iVar8);
                                 }
                             }
                             local_40 = local_40 + 1;
                             param_5 = param_5 + param_2;
-                            local_24 = local_24 + -1;
+                            local_24 = local_24 - 1;
                         } while (local_24);
                     }
                 }

@@ -70,7 +70,7 @@ namespace UI {
             BuildingTypeShort* _ptrToSelectedBuildingType;
             DAT_MenuHandlerState::instance.x = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
             pMVar3 = DAT_MenuHandlerState::instance.currentMenu;
-            DAT_MenuHandlerState::instance.y = DAT_WindowAndDirectDraw::instance.resolutionY + -600;
+            DAT_MenuHandlerState::instance.y = DAT_WindowAndDirectDraw::instance.resolutionY - 600;
             if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_640x480) {
                 (DAT_MenuHandlerState::instance.currentMenu)->xPosition = -0x2ba;
                 pMVar3->yPosition = DAT_MenuHandlerState::instance.y;
@@ -152,7 +152,7 @@ namespace UI {
                 } else if (iVar5 < _currentPlayerGold) {
                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSpeechSFX, DAT_SFXState::ptr)(
                         OpenSHC::Audio::SFX::SEID_TAXES_INCREASE2);
-                } else if (_currentPlayerGold < iVar5 + -0x28) {
+                } else if (_currentPlayerGold < iVar5 - 0x28) {
                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSpeechSFX, DAT_SFXState::ptr)(
                         OpenSHC::Audio::SFX::SEID_TAXES_DECREASE2);
                 } else if (_currentPlayerGold < iVar5) {

@@ -58,7 +58,7 @@ namespace UI {
                 DAT_GameCore::instance.mapU2PlayersCount = 0;
                 piVar4 = DAT_GameState::instance.playerDataArray[1].startResources;
                 do {
-                    if (((BuildingEntryInfo*)(piVar4 + -0xf6))->id) {
+                    if (((BuildingEntryInfo*)(piVar4 - 0xf6))->id) {
                         DAT_GameCore::instance.mapU2PlayersCount = DAT_GameCore::instance.mapU2PlayersCount + 1;
                     }
                     piVar2 = DAT_GameState::instance.mapAndTime.startGoods;

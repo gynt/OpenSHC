@@ -14,7 +14,6 @@ namespace UI {
             DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].soundStream = param_2;
             DAT_UnknownBinkCount::instance = DAT_UnknownBinkCount::instance + 1;
         }
-        return;
     }
 
 }

@@ -115,13 +115,13 @@ namespace UI {
                     DAT_PencilRenderCore::ptr)(DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 10,
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 5, 0x228, 0xd8,
                     (int)((int)(DAT_ButtonBackgroundBlendStrength::instance)));
-                iVar10 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x10;
+                iVar10 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x10;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
                     DAT_PencilRenderCore::ptr)(DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0xf,
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 10,
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x22d,
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0xd8, (iVar10 / 32) + 0x20);
-                iVar10 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x10;
+                iVar10 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x10;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
                     DAT_PencilRenderCore::ptr)(DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 10,
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0xe3,
@@ -138,7 +138,7 @@ namespace UI {
                 iVar7 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
                 iVar12 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
                 local_400 = (int*)(DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x310);
-                iVar4 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x10;
+                iVar4 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x10;
                 iVar10 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x15f;
                 iVar13 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x214;
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
@@ -164,12 +164,11 @@ namespace UI {
                         OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)((int)x2,
                         iVar10, (int)((int)(x2)), iVar13, (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine,
-                        DAT_PencilRenderCore::ptr)((int)(local_400 + -5), iVar10, (int)((int)((local_400 + -5))),
-                        iVar13, (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine,
-                        DAT_PencilRenderCore::ptr)((int)((int)local_400 + -0x13), iVar7 + 0x200,
-                        (int)((int)(local_400)), iVar7 + 0x200,
+                        DAT_PencilRenderCore::ptr)((int)(local_400 - 5), iVar10, (int)((int)((local_400 - 5))), iVar13,
                         (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine,
+                        DAT_PencilRenderCore::ptr)((int)((int)local_400 - 0x13), iVar7 + 0x200, (int)((int)(local_400)),
+                        iVar7 + 0x200, (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
                 }
             }
             iVar12 = 1;
@@ -266,7 +265,7 @@ namespace UI {
                     pcVar6 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                         DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance
                             .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
-                                + DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected + -1]);
+                                + DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected - 1]);
                     pcVar11 = DAT_MapNameCache::instance;
                     do {
                         cVar1 = *pcVar6;
@@ -305,17 +304,17 @@ namespace UI {
                         DAT_00b960f4::instance = 0;
                         if ((DAT_GameCore::instance.mapType == 1) && (1 < DAT_GameCore::instance.mapPlayerCount)) {
                             bVar14 = DAT_GameCore::instance.mapU4Int0_2 != 0;
-                            DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar12 + -1] = _mapID;
+                            DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar12 - 1] = _mapID;
                             iVar13 = DAT_GameCore::instance.savedMapBalance;
                             if (bVar14) {
-                                iVar4 = iVar4 + -1;
+                                iVar4 = iVar4 - 1;
                                 DAT_GameCore::instance.mapPlayerCount = iVar4;
                             }
                             DAT_GameSynchronyState::instance.mapPlayerCountArray[_mapID] = iVar4;
                             DAT_GameSynchronyState::instance.mapBalanceArray[_mapID] = iVar13;
                             DAT_GameSynchronyState::instance.mapU4Int0_2Array[_mapID] = iVar7;
                             DAT_GameSynchronyState::instance.unknownMapRelatedReceivedDataArray[_mapID]
-                                = (uint)(iVar10 <= iVar4) * 2 + -1;
+                                = (uint)(iVar10 <= iVar4) * 2 - 1;
                             DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = _mapID;
                             if (DAT_GameSynchronyState::instance.isHost) {
                                 MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
@@ -347,20 +346,20 @@ namespace UI {
                         + DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected;
                     iVar7 = iVar12;
                     if (DAT_GameSynchronyState::instance
-                            .mapPlayerCountArray[DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar12 + -1]]
+                            .mapPlayerCountArray[DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar12 - 1]]
                         < iVar10) {
                         for (; iVar7 < DAT_GameSynchronyState::instance.DAT_MapSelectionTotalNumber;
                             iVar7 = iVar7 + 1) {
                             if (iVar10
                                 <= DAT_GameSynchronyState::instance.mapPlayerCountArray[DAT_MenuTextInputState::instance
-                                        .DAT_ArrayOfMapIndices[iVar7 + -1]])
+                                        .DAT_ArrayOfMapIndices[iVar7 - 1]])
                                 goto LAB_00448a08;
                         }
                         iVar7 = 0;
                         if (0 < iVar12) {
                             do {
                                 if (iVar10 <= DAT_GameSynchronyState::instance.mapPlayerCountArray
-                                        [DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar7 + -1]])
+                                        [DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[iVar7 - 1]])
                                     goto LAB_00448a08;
                                 iVar7 = iVar7 + 1;
                             } while (iVar7 < iVar12);
@@ -373,7 +372,7 @@ namespace UI {
         LAB_00448a72:
             if (DAT_GameSynchronyState::instance.mapExistenceAckCountdown) {
                 DAT_GameSynchronyState::instance.mapExistenceAckCountdown
-                    = DAT_GameSynchronyState::instance.mapExistenceAckCountdown + -1;
+                    = DAT_GameSynchronyState::instance.mapExistenceAckCountdown - 1;
             }
         LAB_00448a80:
             MACRO_CALL_MEMBER(
@@ -383,7 +382,7 @@ namespace UI {
             if (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE) {
                 piVar5 = (int*)(DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x224);
                 iVar7 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x17f;
-                iVar13 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x10;
+                iVar13 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x10;
                 iVar4 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x15e;
                 bottom = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x1a9;
                 INT_00b95f6c::instance = 0;
@@ -473,7 +472,7 @@ namespace UI {
                                 DAT_TextureRenderCoreObject::ptr)(
                                 OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, iVar4, iVar10, iVar7);
                             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderFacesSmallUnk,
-                                DAT_TextureRenderCoreObject::ptr)(iVar4 + -699, iVar10 + 2, iVar7 + 2);
+                                DAT_TextureRenderCoreObject::ptr)(iVar4 - 699, iVar10 + 2, iVar7 + 2);
                             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox,
                                 DAT_PencilRenderCore::ptr)(iVar10, iVar7, iVar10 + 0x23, iVar7 + 0x23,
                                 (ushort)((int)(COL_BLACK::instance.shortValue)));
@@ -487,7 +486,7 @@ namespace UI {
                         }
                         local_400 = local_400 + 1;
                         iVar4 = iVar4 + 1;
-                        local_3fc = local_3fc + -1;
+                        local_3fc = local_3fc - 1;
                     } while (local_3fc);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
@@ -507,7 +506,7 @@ namespace UI {
                 DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected = iVar10;
             } else if (7 < DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected) {
                 DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
-                    = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset + -7;
+                    = DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset - 7;
                 iVar10 = 7;
                 goto LAB_00448a34;
             }
