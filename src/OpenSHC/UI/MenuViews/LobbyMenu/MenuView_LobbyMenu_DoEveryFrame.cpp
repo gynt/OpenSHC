@@ -93,7 +93,7 @@ namespace UI {
                         = (int)((ulonglong)((longlong)(int)(MVar2 - DWORD_00b95b1c::instance) * -0x66666667) >> 0x20);
                     DAT_ButtonBackgroundBlendStrength::instance
                         = DAT_ButtonBackgroundBlendStrength::instance + ((iVar10 >> 4) - (iVar10 >> 0x1f));
-                    if (DAT_ButtonBackgroundBlendStrength::instance < 1) {
+                    if (DAT_ButtonBackgroundBlendStrength::instance <= 0) {
                         DAT_ButtonBackgroundBlendStrength::instance = 0;
                         DAT_00b960dc::instance = 0;
                     }

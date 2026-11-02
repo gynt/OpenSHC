@@ -53,7 +53,7 @@ namespace UI {
             if (this->mbr_0x6c) {
                 _currentTime = timeGetTime();
                 this->disappearAfter = this->disappearAfter - (_currentTime - this->timeItIsSet) / 75;
-                if (this->disappearAfter < 1) {
+                if (this->disappearAfter <= 0) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::MenuModalComposition_Func::activateModalDialog, this)(
                         OpenSHC::UI::Enums::MMT_NONE, FALSE);
                     this->disappearAfter = 0;

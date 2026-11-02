@@ -170,7 +170,7 @@ namespace UI {
                 break;
             case OpenSHC::UI::Enums::BASMTT_GRANARY_OR_MPMENU_TCPIP:
                 if (DAT_GameState::instance.playerDataArray[_playerId].rationsSetting != 0) {
-                    if (DAT_GameState::instance.playerDataArray[_playerId].totalFood < 1) {
+                    if (DAT_GameState::instance.playerDataArray[_playerId].totalFood <= 0) {
                         /*
                           "The granary is empty sire"
                          */

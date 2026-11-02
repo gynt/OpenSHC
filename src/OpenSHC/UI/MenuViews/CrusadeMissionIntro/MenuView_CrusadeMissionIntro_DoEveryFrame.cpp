@@ -497,7 +497,7 @@ namespace UI {
                     local_10c = (int*)((int)local_10c + 0x50);
                 }
                 _blendStrength = local_f4[_offset + 0x15];
-                if (_blendStrength < 1) {
+                if (_blendStrength <= 0) {
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                     return;

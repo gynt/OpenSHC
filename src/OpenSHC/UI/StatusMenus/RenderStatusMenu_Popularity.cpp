@@ -217,7 +217,7 @@ namespace UI {
         } else if ((DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                            .taxesSliderUI
                        < 3)
-            && (iVar12 < 1)) {
+            && (iVar12 <= 0)) {
             iVar12 = 0x19;
         } else {
             iVar12 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -307,7 +307,7 @@ namespace UI {
         }
         uVar11 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                      .fearFactorLevel;
-        if ((int)uVar11 < 1) {
+        if ((int)uVar11 <= 0) {
             if (uVar11 < 0x80000000) {
                 iVar9 = 0;
             } else {
