@@ -34,7 +34,7 @@ namespace Map {
                 && DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT) {
                 if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .keep.id
-                    < 1) {
+                    <= 0) {
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::updateAttackInfoTick, this)();
                 }
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::recountAttackTroopValue, this)(0);

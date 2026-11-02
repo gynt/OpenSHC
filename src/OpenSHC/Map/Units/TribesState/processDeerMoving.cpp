@@ -92,7 +92,7 @@ namespace Map {
                             sVar2 = this->tribes[tribeID].rallyPointCount;
                             this->tribes[tribeID].wanderIntervalTicks
                                 = (4 - ((byte)SEC_RNG::instance.currentNumber2 & 3)) * 200;
-                            if (sVar2 < 1) {
+                            if (sVar2 <= 0) {
                                 MACRO_CALL_MEMBER(Map::WildlifeState_Func::findAndSetNewRallyPointForDeerAndLions,
                                     DAT_WildlifeState::ptr)(tribeID, 5, 0);
                             }
@@ -119,10 +119,10 @@ namespace Map {
                     if (sVar2 == 1) {
                         MACRO_CALL_MEMBER(Map::WildlifeState_Func::findAndSetNewRallyPointForDeerAndLions,
                             DAT_WildlifeState::ptr)(tribeID, 5, 0);
-                        if ((this->tribes[tribeID].rallyPointCount < 1)
+                        if ((this->tribes[tribeID].rallyPointCount <= 0)
                             && (MACRO_CALL_MEMBER(Map::WildlifeState_Func::findAndSetNewRallyPointForDeerAndLions,
                                     DAT_WildlifeState::ptr)(tribeID, 5, 1),
-                                this->tribes[tribeID].rallyPointCount < 1)) {
+                                this->tribes[tribeID].rallyPointCount <= 0)) {
                             MACRO_CALL_MEMBER(Map::Units::TribesState_Func::scatterTribeUnitsRandomly, this)(tribeID);
                         } else {
                             sVar2 = this->tribes[tribeID].selectionTargetUnitID;

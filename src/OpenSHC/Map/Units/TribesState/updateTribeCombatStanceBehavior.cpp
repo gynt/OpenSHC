@@ -75,7 +75,7 @@ namespace Map {
                                     if ((this->tribes[tribeID].unknownAttackRelatedUpdateCounter == 0)
                                         && (this->tribes[tribeID].aggressiveStanceCounter == 0x3b)) {
                                         iVar5 = 0;
-                                        if (this->tribes[tribeID].size < 1)
+                                        if (this->tribes[tribeID].size <= 0)
                                             goto LAB_0052aa55;
                                         goto LAB_0052a9f2;
                                     }
