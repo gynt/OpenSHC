@@ -92,9 +92,9 @@ namespace UI {
                     maxWidth = 0x168;
                     yPos = 0;
                     xPos = 0;
-                    text = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MAP_NAMES,
-                        (int)((int)(DAT_GameCore::instance.descriptionStringTableIndex)));
+                    text = MACRO_CALL_MEMBER(
+                        OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+                        OpenSHC::DE::SHCDE::TEXT_MAP_NAMES, (int)(DAT_GameCore::instance.descriptionStringTableIndex));
                 }
                 DAT_00b95b74::instance = MACRO_CALL_MEMBER(OpenSHC::Text::FontSizeClass_Func::renderMultilineTextUnk,
                     &DAT_TextManagerObject::instance.fontSizeClassArray[0x13])(

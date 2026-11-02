@@ -58,22 +58,20 @@ namespace UI {
                 x2 = iVar1 + 0x303;
                 x1 = iVar1 + 0x10d;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                    x1, iVar2 + 0x59, x2, iVar2 + 0x59, (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                    x1, iVar2 + 0x59, x2, iVar2 + 0x59, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                    x1, iVar2 + 0x1ea, x2, iVar2 + 0x1ea, (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                    x1, iVar2 + 0x1ea, x2, iVar2 + 0x1ea, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                    iVar1 + 0x2ee, iVar2 + 0x6e, x2, iVar2 + 0x6e,
-                    (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                    iVar1 + 0x2ee, iVar2 + 0x6e, x2, iVar2 + 0x6e, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                    x1, top, x1, bottom, (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                    x1, top, x1, bottom, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                    x2, top, x2, bottom, (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                    x2, top, x2, bottom, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                    iVar1 + 0x2ee, top, iVar1 + 0x2ee, bottom,
-                    (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                    iVar1 + 0x2ee, top, iVar1 + 0x2ee, bottom, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
                     iVar1 + 0x2ef, iVar2 + 0x1d5, x2_00, iVar2 + 0x1d5,
-                    (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                    (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             }
         }
 

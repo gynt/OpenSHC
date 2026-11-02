@@ -78,7 +78,7 @@ namespace UI {
                     / 2);
             MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_68, "V1.%d", 41);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(local_68,
-                DAT_MenuHandlerState::instance.x + 2, (int)((int)(DAT_MenuHandlerState::instance.y + 588)),
+                DAT_MenuHandlerState::instance.x + 2, (int)(DAT_MenuHandlerState::instance.y + 588),
                 OpenSHC::Text::TTA_LEFT, 0x7caaaf, 0x13, FALSE, 0);
             ;
         }

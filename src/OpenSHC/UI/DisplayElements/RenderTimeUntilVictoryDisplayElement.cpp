@@ -109,7 +109,7 @@ namespace UI {
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
             pcVar2, xParam, yParam, alignment, foregroundColor, backgroundColor, fontSize, keepOffsetX, blendStrength);
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
-            left - 1, posY + 0x12, iVar3 + 1 + iVar1, posY + 0x18, (ushort)((int)(COL_BLACK::instance.shortValue)));
+            left - 1, posY + 0x12, iVar3 + 1 + iVar1, posY + 0x18, (ushort)(COL_BLACK::instance.shortValue));
         if (DAT_MapPropertiesState::instance.SEC_Section1080 != DAT_MapPropertiesState::instance.SEC_Section1090) {
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
                 left, posY + 0x13,
@@ -118,7 +118,7 @@ namespace UI {
                         / DAT_MapPropertiesState::instance.SEC_Section1090
                     - iVar3)
                     + iVar1,
-                posY + 0x17, (ushort)((int)(COL_DARK_LIME::instance.shortValue)));
+                posY + 0x17, (ushort)(COL_DARK_LIME::instance.shortValue));
         }
         DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
     }

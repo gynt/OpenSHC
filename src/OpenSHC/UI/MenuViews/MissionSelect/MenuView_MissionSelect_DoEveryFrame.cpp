@@ -45,13 +45,13 @@ namespace UI {
                 y2 = DAT_MenuHandlerState::instance.y + 0x121;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
                     x1, DAT_MenuHandlerState::instance.y + 0xbd, x2, DAT_MenuHandlerState::instance.y + 0xbd,
-                    (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                    (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                    x1, iVar1 + 0x122, x2, iVar1 + 0x122, (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                    x1, iVar1 + 0x122, x2, iVar1 + 0x122, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                    x1, y1, x1, y2, (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                    x1, y1, x1, y2, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                    x2, y1, x2, y2, (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                    x2, y1, x2, y2, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                 /*
                   added by script: "Mission"

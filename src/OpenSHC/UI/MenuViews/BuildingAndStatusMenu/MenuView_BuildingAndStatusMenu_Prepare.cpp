@@ -87,9 +87,9 @@ namespace UI {
             DAT_BuildingsState::instance.DAT_CurrentlyPlayingBuildingBik = (char*)0x0;
             DAT_00b96108::instance = 0;
             DAT_00b95b68::instance = 0;
-            if ((DAT_GameCore::instance.activeMenuTab.tabType != OpenSHC::UI::Enums::BASMTT_PEASANT)
-                && (((int)DAT_GameCore::instance.activeMenuTab.tabType < 0x47
-                    || (0x4f < (int)DAT_GameCore::instance.activeMenuTab.tabType)))) {
+            if (DAT_GameCore::instance.activeMenuTab.tabType != OpenSHC::UI::Enums::BASMTT_PEASANT
+                && ((int)DAT_GameCore::instance.activeMenuTab.tabType < 0x47
+                    || (0x4f < (int)DAT_GameCore::instance.activeMenuTab.tabType))) {
                 _ptrToSelectedBuildingType
                     = &DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
                            .buildingType;
@@ -250,7 +250,7 @@ namespace UI {
             case OpenSHC::UI::Enums::BASMTT_PEASANT:
                 pUVar1 = &DAT_UnitsState::instance.units[DAT_BuildingsState::instance.menuSelectedUnitID].unitType;
                 DAT_00b95b6c::instance = 0xffffffff;
-                if ((*pUVar1 == OpenSHC::Map::Units::UT_JESTER) && ((int)DAT_GameCore::instance.field33_0x90 < 3)) {
+                if (*pUVar1 == OpenSHC::Map::Units::UT_JESTER && (int)DAT_GameCore::instance.field33_0x90 < 3) {
                     DAT_GameCore::instance.field33_0x90 = DAT_GameCore::instance.field33_0x90 + 1;
                 }
                 DAT_GameState::instance.mapAndTime.drunkenManStatus

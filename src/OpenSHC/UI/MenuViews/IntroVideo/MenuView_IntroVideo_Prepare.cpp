@@ -26,7 +26,7 @@ namespace UI {
             pMVar1->yPosition = DAT_MenuHandlerState::instance.y;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(0,
                 0, DAT_WindowAndDirectDraw::instance.resolutionX, DAT_WindowAndDirectDraw::instance.resolutionY,
-                (ushort)((int)(COL_BLACK::instance.shortValue)));
+                (ushort)(COL_BLACK::instance.shortValue));
             MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::BinkControlClass_Func::playBINK, DAT_BinkControlState::ptr)(0,
                 "intro.bik", 0, 0, DAT_MenuHandlerState::instance.x + 0x50, DAT_MenuHandlerState::instance.y + 0x3c, 0);
             TIME_IntroVideo_Prepare::instance = timeGetTime();

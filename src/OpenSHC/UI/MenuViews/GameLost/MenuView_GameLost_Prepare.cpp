@@ -85,7 +85,7 @@ namespace UI {
             pMVar1->yPosition = DAT_MenuHandlerState::instance.y;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(0,
                 0, DAT_WindowAndDirectDraw::instance.resolutionX, DAT_WindowAndDirectDraw::instance.resolutionY,
-                (ushort)((int)(COL_BLACK::instance.shortValue)));
+                (ushort)(COL_BLACK::instance.shortValue));
             if (DAT_GameSynchronyState::instance.currentGameMode
                 == OpenSHC::Game::GM_SKIRMISH_END_OF_GAME_SINGLE_PLAYER)
                 goto LAB_004d575f;

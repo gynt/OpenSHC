@@ -51,7 +51,7 @@ namespace UI {
                         iVar2 = width / 2;
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox,
                             DAT_PencilRenderCore::ptr)(iVar2 + x - 1, iVar1 + 0x52 + y, width - 0x13 + x,
-                            iVar1 + 99 + y, (ushort)((int)(COL_BLACK::instance.shortValue)));
+                            iVar1 + 99 + y, (ushort)(COL_BLACK::instance.shortValue));
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                             DAT_PencilRenderCore::ptr)(iVar2 + x, iVar1 + 0x53 + y,
                             ((iVar2 - 0x14)
@@ -59,7 +59,7 @@ namespace UI {
                                     + 4))
                                     / DAT_GameSynchronyState::instance.mapSendingFileSize
                                 + iVar2 + x,
-                            iVar1 + 0x62 + y, (ushort)((int)(COL_DARK_LIME::instance.shortValue)));
+                            iVar1 + 0x62 + y, (ushort)(COL_DARK_LIME::instance.shortValue));
                     }
                     iVar1 = iVar1 + 0x1e;
                 }

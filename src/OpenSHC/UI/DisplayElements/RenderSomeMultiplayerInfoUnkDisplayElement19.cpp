@@ -57,7 +57,7 @@ namespace UI {
         DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderedBoxWithBlendedBackground,
             DAT_PencilRenderCore::ptr)(posX - 0xcc, posY, 0x198,
-            (int)((int)((DAT_GameSynchronyState::instance.connectionInfoExpanded * 3 + 0xc) * 0x10)));
+            (int)((DAT_GameSynchronyState::instance.connectionInfoExpanded * 3 + 0xc) * 0x10));
         iVar8 = 0;
         BVar7 = FALSE;
         iVar5 = 0x11;
@@ -94,7 +94,7 @@ namespace UI {
             pcVar1, iVar8, iVar2, TVar3, BVar4, iVar6, BVar7, iVar9);
         DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
-            posX - 0xab, posY + 0x4a, posX + 0xab, posY + 0x5b, (ushort)((int)(COL_WHITE::instance.shortValue)));
+            posX - 0xab, posY + 0x4a, posX + 0xab, posY + 0x5b, (ushort)(COL_WHITE::instance.shortValue));
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::dimBox, DAT_PencilRenderCore::ptr)(
             posX - 0xaa, posY + 0x4b, posX + 0xaa, posY + 0x5a);
         if ((DAT_GameSynchronyState::instance.currentPacketTotalSize)
@@ -104,7 +104,7 @@ namespace UI {
                 (DAT_GameSynchronyState::instance.currentPacketTotalSize * 0x154)
                         / DAT_GameSynchronyState::instance.resyncTransferTotalSize
                     - 0xaa + posX,
-                posY + 0x5a, (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                posY + 0x5a, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
         }
         DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
         if (!DAT_GameSynchronyState::instance.skirmishAutoSaveEveryMinutes) {
@@ -125,10 +125,9 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 pcVar1, iVar9, iVar5, TVar3, BVar4, iVar8, BVar7, iVar2);
         } else {
-            if (((!DAT_GameSynchronyState::instance.lastAutoSaveTime)
-                    || (!DAT_GameSynchronyState::instance.field76_0xbe8))
-                || (DAT_GameSynchronyState::instance.field76_0xbe8
-                    <= DAT_GameSynchronyState::instance.lastAutoSaveTime)) {
+            if (!DAT_GameSynchronyState::instance.lastAutoSaveTime || !DAT_GameSynchronyState::instance.field76_0xbe8
+                || DAT_GameSynchronyState::instance.field76_0xbe8
+                    <= DAT_GameSynchronyState::instance.lastAutoSaveTime) {
                 iVar6 = 0x36;
                 goto LAB_004b0054;
             }

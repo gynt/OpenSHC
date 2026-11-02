@@ -34,8 +34,8 @@ namespace UI {
         Menu* _menuPtr;
         int _modalMenuX;
         int _modalMenuY;
-        if (((!retainOther) && (!this->slot))
-            && (DAT_MenuTextInputState::instance.currentModalDialog != OpenSHC::UI::Enums::MMT_NO_MENU)) {
+        if (!retainOther && !this->slot
+            && DAT_MenuTextInputState::instance.currentModalDialog != OpenSHC::UI::Enums::MMT_NO_MENU) {
             MACRO_CALL_MEMBER(
                 OpenSHC::UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, DAT_MenuTextInputState::ptr)();
         }

@@ -53,10 +53,10 @@ namespace UI {
             } else if (DAT_BinkControlState::instance.binkObjPtrArray[0] == (HBINK)0x0) {
                 DAT_MouseState::instance.draggingStopped = TRUE;
             }
-            if (((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION)
-                    && (DAT_GameSynchronyState::instance.currentGameMode
-                        != OpenSHC::Game::GM_SKIRMISH_END_OF_GAME_SINGLE_PLAYER))
-                && (DAT_BinkControlState::instance.unknown02_zero[0] != 0)) {
+            if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION
+                && DAT_GameSynchronyState::instance.currentGameMode
+                    != OpenSHC::Game::GM_SKIRMISH_END_OF_GAME_SINGLE_PLAYER
+                && DAT_BinkControlState::instance.unknown02_zero[0] != 0) {
                 if (!DWORD_00ed27b4::instance) {
                     DWORD_00ed27b4::instance = timeGetTime();
                 } else {
@@ -67,7 +67,7 @@ namespace UI {
             }
             if (((!DAT_MouseState::instance.draggingStopped)
                     || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER))
-                && (!INT_00ed279c::instance)) {}
+                && !INT_00ed279c::instance) {}
         LAB_004dca69:
             DAT_SoundSystemState::instance.streamFlagsUnkAndLoopCount_0x34[4] = 0;
             DAT_SoundSystemState::instance.streamFlagsUnkAndLoopCount_0x34[3] = 0;

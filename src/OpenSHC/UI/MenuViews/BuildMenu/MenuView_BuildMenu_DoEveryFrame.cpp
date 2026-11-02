@@ -55,13 +55,12 @@ namespace UI {
                     if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_640x480) {
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                             DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_PANELS, 2,
-                            DAT_MenuHandlerState::instance.x, (int)((int)(DAT_MenuHandlerState::instance.y + 472)));
+                            DAT_MenuHandlerState::instance.x, (int)(DAT_MenuHandlerState::instance.y + 472));
                     } else {
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                             DAT_PencilRenderCore::ptr)(DAT_MenuHandlerState::instance.x,
                             DAT_MenuHandlerState::instance.y + 0x196, DAT_MenuHandlerState::instance.x + 799,
-                            DAT_MenuHandlerState::instance.y + 0x1d7,
-                            (ushort)((int)(COL_MAGENTA::instance.shortValue)));
+                            DAT_MenuHandlerState::instance.y + 0x1d7, (ushort)(COL_MAGENTA::instance.shortValue));
                         if (DAT_GameCore::instance.activeMenuTab.buildMenuTab == OpenSHC::UI::Enums::BMTT_SOLDIERS) {
                             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                                 DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_PANELS, 5,

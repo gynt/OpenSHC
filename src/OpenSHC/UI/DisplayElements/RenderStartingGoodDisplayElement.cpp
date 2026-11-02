@@ -171,9 +171,9 @@ namespace UI {
         }
     LAB_00433f65:
         _currentPlayerSlotID = DAT_GameSynchronyState::instance.currentPlayerSlotID;
-        piVar1 = &DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                      .someCount47;
-        *piVar1 = *piVar1 + 2;
+        DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].someCount47
+            = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].someCount47
+            + 2;
         iVar3 = DAT_GameState::instance.playerDataArray[_currentPlayerSlotID].someCount47;
         iVar2 = iVar3 - 0x28;
         iVar3 = iVar3 >> 2;

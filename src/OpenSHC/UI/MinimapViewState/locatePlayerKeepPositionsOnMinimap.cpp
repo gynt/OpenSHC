@@ -94,9 +94,8 @@ namespace UI {
                         piVar6 = DAT_ViewportRenderState::instance.screenPointToTileNumber + uVar5 + iVar7 - 8;
                         do {
                             iVar3 = (int)DAT_TileMapState::instance.BuildingLayer[*piVar6];
-                            if (((iVar3)
-                                    && ((int)(short)DAT_BuildingsState::instance.buildings[iVar3].buildingType - 0x28U
-                                        < 5))
+                            if (iVar3
+                                && (int)(short)DAT_BuildingsState::instance.buildings[iVar3].buildingType - 0x28U < 5
                                 && (iVar3 = (int)DAT_BuildingsState::instance.buildings[iVar3].owner,
                                     this->DAT_MapU4B64.keepPositions[iVar3 - 1].x == -1)) {
                                 uVar4 = param_1;

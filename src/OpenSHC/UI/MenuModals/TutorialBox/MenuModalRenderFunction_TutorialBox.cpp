@@ -108,7 +108,7 @@ namespace UI {
                             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                                 DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, iVar3,
                                 iVar4 + x, iVar9, OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_3, iVar13,
-                                (int)((int)(keepOffsetX)));
+                                (int)(keepOffsetX));
                             iVar4 = iVar4 + 0x18;
                             iVar3 = local_2c;
                             iVar13 = local_3c;
@@ -147,7 +147,7 @@ namespace UI {
             pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                 DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_TUTORIAL, iVar3);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                pcVar2, iVar5, iVar13, TVar6, BVar8, iVar9, keepOffsetX_00, (int)((int)(BVar1)));
+                pcVar2, iVar5, iVar13, TVar6, BVar8, iVar9, keepOffsetX_00, (int)(BVar1));
             iVar13 = local_34;
             iVar5 = y + 0x26;
             if (!DAT_00df5564::instance) {
@@ -160,7 +160,7 @@ namespace UI {
                 pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                     DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_TUTORIAL, DAT_00df5558::instance + 1 + iVar3);
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
-                    pcVar2, iVar9, iVar7, iVar12, uVar10, iVar11, (int)((int)(BVar1)));
+                    pcVar2, iVar9, iVar7, iVar12, uVar10, iVar11, (int)(BVar1));
                 iVar5 = iVar5 + DAT_TextManagerObject::instance.field1_0x4;
                 if (DAT_00df5564::instance)
                     goto LAB_004bce14;
@@ -194,9 +194,8 @@ namespace UI {
                     pcVar2 = MACRO_CALL_MEMBER(
                         OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
                         OpenSHC::DE::SHCDE::TEXT_TUTORIAL_BUTTONS, DAT_00df5644::instance + 3);
-                    MACRO_CALL_MEMBER(
-                        OpenSHC::Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
-                        pcVar2, iVar3, iVar5, iVar13, uVar10, iVar4, (int)((int)(keepOffsetX)));
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk,
+                        DAT_TextManagerObject::ptr)(pcVar2, iVar3, iVar5, iVar13, uVar10, iVar4, (int)(keepOffsetX));
                 }
             }
             MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderTutorialFloatForUIElement)(DAT_TutorialCurrentStep::instance);

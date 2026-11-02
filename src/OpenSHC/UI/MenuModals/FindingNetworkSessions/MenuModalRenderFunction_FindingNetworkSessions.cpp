@@ -40,19 +40,19 @@ namespace UI {
             x2 = x + 0x1cd;
             x1 = x + 0x27;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                x1, y + 0x54, x2, y + 0x54, (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                x1, y + 0x54, x2, y + 0x54, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                x1, y + 0x11e, x2, y + 0x11e, (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                x1, y + 0x11e, x2, y + 0x11e, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                x + 0x1b8, y + 0x69, x2, y + 0x69, (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                x + 0x1b8, y + 0x69, x2, y + 0x69, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                x1, top, x1, bottom, (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                x1, top, x1, bottom, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                x2, top, x2, bottom, (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                x2, top, x2, bottom, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                x + 0x1b8, top, x + 0x1b8, bottom, (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                x + 0x1b8, top, x + 0x1b8, bottom, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                x + 0x1b9, y + 0x109, x + 0x1cc, y + 0x109, (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                x + 0x1b9, y + 0x109, x + 0x1cc, y + 0x109, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             UI_NetworkSessionsShadeLogic::instance = UI_NetworkSessionsShadeLogic::instance + 1;
             uVar1 = UI_NetworkSessionsShadeLogic::instance / 2 & 0x8000001f;
             if ((int)uVar1 < 0) {
@@ -60,8 +60,7 @@ namespace UI {
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                 DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2,
-                (int)((int)(DAT_ProtocolDefinedData::instance.field135_0x474[uVar1] + 0x18e)), width / 2 - 0xe + x,
-                y + 0x138);
+                (int)(DAT_ProtocolDefinedData::instance.field135_0x474[uVar1] + 0x18e), width / 2 - 0xe + x, y + 0x138);
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             if ((DAT_GameSynchronyState::instance.scrollBarIndex == -1)
                 && (DAT_GameSynchronyState::instance.DPLAY_SessionsCount)) {

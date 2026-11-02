@@ -57,7 +57,7 @@ namespace UI {
             } else {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                     DAT_PencilRenderCore::ptr)(0, 0, DAT_WindowAndDirectDraw::instance.resolutionX,
-                    DAT_WindowAndDirectDraw::instance.resolutionY, (ushort)((int)(COL_BLACK::instance.shortValue)));
+                    DAT_WindowAndDirectDraw::instance.resolutionY, (ushort)(COL_BLACK::instance.shortValue));
                 _blendStrength = 0;
                 _keepOffsetX = FALSE;
                 _fontSIze = 0x10;
@@ -118,7 +118,7 @@ namespace UI {
             timeGetTime();
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
                 DAT_PencilRenderCore::ptr)(0, 0, DAT_WindowAndDirectDraw::instance.resolutionX,
-                DAT_WindowAndDirectDraw::instance.resolutionY, (int)((int)(DAT_IntroBlendStrength::instance)));
+                DAT_WindowAndDirectDraw::instance.resolutionY, (int)(DAT_IntroBlendStrength::instance));
         }
 
     }

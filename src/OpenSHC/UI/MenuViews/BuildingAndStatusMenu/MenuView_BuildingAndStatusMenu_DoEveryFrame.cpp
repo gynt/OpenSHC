@@ -48,7 +48,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                     DAT_PencilRenderCore::ptr)(DAT_MenuHandlerState::instance.x,
                     DAT_MenuHandlerState::instance.y + 0x195, DAT_MenuHandlerState::instance.x + 799,
-                    DAT_MenuHandlerState::instance.y + 0x1d7, (ushort)((int)(COL_MAGENTA::instance.shortValue)));
+                    DAT_MenuHandlerState::instance.y + 0x1d7, (ushort)(COL_MAGENTA::instance.shortValue));
                 drawY = DAT_MenuHandlerState::instance.y + 0x195;
                 imageID = 4;
                 drawX = DAT_MenuHandlerState::instance.x;
@@ -56,7 +56,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                     DAT_PencilRenderCore::ptr)(DAT_MenuHandlerState::instance.x,
                     DAT_MenuHandlerState::instance.y + 0x195, DAT_MenuHandlerState::instance.x + 799,
-                    DAT_MenuHandlerState::instance.y + 0x1d7, (ushort)((int)(COL_MAGENTA::instance.shortValue)));
+                    DAT_MenuHandlerState::instance.y + 0x1d7, (ushort)(COL_MAGENTA::instance.shortValue));
                 drawY = DAT_MenuHandlerState::instance.y + 0x195;
                 imageID = 6;
                 drawX = DAT_MenuHandlerState::instance.x;
@@ -64,7 +64,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                     DAT_PencilRenderCore::ptr)(DAT_MenuHandlerState::instance.x,
                     DAT_MenuHandlerState::instance.y + 0x196, DAT_MenuHandlerState::instance.x + 799,
-                    DAT_MenuHandlerState::instance.y + 0x1d7, (ushort)((int)(COL_MAGENTA::instance.shortValue)));
+                    DAT_MenuHandlerState::instance.y + 0x1d7, (ushort)(COL_MAGENTA::instance.shortValue));
                 drawY = DAT_MenuHandlerState::instance.y + 0x1b9;
                 imageID = 2;
                 drawX = DAT_MenuHandlerState::instance.x;
@@ -343,9 +343,9 @@ namespace UI {
                 MACRO_CALL(OpenSHC::UI::BuildingMenus_Func::RenderBuildingMenu_Cathedral)();
             }
             DAT_WindowAndDirectDraw::instance.unk_resetViewportRelated = 2;
-            if (((!DAT_GameCore::instance.isBinkVideoPlaying)
-                    && (!DAT_BuildingsState::instance.DAT_IsBuildingOrPeasantBinkPlaying))
-                && (DAT_WindowAndDirectDraw::instance.currentGameResolution != OpenSHC::Rendering::SRE_640x480)) {
+            if (!DAT_GameCore::instance.isBinkVideoPlaying
+                && !DAT_BuildingsState::instance.DAT_IsBuildingOrPeasantBinkPlaying
+                && DAT_WindowAndDirectDraw::instance.currentGameResolution != OpenSHC::Rendering::SRE_640x480) {
                 DAT_MinimapViewState::instance.needsRedraw = 1;
                 MACRO_CALL_MEMBER(OpenSHC::UI::MinimapViewState_Func::renderMinimapMain, DAT_MinimapViewState::ptr)();
             }

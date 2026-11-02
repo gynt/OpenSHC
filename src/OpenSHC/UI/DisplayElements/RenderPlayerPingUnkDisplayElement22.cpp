@@ -44,19 +44,19 @@ namespace UI {
                 if (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[integer] != -1) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                         integer, posX + 0x18, yPosition, OpenSHC::Text::TTA_LEFT,
-                        (uint)((int)(DAT_RenderingDefinedData::instance
-                                .ColorArray[DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[integer]])),
+                        (uint)(DAT_RenderingDefinedData::instance
+                                .ColorArray[DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[integer]]),
                         0, 0x12, FALSE, 0);
                     if (integer != DAT_GameSynchronyState::instance.currentPlayerSlotID) {
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                             *piVar1 * 2, posX + 0x4c, yPosition, OpenSHC::Text::TTA_RIGHT,
-                            (uint)((int)(DAT_RenderingDefinedData::instance
-                                    .ColorArray[DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[integer]])),
+                            (uint)(DAT_RenderingDefinedData::instance
+                                    .ColorArray[DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[integer]]),
                             0, 0x12, FALSE, 0);
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow,
                             DAT_TextManagerObject::ptr)("ms", posX + 0x4c, yPosition, OpenSHC::Text::TTA_LEFT,
-                            (uint)((int)(DAT_RenderingDefinedData::instance
-                                    .ColorArray[DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[integer]])),
+                            (uint)(DAT_RenderingDefinedData::instance
+                                    .ColorArray[DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[integer]]),
                             0, 0x12, FALSE, 0);
                     }
                 }

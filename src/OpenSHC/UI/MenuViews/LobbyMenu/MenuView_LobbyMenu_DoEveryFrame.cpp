@@ -114,7 +114,7 @@ namespace UI {
                     OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderedBoxWithCustomBlendedBackground,
                     DAT_PencilRenderCore::ptr)(DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 10,
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 5, 0x228, 0xd8,
-                    (int)((int)(DAT_ButtonBackgroundBlendStrength::instance)));
+                    (int)(DAT_ButtonBackgroundBlendStrength::instance));
                 iVar10 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x10;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
                     DAT_PencilRenderCore::ptr)(DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0xf,
@@ -133,7 +133,7 @@ namespace UI {
                         DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0xe3,
                         DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x172,
                         DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x193,
-                        (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                        (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                 }
                 iVar7 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
                 iVar12 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
@@ -148,37 +148,37 @@ namespace UI {
                 if (!DAT_00b960dc::instance) {
                     x2 = (undefined1*)((int)local_400 + 1);
                     iVar12 = iVar12 + 0x233;
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine,
-                        DAT_PencilRenderCore::ptr)(iVar12, iVar7 + 0x15e, (int)((int)(x2)), iVar7 + 0x15e,
-                        (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine,
-                        DAT_PencilRenderCore::ptr)(iVar12, iVar7 + 0x215, (int)((int)(x2)), iVar7 + 0x215,
-                        (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
-                    MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine,
-                        DAT_PencilRenderCore::ptr)(iVar12, iVar7 + 0x173, (int)((int)(x2)), iVar7 + 0x173,
-                        (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                    MACRO_CALL_MEMBER(
+                        OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(iVar12,
+                        iVar7 + 0x15e, (int)(x2), iVar7 + 0x15e, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
+                    MACRO_CALL_MEMBER(
+                        OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(iVar12,
+                        iVar7 + 0x215, (int)(x2), iVar7 + 0x215, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
+                    MACRO_CALL_MEMBER(
+                        OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(iVar12,
+                        iVar7 + 0x173, (int)(x2), iVar7 + 0x173, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                     MACRO_CALL_MEMBER(
                         OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                        iVar12, iVar10, iVar12, iVar13, (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                        iVar12, iVar10, iVar12, iVar13, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                     MACRO_CALL_MEMBER(
-                        OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)((int)x2,
-                        iVar10, (int)((int)(x2)), iVar13, (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                        OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
+                        (int)x2, iVar10, (int)(x2), iVar13, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine,
-                        DAT_PencilRenderCore::ptr)((int)(local_400 - 5), iVar10, (int)((int)((local_400 - 5))), iVar13,
-                        (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                        DAT_PencilRenderCore::ptr)((int)(local_400 - 5), iVar10, (int)((local_400 - 5)), iVar13,
+                        (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine,
-                        DAT_PencilRenderCore::ptr)((int)((int)local_400 - 0x13), iVar7 + 0x200, (int)((int)(local_400)),
-                        iVar7 + 0x200, (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                        DAT_PencilRenderCore::ptr)((int)((int)local_400 - 0x13), iVar7 + 0x200, (int)(local_400),
+                        iVar7 + 0x200, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                 }
             }
             iVar12 = 1;
             iVar10 = iVar12;
             if (DAT_GameSynchronyState::instance.DAT_MapFileReceivingState == 1) {
                 do {
-                    if ((((DAT_GameSynchronyState::instance.mapSendingFileHandles[iVar12] != (FILE*)0x0)
-                             && (iVar10 = 0, DAT_GameSynchronyState::instance.currentPlayerFullIDArray[iVar12] != -1))
-                            && (DAT_GameSynchronyState::instance.mapTransferStatePerPlayer[iVar12] == 1))
-                        && (DAT_GameSynchronyState::instance.mapSendRequestStatePerPlayer[iVar12] != 1)) {
+                    if (DAT_GameSynchronyState::instance.mapSendingFileHandles[iVar12] != (FILE*)0x0
+                        && (iVar10 = 0, DAT_GameSynchronyState::instance.currentPlayerFullIDArray[iVar12] != -1)
+                        && DAT_GameSynchronyState::instance.mapTransferStatePerPlayer[iVar12] == 1
+                        && DAT_GameSynchronyState::instance.mapSendRequestStatePerPlayer[iVar12] != 1) {
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam0
                             = DAT_GameSynchronyState::instance.mapTransferTicksPerPlayer[iVar12];
                         DAT_GameSynchronyState::instance.mapTransferTicksPerPlayer[iVar12]
@@ -195,16 +195,16 @@ namespace UI {
                     psVar9 = DAT_GameSynchronyState::instance.mapTransferStatePerPlayer + 2;
                     piVar5 = DAT_GameSynchronyState::instance.mapSendRequestStatePerPlayer + 1;
                     do {
-                        if (((piVar5[-0x425de] != -1) && (psVar9[-1] == 1)) && (*piVar5 == 1)) {
+                        if (piVar5[-0x425de] != -1 && psVar9[-1] == 1 && *piVar5 == 1) {
                             iVar10 = 0;
                         }
-                        if (((piVar5[-0x425dd] != -1) && (*psVar9 == 1)) && (piVar5[1] == 1)) {
+                        if (piVar5[-0x425dd] != -1 && *psVar9 == 1 && piVar5[1] == 1) {
                             iVar10 = 0;
                         }
-                        if (((piVar5[-0x425dc] != -1) && (psVar9[1] == 1)) && (piVar5[2] == 1)) {
+                        if (piVar5[-0x425dc] != -1 && psVar9[1] == 1 && piVar5[2] == 1) {
                             iVar10 = 0;
                         }
-                        if (((piVar5[-0x425db] != -1) && (psVar9[2] == 1)) && (piVar5[3] == 1)) {
+                        if (piVar5[-0x425db] != -1 && psVar9[2] == 1 && piVar5[3] == 1) {
                             iVar10 = 0;
                         }
                         psVar9 = psVar9 + 4;
@@ -388,21 +388,21 @@ namespace UI {
                 INT_00b95f6c::instance = 0;
                 local_400 = piVar5;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
-                    DAT_PencilRenderCore::ptr)(iVar7, iVar4, (int)((int)(piVar5)), bottom, (iVar13 / 32) + 0x20);
+                    DAT_PencilRenderCore::ptr)(iVar7, iVar4, (int)(piVar5), bottom, (iVar13 / 32) + 0x20);
                 if (!DAT_00b960dc::instance) {
                     iVar13 = iVar10 + 0x225;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine,
                         DAT_PencilRenderCore::ptr)(iVar10 + 0x17e, iVar12 + 0x15d, iVar13, iVar12 + 0x15d,
-                        (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                        (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine,
                         DAT_PencilRenderCore::ptr)(iVar10 + 0x17e, iVar12 + 0x1aa, iVar13, iVar12 + 0x1aa,
-                        (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                        (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine,
                         DAT_PencilRenderCore::ptr)(iVar10 + 0x17e, iVar4, iVar10 + 0x17e, bottom,
-                        (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                        (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                     MACRO_CALL_MEMBER(
                         OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-                        iVar13, iVar4, iVar13, bottom, (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                        iVar13, iVar4, iVar13, bottom, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                     piVar5 = local_400;
                 }
                 BVar3 = MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::isMouseInsideBox, DAT_MouseState::ptr)(
@@ -463,8 +463,8 @@ namespace UI {
                                     DAT_TextureRenderCoreObject::ptr)(
                                     OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, iVar4, iVar10, iVar7);
                                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
-                                    DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2,
-                                    (int)((int)(*local_400 + 700)), iVar10, iVar7);
+                                    DAT_TextureRenderCoreObject::ptr)(
+                                    OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, (int)(*local_400 + 700), iVar10, iVar7);
                                 goto LAB_00448ced;
                             }
                         } else {
@@ -474,8 +474,8 @@ namespace UI {
                             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderFacesSmallUnk,
                                 DAT_TextureRenderCoreObject::ptr)(iVar4 - 699, iVar10 + 2, iVar7 + 2);
                             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox,
-                                DAT_PencilRenderCore::ptr)(iVar10, iVar7, iVar10 + 0x23, iVar7 + 0x23,
-                                (ushort)((int)(COL_BLACK::instance.shortValue)));
+                                DAT_PencilRenderCore::ptr)(
+                                iVar10, iVar7, iVar10 + 0x23, iVar7 + 0x23, (ushort)(COL_BLACK::instance.shortValue));
                         LAB_00448ced:
                             iVar12 = iVar12 + 1;
                             iVar10 = iVar10 + 0x28;

@@ -75,24 +75,24 @@ namespace UI {
         iVar5 = iVar3 + 0x23d;
         iVar9 = iVar2 + 0x1ed;
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-            iVar2 + 0xbc, iVar5, iVar9, iVar5, (ushort)((int)(COL_BLACK::instance.shortValue)));
+            iVar2 + 0xbc, iVar5, iVar9, iVar5, (ushort)(COL_BLACK::instance.shortValue));
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-            iVar2 + 0xbc, iVar3 + 0x23e, iVar9, iVar3 + 0x23e, (ushort)((int)(COL_BLACK::instance.shortValue)));
+            iVar2 + 0xbc, iVar3 + 0x23e, iVar9, iVar3 + 0x23e, (ushort)(COL_BLACK::instance.shortValue));
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-            iVar2 + 0xbc, iVar3 + 0x23f, iVar9, iVar3 + 0x23f, (ushort)((int)(COL_BLACK::instance.shortValue)));
+            iVar2 + 0xbc, iVar3 + 0x23f, iVar9, iVar3 + 0x23f, (ushort)(COL_BLACK::instance.shortValue));
         iVar12 = iVar3 + 0x1f1;
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-            iVar2 + 0xbe, iVar12, iVar2 + 0xbe, iVar5, (ushort)((int)(COL_BLACK::instance.shortValue)));
+            iVar2 + 0xbe, iVar12, iVar2 + 0xbe, iVar5, (ushort)(COL_BLACK::instance.shortValue));
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-            iVar2 + 0xbd, iVar12, iVar2 + 0xbd, iVar5, (ushort)((int)(COL_BLACK::instance.shortValue)));
+            iVar2 + 0xbd, iVar12, iVar2 + 0xbd, iVar5, (ushort)(COL_BLACK::instance.shortValue));
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-            iVar2 + 0xbc, iVar12, iVar2 + 0xbc, iVar5, (ushort)((int)(COL_BLACK::instance.shortValue)));
+            iVar2 + 0xbc, iVar12, iVar2 + 0xbc, iVar5, (ushort)(COL_BLACK::instance.shortValue));
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-            iVar2 + 0x1eb, iVar12, iVar2 + 0x1eb, iVar5, (ushort)((int)(COL_BLACK::instance.shortValue)));
+            iVar2 + 0x1eb, iVar12, iVar2 + 0x1eb, iVar5, (ushort)(COL_BLACK::instance.shortValue));
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-            iVar2 + 0x1ec, iVar12, iVar2 + 0x1ec, iVar5, (ushort)((int)(COL_BLACK::instance.shortValue)));
+            iVar2 + 0x1ec, iVar12, iVar2 + 0x1ec, iVar5, (ushort)(COL_BLACK::instance.shortValue));
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
-            iVar9, iVar12, iVar9, iVar5, (ushort)((int)(COL_BLACK::instance.shortValue)));
+            iVar9, iVar12, iVar9, iVar5, (ushort)(COL_BLACK::instance.shortValue));
         blendStrength = 0;
         BVar13 = FALSE;
         iVar14 = 0x13;
@@ -160,7 +160,7 @@ namespace UI {
         if ((local_c < 0x12d) && (iVar9 = 0, 0 < local_c)) {
             pasVar7 = DAT_GameState::instance.mapAndTime.playerPopulationStatistics + iVar8;
             do {
-                if ((0 < (*pasVar7)[0]) && (iVar8 = ((*pasVar7)[0] * 0x4b) / (local_10 * 0x32), 0 < iVar8)) {
+                if (0 < (*pasVar7)[0] && (iVar8 = ((*pasVar7)[0] * 0x4b) / (local_10 * 0x32), 0 < iVar8)) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::setRenderingRect,
                         DAT_TextureRenderCoreObject::ptr)(0, 0, DAT_WindowAndDirectDraw::instance.resolutionX, iVar5);
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::drawGfxOnFlaggedSurface,

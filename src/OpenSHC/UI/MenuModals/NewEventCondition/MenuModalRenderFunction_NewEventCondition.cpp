@@ -45,7 +45,7 @@ namespace UI {
                 if (0x7d < numInGroup) {
                     numInGroup = DAT_MapPropertiesState::instance.invasionTroopIndex + 0xaa;
                 }
-                if ((((numInGroup == 0x6f) || (numInGroup == 0x70)) || (numInGroup == 0x71)) || (numInGroup == 0x7b)) {
+                if (numInGroup == 0x6f || numInGroup == 0x70 || numInGroup == 0x71 || numInGroup == 0x7b) {
                     numInGroup = 0x71;
                 }
                 blendStrength = 0;

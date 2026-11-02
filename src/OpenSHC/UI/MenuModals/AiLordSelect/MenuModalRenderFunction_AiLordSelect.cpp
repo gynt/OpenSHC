@@ -74,10 +74,10 @@ namespace UI {
                 _yParam = yPos;
                 _textAddress = (int)MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                     DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_XPLAY_WAITING_ROOM,
-                    (int)((int)(DAT_LobbyAddAICurrentlyHoveredAI::instance * 9 + 0xe6)));
+                    (int)(DAT_LobbyAddAICurrentlyHoveredAI::instance * 9 + 0xe6));
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    (char*)_textAddress, _xParam, _yParam, (TextAlignment)((int)(_shift)), color,
-                    (int)((int)(_fontSize)), keepOffsetX, iVar2);
+                    (char*)_textAddress, _xParam, _yParam, (TextAlignment)((int)(_shift)), color, (int)(_fontSize),
+                    keepOffsetX, iVar2);
                 iVar2 = DAT_LobbyAddAICurrentlyHoveredAI::instance + 384;
                 maxWidth = 0x236;
                 yPos = yPos + 0x1e;

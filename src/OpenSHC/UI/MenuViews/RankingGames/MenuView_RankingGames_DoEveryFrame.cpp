@@ -112,11 +112,9 @@ namespace UI {
                 uVar12 = local_7c;
                 iVar2 = local_88;
                 iVar9 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
-                if ((((local_78 < DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x18)
-                         || (DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x2f2 <= local_78))
-                        || (local_74 < local_98))
-                    || ((local_94 <= local_74
-                        || (DAT_00eb9b60::instance <= (int)(DAT_00ed3120::instance + local_7c))))) {
+                if (local_78 < DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x18
+                    || DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x2f2 <= local_78 || local_74 < local_98
+                    || local_94 <= local_74 || DAT_00eb9b60::instance <= (int)(DAT_00ed3120::instance + local_7c)) {
                     if (local_7c == (local_7c & 0xfffffffe)) {
                         iVar8 = 0x2d8;
                     } else {
@@ -196,7 +194,7 @@ namespace UI {
                     iVar14 = iVar11;
                     pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                         DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MONTHS,
-                        (int)((int)(DAT_SkMasters2DataArray::instance[iVar2].localTimeMonth - 1)));
+                        (int)(DAT_SkMasters2DataArray::instance[iVar2].localTimeMonth - 1));
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                         pcVar1, iVar8, iVar14, TVar7, BVar10, fontSize, BVar13, blendStrength);
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2,
@@ -279,8 +277,8 @@ namespace UI {
                                         DAT_TextureRenderCoreObject::ptr)(
                                         OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, local_b4 + 0x2ce, iVar14, iVar4);
                                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
-                                        DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2,
-                                        (int)((int)(*piVar3 + 700)), iVar14, iVar4);
+                                        DAT_TextureRenderCoreObject::ptr)(
+                                        OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, (int)(*piVar3 + 700), iVar14, iVar4);
                                     if (piVar3[0x1d2] != 0) {
                                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                                             DAT_TextureRenderCoreObject::ptr)(
@@ -322,8 +320,8 @@ namespace UI {
                                                 MACRO_CALL_MEMBER(
                                                     OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                                                     DAT_TextureRenderCoreObject::ptr)(
-                                                    OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2,
-                                                    (int)((int)(*piVar3 + 700)), iVar14, iVar4);
+                                                    OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, (int)(*piVar3 + 700),
+                                                    iVar14, iVar4);
                                                 if (piVar3[0x1d2] != 0) {
                                                     MACRO_CALL_MEMBER(
                                                         OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
@@ -358,8 +356,8 @@ namespace UI {
                                     DAT_TextureRenderCoreObject::ptr)(
                                     OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, local_b4 + 0x2ce, iVar14, iVar4);
                                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
-                                    DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2,
-                                    (int)((int)(*piVar3 + 700)), iVar14, iVar4);
+                                    DAT_TextureRenderCoreObject::ptr)(
+                                    OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, (int)(*piVar3 + 700), iVar14, iVar4);
                                 if (piVar3[0x1d2] != 0) {
                                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                                         DAT_TextureRenderCoreObject::ptr)(

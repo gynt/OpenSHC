@@ -45,10 +45,10 @@ namespace UI {
                         if (((DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILD_MENU)
                                 || (DAT_GameCore::instance.currentMenuViewType
                                     == OpenSHC::UI::Enums::MVT_MAP_EDITOR_LANDSCAPING))
-                            && ((DAT_GameCore::instance.activeMenuTab.tabType
+                            && (DAT_GameCore::instance.activeMenuTab.tabType
                                     == OpenSHC::UI::Enums::BASMTT_SIEGETENT_SIEGETOWER
                                 || (DAT_GameCore::instance.activeMenuTab.tabType
-                                    == OpenSHC::UI::Enums::BASMTT_SIEGETENT_SHIELD)))) {
+                                    == OpenSHC::UI::Enums::BASMTT_SIEGETENT_SHIELD))) {
                             _yPos = _yPos + 0x80;
                         }
                         if (DAT_GameCore::instance.currentMenuViewType
@@ -71,9 +71,9 @@ namespace UI {
                 DAT_TextManagerObject::instance.textSurfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 (*_displayElementPtr->renderFunction_0x18)(_xPos, _yPos, _displayElementPtr->elementStateUnk_0xc);
                 DAT_TextManagerObject::instance.textSurfaceTarget = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
-                if ((-1 < _displayElementPtr->displayDuration_0x14)
-                    && (_displayElementPtr->displayDuration_0x14
-                        < (int)(_currentTime - _displayElementPtr->activationTime_0x10))) {
+                if (-1 < _displayElementPtr->displayDuration_0x14
+                    && _displayElementPtr->displayDuration_0x14
+                        < (int)(_currentTime - _displayElementPtr->activationTime_0x10)) {
                     _displayElementPtr->elementStateUnk_0xc = 0;
                 }
             }

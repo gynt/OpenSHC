@@ -140,11 +140,11 @@ namespace UI {
             local_c = 0;
         }
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
-            left - 1, posY + 0x12, iVar2 + 1 + iVar3, posY + 0x18, (ushort)((int)(COL_BLACK::instance.shortValue)));
+            left - 1, posY + 0x12, iVar2 + 1 + iVar3, posY + 0x18, (ushort)(COL_BLACK::instance.shortValue));
         if (local_c != iVar4) {
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
                 left, posY + 0x13, (((iVar4 - local_c) * iVar6) / iVar4 - iVar2) + iVar3, posY + 0x17,
-                (ushort)((int)(COL_DARK_LIME::instance.shortValue)));
+                (ushort)(COL_DARK_LIME::instance.shortValue));
         }
         DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
     }

@@ -51,17 +51,17 @@ namespace UI {
             alignment = OpenSHC::Text::TTA_CENTER;
             textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                 DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS,
-                (int)((int)(DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter)));
+                (int)(DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter));
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 textAddress, iVar1, yParam, alignment, color, iVar2, keepOffsetX, blendStrength);
-            if (((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
-                    && (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER))
-                && (DAT_GameSynchronyState::instance.saveRelated)) {
+            if (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY
+                && DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER
+                && DAT_GameSynchronyState::instance.saveRelated) {
                 iVar1 = (width - 300) / 2;
                 iVar2 = iVar1 + x;
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
-                    DAT_PencilRenderCore::ptr)(iVar2, y + 0x41, (x - iVar1) + width, y + 0x50,
-                    (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                MACRO_CALL_MEMBER(
+                    OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(iVar2,
+                    y + 0x41, (x - iVar1) + width, y + 0x50, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                 DAT_MenuTextInputState::instance.progressBarY = y + 0x41;
                 DAT_MenuTextInputState::instance.progressBarX = iVar2;
             }

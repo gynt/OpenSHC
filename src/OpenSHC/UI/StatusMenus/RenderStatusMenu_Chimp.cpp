@@ -8,6 +8,7 @@
 #include "OpenSHC/UI/Rendering/TextureRenderCore.func.hpp"
 #include "OpenSHC/DE/SHCDE/eTextSections.hpp"
 #include "OpenSHC/Map/Units/UnitType.hpp"
+#include "OpenSHC/Rendering/Colors/BGR24.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/UI/Enums/MenuViewType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
@@ -23,17 +24,16 @@
 #include "OpenSHC/Globals/DAT_UnitsState.hpp"
 #include "OpenSHC/Globals/INT_00b96124.hpp"
 #include "OpenSHC/Globals/INT_00b98458.hpp"
-#include "OpenSHC/Rendering/Colors/BGR24.hpp"
 
 namespace OpenSHC {
 namespace UI {
 
     using OpenSHC::DE::SHCDE::eTextSections;
     using OpenSHC::Map::Units::UnitType;
+    using OpenSHC::Rendering::Colors::BGR24;
     using OpenSHC::Text::TextAlignment;
     using OpenSHC::UI::Enums::MenuViewType;
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
-    using OpenSHC::Rendering::Colors::BGR24;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00447A50
     void StatusMenus::RenderStatusMenu_Chimp()
@@ -83,18 +83,18 @@ namespace UI {
             } else {
                 pcVar3 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                     DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_PEASANT_NAMES,
-                    (int)((int)((char)DAT_UnitsState::instance.units[_unitID].firstNameIndex)));
+                    (int)((char)DAT_UnitsState::instance.units[_unitID].firstNameIndex));
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     pcVar3, _xParam, _yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
                 bVar1 = DAT_UnitsState::instance.units[_unitID].rng1_to_70;
                 if (bVar1) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                        OpenSHC::DE::SHCDE::TEXT_PEASANT_SURNAMES, (int)((int)((char)bVar1)),
+                        OpenSHC::DE::SHCDE::TEXT_PEASANT_SURNAMES, (int)((char)bVar1),
                         DAT_MenuHandlerState::instance.x + 0x91, DAT_MenuHandlerState::instance.y + 0x1e1,
                         OpenSHC::Text::TTA_LEFT, 0, 0x11, TRUE);
                 }
-                if ((((numInGroup != 0x33) && (numInGroup != 0x3e)) && (numInGroup != 0x34))
-                    && ((numInGroup != 9 && (numInGroup != 0x2b)))) {
+                if (numInGroup != 0x33 && numInGroup != 0x3e && numInGroup != 0x34 && numInGroup != 9
+                    && numInGroup != 0x2b) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                         OpenSHC::DE::SHCDE::TEXT_CHIMP_NAMES, numInGroup, DAT_MenuHandlerState::instance.x + 0xa0,
                         DAT_MenuHandlerState::instance.y + 0x1e6, OpenSHC::Text::TTA_LEFT, 0, 0x12, TRUE);
@@ -102,12 +102,10 @@ namespace UI {
             }
             MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderPeasantMenu_CurrentActionUnk)(
                 _unitID, DAT_MenuHandlerState::instance.x + 0x8c, DAT_MenuHandlerState::instance.y + 0x209);
-            if (((((numInGroup != 0x38) && (numInGroup != 0x37))
-                     && ((numInGroup != 0x33 && (((numInGroup != 0x3e && (numInGroup != 0x34)) && (numInGroup != 9))))))
-                    && ((numInGroup != 0x2b && (numInGroup != 0x43))))
-                && ((numInGroup != 0x42
-                    && (((numInGroup != 0x41 && (numInGroup != 0x23))
-                        && ((numInGroup != 0x36 && (numInGroup != 0x40)))))))) {
+            if (numInGroup != 0x38 && numInGroup != 0x37 && numInGroup != 0x33 && numInGroup != 0x3e
+                && numInGroup != 0x34 && numInGroup != 9 && numInGroup != 0x2b && numInGroup != 0x43
+                && numInGroup != 0x42 && numInGroup != 0x41 && numInGroup != 0x23 && numInGroup != 0x36
+                && numInGroup != 0x40) {
                 if (DAT_00b95b6c::instance == -1) {
                     DAT_00b95b6c::instance
                         = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::selectWorkerSpeechOrMoraleStateID,
@@ -119,7 +117,7 @@ namespace UI {
                     DAT_MenuHandlerState::instance.x + 0x8c, DAT_MenuHandlerState::instance.y + 0x22d, 0x15e, 0, 0x12,
                     0);
                 if (bVar4) {
-                    if (((numInGroup == 0x15) || (numInGroup == 0x3f)) || (numInGroup == 0x11)) {
+                    if (numInGroup == 0x15 || numInGroup == 0x3f || numInGroup == 0x11) {
                         pacVar2 = DAT_RenderingDefinedData::instance.FemalePeasantSFXNames;
                     } else {
                         pacVar2 = DAT_RenderingDefinedData::instance.MalePeasantSFXNames;

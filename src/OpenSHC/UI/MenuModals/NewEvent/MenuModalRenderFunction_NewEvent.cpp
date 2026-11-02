@@ -53,7 +53,7 @@ namespace UI {
                     if (0x7d < iVar1) {
                         iVar1 = iVar5 + 0xaa;
                     }
-                    if ((((iVar1 == 0x6f) || (iVar1 == 0x70)) || (iVar1 == 0x71)) || (iVar1 == 0x7b)) {
+                    if (iVar1 == 0x6f || iVar1 == 0x70 || iVar1 == 0x71 || iVar1 == 0x7b) {
                         iVar1 = 0x71;
                     }
                     iVar11 = 0;
@@ -81,11 +81,11 @@ namespace UI {
                         iVar6 = iVar4;
                         pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                             DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO,
-                            (int)((int)(DAT_MissionAestheticsDefinedData::instance.EventConditionOptionTextOffsets[*(
+                            (int)(DAT_MissionAestheticsDefinedData::instance.EventConditionOptionTextOffsets[*(
                                 char*)(&DAT_MapPropertiesState::instance
                                            .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                                            .data
-                                + iVar5 * 4 + 0xe)])));
+                                + iVar5 * 4 + 0xe)]));
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
                             DAT_TextManagerObject::ptr)(pcVar2, iVar12, iVar6, TVar7, BVar8, iVar9, BVar10, iVar11);
                         MACRO_CALL_MEMBER(
@@ -106,11 +106,11 @@ namespace UI {
                         iVar6 = iVar4;
                         pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                             DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO,
-                            (int)((int)(DAT_MissionAestheticsDefinedData::instance.field92_0x170[*(
+                            (int)(DAT_MissionAestheticsDefinedData::instance.field92_0x170[*(
                                 char*)(&DAT_MapPropertiesState::instance
                                            .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                                            .data
-                                + iVar5 * 4 + 0xe)])));
+                                + iVar5 * 4 + 0xe)]));
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
                             DAT_TextManagerObject::ptr)(pcVar2, iVar12, iVar6, TVar7, BVar8, iVar9, BVar10, iVar11);
                         MACRO_CALL_MEMBER(

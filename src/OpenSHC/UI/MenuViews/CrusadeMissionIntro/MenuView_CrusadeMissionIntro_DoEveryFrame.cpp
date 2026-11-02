@@ -213,7 +213,7 @@ namespace UI {
                     if (DAT_GameSynchronyState::instance.playerPositionsArray[_offset] != -10) {
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                             DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2,
-                            (int)((int)(DAT_GameSynchronyState::instance.playerPositionsArray[_offset] + 0x1d6)),
+                            (int)(DAT_GameSynchronyState::instance.playerPositionsArray[_offset] + 0x1d6),
                             _blendStrength + 5 + iVar7, DAT_GameCore::instance.keepPositions[_offset].y + 1 + iVar6);
                     }
                 }
@@ -329,7 +329,7 @@ namespace UI {
             } else if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_WARCHEST) {
                 pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                     DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_TRAIL_NAMES_CRU,
-                    (int)((int)(DAT_GameCore::instance.warchestTrailProgress + 0x33)));
+                    (int)(DAT_GameCore::instance.warchestTrailProgress + 0x33));
                 _offset = MACRO_CALL_MEMBER(
                     OpenSHC::Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(pcVar2, _fontSize);
                 if (0x1bd < _offset) {
@@ -357,9 +357,9 @@ namespace UI {
                     0xf, TRUE, 0);
                 _offset = DAT_GameCore::instance.warchestTrailProgress + 0x33;
             } else {
-                pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_TRAIL_NAMES_CRU,
-                    (int)((int)(DAT_GameCore::instance.skirmishTrailProgress + 1)));
+                pcVar2 = MACRO_CALL_MEMBER(
+                    OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+                    OpenSHC::DE::SHCDE::TEXT_TRAIL_NAMES_CRU, (int)(DAT_GameCore::instance.skirmishTrailProgress + 1));
                 _offset = MACRO_CALL_MEMBER(
                     OpenSHC::Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(pcVar2, _fontSize);
                 if (0x1bd < _offset) {
@@ -463,7 +463,7 @@ namespace UI {
                     iVar7 = 0;
                     piVar5 = local_f4 + 0x1f;
                     do {
-                        if ((*piVar5 != 0) && ((iVar6 == -1 || (local_f4[iVar7 + 1] < local_f4[0])))) {
+                        if (*piVar5 != 0 && (iVar6 == -1 || (local_f4[iVar7 + 1] < local_f4[0]))) {
                             local_f4[0] = local_f4[iVar7 + 1];
                             iVar6 = iVar7;
                         }
@@ -504,31 +504,31 @@ namespace UI {
                     local_104 = local_104 + 0x24;
                     local_10c = (int*)((int)local_10c + 0x24);
                 }
-                if ((local_f4[_blendStrength + 0xb] != 0)
-                    && ((int)(DAT_GameCore::instance.section1127 + 200) < (int)DAT_GameCore::instance.mapTimeInTicks)) {
+                if (local_f4[_blendStrength + 0xb] != 0
+                    && (int)(DAT_GameCore::instance.section1127 + 200) < (int)DAT_GameCore::instance.mapTimeInTicks) {
                     MACRO_CALL_MEMBER(
                         OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
-                        OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x299, iVar4, (int)((int)(local_108)));
+                        OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x299, iVar4, (int)(local_108));
                 }
                 MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderPlayerAvatars)(_blendStrength, local_104, iVar13);
-                if ((local_f4[_blendStrength + 0xb] != 0)
-                    && ((int)(DAT_GameCore::instance.section1127 + 200) < (int)DAT_GameCore::instance.mapTimeInTicks)) {
+                if (local_f4[_blendStrength + 0xb] != 0
+                    && (int)(DAT_GameCore::instance.section1127 + 200) < (int)DAT_GameCore::instance.mapTimeInTicks) {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::dimBox, DAT_PencilRenderCore::ptr)(
                         (int)local_10c, iVar1 + 0x100, local_104 + 0x45, iVar1 + 0x143);
                     MACRO_CALL_MEMBER(
                         OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
-                        OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x299, (int)((int)(local_10c)), iVar1 + 0x100);
+                        OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x299, (int)(local_10c), iVar1 + 0x100);
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow,
                     DAT_TextManagerObject::ptr)(DAT_GameSynchronyState::instance.DAT_PlayerNames[_blendStrength],
                     _textX_01 + 0x4c, _textY_01, OpenSHC::Text::TTA_LEFT,
-                    (uint)((int)(DAT_RenderingDefinedData::instance
-                            .ColorArray[DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[_blendStrength]])),
+                    (uint)(DAT_RenderingDefinedData::instance
+                            .ColorArray[DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[_blendStrength]]),
                     0, 0x12, FALSE, 0);
                 iVar6 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
                     DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_ICONS_2,
-                    _blendStrength + 0x1d5, _textX_01 + 0x34, (int)((int)(local_108)), (iVar6 / 32) + 0x20);
+                    _blendStrength + 0x1d5, _textX_01 + 0x34, (int)(local_108), (iVar6 / 32) + 0x20);
                 _offset = _offset + 1;
             } while (_offset < 9);
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;

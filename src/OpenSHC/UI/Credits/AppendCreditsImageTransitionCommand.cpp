@@ -13,8 +13,8 @@ namespace UI {
         int iVar1;
         int iVar2;
         CreditsRelatedStructure2* pCVar3;
-        if (((DAT_UnknownBinkCount::instance < 0x120) && (-1 < param_2))
-            && ((param_1 == 5 || ((param_1 == 6 || (param_1 == 7)))))) {
+        if (DAT_UnknownBinkCount::instance < 0x120 && -1 < param_2
+            && (param_1 == 5 || ((param_1 == 6 || (param_1 == 7))))) {
             DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].commandType = param_1;
             DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].soundStream = param_2;
             DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].field17_0x38 = -1;

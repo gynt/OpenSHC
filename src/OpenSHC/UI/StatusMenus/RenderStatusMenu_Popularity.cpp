@@ -192,7 +192,7 @@ namespace UI {
         }
         if (!DAT_GameCore::instance.popularityMessagePage) {
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(
-                DAT_MenuHandlerState::instance.x + 0xab, DAT_MenuHandlerState::instance.y + 0x1da, (int)((int)(uVar10)),
+                DAT_MenuHandlerState::instance.x + 0xab, DAT_MenuHandlerState::instance.y + 0x1da, (int)(uVar10),
                 FALSE);
         }
         if (!DAT_GameCore::instance.popularityMessagePage) {
@@ -414,8 +414,8 @@ namespace UI {
                 pcVar8, iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar22);
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(DAT_MenuHandlerState::instance.x
                     - 0x16 + DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_1c][1],
-                (int)((int)(DAT_MenuHandlerState::instance.y - 1
-                    + DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_1c][2])),
+                (int)(DAT_MenuHandlerState::instance.y - 1
+                    + DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_1c][2]),
                 400, FALSE);
         }
         if ((DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].someCount58
@@ -530,8 +530,8 @@ namespace UI {
                 pcVar8, iVar18, iVar17, TVar14, BVar15, iVar19, BVar20, iVar22);
             MACRO_CALL(OpenSHC::UI::Rendering_Func::TransformAndRenderPercentage)(DAT_MenuHandlerState::instance.x
                     - 0x16 + DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_c][1],
-                (int)((int)(DAT_MenuHandlerState::instance.y - 1
-                    + DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_c][2])),
+                (int)(DAT_MenuHandlerState::instance.y - 1
+                    + DAT_RenderingDefinedData::instance.PopularityMessageLayout[local_c][2]),
                 (int)((
                     int)(DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .someCount55)),

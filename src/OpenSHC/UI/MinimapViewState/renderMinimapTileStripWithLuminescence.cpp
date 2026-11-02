@@ -84,7 +84,7 @@ namespace UI {
                 }
                 if (_yOffset / 100 <= (int)uVar10) {
                     if ((_paramSum * 400) / 100 <= (int)uVar10) {}
-                    if ((local_58 != 2) || (!(local_48 & 1))) {
+                    if (local_58 != 2 || !(local_48 & 1)) {
                         int iVar11 = uVar3 - 2;
                         local_2c = iVar1 / local_3c - uVar3;
                         if (iVar11 < local_2c) {
@@ -125,8 +125,8 @@ namespace UI {
                                     param_4 = (uint)DAT_MiniMapDefinedData::instance.field6_0x74[_isRGB565
                                         + ((int)(short)DAT_TileMapState::instance.RandomLayer[_tile] & 3U) * 2];
                                 }
-                                if (((DAT_TileMapState::instance.LuminesenceLayer[_tile] != 2) && ((short)param_4 != 0))
-                                    && (!(_tile1003 & 2))) {
+                                if (DAT_TileMapState::instance.LuminesenceLayer[_tile] != 2 && (short)param_4 != 0
+                                    && !(_tile1003 & 2)) {
                                     iVar12 = DAT_MiniMapDefinedData::instance.LuminescenceBrightnessPercent
                                                  [DAT_TileMapState::instance.LuminesenceLayer[_tile]];
                                     if (!_isRGB565) {
@@ -163,8 +163,8 @@ namespace UI {
                                     uVar9 = param_4;
                                     if (0 < param_2) {
                                         do {
-                                            if (((-1 < (int)(uVar6 + local_38))
-                                                    && ((int)(uVar6 + local_38) < iVar1 * param_2))
+                                            if (-1 < (int)(uVar6 + local_38)
+                                                && (int)(uVar6 + local_38) < iVar1 * param_2
                                                 && (local_4c = 0, 0 < param_3)) {
                                                 do {
                                                     if ((short)uVar9 == 0) {

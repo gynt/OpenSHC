@@ -96,21 +96,20 @@ namespace UI {
                                                 } else if (!(_tile1003 & 0x40000)) {
                                                     if (!(_tileTerrain & 0x40)) {
                                                         if (!(_tileTerrain & 0x20)) {
-                                                            if ((!(_tileTerrain & 0x10)) || (!(_tile1003 & 0x8000))) {
-                                                                if (((char)_tileTerrain < '\0')
-                                                                    && ((_tile1003 & 0x8000))) {
+                                                            if (!(_tileTerrain & 0x10) || !(_tile1003 & 0x8000)) {
+                                                                if ((char)_tileTerrain < '\0' && (_tile1003 & 0x8000)) {
                                                                     _tileColor = (uint)DAT_MiniMapDefinedData::instance
                                                                                      .ThickScrubMinimapColors[_colorMode
                                                                                          + (_tileRandom & 3) * 2];
-                                                                } else if ((!(_tileTerrain & 1))
-                                                                    || (!(_tile1003 & 0x8000))) {
+                                                                } else if (!(_tileTerrain & 1)
+                                                                    || !(_tile1003 & 0x8000)) {
                                                                     if (!(_tile1003 & 0x80000)) {
                                                                         if (!(_tile1003 & 0xa0000000)) {
                                                                             if (0x10 < DAT_TileMapState::instance
                                                                                     .HeightLayer[_tile])
                                                                                 goto LAB_004b5bbe;
-                                                                            if ((!(_tileTerrain & 2))
-                                                                                && (!(_tile1003 & 8))) {
+                                                                            if (!(_tileTerrain & 2)
+                                                                                && !(_tile1003 & 8)) {
                                                                                 _tileColor
                                                                                     = (uint)DAT_MiniMapDefinedData::
                                                                                           instance.EarthMinimapColors
@@ -224,8 +223,7 @@ namespace UI {
                             }
                             if (local_54 == 1) {
                                 for (local_2c = 0; local_2c < param_2; local_2c++) {
-                                    if (((-1 < (int)(param_5 + local_2c))
-                                            && ((int)(param_5 + local_2c) < iVar3 * param_2))
+                                    if (-1 < (int)(param_5 + local_2c) && (int)(param_5 + local_2c) < iVar3 * param_2
                                         && (local_30 = 0, 0 < param_3)) {
                                         do {
                                             *(ushort*)((param_5 + local_2c) * 2 + 0x1a58754

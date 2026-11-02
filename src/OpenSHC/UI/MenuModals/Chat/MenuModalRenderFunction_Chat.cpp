@@ -55,7 +55,7 @@ namespace UI {
             pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                 DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, 0x1e);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                pcVar1, _xOff, _yOff, TVar2, BVar3, (int)((int)(_fontSize)), BVar4, iVar5);
+                pcVar1, _xOff, _yOff, TVar2, BVar3, (int)(_fontSize), BVar4, iVar5);
             iVar5 = MACRO_CALL_MEMBER(
                 OpenSHC::Text::UserTextHandler_Func::getTextWidthUntilCurrentCursor, DAT_UserTextHandlerState::ptr)();
             MACRO_CALL_MEMBER(
@@ -64,9 +64,9 @@ namespace UI {
             if (!DAT_GameSynchronyState::instance.DAT_InsultTextIndex) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                     DAT_PencilRenderCore::ptr)(x + 0x19 + iVar5, y + 0xc1, x + 0x1a + iVar5, y + 0xd5,
-                    (ushort)((int)(COL_DARK_LIME::instance.shortValue)));
+                    (ushort)(COL_DARK_LIME::instance.shortValue));
             }
-            if (DAT_UserTextHandlerState::instance.textArrayIndex != ((TextArrayIndexType)4)) {
+            if (DAT_UserTextHandlerState::instance.textArrayIndex != (TextArrayIndexType)4) {
                 MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(
                     4);
             }
@@ -90,12 +90,12 @@ namespace UI {
                 TVar2 = OpenSHC::Text::TTA_LEFT;
                 iVar5 = y + 199;
                 xParam = x + 0x19;
-                pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_INSULTS,
-                    (int)((int)(DAT_GameSynchronyState::instance.DAT_InsultTextIndex)));
+                pcVar1 = MACRO_CALL_MEMBER(
+                    OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+                    OpenSHC::DE::SHCDE::TEXT_INSULTS, (int)(DAT_GameSynchronyState::instance.DAT_InsultTextIndex));
             }
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                pcVar1, xParam, iVar5, TVar2, BVar3, (int)((int)(_fontSize_2)), BVar4, blendStrength);
+                pcVar1, xParam, iVar5, TVar2, BVar3, (int)(_fontSize_2), BVar4, blendStrength);
             DAT_GameSynchronyState::instance.DAT_InsultTextIndex = 0;
         }
 

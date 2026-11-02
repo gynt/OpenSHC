@@ -30,7 +30,7 @@ namespace UI {
                 DAT_TextureRenderCoreObject::ptr)("demo buy it screen.tgx");
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(0,
                 0, DAT_WindowAndDirectDraw::instance.resolutionX, DAT_WindowAndDirectDraw::instance.resolutionY,
-                (ushort)((int)(COL_BLACK::instance.shortValue)));
+                (ushort)(COL_BLACK::instance.shortValue));
             INT_00b95b34::instance = timeGetTime();
             INT_00b960e0::instance = 0;
             if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_800x600) {
