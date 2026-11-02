@@ -15,7 +15,7 @@ namespace UI {
         if (99 < iVar1) {
             return 0xc;
         }
-        if (iVar1 < 1) {
+        if (iVar1 <= 0) {
             return 2;
         }
         int iVar2 = iVar1 >> 0x1f;

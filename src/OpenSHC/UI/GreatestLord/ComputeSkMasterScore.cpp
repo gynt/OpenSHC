@@ -20,10 +20,10 @@ namespace UI {
                         * 0xc
                     - DAT_GameSynchronyState::instance.finalResults.monthStart)
             + DAT_GameSynchronyState::instance.finalResults.monthEnd;
-        if (iVar2 < 1) {
+        if (iVar2 <= 0) {
             iVar2 = 1;
         }
-        return ((iVar3 + ((int)(iVar1 + (iVar1 >> 0x1f & 3U)) >> 2)) * 200) / (iVar2 + 200);
+        return ((iVar3 + (iVar1 / 4)) * 200) / (iVar2 + 200);
     }
 
 }

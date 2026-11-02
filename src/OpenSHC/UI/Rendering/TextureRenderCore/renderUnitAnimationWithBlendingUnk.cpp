@@ -402,7 +402,7 @@ namespace UI {
                                             } while (iVar8);
                                         }
                                         iVar14 = iVar14 + 0x1fb0;
-                                        if (height - 1 < 1) {}
+                                        if (height - 1 <= 0) {}
                                         while (true) {
                                             while (true) {
                                                 do {
@@ -535,7 +535,7 @@ namespace UI {
                                         } while (iVar8);
                                     }
                                     iVar14 = iVar14 + 0x1fb0;
-                                    if (height - 1 < 1) {}
+                                    if (height - 1 <= 0) {}
                                     while (true) {
                                         while (true) {
                                             do {

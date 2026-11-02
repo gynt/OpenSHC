@@ -309,12 +309,10 @@ namespace UI {
             if (DAT_MapMissionType::instance != 2)
                 goto LAB_0042ce38;
             if (DAT_GameSynchronyState::instance.currentPlayerSlotID == 2) {
-                iVar8 = 0;
-                do {
+                for (int iVar8 = 0; iVar8 < 0x50; iVar8 = iVar8 + 4) {
                     *(int*)((int)DAT_GameState::instance.mapAndTime.startGoods + iVar8 + 100)
                         = (*(int*)((int)DAT_MapPropertiesState::instance.SEC_StartingResources + iVar8 + 100) * 7) / 10;
-                    iVar8 = iVar8 + 4;
-                } while (iVar8 < 0x50);
+                }
                 DAT_MapPropertiesState::instance.SEC_Section1067.tunnelersCount
                     = (DAT_MapPropertiesState::instance.SEC_Section1067.tunnelersCount * 7) / 10;
             }
@@ -387,7 +385,7 @@ namespace UI {
                         } while ((int)psVar4 < 0x165162c);
                         if (DAT_GameState::instance.mapAndTime.difficulty == 1) {
                             local_7e8 = 4;
-                            iVar7 = (int)(iVar9 * -3 + (iVar9 * -3 >> 0x1f & 3U)) >> 2;
+                            iVar7 = iVar9 * -3 / 4;
                         LAB_0042cf15:
                             iVar9 = iVar9 + iVar7;
                         } else if (DAT_GameState::instance.mapAndTime.difficulty == 2) {
@@ -418,7 +416,7 @@ namespace UI {
                                             .buildings[DAT_TileMapState::instance.BuildingLayer[*(int*)(psVar4 - 0xe6)]]
                                             .containsSiegeMangonel1OrBallista2 = 0;
                                     }
-                                    if (iVar9 < 1) {
+                                    if (iVar9 <= 0) {
                                         local_7e4 = 10;
                                         break;
                                     }

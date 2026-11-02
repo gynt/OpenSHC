@@ -44,7 +44,7 @@ namespace UI {
         int fontSize;
         int blendStrength;
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
-        if (DAT_GameCore::instance.scribeAnimationFrame < 1) {
+        if (DAT_GameCore::instance.scribeAnimationFrame <= 0) {
             DAT_GameCore::instance.scribeAnimationFrame = 1;
         } else if (44 < DAT_GameCore::instance.scribeAnimationFrame) {
             DAT_GameCore::instance.scribeAnimationFrame = 44;
