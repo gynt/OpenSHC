@@ -347,9 +347,19 @@ Diff patterns that were reliable (more in the cheat sheet):
   original materialises the string address as an immediate; `string-macros.hpp` gives `S_X`, which expands to the
   literal and is textually what was there before. The style guide presents the macro as the fallback for when the
   symbol does not compile (it is `char const*` where the render calls take `char*`, which was 38 of 94 files), but
-  it is also the fallback for when the symbol *measures* worse: 5 of 94 files regressed on the symbol form, one of
-  them `MenuItemActionHandler_SaveLoadMap_Buttons` by 11.4 points, and every one recovered on the macro. Import
-  the literal either way - just reach for the macro the moment the number moves.
+  it is also the fallback for when the symbol *measures* worse: 8 of 183 files regressed on the symbol form across
+  three namespaces, and every one recovered on the macro. The losses are large where they happen -
+  `MenuItemActionHandler_SaveLoadMap_Buttons` -11.4, `ReadMapHeaderFromFile` -11.5 - while the symbol form's gains
+  are fractions of a point, so prefer the macro wherever the literal is *passed to* a function rather than stored,
+  and keep the symbol only where it measures equal. Import the literal either way.
+- **Where to spend trials: `swaparms.py` first, `flipcmp.py` only after.** Over three namespaces the arm swap took
+  39 of 210 sites in `UI/MenuItems`, 33 of 95 in `UI/Rendering`+`BuildingMenus`+`Helpers` and 33 files of 195 in
+  the view and modal folders, worth +0.65 and +0.19 of namespace average on the two it was new to; the operand
+  flip took 25 of 314, then 4 of 222 and 9 of 244, worth about +0.02 each. Both are free of behaviour risk, so run
+  both - but the swap is where the points are, and it is also the one that produces the readable result, since the
+  original's fall-through arm belongs first.
+  Confirm either on reccmp and revert per file: 5 of 33 swapped files lost in one namespace and 3 of 26 in
+  another, and 2 of 9 flipped sites lost. A `quick_diff` gain is a candidate, not a result.
 - **Rule 11 pays on a field at a computed offset and loses on a loop induction pointer.** Resolving
   `(int)DAT_X::ptr + i * 4 + OFFSET` into the array the header declares was worth 3.5 points on
   `MenuItemActionHandler_UnusedChooseAvailableKeeps_Main` and 4.4 on
