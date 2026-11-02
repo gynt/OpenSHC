@@ -2,22 +2,22 @@
 
 #include "OpenSHC/UI/Rendering.func.hpp"
 #include "OpenSHC/IO/Graphics/TgxToken.hpp"
+#include "OpenSHC/IO/Graphics/TgxTokenByte.hpp"
 #include "OpenSHC/Rendering/ColorMode.hpp"
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 
 #include "OpenSHC/Globals/AlphaAndButtonSurfaceObj.hpp"
 #include "OpenSHC/Globals/DAT_BlendFilterArrays.hpp"
 #include "OpenSHC/Globals/DAT_WindowAndDirectDraw.hpp"
-#include "OpenSHC/IO/Graphics/TgxTokenByte.hpp"
 
 namespace OpenSHC {
 namespace UI {
     namespace Rendering {
 
         using OpenSHC::IO::Graphics::TgxToken;
+        using OpenSHC::IO::Graphics::TgxTokenByte;
         using OpenSHC::Rendering::ColorMode;
         using OpenSHC::Rendering::Enums::RenderTarget;
-        using OpenSHC::IO::Graphics::TgxTokenByte;
 
         // FUNCTION: STRONGHOLDCRUSADER 0x0044F170
         void TextureRenderCore::renderGmWithPreparedAlphaMask(
@@ -75,20 +75,23 @@ namespace UI {
                                         while (true) {
                                             do {
                                                 _currentTgxDataPtr = (TgxTokenByte*)imageDataPtr;
-                                                _tgxToken = *_currentTgxDataPtr & OpenSHC::IO::Graphics::TT_TGX_PIXEL_HEADER;
+                                                _tgxToken
+                                                    = *_currentTgxDataPtr & OpenSHC::IO::Graphics::TT_TGX_PIXEL_HEADER;
                                                 imageDataPtr = (ushort*)(_currentTgxDataPtr + 1);
                                             } while (_tgxToken == OpenSHC::IO::Graphics::TT_TRANSPARENT_PIXELS);
                                             if (_tgxToken != OpenSHC::IO::Graphics::TT_STREAM_OF_PIXELS)
                                                 break;
                                             imageDataPtr = (ushort*)((int)imageDataPtr
-                                                + ((*_currentTgxDataPtr & OpenSHC::IO::Graphics::TT_TGX_PIXEL_LENGTH) + 1) * 2);
+                                                + ((*_currentTgxDataPtr & OpenSHC::IO::Graphics::TT_TGX_PIXEL_LENGTH)
+                                                      + 1)
+                                                    * 2);
                                         }
                                         if (_tgxToken != OpenSHC::IO::Graphics::TT_REPEATING_PIXELS)
                                             break;
                                         imageDataPtr = (ushort*)(_currentTgxDataPtr + 3);
                                     }
                                     _alphaAndButtonSurfacePtr = _alphaAndButtonSurfacePtr + width;
-                                    _remainingHeight = iVar7 + -1;
+                                    _remainingHeight = iVar7 - 1;
                                     _stillHeightLeft = 0 < iVar7;
                                     y = _heightRangeStart;
                                     iVar7 = _remainingHeight;
@@ -100,8 +103,10 @@ namespace UI {
                                 while (true) {
                                     while (true) {
                                         while (true) {
-                                            _tgxToken2 = *(TgxTokenByte*)imageDataPtr & OpenSHC::IO::Graphics::TT_TGX_PIXEL_HEADER;
-                                            _pixelLength = (uint)(*(TgxTokenByte*)imageDataPtr & OpenSHC::IO::Graphics::TT_TGX_PIXEL_LENGTH);
+                                            _tgxToken2 = *(TgxTokenByte*)imageDataPtr
+                                                & OpenSHC::IO::Graphics::TT_TGX_PIXEL_HEADER;
+                                            _pixelLength = (uint)(*(TgxTokenByte*)imageDataPtr
+                                                & OpenSHC::IO::Graphics::TT_TGX_PIXEL_LENGTH);
                                             _currentTgxDataPtr = (TgxTokenByte*)((int)imageDataPtr + 1);
                                             if (_tgxToken2 != OpenSHC::IO::Graphics::TT_TRANSPARENT_PIXELS)
                                                 break;
@@ -146,7 +151,7 @@ namespace UI {
                                             }
                                             imageDataPtr = (ushort*)((int)imageDataPtr + 2);
                                             _currentRenderSurfacePtr = _currentRenderSurfacePtr + 1;
-                                            _someLength = _someLength + -1;
+                                            _someLength = _someLength - 1;
                                             _alphaAndButtonSurfacePtr = puVar9;
                                         } while (_someLength);
                                     }
@@ -163,8 +168,8 @@ namespace UI {
                                             } else {
                                                 uVar3 = *(undefined2*)_currentTgxDataPtr & 0xffe0
                                                     | DAT_BlendFilterArrays::instance[_remainingHeight][(
-                                                        ushort)(*(undefined2*)_currentTgxDataPtr & OpenSHC::IO::Graphics::TT_TGX_PIXEL_LENGTH)]
-                                                                                     [0];
+                                                        ushort)(*(undefined2*)_currentTgxDataPtr
+                                                        & OpenSHC::IO::Graphics::TT_TGX_PIXEL_LENGTH)][0];
                                                 uVar3 = uVar3 & 0xfc1f
                                                     | *(ushort*)(_remainingHeight * 0x200 + 0xd7d2da
                                                         + (uint)((ushort)uVar3 >> 5 & 0x1f) * 8);
@@ -183,13 +188,13 @@ namespace UI {
                                             }
                                         }
                                         _currentRenderSurfacePtr = _currentRenderSurfacePtr + 1;
-                                        iVar7 = iVar7 + -1;
+                                        iVar7 = iVar7 - 1;
                                         _alphaAndButtonSurfacePtr = puVar9;
                                     } while (iVar7);
                                     imageDataPtr = (ushort*)((int)imageDataPtr + 3);
                                 }
                                 _currentRenderSurfacePtr = (ushort*)((int)_currentRenderSurfacePtr + _jumpLineByteSize);
-                                iVar7 = height + -1;
+                                iVar7 = height - 1;
                                 _stillHeightLeft = 0 < height;
                                 height = iVar7;
                                 imageDataPtr = (ushort*)_currentTgxDataPtr;
@@ -218,7 +223,7 @@ namespace UI {
                                     imageDataPtr = (ushort*)((int)puVar9 + 3);
                                 }
                                 _alphaAndButtonSurfacePtr = _alphaAndButtonSurfacePtr + width;
-                                _remainingHeight = iVar7 + -1;
+                                _remainingHeight = iVar7 - 1;
                                 _stillHeightLeft = 0 < iVar7;
                                 y = _heightRangeStart;
                                 iVar7 = _remainingHeight;
@@ -267,7 +272,7 @@ namespace UI {
                                         }
                                         imageDataPtr = imageDataPtr + 1;
                                         puVar9 = puVar9 + 1;
-                                        iVar7 = iVar7 + -1;
+                                        iVar7 = iVar7 - 1;
                                         _alphaAndButtonSurfacePtr = puVar8;
                                     } while (iVar7);
                                 }
@@ -297,13 +302,13 @@ namespace UI {
                                         }
                                     }
                                     puVar9 = puVar9 + 1;
-                                    iVar7 = iVar7 + -1;
+                                    iVar7 = iVar7 - 1;
                                     _alphaAndButtonSurfacePtr = puVar1;
                                 } while (iVar7);
                                 imageDataPtr = (ushort*)((int)imageDataPtr + 3);
                             }
                             puVar9 = (ushort*)((int)puVar9 + _jumpLineByteSize);
-                            iVar7 = height + -1;
+                            iVar7 = height - 1;
                             _stillHeightLeft = 0 < height;
                             height = iVar7;
                             imageDataPtr = puVar8;

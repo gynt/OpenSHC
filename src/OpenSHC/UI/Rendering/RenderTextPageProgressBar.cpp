@@ -52,9 +52,8 @@ namespace UI {
             MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox, DAT_PencilRenderCore::ptr)(
                 left, iVar5, iVar1 + 0x22f, iVar5 + 1, iVar4 + 2);
             iVar4 = iVar4 + 1;
-            iVar5 = iVar5 + -2;
+            iVar5 = iVar5 - 2;
         } while (iVar4 < 0x1e);
-        return;
     }
 
 }

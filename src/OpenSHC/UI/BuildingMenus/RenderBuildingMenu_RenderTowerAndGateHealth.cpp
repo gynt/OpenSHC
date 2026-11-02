@@ -57,11 +57,11 @@ namespace UI {
                 local_20, iVar4, (iVar3 >> 1) + left, bottom, local_18.shortValue);
         }
         MACRO_CALL(OS_Func::_sprintf)(local_14, "%d/%d",
-            (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + local_1c + -0x14),
-            (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + local_1c + -0x12));
+            (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + local_1c - 0x14),
+            (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + local_1c - 0x12));
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(local_14,
-            DAT_MenuHandlerState::instance.x + 0x1ef, DAT_MenuHandlerState::instance.y + 0x1e2,
-            Text::TTA_CENTER, 0, 0x12, FALSE, 0);
+            DAT_MenuHandlerState::instance.x + 0x1ef, DAT_MenuHandlerState::instance.y + 0x1e2, Text::TTA_CENTER, 0,
+            0x12, FALSE, 0);
         ;
     }
 

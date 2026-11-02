@@ -48,11 +48,11 @@ namespace UI {
                     _widthInByte = 0x1fb0;
                     this->currentRenderSurface = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame;
                 } else if (this->drawBufferChoiceValue == OpenSHC::Rendering::Enums::RT_BUTTON_AND_ALPHA) {
-                    _pixelToLineJump = AlphaAndButtonSurfaceObj::instance.currentImageWidth + -0x40;
+                    _pixelToLineJump = AlphaAndButtonSurfaceObj::instance.currentImageWidth - 0x40;
                     _widthInByte = AlphaAndButtonSurfaceObj::instance.currentImageWidth * 2;
                     this->currentRenderSurface = AlphaAndButtonSurfaceObj::instance.surfacePtr;
                 } else {
-                    _pixelToLineJump = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine / 2 + -0x40;
+                    _pixelToLineJump = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine / 2 - 0x40;
                     _widthInByte = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine;
                     this->currentRenderSurface = DAT_WindowAndDirectDraw::instance.surfacePointer_screenMenu;
                 }
@@ -117,11 +117,11 @@ namespace UI {
                             }
                             _bitmapFacePtr = (ushort*)(colorOrBlendOrGammaUnk + 8);
                             _surfacePtr = _surfacePtr + 4;
-                            local_c = local_c + -1;
+                            local_c = local_c - 1;
                             colorOrBlendOrGammaUnk = (int)_bitmapFacePtr;
                         } while (local_c);
                         _surfacePtr = _surfacePtr + _pixelToLineJump;
-                        local_8 = local_8 + -1;
+                        local_8 = local_8 - 1;
                     } while (local_8);
                 }
                 yPos = 0x42;
@@ -139,10 +139,10 @@ namespace UI {
                                 | (ushort)(_widthInByte / 32);
                         }
                         _surfacePtr = _surfacePtr + 1;
-                        bitmapFaceIndex = bitmapFaceIndex + -1;
+                        bitmapFaceIndex = bitmapFaceIndex - 1;
                     } while (bitmapFaceIndex);
                     _surfacePtr = _surfacePtr + _pixelToLineJump;
-                    yPos = yPos + -1;
+                    yPos = yPos - 1;
                 } while (yPos);
             }
         }

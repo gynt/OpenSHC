@@ -100,8 +100,8 @@ namespace UI {
             /*
               The game is centered around the 800x600 resolution. That is the target res   for the menu. -TheRedDaemon
              */
-            this->mainMenuBorderWidth = (this->gameResolutionX + -800) / 2;
-            this->mainMenuBorderHeight = (this->gameResolutionY + -600) / 2;
+            this->mainMenuBorderWidth = (this->gameResolutionX - 800) / 2;
+            this->mainMenuBorderHeight = (this->gameResolutionY - 600) / 2;
             this->byteSizeOfOneHorizontalLine = this->gameResolutionX * 2;
             this->resolutionX = this->gameResolutionX;
             this->resolutionY = this->gameResolutionY;

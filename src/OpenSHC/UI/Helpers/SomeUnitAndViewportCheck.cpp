@@ -14,11 +14,11 @@ namespace UI {
         int iVar4;
         int iVar6;
         int iVar7;
-        if (((!DAT_MinimapViewState::instance.minimapClickEnabled)
-                && (DAT_ViewportRenderState::instance.viewportState.mouseAtomRefFloorTile))
-            && ((DAT_TileMapState::instance
-                     .LogicLayer[DAT_ViewportRenderState::instance.viewportState.mouseAtomRefFloorTile]
-                & 0x10000300U))) {
+        if (!DAT_MinimapViewState::instance.minimapClickEnabled
+            && DAT_ViewportRenderState::instance.viewportState.mouseAtomRefFloorTile
+            && (DAT_TileMapState::instance
+                    .LogicLayer[DAT_ViewportRenderState::instance.viewportState.mouseAtomRefFloorTile]
+                & 0x10000300U)) {
             int iVar1 = (int)DAT_ViewportRenderState::instance.tileTranslationMatrix_YComponent
                             [DAT_ViewportRenderState::instance.viewportState.mouseAtomRefFloorTile];
             int iVar2 = DAT_ViewportRenderState::instance.viewportState.mouseAtomRefFloorTile

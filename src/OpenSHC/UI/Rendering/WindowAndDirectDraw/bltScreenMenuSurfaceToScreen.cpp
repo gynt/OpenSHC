@@ -20,12 +20,12 @@ namespace UI {
                 _windowHandle = GetForegroundWindow();
                 if (_windowHandle == this->windowHandle) {
                     if (!this->NOTSelfBufferOrWindowMode_0xf8) {
-                        _sourceRect.left = windowedX + -0x20;
-                        _sourceRect.top = windowedY + -8;
+                        _sourceRect.left = windowedX - 0x20;
+                        _sourceRect.top = windowedY - 8;
                         _sourceRect.right = windowedWidth + 0x20;
                         _sourceRect.bottom = windowedHeigth + 8;
-                        _destinationRect.left = this->clientOnScreenCoords.left + -0x20 + windowedX;
-                        _destinationRect.top = this->clientOnScreenCoords.top + -8 + windowedY;
+                        _destinationRect.left = this->clientOnScreenCoords.left - 0x20 + windowedX;
+                        _destinationRect.top = this->clientOnScreenCoords.top - 8 + windowedY;
                         _destinationRect.right = this->clientOnScreenCoords.left + 0x20 + windowedWidth;
                         _destinationRect.bottom = this->clientOnScreenCoords.top + 8 + windowedHeigth;
                     } else {
@@ -38,9 +38,8 @@ namespace UI {
                         _destinationRect.right = this->gameResolutionX;
                         _destinationRect.bottom = this->gameResolutionY;
                     }
-                    MACRO_CALL_MEMBER(
-                        UI::Rendering::WindowAndDirectDraw_Func::adjustForNotExclusiveFullscreenUnk, this)(
-                        &_destinationRect, &_sourceRect);
+                    MACRO_CALL_MEMBER(UI::Rendering::WindowAndDirectDraw_Func::adjustForNotExclusiveFullscreenUnk,
+                        this)(&_destinationRect, &_sourceRect);
                     /*
                       Normal waiting blt. --TheRedDaemon
                      */

@@ -18,15 +18,15 @@ namespace UI {
         if ((1024 < DAT_WindowAndDirectDraw::instance.resolutionX)
             || (768 < DAT_WindowAndDirectDraw::instance.resolutionY)) {
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::drawGfxOnFlaggedSurface,
-                DAT_TextureRenderCoreObject::ptr)(DAT_TextureRenderCoreObject::instance.totalLoadedGfx + -1,
+                DAT_TextureRenderCoreObject::ptr)(DAT_TextureRenderCoreObject::instance.totalLoadedGfx - 1,
                 (DAT_WindowAndDirectDraw::instance.resolutionX
                     - DAT_TextureRenderCoreObject::instance
-                        .loadedGfxArray[DAT_TextureRenderCoreObject::instance.totalLoadedGfx + -1]
+                        .loadedGfxArray[DAT_TextureRenderCoreObject::instance.totalLoadedGfx - 1]
                         .width)
                     / 2,
                 (DAT_WindowAndDirectDraw::instance.resolutionY
                     - DAT_TextureRenderCoreObject::instance
-                        .loadedGfxArray[DAT_TextureRenderCoreObject::instance.totalLoadedGfx + -1]
+                        .loadedGfxArray[DAT_TextureRenderCoreObject::instance.totalLoadedGfx - 1]
                         .height)
                     / 2);
         }

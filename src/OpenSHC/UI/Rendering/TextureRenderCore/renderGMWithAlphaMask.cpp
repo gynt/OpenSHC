@@ -30,23 +30,21 @@ namespace UI {
                 iVar1 = GMTotalPicturesProcessed::instance[gmID];
                 MACRO_CALL_MEMBER(
                     OpenSHC::UI::Rendering::TextureRenderCore_Func::renderInterfaceOrBuildingOccupationArea, this)(xPos,
-                    yPos, (int)((int)(DAT_GMImageHeaders::instance.imh[imageID + iVar1 + -1].width)),
-                    (int)((int)(DAT_GMImageHeaders::instance.imh[imageID + iVar1 + -1].height)),
+                    yPos, (int)(DAT_GMImageHeaders::instance.imh[imageID + iVar1 - 1].width),
+                    (int)(DAT_GMImageHeaders::instance.imh[imageID + iVar1 - 1].height),
                     (ushort*)((int)(
 
-                        (DAT_GMImageOffsets::instance[iVar1 + -1 + imageID]
+                        (DAT_GMImageOffsets::instance[iVar1 - 1 + imageID]
                             + (int)DAT_TextureRenderCoreObject::instance.gmProcessedImageData))),
                     blendStrength);
             }
             AlphaAndButtonSurfaceObj::instance.currentImageWidth
-                = (int)DAT_GMImageHeaders::instance
-                      .imh[alphaImageID + GMTotalPicturesProcessed::instance[maskGmID] + -1]
+                = (int)DAT_GMImageHeaders::instance.imh[alphaImageID + GMTotalPicturesProcessed::instance[maskGmID] - 1]
                       .width;
             MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::fillMemory_ShortValue, DAT_LowLevelMemory::ptr)(
-                DAT_GMImageHeaders::instance.imh[alphaImageID + GMTotalPicturesProcessed::instance[maskGmID] + -1]
-                        .height
+                DAT_GMImageHeaders::instance.imh[alphaImageID + GMTotalPicturesProcessed::instance[maskGmID] - 1].height
                     * AlphaAndButtonSurfaceObj::instance.currentImageWidth * 2,
-                (ushort)((int)(COL_MAGENTA::instance.shortValue)),
+                (ushort)(COL_MAGENTA::instance.shortValue),
                 (void*)((int)(AlphaAndButtonSurfaceObj::instance.surfacePtr)));
             _tempBufferChoiceValueUnk = DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue;
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
@@ -56,9 +54,9 @@ namespace UI {
             iVar1 = GMTotalPicturesProcessed::instance[gmID];
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = _tempBufferChoiceValueUnk;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGmWithPreparedAlphaMask, this)(xPos,
-                yPos, (int)((int)(DAT_GMImageHeaders::instance.imh[imageID + iVar1 + -1].width)),
-                (int)((int)(DAT_GMImageHeaders::instance.imh[imageID + iVar1 + -1].height)),
-                (ushort*)((int)((DAT_GMImageOffsets::instance[iVar1 + -1 + imageID] + (int)pvVar2))), blendStrength);
+                yPos, (int)(DAT_GMImageHeaders::instance.imh[imageID + iVar1 - 1].width),
+                (int)(DAT_GMImageHeaders::instance.imh[imageID + iVar1 - 1].height),
+                (ushort*)((int)((DAT_GMImageOffsets::instance[iVar1 - 1 + imageID] + (int)pvVar2))), blendStrength);
         }
 
     }

@@ -41,10 +41,10 @@ namespace UI {
                 DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                     DAT_PencilRenderCore::ptr)(DAT_MenuTextInputState::instance.progressBarX,
-                    (int)((int)(DAT_MenuTextInputState::instance.progressBarY)),
+                    (int)(DAT_MenuTextInputState::instance.progressBarY),
                     DAT_MenuTextInputState::instance.progressBarX + iVar1,
-                    (int)((int)(DAT_MenuTextInputState::instance.progressBarY + 0xf)),
-                    (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                    (int)(DAT_MenuTextInputState::instance.progressBarY + 0xf),
+                    (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                 if (((DAT_GameCore::instance.activeMenuTab.tabType != OpenSHC::UI::Enums::BASMTT_SIEGETENT_SIEGETOWER)
                         && (DAT_GameCore::instance.activeMenuTab.tabType
                             != OpenSHC::UI::Enums::BASMTT_SIEGETENT_SHIELD))
@@ -59,16 +59,15 @@ namespace UI {
                 DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
-                DAT_MenuTextInputState::instance.progressBarX,
-                (int)((int)(DAT_MenuTextInputState::instance.progressBarY)),
+                DAT_MenuTextInputState::instance.progressBarX, (int)(DAT_MenuTextInputState::instance.progressBarY),
                 DAT_MenuTextInputState::instance.progressBarX + iVar1,
-                (int)((int)(DAT_MenuTextInputState::instance.progressBarY + 0xf)),
-                (ushort)((int)(COL_VERY_SOFT_YELLOW::instance.shortValue)));
+                (int)(DAT_MenuTextInputState::instance.progressBarY + 0xf),
+                (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::WindowAndDirectDraw_Func::bltScreenMenuSurfaceToScreen,
                 DAT_WindowAndDirectDraw::ptr)(DAT_MenuTextInputState::instance.progressBarX,
-                (int)((int)(DAT_MenuTextInputState::instance.progressBarY)),
-                (int)((int)(DAT_MenuTextInputState::instance.progressBarX + 300)),
-                (int)((int)(DAT_MenuTextInputState::instance.progressBarY + 0xf)));
+                (int)(DAT_MenuTextInputState::instance.progressBarY),
+                (int)(DAT_MenuTextInputState::instance.progressBarX + 300),
+                (int)(DAT_MenuTextInputState::instance.progressBarY + 0xf));
         }
     }
 

@@ -41,7 +41,7 @@ namespace UI {
             if (DAT_WindowAndDirectDraw::instance.colorBitMode == OpenSHC::Rendering::RGB_565) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::transformTgxFromRGB555ToRGB565, this)(
                     (ushort*)((int)_tgxLoadLocation + 8),
-                    DAT_ResourceManager::instance.loadPositionInCurrentResource + -8);
+                    DAT_ResourceManager::instance.loadPositionInCurrentResource - 8);
             }
             this->loadedGfxArray[this->totalLoadedGfx + 1].offsetInBuffer
                 = this->loadedGfxArray[this->totalLoadedGfx].offsetInBuffer

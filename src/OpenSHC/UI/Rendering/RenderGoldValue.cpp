@@ -47,7 +47,7 @@ namespace UI {
         iVar1 = MACRO_CALL_MEMBER(Text::TextManager_Func::calcRenderedNumberWidth, DAT_TextManagerObject::ptr)(
             _gold, iVar5);
         if (99999 < _gold) {
-            iVar1 = iVar1 + -2;
+            iVar1 = iVar1 - 2;
         }
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderPartOfNumberUnk, DAT_TextManagerObject::ptr)(_gold,
             (DAT_MenuHandlerState::instance.x - iVar1) + 0x2e7, DAT_MenuHandlerState::instance.y + 0x219, 5, local_c,

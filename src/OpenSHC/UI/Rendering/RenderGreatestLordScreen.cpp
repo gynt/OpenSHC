@@ -95,7 +95,7 @@ namespace UI {
             local_3c4 = DAT_MenuHandlerState::instance.x + 10;
             local_3cc = 0x3a;
         } else {
-            local_3c4 = DAT_MenuHandlerState::instance.x + -0x66;
+            local_3c4 = DAT_MenuHandlerState::instance.x - 0x66;
             local_3cc = 0x20a;
         }
         local_3d0 = DAT_MenuHandlerState::instance.y;
@@ -156,13 +156,13 @@ namespace UI {
                 iVar8 = iVar8 + DAT_GameSynchronyState::instance.finalResults.finalKillMatrix[5][iVar2];
             }
             if (iVar2 != 6) {
-                iVar8 = iVar8 + DAT_GameSynchronyState::instance.finalResults.finalBuildingsBurned[iVar2 + -0x1b];
+                iVar8 = iVar8 + DAT_GameSynchronyState::instance.finalResults.finalBuildingsBurned[iVar2 - 0x1b];
             }
             if (iVar2 != 7) {
-                iVar8 = iVar8 + DAT_GameSynchronyState::instance.finalResults.finalBuildingsBurned[iVar2 + -0x12];
+                iVar8 = iVar8 + DAT_GameSynchronyState::instance.finalResults.finalBuildingsBurned[iVar2 - 0x12];
             }
             if (iVar2 != 8) {
-                iVar8 = iVar8 + DAT_GameSynchronyState::instance.finalResults.finalBuildingsBurned[iVar2 + -9];
+                iVar8 = iVar8 + DAT_GameSynchronyState::instance.finalResults.finalBuildingsBurned[iVar2 - 9];
             }
             aiStack_330[iVar2] = iVar8;
             piVar7 = piVar7 + 9;
@@ -184,7 +184,7 @@ namespace UI {
             do {
                 *piVar7 = iVar2;
                 piVar7 = piVar7 + 9;
-                iVar8 = iVar8 + -1;
+                iVar8 = iVar8 - 1;
             } while (iVar8);
             iVar2 = iVar2 + 1;
         } while (iVar2 < 9);
@@ -197,14 +197,14 @@ namespace UI {
                     iVar3 = MACRO_CALL(OpenSHC::UI::GreatestLord_Func::ComputeSkMasterScore)(iVar8);
                     iVar10 = _highestRankingInDomain[iVar2 + 0x13];
                     iVar4 = MACRO_CALL(OpenSHC::UI::GreatestLord_Func::ComputeSkMasterScore)(iVar10);
-                    if ((iVar3 < iVar4)
-                        || ((iVar3 == iVar4
+                    if (iVar3 < iVar4
+                        || (iVar3 == iVar4
                             && ((iVar3 = DAT_GameSynchronyState::instance.finalResults.finalTimeAlive[iVar10],
                                 iVar4 = DAT_GameSynchronyState::instance.finalResults.finalTimeAlive[iVar8],
                                 iVar4 < iVar3
                                     || ((iVar4 == iVar3
                                         && (DAT_GameState::instance.mapAndTime.playerIsAlive[iVar8]
-                                            < DAT_GameState::instance.mapAndTime.playerIsAlive[iVar10])))))))) {
+                                            < DAT_GameState::instance.mapAndTime.playerIsAlive[iVar10]))))))) {
                         _highestRankingInDomain[iVar2 + 0x12] = iVar10;
                         _highestRankingInDomain[iVar2 + 0x13] = iVar8;
                     }
@@ -299,7 +299,7 @@ namespace UI {
                     iVar2 = iVar2 + 1;
                 } while (iVar2 < local_3c8);
             }
-            local_3c8 = local_3c8 + -1;
+            local_3c8 = local_3c8 - 1;
         } while (0 < local_3c8);
         _highestRankingInDomain[local_374[0]] = _highestRankingInDomain[local_374[0]] + 3;
         if ((10 < aiStack_354[local_30c[1]]) && (aiStack_354[local_30c[2]] * 2 < aiStack_354[local_30c[1]])) {
@@ -376,8 +376,8 @@ namespace UI {
                 DAT_PencilRenderCore::ptr)(0xe1, 1, DAT_MenuHandlerState::instance.x + 0x28, local_3d0, 0x2d0, 0x2d0);
         } else {
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
-                DAT_PencilRenderCore::ptr)(DAT_MenuHandlerState::instance.x + -0x70,
-                DAT_MenuHandlerState::instance.y + -0x54, DAT_MenuHandlerState::instance.x + 0x390,
+                DAT_PencilRenderCore::ptr)(DAT_MenuHandlerState::instance.x - 0x70,
+                DAT_MenuHandlerState::instance.y - 0x54, DAT_MenuHandlerState::instance.x + 0x390,
                 DAT_MenuHandlerState::instance.y + 0x2ac, 0x10);
             iVar2 = local_3d0;
             /*
@@ -385,7 +385,7 @@ namespace UI {
              */
             MACRO_CALL_MEMBER(
                 OpenSHC::UI::Rendering::PencilRenderCore_Func::drawHeaderTextBanner, DAT_PencilRenderCore::ptr)(
-                0xe1, 1, DAT_MenuHandlerState::instance.x + -0x68, local_3d0 + -0x1e, 0x3f0, 0);
+                0xe1, 1, DAT_MenuHandlerState::instance.x - 0x68, local_3d0 - 0x1e, 0x3f0, 0);
             local_3d0 = iVar2 + 0x14;
         }
         iVar2 = local_3d0 + 0xac;
@@ -448,8 +448,8 @@ namespace UI {
                 DAT_TextManagerObject::instance.field12_0x30 = 1;
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText6Unk, DAT_TextManagerObject::ptr)(
                     *text, local_3c4, local_3d0, 0x104,
-                    (uint)((int)(DAT_RenderingDefinedData::instance
-                            .ColorArray[DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[_renderPlayer]])),
+                    (uint)(DAT_RenderingDefinedData::instance
+                            .ColorArray[DAT_BlendingDefinedData::instance.PlayerSlotUnitColor[_renderPlayer]]),
                     0, 0x12, 0);
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(
                     *text, 0x12);
@@ -457,7 +457,7 @@ namespace UI {
                 if (DAT_GameState::instance.mapAndTime.playerIsAlive[_renderPlayer] != 0) {
                     MACRO_CALL_MEMBER(
                         OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
-                        OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS3, 0x8b, iVar8, iVar2 + -2);
+                        OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS3, 0x8b, iVar8, iVar2 - 2);
                     iVar8 = iVar8 + 0x16;
                 }
                 if (0 < _highestRankingInDomain[_renderPlayer + 9]) {
@@ -465,9 +465,9 @@ namespace UI {
                     do {
                         MACRO_CALL_MEMBER(
                             OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
-                            OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS3, 0x8b, iVar8, iVar2 + -2);
+                            OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS3, 0x8b, iVar8, iVar2 - 2);
                         iVar8 = iVar8 + 0x16;
-                        iVar10 = iVar10 + -1;
+                        iVar10 = iVar10 - 1;
                     } while (iVar10);
                 }
                 iVar10 = 0;
@@ -475,7 +475,7 @@ namespace UI {
                     do {
                         MACRO_CALL_MEMBER(
                             OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
-                            OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS3, 0x8a, iVar8, iVar2 + -5);
+                            OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS3, 0x8a, iVar8, iVar2 - 5);
                         iVar10 = iVar10 + 1;
                         iVar8 = iVar8 + 0x16;
                     } while (
@@ -486,7 +486,7 @@ namespace UI {
                         "(", iVar8 + 8, iVar2, OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x13, FALSE, 0);
                     MACRO_CALL_MEMBER(
                         OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
-                        OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x299, iVar8 + 0xe, iVar2 + -5);
+                        OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x299, iVar8 + 0xe, iVar2 - 5);
                     blendStrength = 0;
                     BVar13 = FALSE;
                     iVar4 = 0x13;
@@ -673,8 +673,8 @@ namespace UI {
                 piVar7 = (int*)MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                     DAT_TextManagerObject::ptr)((OpenSHC::DE::SHCDE::eTextSections)(DAT_MissionDefinedData::instance
                                                         .GreatestLordTextEntries[DAT_00eb9af8::instance][0]),
-                    (int)((int)((OpenSHC::DE::SHCDE::eTextSections)
-                            DAT_MissionDefinedData::instance.GreatestLordTextEntries[DAT_00eb9af8::instance][1])));
+                    (int)((OpenSHC::DE::SHCDE::eTextSections)
+                            DAT_MissionDefinedData::instance.GreatestLordTextEntries[DAT_00eb9af8::instance][1]));
             }
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 (char*)piVar7, iVar3, iVar10, TVar11, BVar12, iVar2, BVar13, iVar8);
@@ -759,7 +759,7 @@ namespace UI {
                 iVar3 = DAT_MenuHandlerState::instance.x + 0x1e;
             } else {
                 iVar10 = DAT_MenuHandlerState::instance.y + 0x262;
-                iVar3 = DAT_MenuHandlerState::instance.x + -0x2a;
+                iVar3 = DAT_MenuHandlerState::instance.x - 0x2a;
                 /*
                   added by script: "Extreme Score"
                  */
@@ -768,7 +768,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     pcVar5, iVar3, iVar10, TVar11, BVar12, iVar2, BVar13, iVar8);
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    local_68, DAT_MenuHandlerState::instance.x + -0x2a, DAT_MenuHandlerState::instance.y + 0x262,
+                    local_68, DAT_MenuHandlerState::instance.x - 0x2a, DAT_MenuHandlerState::instance.y + 0x262,
                     OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, TRUE, 0);
                 iVar3 = 0;
                 BVar13 = TRUE;
@@ -776,7 +776,7 @@ namespace UI {
                 BVar12 = 0xccfaff;
                 TVar11 = OpenSHC::Text::TTA_LEFT;
                 iVar2 = DAT_MenuHandlerState::instance.y + 0x262;
-                iVar8 = DAT_MenuHandlerState::instance.x + -0x2a;
+                iVar8 = DAT_MenuHandlerState::instance.x - 0x2a;
                 /*
                   added by script: "Save File"
                  */
@@ -785,16 +785,16 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     pcVar5, iVar8, iVar2, TVar11, BVar12, iVar10, BVar13, iVar3);
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    local_cc, DAT_MenuHandlerState::instance.x + -0x2a, DAT_MenuHandlerState::instance.y + 0x262,
+                    local_cc, DAT_MenuHandlerState::instance.x - 0x2a, DAT_MenuHandlerState::instance.y + 0x262,
                     OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, TRUE, 0);
                 iVar4 = 0;
                 BVar13 = FALSE;
                 iVar3 = 0x12;
-                iVar2 = DAT_TextManagerObject::instance.currentXOffset_0x0 + -0x2a + DAT_MenuHandlerState::instance.x;
+                iVar2 = DAT_TextManagerObject::instance.currentXOffset_0x0 - 0x2a + DAT_MenuHandlerState::instance.x;
                 BVar12 = 0xccfaff;
                 TVar11 = OpenSHC::Text::TTA_LEFT;
                 iVar10 = DAT_MenuHandlerState::instance.y + 0x278;
-                iVar8 = DAT_MenuHandlerState::instance.x + -0x2a;
+                iVar8 = DAT_MenuHandlerState::instance.x - 0x2a;
                 /*
                   added by script: "To submit this score, visit"
                  */
@@ -808,7 +808,7 @@ namespace UI {
                 iVar3 = 0x12;
                 BVar12 = 0xffffff;
                 TVar11 = OpenSHC::Text::TTA_LEFT;
-                iVar10 = DAT_MenuHandlerState::instance.x + -0x24;
+                iVar10 = DAT_MenuHandlerState::instance.x - 0x24;
                 /*
                   added by script: "www.fireflyworlds.com"
                  */
@@ -816,18 +816,17 @@ namespace UI {
                     DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SKIRMISH_CHOOSE2, 0x1e);
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     pcVar5, iVar10, iVar8, TVar11, BVar12, iVar3, BVar13, iVar4);
-                iVar8 = DAT_TextManagerObject::instance.currentXOffset_0x0 + -0x24 + DAT_MenuHandlerState::instance.x;
+                iVar8 = DAT_TextManagerObject::instance.currentXOffset_0x0 - 0x24 + DAT_MenuHandlerState::instance.x;
                 if (iVar2 < iVar8) {
                     iVar2 = iVar8;
                 }
                 iVar8 = DAT_MenuHandlerState::instance.y + 0x28c;
                 iVar10 = DAT_MenuHandlerState::instance.y + 0x25b;
-                iVar3 = DAT_MenuHandlerState::instance.x + -0x3e;
+                iVar3 = DAT_MenuHandlerState::instance.x - 0x3e;
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
-                iVar3, iVar10, iVar2 + 0x14, iVar8, (ushort)((int)(COL_WHITE::instance.shortValue)));
+                iVar3, iVar10, iVar2 + 0x14, iVar8, (ushort)(COL_WHITE::instance.shortValue));
         };
-        return;
     }
 
 }

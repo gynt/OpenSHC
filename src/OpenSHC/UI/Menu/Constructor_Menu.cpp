@@ -127,7 +127,7 @@ namespace UI {
                     _currentMenuItemType = _currentMenuItemPtr->menuItemType;
                     while ((_currentMenuItemType & 0x4000000) != (MenuItemType)0
                         && _currentMenuItemPtr != menuItemArrayAddress) {
-                        _currentMenuItemPtr = _currentMenuItemPtr + -1;
+                        _currentMenuItemPtr = _currentMenuItemPtr - 1;
                         _currentMenuItemType = _currentMenuItemPtr->menuItemType;
                     }
                     _currentMenuItemPtr->menuItemType = _currentMenuItemPtr->menuItemType | ((MenuItemType)0x8000000);

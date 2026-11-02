@@ -37,7 +37,7 @@ namespace UI {
             BOOLEnum _keepOffsetX;
             int iVar1 = xPos;
             iVar2 = xPos + 8;
-            _width = width + -0x10;
+            _width = width - 0x10;
             for (xPos = 0; xPos < 0x40; xPos += 8) {
                 if (!xPos) {
                     iVar4 = 0x30;
@@ -46,20 +46,20 @@ namespace UI {
                 }
                 for (iVar3 = 0; iVar3 < _width; iVar3 += 8) {
                     int imageID = iVar4;
-                    if ((iVar3) && (imageID = iVar4 + 2, iVar3 != width + -0x18)) {
+                    if ((iVar3) && (imageID = iVar4 + 2, iVar3 != width - 0x18)) {
                         imageID = iVar4 + 1;
                     }
                     MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
-                        DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3, imageID,
-                        iVar3 + iVar2, xPos + yPos + 8, IO::Graphics::GID_INTERFACE_ICONS_3, imageID + 3, 0);
+                        DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3, imageID, iVar3 + iVar2,
+                        xPos + yPos + 8, IO::Graphics::GID_INTERFACE_ICONS_3, imageID + 3, 0);
                 }
             }
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
-                DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3, 0x5b, iVar1 + 0xb,
-                yPos + 0x11, IO::Graphics::GID_INTERFACE_ICONS_3, 0x5c, 0);
+                DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3, 0x5b, iVar1 + 0xb, yPos + 0x11,
+                IO::Graphics::GID_INTERFACE_ICONS_3, 0x5c, 0);
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                 DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3, 0x5b,
-                (iVar2 - DAT_GMImageHeaders::instance.imh[GMTotalPicturesProcessed::instance[0x9c] + 0x5a].width) + -3
+                (iVar2 - DAT_GMImageHeaders::instance.imh[GMTotalPicturesProcessed::instance[0x9c] + 0x5a].width) - 3
                     + _width,
                 yPos + 0x11, IO::Graphics::GID_INTERFACE_ICONS_3, 0x5c, 0);
             _blendStrength = 0;

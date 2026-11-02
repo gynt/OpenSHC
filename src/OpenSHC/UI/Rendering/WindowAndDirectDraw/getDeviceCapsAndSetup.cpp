@@ -55,7 +55,6 @@ namespace UI {
             if (this->screenHorizontalResolutionInPixels < this->gameResolutionX) {
                 this->runGameAsExclusiveFullscreen = TRUE;
             }
-            return;
         }
 
     }

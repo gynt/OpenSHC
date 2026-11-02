@@ -9,6 +9,7 @@
 #include "OpenSHC/Commands/GameCommandType.hpp"
 #include "OpenSHC/DE/SHCDE/eTextSections.hpp"
 #include "OpenSHC/IO/FileResourceType.hpp"
+#include "OpenSHC/Rendering/Colors/BGR24.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
 #include "OpenSHC/Globals/DAT_00b95b74.hpp"
@@ -22,7 +23,6 @@
 #include "OpenSHC/Globals/INT_00b95ab8.hpp"
 #include "OpenSHC/Globals/INT_00b960b0.hpp"
 #include "OpenSHC/Globals/MSVC_SecurityCookie.hpp"
-#include "OpenSHC/Rendering/Colors/BGR24.hpp"
 
 namespace OpenSHC {
 namespace UI {
@@ -30,8 +30,8 @@ namespace UI {
     using OpenSHC::Commands::GameCommandType;
     using OpenSHC::DE::SHCDE::eTextSections;
     using OpenSHC::IO::FileResourceType;
-    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
     using OpenSHC::Rendering::Colors::BGR24;
+    using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004410D0
     void Rendering::DisplayMapDescriptionAndAllocatePlayersToSlots()
@@ -105,11 +105,11 @@ namespace UI {
                 OpenSHC::DE::SHCDE::TEXT_MAP_NAMES, DAT_GameCore::instance.mapDescUseStringTableIndex);
             goto LAB_004411d1;
         }
-        if ((DAT_GameSynchronyState::instance.isHost)
-            && ((INT_00b960b0::instance
+        if (DAT_GameSynchronyState::instance.isHost
+            && (INT_00b960b0::instance
                     != DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
                         + DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected
-                || (INT_00b95ab8::instance)))) {
+                || (INT_00b95ab8::instance))) {
             DAT_GameSynchronyState::instance.playerPositionsArray[0] = -10;
             DAT_GameSynchronyState::instance.playerPositionsArray[1] = -10;
             DAT_GameSynchronyState::instance.playerPositionsArray[2] = -10;

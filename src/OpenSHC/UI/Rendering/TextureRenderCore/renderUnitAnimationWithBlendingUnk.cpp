@@ -6,11 +6,11 @@
 #include "OpenSHC/Rendering/ColorMode.hpp"
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 
-#include "OpenSHC/Globals/DAT_TextureRenderCoreObject.hpp"
 #include "OpenSHC/Globals/DAT_BlendFilterArrays.hpp"
 #include "OpenSHC/Globals/DAT_BlendingDefinedData.hpp"
 #include "OpenSHC/Globals/DAT_CurrentlyRenderedSpriteID.hpp"
 #include "OpenSHC/Globals/DAT_RenderedUnitOwner.hpp"
+#include "OpenSHC/Globals/DAT_TextureRenderCoreObject.hpp"
 #include "OpenSHC/Globals/DAT_WindowAndDirectDraw.hpp"
 
 namespace OpenSHC {
@@ -75,13 +75,16 @@ namespace UI {
                     iVar2 = blendStrengthUnk * -0x200;
                     iVar10 = iVar2 + 0xd812d8;
                     if (!DAT_TextureRenderCoreObject::instance.isZoom2) {
-                        if (DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue == OpenSHC::Rendering::Enums::RT_SCREEN_MENU) {
-                            DAT_TextureRenderCoreObject::instance.currentRenderSurface = DAT_WindowAndDirectDraw::instance.surfacePointer_screenMenu;
+                        if (DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
+                            == OpenSHC::Rendering::Enums::RT_SCREEN_MENU) {
+                            DAT_TextureRenderCoreObject::instance.currentRenderSurface
+                                = DAT_WindowAndDirectDraw::instance.surfacePointer_screenMenu;
                             local_8 = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine;
                             local_c = DAT_TextureRenderCoreObject::instance.screenMenuSurfaceHeightRange.start;
                             iVar14 = DAT_TextureRenderCoreObject::instance.screenMenuSurfaceHeightRange.end;
                         } else {
-                            DAT_TextureRenderCoreObject::instance.currentRenderSurface = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame;
+                            DAT_TextureRenderCoreObject::instance.currentRenderSurface
+                                = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame;
                             local_8 = 0x1fb0;
                             local_c = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start;
                             iVar14 = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.end;
@@ -109,12 +112,12 @@ namespace UI {
                                                     break;
                                                 imageAddress = (byte*)(pTVar17 + 2);
                                             }
-                                            iVar14 = iVar14 + -1;
+                                            iVar14 = iVar14 - 1;
                                             yPosition = local_c;
                                         } while (0 < iVar14);
                                     }
-                                    puVar19 = (ushort*)((int)DAT_TextureRenderCoreObject::instance.currentRenderSurface + yPosition * local_8
-                                        + xPosition * 2);
+                                    puVar19 = (ushort*)((int)DAT_TextureRenderCoreObject::instance.currentRenderSurface
+                                        + yPosition * local_8 + xPosition * 2);
                                     puVar20 = puVar19;
                                     do {
                                         while (true) {
@@ -146,7 +149,7 @@ namespace UI {
                                                         + *(short*)(iVar6 + 0xd7d2dc + (uint)(uVar5 >> 0xb) * 8);
                                                     imageAddress = imageAddress + 1;
                                                     puVar19 = puVar19 + 1;
-                                                    iVar14 = iVar14 + -1;
+                                                    iVar14 = iVar14 - 1;
                                                 } while (iVar14);
                                             }
                                             if (TVar3 != OpenSHC::IO::Graphics::TT_REPEATING_PIXELS)
@@ -166,11 +169,11 @@ namespace UI {
                                                           | *(ushort*)(iVar6 + 0xd7d2dc + (uint)(uVar1 >> 0xb) * 8))
                                                     + (uVar5 | uVar9 | uVar4);
                                                 puVar19 = puVar19 + 1;
-                                                iVar14 = iVar14 + -1;
+                                                iVar14 = iVar14 - 1;
                                             } while (iVar14);
                                         }
                                         puVar19 = (ushort*)((int)puVar20 + local_8);
-                                        height = height + -1;
+                                        height = height - 1;
                                         imageAddress = (byte*)(pTVar17);
                                         puVar20 = puVar19;
                                     } while (0 < height);
@@ -197,12 +200,12 @@ namespace UI {
                                                 break;
                                             imageAddress = pbVar16 + 2;
                                         }
-                                        iVar14 = iVar14 + -1;
+                                        iVar14 = iVar14 - 1;
                                         yPosition = local_c;
                                     } while (0 < iVar14);
                                 }
-                                puVar19
-                                    = (ushort*)((int)DAT_TextureRenderCoreObject::instance.currentRenderSurface + yPosition * local_8 + xPosition * 2);
+                                puVar19 = (ushort*)((int)DAT_TextureRenderCoreObject::instance.currentRenderSurface
+                                    + yPosition * local_8 + xPosition * 2);
                                 puVar20 = puVar19;
                                 do {
                                     while (true) {
@@ -239,7 +242,7 @@ namespace UI {
                                                             + (uVar4 >> 10 & 0xffff001f) * 8));
                                                 pbVar16 = pbVar16 + 1;
                                                 puVar19 = puVar19 + 1;
-                                                iVar14 = iVar14 + -1;
+                                                iVar14 = iVar14 - 1;
                                                 imageAddress = pbVar16;
                                             } while (iVar14);
                                         }
@@ -263,25 +266,30 @@ namespace UI {
                                                       | *(ushort*)(iVar6 + 0xd7d2dc + (uVar9 >> 10 & 0xffff001f) * 8))
                                                 + (uVar5 & 0x3ff | uVar4);
                                             puVar19 = puVar19 + 1;
-                                            iVar14 = iVar14 + -1;
+                                            iVar14 = iVar14 - 1;
                                         } while (iVar14);
                                     }
                                     puVar19 = (ushort*)((int)puVar20 + local_8);
-                                    height = height + -1;
+                                    height = height - 1;
                                     imageAddress = pbVar16;
                                     puVar20 = puVar19;
                                 } while (0 < height);
                             }
                         }
                     } else {
-                        DAT_TextureRenderCoreObject::instance.currentRenderSurface = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame;
+                        DAT_TextureRenderCoreObject::instance.currentRenderSurface
+                            = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame;
                         uVar11 = xPosition & 1;
                         if ((yPosition + height <= DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.end)
-                            || (height = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.end - yPosition, 0 < height)) {
+                            || (height
+                                = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.end - yPosition,
+                                0 < height)) {
                             if (DAT_WindowAndDirectDraw::instance.colorBitMode == OpenSHC::Rendering::RGB_555) {
                                 if (-1 < xPosition) {
-                                    if (yPosition < DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start) {
-                                        iVar14 = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start - yPosition;
+                                    if (yPosition
+                                        < DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start) {
+                                        iVar14 = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start
+                                            - yPosition;
                                         if (height <= iVar14) {
                                             DAT_TextureRenderCoreObject::instance.currentRenderSurface
                                                 = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame;
@@ -303,8 +311,9 @@ namespace UI {
                                                     break;
                                                 imageAddress = pbVar16 + 2;
                                             }
-                                            iVar14 = iVar14 + -1;
-                                            yPosition = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start;
+                                            iVar14 = iVar14 - 1;
+                                            yPosition
+                                                = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start;
                                         } while (0 < iVar14);
                                     }
                                     iVar14 = (int)DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame
@@ -360,7 +369,7 @@ namespace UI {
                                                     }
                                                     pbVar16 = pbVar16 + 1;
                                                     local_14 = local_14 + 1;
-                                                    iVar8 = iVar8 + -1;
+                                                    iVar8 = iVar8 - 1;
                                                     imageAddress = pbVar16;
                                                 } while (iVar8);
                                             }
@@ -389,11 +398,11 @@ namespace UI {
                                                         + (uVar5 & 0x3ff | uVar4);
                                                 }
                                                 local_14 = local_14 + 1;
-                                                iVar8 = iVar8 + -1;
+                                                iVar8 = iVar8 - 1;
                                             } while (iVar8);
                                         }
                                         iVar14 = iVar14 + 0x1fb0;
-                                        if (height + -1 < 1) {}
+                                        if (height - 1 < 1) {}
                                         while (true) {
                                             while (true) {
                                                 do {
@@ -409,7 +418,7 @@ namespace UI {
                                                 break;
                                             pbVar16 = pbVar18 + 2;
                                         }
-                                        height = height + -2;
+                                        height = height - 2;
                                         imageAddress = pbVar16;
                                         uVar7 = uVar11;
                                     } while (0 < height);
@@ -417,7 +426,8 @@ namespace UI {
                             }
                             if (-1 < xPosition) {
                                 if (yPosition < DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start) {
-                                    iVar14 = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start - yPosition;
+                                    iVar14 = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start
+                                        - yPosition;
                                     if (height <= iVar14) {
                                         DAT_TextureRenderCoreObject::instance.currentRenderSurface
                                             = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame;
@@ -439,8 +449,9 @@ namespace UI {
                                                 break;
                                             imageAddress = pbVar16 + 2;
                                         }
-                                        iVar14 = iVar14 + -1;
-                                        yPosition = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start;
+                                        iVar14 = iVar14 - 1;
+                                        yPosition
+                                            = DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start;
                                     } while (0 < iVar14);
                                 }
                                 iVar14 = (int)DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame
@@ -492,7 +503,7 @@ namespace UI {
                                                 }
                                                 pbVar16 = pbVar16 + 1;
                                                 local_14 = local_14 + 1;
-                                                iVar8 = iVar8 + -1;
+                                                iVar8 = iVar8 - 1;
                                                 imageAddress = pbVar16;
                                             } while (iVar8);
                                         }
@@ -520,11 +531,11 @@ namespace UI {
                                                     + (uVar5 & 0x7ff | uVar4);
                                             }
                                             local_14 = local_14 + 1;
-                                            iVar8 = iVar8 + -1;
+                                            iVar8 = iVar8 - 1;
                                         } while (iVar8);
                                     }
                                     iVar14 = iVar14 + 0x1fb0;
-                                    if (height + -1 < 1) {}
+                                    if (height - 1 < 1) {}
                                     while (true) {
                                         while (true) {
                                             do {
@@ -540,7 +551,7 @@ namespace UI {
                                             break;
                                         pbVar16 = pbVar18 + 2;
                                     }
-                                    height = height + -2;
+                                    height = height - 2;
                                     imageAddress = pbVar16;
                                     uVar7 = uVar11;
                                 } while (0 < height);

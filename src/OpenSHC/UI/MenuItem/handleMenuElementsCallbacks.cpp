@@ -61,12 +61,12 @@ namespace UI {
         if ((!this->iconDeactivatedUnk_0x36) && (!this->unknownZero)) {
             this->hovering = 0;
             local_8 = MVar10;
-            if (MVar10 != ((MenuItemType)0)) {
-                if ((MVar10 == ((MenuItemType)1)) && (DAT_ScrollingHandler::instance.isScrolling_0x0)) {
+            if (MVar10 != (MenuItemType)0) {
+                if (MVar10 == (MenuItemType)1 && DAT_ScrollingHandler::instance.isScrolling_0x0) {
                     (*(this->menuItemActionHandler).simple)((this->callbackParameter).parameter);
                     return 0;
                 }
-                if ((this->clicked)
+                if (this->clicked
                     && (DVar5 = timeGetTime(),
                         this->menuPointer->thousand
                             < (int)(DVar5 - (this->secondItemTypeData).buttonState.clickTimestamp_0x4))) {
@@ -272,10 +272,10 @@ namespace UI {
                         DAT_ButtonX::instance = this->menuPointer->xPosition + (this->position).position.x;
                         DAT_ButtonY::instance = this->menuPointer->yPosition + (this->position).position.y;
                         BOOL_CurrentMenuClickState::instance = (BOOLEnum)this->clicked;
-                        if ((this->menuItemRenderFunctionType == OpenSHC::UI::Enums::MIRFT_GM_DATA_IMAGE)
-                            && (((this->firstItemTypeData).gmDataIndex
-                                    & OpenSHC::Rendering::Enums::GDI_USE_PIXEL_MOUSE_HIT_CHECKUnk)
-                                != OpenSHC::Rendering::Enums::GDI_NONE_0)) {
+                        if (this->menuItemRenderFunctionType == OpenSHC::UI::Enums::MIRFT_GM_DATA_IMAGE
+                            && ((this->firstItemTypeData).gmDataIndex
+                                   & OpenSHC::Rendering::Enums::GDI_USE_PIXEL_MOUSE_HIT_CHECKUnk)
+                                != OpenSHC::Rendering::Enums::GDI_NONE_0) {
                             DAT_CurrentButtonGmDataIndex::instance = (this->firstItemTypeData).gmDataIndex & 0x7fffff;
                             DAT_ButtonCurrentlyInteracting::instance
                                 = (BOOLEnum)(short)(this->hovering | this->clicked);
@@ -288,8 +288,8 @@ namespace UI {
                                 return 0;
                             }
                         }
-                        if (((*(int*)&this->textMessageLookupIndex) != -1)
-                            && (!DAT_MenuModalComposition1::instance.mbr_0x78)) {
+                        if ((*(int*)&this->textMessageLookupIndex) != -1
+                            && !DAT_MenuModalComposition1::instance.mbr_0x78) {
                             this->menuPointer->hoveredItem = this;
                         }
                         pMVar4 = this->menuPointer;
@@ -327,8 +327,8 @@ namespace UI {
                         } else {
                             if (DAT_MouseState::instance.leftClickStart)
                                 goto LAB_004f444b;
-                            if ((!DAT_MouseState::instance.leftClickState) || (MVar10 != ((MenuItemType)2))) {
-                                if ((DAT_MouseState::instance.draggingStopped) && (MVar10 == ((MenuItemType)10))) {
+                            if (!DAT_MouseState::instance.leftClickState || MVar10 != (MenuItemType)2) {
+                                if (DAT_MouseState::instance.draggingStopped && MVar10 == (MenuItemType)10) {
                                     DVar5 = timeGetTime();
                                     (this->secondItemTypeData).buttonState.clickTimestamp_0x4 = DVar5;
                                     (this->secondItemTypeData).buttonState.someTimestamp_1_0x0 = DVar5;
@@ -340,7 +340,7 @@ namespace UI {
                                     DAT_StopHandlingMenuItems::instance = 0;
                                     return 0;
                                 }
-                                if (this->menuItemRenderFunctionType == ((MenuItemRenderFunctionType)2)) {
+                                if (this->menuItemRenderFunctionType == (MenuItemRenderFunctionType)2) {
                                     if (DAT_MouseState::instance.scrollEventData == 7) {
                                         iVar8 = 2;
                                     } else {
@@ -358,13 +358,13 @@ namespace UI {
                                         iVar9 = 10;
                                         do {
                                             (*(this->menuItemActionHandler).simple)(iVar8);
-                                            iVar9 = iVar9 + -1;
+                                            iVar9 = iVar9 - 1;
                                         } while (iVar9);
                                     } else {
                                         iVar9 = 100;
                                         do {
                                             (*(this->menuItemActionHandler).simple)(iVar8);
-                                            iVar9 = iVar9 + -1;
+                                            iVar9 = iVar9 - 1;
                                         } while (iVar9);
                                     }
                                     (this->secondItemTypeData).buttonState.countTo100 = 0;

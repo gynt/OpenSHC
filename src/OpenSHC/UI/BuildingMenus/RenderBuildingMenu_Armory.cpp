@@ -73,7 +73,8 @@ namespace UI {
         _positionPtr = DAT_RenderingDefinedData::instance.ArmoryIconsPositionNudges;
         do {
             iVar2 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                        .currentResources[*(int*)((int)DAT_RenderingDefinedData::instance.ArmoryMenuResourceTypes + iVar5)];
+                        .currentResources[*(
+                            int*)((int)DAT_RenderingDefinedData::instance.ArmoryMenuResourceTypes + iVar5)];
             iVar6 = _positionPtr->y + iVar1;
             iVar8 = _positionPtr->x + iVar4;
             iVar3 = *(int*)((int)DAT_RenderingDefinedData::instance.ArmoryMenuResourceIcons + iVar5);
@@ -89,9 +90,8 @@ namespace UI {
                 iVar3 = *(int*)((int)DAT_RenderingDefinedData::instance.ArmoryMenuResourceIcons + iVar5);
                 BVar7 = MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::isMouseInsideBox, DAT_MouseState::ptr)(
                     _positionPtr->x + iVar4, _positionPtr->y + iVar1,
-                    (int)(DAT_GMImageHeaders::instance.imh[GMTotalPicturesProcessed::instance[0x2e] + iVar3 + -1]
-                            .width),
-                    (int)(DAT_GMImageHeaders::instance.imh[GMTotalPicturesProcessed::instance[0x2e] + iVar3 + -1]
+                    (int)(DAT_GMImageHeaders::instance.imh[GMTotalPicturesProcessed::instance[0x2e] + iVar3 - 1].width),
+                    (int)(DAT_GMImageHeaders::instance.imh[GMTotalPicturesProcessed::instance[0x2e] + iVar3 - 1]
                             .height));
                 if ((BVar7)
                     && (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -109,8 +109,8 @@ namespace UI {
                         MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                             OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU, 0);
                         DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                            .marketSelectedResourceType
-                            = *(ResourceTypeInt*)((int)DAT_RenderingDefinedData::instance.ArmoryMenuResourceTypes + iVar5);
+                            .marketSelectedResourceType = *(
+                            ResourceTypeInt*)((int)DAT_RenderingDefinedData::instance.ArmoryMenuResourceTypes + iVar5);
                     }
                 }
             }

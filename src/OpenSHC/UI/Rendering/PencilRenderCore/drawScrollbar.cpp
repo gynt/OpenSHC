@@ -22,13 +22,13 @@ namespace UI {
             int alphaImageID;
             int _yPosEnd = height + yPos;
             int _yPos = yPos;
-            if (yPos <= _yPosEnd + -0x14) {
+            if (yPos <= _yPosEnd - 0x14) {
                 do {
                     MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                         DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3, 0x4f, (int)(xPos), _yPos,
                         IO::Graphics::GID_INTERFACE_ICONS_3, 0x50, blendStrength);
                     _yPos = _yPos + 0x14;
-                } while (_yPos <= _yPosEnd + -0x14);
+                } while (_yPos <= _yPosEnd - 0x14);
             }
             for (; _yPos < _yPosEnd; _yPos = _yPos + 1) {
                 MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
@@ -44,14 +44,14 @@ namespace UI {
                 MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
                     DE::SHCDE::GM_INTERFACE_ICONS3, 100, (int)(xPos), thumbYPos + yPos);
                 _yPos = thumbYPos + 10;
-                if (10 < thumbHeight + -10) {
-                    _yPosEnd = thumbHeight + -0x14;
+                if (10 < thumbHeight - 10) {
+                    _yPosEnd = thumbHeight - 0x14;
                     do {
                         MACRO_CALL_MEMBER(
                             UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
                             DE::SHCDE::GM_INTERFACE_ICONS3, 0x65, (int)(xPos), _yPos + yPos);
                         _yPos = _yPos + 1;
-                        _yPosEnd = _yPosEnd + -1;
+                        _yPosEnd = _yPosEnd - 1;
                     } while (_yPosEnd);
                 }
                 MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
@@ -66,14 +66,14 @@ namespace UI {
                     DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3, 100, (int)(xPos),
                     thumbYPos + yPos, IO::Graphics::GID_INTERFACE_ICONS_3, 0x67, blendStrength);
                 _yPos = thumbYPos + 10;
-                if (10 < thumbHeight + -10) {
-                    thumbYPos = thumbHeight + -0x14;
+                if (10 < thumbHeight - 10) {
+                    thumbYPos = thumbHeight - 0x14;
                     do {
                         MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                             DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3, 0x65, (int)(xPos),
                             _yPos + yPos, IO::Graphics::GID_INTERFACE_ICONS_3, 0x68, blendStrength);
                         _yPos = _yPos + 1;
-                        thumbYPos = thumbYPos + -1;
+                        thumbYPos = thumbYPos - 1;
                     } while (thumbYPos);
                 }
                 alphaImageID = 0x69;

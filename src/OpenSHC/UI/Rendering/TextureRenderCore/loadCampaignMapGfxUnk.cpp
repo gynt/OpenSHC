@@ -84,7 +84,7 @@ namespace UI {
                     _campaignMapPtrUnk[2] = uVar3;
                     _campaignMapPtrUnk = _campaignMapPtrUnk + 4;
                     pbVar4 = pbVar4 + 0xc;
-                    iVar5 = iVar5 + -1;
+                    iVar5 = iVar5 - 1;
                 } while (iVar5);
                 _campaignActGfx8Ptr = _campaignActGfx8Ptr + 1;
             } while ((int)_campaignActGfx8Ptr < 0xab8730);

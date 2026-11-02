@@ -40,7 +40,7 @@ namespace UI {
         } while ((int)pGVar3 < 0xed2630);
         piVar4 = &DAT_ARRAY_00ed26d0::instance[1].y;
         do {
-            ((XYPair*)(piVar4 + -1))->x = 0x40;
+            ((XYPair*)(piVar4 - 1))->x = 0x40;
             *piVar4 = 0x40;
             piVar4 = piVar4 + 2;
         } while ((int)piVar4 < 0xed277c);
@@ -85,7 +85,7 @@ namespace UI {
                         MACRO_CALL(OS_Func::_fread)(
                             (void*)(iVar9 + (int)DAT_TextureRenderCoreObject::instance.gmAndGfxImageDataBuffer), 800, 1,
                             _File);
-                        iVar6 = iVar6 + -800;
+                        iVar6 = iVar6 - 800;
                         iVar9 = iVar9 + 800;
                     } while (-800 < iVar6);
                 }
@@ -128,7 +128,6 @@ namespace UI {
             MACRO_CALL(OS_Func::_free_base)(dstBuffer);
             MACRO_CALL(OS_Func::_fclose)(_File);
         }
-        return;
     }
 
 }

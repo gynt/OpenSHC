@@ -76,9 +76,9 @@ namespace UI {
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
         _nudges = DAT_RenderingDefinedData::instance.StockpileIconsPositionNudges;
         do {
-            number
-                = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                      .currentResources[*(int*)((int)DAT_RenderingDefinedData::instance.StockpileMenuResourceTypes + _index4)];
+            number = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                         .currentResources[*(
+                             int*)((int)DAT_RenderingDefinedData::instance.StockpileMenuResourceTypes + _index4)];
             /*
               Render resource image
              */
@@ -90,9 +90,8 @@ namespace UI {
                 int iVar1 = *(int*)((int)DAT_RenderingDefinedData::instance.StockpileMenuResourceIcons + _index4);
                 BVar2 = MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::isMouseInsideBox, DAT_MouseState::ptr)(
                     _nudges->x + _x, _nudges->y + _y,
-                    (int)(DAT_GMImageHeaders::instance.imh[iVar1 + GMTotalPicturesProcessed::instance[0x2e] + -1]
-                            .width),
-                    (int)(DAT_GMImageHeaders::instance.imh[iVar1 + GMTotalPicturesProcessed::instance[0x2e] + -1]
+                    (int)(DAT_GMImageHeaders::instance.imh[iVar1 + GMTotalPicturesProcessed::instance[0x2e] - 1].width),
+                    (int)(DAT_GMImageHeaders::instance.imh[iVar1 + GMTotalPicturesProcessed::instance[0x2e] - 1]
                             .height));
                 if ((BVar2)
                     && (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -111,7 +110,8 @@ namespace UI {
                             OpenSHC::UI::Enums::MVT_BUILDING_AND_STATUS_MENU, 0);
                         DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .marketSelectedResourceType
-                            = *(ResourceTypeInt*)((int)DAT_RenderingDefinedData::instance.StockpileMenuResourceTypes + _index4);
+                            = *(ResourceTypeInt*)((int)DAT_RenderingDefinedData::instance.StockpileMenuResourceTypes
+                                + _index4);
                     }
                 }
             }

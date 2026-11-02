@@ -76,7 +76,7 @@ namespace UI {
                 if (!DAT_TextManagerObject::instance.field5_0x14) {
                     iVar3 = _yPosUnk - DAT_GMImageHeaders::instance.imh[_imageId].tileOffset;
                     MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
-                        xPos + -1, iVar3 + -2, DAT_GMImageHeaders::instance.imh[_imageId].width + 1 + xPos,
+                        xPos - 1, iVar3 - 2, DAT_GMImageHeaders::instance.imh[_imageId].width + 1 + xPos,
                         iVar3 + 2 + lineHeight, (ushort)(COL_WHITE::instance.shortValue));
                 }
                 if (DAT_TextManagerObject::instance.field6_0x18) {

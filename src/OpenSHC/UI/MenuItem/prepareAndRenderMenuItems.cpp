@@ -44,8 +44,8 @@ namespace UI {
                         .gmId_0x0];
                 iVar5 = DAT_UIButtonDefinedData::instance.ButtonGmDataArray[(this->firstItemTypeData).gmDataIndex]
                             .pictureInGm_0x4;
-                this->itemWidth = (int)DAT_GMImageHeaders::instance.imh[iVar5 + iVar7 + -1].width;
-                this->itemHeight = (int)DAT_GMImageHeaders::instance.imh[iVar5 + iVar7 + -1].height;
+                this->itemWidth = (int)DAT_GMImageHeaders::instance.imh[iVar5 + iVar7 - 1].width;
+                this->itemHeight = (int)DAT_GMImageHeaders::instance.imh[iVar5 + iVar7 - 1].height;
             }
             DAT_ButtonX::instance
                 = (this->menuPointer->xPosition - this->menuPointer->currentBuildMenuButtonShiftUnk_0x14)

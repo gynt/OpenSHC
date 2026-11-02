@@ -64,7 +64,7 @@ namespace UI {
                         FLAG_ChristmasAIMessage01to04::instance = TRUE;
                         break;
                     }
-                    iVar2 = iVar2 + -1;
+                    iVar2 = iVar2 - 1;
                 } while (0 < iVar2);
             }
             /*

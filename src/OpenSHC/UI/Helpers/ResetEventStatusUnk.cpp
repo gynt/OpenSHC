@@ -202,7 +202,7 @@ namespace UI {
                     INT_00ec02e8::instance = 1;
                 }
                 _event = _event + 0xe4;
-                iVar5 = iVar5 + -1;
+                iVar5 = iVar5 - 1;
             } while (iVar5);
         }
         iVar5 = 0;

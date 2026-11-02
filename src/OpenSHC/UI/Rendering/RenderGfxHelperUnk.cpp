@@ -18,8 +18,8 @@ namespace UI {
         if ((_width == 0x400) && (_height == 0x300)) {
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::drawGfxOnFlaggedSurface,
                 DAT_TextureRenderCoreObject::ptr)(loadedGfxIndex,
-                DAT_WindowAndDirectDraw::instance.resolutionX + -0x400 >> 1,
-                DAT_WindowAndDirectDraw::instance.resolutionY + -0x300 >> 1);
+                DAT_WindowAndDirectDraw::instance.resolutionX - 0x400 >> 1,
+                DAT_WindowAndDirectDraw::instance.resolutionY - 0x300 >> 1);
         }
         if (DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth <= xPos
             && _width + xPos

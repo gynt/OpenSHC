@@ -10,7 +10,7 @@ namespace UI {
             ushort* _colorPtr;
             ushort _color;
             _colorPtr = (ushort*)((int)this->gmProcessedImageData + imageOffset);
-            for (; 0 < imageSize; imageSize = imageSize + -2) {
+            for (; 0 < imageSize; imageSize = imageSize - 2) {
                 _color = *_colorPtr;
                 if (_color != 63519) {
                     *_colorPtr = (_color & 0x1f) + ((_color & 0x3e0) >> 5) * 0x40 + ((_color & 0x7c00) >> 10) * 0x800;

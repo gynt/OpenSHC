@@ -35,7 +35,7 @@ namespace UI {
                         = DAT_UnitTypeRelatedCounter::instance[_unitType] + 1;
                 }
                 _unit = _unit + 0x248;
-                iVar2 = iVar2 + -1;
+                iVar2 = iVar2 - 1;
             } while (iVar2);
         }
     }

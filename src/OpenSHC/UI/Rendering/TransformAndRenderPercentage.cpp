@@ -47,7 +47,7 @@ namespace UI {
         }
         DAT_TextManagerObject::instance.field8_0x20 = 1;
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
-            integer, xPos + -2, yPos + 1, OpenSHC::Text::TTA_RIGHT, color, 0, 0x12, FALSE, 0);
+            integer, xPos - 2, yPos + 1, OpenSHC::Text::TTA_RIGHT, color, 0, 0x12, FALSE, 0);
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
             OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, imageID, xPos, iVar2 + yPos);
         DAT_TextManagerObject::instance.field8_0x20 = 0;

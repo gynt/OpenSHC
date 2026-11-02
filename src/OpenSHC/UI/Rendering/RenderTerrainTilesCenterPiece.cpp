@@ -26,8 +26,8 @@ namespace UI {
         ushort* puVar8;
         undefined* puVar9;
         _drawYTileRow = (DAT_00ed3154::instance - DAT_RenderMap_YOffset::instance) + DAT_RenderMap_DrawSomeY::instance;
-        if (((int)_drawYTileRow < DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.end)
-            && (DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start <= (int)_drawYTileRow)) {
+        if ((int)_drawYTileRow < DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.end
+            && DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start <= (int)_drawYTileRow) {
             puVar7 = (undefined4*)(DAT_GMImageOffsets::instance[DAT_GmImageAddressToBeRendered::instance]
                 + (int)DAT_TextureRenderCoreObject::instance.gmProcessedImageData);
             if (!DAT_TextureRenderCoreObject::instance.isZoom2) {

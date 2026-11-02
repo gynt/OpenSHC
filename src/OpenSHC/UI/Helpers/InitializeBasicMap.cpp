@@ -69,7 +69,7 @@ namespace UI {
         DAT_GameCore::instance.mapU4Int3_balanced = 0;
         psVar1 = DAT_MapPropertiesState::instance.SEC_MercRecruitable;
         do {
-            (((BarracksRecruitabilityShort*)(psVar1 + -7))->recruitability).archers = 1;
+            (((BarracksRecruitabilityShort*)(psVar1 - 7))->recruitability).archers = 1;
             *psVar1 = 1;
             psVar1 = psVar1 + 1;
         } while ((int)psVar1 < 0x1653df6);

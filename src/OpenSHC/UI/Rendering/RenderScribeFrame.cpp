@@ -53,9 +53,9 @@ namespace UI {
             OpenSHC::DE::SHCDE::GM_SCRIBE, DAT_GameCore::instance.scribeAnimationFrame,
             DAT_MenuHandlerState::instance.x + 0x2c0, DAT_MenuHandlerState::instance.y + 399);
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
-        if ((((DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILD_MENU)
-                 && (DAT_GameCore::instance.activeMenuTab.tabType != OpenSHC::UI::Enums::BASMTT_SIEGETENT_BATTERINGRAM))
-                && (!DAT_GameCore::instance.isTimeHalted))
+        if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_BUILD_MENU
+            && DAT_GameCore::instance.activeMenuTab.tabType != OpenSHC::UI::Enums::BASMTT_SIEGETENT_BATTERINGRAM
+            && !DAT_GameCore::instance.isTimeHalted
             && (BVar1 = MACRO_CALL(OpenSHC::UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(
                     OpenSHC::UI::Enums::DEID_KEEP_AND_GRANERY_PLACEMENT_INFO),
                 !BVar1)) {
@@ -65,7 +65,7 @@ namespace UI {
             backgroundColor = 0;
             foregroundColor = 0xb8eefb;
             alignment = OpenSHC::Text::TTA_LEFT;
-            yParam = DAT_WindowAndDirectDraw::instance.resolutionY + -0x14;
+            yParam = DAT_WindowAndDirectDraw::instance.resolutionY - 0x14;
             xParam = DAT_MenuHandlerState::instance.x + 0x124;
             textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                 DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MONTHS, DAT_GameState::instance.mapAndTime.month);
@@ -74,7 +74,7 @@ namespace UI {
                 blendStrength);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                 DAT_GameState::instance.mapAndTime.year, DAT_MenuHandlerState::instance.x + 0x128,
-                DAT_WindowAndDirectDraw::instance.resolutionY + -0x14, OpenSHC::Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE,
+                DAT_WindowAndDirectDraw::instance.resolutionY - 0x14, OpenSHC::Text::TTA_LEFT, 0xb8eefb, 0, 0x12, TRUE,
                 0);
         }
     }

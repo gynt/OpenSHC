@@ -65,11 +65,11 @@ namespace UI {
                             }
                             _screenSurfacePtr = _screenSurfacePtr + 1;
                             _mapSurfacePtr = _mapSurfacePtr + 1;
-                            _runWidth = _runWidth + -1;
+                            _runWidth = _runWidth - 1;
                         } while (_runWidth);
                         _screenSurfacePtr = (ushort*)((int)_screenSurfacePtr + _lineJumpBytes);
                         _mapSurfacePtr = _mapSurfacePtr + (0xfd8 - _width);
-                        _height = _height + -1;
+                        _height = _height - 1;
                         _runWidth = _width;
                     } while (_height);
                     _yPosPtr = _yPosPtr + 4;

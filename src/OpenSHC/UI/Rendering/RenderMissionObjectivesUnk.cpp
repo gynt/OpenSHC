@@ -87,9 +87,9 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 pcVar2, iVar4, iVar1, TVar7, BVar8, iVar9, BVar10, iVar11);
             do {
-                if ((INT_ARRAY_00ed2630::instance[iVar6] != 0)
-                    && (((iVar6 != 0x12 && (iVar6 != 0x13))
-                        || (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_BUILDERUnk)))) {
+                if (INT_ARRAY_00ed2630::instance[iVar6] != 0
+                    && ((iVar6 != 0x12 && (iVar6 != 0x13))
+                        || (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_BUILDERUnk))) {
                     iVar1 = iVar6;
                     if (0x13 < iVar6) {
                         iVar1 = iVar6 + 1;
@@ -105,7 +105,7 @@ namespace UI {
                     iVar4 = MACRO_CALL_MEMBER(
                         OpenSHC::Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(pcVar2, iVar4);
                     iVar1 = iVar4 + 0x1e;
-                    if (local_8 + -5 < iVar1) {
+                    if (local_8 - 5 < iVar1) {
                         local_8 = iVar4 + 0x23;
                     }
                     if (iVar6 - 1U < 0x17) {
@@ -119,7 +119,7 @@ namespace UI {
                         case 21:
                         case 22:
                         case 23:
-                            if (iVar5 + -5 < iVar1) {
+                            if (iVar5 - 5 < iVar1) {
                                 iVar5 = iVar4 + 0x23;
                             }
                             iVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::computeNumberTextWidth,
@@ -166,7 +166,7 @@ namespace UI {
                                     DAT_TextManagerObject::ptr)(local_c, 0x12);
                                 iVar1 = iVar1 + iVar4 + iVar9;
                             }
-                            if (local_8 + -5 < iVar1 + iVar5) {
+                            if (local_8 - 5 < iVar1 + iVar5) {
                                 local_8 = iVar1 + iVar5 + 5;
                             }
                             break;
@@ -174,7 +174,7 @@ namespace UI {
                         case 6:
                         case 7:
                         case 17:
-                            if (iVar5 + -5 < iVar1) {
+                            if (iVar5 - 5 < iVar1) {
                                 iVar5 = iVar4 + 0x23;
                             }
                             iVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::computeNumberTextWidth,
@@ -183,8 +183,8 @@ namespace UI {
                                 iVar4 = 0x12;
                                 pcVar2
                                     = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GOODS,
-                                        (int)((int)(INT_ARRAY_00eb1238::instance[iVar6])));
+                                        DAT_TextManagerObject::ptr)(
+                                        OpenSHC::DE::SHCDE::TEXT_GOODS, (int)(INT_ARRAY_00eb1238::instance[iVar6]));
                                 iVar4 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::computeTextWidth,
                                     DAT_TextManagerObject::ptr)(pcVar2, iVar4);
                                 iVar1 = iVar1 + 6 + iVar4;
@@ -203,7 +203,7 @@ namespace UI {
                                     DAT_TextManagerObject::ptr)(local_c, 0x12);
                                 iVar1 = iVar1 + iVar9 + iVar4;
                             }
-                            if (local_8 + -5 < iVar1 + iVar5) {
+                            if (local_8 - 5 < iVar1 + iVar5) {
                                 local_8 = iVar1 + iVar5 + 5;
                             }
                         }
@@ -213,14 +213,14 @@ namespace UI {
             } while (iVar6 < 0x27);
             iVar1 = 0;
             do {
-                if ((INT_ARRAY_00ed2630::instance[iVar1] != 0)
-                    && (((iVar1 != 0x12 && (iVar1 != 0x13))
-                        || (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_BUILDERUnk)))) {
+                if (INT_ARRAY_00ed2630::instance[iVar1] != 0
+                    && ((iVar1 != 0x12 && (iVar1 != 0x13))
+                        || (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_BUILDERUnk))) {
                     iVar4 = iVar1;
                     if (0x13 < iVar1) {
                         iVar4 = iVar1 + 1;
                     }
-                    if (((iVar4 == 0x11) || (iVar4 == 5)) || (iVar4 == 6)) {
+                    if (iVar4 == 0x11 || iVar4 == 5 || iVar4 == 6) {
                         iVar4 = 7;
                     } else if (iVar4 == 0xf) {
                         iVar4 = 8;
@@ -332,8 +332,8 @@ namespace UI {
                                 iVar6 = yParam;
                                 pcVar2
                                     = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                                        DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GOODS,
-                                        (int)((int)(INT_ARRAY_00eb1238::instance[iVar1])));
+                                        DAT_TextManagerObject::ptr)(
+                                        OpenSHC::DE::SHCDE::TEXT_GOODS, (int)(INT_ARRAY_00eb1238::instance[iVar1]));
                                 MACRO_CALL_MEMBER(
                                     OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                                     pcVar2, iVar4, iVar6, TVar7, BVar8, iVar9, BVar10, iVar11);
@@ -366,7 +366,7 @@ namespace UI {
                         iVar4 = yParam;
                     } else {
                         iVar6 = 6;
-                        iVar4 = yParam + -0x19;
+                        iVar4 = yParam - 0x19;
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_BUTTONS, iVar6,
@@ -417,7 +417,7 @@ namespace UI {
                 }
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                     DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_SLIDER_BAR, 1, iVar6,
-                    yParam + -1, OpenSHC::IO::Graphics::GID_INTERFACE_SLIDER_BAR, 3, 0);
+                    yParam - 1, OpenSHC::IO::Graphics::GID_INTERFACE_SLIDER_BAR, 3, 0);
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                 yParam = yParam + 0x15;
             }
@@ -428,9 +428,9 @@ namespace UI {
                 piVar3 = &DAT_MapPropertiesState::instance.scenarioEvents[0].header.tl_type;
                 iVar4 = local_4;
                 do {
-                    if ((((*piVar3 != 1) || (local_4 = iVar1, piVar3[0x1e] != 0))
-                            && ((local_4 = iVar4, *piVar3 == 3 && (*(char*)((int)piVar3 + 0x17) != '\0'))))
-                        && ((piVar3[3] == 1 || (piVar3[3] == 0x1b)))) {
+                    if (((*piVar3 != 1) || (local_4 = iVar1, piVar3[0x1e] != 0))
+                        && (local_4 = iVar4, *piVar3 == 3 && (*(char*)((int)piVar3 + 0x17) != '\0'))
+                        && (piVar3[3] == 1 || (piVar3[3] == 0x1b))) {
                         if (iVar4 == -1) {
                             iVar5 = 0x11;
                             local_4 = iVar1;
@@ -490,7 +490,7 @@ namespace UI {
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                         DAT_TextureRenderCoreObject::ptr)(OpenSHC::IO::Graphics::GID_INTERFACE_SLIDER_BAR, 1, iVar6,
-                        yParam + -1, OpenSHC::IO::Graphics::GID_INTERFACE_SLIDER_BAR, 3, 0);
+                        yParam - 1, OpenSHC::IO::Graphics::GID_INTERFACE_SLIDER_BAR, 3, 0);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                     yParam = yParam + 0x15;
@@ -500,8 +500,9 @@ namespace UI {
         if (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_BUILDERUnk) {
             return yParam;
         }
-        iVar5 = (yParam - DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight) + -0x1e;
-        pcVar2 = MACRO_CALL(OpenSHC::Global_Func::GetStringBasedOnHardcodedMaps)(DAT_GameCore::instance.standaloneFilename, &local_4);
+        iVar5 = (yParam - DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight) - 0x1e;
+        pcVar2 = MACRO_CALL(OpenSHC::Global_Func::GetStringBasedOnHardcodedMaps)(
+            DAT_GameCore::instance.standaloneFilename, &local_4);
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(pcVar2,
             DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 400,
             DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 10, OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x11,
@@ -518,7 +519,7 @@ namespace UI {
             iVar9 = 0x12;
             color = 0xc2f0eb;
             iVar6 = 0x2d0;
-            INT_00ed27c4::instance = (iVar4 + -1) / iVar1 + 1;
+            INT_00ed27c4::instance = (iVar4 - 1) / iVar1 + 1;
             iVar5 = (DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight - DAT_00eb0b24::instance * iVar1) + 0x32
                 + iVar5;
             iVar1 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x28;
@@ -534,7 +535,7 @@ namespace UI {
             iVar4 = 0;
             pcVar2 = MACRO_CALL_MEMBER(
                 OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
-                OpenSHC::DE::SHCDE::TEXT_MAP_NAMES, (int)((int)(DAT_GameCore::instance.descriptionStringTableIndex)));
+                OpenSHC::DE::SHCDE::TEXT_MAP_NAMES, (int)(DAT_GameCore::instance.descriptionStringTableIndex));
             iVar4 = MACRO_CALL_MEMBER(OpenSHC::Text::FontSizeClass_Func::renderMultilineTextUnk,
                 &DAT_TextManagerObject::instance.fontSizeClassArray[0x12])(
                 pcVar2, iVar4, iVar6, iVar9, BVar8, iVar11, iVar12);
@@ -542,13 +543,13 @@ namespace UI {
             iVar9 = 0x12;
             color = 0xc2f0eb;
             iVar6 = 0x2d0;
-            INT_00ed27c4::instance = (iVar4 + -1) / iVar1 + 1;
+            INT_00ed27c4::instance = (iVar4 - 1) / iVar1 + 1;
             iVar5 = (DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight - DAT_00eb0b24::instance * iVar1) + 0x32
                 + iVar5;
             iVar1 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x28;
             pcVar2 = MACRO_CALL_MEMBER(
                 OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
-                OpenSHC::DE::SHCDE::TEXT_MAP_NAMES, (int)((int)(DAT_GameCore::instance.descriptionStringTableIndex)));
+                OpenSHC::DE::SHCDE::TEXT_MAP_NAMES, (int)(DAT_GameCore::instance.descriptionStringTableIndex));
         }
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
             pcVar2, iVar1, iVar5, iVar6, color, iVar9, iVar11);

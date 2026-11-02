@@ -88,7 +88,7 @@ namespace UI {
         psVar4 = DAT_MapPropertiesState::instance.SEC_MercRecruitable;
         DAT_GameSynchronyState::instance.currentPlayerSlotID = iVar8;
         do {
-            (((OpenSHC::Game::Scenario::BarracksRecruitabilityShort*)(psVar4 + -7))->recruitability).archers = 1;
+            (((OpenSHC::Game::Scenario::BarracksRecruitabilityShort*)(psVar4 - 7))->recruitability).archers = 1;
             *psVar4 = 1;
             psVar4 = psVar4 + 1;
         } while ((int)psVar4 < 0x1653df6);
@@ -96,7 +96,7 @@ namespace UI {
             pcVar5 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                 DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance
                     .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
-                        + DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected + -1]);
+                        + DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected - 1]);
             pcVar10 = local_7e0;
             do {
                 cVar3 = *pcVar5;
@@ -221,7 +221,7 @@ namespace UI {
             pcVar10 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                 DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance
                     .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
-                        + DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected + -1]);
+                        + DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected - 1]);
             pcVar5 = DAT_GameCore::instance.standaloneFilename;
             do {
                 cVar3 = *pcVar10;
@@ -332,31 +332,24 @@ namespace UI {
         } else {
             if (DAT_MapMissionType::instance == 2) {
                 DAT_GameState::instance.mapAndTime.siegeInformation.archers = DAT_SiegeInformationArray::instance[0];
-                DAT_GameState::instance.mapAndTime.siegeInformation.crossbowmen = DAT_SiegeInformationArray::instance[1];
+                DAT_GameState::instance.mapAndTime.siegeInformation.crossbowmen
+                    = DAT_SiegeInformationArray::instance[1];
                 DAT_GameState::instance.mapAndTime.siegeInformation.pikemen = DAT_SiegeInformationArray::instance[3];
-                DAT_GameState::instance.mapAndTime.siegeInformation.macemen
-                    = DAT_SiegeInformationArray::instance[4];
-                DAT_GameState::instance.mapAndTime.siegeInformation.knights
-                    = DAT_SiegeInformationArray::instance[6];
-                DAT_GameState::instance.mapAndTime.siegeInformation.laddermen
-                    = DAT_SiegeInformationArray::instance[7];
-                DAT_GameState::instance.mapAndTime.siegeInformation.monks
-                    = DAT_SiegeInformationArray::instance[9];
-                DAT_GameState::instance.mapAndTime.siegeInformation.slaves
-                    = DAT_SiegeInformationArray::instance[0xb];
+                DAT_GameState::instance.mapAndTime.siegeInformation.macemen = DAT_SiegeInformationArray::instance[4];
+                DAT_GameState::instance.mapAndTime.siegeInformation.knights = DAT_SiegeInformationArray::instance[6];
+                DAT_GameState::instance.mapAndTime.siegeInformation.laddermen = DAT_SiegeInformationArray::instance[7];
+                DAT_GameState::instance.mapAndTime.siegeInformation.monks = DAT_SiegeInformationArray::instance[9];
+                DAT_GameState::instance.mapAndTime.siegeInformation.slaves = DAT_SiegeInformationArray::instance[0xb];
                 DAT_GameState::instance.mapAndTime.siegeInformation.spearmen = DAT_SiegeInformationArray::instance[2];
-                DAT_GameState::instance.mapAndTime.siegeInformation.slingers
-                    = DAT_SiegeInformationArray::instance[0xc];
+                DAT_GameState::instance.mapAndTime.siegeInformation.slingers = DAT_SiegeInformationArray::instance[0xc];
                 DAT_GameState::instance.mapAndTime.siegeInformation.assassins
                     = DAT_SiegeInformationArray::instance[0xd];
-                DAT_GameState::instance.mapAndTime.siegeInformation.swordsmen
-                    = DAT_SiegeInformationArray::instance[5];
+                DAT_GameState::instance.mapAndTime.siegeInformation.swordsmen = DAT_SiegeInformationArray::instance[5];
                 DAT_GameState::instance.mapAndTime.siegeInformation.horseArchers
                     = DAT_SiegeInformationArray::instance[0xe];
                 DAT_GameState::instance.mapAndTime.siegeInformation.arabianSwordsmen
                     = DAT_SiegeInformationArray::instance[0xf];
-                DAT_GameState::instance.mapAndTime.siegeInformation.engineers
-                    = DAT_SiegeInformationArray::instance[8];
+                DAT_GameState::instance.mapAndTime.siegeInformation.engineers = DAT_SiegeInformationArray::instance[8];
                 DAT_GameState::instance.mapAndTime.siegeInformation.fireThrowers
                     = DAT_SiegeInformationArray::instance[0x10];
                 DAT_GameState::instance.mapAndTime.siegeInformation.fireBallistas
@@ -382,9 +375,9 @@ namespace UI {
                         local_7e8 = 0;
                         psVar4 = &DAT_UnitsState::instance.units[1].dying;
                         do {
-                            if ((((psVar4[-0x10a] == OpenSHC::Map::Units::ULS_NORMAL) && (*psVar4 == 0))
-                                    && (psVar4[-0x105] == DAT_GameSynchronyState::instance.currentPlayerSlotID))
-                                && (psVar4[2] != 0)) {
+                            if (psVar4[-0x10a] == OpenSHC::Map::Units::ULS_NORMAL && *psVar4 == 0
+                                && psVar4[-0x105] == DAT_GameSynchronyState::instance.currentPlayerSlotID
+                                && psVar4[2] != 0) {
                                 iVar7
                                     = MACRO_CALL_MEMBER(OpenSHC::Map::Units::TroopValueState_Func::getValueOfTroopType,
                                         DAT_TroopValueState::ptr)((OpenSHC::Map::Units::UnitType)((int)psVar4[-0x109]));
@@ -409,9 +402,9 @@ namespace UI {
                             uVar12 = 1;
                             psVar4 = &DAT_UnitsState::instance.units[1].dying;
                             do {
-                                if (((psVar4[-0x10a] == OpenSHC::Map::Units::ULS_NORMAL) && (*psVar4 == 0))
-                                    && ((psVar4[-0x105] == DAT_GameSynchronyState::instance.currentPlayerSlotID
-                                        && ((psVar4[2] != 0 && (iVar8 = iVar8 + 1, iVar8 == local_7e8)))))) {
+                                if (psVar4[-0x10a] == OpenSHC::Map::Units::ULS_NORMAL && *psVar4 == 0
+                                    && psVar4[-0x105] == DAT_GameSynchronyState::instance.currentPlayerSlotID
+                                    && psVar4[2] != 0 && (iVar8 = iVar8 + 1, iVar8 == local_7e8)) {
                                     iVar7 = MACRO_CALL_MEMBER(
                                         OpenSHC::Map::Units::TroopValueState_Func::getValueOfTroopType,
                                         DAT_TroopValueState::ptr)((OpenSHC::Map::Units::UnitType)((int)psVar4[-0x109]));
@@ -420,10 +413,9 @@ namespace UI {
                                         OpenSHC::Map::Units::UnitsState_Func::deleteUnit, DAT_UnitsState::ptr)(uVar12);
                                     if (((psVar4[-0x109] == OpenSHC::Map::Units::UT_S_MANGONEL)
                                             || (psVar4[-0x109] == OpenSHC::Map::Units::UT_S_BALLISTA))
-                                        && (DAT_TileMapState::instance.BuildingLayer[*(int*)(psVar4 + -0xe6)] != 0)) {
+                                        && DAT_TileMapState::instance.BuildingLayer[*(int*)(psVar4 - 0xe6)] != 0) {
                                         DAT_BuildingsState::instance
-                                            .buildings[DAT_TileMapState::instance
-                                                    .BuildingLayer[*(int*)(psVar4 + -0xe6)]]
+                                            .buildings[DAT_TileMapState::instance.BuildingLayer[*(int*)(psVar4 - 0xe6)]]
                                             .containsSiegeMangonel1OrBallista2 = 0;
                                     }
                                     if (iVar9 < 1) {

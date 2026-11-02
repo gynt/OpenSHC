@@ -22,18 +22,18 @@ namespace UI {
                 _windowHandle = GetForegroundWindow();
                 if (_windowHandle == this->windowHandle) {
                     if (!this->NOTSelfBufferOrWindowMode_0xf8) {
-                        _sourceRect.left = windowedX + -0x20;
-                        _sourceRect.top = windowedY + -8;
+                        _sourceRect.left = windowedX - 0x20;
+                        _sourceRect.top = windowedY - 8;
                         _sourceRect.right = windowedWidth + 0x20;
                         _sourceRect.bottom = windowedHeigth + 8;
                         _destinationRect.left
                             = (this->clientOnScreenCoords.left
                                   - DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetX)
-                            + -0x20 + windowedX;
+                            - 0x20 + windowedX;
                         _destinationRect.top
                             = (this->clientOnScreenCoords.top
                                   - DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetY)
-                            + -8 + windowedY;
+                            - 8 + windowedY;
                         _destinationRect.right
                             = (this->clientOnScreenCoords.left
                                   - DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetX)
@@ -52,9 +52,8 @@ namespace UI {
                         _destinationRect.right = this->gameResolutionX;
                         _destinationRect.bottom = this->gameResolutionY;
                     }
-                    MACRO_CALL_MEMBER(
-                        UI::Rendering::WindowAndDirectDraw_Func::adjustForNotExclusiveFullscreenUnk, this)(
-                        &_destinationRect, &_sourceRect);
+                    MACRO_CALL_MEMBER(UI::Rendering::WindowAndDirectDraw_Func::adjustForNotExclusiveFullscreenUnk,
+                        this)(&_destinationRect, &_sourceRect);
                     this->directDrawBackbufferSurfacePointer->Blt(&_destinationRect,
                         this->directDrawOffscreenSurfacePointer_mapGame, &_sourceRect, 0x1000000, (LPDDBLTFX)0x0);
                     if (this->NOTSelfBufferOrWindowMode_0xf8 == TRUE) {

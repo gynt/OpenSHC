@@ -21,7 +21,7 @@ namespace UI {
             _drawReady = MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::setupPencil, this)(
                 left, top, right, bottom, 0);
             if (_drawReady) {
-                for (; -1 < this->currentHeight_0x2c; this->currentHeight_0x2c = this->currentHeight_0x2c + -1) {
+                for (; -1 < this->currentHeight_0x2c; this->currentHeight_0x2c = this->currentHeight_0x2c - 1) {
                     MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::dimHorizontalLine, this)();
                     this->drawStartY = this->drawStartY + 1;
                 }

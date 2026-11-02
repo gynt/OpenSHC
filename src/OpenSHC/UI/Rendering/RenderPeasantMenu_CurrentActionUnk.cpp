@@ -63,7 +63,7 @@ namespace UI {
             iVar2 = xPos + 5;
             iVar3 = yPos;
             pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GOODS, (int)((int)(_entry)));
+                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_GOODS, (int)(_entry));
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 pcVar1, iVar2, iVar3, TVar4, BVar5, iVar6, BVar7, iVar8);
             BVar7 = TRUE;
@@ -107,8 +107,8 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     pcVar1, iVar2, iVar3, TVar4, BVar5, iVar6, BVar7, iVar8);
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                    OpenSHC::DE::SHCDE::TEXT_GOODS, (int)((int)(_entry)), xPos + 5, yPos, OpenSHC::Text::TTA_LEFT, 0,
-                    0x12, TRUE);
+                    OpenSHC::DE::SHCDE::TEXT_GOODS, (int)(_entry), xPos + 5, yPos, OpenSHC::Text::TTA_LEFT, 0, 0x12,
+                    TRUE);
             }
         LAB_0043cd7c:
             BVar7 = FALSE;
@@ -127,7 +127,7 @@ namespace UI {
         BVar5 = 0;
         TVar4 = OpenSHC::Text::TTA_LEFT;
         pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-            DAT_TextManagerObject::ptr)(_group, (int)((int)(_entry)));
+            DAT_TextManagerObject::ptr)(_group, (int)(_entry));
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             pcVar1, xPos, yPos, TVar4, BVar5, iVar2, BVar7, iVar3);
     }

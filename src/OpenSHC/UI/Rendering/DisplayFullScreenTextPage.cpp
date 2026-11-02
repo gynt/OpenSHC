@@ -27,7 +27,7 @@ namespace UI {
         DAT_TextManagerObject::instance.textSurfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
         DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
-            0, 0, 600, 800, (ushort)((int)(COL_BLACK::instance.shortValue)));
+            0, 0, 600, 800, (ushort)(COL_BLACK::instance.shortValue));
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
             DAT_ArrayOfStoredMenuStrings::instance[param_1], 0xf, 0xcd, 0x20d, 0xccfaff, 0x11, 0);
         INT_00eb0e28::instance = DAT_TextManagerObject::instance.field1_0x4 + 0xd7;
@@ -38,7 +38,6 @@ namespace UI {
         DAT_PencilRenderCore::instance.surfaceTarget = RVar1;
         DAT_TextManagerObject::instance.textSurfaceTarget = RVar2;
         DAT_ARRAY_00ed26d0::instance[0].x = timeGetTime();
-        return;
     }
 
 }

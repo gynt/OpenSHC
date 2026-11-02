@@ -51,21 +51,21 @@ namespace UI {
             if (DAT_WindowAndDirectDraw::instance.colorBitMode == OpenSHC::Rendering::RGB_565) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::transformTgxFromRGB555ToRGB565, this)(
                     (ushort*)((int)pvVar1 + (int)DAT_GameState::ptr + _backwardsBufferSize + 0x3c860),
-                    DAT_ResourceManager::instance.loadPositionInCurrentResource + -8);
+                    DAT_ResourceManager::instance.loadPositionInCurrentResource - 8);
             }
             this->loadedGfxArray[this->backwardsLoadedGfxIndex_0x16C850].offsetInBuffer
                 = (0x1167910 - this->loadedGfxArray[this->backwardsLoadedGfxIndex_0x16C850].backwardsOffsetInBuffer)
                 - _size;
-            this->loadedGfxArray[this->backwardsLoadedGfxIndex_0x16C850 + -1].backwardsOffsetInBuffer
+            this->loadedGfxArray[this->backwardsLoadedGfxIndex_0x16C850 - 1].backwardsOffsetInBuffer
                 = this->loadedGfxArray[this->backwardsLoadedGfxIndex_0x16C850].backwardsOffsetInBuffer
                 + DAT_ResourceManager::instance.loadPositionInCurrentResource;
             this->loadedGfxArray[this->backwardsLoadedGfxIndex_0x16C850].backwardsOffsetInBuffer
-                = this->loadedGfxArray[this->backwardsLoadedGfxIndex_0x16C850 + -1].backwardsOffsetInBuffer;
+                = this->loadedGfxArray[this->backwardsLoadedGfxIndex_0x16C850 - 1].backwardsOffsetInBuffer;
             this->loadedGfxArray[this->backwardsLoadedGfxIndex_0x16C850].width = *(int*)_destination;
             this->loadedGfxArray[this->backwardsLoadedGfxIndex_0x16C850].height
                 = *(int*)((int)pvVar1 + (int)DAT_GameState::ptr + _backwardsBufferSize + 0x3c85c);
             _backwardsBufferSize = this->backwardsLoadedGfxIndex_0x16C850;
-            this->backwardsLoadedGfxIndex_0x16C850 = this->backwardsLoadedGfxIndex_0x16C850 + -1;
+            this->backwardsLoadedGfxIndex_0x16C850 = this->backwardsLoadedGfxIndex_0x16C850 - 1;
             return _backwardsBufferSize;
         }
 

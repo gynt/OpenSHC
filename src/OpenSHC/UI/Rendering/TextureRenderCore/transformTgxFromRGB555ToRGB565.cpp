@@ -22,7 +22,7 @@ namespace UI {
             while (_texPtr = (TgxTokenByte*)tgxDataPtr, _numBytesLeft = tgxByteSize, 0 < _numBytesLeft) {
                 _pixToken = *_texPtr & IO::Graphics::TT_TGX_PIXEL_HEADER;
                 _lengthOfPixelString = (*_texPtr & 0x1f) + 1;
-                tgxByteSize = _numBytesLeft + -1;
+                tgxByteSize = _numBytesLeft - 1;
                 tgxDataPtr = (ushort*)(_texPtr + 1);
                 if (_pixToken != IO::Graphics::TT_NEWLINE) {
                     if (_pixToken == IO::Graphics::TT_REPEATING_PIXELS) {
@@ -30,7 +30,7 @@ namespace UI {
                         *tgxDataPtr = (_current555col & IO::Graphics::TT_TGX_PIXEL_LENGTH)
                             + ((ushort)(_current555col & 0x3e0) >> 5) * 0x40
                             + ((ushort)(_current555col & 0x7c00) >> 10) * 0x800;
-                        tgxByteSize = _numBytesLeft + -3;
+                        tgxByteSize = _numBytesLeft - 3;
                         tgxDataPtr = (ushort*)(_texPtr + 3);
                     } else if (_pixToken != IO::Graphics::TT_TRANSPARENT_PIXELS) {
                         do {
@@ -40,9 +40,9 @@ namespace UI {
                                     + ((ushort)(_current555col & 0x3e0) >> 5) * 0x40
                                     + ((ushort)(_current555col & 0x7c00) >> 10) * 0x800;
                             }
-                            tgxByteSize = tgxByteSize + -2;
+                            tgxByteSize = tgxByteSize - 2;
                             tgxDataPtr = (ushort*)((int)tgxDataPtr + 2);
-                            _lengthOfPixelString = _lengthOfPixelString + -1;
+                            _lengthOfPixelString = _lengthOfPixelString - 1;
                         } while (0 < _lengthOfPixelString);
                     }
                 }

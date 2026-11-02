@@ -25,12 +25,12 @@ namespace UI {
         int _loopCounterUnk;
         bool _noResourceUnk;
         int _resourceCost;
-        ResourceTypeInt _unitGoldCost = DAT_TroopDefinedData::instance.MarketResourceCycleArray[barrackUnitIdUnk + -1];
+        ResourceTypeInt _unitGoldCost = DAT_TroopDefinedData::instance.MarketResourceCycleArray[barrackUnitIdUnk - 1];
         if ((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
             && (!DAT_GameSynchronyState::instance.skirmishTroopsCostGold)) {
             _unitGoldCost = ((ResourceType)0);
         }
-        if (DAT_GameState::instance.mapAndTime.euroRecruitable[barrackUnitIdUnk + -0x16] == 0) {
+        if (DAT_GameState::instance.mapAndTime.euroRecruitable[barrackUnitIdUnk - 0x16] == 0) {
             return Map::Units::ERS_NOT_ALLOWED_TO_RECRUIT;
         }
         if (DAT_GameState::instance.mapAndTime.armySizeLimit

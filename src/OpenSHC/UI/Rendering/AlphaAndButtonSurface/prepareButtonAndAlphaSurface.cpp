@@ -40,14 +40,14 @@ namespace UI {
                                 _pictureInGm != 0)) {
                             dVar1 = (dword)DAT_GMImageHeaders::instance
                                         .imh[_currentIconIndex + GMTotalPicturesProcessed::instance[_gmID]
-                                            + _pictureInGm + -1]
+                                            + _pictureInGm - 1]
                                         .width;
                             if (this->dim1_intMinimal350_1 < (int)dVar1) {
                                 this->dim1_intMinimal350_1 = dVar1;
                             }
                             dVar1 = (dword)DAT_GMImageHeaders::instance
                                         .imh[_currentIconIndex + GMTotalPicturesProcessed::instance[_gmID]
-                                            + _pictureInGm + -1]
+                                            + _pictureInGm - 1]
                                         .height;
                             if ((int)_maxImageHeight < (int)dVar1) {
                                 _maxImageHeight = dVar1;

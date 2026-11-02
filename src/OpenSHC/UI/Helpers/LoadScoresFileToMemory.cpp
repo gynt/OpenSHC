@@ -22,7 +22,6 @@ namespace UI {
             } while ((int)dstBuffer < 0xed27f0);
             MACRO_CALL(OS_Func::_fclose)(_File);
         }
-        return;
     }
 
 }

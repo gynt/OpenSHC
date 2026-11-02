@@ -48,7 +48,7 @@ namespace UI {
                         this->drawStartX = pTVar3->field0_0x0[_currentIndexForX] + dVar1;
                         this->drawEndX = dVar2 - pTVar3->field0_0x0[_currentIndexForX];
                         MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawHorizontalLine, this)();
-                        this->currentHeight_0x2c = this->currentHeight_0x2c + -1;
+                        this->currentHeight_0x2c = this->currentHeight_0x2c - 1;
                         this->drawStartY = this->drawStartY + 1;
                         _currentIndexForX = _currentIndexForX + 1;
                         this->drawStartX = dVar1;
@@ -56,13 +56,13 @@ namespace UI {
                     } while (_currentIndexForX < (int)roundingLevel);
                 }
                 for (; (int)roundingLevel <= this->currentHeight_0x2c;
-                    this->currentHeight_0x2c = this->currentHeight_0x2c + -1) {
+                    this->currentHeight_0x2c = this->currentHeight_0x2c - 1) {
                     MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawHorizontalLine, this)();
                     this->drawStartY = this->drawStartY + 1;
                 }
                 for (;
                     (-1 < (int)(roundingLevel - ((RoundedBoxEdgeRoundingLevel)1)) && (-1 < this->currentHeight_0x2c));
-                    this->currentHeight_0x2c = this->currentHeight_0x2c + -1) {
+                    this->currentHeight_0x2c = this->currentHeight_0x2c - 1) {
                     this->drawStartX = pTVar3->field0_0x0[roundingLevel - 1] + dVar1;
                     this->drawEndX = dVar2 - pTVar3->field0_0x0[roundingLevel - 1];
                     MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawHorizontalLine, this)();

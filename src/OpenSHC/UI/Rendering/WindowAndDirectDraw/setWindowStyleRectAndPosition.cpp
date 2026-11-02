@@ -42,7 +42,7 @@ namespace UI {
             SetRect(&this->clientOnScreenCoords, 0, 0, _x, _y);
             this->gameInWindowPosY_0x34 = (_intendedWindowRect.bottom - _intendedWindowRect.top) - this->resolutionY;
             this->gameInWindowPosX_0x30 = (_intendedWindowRect.right - this->resolutionX) - _intendedWindowRect.left;
-            this->gameOnScreenPosY_0x2c = (this->screenVerticalResolutionInPixels - this->gameResolutionY) / 2 + -0x14;
+            this->gameOnScreenPosY_0x2c = (this->screenVerticalResolutionInPixels - this->gameResolutionY) / 2 - 0x14;
             this->gameOnScreenPosX_0x28 = (this->screenHorizontalResolutionInPixels - this->gameResolutionX) / 2;
             SetWindowPos(this->windowHandle, (HWND__*)-2, this->gameOnScreenPosX_0x28 - _intendedWindowRect.left,
                 this->gameOnScreenPosY_0x2c - _intendedWindowRect.top,
@@ -50,7 +50,6 @@ namespace UI {
                 _intendedWindowRect.bottom - _intendedWindowRect.top, 0x10);
             UpdateWindow(this->windowHandle);
             SetFocus(this->windowHandle);
-            return;
         }
 
     }

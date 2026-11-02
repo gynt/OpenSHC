@@ -16,15 +16,15 @@ namespace UI {
         void PencilRenderCore::drawBorderedBoxWithBlendedBackground(int xPos, int yPos, int width, int height)
         {
             int iVar4;
-            int iVar1 = ((height + -1) / 0x18 + 1) * 0x18;
-            int iVar2 = ((width + -1) / 0x18 + 1) * 0x18;
+            int iVar1 = ((height - 1) / 0x18 + 1) * 0x18;
+            int iVar2 = ((width - 1) / 0x18 + 1) * 0x18;
             int iVar3 = 0;
             if (0 < iVar1) {
                 do {
                     if (!iVar3) {
                         iVar4 = 1;
                     } else {
-                        iVar4 = (-(uint)(iVar3 != iVar1 + -0x18) & 0xfffffffa) + 0xd;
+                        iVar4 = (-(uint)(iVar3 != iVar1 - 0x18) & 0xfffffffa) + 0xd;
                     }
                     int iVar5 = 0;
                     if (0 < iVar2) {
@@ -36,7 +36,7 @@ namespace UI {
                                     DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3, imageID,
                                     iVar5 + xPos, iVar3 + yPos, IO::Graphics::GID_INTERFACE_ICONS_3, imageID + 3, 0);
                             } else {
-                                if (iVar5 == iVar2 + -0x18) {
+                                if (iVar5 == iVar2 - 0x18) {
                                     imageID = iVar4 + 2;
                                     goto LAB_004713ce;
                                 }
@@ -52,7 +52,7 @@ namespace UI {
                 } while (iVar3 < iVar1);
             }
             MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox, this)(
-                xPos + 0x18, yPos + 0x18, xPos + -0x19 + iVar2, yPos + -0x19 + iVar1, 0x10);
+                xPos + 0x18, yPos + 0x18, xPos - 0x19 + iVar2, yPos - 0x19 + iVar1, 0x10);
         }
 
     }

@@ -111,7 +111,7 @@ namespace UI {
         if (!DAT_FileDoesntExist::instance && (!DAT_00df5558::instance || (INT_00df5650::instance))
             && !DAT_00df5540::instance) {
             uVar4 = DAT_00df5544::instance;
-            if (DAT_00df5558::instance < DAT_00df555c::instance + -1) {
+            if (DAT_00df5558::instance < DAT_00df555c::instance - 1) {
                 BVar2 = MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::isSampleOrStreamPlaying,
                     DAT_SoundSystemState::ptr)(Audio::MSS::enums::SND_STR_SPEECH_1);
                 if (!BVar2
@@ -356,14 +356,13 @@ namespace UI {
             && DAT_MissionAestheticsDefinedData::instance
                     .TutorialStepShowsContinueButton[DAT_TutorialCurrentStep::instance]
                 != 0
-            && DAT_00df555c::instance + -1 <= DAT_00df5558::instance) {
+            && DAT_00df555c::instance - 1 <= DAT_00df5558::instance) {
             /*
               show continue button?
              */
             MACRO_CALL(UI::MenuItems::TutorialBox_Func::MenuItemActionHandler_TutorialBox_Main)(1);
         }
     LAB_004bd764:;
-        return;
     }
 
 }

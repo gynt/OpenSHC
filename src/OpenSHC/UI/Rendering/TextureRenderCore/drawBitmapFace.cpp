@@ -31,12 +31,12 @@ namespace UI {
                     = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame;
             } else if (DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                 == OpenSHC::Rendering::Enums::RT_BUTTON_AND_ALPHA) {
-                _pixelToJump = AlphaAndButtonSurfaceObj::instance.currentImageWidth + -0x40;
+                _pixelToJump = AlphaAndButtonSurfaceObj::instance.currentImageWidth - 0x40;
                 _widthInByte = AlphaAndButtonSurfaceObj::instance.currentImageWidth * 2;
                 DAT_TextureRenderCoreObject::instance.currentRenderSurface
                     = AlphaAndButtonSurfaceObj::instance.surfacePtr;
             } else {
-                _pixelToJump = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine / 2 + -0x40;
+                _pixelToJump = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine / 2 - 0x40;
                 _widthInByte = DAT_WindowAndDirectDraw::instance.byteSizeOfOneHorizontalLine;
                 DAT_TextureRenderCoreObject::instance.currentRenderSurface
                     = DAT_WindowAndDirectDraw::instance.surfacePointer_screenMenu;
@@ -53,10 +53,10 @@ namespace UI {
                         *_ptrInSurface = _currentPixel;
                     }
                     _ptrInSurface = _ptrInSurface + 1;
-                    _facePixelWidth = _facePixelWidth + -1;
+                    _facePixelWidth = _facePixelWidth - 1;
                 } while (_facePixelWidth);
                 _ptrInSurface = _ptrInSurface + _pixelToJump;
-                _widthInByte = _widthInByte + -1;
+                _widthInByte = _widthInByte - 1;
             } while (_widthInByte);
         }
 

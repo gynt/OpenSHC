@@ -81,7 +81,7 @@ namespace UI {
             paaiVar7 = paaiVar7 + 1;
         } while ((int)paaiVar7 < 0xb95ab8);
         if (param_1 != 1) {
-            iVar11 = DAT_RenderingDefinedData::instance.ScribeAnimationFrames1[param_1 + -0x18];
+            iVar11 = DAT_RenderingDefinedData::instance.ScribeAnimationFrames1[param_1 - 0x18];
             iVar12 = 0;
             iVar9 = 0;
             piVar14 = DAT_SiegeInformationArray_2::instance[param_1][0] + 1;
@@ -89,7 +89,7 @@ namespace UI {
                 iVar1 = *(int*)((int)DAT_RenderingDefinedData::instance.NoRushTicks + iVar9 + 0x74);
                 iVar10 = iVar9 + 0xc;
                 *(int*)((int)DAT_SiegeInformationArray_2::instance[1][0] + iVar9)
-                    = ((*(int (*)[3])(piVar14 + -1))[0] * 100) / iVar11;
+                    = ((*(int (*)[3])(piVar14 - 1))[0] * 100) / iVar11;
                 *(int*)((int)DAT_SiegeInformationArray_2::instance[1][0] + iVar9 + 4) = (*piVar14 * 100) / iVar11;
                 iVar8 = (piVar14[1] * 100) / iVar11;
                 iVar2 = *(int*)((int)DAT_RenderingDefinedData::instance.NoRushTicks + iVar9 + 0x6c);
@@ -110,16 +110,16 @@ namespace UI {
         local_14 = DAT_SiegeInformationArray_2::instance[0][0] + 1;
         do {
             if ((local_18 != param_1) && (local_18 != 1)) {
-                iVar12 = DAT_RenderingDefinedData::instance.ScribeAnimationFrames1[local_18 + -0x18];
+                iVar12 = DAT_RenderingDefinedData::instance.ScribeAnimationFrames1[local_18 - 0x18];
                 iVar13 = 0;
                 iVar11 = 0;
                 piVar14 = local_14;
                 do {
-                    (*(int (*)[3])(piVar14 + -1))[0]
+                    (*(int (*)[3])(piVar14 - 1))[0]
                         = (*(int*)((int)DAT_SiegeInformationArray_2::instance[1][0] + iVar11) * iVar12) / 100;
                     *piVar14 = (*(int*)((int)DAT_SiegeInformationArray_2::instance[1][0] + iVar11 + 4) * iVar12) / 100;
                     iVar9 = *(int*)((int)DAT_RenderingDefinedData::instance.NoRushTicks + iVar11 + 0x6c);
-                    iVar1 = (*(int (*)[3])(piVar14 + -1))[0];
+                    iVar1 = (*(int (*)[3])(piVar14 - 1))[0];
                     iVar10 = (*(int*)((int)DAT_SiegeInformationArray_2::instance[1][0] + iVar11 + 8) * iVar12) / 100;
                     iVar2 = *(int*)((int)DAT_RenderingDefinedData::instance.NoRushTicks + iVar11 + 0x70);
                     iVar6 = *piVar14;

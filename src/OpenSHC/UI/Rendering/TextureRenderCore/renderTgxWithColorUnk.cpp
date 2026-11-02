@@ -39,7 +39,7 @@ namespace UI {
                 _lineByteWidth = 0x1fb0;
                 iVar1 = this->mapGameSurfaceHeightRange.end;
             }
-            if (((height + yPos <= iVar1) || (height = iVar1 - yPos, 0 < height)) && (-1 < xPos)) {
+            if (((height + yPos <= iVar1) || (height = iVar1 - yPos, 0 < height)) && -1 < xPos) {
                 if (yPos < _heightStart) {
                     iVar1 = _heightStart - yPos;
                     if (height <= iVar1) {}
@@ -60,7 +60,7 @@ namespace UI {
                                 break;
                             imageSource = (ushort*)(_tgxHeader + 3);
                         }
-                        iVar1 = iVar1 + -1;
+                        iVar1 = iVar1 - 1;
                         yPos = _heightStart;
                     } while (0 < iVar1);
                 }
@@ -84,7 +84,7 @@ namespace UI {
                                 *_drawingPosition = fillColorUnk;
                                 _tgxHeader = _tgxHeader + 2;
                                 _drawingPosition = _drawingPosition + 1;
-                                iVar1 = iVar1 + -1;
+                                iVar1 = iVar1 - 1;
                                 imageSource = (ushort*)_tgxHeader;
                             } while (iVar1);
                         }
@@ -95,11 +95,11 @@ namespace UI {
                         do {
                             *_drawingPosition = fillColorUnk;
                             _drawingPosition = _drawingPosition + 1;
-                            iVar1 = iVar1 + -1;
+                            iVar1 = iVar1 - 1;
                         } while (iVar1);
                     }
                     _drawingPosition = (ushort*)((int)_drawingPosition + width);
-                    height = height + -1;
+                    height = height - 1;
                     imageSource = (ushort*)_tgxHeader;
                 } while (0 < height);
             }

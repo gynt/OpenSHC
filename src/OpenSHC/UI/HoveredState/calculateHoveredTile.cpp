@@ -105,13 +105,13 @@ namespace UI {
                         break;
                     case 2:
                         imageX = 0x2d;
-                        iVar3 = iVar3 + -1;
+                        iVar3 = iVar3 - 1;
                         iVar2 = iVar2 + 1;
                         imageY = -0xe;
                         break;
                     case 4:
                         imageX = 0xd;
-                        iVar3 = iVar3 + -1;
+                        iVar3 = iVar3 - 1;
                         imageY = -0x1e;
                         goto LAB_00511bbe;
                     case 6:
@@ -119,7 +119,7 @@ namespace UI {
                         iVar3 = iVar3 + 1;
                         imageY = -0xc;
                     LAB_00511bbe:
-                        iVar2 = iVar2 + -1;
+                        iVar2 = iVar2 - 1;
                     }
                     MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::createFloatingLayerElement,
                         DAT_ViewportRenderState::ptr)(IO::Graphics::GID_BODY_TENT, 1, imageX, imageY,
@@ -137,7 +137,7 @@ namespace UI {
                 }
             LAB_00511c12:
                 piVar6 = piVar6 + 6;
-                local_8 = local_8 + -1;
+                local_8 = local_8 - 1;
             } while (local_8);
         }
         DAT_TileMapState::instance.uiBuildingRotation = iVar1;

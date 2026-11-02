@@ -43,13 +43,13 @@ namespace UI {
                         0x4c, blendStrength);
                     iVar1 = iVar1 + 0x14;
                 }
-                if (iVar1 < DAT_ButtonW::instance + -0x14 + DAT_ButtonX::instance) {
+                if (iVar1 < DAT_ButtonW::instance - 0x14 + DAT_ButtonX::instance) {
                     do {
                         MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                             DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3, 0x4a, iVar1,
                             (int)(DAT_ButtonY::instance), IO::Graphics::GID_INTERFACE_ICONS_3, 0x4d, blendStrength);
                         iVar1 = iVar1 + 0x14;
-                    } while (iVar1 < DAT_ButtonW::instance + -0x14 + DAT_ButtonX::instance);
+                    } while (iVar1 < DAT_ButtonW::instance - 0x14 + DAT_ButtonX::instance);
                 }
             } else {
                 if (DAT_ButtonW::instance < 0x15) {
@@ -61,13 +61,13 @@ namespace UI {
                         0x4c, blendStrength);
                     iVar1 = iVar1 + 0x14;
                 }
-                if (iVar1 < DAT_ButtonW::instance + -0x14 + DAT_ButtonX::instance) {
+                if (iVar1 < DAT_ButtonW::instance - 0x14 + DAT_ButtonX::instance) {
                     do {
                         MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGMWithAlphaMask,
                             DAT_TextureRenderCoreObject::ptr)(IO::Graphics::GID_INTERFACE_ICONS_3, 0x4a, iVar1,
                             (int)(DAT_ButtonY::instance), IO::Graphics::GID_INTERFACE_ICONS_3, 0x4d, blendStrength);
                         iVar1 = iVar1 + 0x14;
-                    } while (iVar1 < DAT_ButtonW::instance + -0x14 + DAT_ButtonX::instance);
+                    } while (iVar1 < DAT_ButtonW::instance - 0x14 + DAT_ButtonX::instance);
                 }
             }
             if (DAT_ButtonW::instance < 0x16) {}

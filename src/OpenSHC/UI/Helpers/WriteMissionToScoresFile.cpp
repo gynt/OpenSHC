@@ -50,7 +50,7 @@ namespace UI {
             iVar2 = 9;
             do {
                 MACRO_CALL(OS_Func::_fwrite)(local_2c, 4, 1, _fileHandle2);
-                iVar2 = iVar2 + -1;
+                iVar2 = iVar2 - 1;
             } while (iVar2);
             MACRO_CALL(OS_Func::_fclose)(_fileHandle2);
             INT_00ec0828::instance = 0;
@@ -61,7 +61,7 @@ namespace UI {
         do {
             piVar3 = (int*)((int)piVar3 + 4);
             MACRO_CALL(OS_Func::_fread)(piVar3, 4, 1, _fileHandle);
-            iVar2 = iVar2 + -1;
+            iVar2 = iVar2 - 1;
         } while (iVar2);
         MACRO_CALL(OS_Func::_fclose)(_fileHandle);
         INT_00ec0828::instance = local_2c[1];
@@ -74,7 +74,7 @@ namespace UI {
         if (iVar2 < 9) {
             do {
                 local_2c[iVar1 + 1] = local_2c[iVar1];
-                iVar1 = iVar1 + -1;
+                iVar1 = iVar1 - 1;
             } while (iVar2 < iVar1);
         }
         local_2c[iVar2 + 1] = param_2;
@@ -89,7 +89,7 @@ namespace UI {
         do {
             piVar3 = (int*)((int)piVar3 + 4);
             MACRO_CALL(OS_Func::_fwrite)(piVar3, 4, 1, _File);
-            iVar2 = iVar2 + -1;
+            iVar2 = iVar2 - 1;
         } while (iVar2);
         MACRO_CALL(OS_Func::_fclose)(_File);
         MACRO_CALL(UI::Helpers_Func::LoadScoresFileToMemory)(param_1);

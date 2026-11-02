@@ -17,15 +17,15 @@ namespace UI {
             int xPos, int yPos, int width, int height, int blendStrength)
         {
             int iVar4;
-            int iVar1 = ((width + -1) / 0x18 + 1) * 0x18;
-            int iVar2 = ((height + -1) / 0x18 + 1) * 0x18;
+            int iVar1 = ((width - 1) / 0x18 + 1) * 0x18;
+            int iVar2 = ((height - 1) / 0x18 + 1) * 0x18;
             int iVar3 = 0;
             if (0 < iVar2) {
                 do {
                     if (!iVar3) {
                         iVar4 = 1;
                     } else {
-                        iVar4 = (-(uint)(iVar3 != iVar2 + -0x18) & 0xfffffffa) + 0xd;
+                        iVar4 = (-(uint)(iVar3 != iVar2 - 0x18) & 0xfffffffa) + 0xd;
                     }
                     int iVar5 = 0;
                     if (0 < iVar1) {
@@ -38,7 +38,7 @@ namespace UI {
                                     iVar5 + xPos, iVar3 + yPos, IO::Graphics::GID_INTERFACE_ICONS_3, imageID + 3,
                                     blendStrength);
                             } else {
-                                if (iVar5 == iVar1 + -0x18) {
+                                if (iVar5 == iVar1 - 0x18) {
                                     imageID = iVar4 + 2;
                                     goto LAB_004714da;
                                 }
@@ -53,9 +53,9 @@ namespace UI {
                     iVar3 = iVar3 + 0x18;
                 } while (iVar3 < iVar2);
             }
-            iVar3 = (blendStrength + -0x20) * 0x10;
+            iVar3 = (blendStrength - 0x20) * 0x10;
             MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox, this)(
-                xPos + 0x18, yPos + 0x18, xPos + -0x19 + iVar1, yPos + -0x19 + iVar2, (iVar3 / 32) + 0x20);
+                xPos + 0x18, yPos + 0x18, xPos - 0x19 + iVar1, yPos - 0x19 + iVar2, (iVar3 / 32) + 0x20);
         }
 
     }

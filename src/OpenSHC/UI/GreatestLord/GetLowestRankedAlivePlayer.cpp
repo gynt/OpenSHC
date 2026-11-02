@@ -22,7 +22,7 @@ namespace UI {
             }
             _playerID = _playerID + 1;
         } while (_playerID < 9);
-        _playerID = MACRO_CALL(UI::GreatestLord_Func::GetPlayerAtRank)(_total + -1);
+        _playerID = MACRO_CALL(UI::GreatestLord_Func::GetPlayerAtRank)(_total - 1);
         return _playerID;
     }
 

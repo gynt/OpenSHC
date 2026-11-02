@@ -64,18 +64,18 @@ namespace UI {
         do {
             _resourceType = (OpenSHC::Game::Resources::ResourceType)(DAT_RenderingDefinedData::instance
                     .MarketStonksOrder[_index]);
-            if (_resourceType != ((ResourceType)0)) {
+            if (_resourceType != (ResourceType)0) {
                 if (_index < 13) {
                     if (_index < 10) {
                         iVar4 = 40;
                         iVar1 = _index;
                     } else {
                         iVar4 = 100;
-                        iVar1 = _index + -10;
+                        iVar1 = _index - 10;
                     }
                 } else {
                     iVar4 = 100;
-                    iVar1 = _index + -0xb;
+                    iVar1 = _index - 0xb;
                 }
                 iVar1 = iVar1 * 0x2f;
                 BVar6 = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::isResourceTypeTradeable,
@@ -99,19 +99,19 @@ namespace UI {
                             DAT_MenuHandlerState::instance.y + 0x1bf + iVar4);
                     }
                     if (_index == 10) {
-                        iVar1 = iVar1 + -10;
+                        iVar1 = iVar1 - 10;
                     } else if (_index == 0xb) {
-                        iVar1 = iVar1 + -6;
+                        iVar1 = iVar1 - 6;
                     } else if (_index == 2) {
                         iVar1 = iVar1 + 4;
                     } else if (_index == 3) {
-                        iVar1 = iVar1 + -2;
+                        iVar1 = iVar1 - 2;
                     } else if (_index == 4) {
                         iVar1 = iVar1 + 2;
                     } else if (_index == 0xc) {
                         iVar1 = iVar1 + 4;
                     } else if ((_index == 0xd) || (_index == 0xe)) {
-                        iVar1 = iVar1 + -2;
+                        iVar1 = iVar1 - 2;
                     }
                     iVar7 = DAT_MenuHandlerState::instance.y + 0x1e5;
                     iVar5 = DAT_MenuHandlerState::instance.x + 0x46;

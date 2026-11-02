@@ -21,7 +21,6 @@ namespace UI {
         int iVar1 = (long)((double)FLOAT_00ed312c::instance);
         MACRO_CALL(UI::Rendering_Func::RenderGfxHelperUnk)(
             DAT_MissionDefinedData::instance.HistoryBookEdgeSpriteIDs[iVar1] + 1, xPosInMenuRect, yPosInMenuRect);
-        return;
     }
 
 }
