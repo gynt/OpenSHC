@@ -44,8 +44,8 @@ namespace Map {
                             DAT_TribesState::instance.tribes[tribeID]
                                 .rallyPointArray[DAT_TribesState::instance.tribes[tribeID].rallyPointCount][1]
                                 = (short)DAT_PathFindingState::instance.ALG_ResultY;
-                            psVar1 = &DAT_TribesState::instance.tribes[tribeID].rallyPointCount;
-                            *psVar1 = *psVar1 + 1;
+                            DAT_TribesState::instance.tribes[tribeID].rallyPointCount
+                                = DAT_TribesState::instance.tribes[tribeID].rallyPointCount + 1;
                         }
                     }
                 }

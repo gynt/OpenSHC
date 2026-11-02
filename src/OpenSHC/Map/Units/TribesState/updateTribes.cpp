@@ -29,8 +29,8 @@ namespace Map {
             do {
                 if (this->tribes[DAT_CurrentTribeID::instance].tribeState == 2) {
                     if (0 < this->tribes[DAT_CurrentTribeID::instance].countdown2) {
-                        psVar1 = &this->tribes[DAT_CurrentTribeID::instance].countdown2;
-                        *psVar1 = *psVar1 - 1;
+                        this->tribes[DAT_CurrentTribeID::instance].countdown2
+                            = this->tribes[DAT_CurrentTribeID::instance].countdown2 - 1;
                     }
                     if ((DAT_CurrentTribeID::instance & 0x1f) == _tickBasedNumberUpTo32) {
                         MACRO_CALL_MEMBER(Map::Units::TribesState_Func::computeTribePercentages, this)(

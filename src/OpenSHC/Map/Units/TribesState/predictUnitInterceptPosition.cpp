@@ -100,8 +100,8 @@ namespace Map {
                                         .int_.xOffset
                         + _unitCurrentX_2;
                     *unitCurrentY = *unitCurrentY
-                        + *(int*)((int)DAT_TerrainDefinedData::instance.clockwiseCardinalTranslationMatrix
-                            + _pathPlanPair * 8 + 4);
+                        + DAT_TerrainDefinedData::instance.clockwiseCardinalTranslationMatrix[_pathPlanPair]
+                              .int_.yOffset;
                     _unitCurrentX_2 = *unitCurrentX;
                     uint _xOff = _unitCurrentX_2 - iVar4;
                     uint _yOff = *unitCurrentY - iVar2;
