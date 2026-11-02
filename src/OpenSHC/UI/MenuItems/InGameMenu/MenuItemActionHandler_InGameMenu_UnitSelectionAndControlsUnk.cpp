@@ -115,7 +115,7 @@ namespace UI {
             bVar17 = false;
             bVar18 = 0;
             bVar15 = 0;
-            int bVar6 = 0;
+            BOOLEnum siegeUnitSelectedUnk = FALSE;
             if (DAT_GameCore::instance.gamePausedLogical) {}
             BVar8 = MACRO_CALL(UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(
                 UI::Enums::DEID_KEEP_AND_GRANERY_PLACEMENT_INFO);
@@ -1034,7 +1034,7 @@ namespace UI {
                                                 }
                                             } else {
                                                 _specificRange = -1;
-                                                bVar6 = 1;
+                                                siegeUnitSelectedUnk = TRUE;
                                             }
                                             break;
                                         case Map::Units::UT_S_CATAPULT:
@@ -1216,7 +1216,7 @@ namespace UI {
                                                         || UVar4 == Map::Units::UT_S_BATTERINGRAM)
                                                         goto switchD_004364b3_caseD_3a;
                                                     _shooterID = -1;
-                                                    bVar6 = 1;
+                                                    siegeUnitSelectedUnk = TRUE;
                                                     break;
                                                 case Map::Units::UT_S_CATAPULT:
                                                     _shooterID = 0x15f9;
@@ -1792,7 +1792,7 @@ namespace UI {
                                 || UVar4 == Map::Units::UT_S_BATTERINGRAM)
                                 goto switchD_0043662c_caseD_3a;
                             _shooterID = -1;
-                            bVar6 = 1;
+                            siegeUnitSelectedUnk = TRUE;
                             break;
                         case Map::Units::UT_S_CATAPULT:
                             _shooterID = 0x15f9;
@@ -2017,7 +2017,7 @@ namespace UI {
             switch (DAT_UnitsState::instance.unitControlsRelated) {
             case TRUE:
                 if (DAT_TileMapState::instance.pendingUnitCommand == -10) {
-                    if (bVar6) {
+                    if (siegeUnitSelectedUnk) {
                         _noTextExtra.buildingType = (Commands::MappersEnum)0;
                         MACRO_CALL_MEMBER(UI::BottomLeftTextDisplayState_Func::setBottomLeftTextDisplayText,
                             DAT_BottomLeftTextDisplayState::ptr)(1, 0x101, 0, _noTextExtra, 0x69, 2000);

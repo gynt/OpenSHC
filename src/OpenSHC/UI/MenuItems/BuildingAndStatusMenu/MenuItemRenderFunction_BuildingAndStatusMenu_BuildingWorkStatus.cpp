@@ -42,7 +42,7 @@ namespace UI {
             }
             short sVar1 = DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
                               .currentEmployeeCount;
-            int bVar4 = 1;
+            BOOLEnum noPeasantWalking = TRUE;
             if ((sVar1 == 0)
                 && (DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID]
                         .currentlyNeededEmployeeCount
@@ -116,12 +116,12 @@ namespace UI {
                 do {
                     _unit = (int)*psVar5;
                     if (DAT_UnitsState::instance.units[_unit].unitType == OpenSHC::Map::Units::UT_PEASANT) {
-                        bVar4 = 0;
+                        noPeasantWalking = FALSE;
                     }
                     psVar5 = psVar5 + 1;
                     iVar8 = iVar8 - 1;
                 } while (iVar8 != 0);
-                if (!bVar4) {
+                if (!noPeasantWalking) {
                     /*
                       added by script: "Peasant on his way"
                      */

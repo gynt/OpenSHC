@@ -79,7 +79,11 @@ namespace UI {
             case 7:
                 if (200 < (int)(DAT_MenuModalComposition2::instance.sliderMaximum
                         - DAT_MenuModalComposition2::instance.sliderMinimum)) {
-                    *currentValue = (*currentValue <= *maxValue / 2) ? 4 : 1;
+                    if (*currentValue <= *maxValue / 2) {
+                        *currentValue = 4;
+                    } else {
+                        *currentValue = 1;
+                    }
                     return;
                 }
                 *currentValue = 1;
