@@ -24,7 +24,7 @@ namespace Map {
         } else {
             sVar2 = sVar2 - 1;
             DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].someCounter_OR_hitGround = sVar2;
-            if (sVar2 < 1) {
+            if (sVar2 <= 0) {
                 DAT_EntityState::instance.entityArray[uVar1].logicalState = 7;
             }
             iVar3 = (int)DAT_EntityState::instance.entityArray[uVar1].graphicType2RelatedOffset;

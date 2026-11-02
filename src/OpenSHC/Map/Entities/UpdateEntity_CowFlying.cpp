@@ -24,7 +24,7 @@ namespace Map {
             }
             psVar1 = &DAT_EntityState::instance.entityArray[uVar2].someCounter_OR_hitGround;
             *psVar1 = *psVar1 - 1;
-            if (DAT_EntityState::instance.entityArray[uVar2].someCounter_OR_hitGround < 1) {
+            if (DAT_EntityState::instance.entityArray[uVar2].someCounter_OR_hitGround <= 0) {
                 DAT_EntityState::instance.entityArray[uVar2].logicalState = 7;
             }
             iVar3 = DAT_EntityState::instance.entityArray[uVar2].unknownAnimationFrameRelated - 100;

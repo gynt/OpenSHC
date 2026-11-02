@@ -196,7 +196,7 @@ namespace Map {
                         y1 = y1 - 1;
                     }
                 } else {
-                    if (iVar1 < 1)
+                    if (iVar1 <= 0)
                         goto LAB_00502e46;
                     if ((int)_y1 >= (int)y2) {
                         local_1c = local_1c - 3;

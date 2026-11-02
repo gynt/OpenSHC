@@ -76,7 +76,7 @@ namespace Map {
         default:
             return;
         }
-        if (iVar3 < 1) {
+        if (iVar3 <= 0) {
             DAT_EntityState::instance.entityArray[uVar2].unknownAnimationFrameRelated = 0;
             DAT_EntityState::instance.entityArray[uVar2].someTracker = sVar4;
         }

@@ -211,7 +211,7 @@ namespace Map {
                         if (this->entityArray[DAT_CurrentEntityID::instance].velocityUnk != 1000) {
                             this->entityArray[DAT_CurrentEntityID::instance].graphicRotationUnk
                                 = this->entityArray[DAT_CurrentEntityID::instance].graphicRotationUnk - 1;
-                            if ((short)this->entityArray[DAT_CurrentEntityID::instance].graphicRotationUnk < 1) {
+                            if ((short)this->entityArray[DAT_CurrentEntityID::instance].graphicRotationUnk <= 0) {
                                 this->entityArray[DAT_CurrentEntityID::instance].graphicRotationUnk
                                     = (short)(char)((*((char*)&SEC_RNG::instance.currentNumber2 + 1)) & 0x3f);
                                 this->entityArray[DAT_CurrentEntityID::instance].startingAngle

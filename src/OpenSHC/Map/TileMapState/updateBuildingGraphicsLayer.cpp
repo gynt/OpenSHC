@@ -53,7 +53,7 @@ namespace Map {
             if (!this->disableElevationRendering) {
                 BVar3 = DAT_BuildingsState::instance.buildings[buildingID].buildingType;
                 if ((BVar3 == Map::Buildings::BT_STOCKPILE) || (BVar3 == Map::Buildings::BT_QUARRYSTOCKPILE)) {
-                    if (iVar7 < 1) {
+                    if (iVar7 <= 0) {
                         uVar10 = (short)this->buildingRotationRelatedValue
                             + (short)GMTotalPicturesProcessed::instance[0xf] + 4;
                         goto LAB_00506aa2;

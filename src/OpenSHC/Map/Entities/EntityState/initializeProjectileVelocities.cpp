@@ -129,7 +129,7 @@ namespace Map {
                         (int)(short)this->entityArray[entityID].entityType,
                         (double)((int)((int)this->entityArray[entityID].startingAngle)), (int)(sVar9), iVar7);
                     this->entityArray[entityID].velocityUnk = (short)iVar11;
-                    if ((short)iVar11 < 1) {
+                    if ((short)iVar11 <= 0) {
                         EVar4 = this->entityArray[entityID].entityType;
                         this->entityArray[entityID].startingAngle = 0xf;
                         iVar7 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::computeVelocity, this)(

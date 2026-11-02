@@ -1190,7 +1190,7 @@ namespace Map {
                                                     this->SEC_Section1090 = this->SEC_Section1080;
                                                 }
                                                 this->SEC_Section1081 = 1;
-                                                if (this->SEC_Section1080 < 1) {
+                                                if (this->SEC_Section1080 <= 0) {
                                                     *_pConditionIsMet = 1;
                                                     local_a0 = local_a0 + 1;
                                                 }

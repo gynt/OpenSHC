@@ -121,7 +121,7 @@ namespace Map {
                 uVar5 = uVar5 + iVar1 * 7;
             }
             iVar1 = uVar5 - uVar4;
-            if (iVar1 < 1) {
+            if (iVar1 <= 0) {
                 uVar2 = 2;
             } else if (iVar1 < 0x13) {
                 uVar2 = local_2c;
@@ -185,7 +185,7 @@ namespace Map {
                 local_2c = local_2c + iVar1 * 7;
             }
             iVar1 = local_2c - uVar4;
-            if (iVar1 < 1) {
+            if (iVar1 <= 0) {
                 uVar5 = 2;
             } else if (iVar1 < 0x13) {
                 uVar5 = local_1c;
@@ -243,7 +243,7 @@ namespace Map {
                 local_2c = local_2c + iVar1 * 7;
             }
             iVar1 = local_2c - uVar4;
-            if (iVar1 < 1) {
+            if (iVar1 <= 0) {
                 uVar5 = 2;
             } else if (iVar1 < 0x13) {
                 uVar5 = local_18;

@@ -23,7 +23,7 @@ namespace Map {
             if (DAT_EntityState::instance.entityArray[_entityID].rng_2 != 0) {
                 DAT_EntityState::instance.entityArray[_entityID].someCounter_OR_hitGround = 0;
             }
-            if (DAT_EntityState::instance.entityArray[_entityID].someCounter_OR_hitGround < 1) {
+            if (DAT_EntityState::instance.entityArray[_entityID].someCounter_OR_hitGround <= 0) {
                 DAT_EntityState::instance.entityArray[_entityID].logicalState = 7;
             }
         }

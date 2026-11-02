@@ -152,7 +152,7 @@ namespace Map {
                         < (uint)DAT_TileMapState::instance.HeightLayer[tile]) {
                     DAT_TileMapState::instance.HeightLayer[tile] = DAT_TileMapState::instance.HeightLayer[tile] - 20;
                 }
-                if (damageUnk < 1) {
+                if (damageUnk <= 0) {
                 LAB_00516d9a:
                     MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::updatePathLinkagesInAllEightDirections,
                         DAT_PathFindingState::ptr)(yPosition, tile);

@@ -18,7 +18,7 @@ namespace Map {
         sVar2 = DAT_EntityState::instance.entityArray[uVar1].someCounter_OR_hitGround;
         if ((sVar2)
             && (sVar2 = sVar2 - 1, DAT_EntityState::instance.entityArray[uVar1].someCounter_OR_hitGround = sVar2,
-                sVar2 < 1)) {
+                sVar2 <= 0)) {
             DAT_EntityState::instance.entityArray[uVar1].logicalState = 7;
         }
         if (DAT_EntityState::instance.entityArray[uVar1].orientation == 0x4c) {

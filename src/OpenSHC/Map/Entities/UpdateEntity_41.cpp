@@ -20,7 +20,7 @@ namespace Map {
         _playerID = DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].owner;
         DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].unkOne_1 = 2;
         sVar1 = DAT_EntityState::instance.entityArray[_section1025ID].unknownAnimationFrameRelated;
-        if (DAT_EntityDefinedData::instance.SharedEntityAnimationFrames[sVar1] < 1) {
+        if (DAT_EntityDefinedData::instance.SharedEntityAnimationFrames[sVar1] <= 0) {
             DAT_EntityState::instance.entityArray[_section1025ID].logicalState = 3;
             DAT_GameState::instance.playerDataArray[_playerID].someCount33 = 0x46;
         } else {

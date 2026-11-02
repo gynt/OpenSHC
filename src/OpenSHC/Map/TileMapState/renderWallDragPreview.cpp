@@ -120,7 +120,7 @@ namespace Map {
                             y1 = y1 + 1;
                         }
                     } else {
-                        if (iVar6 < 1)
+                        if (iVar6 <= 0)
                             goto LAB_004f8f54;
                         if ((int)uVar7 >= (int)y2) {
                             local_14 = local_14 - 3;

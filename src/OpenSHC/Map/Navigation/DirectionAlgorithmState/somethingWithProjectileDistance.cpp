@@ -123,7 +123,7 @@ namespace Map {
             }
             this->orientation = 0x46;
         LAB_0046cc5d:
-            if (this->distanceY + this->distanceX < 1) {
+            if (this->distanceY + this->distanceX <= 0) {
                 this->orientation = 0x4c;
             }
         }

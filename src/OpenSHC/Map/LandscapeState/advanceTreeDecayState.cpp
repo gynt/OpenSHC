@@ -13,7 +13,7 @@ namespace Map {
             if (0 < sVar1) {
                 this->trees[treeID].treeAdultHoodStageRelatedVisual3 = sVar1 - 1;
             }
-            if ((short)this->trees[treeID].treeAdultHoodStageRelatedVisual3 < 1) {
+            if ((short)this->trees[treeID].treeAdultHoodStageRelatedVisual3 <= 0) {
                 this->trees[treeID].state = 3;
             }
             this->trees[treeID].zeroUpTo2 = 2;

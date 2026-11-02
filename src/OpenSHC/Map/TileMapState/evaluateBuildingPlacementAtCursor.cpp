@@ -121,7 +121,7 @@ namespace Map {
         if ((int)x < 1 || (DAT_BuildingsState::instance.buildings[x].owner != playerID && (playerID))) {
             this->buildingPlacementFail = TRUE;
         }
-        if (iVar4 < 1) {
+        if (iVar4 <= 0) {
         LAB_00504d0f:
             if (local_4 < 1 || !(this->LogicLayer[local_4] & Map::LogicHelpers::L_MOAT) || x) {
                 if ((this->placementOnWall) || (this->placementOnMoat))

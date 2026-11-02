@@ -134,7 +134,7 @@ namespace Map {
                     this->entityArray[_entityID].height = sVar2 + 1;
                     return TRUE;
                 }
-                if ((sVar4 < sVar2) && (this->entityArray[_entityID].height = sVar2 - 8, (short)(sVar2 - 8) < 1)) {
+                if ((sVar4 < sVar2) && (this->entityArray[_entityID].height = sVar2 - 8, (short)(sVar2 - 8) <= 0)) {
                     iVar5 = (int)this->entityArray[_entityID].microY;
                     iVar6 = (int)this->entityArray[_entityID].microX;
                     this->entityArray[_entityID].someMicroY = 0;

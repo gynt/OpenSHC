@@ -209,7 +209,7 @@ namespace Map {
                         uVar9 = (int)uVar7 >> 0x1f, 1 < (int)((uVar7 ^ uVar9) - uVar9)))
                 && (sVar5 = this->seagullArray[seagullID].pathMajorLength, 0 < sVar5)) {
                 this->seagullArray[seagullID].pathStepDelay = this->seagullArray[seagullID].pathStepDelay - 1;
-                if (this->seagullArray[seagullID].pathStepDelay < 1) {
+                if (this->seagullArray[seagullID].pathStepDelay <= 0) {
                     sVar2 = this->seagullArray[seagullID].pathAxisCase;
                     this->seagullArray[seagullID].pathStepDelay = 10;
                     this->seagullArray[seagullID].pathMajorLength = sVar5 - 1;

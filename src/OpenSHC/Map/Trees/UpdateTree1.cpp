@@ -35,7 +35,7 @@ namespace Map {
             } else {
                 _rng2_2_data = DAT_OrganismDefinedData::instance.Tree_2_B[_rng2_2];
             }
-            if (_rng2_2_data < 1) {
+            if (_rng2_2_data <= 0) {
                 DAT_LandscapeState::instance.trees[DAT_CurrentTreeID::instance].animationFrameIndex = _rng2_2 - 1;
             }
         } else {

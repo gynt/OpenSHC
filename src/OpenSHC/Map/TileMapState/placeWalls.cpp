@@ -221,7 +221,7 @@ namespace Map {
                             local_18 = local_18 + 1;
                             local_28 = local_28 - 1;
                         }
-                    } else if (_tile < 1) {
+                    } else if (_tile <= 0) {
                         local_10 = local_10 - 1;
                     } else if ((int)y1 >= (int)y2) {
                         y1 = y1 - 1;

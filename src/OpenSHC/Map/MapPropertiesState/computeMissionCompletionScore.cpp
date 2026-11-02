@@ -267,7 +267,7 @@ namespace Map {
         if (iVar5) {
             uVar4 = ((iVar5 - DAT_GameState::instance.mapAndTime.year) * 0xc - DAT_GameState::instance.mapAndTime.month)
                 + local_4;
-            this->monthsRemaining = uVar4 & ((int)uVar4 < 1) - 1;
+            this->monthsRemaining = uVar4 & ((int)uVar4 <= 0) - 1;
             this->timeBonusScore = this->monthsRemaining * 100;
         }
         this->missionScore = DAT_MissionAestheticsDefinedData::instance

@@ -65,7 +65,7 @@ namespace Map {
                 do {
                     _index1 = _ptr->identifier1;
                     _buildingAvailableUShort = (ushort)_buildingIsAvailable;
-                    if (_index1 < 1) {
+                    if (_index1 <= 0) {
                         if (-1 < _index1)
                             break;
                         if (_buildingIsAvailable) {
@@ -75,7 +75,7 @@ namespace Map {
                         this->buildingAvailabilityRelatedFlags[_index1] = _buildingAvailableUShort;
                     }
                     _index2 = _ptr->identifier2;
-                    if (_index2 < 1) {
+                    if (_index2 <= 0) {
                         if (-1 < _index2)
                             break;
                         if (_buildingIsAvailable) {
@@ -85,7 +85,7 @@ namespace Map {
                         this->buildingAvailabilityRelatedFlags[_index2] = _buildingAvailableUShort;
                     }
                     _index3 = _ptr->field2_0x8;
-                    if (_index3 < 1) {
+                    if (_index3 <= 0) {
                         if (-1 < _index3)
                             break;
                         if (_buildingIsAvailable) {
