@@ -16,7 +16,6 @@ namespace Global {
         MACRO_CALL_MEMBER(UI::Rendering::AlphaAndButtonSurface_Func::Constructor_AlphaAndButtonSurface,
             AlphaAndButtonSurfaceObj::ptr)();
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_AlphaAndButtonSurface));
-        return;
     }
 
 }

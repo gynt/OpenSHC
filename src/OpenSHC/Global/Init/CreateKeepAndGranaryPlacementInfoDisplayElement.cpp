@@ -22,7 +22,6 @@ namespace Global {
             KeepAndGranaryPlacementInfoDisplayElement::ptr)(DE::SHCDE::OST_KEEP_MESSAGE, 0x2d5, 0x1bf, 0,
             MACRO_CALL(UI::DisplayElements_Func::RenderAndPlayKeepAndGranaryPlacementInfoDisplayElement),
             UI::Enums::DEPM_TOWARDS_MID_Y);
-        return;
     }
 
 }

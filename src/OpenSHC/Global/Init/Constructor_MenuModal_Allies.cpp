@@ -21,10 +21,9 @@ namespace Global {
     void Init::Constructor_MenuModal_Allies()
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_Allies::ptr)(UI::Enums::MMT_ALLIES, -1,
-            -1, (int)((int)(696)), (int)((int)(384)), (int)((int)(512)), (int)((int)(COL_BLACK::instance.shortValue)),
+            -1, (int)(696), (int)(384), (int)(512), (int)(COL_BLACK::instance.shortValue),
             MACRO_CALL(UI::MenuModals::Allies_Func::MenuModalRenderFunction_Allies), Menu_Allies::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_Allies));
-        return;
     }
 
 }

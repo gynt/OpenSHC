@@ -24,7 +24,6 @@ namespace Global {
             MACRO_CALL(UI::MenuModals::NewEventCondition_Func::MenuModalRenderFunction_NewEventCondition),
             Menu_NewEventCondition::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_NewEventCondition));
-        return;
     }
 
 }

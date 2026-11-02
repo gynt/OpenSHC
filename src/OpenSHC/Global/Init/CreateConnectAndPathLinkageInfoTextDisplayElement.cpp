@@ -19,10 +19,9 @@ namespace Global {
     void Init::CreateConnectAndPathLinkageInfoTextDisplayElement()
     {
         MACRO_CALL_MEMBER(UI::DisplayElement_Func::Constructor_DisplayElement,
-            ConnectAndPathLinkageInfoTextDisplayElement::ptr)(((eOnScreenText)2), (int)((int)(630)), 9, 0,
+            ConnectAndPathLinkageInfoTextDisplayElement::ptr)(((eOnScreenText)2), (int)(630), 9, 0,
             MACRO_CALL(UI::DisplayElements_Func::RenderConnectAndPathLinkageInfoTextDisplayElement),
             (UI::Enums::DisplayElementPositionModifier)(UI::Enums::DEPM_TOWARDS_MID_X | UI::Enums::DEPM_RESOLUTION_Y));
-        return;
     }
 
 }

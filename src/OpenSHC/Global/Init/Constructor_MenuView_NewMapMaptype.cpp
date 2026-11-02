@@ -25,7 +25,6 @@ namespace Global {
             MACRO_CALL(UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
             MACRO_CALL(UI::MenuViews::General_Func::MenuView_General_DoEveryFrame_FirstGfxCentered));
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_NewMapMaptype));
-        return;
     }
 
 }

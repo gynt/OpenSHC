@@ -22,7 +22,6 @@ namespace Global {
             MissionWinDefeatBannerDisplayElement::ptr)(DE::SHCDE::OST_MISSION_FINISHED, 400, 0x1e, 0,
             MACRO_CALL(UI::DisplayElements_Func::RenderMissionWinDefeatBannerDisplayElement),
             UI::Enums::DEPM_RESOLUTION_Y);
-        return;
     }
 
 }

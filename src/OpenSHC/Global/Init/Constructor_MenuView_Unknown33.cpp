@@ -22,7 +22,6 @@ namespace Global {
             MACRO_CALL(Global_Func::DoNothing), MACRO_CALL(Global_Func::DoNothing),
             MACRO_CALL(UI::MenuViews::Unknown33_Func::MenuView_Unknown33_DoEveryFrame));
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_Unknown33));
-        return;
     }
 
 }

@@ -24,7 +24,6 @@ namespace Global {
             MACRO_CALL(UI::MenuViews::CrusadeEndscreen_Func::MenuView_CrusadeEndscreen_DoInitial),
             MACRO_CALL(UI::MenuViews::CrusadeEndscreen_Func::MenuView_CrusadeEndscreen_DoEveryFrame));
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_CrusadeEndscreen));
-        return;
     }
 
 }

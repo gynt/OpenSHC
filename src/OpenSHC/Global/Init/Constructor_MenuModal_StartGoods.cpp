@@ -23,7 +23,6 @@ namespace Global {
             UI::Enums::MMT_START_GOODS, -1, -1, 600, 0x186, 0x200, 6,
             MACRO_CALL(UI::MenuModals::StartGoods_Func::MenuModalRenderFunction_StartGoods), Menu_StartGoods::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_StartGoods));
-        return;
     }
 
 }

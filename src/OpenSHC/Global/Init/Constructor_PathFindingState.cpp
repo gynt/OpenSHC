@@ -16,7 +16,6 @@ namespace Global {
         MACRO_CALL_MEMBER(
             Map::Navigation::PathFindingState_Func::Constructor_PathFindingState, DAT_PathFindingState::ptr)();
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_0059d6d0));
-        return;
     }
 
 }

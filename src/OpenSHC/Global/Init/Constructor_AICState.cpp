@@ -15,7 +15,6 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(AI::AICState_Func::Constructor_AICState, DAT_AICState::ptr)();
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_0059d740));
-        return;
     }
 
 }

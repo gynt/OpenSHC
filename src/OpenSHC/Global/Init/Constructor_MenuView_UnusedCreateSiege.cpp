@@ -25,7 +25,6 @@ namespace Global {
             MACRO_CALL(UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
             MACRO_CALL(UI::MenuViews::UnusedCreateSiege_Func::MenuView_UnusedCreateSiege_DoEveryFrame));
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_UnusedCreateSiege));
-        return;
     }
 
 }

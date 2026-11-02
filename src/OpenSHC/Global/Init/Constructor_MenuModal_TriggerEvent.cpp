@@ -24,7 +24,6 @@ namespace Global {
             MACRO_CALL(UI::MenuModals::TriggerEvent_Func::MenuModalRenderFunction_TriggerEvent),
             Menu_TriggerEvent::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_TriggerEvent));
-        return;
     }
 
 }

@@ -24,7 +24,6 @@ namespace Global {
             MACRO_CALL(UI::MenuModals::CreateOrTriggerInvasion_Func::MenuModalRenderFunction_CreateOrTriggerInvasion),
             Menu_NewInvasion::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_NewInvasion));
-        return;
     }
 
 }

@@ -21,11 +21,10 @@ namespace Global {
     void Init::Constructor_MenuModal_UnusedSetName()
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_UnusedSetName::ptr)(
-            UI::Enums::MMT_UNUSED_SET_NAME, -1, -1, 500, 0x96, 0x10, (int)((int)(COL_WHITE::instance.shortValue)),
+            UI::Enums::MMT_UNUSED_SET_NAME, -1, -1, 500, 0x96, 0x10, (int)(COL_WHITE::instance.shortValue),
             MACRO_CALL(UI::MenuModals::UnusedSetName_Func::MenuModalRenderFunction_UnusedSetName),
             Menu_UnusedSetName::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_UnusedSetName));
-        return;
     }
 
 }

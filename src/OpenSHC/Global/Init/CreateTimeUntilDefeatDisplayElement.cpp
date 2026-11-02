@@ -21,7 +21,6 @@ namespace Global {
         MACRO_CALL_MEMBER(UI::DisplayElement_Func::Constructor_DisplayElement, TimeUntilDefeatDisplayElement::ptr)(
             DE::SHCDE::OST_TIMETODEFEAT, 0, 8, 0,
             MACRO_CALL(UI::DisplayElements_Func::RenderTimeUntilDefeatDisplayElement), UI::Enums::DEPM_RESOLUTION_Y);
-        return;
     }
 
 }

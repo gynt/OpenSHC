@@ -15,7 +15,6 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(Game::GameCore_Func::Constructor_GameCore, DAT_GameCore::ptr)();
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_GameCoreAndRendering));
-        return;
     }
 
 }

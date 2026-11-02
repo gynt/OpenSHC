@@ -23,7 +23,6 @@ namespace Global {
             -1, -1, 600, 0x1d6, 0x200, 6, MACRO_CALL(UI::MenuModals::NewEvent_Func::MenuModalRenderFunction_NewEvent),
             Menu_NewEvent::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_NewEvent));
-        return;
     }
 
 }

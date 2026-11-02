@@ -15,7 +15,6 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(IO::ResourceManager_Func::Constructor_ResourceManager, DAT_ResourceManager::ptr)();
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_0059d5b0));
-        return;
     }
 
 }

@@ -24,9 +24,7 @@ namespace Global {
             MACRO_CALL(UI::MenuModals::UnusedSiegeAttackingForceUnk_Func::
                     MenuModalRenderFunction_UnusedSiegeAttackingForceUnk),
             Menu_UnusedSiegeAttackingForceUnk::ptr);
-        MACRO_CALL(OS_Func::_atexit)(
-            MACRO_CALL(Meta_Func::Destructor_MenuModal_UnusedSiegeAttackingForceUnk));
-        return;
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_UnusedSiegeAttackingForceUnk));
     }
 
 }

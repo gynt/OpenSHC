@@ -21,12 +21,10 @@ namespace Global {
     void Init::Constructor_MenuModal_BasicAiLordSelect()
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_BasicAiLordSelect::ptr)(
-            UI::Enums::MMT_BASIC_AI_LORD_SELECT, 200, 200, 0x288, 0x120, 0x1040,
-            (int)((int)(COL_WHITE::instance.shortValue)),
+            UI::Enums::MMT_BASIC_AI_LORD_SELECT, 200, 200, 0x288, 0x120, 0x1040, (int)(COL_WHITE::instance.shortValue),
             MACRO_CALL(UI::MenuModals::AiLordSelect_Func::MenuModalRenderFunction_AiLordSelect),
             Menu_BasicAiLordSelect::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_BasicAiLordSelect));
-        return;
     }
 
 }

@@ -21,12 +21,10 @@ namespace Global {
     void Init::Constructor_MenuModal_AlliesRequestGoods()
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_AlliesRequestGoods::ptr)(
-            UI::Enums::MMT_ALLIES_REQUEST_GOODS, -1, -1, 600, (int)((int)(408)), 0x200,
-            (int)((int)(COL_BLACK::instance.shortValue)),
+            UI::Enums::MMT_ALLIES_REQUEST_GOODS, -1, -1, 600, (int)(408), 0x200, (int)(COL_BLACK::instance.shortValue),
             MACRO_CALL(UI::MenuModals::AlliesRequestGoods_Func::MenuModalRenderFunction_AlliesRequestGoods),
             Menu_AlliesRequestGoods::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_AlliesRequestGoods));
-        return;
     }
 
 }

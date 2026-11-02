@@ -22,7 +22,6 @@ namespace Global {
             SomeMissionNumberUnkDisplayElement9::ptr)(((eOnScreenText)9), 0x122, 0xe1, 0,
             MACRO_CALL(UI::DisplayElements_Func::RenderSomeMissionNumberUnkDisplayElement9),
             UI::Enums::DEPM_MAIN_MENU_X_Y);
-        return;
     }
 
 }

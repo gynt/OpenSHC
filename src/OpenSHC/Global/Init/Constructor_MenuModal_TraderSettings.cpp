@@ -24,7 +24,6 @@ namespace Global {
             MACRO_CALL(UI::MenuModals::TraderSettings_Func::MenuModalRenderFunction_TraderSettings),
             Menu_TraderSettings::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_TraderSettings));
-        return;
     }
 
 }

@@ -22,13 +22,11 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_ChooseRandomNumberOfEnemies::ptr)(
             UI::Enums::MMT_CHOOSE_RANDOM_NUMBER_OF_ENEMIES, -1, -1, 600, 400, 0x200,
-            (int)((int)(COL_WHITE::instance.shortValue)),
+            (int)(COL_WHITE::instance.shortValue),
             MACRO_CALL(
                 UI::MenuModals::ChooseRandomNumberOfEnemies_Func::MenuModalRenderFunction_ChooseRandomNumberOfEnemies),
             Menu_ChooseRandomNumberOfEnemies::ptr);
-        MACRO_CALL(OS_Func::_atexit)(
-            MACRO_CALL(Meta_Func::Destructor_MenuModal_ChooseRandomNumberOfEnemies));
-        return;
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_ChooseRandomNumberOfEnemies));
     }
 
 }

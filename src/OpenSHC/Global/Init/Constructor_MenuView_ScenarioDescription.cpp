@@ -24,7 +24,6 @@ namespace Global {
             MACRO_CALL(UI::MenuViews::ScenarioDescription_Func::MenuView_ScenarioDescription_DoInitial),
             MACRO_CALL(UI::MenuViews::ScenarioDescription_Func::MenuView_ScenarioDescription_DoEveryFrame));
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_ScenarioDescription));
-        return;
     }
 
 }

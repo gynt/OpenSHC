@@ -15,7 +15,6 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(Util::Timing::Stopwatch_Func::Constructor_Stopwatch, DAT_UnknownStopwatch::ptr)();
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_Stopwatch_Unknown));
-        return;
     }
 
 }

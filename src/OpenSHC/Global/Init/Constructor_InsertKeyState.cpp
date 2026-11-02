@@ -15,7 +15,6 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(Input::InsertKeyState_Func::Constructor_InsertKeyState, DAT_InsertKeyState::ptr)();
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_InsertKeyState));
-        return;
     }
 
 }

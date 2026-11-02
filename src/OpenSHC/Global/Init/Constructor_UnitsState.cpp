@@ -15,7 +15,6 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::Constructor_UnitsState, DAT_UnitsState::ptr)();
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_0059d6e0));
-        return;
     }
 
 }

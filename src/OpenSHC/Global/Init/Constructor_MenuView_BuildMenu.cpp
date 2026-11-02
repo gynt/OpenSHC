@@ -23,7 +23,6 @@ namespace Global {
             MACRO_CALL(UI::MenuViews::BuildMenu_Func::MenuView_BuildMenu_DoInitial),
             MACRO_CALL(UI::MenuViews::BuildMenu_Func::MenuView_BuildMenu_DoEveryFrame));
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_BuildMenu));
-        return;
     }
 
 }

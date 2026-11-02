@@ -25,7 +25,6 @@ namespace Global {
             MACRO_CALL(UI::MenuViews::SelectCrusade_Func::MenuView_SelectCrusade_DoInitial),
             MACRO_CALL(UI::MenuViews::SelectCrusade_Func::MenuView_SelectCrusade_DoEveryFrame));
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_SelectCrusade));
-        return;
     }
 
 }

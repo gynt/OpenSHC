@@ -15,7 +15,6 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(IO::FilePackager_Func::Constructor_FilePackager, FilePackagerObj::ptr)();
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_0059d600));
-        return;
     }
 
 }

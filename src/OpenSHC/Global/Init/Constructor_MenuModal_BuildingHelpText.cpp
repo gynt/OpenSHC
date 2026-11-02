@@ -21,11 +21,10 @@ namespace Global {
     void Init::Constructor_MenuModal_BuildingHelpText()
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_BuildingHelpText::ptr)(
-            UI::Enums::MMT_BUILDING_HELP_TEXT, -1, -1, 0x2c0, 0x150, 0x20, (int)((int)(COL_BLACK::instance.shortValue)),
+            UI::Enums::MMT_BUILDING_HELP_TEXT, -1, -1, 0x2c0, 0x150, 0x20, (int)(COL_BLACK::instance.shortValue),
             MACRO_CALL(UI::MenuModals::TextEditor_Func::MenuModalRenderFunction_TextEditor),
             Menu_BuildingHelpText::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_BuildingHelpText));
-        return;
     }
 
 }

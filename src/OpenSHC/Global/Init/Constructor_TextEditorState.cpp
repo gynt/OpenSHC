@@ -15,7 +15,6 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(Text::TextEditorState_Func::Constructor_TextEditorState, DAT_TextEditorState::ptr)();
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_0059d780));
-        return;
     }
 
 }

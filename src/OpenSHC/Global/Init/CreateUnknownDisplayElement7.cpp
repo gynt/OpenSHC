@@ -22,7 +22,6 @@ namespace Global {
             (DE::SHCDE::eOnScreenText)(DE::SHCDE::OST_FRAMERATE | DE::SHCDE::OST_DATE), 700, 9, 0,
             MACRO_CALL(UI::DisplayElements_Func::RenderUnknownDisplayElement7),
             (UI::Enums::DisplayElementPositionModifier)(UI::Enums::DEPM_TOWARDS_MID_X | UI::Enums::DEPM_RESOLUTION_Y));
-        return;
     }
 
 }

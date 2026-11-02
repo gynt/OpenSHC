@@ -24,7 +24,6 @@ namespace Global {
             MACRO_CALL(UI::MenuModals::DisableTroops_Func::MenuModalRenderFunction_DisableTroops),
             Menu_DisableEuroTroops::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_DisableEuroTroops));
-        return;
     }
 
 }

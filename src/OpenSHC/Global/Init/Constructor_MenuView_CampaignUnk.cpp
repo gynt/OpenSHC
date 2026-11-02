@@ -24,7 +24,6 @@ namespace Global {
             MACRO_CALL(UI::MenuViews::CampaignUnk_Func::MenuView_CampaignUnk_DoInitial),
             MACRO_CALL(UI::MenuViews::CampaignUnk_Func::MenuView_CampaignUnk_DoEveryFrame));
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_CampaignUnk));
-        return;
     }
 
 }

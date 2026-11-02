@@ -21,13 +21,10 @@ namespace Global {
     void Init::Constructor_MenuModal_DebugDataZoneDataUnk()
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_DebugDataZoneDataUnk::ptr)(
-            UI::Enums::MMT_DEBUG_DATA_ZONE_DATAUnk, 0x10b, 3, 400, 200, 0xe,
-            (int)((int)(COL_WHITE::instance.shortValue)),
+            UI::Enums::MMT_DEBUG_DATA_ZONE_DATAUnk, 0x10b, 3, 400, 200, 0xe, (int)(COL_WHITE::instance.shortValue),
             MACRO_CALL(UI::MenuModals::DebugDataZoneDataUnk_Func::MenuModalRenderFunction_DebugDataZoneDataUnk),
             Menu_DebugModals::ptr);
-        MACRO_CALL(OS_Func::_atexit)(
-            MACRO_CALL(Meta_Func::Destructor_MenuModal_DebugDataZoneDataUnk));
-        return;
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_DebugDataZoneDataUnk));
     }
 
 }

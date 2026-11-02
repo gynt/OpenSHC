@@ -24,7 +24,6 @@ namespace Global {
             MACRO_CALL(UI::MenuModals::DisableWeapon_Func::MenuModalRenderFunction_DisableWeapon),
             Menu_DisableWeapon::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_DisableWeapon));
-        return;
     }
 
 }

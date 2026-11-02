@@ -22,7 +22,6 @@ namespace Global {
             DE::SHCDE::OST_FRAMERATE, 0x2da, 9, 0,
             MACRO_CALL(UI::DisplayElements_Func::RenderDebugNumbersDisplayElement),
             (UI::Enums::DisplayElementPositionModifier)(UI::Enums::DEPM_TOWARDS_MID_X | UI::Enums::DEPM_RESOLUTION_Y));
-        return;
     }
 
 }

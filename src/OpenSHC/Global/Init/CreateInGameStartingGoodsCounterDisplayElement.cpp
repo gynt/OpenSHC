@@ -22,7 +22,6 @@ namespace Global {
             InGameStartingGoodsCounterDisplayElement::ptr)(DE::SHCDE::OST_STARTING_GOODS, 4, 4, 1,
             MACRO_CALL(UI::DisplayElements_Func::RenderStartingGoodDisplayElement),
             (UI::Enums::DisplayElementPositionModifier)(UI::Enums::DEPM_RESOLUTION_X | UI::Enums::DEPM_RESOLUTION_Y));
-        return;
     }
 
 }

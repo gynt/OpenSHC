@@ -15,7 +15,6 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(IO::BitMapState_Func::Constructor_BitMapState, DAT_BitMapState::ptr)();
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_0059d5c0));
-        return;
     }
 
 }

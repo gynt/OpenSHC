@@ -24,7 +24,6 @@ namespace Global {
             MACRO_CALL(UI::MenuViews::UnusedExtremeAd_Func::MenuView_UnusedExtremeAd_DoInitial),
             MACRO_CALL(UI::MenuViews::UnusedExtremeAd_Func::MenuView_UnusedExtremeAd_DoEveryFrame));
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_UnusedExtremeAd));
-        return;
     }
 
 }

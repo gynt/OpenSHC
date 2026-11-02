@@ -24,7 +24,6 @@ namespace Global {
             MACRO_CALL(UI::MenuViews::General_Func::MenuView_General_DoInitial_CrusadeAndRankMenu),
             MACRO_CALL(UI::MenuViews::CrusadeMap_Func::MenuView_CrusadeMap_DoEveryFrame));
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_CrusadeMap));
-        return;
     }
 
 }

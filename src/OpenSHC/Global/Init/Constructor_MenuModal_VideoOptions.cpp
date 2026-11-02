@@ -21,11 +21,10 @@ namespace Global {
     void Init::Constructor_MenuModal_VideoOptions()
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_VideoOptions::ptr)(
-            UI::Enums::MMT_VIDEO_OPTIONS, -1, -1, 500, 0x165, 0x200, (int)((int)(COL_WHITE::instance.shortValue)),
+            UI::Enums::MMT_VIDEO_OPTIONS, -1, -1, 500, 0x165, 0x200, (int)(COL_WHITE::instance.shortValue),
             MACRO_CALL(UI::MenuModals::VideoOptions_Func::MenuModalRenderFunction_VideoOptions),
             Menu_VideoOptions::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_VideoOptions));
-        return;
     }
 
 }

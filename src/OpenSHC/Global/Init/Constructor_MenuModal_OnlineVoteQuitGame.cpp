@@ -21,11 +21,10 @@ namespace Global {
     void Init::Constructor_MenuModal_OnlineVoteQuitGame()
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_OnlineVoteQuitGame::ptr)(
-            UI::Enums::MMT_ONLINE_VOTE_QUIT_GAME, -1, 10, 400, 200, 0x200, (int)((int)(COL_WHITE::instance.shortValue)),
+            UI::Enums::MMT_ONLINE_VOTE_QUIT_GAME, -1, 10, 400, 200, 0x200, (int)(COL_WHITE::instance.shortValue),
             MACRO_CALL(UI::MenuModals::OnlineVoteQuitGame_Func::MenuModalRenderFunction_OnlineVoteQuitGame),
             Menu_OnlineVoteQuitGame::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_OnlineVoteQuitGame));
-        return;
     }
 
 }

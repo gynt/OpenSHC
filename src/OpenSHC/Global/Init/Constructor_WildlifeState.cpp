@@ -15,7 +15,6 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(Map::WildlifeState_Func::Constructor_WildlifeState, DAT_WildlifeState::ptr)();
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_0059d6c0));
-        return;
     }
 
 }

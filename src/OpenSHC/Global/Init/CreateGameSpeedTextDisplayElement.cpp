@@ -21,7 +21,6 @@ namespace Global {
         MACRO_CALL_MEMBER(UI::DisplayElement_Func::Constructor_DisplayElement, GameSpeedTextDisplayElement::ptr)(
             DE::SHCDE::OST_GAME_SPEED, 0x302, 9, 0,
             MACRO_CALL(UI::DisplayElements_Func::RenderGameSpeedTextDisplayElement), UI::Enums::DEPM_MAIN_MENU_X_Y);
-        return;
     }
 
 }

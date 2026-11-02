@@ -21,10 +21,9 @@ namespace Global {
     void Init::Constructor_MenuModal_LoadMap()
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_LoadMap::ptr)(UI::Enums::MMT_LOAD_MAP,
-            -1, -1, 700, 0x18d, 0x200, (int)((int)(COL_WHITE::instance.shortValue)),
+            -1, -1, 700, 0x18d, 0x200, (int)(COL_WHITE::instance.shortValue),
             MACRO_CALL(UI::MenuModals::LoadMap_Func::MenuModalRenderFunction_LoadMap), Menu_LoadMap::ptr);
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_LoadMap));
-        return;
     }
 
 }

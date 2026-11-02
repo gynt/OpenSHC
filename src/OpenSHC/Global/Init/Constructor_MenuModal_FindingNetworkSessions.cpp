@@ -21,13 +21,10 @@ namespace Global {
     void Init::Constructor_MenuModal_FindingNetworkSessions()
     {
         MACRO_CALL_MEMBER(UI::MenuModal_Func::Constructor_MenuModal, MenuModal_FindingNetworkSessions::ptr)(
-            UI::Enums::MMT_FINDING_NETWORK_SESSIONS, -1, -1, 500, 0x168, 0x200,
-            (int)((int)(COL_WHITE::instance.shortValue)),
+            UI::Enums::MMT_FINDING_NETWORK_SESSIONS, -1, -1, 500, 0x168, 0x200, (int)(COL_WHITE::instance.shortValue),
             MACRO_CALL(UI::MenuModals::FindingNetworkSessions_Func::MenuModalRenderFunction_FindingNetworkSessions),
             Menu_FindingNetworkSessions::ptr);
-        MACRO_CALL(OS_Func::_atexit)(
-            MACRO_CALL(Meta_Func::Destructor_MenuModal_FindingNetworkSessions));
-        return;
+        MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuModal_FindingNetworkSessions));
     }
 
 }

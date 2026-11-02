@@ -15,7 +15,6 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(IO::DecoderState_Func::Constructor_DecoderState, DAT_DecoderState::ptr)();
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_Decoder));
-        return;
     }
 
 }

@@ -23,7 +23,6 @@ namespace Global {
             MACRO_CALL(UI::MenuViews::Credits_Func::MenuView_Credits_DoInitial),
             MACRO_CALL(UI::MenuViews::Credits_Func::MenuView_Credits_DoEveryFrame));
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_Credits));
-        return;
     }
 
 }

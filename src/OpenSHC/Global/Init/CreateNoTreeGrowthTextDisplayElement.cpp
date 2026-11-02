@@ -21,7 +21,6 @@ namespace Global {
         MACRO_CALL_MEMBER(UI::DisplayElement_Func::Constructor_DisplayElement, NoTreeGrowthTextDisplayElement::ptr)(
             (DE::SHCDE::eOnScreenText)0xe, 200, 0x22, 0,
             MACRO_CALL(UI::DisplayElements_Func::RenderNoTreeGrowthTextDisplayElement), UI::Enums::DEPM_RESOLUTION_Y);
-        return;
     }
 
 }

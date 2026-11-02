@@ -24,7 +24,6 @@ namespace Global {
             MACRO_CALL(UI::MenuViews::General_Func::MenuView_General_DoInitial_DefaultMainMenuStructure),
             MACRO_CALL(UI::MenuViews::GameLost_Func::MenuView_GameLost_DoEveryFrame));
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_GameLost));
-        return;
     }
 
 }

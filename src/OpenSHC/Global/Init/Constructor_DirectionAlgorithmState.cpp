@@ -12,7 +12,6 @@ namespace Global {
     {
         MACRO_CALL(Global::Init_Func::Constructor_Empty)();
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_0059d5d0));
-        return;
     }
 
 }

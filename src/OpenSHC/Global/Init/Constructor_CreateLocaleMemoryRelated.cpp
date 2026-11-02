@@ -11,7 +11,6 @@ namespace Global {
     void Init::Constructor_CreateLocaleMemoryRelated()
     {
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_0059d7d4));
-        return;
     }
 
 }

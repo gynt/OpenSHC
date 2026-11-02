@@ -24,7 +24,6 @@ namespace Global {
             MACRO_CALL(UI::MenuViews::UnusedOldTitleMenu_Func::MenuView_UnusedOldTitleMenu_DoInitial),
             MACRO_CALL(Global_Func::DoNothing));
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_MenuView_UnusedOldTitleMenu));
-        return;
     }
 
 }

@@ -15,7 +15,6 @@ namespace Global {
     {
         MACRO_CALL_MEMBER(Map::LandscapeState_Func::Construct_LandscapeState, DAT_LandscapeState::ptr)();
         MACRO_CALL(OS_Func::_atexit)(MACRO_CALL(Meta_Func::Destructor_0059d750));
-        return;
     }
 
 }
