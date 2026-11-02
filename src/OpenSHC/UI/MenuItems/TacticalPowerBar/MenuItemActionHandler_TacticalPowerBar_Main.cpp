@@ -26,15 +26,15 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004DA050
         void TacticalPowerBar::MenuItemActionHandler_TacticalPowerBar_Main(int param_1, ...)
         {
-            int iVar1;
+            int powerBarLevel;
             if ((((DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY)
                      || (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER))
                     || (DAT_GameState::instance.mapAndTime.skirmishNoRushTicks == 0))
-                && (iVar1
+                && (powerBarLevel
                     = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .tacticalPowersBarLevel,
                     MACRO_CALL_MEMBER(OpenSHC::Input::MouseState_Func::resetMouseState2, DAT_MouseState::ptr)(),
-                    iVar1 >= (param_1 + 1) * 0x27c
+                    powerBarLevel >= (param_1 + 1) * 0x27c
                         && (DAT_GameState::instance
                                 .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                 .lordKilledByPlayerID

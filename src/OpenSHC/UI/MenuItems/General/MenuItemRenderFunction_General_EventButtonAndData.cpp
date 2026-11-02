@@ -30,7 +30,7 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004BFFA0
         void General::MenuItemRenderFunction_General_EventButtonAndData(int param_1, ...)
         {
-            int iVar1;
+            int month;
             BGR24 color;
             if (param_1 != -1) {
                 MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderScenarioButtonWithText)(param_1);
@@ -41,17 +41,17 @@ namespace UI {
             int xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
             int yParam = DAT_ButtonY::instance + 6;
             if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                iVar1 = DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
+                month = DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                             .header.month;
                 color = 0xc2f0eb;
             } else {
-                iVar1 = DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
+                month = DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                             .header.month;
                 color = 0xccfaff;
             }
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MONTHS, iVar1 + 0xc),
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MONTHS, month + 0xc),
                 xParam, yParam, OpenSHC::Text::TTA_CENTER, color, 0x12, FALSE, 0);
         }
 

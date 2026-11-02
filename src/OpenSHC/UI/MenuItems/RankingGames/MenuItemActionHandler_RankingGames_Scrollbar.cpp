@@ -25,9 +25,9 @@ namespace UI {
                 break;
             case 4: {
                 *minValue = 0;
-                int iVar1 = DAT_00eb9b60::instance - 8;
-                *maxValue = iVar1;
-                if (iVar1 < 0) {
+                int maxScrollOffset = DAT_00eb9b60::instance - 8;
+                *maxValue = maxScrollOffset;
+                if (maxScrollOffset < 0) {
                     *maxValue = 0;
                 }
                 if (*currentValue != DAT_00ed3120::instance) {

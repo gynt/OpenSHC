@@ -25,7 +25,7 @@ namespace UI {
         void ChooseNetworkServiceProvider::MenuItemRenderFunction_ChooseNetworkServiceProvider_YourIpDisplay(
             int param_1, ...)
         {
-            char local_68[100];
+            char ipText[100];
             if (DAT_GameSynchronyState::instance.displayYourIP != FALSE) {
                 int yParam = DAT_ButtonY::instance + 5;
                 /*
@@ -36,7 +36,7 @@ namespace UI {
                         DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, 0x24),
                     DAT_ButtonX::instance, yParam, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, FALSE, 0);
                 if (DAT_GameSynchronyState::instance.lanOrWan != FALSE) {
-                    MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_68, "   %d.%d.%d.%d  /  %d.%d.%d.%d",
+                    MACRO_CALL(OpenSHC::OS_Func::_sprintf)(ipText, "   %d.%d.%d.%d  /  %d.%d.%d.%d",
                         (uint)DAT_GameSynchronyState::instance.lanIP.S_un.S_un_b.s_b1,
                         (uint)DAT_GameSynchronyState::instance.lanIP.S_un.S_un_b.s_b2,
                         (uint)DAT_GameSynchronyState::instance.lanIP.S_un.S_un_b.s_b3,
@@ -46,14 +46,14 @@ namespace UI {
                         (uint)DAT_GameSynchronyState::instance.wanIP.S_un.S_un_b.s_b3,
                         (uint)DAT_GameSynchronyState::instance.wanIP.S_un.S_un_b.s_b4);
                 } else {
-                    MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_68, "   %d.%d.%d.%d",
+                    MACRO_CALL(OpenSHC::OS_Func::_sprintf)(ipText, "   %d.%d.%d.%d",
                         (uint)DAT_GameSynchronyState::instance.lanIP.S_un.S_un_b.s_b1,
                         (uint)DAT_GameSynchronyState::instance.lanIP.S_un.S_un_b.s_b2,
                         (uint)DAT_GameSynchronyState::instance.lanIP.S_un.S_un_b.s_b3,
                         (uint)DAT_GameSynchronyState::instance.lanIP.S_un.S_un_b.s_b4);
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    local_68, (int)(DAT_ButtonX::instance), (int)(DAT_ButtonY::instance + 5), OpenSHC::Text::TTA_LEFT,
+                    ipText, (int)(DAT_ButtonX::instance), (int)(DAT_ButtonY::instance + 5), OpenSHC::Text::TTA_LEFT,
                     0xccfaff, 0x12, TRUE, 0);
             };
         }

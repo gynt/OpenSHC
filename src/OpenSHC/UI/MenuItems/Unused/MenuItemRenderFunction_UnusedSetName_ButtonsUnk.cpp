@@ -30,15 +30,15 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00426750
         void Unused::MenuItemRenderFunction_UnusedSetName_ButtonsUnk(int param_1, ...)
         {
-            bool bVar1;
+            bool isDisabledButton;
             if (DAT_GameCore::instance.isNameEntryActive == TRUE) {
-                bVar1 = param_1 == 8;
+                isDisabledButton = param_1 == 8;
             } else {
                 if (DAT_GameCore::instance.isNameEntryActive != FALSE)
                     goto LAB_00426777;
-                bVar1 = param_1 == 0x19;
+                isDisabledButton = param_1 == 0x19;
             }
-            if (bVar1) {
+            if (isDisabledButton) {
                 DAT_ButtonUnknownZero::instance = 1;
                 return;
             }

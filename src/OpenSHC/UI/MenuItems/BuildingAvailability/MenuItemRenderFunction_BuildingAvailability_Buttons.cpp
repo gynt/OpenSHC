@@ -35,14 +35,14 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004BB0D0
         void BuildingAvailability::MenuItemRenderFunction_BuildingAvailability_Buttons(int param_1, ...)
         {
-            short sVar1;
+            short availabilityFlag;
             char* textAddress;
             int yParam;
             if (param_1 < 1000) {
                 if (param_1 < 2000)
                     goto LAB_004bb22b;
             } else if (param_1 < 2000) {
-                sVar1
+                availabilityFlag
                     = DAT_MapPropertiesState::instance
                           .buildingAvailability[DAT_MissionAestheticsDefinedData::instance.BuildingAvailabilityRowOrder
                                   [DAT_MapPropertiesState::instance.DAT_BuildingAvailabilityScrollbarOffset + param_1]];
@@ -50,8 +50,9 @@ namespace UI {
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                 int xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
                 yParam = DAT_ButtonY::instance + 6;
-                textAddress = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_SCENARIO, (int)(0xad - (uint)(sVar1 != 0)));
+                textAddress = MACRO_CALL_MEMBER(
+                    OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+                    OpenSHC::DE::SHCDE::TEXT_SCENARIO, (int)(0xad - (uint)(availabilityFlag != 0)));
                 if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                         textAddress, xParam, yParam, OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x13, FALSE, 0);
