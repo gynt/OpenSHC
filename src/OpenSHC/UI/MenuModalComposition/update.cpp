@@ -91,9 +91,7 @@ namespace UI {
             _menuPtr->yPosition = _y;
             MACRO_CALL_MEMBER(UI::Menu_Func::updateMenuButtons, (this->modalMenu).pointerToMenu)();
         }
-        if (this->minus1 == -1) {
-            this->minus1 = 0;
-        } else {
+        if (this->minus1 != -1) {
             int _modalMenuXPos = (this->modalMenu).x;
             if ((((_modalMenuXPos <= DAT_MouseState::instance.screenSpaceX)
                      && (DAT_MouseState::instance.screenSpaceX < (this->modalMenu).width + _modalMenuXPos))
@@ -114,6 +112,8 @@ namespace UI {
                     _isInTickingGameMode != 0)) {
                 this->minus1 = 1;
             }
+        } else {
+            this->minus1 = 0;
         }
         _borderStyle = (this->modalMenu).borderStyle;
         if ((_borderStyle & 0x800) != 0) {

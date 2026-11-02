@@ -68,18 +68,18 @@ namespace UI {
             _mapSize = 400;
         }
         int iVar12 = 400 - _mapSize;
-        if (width < 200) {
-            iVar14 = iVar12 / 4;
-            local_2c = iVar12 / 2 + 2;
-            iVar13 = 400 - iVar12 / 2;
-            iVar6 = iVar13 / 2 - 2;
-            local_30 = iVar14 + 1;
-        } else {
+        if (width >= 200) {
             local_2c = iVar12 / 2;
             iVar13 = 400 - local_2c;
             iVar14 = iVar12 / 4;
             iVar6 = iVar13 / 2;
             local_30 = iVar14;
+        } else {
+            iVar14 = iVar12 / 4;
+            local_2c = iVar12 / 2 + 2;
+            iVar13 = 400 - iVar12 / 2;
+            iVar6 = iVar13 / 2 - 2;
+            local_30 = iVar14 + 1;
         }
         if (DAT_MiniMapDefinedData::instance.cachedMapOrientation != DAT_TileMapState::instance.mapOrientation) {
             /*
@@ -203,12 +203,12 @@ namespace UI {
         }
         iVar7 = (xOffset * widthFactor) / local_8;
         local_c = local_c + 1 + iVar14 * 0x191 + xOffset;
-        if (param_10 <= 0) {
-            MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::setupPencilSurface, DAT_PencilRenderCore::ptr)();
-        } else {
+        if (param_10 > 0) {
             DAT_PencilRenderCore::instance.surfacePtr = (ushort*)this->loadedMiniMap;
             DAT_PencilRenderCore::instance.horizontalByteSize = 400;
             this->DAT_SomeMiniMapCounterTill4 = 0;
+        } else {
+            MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::setupPencilSurface, DAT_PencilRenderCore::ptr)();
         }
         xOffset = iVar7;
         if (param_10) {
@@ -276,15 +276,15 @@ namespace UI {
                                         _owner = (int)_player;
                                     } else {
                                         _unitType = DAT_UnitsState::instance.units[_unitID].unitType;
-                                        if (_unitType == Map::Units::UT_E_KNIGHT) {
-                                        LAB_004b6ca7:
-                                            _owner = (int)DAT_UnitsState::instance.units[_unitID].displayColorPlayerID;
-                                        } else {
+                                        if (_unitType != Map::Units::UT_E_KNIGHT) {
                                             if (_unitType == Map::Units::UT_S_TOWER)
                                                 goto LAB_004b6cb0;
                                             if (_unitType == Map::Units::UT_A_HARCHER)
                                                 goto LAB_004b6ca7;
                                             _owner = DAT_UnitsState::instance.units[_unitID].calculatedOwnerPlayerIndex;
+                                        } else {
+                                        LAB_004b6ca7:
+                                            _owner = (int)DAT_UnitsState::instance.units[_unitID].displayColorPlayerID;
                                         }
                                     }
                                     if (_owner <= 0) {

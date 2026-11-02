@@ -61,19 +61,19 @@ namespace UI {
             DE::SHCDE::TEXT_FEEDBACK, numInGroup);
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText6Unk, DAT_TextManagerObject::ptr)(
             pcVar2, iVar4, iVar3, maxWidth, color1, color2, fontSize, blendStrength);
-        if (whichBuildingIsMissing == 1) {
-            if (BOOL_RelatedToInitialGranaryAndKeepPlacement::instance) {}
-            /*
-              "Place a keep to site your castle my liege"
-             */
-            pcVar2 = S_OTHER_WARNING1_WAV_005A77C0;
-        } else {
+        if (whichBuildingIsMissing != 1) {
             if (whichBuildingIsMissing != 2) {}
             if (BOOL_RelatedToInitialGranaryAndKeepPlacement::instance) {}
             /*
               "Site your granary sire"
              */
             pcVar2 = S_OTHER_WARNING2_WAV_005A77AC;
+        } else {
+            if (BOOL_RelatedToInitialGranaryAndKeepPlacement::instance) {}
+            /*
+              "Place a keep to site your castle my liege"
+             */
+            pcVar2 = S_OTHER_WARNING1_WAV_005A77C0;
         }
         MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(pcVar2);
         BOOL_RelatedToInitialGranaryAndKeepPlacement::instance = TRUE;

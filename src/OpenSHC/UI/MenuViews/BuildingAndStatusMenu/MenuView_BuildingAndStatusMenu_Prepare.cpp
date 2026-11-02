@@ -72,14 +72,14 @@ namespace UI {
             DAT_MenuHandlerState::instance.x = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
             pMVar3 = DAT_MenuHandlerState::instance.currentMenu;
             DAT_MenuHandlerState::instance.y = DAT_WindowAndDirectDraw::instance.resolutionY - 600;
-            if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_640x480) {
-                (DAT_MenuHandlerState::instance.currentMenu)->xPosition = -0x2ba;
-                pMVar3->yPosition = DAT_MenuHandlerState::instance.y;
-                DAT_MenuHandlerState::instance.x = -0x2ba;
-            } else {
+            if (DAT_WindowAndDirectDraw::instance.currentGameResolution != OpenSHC::Rendering::SRE_640x480) {
                 (DAT_MenuHandlerState::instance.currentMenu)->xPosition
                     = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
                 pMVar3->yPosition = (undefined4)(DAT_MenuHandlerState::instance.y);
+            } else {
+                (DAT_MenuHandlerState::instance.currentMenu)->xPosition = -0x2ba;
+                pMVar3->yPosition = DAT_MenuHandlerState::instance.y;
+                DAT_MenuHandlerState::instance.x = -0x2ba;
             }
             MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(4);
             _buildingIndex = DAT_BuildingsState::instance.menuSelectedBuildingID;
@@ -229,15 +229,15 @@ namespace UI {
                         OpenSHC::Audio::SFX::SEID_CHAPEL_BELL);
                 LAB_00446f2e:
                     pcVar8 = S_WEDDING_SKETCH_TGX_005A2AB8;
-                } else if (BVar2 == OpenSHC::Map::Buildings::BT_CHURCH) {
-                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
-                        OpenSHC::Audio::SFX::SEID_CHURCH_BELL);
-                    pcVar8 = S_WEDDING_SKETCH_TGX_005A2AB8;
-                } else {
+                } else if (BVar2 != OpenSHC::Map::Buildings::BT_CHURCH) {
                     if (BVar2 != OpenSHC::Map::Buildings::BT_CATHEDRAL)
                         goto LAB_00446f2e;
                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
                         OpenSHC::Audio::SFX::SEID_CATHEDRAL_BELL);
+                    pcVar8 = S_WEDDING_SKETCH_TGX_005A2AB8;
+                } else {
+                    MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
+                        OpenSHC::Audio::SFX::SEID_CHURCH_BELL);
                     pcVar8 = S_WEDDING_SKETCH_TGX_005A2AB8;
                 }
                 goto LAB_004475c3;

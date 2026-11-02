@@ -119,12 +119,12 @@ namespace UI {
                               .connectionLagInfoArray[DAT_GameSynchronyState::instance.laggingPlayerIDUnk]
                               .time)
                         / 1000;
-                if (iVar2 < 0x33) {
+                if (iVar2 >= 0x33) {
+                    iVar2 = 0x32;
+                } else {
                     if (iVar2 < 0) {
                         iVar2 = 0;
                     }
-                } else {
-                    iVar2 = 0x32;
                 }
                 iVar3 = posY + 0x3a;
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(

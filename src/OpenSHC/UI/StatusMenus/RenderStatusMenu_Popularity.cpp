@@ -169,13 +169,13 @@ namespace UI {
                 uVar10 = 100;
             } else if (iVar7 == 2) {
                 uVar10 = 0;
-            } else if (iVar7 == 1) {
-                uVar10 = 0xffffff9c;
-            } else {
+            } else if (iVar7 != 1) {
                 uVar10 = 0xffffff38;
                 if (iVar7) {
                     uVar10 = local_4;
                 }
+            } else {
+                uVar10 = 0xffffff9c;
             }
         }
         iVar7 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -240,10 +240,10 @@ namespace UI {
                 iVar12 = -200;
             } else if (iVar12 == 8) {
                 iVar12 = -300;
-            } else if (iVar12 == 9) {
-                iVar12 = -400;
-            } else {
+            } else if (iVar12 != 9) {
                 iVar12 = (-(uint)(iVar12 != 10) & 0xffffff9c) - 500;
+            } else {
+                iVar12 = -400;
             }
         }
         if (!DAT_GameCore::instance.popularityMessagePage) {
@@ -279,10 +279,10 @@ namespace UI {
                 iVar7 = -0x32;
             } else if (iVar7 < 0x8d) {
                 iVar7 = -100;
-            } else if (iVar7 < 0xa1) {
-                iVar7 = -0x96;
-            } else {
+            } else if (iVar7 >= 0xa1) {
                 iVar7 = ((0xb4 < iVar7) - 1 & 0x32) - 0xfa;
+            } else {
+                iVar7 = -0x96;
             }
         }
         if (!DAT_GameCore::instance.popularityMessagePage) {

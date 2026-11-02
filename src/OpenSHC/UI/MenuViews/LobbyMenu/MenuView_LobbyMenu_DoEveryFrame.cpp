@@ -258,9 +258,7 @@ namespace UI {
                 DAT_GameSynchronyState::instance.reparseMaps = FALSE;
                 MACRO_CALL_MEMBER(
                     OpenSHC::IO::ResourceManager_Func::mapNames_syncLoadedMapNames, DAT_ResourceManager::ptr)();
-                if (DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected == -1) {
-                    DAT_MapNameCache::instance[0] = '\0';
-                } else {
+                if (DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected != -1) {
                     pcVar6 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                         DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance
                             .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
@@ -272,6 +270,8 @@ namespace UI {
                         pcVar6 = pcVar6 + 1;
                         pcVar11 = pcVar11 + 1;
                     } while (cVar1 != '\0');
+                } else {
+                    DAT_MapNameCache::instance[0] = '\0';
                 }
                 iVar12 = 0;
                 _mapID = 0;
@@ -456,17 +456,7 @@ namespace UI {
                     local_3fc = 8;
                     local_3f8 = iVar10;
                     do {
-                        if (local_400[-0x1b] == -1) {
-                            if (*local_400 != 0) {
-                                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
-                                    DAT_TextureRenderCoreObject::ptr)(
-                                    OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, iVar4, iVar10, iVar7);
-                                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
-                                    DAT_TextureRenderCoreObject::ptr)(
-                                    OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, (int)(*local_400 + 700), iVar10, iVar7);
-                                goto LAB_00448ced;
-                            }
-                        } else {
+                        if (local_400[-0x1b] != -1) {
                             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                                 DAT_TextureRenderCoreObject::ptr)(
                                 OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, iVar4, iVar10, iVar7);
@@ -481,6 +471,16 @@ namespace UI {
                             if (iVar12 == 4) {
                                 iVar7 = iVar7 + 0x26;
                                 iVar10 = local_3f8;
+                            }
+                        } else {
+                            if (*local_400 != 0) {
+                                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
+                                    DAT_TextureRenderCoreObject::ptr)(
+                                    OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, iVar4, iVar10, iVar7);
+                                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
+                                    DAT_TextureRenderCoreObject::ptr)(
+                                    OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, (int)(*local_400 + 700), iVar10, iVar7);
+                                goto LAB_00448ced;
                             }
                         }
                         local_400 = local_400 + 1;

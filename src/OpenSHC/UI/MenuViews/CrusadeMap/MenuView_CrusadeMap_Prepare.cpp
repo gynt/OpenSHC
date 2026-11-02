@@ -27,10 +27,10 @@ namespace UI {
             DWORD_00ed311c::instance = 0;
             if (DAT_GameCore::instance.currentTrailType == Game::TT_EXTREME) {
                 tgxFileName = S_SHCX_MAP_TGX_005AAFCC;
-            } else if (DAT_GameCore::instance.currentTrailType == Game::TT_WARCHEST) {
-                tgxFileName = S_SKIRMISH_TRAIL2_TGX_005AAFB8;
-            } else {
+            } else if (DAT_GameCore::instance.currentTrailType != Game::TT_WARCHEST) {
                 tgxFileName = S_SKIRMISH_TRAIL_TGX_005AAFA4;
+            } else {
+                tgxFileName = S_SKIRMISH_TRAIL2_TGX_005AAFB8;
             }
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(

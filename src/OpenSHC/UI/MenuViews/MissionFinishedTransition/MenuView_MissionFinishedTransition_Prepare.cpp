@@ -118,18 +118,7 @@ namespace UI {
                     == OpenSHC::Game::GM_SKIRMISH_END_OF_GAME_SINGLE_PLAYER)
                     goto LAB_004e1da4;
             } else {
-                if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION) {
-                    if (DAT_GameCore::instance.missionNumber1to20 - 7U < 5) {
-                        iVar3 = DAT_MenuHandlerState::instance.y + 0x3c;
-                        xPos = DAT_MenuHandlerState::instance.x + 0x50;
-                        pcVar5 = S_ARABIAN_WIN_BIK_005AB800;
-                    } else {
-                    LAB_004e1cbd:
-                        iVar3 = DAT_MenuHandlerState::instance.y + 0x3c;
-                        xPos = DAT_MenuHandlerState::instance.x + 0x50;
-                        pcVar5 = S_CRUSADER_WIN_BIK_005AB7EC;
-                    }
-                } else {
+                if (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_CAMPAIGN_MISSION) {
                     iVar3 = MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::getLordTypeForPlayer,
                         DAT_GameSynchronyState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID);
                     if (iVar3 != 1)
@@ -137,6 +126,17 @@ namespace UI {
                     iVar3 = DAT_MenuHandlerState::instance.y + 0x3c;
                     xPos = DAT_MenuHandlerState::instance.x + 0x50;
                     pcVar5 = S_ARABIAN_WIN_BIK_005AB800;
+                } else {
+                    if (DAT_GameCore::instance.missionNumber1to20 - 7U >= 5) {
+                    LAB_004e1cbd:
+                        iVar3 = DAT_MenuHandlerState::instance.y + 0x3c;
+                        xPos = DAT_MenuHandlerState::instance.x + 0x50;
+                        pcVar5 = S_CRUSADER_WIN_BIK_005AB7EC;
+                    } else {
+                        iVar3 = DAT_MenuHandlerState::instance.y + 0x3c;
+                        xPos = DAT_MenuHandlerState::instance.x + 0x50;
+                        pcVar5 = S_ARABIAN_WIN_BIK_005AB800;
+                    }
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::BinkControlClass_Func::playBINK, DAT_BinkControlState::ptr)(
                     0, pcVar5, 0, 0, xPos, iVar3, 2);

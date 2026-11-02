@@ -133,15 +133,7 @@ namespace UI {
                 iVar2 = iVar1 + 700;
                 iVar4 = iVar4 - 100;
                 iVar1 = iVar1 + 0x1f5;
-            } else if (iVar5 == 300) {
-                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox,
-                    DAT_PencilRenderCore::ptr)(iVar1 + 0x20d, local_1c - 0x4b, iVar1 + 0x2a1, local_1c + 0x4a,
-                    (ushort)(COL_BLACK::instance.shortValue));
-                iVar5 = iVar4 + 0x4b;
-                iVar2 = iVar1 + 0x2a2;
-                iVar4 = iVar4 - 0x4c;
-                iVar1 = iVar1 + 0x20c;
-            } else {
+            } else if (iVar5 != 300) {
                 MACRO_CALL_MEMBER(
                     OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
                     iVar1 + 500, local_1c - 100, iVar1 + 699, local_1c + 100, (ushort)(COL_BLACK::instance.shortValue));
@@ -149,6 +141,14 @@ namespace UI {
                 iVar2 = iVar1 + 700;
                 iVar4 = iVar4 - 0x65;
                 iVar1 = iVar1 + 499;
+            } else {
+                MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox,
+                    DAT_PencilRenderCore::ptr)(iVar1 + 0x20d, local_1c - 0x4b, iVar1 + 0x2a1, local_1c + 0x4a,
+                    (ushort)(COL_BLACK::instance.shortValue));
+                iVar5 = iVar4 + 0x4b;
+                iVar2 = iVar1 + 0x2a2;
+                iVar4 = iVar4 - 0x4c;
+                iVar1 = iVar1 + 0x20c;
             }
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox, DAT_PencilRenderCore::ptr)(
                 iVar1, iVar4, iVar2, iVar5, (ushort)(COL_BLACK::instance.shortValue));

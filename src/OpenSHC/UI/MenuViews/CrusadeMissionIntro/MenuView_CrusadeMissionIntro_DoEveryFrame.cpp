@@ -328,39 +328,7 @@ namespace UI {
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x1e, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0,
                     0xf, TRUE, 0);
                 _offset = DAT_GameCore::instance.extremeTrailProgress + 0x51;
-            } else if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_WARCHEST) {
-                pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_TRAIL_NAMES_CRU,
-                    (int)(DAT_GameCore::instance.warchestTrailProgress + 0x33));
-                _offset = MACRO_CALL_MEMBER(
-                    OpenSHC::Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(pcVar2, _fontSize);
-                if (0x1bd < _offset) {
-                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
-                        DAT_GameCore::instance.warchestTrailProgress + 0x33,
-                        DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x1e,
-                        DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x1e, OpenSHC::Text::TTA_LEFT,
-                        0xccfaff, 0, 0x10, FALSE, 0);
-                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow,
-                        DAT_TextManagerObject::ptr)(s___005ab5d4,
-                        DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x1f,
-                        DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x1e, OpenSHC::Text::TTA_LEFT,
-                        0xccfaff, 0, 0x10, TRUE, 0);
-                    _offset = DAT_GameCore::instance.warchestTrailProgress + 0x33;
-                    _titleFontSize = 0x10;
-                    goto LAB_004ddfa0;
-                }
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
-                    DAT_GameCore::instance.warchestTrailProgress + 0x33,
-                    DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x1e,
-                    DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x1e, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0,
-                    0xf, FALSE, 0);
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow,
-                    DAT_TextManagerObject::ptr)(s___005ab5d4,
-                    DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x1f,
-                    DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x1e, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0,
-                    0xf, TRUE, 0);
-                _offset = DAT_GameCore::instance.warchestTrailProgress + 0x33;
-            } else {
+            } else if (DAT_GameCore::instance.currentTrailType != OpenSHC::Game::TT_WARCHEST) {
                 pcVar2 = MACRO_CALL_MEMBER(
                     OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
                     OpenSHC::DE::SHCDE::TEXT_TRAIL_NAMES_CRU, (int)(DAT_GameCore::instance.skirmishTrailProgress + 1));
@@ -392,6 +360,38 @@ namespace UI {
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x1e, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0,
                     0xf, TRUE, 0);
                 _offset = DAT_GameCore::instance.skirmishTrailProgress + 1;
+            } else {
+                pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                    DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_TRAIL_NAMES_CRU,
+                    (int)(DAT_GameCore::instance.warchestTrailProgress + 0x33));
+                _offset = MACRO_CALL_MEMBER(
+                    OpenSHC::Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(pcVar2, _fontSize);
+                if (0x1bd < _offset) {
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
+                        DAT_GameCore::instance.warchestTrailProgress + 0x33,
+                        DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x1e,
+                        DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x1e, OpenSHC::Text::TTA_LEFT,
+                        0xccfaff, 0, 0x10, FALSE, 0);
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow,
+                        DAT_TextManagerObject::ptr)(s___005ab5d4,
+                        DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x1f,
+                        DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x1e, OpenSHC::Text::TTA_LEFT,
+                        0xccfaff, 0, 0x10, TRUE, 0);
+                    _offset = DAT_GameCore::instance.warchestTrailProgress + 0x33;
+                    _titleFontSize = 0x10;
+                    goto LAB_004ddfa0;
+                }
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
+                    DAT_GameCore::instance.warchestTrailProgress + 0x33,
+                    DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x1e,
+                    DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x1e, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0,
+                    0xf, FALSE, 0);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow,
+                    DAT_TextManagerObject::ptr)(s___005ab5d4,
+                    DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x1f,
+                    DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x1e, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0,
+                    0xf, TRUE, 0);
+                _offset = DAT_GameCore::instance.warchestTrailProgress + 0x33;
             }
             _titleFontSize = 0xf;
         LAB_004ddfa0:
@@ -436,7 +436,9 @@ namespace UI {
                     }
                 LAB_004de066:
                     *local_10c = _offset;
-                    if (dVar3 == 1) {
+                    if (dVar3 != 1) {
+                        local_f4[_blendStrength + 1] = DAT_GameState::instance.mapAndTime.playerTeams[_offset];
+                    } else {
                         local_f4[_blendStrength + 1] = DAT_GameState::instance.mapAndTime.playerTeams[_offset];
                         iVar6 = MACRO_CALL_MEMBER(
                             OpenSHC::Map::Units::UnitsState_Func::getAliveLordForPlayer, DAT_UnitsState::ptr)(_offset);
@@ -451,8 +453,6 @@ namespace UI {
                             local_f4[_offset + 0xb] = 1;
                             goto LAB_004de0d9;
                         }
-                    } else {
-                        local_f4[_blendStrength + 1] = DAT_GameState::instance.mapAndTime.playerTeams[_offset];
                     }
                     local_10c = local_10c + 3;
                     _blendStrength = _blendStrength + 1;

@@ -126,7 +126,33 @@ namespace UI {
         }
         iVar9 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .fearFactorLevel;
-        if (iVar9 < 1) {
+        if (iVar9 >= 1) {
+            DAT_TextManagerObject::instance.field8_0x20 = 1;
+            MACRO_CALL_MEMBER(
+                OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
+                OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS3, 0xb1, iVar5 + 0x74, iVar4 + 0x1da);
+            iVar3 = 0;
+            BVar10 = FALSE;
+            iVar6 = 0x12;
+            BVar8 = 0;
+            TVar7 = OpenSHC::Text::TTA_LEFT;
+            iVar9 = iVar5 + 0x9c;
+            iVar11 = iVar4 + 0x1d8;
+            /*
+              added by script: "Troop combat bonus:"
+             */
+            pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_REPORT_BUTTONS, 0x1f);
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                pcVar1, iVar9, iVar11, TVar7, BVar8, iVar6, BVar10, iVar3);
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
+                DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                        .fearFactorLevel
+                    * 5,
+                iVar5 + 0xa2, iVar4 + 0x1d8, OpenSHC::Text::TTA_LEFT, 0xff00, 0, 0x12, TRUE, 0);
+            foregroundColor = 0xff00;
+            iVar5 = iVar5 + 0xa4;
+        } else {
             if (-1 < iVar9) {
                 iVar11 = 0;
                 BVar10 = FALSE;
@@ -169,32 +195,6 @@ namespace UI {
                 iVar5 + 0x98, iVar4 + 0x1d8, OpenSHC::Text::TTA_LEFT, 0xff, 0, 0x12, TRUE, 0);
             foregroundColor = 0xff;
             iVar5 = iVar5 + 0x9a;
-        } else {
-            DAT_TextManagerObject::instance.field8_0x20 = 1;
-            MACRO_CALL_MEMBER(
-                OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
-                OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS3, 0xb1, iVar5 + 0x74, iVar4 + 0x1da);
-            iVar3 = 0;
-            BVar10 = FALSE;
-            iVar6 = 0x12;
-            BVar8 = 0;
-            TVar7 = OpenSHC::Text::TTA_LEFT;
-            iVar9 = iVar5 + 0x9c;
-            iVar11 = iVar4 + 0x1d8;
-            /*
-              added by script: "Troop combat bonus:"
-             */
-            pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_REPORT_BUTTONS, 0x1f);
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                pcVar1, iVar9, iVar11, TVar7, BVar8, iVar6, BVar10, iVar3);
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
-                DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                        .fearFactorLevel
-                    * 5,
-                iVar5 + 0xa2, iVar4 + 0x1d8, OpenSHC::Text::TTA_LEFT, 0xff00, 0, 0x12, TRUE, 0);
-            foregroundColor = 0xff00;
-            iVar5 = iVar5 + 0xa4;
         }
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
             s_percentage_005a2770, iVar5, iVar4 + 0x1d8, OpenSHC::Text::TTA_LEFT, foregroundColor, 0, 0x12, TRUE, 0);

@@ -12,9 +12,7 @@ namespace UI {
         int _range = maximum - minimum;
         this->sliderMinimum = minimum;
         this->sliderMaximum = maximum;
-        if (_range < 200) {
-            this->sliderValue = value;
-        } else {
+        if (_range >= 200) {
             int _lower = value - minimum;
             if (_range / 5 < _lower) {
                 this->sliderValue = (_range * 3) / 5 + _lower;
@@ -24,6 +22,8 @@ namespace UI {
             if (value == maximum) {
                 this->sliderValue = ((_range * 3) / 5 - minimum) + maximum;
             }
+        } else {
+            this->sliderValue = value;
         }
         this->destination = (int*)destination;
         this->destination2 = (short*)0x0;

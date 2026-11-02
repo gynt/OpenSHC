@@ -144,12 +144,7 @@ namespace UI {
                         text = MACRO_CALL(OpenSHC::Global_Func::GetStringBasedOnHardcodedMaps)(pcVar1, &local_68);
                         iVar8 = MACRO_CALL_MEMBER(
                             OpenSHC::Text::TextManager_Func::computeTextWidth, DAT_TextManagerObject::ptr)(text, 0x12);
-                        if (iVar8 < 0xa1) {
-                            _text = MACRO_CALL(OpenSHC::Global_Func::GetStringBasedOnHardcodedMaps)(pcVar1, &local_6c);
-                            DAT_TextManagerObject::instance.field12_0x30 = 1;
-                            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk,
-                                DAT_TextManagerObject::ptr)(_text, iVar14, local_a8, 0xa0, 0xccfaff, 0x12, 0);
-                        } else {
+                        if (iVar8 >= 0xa1) {
                             pcVar1 = MACRO_CALL(OpenSHC::Global_Func::GetStringBasedOnHardcodedMaps)(pcVar1, &local_70);
                             iVar8 = local_a8;
                             DAT_TextManagerObject::instance.field12_0x30 = 1;
@@ -158,6 +153,11 @@ namespace UI {
                             MACRO_CALL_MEMBER(
                                 OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                                 S___005AB7A8, iVar9 + 0xdf, iVar8, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, FALSE, 0);
+                        } else {
+                            _text = MACRO_CALL(OpenSHC::Global_Func::GetStringBasedOnHardcodedMaps)(pcVar1, &local_6c);
+                            DAT_TextManagerObject::instance.field12_0x30 = 1;
+                            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk,
+                                DAT_TextManagerObject::ptr)(_text, iVar14, local_a8, 0xa0, 0xccfaff, 0x12, 0);
                         }
                         iVar8 = DAT_SkMasters2DataArray::instance[iVar2].score;
                         if (iVar8)
@@ -171,15 +171,15 @@ namespace UI {
                         iVar8 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::computeTextWidth,
                             DAT_TextManagerObject::ptr)(local_44, 0x12);
                         DAT_TextManagerObject::instance.field12_0x30 = 1;
-                        if (iVar8 < 0xa1) {
-                            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk,
-                                DAT_TextManagerObject::ptr)(local_44, iVar14, iVar11, 0x9b, 0xccfaff, 0x12, 0);
-                        } else {
+                        if (iVar8 >= 0xa1) {
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk,
                                 DAT_TextManagerObject::ptr)(local_44, iVar14, iVar11, 0x91, 0xccfaff, 0x12, 0);
                             MACRO_CALL_MEMBER(
                                 OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                                 S___005AB7A8, iVar9 + 0xdf, iVar11, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, FALSE, 0);
+                        } else {
+                            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk,
+                                DAT_TextManagerObject::ptr)(local_44, iVar14, iVar11, 0x9b, 0xccfaff, 0x12, 0);
                         }
                     }
                     iVar11 = local_a4;
@@ -378,16 +378,16 @@ namespace UI {
                         } while (local_b4 <= DAT_SkMasters2DataArray::instance[iVar2].activePlayerCount);
                     }
                     iVar9 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
-                    if (DAT_SkMasters2DataArray::instance[iVar2].aliveArray[1] == 0) {
-                        iVar8 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x293;
-                        iVar11 = 0x299;
-                        gmID = OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2;
-                        iVar14 = local_a0;
-                    } else {
+                    if (DAT_SkMasters2DataArray::instance[iVar2].aliveArray[1] != 0) {
                         iVar8 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x291;
                         iVar11 = 0x8b;
                         gmID = OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS3;
                         iVar14 = local_ac;
+                    } else {
+                        iVar8 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x293;
+                        iVar11 = 0x299;
+                        gmID = OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2;
+                        iVar14 = local_a0;
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                         DAT_TextureRenderCoreObject::ptr)(gmID, iVar11, iVar8, iVar14);
@@ -427,27 +427,7 @@ namespace UI {
                     + INT_ARRAY_00eb96d8::instance[DAT_00ed3120::instance + local_80];
                 iVar4 = pSVar5->score;
                 if (iVar4) {
-                    if (iVar4 < 0x51) {
-                        if (iVar4 < 0x33) {
-                            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
-                                DAT_TextManagerObject::ptr)(S_1___005AB778,
-                                DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0xaf,
-                                DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x20a, OpenSHC::Text::TTA_LEFT,
-                                0xccfaff, 0x12, FALSE, 0);
-                            iVar4 = pSVar5->score;
-                            iVar2 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x20a;
-                            iVar9 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0xaf;
-                        } else {
-                            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
-                                DAT_TextManagerObject::ptr)(S_2___005AB780,
-                                DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0xaf,
-                                DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x20a, OpenSHC::Text::TTA_LEFT,
-                                0xccfaff, 0x12, FALSE, 0);
-                            iVar2 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x20a;
-                            iVar9 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0xaf;
-                            iVar4 = pSVar5->score - 0x32;
-                        }
-                    } else {
+                    if (iVar4 >= 0x51) {
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
                             DAT_TextManagerObject::ptr)(S_3___005AB788,
                             DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0xaf,
@@ -456,6 +436,26 @@ namespace UI {
                         iVar2 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x20a;
                         iVar9 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0xaf;
                         iVar4 = pSVar5->score - 0x50;
+                    } else {
+                        if (iVar4 >= 0x33) {
+                            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
+                                DAT_TextManagerObject::ptr)(S_2___005AB780,
+                                DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0xaf,
+                                DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x20a, OpenSHC::Text::TTA_LEFT,
+                                0xccfaff, 0x12, FALSE, 0);
+                            iVar2 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x20a;
+                            iVar9 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0xaf;
+                            iVar4 = pSVar5->score - 0x32;
+                        } else {
+                            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
+                                DAT_TextManagerObject::ptr)(S_1___005AB778,
+                                DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0xaf,
+                                DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x20a, OpenSHC::Text::TTA_LEFT,
+                                0xccfaff, 0x12, FALSE, 0);
+                            iVar4 = pSVar5->score;
+                            iVar2 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x20a;
+                            iVar9 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0xaf;
+                        }
                     }
                     MACRO_CALL_MEMBER(
                         OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
@@ -550,7 +550,9 @@ namespace UI {
                 if (DAT_00ed27a0::instance == 0x1f) {
                     iVar4 = 0;
                     BVar13 = FALSE;
-                    if (DAT_00ed3124::instance == 2) {
+                    if (DAT_00ed3124::instance != 2) {
+                        iVar4 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0xfa;
+                    } else {
                         iVar9 = 0x11;
                         BVar10 = 0xccfaff;
                         iVar2 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 100;
@@ -577,8 +579,6 @@ namespace UI {
                             iVar4 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0xfe;
                         }
                         BVar13 = TRUE;
-                    } else {
-                        iVar4 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0xfa;
                     }
                     iVar8 = 0;
                     iVar9 = 0x11;

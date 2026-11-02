@@ -178,7 +178,16 @@ namespace UI {
                 iVar3 = MACRO_CALL_MEMBER(OpenSHC::Text::FontSizeClass_Func::renderMultilineTextUnk,
                     &DAT_TextManagerObject::instance.fontSizeClassArray[0x12])(
                     pcVar2, iVar9, iVar7, iVar3, BVar8, iVar12, iVar11);
-                if (iVar3 < 0x24) {
+                if (iVar3 >= 0x24) {
+                    iVar4 = 0x12;
+                    uVar10 = 0xff;
+                    iVar3 = local_38;
+                    pcVar2 = MACRO_CALL_MEMBER(
+                        OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
+                        OpenSHC::DE::SHCDE::TEXT_TUTORIAL_BUTTONS, DAT_00df5644::instance + 3);
+                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk,
+                        DAT_TextManagerObject::ptr)(pcVar2, iVar3, iVar5, iVar13, uVar10, iVar4, (int)(keepOffsetX));
+                } else {
                     iVar13 = 0;
                     iVar3 = 0x12;
                     BVar8 = 0xff;
@@ -188,15 +197,6 @@ namespace UI {
                         OpenSHC::DE::SHCDE::TEXT_TUTORIAL_BUTTONS, DAT_00df5644::instance + 3);
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                         pcVar2, iVar4, iVar5, TVar6, BVar8, iVar3, keepOffsetX, iVar13);
-                } else {
-                    iVar4 = 0x12;
-                    uVar10 = 0xff;
-                    iVar3 = local_38;
-                    pcVar2 = MACRO_CALL_MEMBER(
-                        OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
-                        OpenSHC::DE::SHCDE::TEXT_TUTORIAL_BUTTONS, DAT_00df5644::instance + 3);
-                    MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk,
-                        DAT_TextManagerObject::ptr)(pcVar2, iVar3, iVar5, iVar13, uVar10, iVar4, (int)(keepOffsetX));
                 }
             }
             MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderTutorialFloatForUIElement)(DAT_TutorialCurrentStep::instance);

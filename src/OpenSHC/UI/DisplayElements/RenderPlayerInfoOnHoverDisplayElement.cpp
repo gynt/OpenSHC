@@ -97,12 +97,12 @@ namespace UI {
             if (DAT_00df5530::instance) {
                 DWORD DVar1 = timeGetTime();
                 uint uVar2 = DVar1 - INT_00df552c::instance;
-                if (uVar2 < 0x2d0) {
+                if (uVar2 >= 0x2d0) {
+                    DAT_00df5530::instance = 0;
+                } else {
                     if (400 < uVar2) {
                         blendStrength = (uVar2 - 400) / 10;
                     }
-                } else {
-                    DAT_00df5530::instance = 0;
                 }
             }
         } else {
