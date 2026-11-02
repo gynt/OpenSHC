@@ -292,7 +292,7 @@ namespace Map {
                         iVar3 = 10;
                         while (DAT_GameState::instance.mapAndTime.startGoods[iVar3 + 0x19] == 0) {
                             iVar3 = iVar3 + 1;
-                            if (0x13 < iVar3)
+                            if (iVar3 > 0x13)
                                 goto LAB_005277c5;
                         }
                         switch (iVar3) {

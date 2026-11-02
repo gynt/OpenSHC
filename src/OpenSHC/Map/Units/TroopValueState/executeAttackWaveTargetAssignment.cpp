@@ -255,8 +255,8 @@ namespace Map {
                             Map::Units::STBT_0x3fc, Map::Units::STBT_1, 0, 0x14);
                     }
                 }
-                if (local_4 + 4 < DAT_TroopValueState::instance.attackInfo.value10
-                        - DAT_TroopValueState::instance.attackInfo.reservedTroopBudget) {
+                if (local_4 + DAT_TroopValueState::instance.attackInfo.value10
+                    > 4 - DAT_TroopValueState::instance.attackInfo.reservedTroopBudget) {
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::sortAttackInfoTribeIDArrayBasedOn, this)(
                         param_1, 1000,
                         *(int*)((int)DAT_TroopValueState::instance.attackInfo.hackValuesArray + iVar4 - 4),

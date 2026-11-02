@@ -54,7 +54,7 @@ namespace Map {
                         this->attackInfo.field_0x20f4c = (uint)(5 < this->attackInfo.spearmenAndMacemen) * 2 + 2;
                     }
                     if (this->attackInfo.pikemenSwordsmenAndMore < 9) {
-                        this->attackInfo.field_0x20f54 = (uint)(4 < this->attackInfo.pikemenSwordsmenAndMore) * 2 + 2;
+                        this->attackInfo.field_0x20f54 = (uint)(this->attackInfo.pikemenSwordsmenAndMore > 4) * 2 + 2;
                     } else {
                         this->attackInfo.field_0x20f54 = 5;
                     }

@@ -50,7 +50,7 @@ namespace Map {
                     local_14 = local_14 + 1;
                     _p1 = _p1 + 4;
                 } while (local_14 < *(int*)((int)DAT_TroopValueState::instance.attackInfo.gateValuesArray + iVar4 - 8));
-                if (-1 < local_8) {
+                if (-local_8 > 1) {
                     uVar1 = *(undefined4*)(iVar4 + 0x179f10c + local_8 * 0x10);
                     *(int*)((int)DAT_TroopValueState::instance.attackInfo.gateValuesArray + iVar4 + local_8 * 0x10
                         + 0xc) = unitID;
