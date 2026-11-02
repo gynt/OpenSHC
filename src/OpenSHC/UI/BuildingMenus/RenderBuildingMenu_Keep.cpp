@@ -14,6 +14,7 @@
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/DAT_BuildingsState.hpp"
 #include "OpenSHC/Globals/DAT_GMImageHeaders.hpp"
@@ -138,8 +139,8 @@ namespace UI {
                 DAT_MenuHandlerState::instance.y + 0x1db);
             DAT_TextManagerObject::instance.currentXOffset_0x0 = DAT_TextManagerObject::instance.currentXOffset_0x0
                 + DAT_GMImageHeaders::instance.imh[GMTotalPicturesProcessed::instance[0x2e] + 0x7e].width;
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(" = ",
-                DAT_MenuHandlerState::instance.x + 0x140, DAT_MenuHandlerState::instance.y + 0x1e3,
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                S_EQUALS_005A276C, DAT_MenuHandlerState::instance.x + 0x140, DAT_MenuHandlerState::instance.y + 0x1e3,
                 OpenSHC::Text::TTA_LEFT, 0, 0x12, TRUE, 0);
             _xPos = DAT_MenuHandlerState::instance.y + 0x1e3;
             iVar3 = DAT_MenuHandlerState::instance.x + 0x14a;
@@ -165,8 +166,8 @@ namespace UI {
                 DAT_MenuHandlerState::instance.y + 0x1db);
             DAT_TextManagerObject::instance.currentXOffset_0x0 = DAT_TextManagerObject::instance.currentXOffset_0x0
                 + DAT_GMImageHeaders::instance.imh[GMTotalPicturesProcessed::instance[0x2e] + 0x7e].width;
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(" = ",
-                DAT_MenuHandlerState::instance.x + 0x140, DAT_MenuHandlerState::instance.y + 0x1e3,
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                S_EQUALS_005A276C, DAT_MenuHandlerState::instance.x + 0x140, DAT_MenuHandlerState::instance.y + 0x1e3,
                 OpenSHC::Text::TTA_LEFT, 0, 0x12, TRUE, 0);
             _xPos = DAT_MenuHandlerState::instance.y + 0x1e3;
             iVar3 = DAT_MenuHandlerState::instance.x + 0x14a;

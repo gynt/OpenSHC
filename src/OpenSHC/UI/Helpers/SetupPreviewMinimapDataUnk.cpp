@@ -6,6 +6,7 @@
 #include "OpenSHC/IO/FileResourceType.hpp"
 #include "OpenSHC/UI/Enums/MenuViewType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
 #include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
@@ -68,7 +69,7 @@ namespace UI {
                     pcVar5 = pcVar3;
                     pcVar3 = pcVar5 + 1;
                 } while (pcVar5[1] != '\0');
-                strcpy(pcVar5 + 1, ".sav");
+                strcpy(pcVar5 + 1, S__SAV_005A75A0);
                 resourceType = IO::FRT_UNKNOWN;
             } else {
                 pcVar3 = (local_3f4 - 1);
@@ -76,7 +77,7 @@ namespace UI {
                     pcVar5 = pcVar3;
                     pcVar3 = pcVar5 + 1;
                 } while (pcVar5[1] != '\0');
-                strcpy(pcVar5 + 1, ".msv");
+                strcpy(pcVar5 + 1, S__MSV_005A7498);
                 resourceType = IO::FRT_UNKNOWN;
             }
         } else {

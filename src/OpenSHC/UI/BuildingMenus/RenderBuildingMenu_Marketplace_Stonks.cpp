@@ -11,6 +11,7 @@
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_GameState.hpp"
 #include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
@@ -120,7 +121,8 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                         iVar3, iVar5 + iVar1, iVar7 + iVar4, OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0, 0x12, FALSE, 0);
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow,
-                        DAT_TextManagerObject::ptr)("/", DAT_MenuHandlerState::instance.x + 0x46 + iVar1,
+                        DAT_TextManagerObject::ptr)(s_slash_forward_005a277c,
+                        DAT_MenuHandlerState::instance.x + 0x46 + iVar1,
                         DAT_MenuHandlerState::instance.y + 0x1e5 + iVar4, OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0, 0x12,
                         TRUE, 0);
                     iVar7 = DAT_MenuHandlerState::instance.y + 0x1e5;

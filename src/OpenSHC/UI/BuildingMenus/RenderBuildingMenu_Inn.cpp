@@ -10,6 +10,7 @@
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/DAT_BuildingsState.hpp"
 #include "OpenSHC/Globals/DAT_GameState.hpp"
@@ -100,16 +101,16 @@ namespace UI {
                 .workingInnsCount,
             DAT_MenuHandlerState::instance.x + 0xb8, DAT_MenuHandlerState::instance.y + 0x1e9, OpenSHC::Text::TTA_LEFT,
             0, 0x12, TRUE, 0);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)("(",
-            DAT_MenuHandlerState::instance.x + 0xc2, DAT_MenuHandlerState::instance.y + 0x1e9, OpenSHC::Text::TTA_LEFT,
-            0, 0x12, TRUE, 0);
+        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+            S_BRACE_CLOSE_005A2778, DAT_MenuHandlerState::instance.x + 0xc2, DAT_MenuHandlerState::instance.y + 0x1e9,
+            OpenSHC::Text::TTA_LEFT, 0, 0x12, TRUE, 0);
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
             DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].countInns,
             DAT_MenuHandlerState::instance.x + 0xc4, DAT_MenuHandlerState::instance.y + 0x1e9, OpenSHC::Text::TTA_LEFT,
             0, 0x12, TRUE, 0);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(")",
-            DAT_MenuHandlerState::instance.x + 0xc6, DAT_MenuHandlerState::instance.y + 0x1e9, OpenSHC::Text::TTA_LEFT,
-            0, 0x12, TRUE, 0);
+        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+            S_BRACE_OPEN_005A2774, DAT_MenuHandlerState::instance.x + 0xc6, DAT_MenuHandlerState::instance.y + 0x1e9,
+            OpenSHC::Text::TTA_LEFT, 0, 0x12, TRUE, 0);
         iVar3 = MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::computeAleCoverage, DAT_GameState::ptr)(
             DAT_GameSynchronyState::instance.currentPlayerSlotID);
         iVar9 = 0;
@@ -129,9 +130,9 @@ namespace UI {
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(iVar3,
             DAT_MenuHandlerState::instance.x + 0xb8, DAT_MenuHandlerState::instance.y + 0x1fb, OpenSHC::Text::TTA_LEFT,
             0, 0x12, TRUE, 0);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)("%",
-            DAT_MenuHandlerState::instance.x + 0xba, DAT_MenuHandlerState::instance.y + 0x1fb, OpenSHC::Text::TTA_LEFT,
-            0, 0x12, TRUE, 0);
+        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+            S_PERCENTAGE_005A2770, DAT_MenuHandlerState::instance.x + 0xba, DAT_MenuHandlerState::instance.y + 0x1fb,
+            OpenSHC::Text::TTA_LEFT, 0, 0x12, TRUE, 0);
         if (iVar3 < 0x19) {
             iVar1 = 0;
         } else if (iVar3 < 0x32) {
@@ -186,9 +187,9 @@ namespace UI {
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(iVar3,
             DAT_MenuHandlerState::instance.x + 0xb8, DAT_MenuHandlerState::instance.y + 0x20d, OpenSHC::Text::TTA_LEFT,
             0, 0x12, TRUE, 0);
-        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)("%",
-            DAT_MenuHandlerState::instance.x + 0xba, DAT_MenuHandlerState::instance.y + 0x20d, OpenSHC::Text::TTA_LEFT,
-            0, 0x12, TRUE, 0);
+        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+            S_PERCENTAGE_005A2770, DAT_MenuHandlerState::instance.x + 0xba, DAT_MenuHandlerState::instance.y + 0x20d,
+            OpenSHC::Text::TTA_LEFT, 0, 0x12, TRUE, 0);
     }
 
 }

@@ -1,6 +1,7 @@
 #include "../Helpers.func.hpp"
 
 #include "OpenSHC/OS.func.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_MissionScores.hpp"
 
@@ -12,7 +13,7 @@ namespace UI {
     {
         FILE* _File;
         int* dstBuffer;
-        _File = MACRO_CALL(OS_Func::_fopen)(filename, "rb");
+        _File = MACRO_CALL(OS_Func::_fopen)(filename, s_rb_005a4e18);
         if (_File != (FILE*)0x0) {
             MACRO_CALL(OS_Func::_fseek)(_File, 4, FILE_BEGIN);
             dstBuffer = DAT_MissionScores::instance;

@@ -5,6 +5,7 @@
 #include "OpenSHC/UI/Rendering/TextureRenderCore.func.hpp"
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
 #include "OpenSHC/Globals/DAT_MenuHandlerState.hpp"
@@ -24,8 +25,8 @@ namespace UI {
         Menu* pMVar1;
         DAT_GameCore::instance.currentlyInGameUnk_0xa4 = FALSE;
         DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-        MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-            DAT_TextureRenderCoreObject::ptr)("frontend_combat3.tgx");
+        MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
+            s_frontend_combat3_tgx_005a2134);
         MACRO_CALL(UI::Helpers_Func::LoadTGX_shc_back)();
         DAT_MenuHandlerState::instance.y = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
         DAT_MenuHandlerState::instance.x = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;

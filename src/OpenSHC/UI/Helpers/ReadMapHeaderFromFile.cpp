@@ -4,6 +4,7 @@
 #include "OpenSHC/IO/ResourceManager.func.hpp"
 #include "OpenSHC/IO/FileResourceType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/DAT_ResourceManager.hpp"
 #include "OpenSHC/Globals/FilePackagerObj.hpp"
@@ -35,7 +36,7 @@ namespace UI {
             puVar4 = puVar3;
             puVar3 = puVar4 + 1;
         } while (puVar4[1] != '\0');
-        strcpy(puVar4 + 1, ".map");
+        strcpy(puVar4 + 1, S__MAP_005A2294);
         MACRO_CALL_MEMBER(IO::ResourceManager_Func::resolveResourceFileName, DAT_ResourceManager::ptr)(
             IO::FRT_MAPS, (char const*)((int)(local_3f4)));
         MACRO_CALL_MEMBER(IO::FilePackager_Func::readMapHeader, FilePackagerObj::ptr)(TRUE);

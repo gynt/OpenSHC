@@ -12,6 +12,7 @@
 #include "OpenSHC/Rendering/ScreenResolutionEnum.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/COL_WHITE.hpp"
 #include "OpenSHC/Globals/DAT_00eb9af8.hpp"
@@ -483,7 +484,7 @@ namespace UI {
                 }
                 if (DAT_GameSynchronyState::instance.finalResults.finalDateOfDeathInMonths[_renderPlayer] != 0) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        "(", iVar8 + 8, iVar2, OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x13, FALSE, 0);
+                        S_BRACE_CLOSE_005A2778, iVar8 + 8, iVar2, OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x13, FALSE, 0);
                     MACRO_CALL_MEMBER(
                         OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM, DAT_TextureRenderCoreObject::ptr)(
                         OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2, 0x299, iVar8 + 0xe, iVar2 - 5);
@@ -506,7 +507,7 @@ namespace UI {
                         DAT_GameSynchronyState::instance.finalResults.finalDateOfDeathInMonths[_renderPlayer] / 0xc,
                         iVar8 + 0x20, iVar2, OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x13, TRUE, 0);
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        ")", iVar8 + 0x20, iVar2, OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x13, TRUE, 0);
+                        S_BRACE_OPEN_005A2774, iVar8 + 0x20, iVar2, OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x13, TRUE, 0);
                 }
                 iVar10 = local_3c4;
                 iVar8 = local_3d0;
@@ -617,7 +618,8 @@ namespace UI {
                 pcVar6 = MACRO_CALL_MEMBER(
                     OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
                     OpenSHC::DE::SHCDE::TEXT_MONTHS, DAT_GameSynchronyState::instance.finalResults.monthStart);
-                MACRO_CALL(OpenSHC::OS_Func::_sprintf)((char*)local_30c, "%s %d - %s %d", pcVar6, iVar2, pcVar5, iVar8);
+                MACRO_CALL(OpenSHC::OS_Func::_sprintf)(
+                    (char*)local_30c, S__S__D____S__D_005AAF3C, pcVar6, iVar2, pcVar5, iVar8);
                 iVar2 = DAT_MissionDefinedData::instance.GreatestLordTextEntries[DAT_00eb9af8::instance][1];
                 offsetIndex = (OpenSHC::DE::SHCDE::eTextSections)(DAT_MissionDefinedData::instance
                         .GreatestLordTextEntries[DAT_00eb9af8::instance][0]);
@@ -683,9 +685,9 @@ namespace UI {
         if ((char)INT_00eb0e44::instance != '\0') {
             iVar2 = MACRO_CALL(OpenSHC::UI::GreatestLord_Func::ComputeSkMasterScore)(
                 DAT_GameSynchronyState::instance.currentPlayerSlotID);
-            MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_68, " : %d        ", iVar2);
-            MACRO_CALL(OpenSHC::OS_Func::_sprintf)(
-                local_cc, " :   -M%d-%d.sav", DAT_GameCore::instance.extremeTrailProgress + 1, DAT_00ed3118::instance);
+            MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_68, S____D_005AAF2C, iVar2);
+            MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_cc, S____M_D_D_SAV_005AAF18,
+                DAT_GameCore::instance.extremeTrailProgress + 1, DAT_00ed3118::instance);
             iVar8 = 0;
             BVar13 = FALSE;
             iVar2 = 0x12;

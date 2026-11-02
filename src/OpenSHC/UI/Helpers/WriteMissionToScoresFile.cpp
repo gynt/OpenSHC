@@ -2,6 +2,7 @@
 
 #include "OpenSHC/OS.func.hpp"
 #include "OpenSHC/UI/Helpers.func.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_MissionScores.hpp"
 #include "OpenSHC/Globals/INT_00ec0828.hpp"
@@ -31,12 +32,12 @@ namespace UI {
         DAT_MissionScores::instance[7] = 0;
         DAT_MissionScores::instance[8] = 0;
         DAT_MissionScores::instance[9] = 0;
-        _fileHandle = MACRO_CALL(OS_Func::_fopen)(param_1, "rb");
+        _fileHandle = MACRO_CALL(OS_Func::_fopen)(param_1, s_rb_005a4e18);
         local_2c[0] = 1;
         if ((_fileHandle == (FILE*)0x0)
             || (MACRO_CALL(OS_Func::_fread)(local_2c, 4, 1, _fileHandle), local_2c[0] != 1)) {
             local_2c[0] = 0;
-            _fileHandle2 = MACRO_CALL(OS_Func::_fopen)(param_1, "wb");
+            _fileHandle2 = MACRO_CALL(OS_Func::_fopen)(param_1, s_wb_005a5510);
             if (_fileHandle2 == (FILE*)0x0) {}
             local_2c[0] = 1;
             MACRO_CALL(OS_Func::_fwrite)(local_2c, 4, 1, _fileHandle2);
@@ -80,7 +81,7 @@ namespace UI {
         local_2c[iVar2 + 1] = param_2;
         local_2c[0] = 1;
         INT_00ed2790::instance = iVar2;
-        _File = MACRO_CALL(OS_Func::_fopen)(param_1, "wb");
+        _File = MACRO_CALL(OS_Func::_fopen)(param_1, s_wb_005a5510);
         if (_File == (FILE*)0x0) {}
         local_2c[0] = 1;
         MACRO_CALL(OS_Func::_fwrite)(local_2c, 4, 1, _File);

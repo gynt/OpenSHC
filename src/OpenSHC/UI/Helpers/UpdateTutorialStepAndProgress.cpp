@@ -12,6 +12,7 @@
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
 #include "OpenSHC/UI/Enums/MenuViewType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_00df5540.hpp"
 #include "OpenSHC/Globals/DAT_00df5544.hpp"
@@ -97,7 +98,7 @@ namespace UI {
         if (!INT_00df5650::instance && 0 < DAT_00df5558::instance && DAT_00df5558::instance < DAT_00df555c::instance
             && (DVar1 = timeGetTime(), DVar1 > 1000 - DWORD_00df564c::instance)) {
             INT_00df5650::instance = 1;
-            MACRO_CALL(OS_Func::_sprintf)(local_44, "%s%s", "fx\\speech\\",
+            MACRO_CALL(OS_Func::_sprintf)(local_44, s__s_s_005aa800, s_fx_speech__005a64cc,
                 (DAT_00df5558::instance + DAT_TutorialCurrentStep::instance * 3) * 32 + 0xb3d810);
             BVar2 = MACRO_CALL(IO_Func::FileExists)(local_44);
             if (BVar2) {
@@ -135,8 +136,8 @@ namespace UI {
                 if (uVar4 < 0x20) {
                     uVar4 = 0x1f - uVar4;
                 } else {
-                    MACRO_CALL(OS_Func::_sprintf)(
-                        local_44, "%s%s", "fx\\speech\\", DAT_TutorialCurrentStep::instance * 96 + 0xb3d810);
+                    MACRO_CALL(OS_Func::_sprintf)(local_44, s__s_s_005aa800, s_fx_speech__005a64cc,
+                        DAT_TutorialCurrentStep::instance * 96 + 0xb3d810);
                     BVar2 = MACRO_CALL(IO_Func::FileExists)(local_44);
                     if (BVar2) {
                         MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::playAmbientStreamWithLoop,
@@ -344,7 +345,7 @@ namespace UI {
                 == 2) {
                 iVar3 = DAT_00df556c::instance * 0x60;
                 DAT_00df556c::instance = DAT_00df556c::instance + 1;
-                MACRO_CALL(OS_Func::_sprintf)(local_24, "%s%s", "fx\\speech\\", iVar3 + 0xb3d810);
+                MACRO_CALL(OS_Func::_sprintf)(local_24, s__s_s_005aa800, s_fx_speech__005a64cc, iVar3 + 0xb3d810);
                 MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::playAmbientStreamWithLoop, DAT_SoundSystemState::ptr)(
                     local_24);
                 if (0x27 < DAT_00df556c::instance) {

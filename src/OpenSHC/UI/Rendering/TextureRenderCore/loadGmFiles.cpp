@@ -1,6 +1,7 @@
 #include "../TextureRenderCore.func.hpp"
 
 #include "OpenSHC/UI/Rendering/TextureRenderCore.func.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/DAT_LoadingBarProgress.hpp"
 #include "OpenSHC/Globals/DAT_TextManagerObject.hpp"
@@ -31,7 +32,7 @@ namespace UI {
                 _lengthToCompare = 5;
                 bVar1 = true;
                 _endOfFilenameArray2 = _currentGmFilename;
-                _endOfFilenameArray = "null";
+                _endOfFilenameArray = S_NULL_005A506C;
                 do {
                     if (!_lengthToCompare)
                         break;
@@ -59,7 +60,7 @@ namespace UI {
                 _lengthToCompare = 5;
                 _reachedFilenameArrayEnd = true;
                 _currentGmFilename = fileNameArray;
-                _endOfFilenameArray2 = "null";
+                _endOfFilenameArray2 = S_NULL_005A506C;
                 do {
                     if (!_lengthToCompare)
                         break;

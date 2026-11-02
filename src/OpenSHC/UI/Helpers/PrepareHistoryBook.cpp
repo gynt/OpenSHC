@@ -2,6 +2,7 @@
 
 #include "OpenSHC/OS.func.hpp"
 #include "OpenSHC/UI/Rendering/TextureRenderCore.func.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_TextureRenderCoreObject.hpp"
 #include "OpenSHC/Globals/INT_ARRAY_00eb0b28.hpp"
@@ -17,23 +18,23 @@ namespace UI {
         int* piVar4;
         DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
         MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
-            "sand.tgx");
+            s_sand_tgx_005ab080);
         MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
-            "pc0.tgx");
+            s_pc0_tgx_005ab078);
         MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
-            "pc1.tgx");
+            s_pc1_tgx_005ab070);
         MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
-            "pc2.tgx");
+            s_pc2_tgx_005ab068);
         MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
-            "pc3.tgx");
+            s_pc3_tgx_005ab060);
         MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
-            "pc4.tgx");
+            s_pc4_tgx_005ab058);
         MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
-            "pc5.tgx");
+            s_pc5_tgx_005ab050);
         MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
-            "pc6.tgx");
+            s_pc6_tgx_005ab048);
         MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
-            "pc7.tgx");
+            s_pc7_tgx_005ab040);
         piVar3 = INT_ARRAY_00eb0b28::instance[0] + 1;
         do {
             iVar1 = MACRO_CALL(OS_Func::_rand)();

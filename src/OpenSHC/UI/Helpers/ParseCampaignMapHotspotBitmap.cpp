@@ -1,6 +1,7 @@
 #include "../Helpers.func.hpp"
 
 #include "OpenSHC/OS.func.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_00ec0840.hpp"
 #include "OpenSHC/Globals/DAT_ARRAY_00ed26d0.hpp"
@@ -31,7 +32,7 @@ namespace UI {
         void* local_c;
         FILE* local_8;
         void* local_4;
-        _File = MACRO_CALL(OS_Func::_fopen)("gfx8\\campaign_map_england_hotspots.bmp", "rb");
+        _File = MACRO_CALL(OS_Func::_fopen)(s_gfx8_campaign_map_england_hotspo_005aaf4c, s_rb_005a4e18);
         INT_00ed3110::instance = 1;
         pGVar3 = DAT_00ec0840::ptr;
         do {

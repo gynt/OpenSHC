@@ -5,6 +5,7 @@
 #include "OpenSHC/UI/Rendering/PencilRenderCore.func.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/COL_BLACK.hpp"
 #include "OpenSHC/Globals/COL_LIME.hpp"
@@ -56,7 +57,7 @@ namespace UI {
             MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
                 local_20, iVar4, (iVar3 >> 1) + left, bottom, local_18.shortValue);
         }
-        MACRO_CALL(OS_Func::_sprintf)(local_14, "%d/%d",
+        MACRO_CALL(OS_Func::_sprintf)(local_14, s_perc_d_slash_perc_d_005a2780,
             (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + local_1c - 0x14),
             (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + local_1c - 0x12));
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(local_14,

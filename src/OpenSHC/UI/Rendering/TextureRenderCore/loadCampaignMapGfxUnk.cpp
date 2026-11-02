@@ -3,6 +3,7 @@
 #include "OpenSHC/IO/ResourceManager.func.hpp"
 #include "OpenSHC/IO/FileResourceType.hpp"
 #include "OpenSHC/Rendering/ColorMode.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/DAT_BlendingDefinedData.hpp"
 #include "OpenSHC/Globals/DAT_ResourceManager.hpp"
@@ -35,7 +36,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::resolveResourceFileName, DAT_ResourceManager::ptr)(
                     OpenSHC::IO::FRT_GFX8, (char const*)((int)(*_campaignActGfx8Ptr)));
                 MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::readFirstPartOfCurrentResourceIntoMemory,
-                    DAT_ResourceManager::ptr)(local_304, 0x300, "act");
+                    DAT_ResourceManager::ptr)(local_304, 0x300, S_ACT_005A5064);
                 pbVar4 = local_304;
                 iVar5 = 0x40;
                 do {

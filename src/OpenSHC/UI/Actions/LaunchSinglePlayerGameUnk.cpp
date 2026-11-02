@@ -17,6 +17,7 @@
 #include "OpenSHC/UI/Enums/BuildingsAndStatusMenuTabType.hpp"
 #include "OpenSHC/UI/Enums/MenuViewType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_00b960dc.hpp"
 #include "OpenSHC/Globals/DAT_BlendingDefinedData.hpp"
@@ -109,7 +110,7 @@ namespace UI {
                 pcVar5 = pcVar10;
                 pcVar10 = pcVar5 + 1;
             } while (pcVar5[1] != '\0');
-            strcpy(pcVar5 + 1, ".map");
+            strcpy(pcVar5 + 1, s__map_005a2294);
         } else {
             iVar8 = 0;
             do {
@@ -122,7 +123,7 @@ namespace UI {
                 pcVar5 = pcVar10;
                 pcVar10 = pcVar5 + 1;
             } while (pcVar5[1] != '\0');
-            strcpy(pcVar5 + 1, ".map");
+            strcpy(pcVar5 + 1, s__map_005a2294);
             iVar8 = 0;
             do {
                 cVar3 = DAT_GameCore::instance.standaloneFilename[iVar8];

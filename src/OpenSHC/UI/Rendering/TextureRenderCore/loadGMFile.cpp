@@ -7,6 +7,7 @@
 #include "OpenSHC/IO/Graphics/GmImageType.hpp"
 #include "OpenSHC/IO/Graphics/ImageHeader.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/DAT_GMImageHeaders.hpp"
 #include "OpenSHC/Globals/DAT_GMImageOffsets.hpp"
@@ -67,19 +68,19 @@ namespace UI {
             MACRO_CALL_MEMBER(IO::ResourceManager_Func::resolveResourceFileName, DAT_ResourceManager::ptr)(
                 IO::FRT_GM, (char const*)((int)(*shortFileName_00)));
             MACRO_CALL_MEMBER(IO::ResourceManager_Func::readFirstPartOfCurrentResourceIntoMemory,
-                DAT_ResourceManager::ptr)(this->gmFileHeaderColorpaletteArray + gmID, (int)(5208), "gm1");
+                DAT_ResourceManager::ptr)(this->gmFileHeaderColorpaletteArray + gmID, (int)(5208), S_GM1_005A5068);
             MACRO_CALL_MEMBER(IO::ResourceManager_Func::readNextPartOfCurrentResourceIntoMemory,
                 DAT_ResourceManager::ptr)(DAT_GMImageOffsets::instance + this->gmNumberOfProcessedPictures,
-                this->gmFileHeaderColorpaletteArray[gmID].numberOfPicturesInFile * 4, "gm1");
+                this->gmFileHeaderColorpaletteArray[gmID].numberOfPicturesInFile * 4, S_GM1_005A5068);
             MACRO_CALL_MEMBER(IO::ResourceManager_Func::readNextPartOfCurrentResourceIntoMemory,
                 DAT_ResourceManager::ptr)(DAT_GMImageSizes::instance + this->gmNumberOfProcessedPictures,
-                this->gmFileHeaderColorpaletteArray[gmID].numberOfPicturesInFile * 4, "gm1");
+                this->gmFileHeaderColorpaletteArray[gmID].numberOfPicturesInFile * 4, S_GM1_005A5068);
             MACRO_CALL_MEMBER(IO::ResourceManager_Func::readNextPartOfCurrentResourceIntoMemory,
                 DAT_ResourceManager::ptr)(DAT_GMImageHeaders::instance.imh + this->gmNumberOfProcessedPictures,
-                this->gmFileHeaderColorpaletteArray[gmID].numberOfPicturesInFile << 4, "gm1");
+                this->gmFileHeaderColorpaletteArray[gmID].numberOfPicturesInFile << 4, S_GM1_005A5068);
             MACRO_CALL_MEMBER(
                 IO::ResourceManager_Func::readNextPartOfCurrentResourceIntoMemory, DAT_ResourceManager::ptr)(
-                this->gmAndGfxImageDataBuffer, this->gmFileHeaderColorpaletteArray[gmID].dataSize, "gm1");
+                this->gmAndGfxImageDataBuffer, this->gmFileHeaderColorpaletteArray[gmID].dataSize, S_GM1_005A5068);
             if (this->gmFileHeaderColorpaletteArray[gmID].ImageType == IO::Graphics::GIT_Animation) {
                 MACRO_CALL_MEMBER(
                     UI::Rendering::TextureRenderCore_Func::transformGmColorTableFromRGB555To565IfRequired, this)(gmID);

@@ -4,6 +4,7 @@
 #include "OpenSHC/UI/Rendering/PencilRenderCore.func.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/COL_WHITE.hpp"
 #include "OpenSHC/Globals/DAT_PencilRenderCore.hpp"
@@ -26,7 +27,7 @@ namespace UI {
         MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawColorBox, DAT_PencilRenderCore::ptr)(
             left, top, left + 400, top + 0x28, (ushort)(COL_WHITE::instance.shortValue));
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-            "No views have been found.", (DAT_WindowAndDirectDraw::instance.resolutionX - 400) / 2,
+            S_NO_VIEWS_HAVE_BEEN_FOUND__005AB8C8, (DAT_WindowAndDirectDraw::instance.resolutionX - 400) / 2,
             (int)((DAT_WindowAndDirectDraw::instance.resolutionY - 40) / 2 + 8), ((TextAlignment)400), 0, 0x11, FALSE,
             0);
     }

@@ -2,6 +2,7 @@
 
 #include "OpenSHC/Global.func.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 namespace OpenSHC {
 namespace UI {
@@ -26,7 +27,7 @@ namespace UI {
             _wndClassA.hCursor = (HICON__*)0x0;
             _wndClassA.hbrBackground = (HBRUSH__*)0x0;
             _wndClassA.lpszMenuName = (CHAR*)0x0;
-            _wndClassA.lpszClassName = "FFwinClass";
+            _wndClassA.lpszClassName = s_FFwinClass_005a59c8;
             ATOM _atom = RegisterClassA(&_wndClassA);
             if (!_atom) {
                 return FALSE;
@@ -37,8 +38,8 @@ namespace UI {
             hInstance = this->hInstanceUnk_0xa8;
             int nHeight = GetSystemMetrics(SM_CYSCREEN);
             int nWidth = GetSystemMetrics(SM_CXSCREEN);
-            this->windowHandle = CreateWindowExA(
-                0, "FFwinClass", windowName, 0x90000000, 0, 0, nWidth, nHeight, hWndParent, hMenu, hInstance, lpParam);
+            this->windowHandle = CreateWindowExA(0, s_FFwinClass_005a59c8, windowName, 0x90000000, 0, 0, nWidth,
+                nHeight, hWndParent, hMenu, hInstance, lpParam);
             return (uint)(this->windowHandle != (HWND__*)0x0);
         }
 
