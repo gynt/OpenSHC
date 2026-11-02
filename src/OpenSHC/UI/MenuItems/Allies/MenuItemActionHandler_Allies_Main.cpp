@@ -28,7 +28,7 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004B12D0
         void Allies::MenuItemActionHandler_Allies_Main(int param_1, ...)
         {
-            short sVar1;
+            short requestedGoodIndexUnk;
             if ((param_1 == -1) || (param_1 == 100)) {
                 DAT_MenuModalComposition1::instance.activeModalDialogID = OpenSHC::UI::Enums::MMT_NONE;
                 return;
@@ -47,14 +47,15 @@ namespace UI {
             }
             if (param_1 == 0x15) {
                 DAT_RequestedGoodsByWhoArray::instance[0] = -1;
-                sVar1 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                            .requestedGoodsArray1Unk
-                                [DAT_SomeTeamMemberPlayerIDArray::instance[DAT_LastTeamMemberIndex::instance]];
+                requestedGoodIndexUnk
+                    = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                          .requestedGoodsArray1Unk
+                              [DAT_SomeTeamMemberPlayerIDArray::instance[DAT_LastTeamMemberIndex::instance]];
                 DAT_SentOrRequestedGoodsAmount::instance = 0;
                 DAT_00df4284::instance = 0;
-                if (sVar1 >= 2) {
+                if (requestedGoodIndexUnk >= 2) {
                     DAT_00df4284::instance = 1;
-                    DAT_RequestedGoodsByWhoArray::instance[0] = (int)sVar1 - 1;
+                    DAT_RequestedGoodsByWhoArray::instance[0] = (int)requestedGoodIndexUnk - 1;
                     DAT_SentOrRequestedGoodsAmount::instance
                         = (int)DAT_GameState::instance
                               .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]

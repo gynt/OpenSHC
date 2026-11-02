@@ -18,17 +18,18 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00430050
         void Unused::MenuItemActionHandler_UnusedChooseAvailableKeeps_Main(int param_1, ...)
         {
-            uint* puVar1;
-            if ((DAT_MenuTextInputState::instance.currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU)
-                && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE)) {
+            if (DAT_MenuTextInputState::instance.currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU
+                && DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE) {
                 switch (param_1) {
                 case -5:
                 case -4:
                 case -3:
                 case -2:
                 case -1:
-                    puVar1 = (uint*)((int)DAT_GameCore::ptr + param_1 * -4 + 0x1534);
-                    *puVar1 = *puVar1 ^ 1;
+                    // GameCore + param_1 * -4 + 0x1534 with param_1 in -5..-1 is
+                    // mapU2MiddleBytes (0x1538, 5 dwords), the same five flags case 0xb sums
+                    DAT_GameCore::instance.mapU2MiddleBytes[-param_1 - 1]
+                        = DAT_GameCore::instance.mapU2MiddleBytes[-param_1 - 1] ^ 1;
                     return;
                 case 7:
                     MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(

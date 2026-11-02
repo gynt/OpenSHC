@@ -29,9 +29,9 @@ namespace UI {
                 return;
             case 2:
             case 3: {
-                int iVar1 = *currentValue;
-                if ((iVar1 != DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset)
-                    && (DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset = iVar1,
+                int newScrollOffset = *currentValue;
+                if ((newScrollOffset != DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset)
+                    && (DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset = newScrollOffset,
                         DAT_GameSynchronyState::instance.isHost != FALSE)) {
                     MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
                         DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_CHANGE_MAP_SELECTION);

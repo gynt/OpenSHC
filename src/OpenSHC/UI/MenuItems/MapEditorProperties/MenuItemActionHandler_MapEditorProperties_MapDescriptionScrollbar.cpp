@@ -38,11 +38,11 @@ namespace UI {
                     *currentValue = DAT_00b960f4::instance;
                     return;
                 case 6: {
-                    int iVar1 = DAT_00b95b74::instance - 0xe7;
-                    if ((int)DAT_00b960f4::instance < iVar1) {
+                    int maxScrollOffset = DAT_00b95b74::instance - 0xe7;
+                    if ((int)DAT_00b960f4::instance < maxScrollOffset) {
                         DAT_00b960f4::instance = DAT_00b960f4::instance + 0xe;
-                        if ((int)DAT_00b960f4::instance > iVar1) {
-                            DAT_00b960f4::instance = iVar1;
+                        if ((int)DAT_00b960f4::instance > maxScrollOffset) {
+                            DAT_00b960f4::instance = maxScrollOffset;
                         }
                     }
                     *currentValue = DAT_00b960f4::instance;

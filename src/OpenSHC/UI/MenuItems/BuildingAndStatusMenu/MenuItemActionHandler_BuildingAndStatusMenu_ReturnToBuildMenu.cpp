@@ -28,7 +28,7 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00440280
         void BuildingAndStatusMenu::MenuItemActionHandler_BuildingAndStatusMenu_ReturnToBuildMenu(int param_1, ...)
         {
-            bool bVar1;
+            bool isAssemblyPointCommand;
             MACRO_CALL_MEMBER(
                 OpenSHC::Map::Buildings::BuildingsState_Func::extendResourceCountdownForPlayerBuildingsOfType,
                 DAT_BuildingsState::ptr)((OpenSHC::Map::Buildings::BuildingType)(short)DAT_BuildingsState::instance
@@ -59,15 +59,15 @@ namespace UI {
                 }
             } else {
                 if (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_TUNNELERSGUILD) {
-                    bVar1 = DAT_TileMapState::instance.currentMapperCommand
+                    isAssemblyPointCommand = DAT_TileMapState::instance.currentMapperCommand
                         == OpenSHC::Commands::M_MAPPER_PLACE_ASSEMBLY_POINTT1;
                 } else {
                     if (DAT_GameCore::instance.activeMenuTab.tabType != OpenSHC::UI::Enums::BASMTT_CATHEDRAL)
                         goto LAB_00440340;
-                    bVar1 = DAT_TileMapState::instance.currentMapperCommand
+                    isAssemblyPointCommand = DAT_TileMapState::instance.currentMapperCommand
                         == OpenSHC::Commands::M_MAPPER_PLACE_ASSEMBLY_POINTK1;
                 }
-                if (bVar1) {
+                if (isAssemblyPointCommand) {
                     return;
                 }
             }
