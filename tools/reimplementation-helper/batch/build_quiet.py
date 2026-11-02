@@ -26,11 +26,14 @@ selection; the reconfigure crashed, not the compile, and a plain re-run succeeds
 """
 
 import argparse
+import atexit
+import os
 import re
 import subprocess
 import sys
 
-from common import PDB_ERROR_RE, TMP, build_env, fresh_pdb_endpoint, kill_pdb_server
+from common import (BUILD_MARKER, PDB_ERROR_RE, TMP, build_env, fresh_pdb_endpoint,
+                    kill_pdb_server)
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--keep-going", action="store_true")
@@ -38,6 +41,12 @@ parser.add_argument("--max", type=int, default=60)
 args = parser.parse_args()
 
 log = TMP / "build.log"
+
+# Tell the measuring scripts a build is in flight. Reading diff.json while cl.exe is still
+# producing object files compares a half-built DLL: functions drop out of the report and the
+# average moves for no reason (see common.refuse_if_building).
+BUILD_MARKER.write_text(str(os.getpid()))
+atexit.register(lambda: BUILD_MARKER.unlink(missing_ok=True))
 
 
 def run_build(endpoint=None):

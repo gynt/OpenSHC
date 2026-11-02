@@ -39,6 +39,12 @@ IDIOM = re.compile(
     re.S)
 
 
+# A `U` suffix on a hex literal as well as a decimal one. Hex is what the decompiler
+# actually emits for the offsets in these sums (`+ 0xcU`), and missing it left the dividend
+# unsigned, which is the one thing this rewrite must not do.
+UNSIGNED_SUFFIX = re.compile(r"\b(0[xX][0-9a-fA-F]+|\d+)[uU][lL]*\b")
+
+
 def replace(m):
     mask = int(m.group("mask"), 16)
     modulus = mask + 1
@@ -53,14 +59,19 @@ def replace(m):
     # The repair only exists because the operand is signed -- an unsigned remainder is a
     # bare `and`. So the dividend has to be signed here too, or `%` compiles to that bare
     # `and` and stops matching. Drop the decompiler's U suffixes and cast if need be.
-    expr = re.sub(r"\b(\d+)U\b", r"\1", expr)
+    expr = UNSIGNED_SUFFIX.sub(r"\1", expr)
     # the modulo binds tighter than whatever built the dividend, so bracket a dividend that
     # is built with a looser operator. Member arrows and bracketed groups are not operators
     # for this purpose, so drop them before looking.
     bare = re.sub(r"\([^()]*\)", "", expr).replace("->", "")
     if re.search(r"[-+*/|^]|>>|<<", bare):
         expr = "(%s)" % expr
-    elif not expr.startswith("(int)"):
+    # Brackets alone do not make the dividend signed, and neither does dropping a suffix
+    # when some other operand is unsigned - one `uint` field or local anywhere in the sum
+    # makes the whole expression unsigned, and `%` then compiles to the bare `and` this
+    # rewrite exists to avoid. So a dividend carrying no signed cast at all gets one, even
+    # when it is a compound expression; one already inside it is taken to have done the job.
+    if "(int)" not in expr:
         expr = "(int)%s" % expr
     return "%s%s%s = %s %% %d;\n" % (m.group("indent"), m.group("decl"), var, expr, modulus)
 

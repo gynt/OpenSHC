@@ -77,6 +77,9 @@ def depths(text):
     return out, "".join(masked)
 
 
+# a label immediately in front of the statement: `LAB_x:`, `switchD_..._caseD_26:`,
+# `case 3:`, `default:`. A `::` is scope resolution, not a label, and `?:` is the ternary.
+LABEL_BEFORE = re.compile(r"(?:^|[;{}:])\s*(?:case\s[^;{}:]+|default|[A-Za-z_]\w*)\s*:\s*\Z", re.M)
 ARM_KEYWORD = re.compile(r"(?:\A|[^\w:])(if|for|while|switch|catch)\s*\Z")
 ARM_TAIL = re.compile(r"(\belse\b|\bdo\b|\btry\b|:)\s*\Z")
 
@@ -131,6 +134,11 @@ def process(text):
             # keep it when the block is a control-flow arm rather than a function body
             open_brace = block_opener(masked, depth, m.start())
             if open_brace is None or is_arm(masked[:open_brace]):
+                continue
+            # keep it when it is a label's statement. A label must be followed by one before
+            # C++23, so dropping it leaves `switchD_004b9c26_caseD_26: }`, which MSVC1400
+            # rejects outright - and `label: ;` reads no better than `label: return;`.
+            if LABEL_BEFORE.search(masked[:m.start()]):
                 continue
             # cut the statement and the blank line it leaves behind
             start = m.start()

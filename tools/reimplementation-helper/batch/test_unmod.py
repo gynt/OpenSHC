@@ -45,6 +45,14 @@ CASES = [
     (BAD_COMP, BAD_COMP, 0),
     (BAD_VAR, BAD_VAR, 0),
     (BARE, BARE, 0),
+    # a U suffix on a HEX literal, which is what the decompiler emits for these offsets.
+    # Missing it leaves the sum unsigned, and an unsigned % is the bare `and` with no
+    # repair - the one result this rewrite must never produce.
+    ("            uVar9 = (a.x - b.y) + 0xcU & 0x80000007;\n"
+     "            if ((int)uVar9 < 0) {\n"
+     "                uVar9 = (uVar9 - 1 | 0xfffffff8) + 1;\n"
+     "            }\n",
+     "            uVar9 = (int)((a.x - b.y) + 0xc) % 8;\n", 1),
 ]
 
 if __name__ == "__main__":

@@ -147,6 +147,47 @@ def run_reccmp():
         sys.exit("reccmp failed:\n" + result.stdout[-800:] + result.stderr[-800:])
 
 
+BUILD_MARKER = TMP / "build.running"
+
+
+def build_in_progress():
+    """The pid of a build still running in this worktree, or None.
+
+    build_quiet.py writes its pid here while it works. A marker left behind by a killed build
+    is ignored: the pid is checked against the running processes first.
+    """
+    try:
+        pid = int(BUILD_MARKER.read_text().strip())
+    except (OSError, ValueError):
+        return None
+    try:
+        out = subprocess.run(["tasklist", "/FI", "PID eq %d" % pid], capture_output=True,
+                             text=True).stdout
+    except OSError:
+        return None
+    return pid if str(pid) in out else None
+
+
+def refuse_if_building():
+    """Stop a measurement taken while a build is still running.
+
+    Reading diff.json then describes neither the old nor the new sources: reccmp compares a
+    half-written DLL, functions go missing from the report, and the average moves for no
+    reason at all. There is no case where that reading is worth having, so this is an error
+    rather than a warning - which is what a warning on stderr failed to prevent, since these
+    scripts are usually run with their output redirected.
+    """
+    pid = build_in_progress()
+    if pid is None:
+        return
+    if os.environ.get("OPENSHC_ALLOW_LIVE_BUILD") == "1":
+        sys.stderr.write("warning: build (pid %d) still running; numbers are not trustworthy\n" % pid)
+        return
+    sys.exit("error: a build is still running in this worktree (pid %d).\n"
+             "       Wait for BUILD_OK before measuring; set OPENSHC_ALLOW_LIVE_BUILD=1 to override."
+             % pid)
+
+
 def warn_if_stale():
     """Warn when diff.json predates a source file it is supposed to describe.
 
@@ -168,6 +209,7 @@ def warn_if_stale():
 
 
 def load_diff():
+    refuse_if_building()
     warn_if_stale()
     return {int(e["address"], 16): e for e in json.loads(DIFF_JSON.read_text())["data"]}
 

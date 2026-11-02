@@ -12,7 +12,7 @@ rewrite sources, because the Visual Studio bundled one is too old for `.clang-fo
 
 | Script | Purpose |
 |---|---|
-| `build_quiet.py [--keep-going]` | `build.bat RelWithDebInfo OpenSHC.dll`, prints only errors and `BUILD_OK`/`BUILD_FAIL` (build.bat exits 0 even on errors). Retries once on a PDB server error, see the note below. |
+| `build_quiet.py [--keep-going]` | `build.bat RelWithDebInfo OpenSHC.dll`, prints only errors and `BUILD_OK`/`BUILD_FAIL` (build.bat exits 0 even on errors). Retries once on a PDB server error, see the note below. It also writes `batch/build.running` with its pid while it works, and the measuring scripts refuse to read `diff.json` while that build is alive (`OPENSHC_ALLOW_LIVE_BUILD=1` overrides). Measuring mid-build compares a half-linked DLL: functions drop out of the report and the average moves for no reason. |
 | `syntax_check.py [substr...]` | `cl /Zs` every (matching) list file serially; finds all compile errors in one pass without linking. |
 | `reccmp_report.py [--run] pct\|save\|cmp\|diff` | Match % and *normalized* % (call/tail-jump targets and resolver addresses ignored) per function, snapshots, before/after comparison, compact asm diffs. |
 | `orig_asm.py NAME [--both\|--stats]` | The **original** instruction stream of one function (not the interleaved diff), in address order; `--stats` reports the tells that decide how to reimplement it: `mov reg, 0` (handwritten asm), frame pointer, frame size, jump tables. |
