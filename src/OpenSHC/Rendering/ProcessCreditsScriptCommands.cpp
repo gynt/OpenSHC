@@ -10,6 +10,7 @@
 #include "OpenSHC/Globals/DAT_00eb0e40.hpp"
 #include "OpenSHC/Globals/DAT_00eb1234.hpp"
 #include "OpenSHC/Globals/DAT_00eb9af4.hpp"
+#include "OpenSHC/Globals/DAT_00ec082c.hpp"
 #include "OpenSHC/Globals/DAT_00ed2bd8.hpp"
 #include "OpenSHC/Globals/DAT_ARRAY_00eb9b68.hpp"
 #include "OpenSHC/Globals/DAT_ARRAY_00ec0348.hpp"
@@ -26,10 +27,9 @@
 #include "OpenSHC/Globals/FLOAT_00eb0e2c.hpp"
 #include "OpenSHC/Globals/FLOAT_Between1And5.hpp"
 #include "OpenSHC/Globals/INT_00eb0e30.hpp"
+#include "OpenSHC/Globals/INT_00ec0828.hpp"
 #include "OpenSHC/Globals/INT_00ec083c.hpp"
 #include "OpenSHC/Globals/INT_00ed27a4.hpp"
-#include "OpenSHC/Globals/DAT_00ec082c.hpp"
-#include "OpenSHC/Globals/INT_00ec0828.hpp"
 
 namespace OpenSHC {
 
@@ -69,7 +69,7 @@ void Rendering::ProcessCreditsScriptCommands()
                 iVar8 = 0;
                 piVar7 = &DAT_ARRAY_00ec0348::instance[0].xSpace;
             LAB_004e0b60:
-                if (((CreditsRelatedStructure*)(piVar7 + -1))->isValid != 1
+                if (((CreditsRelatedStructure*)(piVar7 - 1))->isValid != 1
                     || *piVar7 != DAT_ARRAY_00eb9b68::instance[iVar9].soundStream)
                     goto LAB_004e0b74;
                 iVar1 = DAT_ARRAY_00ec0348::instance[iVar8].fadeMode;
@@ -83,7 +83,7 @@ void Rendering::ProcessCreditsScriptCommands()
                 iVar8 = 0;
                 piVar7 = &DAT_ARRAY_00ec0348::instance[0].xSpace;
                 do {
-                    if (((CreditsRelatedStructure*)(piVar7 + -1))->isValid == 2
+                    if (((CreditsRelatedStructure*)(piVar7 - 1))->isValid == 2
                         && *piVar7 == DAT_ARRAY_00eb9b68::instance[iVar9].soundStream) {
                         iVar1 = DAT_ARRAY_00ec0348::instance[iVar8].fadeMode;
                         goto LAB_004e0b8e;
@@ -126,7 +126,7 @@ void Rendering::ProcessCreditsScriptCommands()
             case 7:
                 piVar7 = &DAT_ARRAY_00ec0348::instance[0].xSpace;
                 do {
-                    if (((CreditsRelatedStructure*)(piVar7 + -1))->isValid == 1
+                    if (((CreditsRelatedStructure*)(piVar7 - 1))->isValid == 1
                         && *piVar7 == DAT_ARRAY_00eb9b68::instance[iVar9].soundStream) {
                         ((CreditsRelatedStructure*)(piVar7 - 1))->blendStrength = 1.0f;
                         ((CreditsRelatedStructure*)(piVar7 - 1))->fadeMode = 2;
@@ -204,7 +204,7 @@ void Rendering::ProcessCreditsScriptCommands()
             case 0x10:
                 piVar7 = &DAT_ARRAY_00ec0348::instance[0].xSpace;
                 do {
-                    if (((CreditsRelatedStructure*)(piVar7 + -1))->isValid == 2
+                    if (((CreditsRelatedStructure*)(piVar7 - 1))->isValid == 2
                         && *piVar7 == DAT_ARRAY_00eb9b68::instance[iVar9].soundStream) {
                         ((CreditsRelatedStructure*)(piVar7 - 1))->blendStrength = 1.0f;
                         ((CreditsRelatedStructure*)(piVar7 - 1))->fadeMode = 2;
@@ -338,14 +338,14 @@ void Rendering::ProcessCreditsScriptCommands()
                 }
                 break;
             case 0x28:
-                iVar10 = iVar9 + -1;
+                iVar10 = iVar9 - 1;
                 if (0 < iVar10) {
                     pCVar5 = DAT_ARRAY_00eb9b68::instance + iVar10;
                     do {
                         if (pCVar5->commandType == 0x1f)
                             break;
-                        iVar10 = iVar10 + -1;
-                        pCVar5 = pCVar5 + -1;
+                        iVar10 = iVar10 - 1;
+                        pCVar5 = pCVar5 - 1;
                     } while (0 < iVar10);
                 }
                 break;

@@ -1,5 +1,4 @@
 #include "../../../Rendering.func.hpp"
-
 #include "../BinkControlClass.func.hpp"
 
 namespace OpenSHC {
@@ -12,7 +11,6 @@ namespace Rendering {
             this->binkObjPtrArray[0] = (HBINK)0x0;
             this->binkObjPtrArray[1] = (HBINK)0x0;
             BinkSetSoundSystem(BinkOpenMiles, (ulong)drvrPtr);
-            return;
         }
 
     }

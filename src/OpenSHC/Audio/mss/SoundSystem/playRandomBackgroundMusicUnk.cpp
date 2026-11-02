@@ -139,7 +139,7 @@ namespace Audio {
                             }
                             DAT_SoundEffectsHelperData1::instance.field21_0x70 = 34;
                         } else {
-                            int iVar5 = DAT_SoundEffectsHelperData1::instance.field21_0x70 + -34;
+                            int iVar5 = DAT_SoundEffectsHelperData1::instance.field21_0x70 - 34;
                             int iVar6 = 0;
                             if (iVar5 < 0 || 7 < iVar5) {
                                 iVar5 = 0;

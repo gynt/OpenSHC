@@ -53,8 +53,8 @@ namespace Audio {
                 int _highestPointsIndex = -1;
                 int _index2 = 0;
                 do {
-                    if ((_playerPointsArray[_index2][0] != 0)
-                        && ((_highestPointsIndex == -1 || (_highestPointsUnk < _playerPointsArray[_index2][1])))) {
+                    if (_playerPointsArray[_index2][0] != 0
+                        && (_highestPointsIndex == -1 || (_highestPointsUnk < _playerPointsArray[_index2][1]))) {
                         _highestPointsUnk = _playerPointsArray[_index2][1];
                         _highestPointsIndex = _index2;
                     }

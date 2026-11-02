@@ -59,7 +59,7 @@ namespace Rendering {
                 BVar2 = MACRO_CALL(UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(
                     UI::Enums::DEID_KEEP_AND_GRANERY_PLACEMENT_INFO);
                 if (BVar2) {
-                    iVar6 = iVar6 + -0x28;
+                    iVar6 = iVar6 - 0x28;
                 }
                 if (!this->currentMessageUnknownValue_0x4) {
                     iVar3 = MACRO_CALL_MEMBER(Text::FontSizeClass_Func::renderMultilineWideTextUnk,
@@ -100,8 +100,8 @@ namespace Rendering {
                         == -1) {
                         iVar6 = DAT_GameSynchronyState::instance.currentAIArray[this->currentMessageUnknownValue2_0xd4];
                     }
-                    iVar5 = (param_1 - iVar5) + -0x50;
-                    iVar3 = (param_2 - iVar3) + -0x30;
+                    iVar5 = (param_1 - iVar5) - 0x50;
+                    iVar3 = (param_2 - iVar3) - 0x30;
                     MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderGM,
                         DAT_TextureRenderCoreObject::ptr)(DE::SHCDE::GM_INTERFACE_ICONS2,
                         (int)(this->currentMessageUnknownValue2_0xd4 + 0x222), iVar5, iVar3);

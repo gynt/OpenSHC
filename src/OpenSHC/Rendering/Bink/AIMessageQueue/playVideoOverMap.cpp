@@ -59,7 +59,7 @@ namespace Rendering {
             this->mbr_0x928 = this->currentMessageUnknownValue2_0xd4;
             MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::setExtraActiveModalDialog, DAT_MenuModalComposition2::ptr)(
                 UI::Enums::MMT_DISPLAY_AI_LORD_MESSAGE, DAT_MenuHandlerState::instance.x + 0x2d5,
-                DAT_WindowAndDirectDraw::instance.resolutionY + -0x99);
+                DAT_WindowAndDirectDraw::instance.resolutionY - 0x99);
             if (this->currentMessageVfxFile_0xc[0] != '\0') {
                 DAT_GameCore::instance.isBinkVideoPlaying = 1;
                 if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILD_MENU

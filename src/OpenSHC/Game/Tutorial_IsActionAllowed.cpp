@@ -61,7 +61,7 @@ BOOLEnum Game::Tutorial_IsActionAllowed(undefined4 actionType, int actionParam)
                 return TRUE;
             }
         } else if (DAT_TutorialCurrentStep::instance == 5) {
-            if (((!DAT_00df5558::instance) && (actionParam == 0x13)) && (!DAT_00df5560::instance)) {
+            if (!DAT_00df5558::instance && actionParam == 0x13 && !DAT_00df5560::instance) {
                 return TRUE;
             }
         } else {

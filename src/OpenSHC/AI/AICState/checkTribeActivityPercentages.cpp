@@ -13,7 +13,7 @@ namespace AI {
     BOOLEnum AICState::checkTribeActivityPercentages(int tribeID, BOOLEnum ignoreShooting, BOOLEnum includeMoving)
     {
         if (((!includeMoving) || (DAT_TribesState::instance.tribes[tribeID].percentageMovingUnk < 11))
-            && ((DAT_TribesState::instance.tribes[tribeID].percentageShootingUnk < 11 || (ignoreShooting == TRUE)))) {
+            && (DAT_TribesState::instance.tribes[tribeID].percentageShootingUnk < 11 || (ignoreShooting == TRUE))) {
             return (uint)(10 < DAT_TribesState::instance.tribes[tribeID].percentageAttackingUnk);
         }
         return TRUE;

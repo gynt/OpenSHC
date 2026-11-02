@@ -41,7 +41,6 @@ namespace Audio {
             MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
                 DE::SHCDE::TEXT_FEEDBACK, textGroup),
             posX, (posY - iVar2) + 32, 520, 0x00c2f0eb, 0, 17, 0);
-        return;
     }
 
 }

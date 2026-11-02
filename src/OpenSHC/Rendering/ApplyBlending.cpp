@@ -55,20 +55,28 @@ void Rendering::ApplyBlending(int param_1)
                 sVar11 = 0x100;
                 DAT_WindowAndDirectDraw::instance.unknownSpecificPointer = (undefined*)puVar13;
                 do {
-                    uVar5 = *puVar8 & 0xffe0 | *(ushort*)(iVar2 + (int)&DAT_BlendFilterArrays::instance[0x20][0][0] + (*puVar8 & 0xffff001f) * 8);
-                    uVar6 = uVar5 & 0xfc1f | *(ushort*)(iVar2 + (int)&DAT_BlendFilterArrays::instance[0x20][0][1] + (uVar5 >> 5 & 0xffff001f) * 8);
-                    uVar5 = *(ushort*)(iVar2 + (int)&DAT_BlendFilterArrays::instance[0x20][0][2] + (uVar6 >> 10 & 0xffff001f) * 8);
+                    uVar5 = *puVar8 & 0xffe0
+                        | *(ushort*)(iVar2 + (int)&DAT_BlendFilterArrays::instance[0x20][0][0]
+                            + (*puVar8 & 0xffff001f) * 8);
+                    uVar6 = uVar5 & 0xfc1f
+                        | *(ushort*)(iVar2 + (int)&DAT_BlendFilterArrays::instance[0x20][0][1]
+                            + (uVar5 >> 5 & 0xffff001f) * 8);
+                    uVar5 = *(ushort*)(iVar2 + (int)&DAT_BlendFilterArrays::instance[0x20][0][2]
+                        + (uVar6 >> 10 & 0xffff001f) * 8);
                     uVar7 = *(ushort*)((int)puVar13 + *local_8) & 0xffe0
                         | DAT_BlendFilterArrays::instance[param_1][*(ushort*)((int)puVar13 + *local_8) & 0xffff001f][0];
-                    uVar7 = uVar7 & 0xfc1f | *(ushort*)(iVar9 + (int)&DAT_BlendFilterArrays::instance[0][0][1] + (uVar7 >> 5 & 0xffff001f) * 8);
+                    uVar7 = uVar7 & 0xfc1f
+                        | *(ushort*)(iVar9 + (int)&DAT_BlendFilterArrays::instance[0][0][1]
+                            + (uVar7 >> 5 & 0xffff001f) * 8);
                     iVar10 = *local_8;
-                    *(ushort*)((int)puVar13 + iVar10)
-                        = uVar7 & 0x83ff | *(ushort*)(iVar9 + (int)&DAT_BlendFilterArrays::instance[0][0][2] + (uVar7 >> 10 & 0xffff001f) * 8);
+                    *(ushort*)((int)puVar13 + iVar10) = uVar7 & 0x83ff
+                        | *(ushort*)(iVar9 + (int)&DAT_BlendFilterArrays::instance[0][0][2]
+                            + (uVar7 >> 10 & 0xffff001f) * 8);
                     psVar1 = (short*)((int)puVar13 + iVar10);
                     *psVar1 = *psVar1 + (uVar6 & 0x3ff | uVar5);
                     puVar8 = puVar8 + 1;
                     local_8 = local_8 + 1;
-                    sVar11 = sVar11 + -1;
+                    sVar11 = sVar11 - 1;
                 } while (sVar11);
             }
             puVar13 = DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame + DAT_RenderMap_DrawSomeX::instance
@@ -76,20 +84,27 @@ void Rendering::ApplyBlending(int param_1)
             sVar11 = 0x100;
             DAT_WindowAndDirectDraw::instance.unknownSpecificPointer = (undefined*)puVar13;
             do {
-                uVar5 = *puVar8 & 0xffe0 | *(ushort*)(iVar2 + (int)&DAT_BlendFilterArrays::instance[0x20][0][0] + (*puVar8 & 0xffff001f) * 8);
-                uVar6 = uVar5 & 0xf81f | *(ushort*)(iVar2 + (int)&DAT_BlendFilterArrays::instance[0x20][0][1] + (uVar5 >> 5 & 0xffff003f) * 8);
-                uVar5 = *(ushort*)(iVar2 + (int)&DAT_BlendFilterArrays::instance[0x20][0][2] + (uint)(uVar6 >> 0xb) * 8);
+                uVar5 = *puVar8 & 0xffe0
+                    | *(ushort*)(iVar2 + (int)&DAT_BlendFilterArrays::instance[0x20][0][0]
+                        + (*puVar8 & 0xffff001f) * 8);
+                uVar6 = uVar5 & 0xf81f
+                    | *(ushort*)(iVar2 + (int)&DAT_BlendFilterArrays::instance[0x20][0][1]
+                        + (uVar5 >> 5 & 0xffff003f) * 8);
+                uVar5
+                    = *(ushort*)(iVar2 + (int)&DAT_BlendFilterArrays::instance[0x20][0][2] + (uint)(uVar6 >> 0xb) * 8);
                 uVar7 = *(ushort*)((int)puVar13 + *local_8) & 0xffe0
                     | DAT_BlendFilterArrays::instance[param_1][*(ushort*)((int)puVar13 + *local_8) & 0xffff001f][0];
-                uVar7 = uVar7 & 0xf81f | *(ushort*)(iVar9 + (int)&DAT_BlendFilterArrays::instance[0][0][1] + (uVar7 >> 5 & 0xffff003f) * 8);
+                uVar7 = uVar7 & 0xf81f
+                    | *(ushort*)(iVar9 + (int)&DAT_BlendFilterArrays::instance[0][0][1]
+                        + (uVar7 >> 5 & 0xffff003f) * 8);
                 iVar10 = *local_8;
-                *(ushort*)((int)puVar13 + iVar10)
-                    = uVar7 & 0x7ff | *(ushort*)(iVar9 + (int)&DAT_BlendFilterArrays::instance[0][0][2] + (uint)(uVar7 >> 0xb) * 8);
+                *(ushort*)((int)puVar13 + iVar10) = uVar7 & 0x7ff
+                    | *(ushort*)(iVar9 + (int)&DAT_BlendFilterArrays::instance[0][0][2] + (uint)(uVar7 >> 0xb) * 8);
                 psVar1 = (short*)((int)puVar13 + iVar10);
                 *psVar1 = *psVar1 + (uVar6 & 0x7ff | uVar5);
                 puVar8 = puVar8 + 1;
                 local_8 = local_8 + 1;
-                sVar11 = sVar11 + -1;
+                sVar11 = sVar11 - 1;
             } while (sVar11);
         }
     } else {
@@ -112,18 +127,26 @@ void Rendering::ApplyBlending(int param_1)
                 DAT_WindowAndDirectDraw::instance.unknownSpecificPointer = puVar14;
                 do {
                     uVar5 = *(ushort*)((int)pvVar4 + *local_8 + iVar2);
-                    uVar5 = uVar5 & 0xffe0 | *(ushort*)(iVar9 + (int)&DAT_BlendFilterArrays::instance[0x20][0][0] + (uVar5 & 0xffff001f) * 8);
-                    uVar6 = uVar5 & 0xfc1f | *(ushort*)(iVar9 + (int)&DAT_BlendFilterArrays::instance[0x20][0][1] + (uVar5 >> 5 & 0xffff001f) * 8);
-                    uVar5 = *(ushort*)(iVar9 + (int)&DAT_BlendFilterArrays::instance[0x20][0][2] + (uVar6 >> 10 & 0xffff001f) * 8);
+                    uVar5 = uVar5 & 0xffe0
+                        | *(ushort*)(iVar9 + (int)&DAT_BlendFilterArrays::instance[0x20][0][0]
+                            + (uVar5 & 0xffff001f) * 8);
+                    uVar6 = uVar5 & 0xfc1f
+                        | *(ushort*)(iVar9 + (int)&DAT_BlendFilterArrays::instance[0x20][0][1]
+                            + (uVar5 >> 5 & 0xffff001f) * 8);
+                    uVar5 = *(ushort*)(iVar9 + (int)&DAT_BlendFilterArrays::instance[0x20][0][2]
+                        + (uVar6 >> 10 & 0xffff001f) * 8);
                     uVar7 = *(ushort*)(puVar14 + local_8[1]) & 0xffe0
                         | DAT_BlendFilterArrays::instance[param_1][*(ushort*)(puVar14 + local_8[1]) & 0xffff001f][0];
-                    uVar7 = uVar7 & 0xfc1f | *(ushort*)(iVar10 + (int)&DAT_BlendFilterArrays::instance[0][0][1] + (uVar7 >> 5 & 0xffff001f) * 8);
+                    uVar7 = uVar7 & 0xfc1f
+                        | *(ushort*)(iVar10 + (int)&DAT_BlendFilterArrays::instance[0][0][1]
+                            + (uVar7 >> 5 & 0xffff001f) * 8);
                     iVar3 = local_8[1];
-                    *(ushort*)(puVar14 + iVar3)
-                        = uVar7 & 0x83ff | *(ushort*)(iVar10 + (int)&DAT_BlendFilterArrays::instance[0][0][2] + (uVar7 >> 10 & 0xffff001f) * 8);
+                    *(ushort*)(puVar14 + iVar3) = uVar7 & 0x83ff
+                        | *(ushort*)(iVar10 + (int)&DAT_BlendFilterArrays::instance[0][0][2]
+                            + (uVar7 >> 10 & 0xffff001f) * 8);
                     *(ushort*)(puVar14 + iVar3) = *(short*)(puVar14 + iVar3) + (uVar6 & 0x3ff | uVar5);
                     local_8 = local_8 + 2;
-                    sVar11 = sVar11 + -1;
+                    sVar11 = sVar11 - 1;
                 } while (sVar11);
             }
             puVar14 = (undefined*)((int)DAT_WindowAndDirectDraw::instance.surfacePointer_mapGame
@@ -135,17 +158,24 @@ void Rendering::ApplyBlending(int param_1)
             DAT_WindowAndDirectDraw::instance.unknownSpecificPointer = puVar14;
             do {
                 uVar5 = *(ushort*)((int)pvVar4 + *local_8 + iVar2);
-                uVar5 = uVar5 & 0xffe0 | *(ushort*)(iVar9 + (int)&DAT_BlendFilterArrays::instance[0x20][0][0] + (uVar5 & 0xffff001f) * 8);
-                uVar6 = uVar5 & 0xf81f | *(ushort*)(iVar9 + (int)&DAT_BlendFilterArrays::instance[0x20][0][1] + (uVar5 >> 5 & 0xffff003f) * 8);
-                uVar5 = *(ushort*)(iVar9 + (int)&DAT_BlendFilterArrays::instance[0x20][0][2] + (uint)(uVar6 >> 0xb) * 8);
+                uVar5 = uVar5 & 0xffe0
+                    | *(ushort*)(iVar9 + (int)&DAT_BlendFilterArrays::instance[0x20][0][0] + (uVar5 & 0xffff001f) * 8);
+                uVar6 = uVar5 & 0xf81f
+                    | *(ushort*)(iVar9 + (int)&DAT_BlendFilterArrays::instance[0x20][0][1]
+                        + (uVar5 >> 5 & 0xffff003f) * 8);
+                uVar5
+                    = *(ushort*)(iVar9 + (int)&DAT_BlendFilterArrays::instance[0x20][0][2] + (uint)(uVar6 >> 0xb) * 8);
                 uVar7 = *(ushort*)(puVar14 + local_8[1]) & 0xffe0
                     | DAT_BlendFilterArrays::instance[param_1][*(ushort*)(puVar14 + local_8[1]) & 0xffff001f][0];
-                uVar7 = uVar7 & 0xf81f | *(ushort*)(iVar10 + (int)&DAT_BlendFilterArrays::instance[0][0][1] + (uVar7 >> 5 & 0xffff003f) * 8);
+                uVar7 = uVar7 & 0xf81f
+                    | *(ushort*)(iVar10 + (int)&DAT_BlendFilterArrays::instance[0][0][1]
+                        + (uVar7 >> 5 & 0xffff003f) * 8);
                 iVar3 = local_8[1];
-                *(ushort*)(puVar14 + iVar3) = uVar7 & 0x7ff | *(ushort*)(iVar10 + (int)&DAT_BlendFilterArrays::instance[0][0][2] + (uint)(uVar7 >> 0xb) * 8);
+                *(ushort*)(puVar14 + iVar3) = uVar7 & 0x7ff
+                    | *(ushort*)(iVar10 + (int)&DAT_BlendFilterArrays::instance[0][0][2] + (uint)(uVar7 >> 0xb) * 8);
                 *(ushort*)(puVar14 + iVar3) = *(short*)(puVar14 + iVar3) + (uVar6 & 0x7ff | uVar5);
                 local_8 = local_8 + 2;
-                sVar11 = sVar11 + -1;
+                sVar11 = sVar11 - 1;
             } while (sVar11);
         }
     }

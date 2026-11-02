@@ -34,7 +34,7 @@ void Rendering::BlitMapImageWithVerticalClip()
     int local_8;
     pvVar4 = DAT_TextureRenderCoreObject::instance.gmProcessedImageData;
     uVar6 = (DAT_00ed3154::instance - DAT_RenderMap_YOffset::instance) + 9 + DAT_RenderMap_DrawSomeY::instance;
-    iVar5 = DAT_GMImageHeaders::instance.imh[DAT_GmImageAddressToBeRendered::instance].height + -7;
+    iVar5 = DAT_GMImageHeaders::instance.imh[DAT_GmImageAddressToBeRendered::instance].height - 7;
     local_1c = 0;
     local_8 = 0;
     if (DAT_00ed3170::instance < 1) {}
@@ -88,7 +88,7 @@ void Rendering::BlitMapImageWithVerticalClip()
                     *(undefined4*)(puVar9 + 0x1c) = uVar3;
                     puVar7 = puVar7 + 0xf;
                     puVar9 = puVar9 + 0xfd8;
-                    local_10 = local_10 + -1;
+                    local_10 = local_10 - 1;
                 } while (0 < local_10);
             } else if (DAT_00ed317c::instance == 2) {
                 do {
@@ -107,14 +107,14 @@ void Rendering::BlitMapImageWithVerticalClip()
                     *(undefined4*)(puVar9 + 0x6ef6) = uVar2;
                     puVar7 = puVar7 + 0xf;
                     puVar9 = puVar9 + 0xfd8;
-                    local_10 = local_10 + -1;
+                    local_10 = local_10 - 1;
                 } while (0 < local_10);
             } else if (DAT_00ed317c::instance == 3) {
                 do {
                     *(undefined4*)(puVar9 + 0x6ef6) = puVar7[7];
                     puVar7 = puVar7 + 0xf;
                     puVar9 = puVar9 + 0xfd8;
-                    local_10 = local_10 + -1;
+                    local_10 = local_10 - 1;
                 } while (0 < local_10);
             } else {
                 do {
@@ -145,7 +145,7 @@ void Rendering::BlitMapImageWithVerticalClip()
                     *(undefined4*)(puVar9 + 0x1c) = uVar3;
                     puVar7 = puVar7 + 0xf;
                     puVar9 = puVar9 + 0xfd8;
-                    local_10 = local_10 + -1;
+                    local_10 = local_10 - 1;
                 } while (0 < local_10);
             }
         LAB_00453db7:
@@ -176,7 +176,7 @@ void Rendering::BlitMapImageWithVerticalClip()
                     puVar11[0xfe5] = uVar1;
                     puVar8 = puVar8 + 0x1e;
                     uVar6 = uVar6 + 1;
-                    local_10 = local_10 + -1;
+                    local_10 = local_10 - 1;
                     puVar11 = puVar10;
                     if (local_10 < 1)
                         goto LAB_00454049;
@@ -189,7 +189,7 @@ void Rendering::BlitMapImageWithVerticalClip()
                 puVar11[0xe] = uVar1;
                 puVar8 = puVar8 + 0x1e;
                 uVar6 = uVar6 + 1;
-                local_10 = local_10 + -1;
+                local_10 = local_10 - 1;
                 puVar10 = puVar11;
             } while (0 < local_10);
         } else if (DAT_00ed317c::instance == 2) {
@@ -203,7 +203,7 @@ void Rendering::BlitMapImageWithVerticalClip()
                     puVar11[0x3f67] = uVar1;
                     puVar8 = puVar8 + 0x1e;
                     uVar6 = uVar6 + 1;
-                    local_10 = local_10 + -1;
+                    local_10 = local_10 - 1;
                     puVar10 = puVar11 + 0xfd8;
                     puVar11 = puVar11 + 0xfd8;
                     if (local_10 < 1)
@@ -217,7 +217,7 @@ void Rendering::BlitMapImageWithVerticalClip()
                 puVar11[0x2f8e] = uVar1;
                 puVar8 = puVar8 + 0x1e;
                 uVar6 = uVar6 + 1;
-                local_10 = local_10 + -1;
+                local_10 = local_10 - 1;
                 puVar10 = puVar11;
             } while (0 < local_10);
         } else if (DAT_00ed317c::instance == 3) {
@@ -226,7 +226,7 @@ void Rendering::BlitMapImageWithVerticalClip()
                     puVar11[0x3f67] = puVar8[0xe];
                     puVar8 = puVar8 + 0x1e;
                     uVar6 = uVar6 + 1;
-                    local_10 = local_10 + -1;
+                    local_10 = local_10 - 1;
                     puVar10 = puVar11 + 0xfd8;
                     puVar11 = puVar11 + 0xfd8;
                     if (local_10 < 1)
@@ -234,7 +234,7 @@ void Rendering::BlitMapImageWithVerticalClip()
                 }
                 puVar8 = puVar8 + 0x1e;
                 uVar6 = uVar6 + 1;
-                local_10 = local_10 + -1;
+                local_10 = local_10 - 1;
                 puVar10 = puVar11;
             } while (0 < local_10);
         } else {
@@ -252,7 +252,7 @@ void Rendering::BlitMapImageWithVerticalClip()
                     puVar11[0xfe5] = puVar8[0x1a];
                     puVar8 = puVar8 + 0x1e;
                     uVar6 = uVar6 + 1;
-                    local_10 = local_10 + -1;
+                    local_10 = local_10 - 1;
                     puVar10 = puVar11 + 0xfd8;
                     puVar11 = puVar11 + 0xfd8;
                     if (local_10 < 1)
@@ -272,7 +272,7 @@ void Rendering::BlitMapImageWithVerticalClip()
                 puVar11[0xe] = uVar1;
                 puVar8 = puVar8 + 0x1e;
                 uVar6 = uVar6 + 1;
-                local_10 = local_10 + -1;
+                local_10 = local_10 - 1;
                 puVar10 = puVar11;
             } while (0 < local_10);
         }

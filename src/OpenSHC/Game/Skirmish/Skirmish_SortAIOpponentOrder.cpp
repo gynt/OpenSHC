@@ -36,8 +36,8 @@ namespace Game {
                 iVar3 = -1;
                 iVar1 = 0;
                 do {
-                    if ((visitedBitMap[iVar1 + 1] == 0)
-                        && ((iVar3 == -1 || (visitedBitMap[0] < (uint)INT_ARRAY_00ed2be0::instance[iVar1])))) {
+                    if (visitedBitMap[iVar1 + 1] == 0
+                        && (iVar3 == -1 || (visitedBitMap[0] < (uint)INT_ARRAY_00ed2be0::instance[iVar1]))) {
                         visitedBitMap[0] = INT_ARRAY_00ed2be0::instance[iVar1];
                         iVar3 = iVar1;
                     }
@@ -54,7 +54,7 @@ namespace Game {
         /*
           bubble sort
          */
-        if (((DAT_MissionDefinedData::instance.sortColumn == 2) && (1 < iVar2)) && (DAT_00ed3124::instance != 1)) {
+        if (DAT_MissionDefinedData::instance.sortColumn == 2 && 1 < iVar2 && DAT_00ed3124::instance != 1) {
             iVar5 = 0;
             while (true) {
                 iVar1 = 0;
@@ -89,7 +89,7 @@ namespace Game {
             puVar4 = visitedBitMap;
             iVar5 = 0;
             puVar6 = (uint*)INT_ARRAY_00eb96d8::instance;
-            for (iVar3 = 0xfa; puVar4 = (uint*)((int)puVar4 + 4), iVar3; iVar3 = iVar3 + -1) {
+            for (iVar3 = 0xfa; puVar4 = (uint*)((int)puVar4 + 4), iVar3; iVar3 = iVar3 - 1) {
                 *puVar4 = *puVar6;
                 puVar6 = puVar6 + 1;
             }
@@ -98,7 +98,7 @@ namespace Game {
                 do {
                     INT_ARRAY_00eb96d8::instance[iVar5] = *puVar4;
                     iVar5 = iVar5 + 1;
-                    puVar4 = puVar4 + -1;
+                    puVar4 = puVar4 - 1;
                 } while (iVar5 < iVar2);
             }
         }

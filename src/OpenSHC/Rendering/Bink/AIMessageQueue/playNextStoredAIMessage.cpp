@@ -66,7 +66,7 @@ namespace Rendering {
                         pacVar5 = pacVar8;
                     } while (iVar7 < this->storedMessages_0x924);
                 }
-                this->storedMessages_0x924 = this->storedMessages_0x924 + -1;
+                this->storedMessages_0x924 = this->storedMessages_0x924 - 1;
                 return TRUE;
             }
             return FALSE;

@@ -22,16 +22,16 @@ namespace Rendering {
             char** _messageVfxFile;
             if ((aiType - 1U <= 0xf) && (messageType - 1U < 0x21)) {
                 MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::prepareSFXandVFX, this)("", "",
-                    (char*)((int)(DAT_MissionAestheticsDefinedData::instance.field92_0x170[aiType + -0x11])),
+                    (char*)((int)(DAT_MissionAestheticsDefinedData::instance.field92_0x170[aiType - 0x11])),
                     playerIndex);
                 _messageSfxFile
                     = (char*)
-                          DAT_MissionAestheticsDefinedData::instance.field92_0x170[aiType + messageType * 0x11 + -0xc];
+                          DAT_MissionAestheticsDefinedData::instance.field92_0x170[aiType + messageType * 0x11 - 0xc];
                 _messageVfxFile
                     = (&DAT_MissionAestheticsDefinedData::instance.field644_0xa20)[aiType + messageType * 0x11];
                 _negativePlayerIndex = -playerIndex;
                 _messageText = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
-                    DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_HOT_KEYS, messageType + -0x22 + aiType * 0x22);
+                    DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_HOT_KEYS, messageType - 0x22 + aiType * 0x22);
                 MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::prepareSFXandVFX, this)(
                     _messageText, (char*)((int)(_messageVfxFile)), _messageSfxFile, _negativePlayerIndex);
             }

@@ -35,7 +35,7 @@ void Rendering::BlitMapImageWithVerticalClipAndYOffset()
     pvVar4 = DAT_TextureRenderCoreObject::instance.gmProcessedImageData;
     uVar6 = (DAT_00ed3154::instance - DAT_RenderMap_YOffset::instance) + 9 + DAT_RenderMap_DrawSomeY::instance;
     local_1c = 0xa0 - DAT_RenderMap_YOffset::instance;
-    iVar5 = DAT_GMImageHeaders::instance.imh[DAT_GmImageAddressToBeRendered::instance].height + -7;
+    iVar5 = DAT_GMImageHeaders::instance.imh[DAT_GmImageAddressToBeRendered::instance].height - 7;
     local_14 = 0;
     if (DAT_00ed3170::instance < 1) {}
     if ((int)uVar6 < DAT_TextureRenderCoreObject::instance.mapGameSurfaceHeightRange.start) {
@@ -64,7 +64,7 @@ void Rendering::BlitMapImageWithVerticalClipAndYOffset()
         local_14 = local_1c;
     }
     if (DAT_00ed317c::instance == 3) {
-        local_14 = local_14 + -0x1e0;
+        local_14 = local_14 - 0x1e0;
     }
     iVar5 = DAT_GMImageOffsets::instance[DAT_00ed316c::instance];
     if (!DAT_TextureRenderCoreObject::instance.isZoom2) {
@@ -92,7 +92,7 @@ void Rendering::BlitMapImageWithVerticalClipAndYOffset()
                     *(undefined4*)(puVar9 + 0x1c) = uVar3;
                     puVar7 = puVar7 + 0xf;
                     puVar9 = puVar9 + 0xfd8;
-                    local_c = local_c + -1;
+                    local_c = local_c - 1;
                 } while (0 < local_c);
             } else if (DAT_00ed317c::instance == 2) {
                 do {
@@ -111,14 +111,14 @@ void Rendering::BlitMapImageWithVerticalClipAndYOffset()
                     *(undefined4*)(puVar9 + 0x6ef6) = uVar2;
                     puVar7 = puVar7 + 0xf;
                     puVar9 = puVar9 + 0xfd8;
-                    local_c = local_c + -1;
+                    local_c = local_c - 1;
                 } while (0 < local_c);
             } else if (DAT_00ed317c::instance == 3) {
                 do {
                     *(undefined4*)(puVar9 + 0x6ef6) = puVar7[7];
                     puVar7 = puVar7 + 0xf;
                     puVar9 = puVar9 + 0xfd8;
-                    local_c = local_c + -1;
+                    local_c = local_c - 1;
                 } while (0 < local_c);
             } else {
                 do {
@@ -149,7 +149,7 @@ void Rendering::BlitMapImageWithVerticalClipAndYOffset()
                     *(undefined4*)(puVar9 + 0x1c) = uVar3;
                     puVar7 = puVar7 + 0xf;
                     puVar9 = puVar9 + 0xfd8;
-                    local_c = local_c + -1;
+                    local_c = local_c - 1;
                 } while (0 < local_c);
             }
         LAB_00454359:
@@ -180,7 +180,7 @@ void Rendering::BlitMapImageWithVerticalClipAndYOffset()
                     puVar11[0xfe5] = uVar1;
                     puVar8 = puVar8 + 0x1e;
                     uVar6 = uVar6 + 1;
-                    local_c = local_c + -1;
+                    local_c = local_c - 1;
                     puVar11 = puVar10;
                     if (local_c < 1)
                         goto LAB_004545eb;
@@ -193,7 +193,7 @@ void Rendering::BlitMapImageWithVerticalClipAndYOffset()
                 puVar11[0xe] = uVar1;
                 puVar8 = puVar8 + 0x1e;
                 uVar6 = uVar6 + 1;
-                local_c = local_c + -1;
+                local_c = local_c - 1;
                 puVar10 = puVar11;
             } while (0 < local_c);
         } else if (DAT_00ed317c::instance == 2) {
@@ -207,7 +207,7 @@ void Rendering::BlitMapImageWithVerticalClipAndYOffset()
                     puVar11[0x3f67] = uVar1;
                     puVar8 = puVar8 + 0x1e;
                     uVar6 = uVar6 + 1;
-                    local_c = local_c + -1;
+                    local_c = local_c - 1;
                     puVar10 = puVar11 + 0xfd8;
                     puVar11 = puVar11 + 0xfd8;
                     if (local_c < 1)
@@ -221,7 +221,7 @@ void Rendering::BlitMapImageWithVerticalClipAndYOffset()
                 puVar11[0x2f8e] = uVar1;
                 puVar8 = puVar8 + 0x1e;
                 uVar6 = uVar6 + 1;
-                local_c = local_c + -1;
+                local_c = local_c - 1;
                 puVar10 = puVar11;
             } while (0 < local_c);
         } else if (DAT_00ed317c::instance == 3) {
@@ -230,7 +230,7 @@ void Rendering::BlitMapImageWithVerticalClipAndYOffset()
                     puVar11[0x3f67] = puVar8[0xe];
                     puVar8 = puVar8 + 0x1e;
                     uVar6 = uVar6 + 1;
-                    local_c = local_c + -1;
+                    local_c = local_c - 1;
                     puVar10 = puVar11 + 0xfd8;
                     puVar11 = puVar11 + 0xfd8;
                     if (local_c < 1)
@@ -238,7 +238,7 @@ void Rendering::BlitMapImageWithVerticalClipAndYOffset()
                 }
                 puVar8 = puVar8 + 0x1e;
                 uVar6 = uVar6 + 1;
-                local_c = local_c + -1;
+                local_c = local_c - 1;
                 puVar10 = puVar11;
             } while (0 < local_c);
         } else {
@@ -256,7 +256,7 @@ void Rendering::BlitMapImageWithVerticalClipAndYOffset()
                     puVar11[0xfe5] = puVar8[0x1a];
                     puVar8 = puVar8 + 0x1e;
                     uVar6 = uVar6 + 1;
-                    local_c = local_c + -1;
+                    local_c = local_c - 1;
                     puVar10 = puVar11 + 0xfd8;
                     puVar11 = puVar11 + 0xfd8;
                     if (local_c < 1)
@@ -276,7 +276,7 @@ void Rendering::BlitMapImageWithVerticalClipAndYOffset()
                 puVar11[0xe] = uVar1;
                 puVar8 = puVar8 + 0x1e;
                 uVar6 = uVar6 + 1;
-                local_c = local_c + -1;
+                local_c = local_c - 1;
                 puVar10 = puVar11;
             } while (0 < local_c);
         }

@@ -28,9 +28,9 @@ namespace Game {
             = DAT_GameState::instance.mapAndTime.playerTeams[DAT_GameSynchronyState::instance.currentPlayerSlotID];
         DAT_AlliesCount::instance = 0;
         for (_playerID = 1; _playerID < 9; _playerID++) {
-            if ((_playerID != DAT_GameSynchronyState::instance.currentPlayerSlotID)
-                && ((DAT_GameSynchronyState::instance.currentPlayerFullIDArray[_playerID] != -1
-                    || (DAT_GameSynchronyState::instance.currentAIArray[_playerID] != 0)))) {
+            if (_playerID != DAT_GameSynchronyState::instance.currentPlayerSlotID
+                && (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[_playerID] != -1
+                    || (DAT_GameSynchronyState::instance.currentAIArray[_playerID] != 0))) {
                 if (400 < (int)(DAT_GameCore::instance.mapTimeInTicks - DAT_GameCore::instance.section1127)) {
                     int iVar1 = MACRO_CALL_MEMBER(
                         Map::Units::UnitsState_Func::getAliveLordForPlayer, DAT_UnitsState::ptr)(_playerID);
@@ -48,7 +48,7 @@ namespace Game {
             }
         }
         if (_teamMembers <= DAT_LastTeamMemberIndex::instance) {
-            DAT_LastTeamMemberIndex::instance = _teamMembers + -1;
+            DAT_LastTeamMemberIndex::instance = _teamMembers - 1;
         }
         if (DAT_LastTeamMemberIndex::instance < 0) {
             DAT_LastTeamMemberIndex::instance = 0;

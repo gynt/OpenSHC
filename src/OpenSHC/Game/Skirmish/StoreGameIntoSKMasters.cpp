@@ -57,21 +57,21 @@ namespace Game {
             iVar2 = DAT_SkMasters2Data_Count::instance;
             do {
                 if (iVar2 < 249) {
-                    _ptrSrc = pSVar5 + -1;
+                    _ptrSrc = pSVar5 - 1;
                     _ptrDst = pSVar5;
-                    for (iVar3 = 764; iVar3 != 0; iVar3 = iVar3 + -1) {
+                    for (iVar3 = 764; iVar3 != 0; iVar3 = iVar3 - 1) {
                         _ptrDst->score = _ptrSrc->score;
                         _ptrSrc = (SkMasterDataEntry*)_ptrSrc->mapName;
                         _ptrDst = (SkMasterDataEntry*)_ptrDst->mapName;
                     }
                 }
-                iVar2 = iVar2 + -1;
-                pSVar5 = pSVar5 + -1;
+                iVar2 = iVar2 - 1;
+                pSVar5 = pSVar5 - 1;
             } while (iVar6 < iVar2);
         }
         _ptrSrc2 = DAT_SkMasterDataEntry::ptr;
         _ptrDst2 = DAT_SkMasters2DataArray::instance + iVar6;
-        for (iVar2 = 764; iVar2 != 0; iVar2 = iVar2 + -1) {
+        for (iVar2 = 764; iVar2 != 0; iVar2 = iVar2 - 1) {
             _ptrDst2->score = _ptrSrc2->score;
             _ptrSrc2 = (SkMasterDataEntry*)_ptrSrc2->mapName;
             _ptrDst2 = (SkMasterDataEntry*)_ptrDst2->mapName;
