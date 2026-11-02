@@ -24,7 +24,7 @@ namespace Map {
             }
             psVar3 = &DAT_TribesState::instance.tribes[1].tribeID;
             do {
-                if (*(int*)(psVar3 + -0xfa) == param_2) {
+                if (*(int*)(psVar3 - 0xfa) == param_2) {
                     *psVar3 = 0;
                 }
                 psVar3 = psVar3 + 0x19a;
@@ -45,10 +45,9 @@ namespace Map {
             iVar2 = 1;
             psVar3 = &DAT_TribesState::instance.tribes[1].tribeState;
             do {
-                if (((((*psVar3 != 0) && (*psVar3 != 3))
-                         && (*(int*)(psVar3 + -10) == DAT_TribesState::instance.tribes[iVar1].owner))
-                        && (psVar3[0xf0] == 0))
-                    && ((psVar3[1] == ((AITribeType)0x16) || (psVar3[1] == ((AITribeType)0x17)))))
+                if (*psVar3 != 0 && *psVar3 != 3
+                    && *(int*)(psVar3 - 10) == DAT_TribesState::instance.tribes[iVar1].owner && psVar3[0xf0] == 0
+                    && (psVar3[1] == ((AITribeType)0x16) || (psVar3[1] == ((AITribeType)0x17))))
                     goto LAB_00518b70;
                 psVar3 = psVar3 + 0x19a;
                 iVar2 = iVar2 + 1;
@@ -58,11 +57,9 @@ namespace Map {
             do {
                 if (this->attackInfo.value3Array01[param_1] == 4)
                     break;
-                if ((((*psVar3 != 0) && (*psVar3 != 3))
-                        && ((*(int*)(psVar3 + -10) == DAT_TribesState::instance.tribes[iVar1].owner
-                            && (psVar3[0xf0] == 0))))
-                    && ((psVar3[1] == AI::Tribes::AITT_ARCHERS
-                        || (psVar3[1] == AI::Tribes::AITT_CROSSBOWMEN))))
+                if (*psVar3 != 0 && *psVar3 != 3
+                    && *(int*)(psVar3 - 10) == DAT_TribesState::instance.tribes[iVar1].owner && psVar3[0xf0] == 0
+                    && (psVar3[1] == AI::Tribes::AITT_ARCHERS || (psVar3[1] == AI::Tribes::AITT_CROSSBOWMEN)))
                     goto LAB_00518b70;
                 psVar3 = psVar3 + 0x19a;
                 iVar2 = iVar2 + 1;

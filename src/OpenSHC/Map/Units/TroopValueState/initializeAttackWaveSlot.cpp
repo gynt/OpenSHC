@@ -18,7 +18,7 @@ namespace Map {
             int iVar2;
             this->attackInfo.value3Array01[param_1] = 0;
             this->attackInfo.attackWaveTicker[param_1] = 0;
-            this->attackInfo.someIntArray2[param_1 + -1] = 0;
+            this->attackInfo.someIntArray2[param_1 - 1] = 0;
             MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                 10, '\0', (void*)((int)(this->attackInfo.someSinglePlayerScore + param_1)));
             this->attackInfo.aiTickPhase = 0;
@@ -45,11 +45,10 @@ namespace Map {
             this->attackInfo.playerInfo[7].field_0x3ea8 = 0;
             iVar1 = MACRO_CALL_MEMBER(
                 Game::GameStateStructures_Func::pickRandomAccessibleSignpostEntry, DAT_GameState::ptr)();
-            iVar2 = MACRO_CALL_MEMBER(
-                Game::GameStateStructures_Func::countActiveSignposts, DAT_GameState::ptr)();
+            iVar2 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::countActiveSignposts, DAT_GameState::ptr)();
             if ((param_2 <= iVar2) && (param_2)) {
-                (&this->attackInfo.unknownSignpostRelatedArray)[param_1] = param_2 + -1;
-                this->attackInfo.field128056_0x469d4 = param_2 + -1;
+                (&this->attackInfo.unknownSignpostRelatedArray)[param_1] = param_2 - 1;
+                this->attackInfo.field128056_0x469d4 = param_2 - 1;
             }
             (&this->attackInfo.unknownSignpostRelatedArray)[param_1] = iVar1;
             this->attackInfo.field128056_0x469d4 = iVar1;

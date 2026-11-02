@@ -37,7 +37,7 @@ namespace Map {
                     _ptrRallyPoints[8][0] = _ptrStoredRallyPoints[8][0];
                     _ptrStoredRallyPoints = (short (*)[2])(*_ptrStoredRallyPoints + 1);
                     _ptrRallyPoints = (short (*)[2])(*_ptrRallyPoints + 1);
-                    iVar1 = iVar1 + -1;
+                    iVar1 = iVar1 - 1;
                 } while (iVar1);
             }
             this->tribes[tribeID].unitStance = this->tribes[0].unitStance;

@@ -132,8 +132,8 @@ namespace Map {
                             iVar8 = (int)this->tribes[tribeID].rallyPointCount;
                             MACRO_CALL_MEMBER(
                                 Map::Units::TribesState_Func::giveUnitSelectionMoveInstructionNoMatchedSpeed, this)(
-                                tribeID, (uint)((int)this->tribes[tribeID].rallyPointArray[iVar8 + -1][0]),
-                                (uint)((int)this->tribes[tribeID].rallyPointArray[iVar8 + -1][1]), 0, 0);
+                                tribeID, (uint)((int)this->tribes[tribeID].rallyPointArray[iVar8 - 1][0]),
+                                (uint)((int)this->tribes[tribeID].rallyPointArray[iVar8 - 1][1]), 0, 0);
                         }
                     }
                     this->tribes[tribeID].predatorNearby = this->tribes[tribeID].predatorNearby + 1;

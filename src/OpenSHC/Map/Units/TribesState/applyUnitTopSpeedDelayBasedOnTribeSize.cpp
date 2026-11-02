@@ -46,17 +46,15 @@ namespace Map {
                      */
                     _ptrMovementDistance = &this->someUnitIDMovementDistancePair[0].movementDistance;
                     do {
-                        _selectionUnit
-                            = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
-                                tribeID, _unitSelectionIndex);
-                        if ((DAT_UnitsState::instance.units[_selectionUnit].logicalState
-                                == Map::Units::ULS_NORMAL)
+                        _selectionUnit = MACRO_CALL_MEMBER(
+                            Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(tribeID, _unitSelectionIndex);
+                        if ((DAT_UnitsState::instance.units[_selectionUnit].logicalState == Map::Units::ULS_NORMAL)
                             && (DAT_UnitsState::instance.units[_selectionUnit].dying == 0)) {
                             this->someUnitIDArrayCount = this->someUnitIDArrayCount + 1;
                             /*
                               sets unitID
                              */
-                            ((UnitIDMovementDistancePair*)(_ptrMovementDistance + -1))->unitID = (short)_selectionUnit;
+                            ((UnitIDMovementDistancePair*)(_ptrMovementDistance - 1))->unitID = (short)_selectionUnit;
                             if (!param_2) {
                                 *_ptrMovementDistance = DAT_UnitsState::instance.units[_selectionUnit].movementDistance;
                             }
@@ -74,7 +72,7 @@ namespace Map {
                       fixme:reuse: WARNING reuse of parameter
                      */
                     tribeID = 0;
-                    if (this->someUnitIDArrayCount == 1 || this->someUnitIDArrayCount + -1 < 0)
+                    if (this->someUnitIDArrayCount == 1 || this->someUnitIDArrayCount - 1 < 0)
                         break;
                     pUVar2 = this->someUnitIDMovementDistancePair;
                     do {
@@ -91,7 +89,7 @@ namespace Map {
                         }
                         tribeID = tribeID + 1;
                         pUVar2 = _nextUnit;
-                    } while (tribeID < this->someUnitIDArrayCount + -1);
+                    } while (tribeID < this->someUnitIDArrayCount - 1);
                 } while (_foundUnsortedEntry);
                 _delayIndex = 0;
                 if (0 < this->someUnitIDArrayCount) {
@@ -107,9 +105,8 @@ namespace Map {
                     /*
                       Set incremental delay on first 199 units, then set same value of 199
                      */
-                    _unitInSelection
-                        = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
-                            tribeID, _unitSelectionIndex);
+                    _unitInSelection = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::getUnitIDForIndexInTribe, this)(
+                        tribeID, _unitSelectionIndex);
                     iVar1 = _unitSelectionIndex;
                     if (199 < _unitSelectionIndex) {
                         iVar1 = 199;

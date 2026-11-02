@@ -75,7 +75,7 @@ namespace Map {
             if (_yOff_2b < _xOff_2b) {
                 _yOff_2b = _xOff_2b;
             }
-            if ((-1 < (_yOff_2b + -2) * unitID)
+            if ((-1 < (_yOff_2b - 2) * unitID)
                 && (_currentIndexInPathPlan = (uint)DAT_UnitsState::instance.units[_unitID].currentIndexInPathPlan,
                     local_8 = _tribeMinSpeedBounded * 4,
                     (int)_currentIndexInPathPlan < (int)DAT_UnitsState::instance.units[_unitID].totalSizeOfPathPlan)) {
@@ -110,7 +110,7 @@ namespace Map {
                     if (_yOffb < iVar3) {
                         _yOffb = iVar3;
                     }
-                    if ((_yOffb + -2) * unitID < local_8) {}
+                    if ((_yOffb - 2) * unitID < local_8) {}
                     local_8 = local_8 + _tribeMinSpeedBounded * 4;
                     _currentIndexInPathPlan = _currentIndexInPathPlan + 1;
                 } while (

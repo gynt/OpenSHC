@@ -1,9 +1,9 @@
 #include "../../../Map.func.hpp"
 #include "../TroopValueState.func.hpp"
 
+#include "OpenSHC/AI/Tribes/AITribeTypeInt.hpp"
 #include "OpenSHC/Map/Units/SomeTribeBehaviorType.hpp"
 
-#include "OpenSHC/AI/Tribes/AITribeTypeInt.hpp"
 #include "OpenSHC/Globals/DAT_AttackInfoDefinedData.hpp"
 #include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
 #include "OpenSHC/Globals/DAT_TribesState.hpp"
@@ -21,7 +21,7 @@ namespace Map {
             int iVar1;
             Tribe* psVar1;
             int* piVar2;
-            const AI::Tribes::AITribeTypeInt* _tribeTypePriority;
+            AI::Tribes::AITribeTypeInt const* _tribeTypePriority;
             int iVar3;
             int _currentTribeType;
             int _nextValue;
@@ -109,11 +109,11 @@ namespace Map {
             this->attackInfo.tribeIDArraySize = 0;
             psVar1 = &DAT_TribesState::instance.tribes[1];
             do {
-                if (((((psVar1->tribeState) && (psVar1->tribeState != 3))
-                         && (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[psVar1->owner] == -1))
-                        && ((psVar1->attackWave == attackWave
-                            && (psVar1->attackInfo_someCounter1 != this->attackInfo.someCounter1))))
-                    && ((psVar1->tribeBehaviorType != 1040 && (psVar1->tribeBehaviorType != 1045)))) {
+                if (psVar1->tribeState && psVar1->tribeState != 3
+                    && DAT_GameSynchronyState::instance.currentPlayerFullIDArray[psVar1->owner] == -1
+                    && psVar1->attackWave == attackWave
+                    && psVar1->attackInfo_someCounter1 != this->attackInfo.someCounter1
+                    && psVar1->tribeBehaviorType != 1040 && psVar1->tribeBehaviorType != 1045) {
                     this->attackInfo.tribeIDArray[_index] = _tribeID;
                     _index = this->attackInfo.tribeIDArraySize + 1;
                     this->attackInfo.tribeIDArraySize = _index;
@@ -128,7 +128,7 @@ namespace Map {
                      */
                     _index2 = 0;
                     _swapped = 0;
-                    if (_index + -1 < 1)
+                    if (_index - 1 < 1)
                         break;
                     do {
                         _current = this->attackInfo.tribeIDArray[_index2];
@@ -197,7 +197,7 @@ namespace Map {
                             this->attackInfo.tribeIDArray[_index2 + 1] = _current;
                         }
                         _index2 = _index2 + 1;
-                    } while (_index2 < this->attackInfo.tribeIDArraySize + -1);
+                    } while (_index2 < this->attackInfo.tribeIDArraySize - 1);
                     _index = this->attackInfo.tribeIDArraySize;
                 } while (_swapped);
                 _counter2 = 0;

@@ -23,19 +23,18 @@ namespace Map {
             int iVar1;
             int iVar2;
             int iVar3;
-            if (((((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)
-                      && (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                              .keep.id
-                          < 1))
-                     && (iVar2 = (int)(short)DAT_TileMapState::instance.UnitLayer[param_1], 0 < iVar2))
-                    && ((DAT_GameSynchronyState::instance
-                                .currentPlayerFullIDArray[DAT_UnitsState::instance.units[iVar2].owner]
-                            != -1
-                        && (DAT_UnitsState::instance.units[iVar2].isSelectable_OR_matchTime != 0))))
-                && ((DAT_TileMapState::instance.EntityLayer[param_1] == 0
+            if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY
+                && DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID].keep.id
+                    < 1
+                && (iVar2 = (int)(short)DAT_TileMapState::instance.UnitLayer[param_1], 0 < iVar2)
+                && DAT_GameSynchronyState::instance
+                        .currentPlayerFullIDArray[DAT_UnitsState::instance.units[iVar2].owner]
+                    != -1
+                && DAT_UnitsState::instance.units[iVar2].isSelectable_OR_matchTime != 0
+                && (DAT_TileMapState::instance.EntityLayer[param_1] == 0
                     || (DAT_EntityState::instance.entityArray[DAT_TileMapState::instance.EntityLayer[param_1]]
                             .entityType
-                        != Map::Entities::ET_FIRE)))) {
+                        != Map::Entities::ET_FIRE))) {
                 iVar2 = -1;
                 iVar3 = 0;
                 do {

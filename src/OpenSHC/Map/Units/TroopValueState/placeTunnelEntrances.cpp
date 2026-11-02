@@ -31,8 +31,8 @@ namespace Map {
               finds a route from target to siege engine location?
              */
             iVar4 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::algFindAttackAngle,
-                DAT_PathFindingState::ptr)(200, (uint)((int)((int)DAT_UnitsState::instance.units[sVar1].x)),
-                (uint)((int)((int)DAT_UnitsState::instance.units[sVar1].y)), tribeID);
+                DAT_PathFindingState::ptr)(200, (uint)(DAT_UnitsState::instance.units[sVar1].x),
+                (uint)(DAT_UnitsState::instance.units[sVar1].y), tribeID);
             if (iVar4) {
                 sVar1 = DAT_TribesState::instance.tribes[tribeID].siegeIndexValue1;
                 iVar2 = DAT_TribesState::instance.tribes[tribeID].uid;
@@ -47,14 +47,14 @@ namespace Map {
                 iVar2 = this->attackInfo.tentPointsValues[iVar4].x;
                 DAT_TribesState::instance.tribes[tribeID].siegeIndexValue1 = (short)iVar4;
                 MACRO_CALL_MEMBER(Map::TileMapState_Func::placeBuilding, DAT_TileMapState::ptr)(
-                    playerID, iVar2 + -1, iVar3 + -1, (MappersEnum)((int)(66)), 3, 0xf);
+                    playerID, iVar2 - 1, iVar3 - 1, (MappersEnum)((int)(66)), 3, 0xf);
                 iVar2 = DAT_TileMapState::instance.placedBuildingID;
                 if (0 < DAT_TileMapState::instance.placedBuildingID) {
                     DAT_BuildingsState::instance.buildings[DAT_TileMapState::instance.placedBuildingID].attackWave
                         = (int)DAT_TribesState::instance.tribes[tribeID].attackWave;
-                    MACRO_CALL_MEMBER(
-                        Map::Units::TribesState_Func::giveTribeAnInstruction, DAT_TribesState::ptr)(tribeID,
-                        ((UnitInstructionType)0x15), iVar2, DAT_BuildingsState::instance.buildings[iVar2].uid, 0);
+                    MACRO_CALL_MEMBER(Map::Units::TribesState_Func::giveTribeAnInstruction, DAT_TribesState::ptr)(
+                        tribeID, ((UnitInstructionType)0x15), iVar2, DAT_BuildingsState::instance.buildings[iVar2].uid,
+                        0);
                     return iVar4;
                 }
             }

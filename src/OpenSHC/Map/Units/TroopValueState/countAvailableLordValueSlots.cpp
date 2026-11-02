@@ -22,7 +22,7 @@ namespace Map {
                             = DAT_TroopValueState::instance.attackInfo.lord2 + 1;
                     }
                     piVar1 = piVar1 + 4;
-                    iVar2 = iVar2 + -1;
+                    iVar2 = iVar2 - 1;
                 } while (iVar2);
             }
         }

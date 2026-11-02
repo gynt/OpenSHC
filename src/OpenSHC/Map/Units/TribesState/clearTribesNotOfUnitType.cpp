@@ -33,7 +33,7 @@ namespace Map {
                             unitID, (int)(psVar1->tribeID));
                         psVar1->ifSelectedThenPlayerID = 0;
                         DAT_UnitsState::instance.unitCountOfSelection[playerID]
-                            = DAT_UnitsState::instance.unitCountOfSelection[playerID] + -1;
+                            = DAT_UnitsState::instance.unitCountOfSelection[playerID] - 1;
                         _clearedTribes[psVar1->tribeID] = 1;
                     }
                     unitID = unitID + 1;

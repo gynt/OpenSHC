@@ -27,8 +27,8 @@ namespace Map {
                  */
                 psVar1 = (short*)((int)this + _selectionID * 0x334 + 0x40);
                 while (*psVar1 != 0) {
-                    _selectionID = _selectionID + -8;
-                    psVar1 = psVar1 + -0xcd0;
+                    _selectionID = _selectionID - 8;
+                    psVar1 = psVar1 - 0xcd0;
                     if (_selectionID <= 0) {
                         return 0;
                     }

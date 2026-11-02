@@ -29,6 +29,12 @@ CASES = [
     ("(a == 1)", "a == 1"),
     # nested || of the same operator flattens
     ("((a == 1 || (b == 2)) || c == 3)", "a == 1 || b == 2 || c == 3"),
+    # a shift operator is not a comparison: without `<<` in the precedence table the
+    # leading `<` matched as one and the operator came out split, which does not compile.
+    # Two files of Map/Units/TribesState broke exactly this way.
+    ("if ((int)*p & 1 << ((byte)i & 0x1f)) {", "if ((int)*p & 1 << ((byte)i & 0x1f)) {"),
+    ("if ((a >> 4) == 3) {", "if ((a >> 4) == 3) {"),
+    ("if (x << 2 == 8) {", "if (x << 2 == 8) {"),
 ]
 
 if __name__ == "__main__":

@@ -667,7 +667,7 @@ namespace Map {
                                         break;
                                     if (bVar5) {
                                     LAB_00528f32:
-                                        iVar12 = *(int*)(id + -4);
+                                        iVar12 = *(int*)(id - 4);
                                         if (iVar12 == 0)
                                             break;
                                         sVar9 = DAT_ViewportRenderState::instance
@@ -831,7 +831,7 @@ namespace Map {
                                         uVar13);
                                     MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::clearOrDeselectUnitFromSelection,
                                         DAT_UnitsState::ptr)(this->tribes[_param_1_tribeID].owner, uVar13, 0);
-                                    unitUID = unitUID + -1;
+                                    unitUID = unitUID - 1;
                                     iVar12 = _unitTribeIndex;
                                     if (unitUID == 0) {
                                         return (undefined4)(1);
@@ -911,7 +911,7 @@ namespace Map {
                             MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::deselectUnit, DAT_UnitsState::ptr)(uVar13);
                             MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::clearOrDeselectUnitFromSelection,
                                 DAT_UnitsState::ptr)(this->tribes[_param_1_tribeID].owner, uVar13, 0);
-                            unitUID = unitUID + -1;
+                            unitUID = unitUID - 1;
                             iVar14 = iVar12;
                             if (unitUID == 0) {
                                 return (undefined4)(1);
@@ -1329,7 +1329,7 @@ namespace Map {
                                             }
                                         }
                                     }
-                                    iVar15 = *(int*)(id + -4);
+                                    iVar15 = *(int*)(id - 4);
                                     if (iVar15 != 0) {
                                         sVar9 = DAT_ViewportRenderState::instance
                                                     .tileTranslationMatrix_YComponent[iVar15];
@@ -1407,7 +1407,7 @@ namespace Map {
                                 if (DAT_UnitsState::instance.units[_laddermanID].logicalState == Map::Units::ULS_NORMAL
                                     && DAT_UnitsState::instance.units[_laddermanID].dying == 0
                                     && DAT_UnitsState::instance.units[_laddermanID].unitType == Map::Units::UT_E_LADDER
-                                    && (_freeTile = ((PathHelper12*)(piVar18 + -1))->tile1, _freeTile != 0)) {
+                                    && (_freeTile = ((PathHelper12*)(piVar18 - 1))->tile1, _freeTile != 0)) {
                                     /*
                                       set ladder men destination to free id next to defensive structure
                                      */

@@ -55,7 +55,7 @@ namespace Map {
                         _atLeastTwoTribes = true;
                     }
                     _pUnit = _pUnit + 0x248;
-                    _unitIDCountdown = _unitIDCountdown + -1;
+                    _unitIDCountdown = _unitIDCountdown - 1;
                     _tribeID_1 = _tribeID_chosen;
                 } while (_unitIDCountdown);
                 _countAggressive = _stanceCount[2];

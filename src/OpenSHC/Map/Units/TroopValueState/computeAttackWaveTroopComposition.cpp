@@ -26,7 +26,7 @@ namespace Map {
                     } else if (this->attackInfo.spearmenAndMacemen < 2) {
                         this->attackInfo.field_0x20f44 = 1;
                     } else if (this->attackInfo.spearmenAndMacemen < 4) {
-                        this->attackInfo.field_0x20f44 = this->attackInfo.spearmenAndMacemen + -1;
+                        this->attackInfo.field_0x20f44 = this->attackInfo.spearmenAndMacemen - 1;
                     } else {
                         this->attackInfo.field_0x20f44 = 3;
                     }
@@ -45,7 +45,7 @@ namespace Map {
                     } else if (this->attackInfo.spearmenAndMacemen < 2) {
                         this->attackInfo.field_0x20f44 = 1;
                     } else if (this->attackInfo.spearmenAndMacemen < 4) {
-                        this->attackInfo.field_0x20f44 = this->attackInfo.spearmenAndMacemen + -1;
+                        this->attackInfo.field_0x20f44 = this->attackInfo.spearmenAndMacemen - 1;
                     } else {
                         this->attackInfo.field_0x20f44 = 3;
                     }
@@ -70,7 +70,7 @@ namespace Map {
                     } else if (this->attackInfo.spearmenAndMacemen < 2) {
                         this->attackInfo.field_0x20f44 = 1;
                     } else if (this->attackInfo.spearmenAndMacemen < 5) {
-                        this->attackInfo.field_0x20f44 = this->attackInfo.spearmenAndMacemen + -1;
+                        this->attackInfo.field_0x20f44 = this->attackInfo.spearmenAndMacemen - 1;
                     } else {
                         this->attackInfo.field_0x20f44 = 4;
                     }
@@ -99,7 +99,7 @@ namespace Map {
             } else if (this->attackInfo.spearmenAndMacemen < 2) {
                 this->attackInfo.field_0x20f44 = 1;
             } else if (this->attackInfo.spearmenAndMacemen < 3) {
-                this->attackInfo.field_0x20f44 = this->attackInfo.spearmenAndMacemen + -1;
+                this->attackInfo.field_0x20f44 = this->attackInfo.spearmenAndMacemen - 1;
             } else {
                 this->attackInfo.field_0x20f44 = 2;
             }

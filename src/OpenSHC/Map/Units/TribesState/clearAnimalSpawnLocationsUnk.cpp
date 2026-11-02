@@ -16,7 +16,7 @@ namespace Map {
             short* psVar1;
             psVar1 = &DAT_GameState::instance.mapAndTime.deerSpawnLocationsXY[0].y;
             do {
-                ((Point4ShortXY*)(psVar1 + -1))->x = 0;
+                ((Point4ShortXY*)(psVar1 - 1))->x = 0;
                 *psVar1 = 0;
                 psVar1[0x1d7] = 0;
                 psVar1[0x1d8] = 0;

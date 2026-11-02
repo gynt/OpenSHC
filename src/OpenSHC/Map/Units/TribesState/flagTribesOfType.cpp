@@ -17,7 +17,7 @@ namespace Map {
                     psVar1->unknownBool02 = 1;
                 }
                 psVar1 = psVar1 + 0x19a;
-                iVar1 = iVar1 + -1;
+                iVar1 = iVar1 - 1;
             } while (iVar1);
         }
 

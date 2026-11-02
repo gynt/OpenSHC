@@ -31,8 +31,12 @@ import common
 
 # loosest first; a lower rank binds less tightly
 LEVELS = [[","], ["="], ["||"], ["&&"], ["|"], ["^"], ["&"], ["==", "!="],
-          ["<=", ">=", "<", ">"]]
+          ["<=", ">=", "<", ">"], ["<<", ">>"]]
 COMPARISON = 7          # index in LEVELS of ==/!=; anything at or past this is a comparison
+# `<<` and `>>` must be listed, and listed *after* the comparisons so they are matched
+# first by the longest-token scan below. Without them the first `<` of a shift read as a
+# comparison and `1 << (x & 0x1f)` came out as `1 <  < (x & 0x1f)`, which does not compile:
+# two files of Map/Units/TribesState broke that way before this level existed.
 
 
 def match_paren(s, i):
@@ -64,6 +68,11 @@ def scan_top(s):
                 if tok == "=" and (s[i - 1:i] in "=!<>" or s[i + 1:i + 2] == "="):
                     continue
                 if tok in ("<", ">") and s[i - 1:i + 1] == "->":
+                    continue
+                # a `<` or `>` that is half of a shift is not a comparison. The levels are
+                # scanned loosest first, so without this the single-character comparison
+                # matches before `<<` ever gets a chance and the operator is split.
+                if tok in ("<", ">") and (s[i + 1:i + 2] == tok or s[i - 1:i] == tok):
                     continue
                 hit = tok
                 break

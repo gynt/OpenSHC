@@ -36,7 +36,7 @@ namespace Map {
                             = (SomeTribeBehaviorTypeShort)tribeBehaviorType;
                         DAT_TribesState::instance.tribes[_tribeID].attackInfo_someCounter1 = sVar1;
                         this->attackInfo.unknownTribeCounterRelated = iVar2;
-                    } else if (tribeBehaviorType2 != ((SomeTribeBehaviorType)0)) {
+                    } else if (tribeBehaviorType2 != (SomeTribeBehaviorType)0) {
                         DAT_TribesState::instance.tribes[_tribeID].tribeBehaviorType
                             = (SomeTribeBehaviorTypeShort)tribeBehaviorType2;
                     }

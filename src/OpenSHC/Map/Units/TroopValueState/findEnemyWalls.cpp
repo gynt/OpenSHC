@@ -25,7 +25,7 @@ namespace Map {
             local_10 = 1000;
             local_8 = -1;
             local_14 = 0;
-            if (0 < *(int*)((int)this->attackInfo.hackValuesArray + _offset + -8)) {
+            if (0 < *(int*)((int)this->attackInfo.hackValuesArray + _offset - 8)) {
                 piVar2 = (AttackInfoSubArrayElement2*)((int)&this->attackInfo.hackValuesArray + _offset + 4);
                 do {
                     if ((piVar2->size < 9999) && (!piVar2->unitID)) {
@@ -33,10 +33,9 @@ namespace Map {
                             = (int)DAT_ViewportRenderState::instance.tileTranslationMatrix_YComponent[piVar2->tile2];
                         iVar1 = piVar2->tile2
                             - DAT_ViewportRenderState::instance.translationMatrix[fromYPosition].addXgetTile;
-                        MACRO_CALL_MEMBER(
-                            Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
+                        MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
                             DAT_DirectionAlgorithmState::ptr)((int)DAT_UnitsState::instance.units[unitID].x,
-                            (int)((int)(DAT_UnitsState::instance.units[unitID].y)), iVar1, fromYPosition);
+                            (int)(DAT_UnitsState::instance.units[unitID].y), iVar1, fromYPosition);
                         DAT_DirectionAlgorithmState::instance.distanceHigh
                             = DAT_DirectionAlgorithmState::instance.distanceHigh + piVar2->size * 8;
                         if (DAT_DirectionAlgorithmState::instance.distanceHigh < local_10) {
@@ -49,7 +48,7 @@ namespace Map {
                     }
                     local_14 = local_14 + 1;
                     piVar2 = piVar2 + 4;
-                } while (local_14 < *(int*)((int)this->attackInfo.hackValuesArray + _offset + -8));
+                } while (local_14 < *(int*)((int)this->attackInfo.hackValuesArray + _offset - 8));
                 if (-1 < local_8) {
                     iVar1 = _offset + local_8 * 0x10;
                     *(int*)((int)this->attackInfo.hackValuesArray + iVar1 + 0xc) = unitID;

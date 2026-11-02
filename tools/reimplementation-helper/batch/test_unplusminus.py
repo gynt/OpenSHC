@@ -30,6 +30,14 @@ CASES = [
     ("double d = 1.5e-1 + 2.0;", "double d = 1.5e-1 + 2.0;"),
     # pre-decrement is not ours either
     ("x = a + --b;", "x = a + --b;"),
+    # inside a (T*)( ... ) address computation the fold is not neutral: it cost
+    # Map::Buildings::UpdateBrewery 5.8 points and five Map::Units::TroopValueState
+    # setters 6.4 to 7.3 each, so these are left alone
+    ("x = *(int*)((int)base.arr + i + -8);", "x = *(int*)((int)base.arr + i + -8);"),
+    ("*(undefined4*)((int)base.arr + i + -4) = 0;", "*(undefined4*)((int)base.arr + i + -4) = 0;"),
+    ("p = (int*)((int)base.arr + i + -4);", "p = (int*)((int)base.arr + i + -4);"),
+    # a plain (int) cast is not a pointer address, so this one still folds
+    ("x = (int)sVar1 + -1;", "x = (int)sVar1 - 1;"),
 ]
 
 if __name__ == "__main__":

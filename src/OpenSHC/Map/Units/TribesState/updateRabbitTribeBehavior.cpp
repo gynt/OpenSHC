@@ -87,8 +87,8 @@ namespace Map {
                         if (0 < sVar2) {
                             MACRO_CALL_MEMBER(
                                 Map::Units::TribesState_Func::giveUnitSelectionMoveInstructionNoMatchedSpeed, this)(
-                                tribeID, (uint)((int)this->tribes[tribeID].rallyPointArray[sVar2 + -1][0]),
-                                (uint)((int)this->tribes[tribeID].rallyPointArray[sVar2 + -1][1]), 0, 0);
+                                tribeID, (uint)((int)this->tribes[tribeID].rallyPointArray[sVar2 - 1][0]),
+                                (uint)((int)this->tribes[tribeID].rallyPointArray[sVar2 - 1][1]), 0, 0);
                         }
                     } else if (BVar7) {
                         this->tribes[tribeID].tribeBehaviorType = Map::Units::STBT_1;

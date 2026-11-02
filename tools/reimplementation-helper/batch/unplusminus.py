@@ -26,12 +26,50 @@ import common
 LITERAL = r"(0[xX][0-9a-fA-F]+|\d+)([uUlL]*)\b"
 PLUS = re.compile(r"\+ -" + LITERAL)
 MINUS = re.compile(r"- -" + LITERAL)
+# A pointer cast whose bracket opens the group the match sits in: `*(int*)(`, `(undefined4*)(`.
+PTR_CAST_OPEN = re.compile(r"\*\s*\)\s*$")
 
 
-def process(text):
-    text, plus = PLUS.subn(r"- \1\2", text)
-    text, minus = MINUS.subn(r"+ \1\2", text)
-    return text, plus + minus
+def in_pointer_address(text, at):
+    """True when the match at `at` sits inside a `(T*)( ... )` address computation.
+
+    Folding the sign there is not neutral, which is the one exception measured so far and
+    it is measured twice: `*(int*)((int)base + index + -8)` written with `- 8` cost
+    `Map::Buildings::UpdateBrewery` 5.8 points, and five `Map::Units::TroopValueState`
+    setters 6.4 to 7.3 each, with no other change in those files. The value is identical
+    either way, so this is code generation and not semantics - MSVC evidently picks a
+    different addressing mode for the two spellings in this shape. These lines are the
+    decompiler's raw pointer arithmetic anyway, which rules 7 and 11 would rather replace
+    with a named field than tidy, so skipping them costs little readability.
+    """
+    depth = 0
+    for i in range(at, -1, -1):
+        if text[i] == ")":
+            depth += 1
+        elif text[i] == "(":
+            if depth == 0:
+                return bool(PTR_CAST_OPEN.search(text[:i]))
+            depth -= 1
+        elif text[i] == "\n":
+            break
+    return False
+
+
+def process(text, all_sites=False):
+    n = 0
+    for pattern, sign in ((PLUS, "-"), (MINUS, "+")):
+        out = []
+        last = 0
+        for m in pattern.finditer(text):
+            if not all_sites and in_pointer_address(text, m.start()):
+                continue
+            out.append(text[last:m.start()])
+            out.append("%s %s%s" % (sign, m.group(1), m.group(2)))
+            last = m.end()
+            n += 1
+        out.append(text[last:])
+        text = "".join(out)
+    return text, n
 
 
 if __name__ == "__main__":

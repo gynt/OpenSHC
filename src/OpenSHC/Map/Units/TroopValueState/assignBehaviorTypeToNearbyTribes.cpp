@@ -24,9 +24,9 @@ namespace Map {
             if (0 < this->attackInfo.tribeIDArraySize) {
                 do {
                     iVar1 = this->attackInfo.tribeIDArray[iVar3];
-                    if ((this->attackInfo.tribeRelatedArrayValue0UpTo12[iVar3] < 0xb)
-                        && (iVar2 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::
-                                                          calculateCanPlayerUnitsNavigateToAreaFromArea,
+                    if (this->attackInfo.tribeRelatedArrayValue0UpTo12[iVar3] < 0xb
+                        && (iVar2 = MACRO_CALL_MEMBER(
+                                Map::Navigation::PathFindingState_Func::calculateCanPlayerUnitsNavigateToAreaFromArea,
                                 DAT_PathFindingState::ptr)(DAT_TribesState::instance.tribes[iVar1].owner,
                                 (dword)((int)((
                                     int)(short)DAT_TileMapState::instance.PathConnectionLayer[DAT_UnitsState::instance

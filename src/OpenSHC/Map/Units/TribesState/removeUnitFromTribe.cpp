@@ -27,7 +27,7 @@ namespace Map {
             }
             _size = this->tribes[tribeID].size;
             if (0 < _size) {
-                this->tribes[tribeID].size = _size + -1;
+                this->tribes[tribeID].size = _size - 1;
             }
             if (this->tribes[tribeID].size <= 0) {
                 this->tribes[tribeID].tribeState = 3;

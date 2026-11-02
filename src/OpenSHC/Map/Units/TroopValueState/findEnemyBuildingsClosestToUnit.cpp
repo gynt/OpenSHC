@@ -28,7 +28,7 @@ namespace Map {
             local_10 = 1000;
             local_8 = -1;
             local_14 = 0;
-            if (0 < *(int*)((int)DAT_TroopValueState::instance.attackInfo.townValuesArray + iVar1 + -8)) {
+            if (0 < *(int*)((int)DAT_TroopValueState::instance.attackInfo.townValuesArray + iVar1 - 8)) {
                 piVar2 = (AttackInfoSubArrayElement2*)((int)&DAT_TroopValueState::instance.attackInfo.townValuesArray
                     + iVar1 + 4);
                 do {
@@ -37,10 +37,9 @@ namespace Map {
                             = (int)DAT_ViewportRenderState::instance.tileTranslationMatrix_YComponent[piVar2->tile2];
                         fromXPosition = piVar2->tile2
                             - DAT_ViewportRenderState::instance.translationMatrix[fromYPosition].addXgetTile;
-                        MACRO_CALL_MEMBER(
-                            Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
+                        MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
                             DAT_DirectionAlgorithmState::ptr)((int)DAT_UnitsState::instance.units[unitID].x,
-                            (int)((int)(DAT_UnitsState::instance.units[unitID].y)), fromXPosition, fromYPosition);
+                            (int)(DAT_UnitsState::instance.units[unitID].y), fromXPosition, fromYPosition);
                         DAT_DirectionAlgorithmState::instance.distanceHigh
                             = DAT_DirectionAlgorithmState::instance.distanceHigh + (100 - piVar2->size) * 2;
                         if (DAT_DirectionAlgorithmState::instance.distanceHigh < local_10) {
@@ -53,8 +52,7 @@ namespace Map {
                     }
                     local_14 = local_14 + 1;
                     piVar2 = piVar2 + 4;
-                } while (
-                    local_14 < *(int*)((int)DAT_TroopValueState::instance.attackInfo.townValuesArray + iVar1 + -8));
+                } while (local_14 < *(int*)((int)DAT_TroopValueState::instance.attackInfo.townValuesArray + iVar1 - 8));
                 if (-1 < local_8) {
                     iVar1 = iVar1 + local_8 * 0x10;
                     *(int*)((int)DAT_TroopValueState::instance.attackInfo.townValuesArray + iVar1 + 0xc) = unitID;

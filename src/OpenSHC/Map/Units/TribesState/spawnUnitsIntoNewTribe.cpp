@@ -34,7 +34,7 @@ namespace Map {
                                 _unitID, (int)(_tribeID));
                             DAT_UnitsState::instance.units[_unitID].aiUnitBehaviourType = 0;
                         }
-                        tribeType = tribeType + -1;
+                        tribeType = tribeType - 1;
                     } while (tribeType);
                 }
                 if (0 < unitType2Count) {
@@ -48,7 +48,7 @@ namespace Map {
                                 _unitID2, (int)(_tribeID));
                             DAT_UnitsState::instance.units[_unitID2].aiUnitBehaviourType = 0;
                         }
-                        y = y + -1;
+                        y = y - 1;
                     } while (y);
                 }
                 this->tribes[_tribeID].pendingScatterMove = 1;

@@ -42,7 +42,7 @@ namespace Map {
                         _totalHealth = _totalHealth + _ptrUnit->healthPercentage;
                     }
                     _ptrUnit = _ptrUnit + 0x248;
-                    tribeID = tribeID + -1;
+                    tribeID = tribeID - 1;
                 } while (tribeID);
             }
             _tribeSize = this->tribes[_tribeID].size;

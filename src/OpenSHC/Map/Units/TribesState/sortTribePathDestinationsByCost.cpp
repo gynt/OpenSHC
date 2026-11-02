@@ -165,7 +165,7 @@ namespace Map {
                             + _nextOffset2)
                         != 10000000) {
                         if (_counter2 != iVar9) {
-                            ((PathHelper12*)(_p2Tile2 + -1))->tile1 = _p2->destinationsArray[0].tile1;
+                            ((PathHelper12*)(_p2Tile2 - 1))->tile1 = _p2->destinationsArray[0].tile1;
                             *_p2Tile2 = *(
                                 int*)((int)&((PathFindingStatePartB*)(DAT_PathFindingState::instance.climbData + 200))
                                           ->destinationsArray[0]

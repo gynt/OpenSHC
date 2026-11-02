@@ -98,7 +98,7 @@ namespace Map {
                         == this->tribes[tribeID].someTile2) {
                         _buildingIndex_2 = this->tribes[tribeID].field168_0x2be;
                         if (_buildingIndex_2) {
-                            this->tribes[tribeID].field168_0x2be = _buildingIndex_2 + -1;
+                            this->tribes[tribeID].field168_0x2be = _buildingIndex_2 - 1;
                             goto LAB_0052aa77;
                         }
                         if (DAT_UnitsState::instance.units[iVar5].tile == this->tribes[tribeID].someTile)

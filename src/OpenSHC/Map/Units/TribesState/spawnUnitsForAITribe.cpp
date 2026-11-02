@@ -39,7 +39,7 @@ namespace Map {
                         MACRO_CALL_MEMBER(AI::AICState_Func::addUnitToItsTribe, DAT_AICState::ptr)(
                             unitID, aiUnitBehaviourType);
                     }
-                    param_2 = param_2 + -1;
+                    param_2 = param_2 - 1;
                 } while (param_2);
             }
         }

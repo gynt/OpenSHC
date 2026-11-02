@@ -73,7 +73,7 @@ namespace Map {
                                     UVar2 != Map::Units::UIT_UNIT_ATTACK_UNIT)
                                 && UVar2 != Map::Units::UIT_ATTACK_LAND
                                 && UVar2 != Map::Units::UIT_MAN_SIEGE_EQUIPMENT) {
-                                iVar4 = DAT_TileMapState::instance.cursorOverlayAnimationFrame + -1;
+                                iVar4 = DAT_TileMapState::instance.cursorOverlayAnimationFrame - 1;
                                 if (7 < iVar4) {
                                     iVar4 = 0xf - iVar4;
                                 }
@@ -99,7 +99,7 @@ namespace Map {
                             MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::createFloatingLayerElement,
                                 DAT_ViewportRenderState::ptr)(
                                 IO::Graphics::GID_CURSORS, (int)(0x6a - sVar1), 10, 6, tile, iVar4 << 0x10 | 2);
-                            iVar4 = DAT_TileMapState::instance.cursorOverlayAnimationFrame + -1;
+                            iVar4 = DAT_TileMapState::instance.cursorOverlayAnimationFrame - 1;
                             if (7 < iVar4) {
                                 iVar4 = 0xf - iVar4;
                             }
@@ -172,7 +172,6 @@ namespace Map {
                     }
                 } while (iVar5 < this->tribes[tribeID].size);
             }
-            return;
         }
 
     }

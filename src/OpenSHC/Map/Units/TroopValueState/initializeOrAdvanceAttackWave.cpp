@@ -33,13 +33,13 @@ namespace Map {
                     param_1, 2, 100000, Map::Units::STBT_0x3fb);
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::applyTribeBehaviorTypes, this)(
                     Map::Units::STBT_0x3fe, Map::Units::STBT_1, 0, 0x32);
-                this->attackInfo.casDis = MACRO_CALL_MEMBER(
-                    Map::WildlifeState_Func::getDistanceToNearestUnknownNonZero01FromSignpost,
-                    DAT_WildlifeState::ptr)();
+                this->attackInfo.casDis
+                    = MACRO_CALL_MEMBER(Map::WildlifeState_Func::getDistanceToNearestUnknownNonZero01FromSignpost,
+                        DAT_WildlifeState::ptr)();
                 MACRO_CALL_MEMBER(Map::Units::TribesState_Func::applyTribeBehaviorType, DAT_TribesState::ptr)(
                     param_1, Map::Units::STBT_3);
             }
-            if ((char)this->attackInfo.nof_tribes[param_1] + -5
+            if ((char)this->attackInfo.nof_tribes[param_1] - 5
                 <= (int)(char)this->attackInfo.unknownByteArray02[param_1]) {
                 piVar1 = this->attackInfo.attackWaveTicker + param_1;
                 *piVar1 = *piVar1 + 1;
