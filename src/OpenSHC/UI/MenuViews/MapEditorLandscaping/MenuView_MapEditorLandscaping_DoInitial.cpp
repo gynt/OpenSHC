@@ -5,6 +5,7 @@
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 #include "OpenSHC/Rendering/ScreenResolutionEnum.hpp"
 #include "OpenSHC/UI/Enums/BuildingsAndStatusMenuTabType.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/COL_MAGENTA.hpp"
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
@@ -56,9 +57,9 @@ namespace UI {
                 if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1024x768) {
                     DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("edge1024l.tgx");
+                        DAT_TextureRenderCoreObject::ptr)(s_edge1024l_tgx_005a2388);
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("edge1024l.tgx");
+                        DAT_TextureRenderCoreObject::ptr)(s_edge1024l_tgx_005a2388);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
@@ -73,9 +74,9 @@ namespace UI {
                 if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1024x600) {
                     DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("edge1024l.tgx");
+                        DAT_TextureRenderCoreObject::ptr)(s_edge1024l_tgx_005a2388);
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("edge1024l.tgx");
+                        DAT_TextureRenderCoreObject::ptr)(s_edge1024l_tgx_005a2388);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
@@ -90,9 +91,9 @@ namespace UI {
                 if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1280x1024) {
                     DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("edge1280l.tgx");
+                        DAT_TextureRenderCoreObject::ptr)(s_edge1280l_tgx_005a2378);
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("edge1280l.tgx");
+                        DAT_TextureRenderCoreObject::ptr)(s_edge1280l_tgx_005a2378);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
@@ -107,9 +108,9 @@ namespace UI {
                 if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1600x1200) {
                     DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("edge1600l.tgx");
+                        DAT_TextureRenderCoreObject::ptr)(s_edge1600l_tgx_005a2368);
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("edge1600l.tgx");
+                        DAT_TextureRenderCoreObject::ptr)(s_edge1600l_tgx_005a2368);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
@@ -124,9 +125,9 @@ namespace UI {
                 if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1280x720) {
                     DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("edge1280l.tgx");
+                        DAT_TextureRenderCoreObject::ptr)(s_edge1280l_tgx_005a2378);
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("edge1280l.tgx");
+                        DAT_TextureRenderCoreObject::ptr)(s_edge1280l_tgx_005a2378);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
@@ -141,9 +142,9 @@ namespace UI {
                 if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1440x900) {
                     DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("edge1440l.tgx");
+                        DAT_TextureRenderCoreObject::ptr)(s_edge1440l_tgx_005a2358);
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("edge1440l.tgx");
+                        DAT_TextureRenderCoreObject::ptr)(s_edge1440l_tgx_005a2358);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
@@ -158,9 +159,9 @@ namespace UI {
                 if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1920x1080) {
                     DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("edge1920l.tgx");
+                        DAT_TextureRenderCoreObject::ptr)(s_edge1920l_tgx_005a2348);
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("edge1920l.tgx");
+                        DAT_TextureRenderCoreObject::ptr)(s_edge1920l_tgx_005a2348);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
@@ -175,9 +176,9 @@ namespace UI {
                 if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1920x1200) {
                     DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("edge1920l.tgx");
+                        DAT_TextureRenderCoreObject::ptr)(s_edge1920l_tgx_005a2348);
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("edge1920l.tgx");
+                        DAT_TextureRenderCoreObject::ptr)(s_edge1920l_tgx_005a2348);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
@@ -192,9 +193,9 @@ namespace UI {
                 if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_2560x1440) {
                     DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("edge2560l.tgx");
+                        DAT_TextureRenderCoreObject::ptr)(s_edge2560l_tgx_005a2338);
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("edge2560l.tgx");
+                        DAT_TextureRenderCoreObject::ptr)(s_edge2560l_tgx_005a2338);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
@@ -209,9 +210,9 @@ namespace UI {
                 if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_2560x1600) {
                     DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("edge2560l.tgx");
+                        DAT_TextureRenderCoreObject::ptr)(s_edge2560l_tgx_005a2338);
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("edge2560l.tgx");
+                        DAT_TextureRenderCoreObject::ptr)(s_edge2560l_tgx_005a2338);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
@@ -226,9 +227,9 @@ namespace UI {
                 if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1366x768) {
                     DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("edge1366l.tgx");
+                        DAT_TextureRenderCoreObject::ptr)(s_edge1366l_tgx_005a2328);
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("edge1366l.tgx");
+                        DAT_TextureRenderCoreObject::ptr)(s_edge1366l_tgx_005a2328);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
@@ -243,9 +244,9 @@ namespace UI {
                 if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1360x768) {
                     DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("edge1360l.tgx");
+                        DAT_TextureRenderCoreObject::ptr)(s_edge1360l_tgx_005a2318);
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("edge1360l.tgx");
+                        DAT_TextureRenderCoreObject::ptr)(s_edge1360l_tgx_005a2318);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
@@ -260,9 +261,9 @@ namespace UI {
                 if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1680x1050) {
                     DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("edge1680l.tgx");
+                        DAT_TextureRenderCoreObject::ptr)(s_edge1680l_tgx_005a2308);
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("edge1680l.tgx");
+                        DAT_TextureRenderCoreObject::ptr)(s_edge1680l_tgx_005a2308);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,
@@ -277,9 +278,9 @@ namespace UI {
                 if (DAT_WindowAndDirectDraw::instance.currentGameResolution == OpenSHC::Rendering::SRE_1600x900) {
                     DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("edge1600l.tgx");
+                        DAT_TextureRenderCoreObject::ptr)(s_edge1600l_tgx_005a2368);
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                        DAT_TextureRenderCoreObject::ptr)("edge1600l.tgx");
+                        DAT_TextureRenderCoreObject::ptr)(s_edge1600l_tgx_005a2368);
                     DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                         = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderLoadedGfx,

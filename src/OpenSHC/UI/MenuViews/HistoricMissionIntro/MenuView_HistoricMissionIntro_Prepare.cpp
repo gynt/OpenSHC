@@ -6,6 +6,7 @@
 #include "OpenSHC/UI/Helpers.func.hpp"
 #include "OpenSHC/UI/Rendering/TextureRenderCore.func.hpp"
 #include "OpenSHC/DE/SHCDE/eTextSections.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_00eb0b20.hpp"
 #include "OpenSHC/Globals/DAT_00ed2780.hpp"
@@ -30,7 +31,8 @@ namespace UI {
             uint local_4;
             local_4 = MSVC_SecurityCookie::instance ^ (uint)_tgxFileName;
             MACRO_CALL(UI::Helpers_Func::PrepareHistoryBook)();
-            MACRO_CALL(OS_Func::_sprintf)(_tgxFileName, "m%dmap.tgx", DAT_GameCore::instance.missionNumber1to20);
+            MACRO_CALL(OS_Func::_sprintf)(
+                _tgxFileName, s_m_dmap_tgx_005ab0b8, DAT_GameCore::instance.missionNumber1to20);
             DAT_00eb0b20::instance = MACRO_CALL_MEMBER(
                 UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(_tgxFileName);
             DAT_NumberOfStoredMenuStrings::instance = 0;

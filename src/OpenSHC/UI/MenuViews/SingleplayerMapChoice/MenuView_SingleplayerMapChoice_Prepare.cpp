@@ -9,6 +9,7 @@
 #include "OpenSHC/Game/GameMode.hpp"
 #include "OpenSHC/Game/GameMode2.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/DAT_00b960dc.hpp"
 #include "OpenSHC/Globals/DAT_ButtonBackgroundBlendStrength.hpp"
@@ -47,8 +48,8 @@ namespace UI {
             DAT_GameSynchronyState::instance.currentGameMode = Game::GM_SOLITARY;
             DAT_GameCore::instance.gameMode_2 = Game::GM_BUILDERUnk;
             if (INT_00b95b64::instance == 0) {
-                MACRO_CALL(UI::MenuItems::SinglePlayerMapChoice_Func::
-                        MenuItemActionHandler_SingleplayerMapChoice_MapTable)(
+                MACRO_CALL(
+                    UI::MenuItems::SinglePlayerMapChoice_Func::MenuItemActionHandler_SingleplayerMapChoice_MapTable)(
                     DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected);
                 DAT_GameSynchronyState::instance.skirmishRelated1 = 1;
             } else {
@@ -70,12 +71,12 @@ namespace UI {
             DWORD_00b95b1c::instance = timeGetTime();
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
             if (DAT_MapMissionType::instance < 2) {
-                tgxFileName = "frontend_economics2.tgx";
+                tgxFileName = S_FRONTEND_ECONOMICS2_TGX_005A203C;
             } else {
-                tgxFileName = "frontend_combat2.tgx";
+                tgxFileName = S_FRONTEND_COMBAT2_TGX_005A2010;
             }
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                DAT_TextureRenderCoreObject::ptr)(tgxFileName);
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
+                tgxFileName);
             MACRO_CALL(UI::Helpers_Func::LoadTGX_shc_back)();
             DAT_MenuHandlerState::instance.y = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
             DAT_MenuHandlerState::instance.x = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;

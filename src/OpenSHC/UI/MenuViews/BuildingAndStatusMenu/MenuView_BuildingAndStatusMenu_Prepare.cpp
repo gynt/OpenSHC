@@ -17,6 +17,7 @@
 #include "OpenSHC/Rendering/ScreenResolutionEnum.hpp"
 #include "OpenSHC/UI/Enums/BuildingsAndStatusMenuTabType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/DAT_00b95b68.hpp"
 #include "OpenSHC/Globals/DAT_00b95b6c.hpp"
@@ -174,7 +175,7 @@ namespace UI {
                           "The granary is empty sire"
                          */
                         MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                            "food_warning5.wav");
+                            S_FOOD_WARNING5_WAV_005A2ACC);
                     } else {
                         iVar6 = (int)DAT_GameState::instance.playerDataArray[_playerId].foodStorageLevelLastLastMonth;
                         iVar5 = DAT_GameState::instance.playerDataArray[_playerId].foodStorageLevel;
@@ -227,17 +228,17 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
                         OpenSHC::Audio::SFX::SEID_CHAPEL_BELL);
                 LAB_00446f2e:
-                    pcVar8 = "wedding_sketch.tgx";
+                    pcVar8 = S_WEDDING_SKETCH_TGX_005A2AB8;
                 } else if (BVar2 == OpenSHC::Map::Buildings::BT_CHURCH) {
                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
                         OpenSHC::Audio::SFX::SEID_CHURCH_BELL);
-                    pcVar8 = "wedding_sketch.tgx";
+                    pcVar8 = S_WEDDING_SKETCH_TGX_005A2AB8;
                 } else {
                     if (BVar2 != OpenSHC::Map::Buildings::BT_CATHEDRAL)
                         goto LAB_00446f2e;
                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(
                         OpenSHC::Audio::SFX::SEID_CATHEDRAL_BELL);
-                    pcVar8 = "wedding_sketch.tgx";
+                    pcVar8 = S_WEDDING_SKETCH_TGX_005A2AB8;
                 }
                 goto LAB_004475c3;
             case OpenSHC::UI::Enums::BASMTT_MERCENARYPOST:
@@ -266,7 +267,7 @@ namespace UI {
                         OpenSHC::IO::ResourceManager_Func::doesFileOfActiveResourceExist, DAT_ResourceManager::ptr)();
                     DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
                     if (!BVar4) {
-                        pcVar8 = "chimp00_null.tgx";
+                        pcVar8 = S_CHIMP00_NULL_TGX_005A0C90;
                     } else {
                         pcVar8 = DAT_RenderingDefinedData::instance.ChimpTgxArray[(short)*pUVar1];
                     }
@@ -305,15 +306,15 @@ namespace UI {
             case OpenSHC::UI::Enums::BASMTT_STATUS_OVERVIEW:
                 DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
                 if (!DAT_GameCore::instance.selectedLordTypeUnk) {
-                    pcVar8 = "shield1.tgx";
+                    pcVar8 = S_SHIELD1_TGX_005A2AAC;
                 } else {
-                    pcVar8 = "shield2.tgx";
+                    pcVar8 = S_SHIELD2_TGX_005A2AA0;
                 }
                 goto LAB_004475c3;
             case OpenSHC::UI::Enums::BASMTT_STATUS_POPULARITY:
                 DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("popularity_sketch.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_POPULARITY_SKETCH_TGX_005A2A88);
                 iVar5 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .popularity;
                 iVar6 = iVar5 >> 0x1f;
@@ -349,9 +350,9 @@ namespace UI {
             case OpenSHC::UI::Enums::BASMTT_STATUS_FEARFACTOR:
                 DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("fearfpos.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_FEARFPOS_TGX_005A2A78);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("fearfneg.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_FEARFNEG_TGX_005A2A68);
                 iVar5 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .fearFactorLevel;
                 if (iVar5) {
@@ -421,84 +422,84 @@ namespace UI {
             case OpenSHC::UI::Enums::BASMTT_STATUS_POPULATION:
                 DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("popgraph.tgx");
-                pcVar8 = "population_sketch.tgx";
+                    DAT_TextureRenderCoreObject::ptr)(S_POPGRAPH_TGX_005A2990);
+                pcVar8 = S_POPULATION_SKETCH_TGX_005A2978;
                 goto LAB_004475c3;
             case OpenSHC::UI::Enums::BASMTT_STATUS_FOOD:
                 DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("food_sketch.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_FOOD_SKETCH_TGX_005A2968);
                 DAT_00b96108::instance = 1;
                 break;
             case OpenSHC::UI::Enums::BASMTT_STATUS_ARMY:
                 DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("armysbar.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_ARMYSBAR_TGX_005A2958);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("armybar.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_ARMYBAR_TGX_005A294C);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("armylbd.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_ARMYLBD_TGX_005A2940);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("armyrbd.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_ARMYRBD_TGX_005A2934);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("armys1.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_ARMYS1_TGX_005A2928);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("armys2.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_ARMYS2_TGX_005A291C);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("armys3.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_ARMYS3_TGX_005A2910);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("armys4.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_ARMYS4_TGX_005A2904);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("armys5.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_ARMYS5_TGX_005A28F8);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("armys6.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_ARMYS6_TGX_005A28EC);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("armys7.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_ARMYS7_TGX_005A28E0);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("armys8.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_ARMYS8_TGX_005A28D4);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("armys9.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_ARMYS9_TGX_005A28C8);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("armys10.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_ARMYS10_TGX_005A28BC);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("armys11.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_ARMYS11_TGX_005A28B0);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("armys12.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_ARMYS12_TGX_005A28A4);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("armys13.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_ARMYS13_TGX_005A2898);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("armys14.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_ARMYS14_TGX_005A288C);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("armys15.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_ARMYS15_TGX_005A2880);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("armys16.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_ARMYS16_TGX_005A2874);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("armys17.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_ARMYS17_TGX_005A2868);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("armys18.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_ARMYS18_TGX_005A285C);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("armys19.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_ARMYS19_TGX_005A2850);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("armys20.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_ARMYS20_TGX_005A2844);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("armys21.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_ARMYS21_TGX_005A2838);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("armys22.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_ARMYS22_TGX_005A282C);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("armys23.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_ARMYS23_TGX_005A2820);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("armys24.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_ARMYS24_TGX_005A2814);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("armys25.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_ARMYS25_TGX_005A2808);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("armys26.tgx");
+                    DAT_TextureRenderCoreObject::ptr)(S_ARMYS26_TGX_005A27FC);
                 MACRO_CALL(OpenSHC::UI::Helpers_Func::CountPlayerUnitsByType)();
                 break;
             case OpenSHC::UI::Enums::BASMTT_STATUS_RELIGION:
                 DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                    DAT_TextureRenderCoreObject::ptr)("churchs.tgx");
-                pcVar8 = "religion_sketch.tgx";
+                    DAT_TextureRenderCoreObject::ptr)(S_CHURCHS_TGX_005A27F0);
+                pcVar8 = S_RELIGION_SKETCH_TGX_005A27DC;
             LAB_004475c3:
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
                     DAT_TextureRenderCoreObject::ptr)(pcVar8);

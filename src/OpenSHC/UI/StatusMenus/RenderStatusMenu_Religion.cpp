@@ -8,6 +8,7 @@
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/DAT_00b98448.hpp"
 #include "OpenSHC/Globals/DAT_GameState.hpp"
@@ -156,7 +157,7 @@ namespace UI {
             BVar7 = 0;
             TVar6 = OpenSHC::Text::TTA_LEFT;
             iVar8 = iVar1 + 0xe2;
-            pcVar4 = "%";
+            pcVar4 = S_PERCENTAGE_005A2770;
         } else {
             if (iVar5 < 0x32) {
                 local_4 = 0x32;

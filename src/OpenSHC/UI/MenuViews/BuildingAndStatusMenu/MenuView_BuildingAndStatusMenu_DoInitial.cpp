@@ -6,6 +6,7 @@
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 #include "OpenSHC/Rendering/ScreenResolutionEnum.hpp"
 #include "OpenSHC/UI/Enums/BuildingsAndStatusMenuTabType.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/COL_MAGENTA.hpp"
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
@@ -70,12 +71,12 @@ namespace UI {
                         DAT_TextureRenderCoreObject::instance.backwardsLoadedGfxIndex_0x16C850 = 99;
                         DAT_TextureRenderCoreObject::instance.loadedGfxArray[99].backwardsOffsetInBuffer = 0;
                         iVar5 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
-                            DAT_TextureRenderCoreObject::ptr)("edge_military_1024l.tgx");
+                            DAT_TextureRenderCoreObject::ptr)(S_EDGE_MILITARY_1024L_TGX_005A25C0);
                         if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                            pcVar4 = "edge_military_1024l.tgx";
+                            pcVar4 = S_EDGE_MILITARY_1024L_TGX_005A25C0;
                         } else {
-                            pcVar4 = "edge_military_1024r.tgx";
+                            pcVar4 = S_EDGE_MILITARY_1024R_TGX_005A25A8;
                         }
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
                             DAT_TextureRenderCoreObject::ptr)(pcVar4);
@@ -96,12 +97,12 @@ namespace UI {
                         DAT_TextureRenderCoreObject::instance.backwardsLoadedGfxIndex_0x16C850 = 99;
                         DAT_TextureRenderCoreObject::instance.loadedGfxArray[99].backwardsOffsetInBuffer = 0;
                         iVar5 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
-                            DAT_TextureRenderCoreObject::ptr)("edge1024l.tgx");
+                            DAT_TextureRenderCoreObject::ptr)(S_EDGE1024L_TGX_005A2388);
                         if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                            pcVar4 = "edge1024l.tgx";
+                            pcVar4 = S_EDGE1024L_TGX_005A2388;
                         } else {
-                            pcVar4 = "edge1024r.tgx";
+                            pcVar4 = S_EDGE1024R_TGX_005A2418;
                         }
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
                             DAT_TextureRenderCoreObject::ptr)(pcVar4);
@@ -125,12 +126,12 @@ namespace UI {
                         DAT_TextureRenderCoreObject::instance.backwardsLoadedGfxIndex_0x16C850 = 99;
                         DAT_TextureRenderCoreObject::instance.loadedGfxArray[99].backwardsOffsetInBuffer = 0;
                         iVar5 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
-                            DAT_TextureRenderCoreObject::ptr)("edge_military_1024l.tgx");
+                            DAT_TextureRenderCoreObject::ptr)(S_EDGE_MILITARY_1024L_TGX_005A25C0);
                         if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                            pcVar4 = "edge_military_1024l.tgx";
+                            pcVar4 = S_EDGE_MILITARY_1024L_TGX_005A25C0;
                         } else {
-                            pcVar4 = "edge_military_1024r.tgx";
+                            pcVar4 = S_EDGE_MILITARY_1024R_TGX_005A25A8;
                         }
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
                             DAT_TextureRenderCoreObject::ptr)(pcVar4);
@@ -151,12 +152,12 @@ namespace UI {
                         DAT_TextureRenderCoreObject::instance.backwardsLoadedGfxIndex_0x16C850 = 99;
                         DAT_TextureRenderCoreObject::instance.loadedGfxArray[99].backwardsOffsetInBuffer = 0;
                         iVar5 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
-                            DAT_TextureRenderCoreObject::ptr)("edge1024l.tgx");
+                            DAT_TextureRenderCoreObject::ptr)(S_EDGE1024L_TGX_005A2388);
                         if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                            pcVar4 = "edge1024l.tgx";
+                            pcVar4 = S_EDGE1024L_TGX_005A2388;
                         } else {
-                            pcVar4 = "edge1024r.tgx";
+                            pcVar4 = S_EDGE1024R_TGX_005A2418;
                         }
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
                             DAT_TextureRenderCoreObject::ptr)(pcVar4);
@@ -180,21 +181,21 @@ namespace UI {
                             == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM)
                         || (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST)) {
                         iVar5 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
-                            DAT_TextureRenderCoreObject::ptr)("edge_military_1280l.tgx");
+                            DAT_TextureRenderCoreObject::ptr)(S_EDGE_MILITARY_1280L_TGX_005A2590);
                         if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                            pcVar4 = "edge_military_1280l.tgx";
+                            pcVar4 = S_EDGE_MILITARY_1280L_TGX_005A2590;
                         } else {
-                            pcVar4 = "edge_military_1280r.tgx";
+                            pcVar4 = S_EDGE_MILITARY_1280R_TGX_005A2578;
                         }
                     } else {
                         iVar5 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
-                            DAT_TextureRenderCoreObject::ptr)("edge1280l.tgx");
+                            DAT_TextureRenderCoreObject::ptr)(S_EDGE1280L_TGX_005A2378);
                         if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                            pcVar4 = "edge1280l.tgx";
+                            pcVar4 = S_EDGE1280L_TGX_005A2378;
                         } else {
-                            pcVar4 = "edge1280r.tgx";
+                            pcVar4 = S_EDGE1280R_TGX_005A2408;
                         }
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
@@ -228,21 +229,21 @@ namespace UI {
                             == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM)
                         || (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST)) {
                         iVar5 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
-                            DAT_TextureRenderCoreObject::ptr)("edge_military_1600l.tgx");
+                            DAT_TextureRenderCoreObject::ptr)(S_EDGE_MILITARY_1600L_TGX_005A2560);
                         if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                            pcVar4 = "edge_military_1600l.tgx";
+                            pcVar4 = S_EDGE_MILITARY_1600L_TGX_005A2560;
                         } else {
-                            pcVar4 = "edge_military_1600r.tgx";
+                            pcVar4 = S_EDGE_MILITARY_1600R_TGX_005A2548;
                         }
                     } else {
                         iVar5 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
-                            DAT_TextureRenderCoreObject::ptr)("edge1600l.tgx");
+                            DAT_TextureRenderCoreObject::ptr)(S_EDGE1600L_TGX_005A2368);
                         if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                            pcVar4 = "edge1600l.tgx";
+                            pcVar4 = S_EDGE1600L_TGX_005A2368;
                         } else {
-                            pcVar4 = "edge1600r.tgx";
+                            pcVar4 = S_EDGE1600R_TGX_005A23F8;
                         }
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
@@ -276,21 +277,21 @@ namespace UI {
                             == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM)
                         || (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST)) {
                         iVar5 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
-                            DAT_TextureRenderCoreObject::ptr)("edge_military_1280l.tgx");
+                            DAT_TextureRenderCoreObject::ptr)(S_EDGE_MILITARY_1280L_TGX_005A2590);
                         if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                            pcVar4 = "edge_military_1280l.tgx";
+                            pcVar4 = S_EDGE_MILITARY_1280L_TGX_005A2590;
                         } else {
-                            pcVar4 = "edge_military_1280r.tgx";
+                            pcVar4 = S_EDGE_MILITARY_1280R_TGX_005A2578;
                         }
                     } else {
                         iVar5 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
-                            DAT_TextureRenderCoreObject::ptr)("edge1280l.tgx");
+                            DAT_TextureRenderCoreObject::ptr)(S_EDGE1280L_TGX_005A2378);
                         if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                            pcVar4 = "edge1280l.tgx";
+                            pcVar4 = S_EDGE1280L_TGX_005A2378;
                         } else {
-                            pcVar4 = "edge1280r.tgx";
+                            pcVar4 = S_EDGE1280R_TGX_005A2408;
                         }
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
@@ -324,21 +325,21 @@ namespace UI {
                             == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM)
                         || (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST)) {
                         iVar5 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
-                            DAT_TextureRenderCoreObject::ptr)("edge_military_1440l.tgx");
+                            DAT_TextureRenderCoreObject::ptr)(S_EDGE_MILITARY_1440L_TGX_005A2530);
                         if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                            pcVar4 = "edge_military_1440l.tgx";
+                            pcVar4 = S_EDGE_MILITARY_1440L_TGX_005A2530;
                         } else {
-                            pcVar4 = "edge_military_1440r.tgx";
+                            pcVar4 = S_EDGE_MILITARY_1440R_TGX_005A2518;
                         }
                     } else {
                         iVar5 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
-                            DAT_TextureRenderCoreObject::ptr)("edge1440l.tgx");
+                            DAT_TextureRenderCoreObject::ptr)(S_EDGE1440L_TGX_005A2358);
                         if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                            pcVar4 = "edge1440l.tgx";
+                            pcVar4 = S_EDGE1440L_TGX_005A2358;
                         } else {
-                            pcVar4 = "edge1440r.tgx";
+                            pcVar4 = S_EDGE1440R_TGX_005A23E8;
                         }
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
@@ -372,21 +373,21 @@ namespace UI {
                             == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM)
                         || (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST)) {
                         iVar5 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
-                            DAT_TextureRenderCoreObject::ptr)("edge_military_1920l.tgx");
+                            DAT_TextureRenderCoreObject::ptr)(S_EDGE_MILITARY_1920L_TGX_005A2500);
                         if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                            pcVar4 = "edge_military_1920l.tgx";
+                            pcVar4 = S_EDGE_MILITARY_1920L_TGX_005A2500;
                         } else {
-                            pcVar4 = "edge_military_1920r.tgx";
+                            pcVar4 = S_EDGE_MILITARY_1920R_TGX_005A24E8;
                         }
                     } else {
                         iVar5 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
-                            DAT_TextureRenderCoreObject::ptr)("edge1920l.tgx");
+                            DAT_TextureRenderCoreObject::ptr)(S_EDGE1920L_TGX_005A2348);
                         if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                            pcVar4 = "edge1920l.tgx";
+                            pcVar4 = S_EDGE1920L_TGX_005A2348;
                         } else {
-                            pcVar4 = "edge1920r.tgx";
+                            pcVar4 = S_EDGE1920R_TGX_005A23D8;
                         }
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
@@ -420,21 +421,21 @@ namespace UI {
                             == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM)
                         || (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST)) {
                         iVar5 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
-                            DAT_TextureRenderCoreObject::ptr)("edge_military_1920l.tgx");
+                            DAT_TextureRenderCoreObject::ptr)(S_EDGE_MILITARY_1920L_TGX_005A2500);
                         if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                            pcVar4 = "edge_military_1920l.tgx";
+                            pcVar4 = S_EDGE_MILITARY_1920L_TGX_005A2500;
                         } else {
-                            pcVar4 = "edge_military_1920r.tgx";
+                            pcVar4 = S_EDGE_MILITARY_1920R_TGX_005A24E8;
                         }
                     } else {
                         iVar5 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
-                            DAT_TextureRenderCoreObject::ptr)("edge1920l.tgx");
+                            DAT_TextureRenderCoreObject::ptr)(S_EDGE1920L_TGX_005A2348);
                         if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                            pcVar4 = "edge1920l.tgx";
+                            pcVar4 = S_EDGE1920L_TGX_005A2348;
                         } else {
-                            pcVar4 = "edge1920r.tgx";
+                            pcVar4 = S_EDGE1920R_TGX_005A23D8;
                         }
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
@@ -468,21 +469,21 @@ namespace UI {
                             == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM)
                         || (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST)) {
                         iVar5 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
-                            DAT_TextureRenderCoreObject::ptr)("edge_military_2560l.tgx");
+                            DAT_TextureRenderCoreObject::ptr)(S_EDGE_MILITARY_2560L_TGX_005A24D0);
                         if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                            pcVar4 = "edge_military_2560l.tgx";
+                            pcVar4 = S_EDGE_MILITARY_2560L_TGX_005A24D0;
                         } else {
-                            pcVar4 = "edge_military_2560r.tgx";
+                            pcVar4 = S_EDGE_MILITARY_2560R_TGX_005A24B8;
                         }
                     } else {
                         iVar5 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
-                            DAT_TextureRenderCoreObject::ptr)("edge2560l.tgx");
+                            DAT_TextureRenderCoreObject::ptr)(S_EDGE2560L_TGX_005A2338);
                         if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                            pcVar4 = "edge2560l.tgx";
+                            pcVar4 = S_EDGE2560L_TGX_005A2338;
                         } else {
-                            pcVar4 = "edge2560r.tgx";
+                            pcVar4 = S_EDGE2560R_TGX_005A23C8;
                         }
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
@@ -516,21 +517,21 @@ namespace UI {
                             == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM)
                         || (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST)) {
                         iVar5 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
-                            DAT_TextureRenderCoreObject::ptr)("edge_military_2560l.tgx");
+                            DAT_TextureRenderCoreObject::ptr)(S_EDGE_MILITARY_2560L_TGX_005A24D0);
                         if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                            pcVar4 = "edge_military_2560l.tgx";
+                            pcVar4 = S_EDGE_MILITARY_2560L_TGX_005A24D0;
                         } else {
-                            pcVar4 = "edge_military_2560r.tgx";
+                            pcVar4 = S_EDGE_MILITARY_2560R_TGX_005A24B8;
                         }
                     } else {
                         iVar5 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
-                            DAT_TextureRenderCoreObject::ptr)("edge2560l.tgx");
+                            DAT_TextureRenderCoreObject::ptr)(S_EDGE2560L_TGX_005A2338);
                         if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                            pcVar4 = "edge2560l.tgx";
+                            pcVar4 = S_EDGE2560L_TGX_005A2338;
                         } else {
-                            pcVar4 = "edge2560r.tgx";
+                            pcVar4 = S_EDGE2560R_TGX_005A23C8;
                         }
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
@@ -564,21 +565,21 @@ namespace UI {
                             == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM)
                         || (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST)) {
                         iVar5 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
-                            DAT_TextureRenderCoreObject::ptr)("edge_military_1366l.tgx");
+                            DAT_TextureRenderCoreObject::ptr)(S_EDGE_MILITARY_1366L_TGX_005A24A0);
                         if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                            pcVar4 = "edge_military_1366l.tgx";
+                            pcVar4 = S_EDGE_MILITARY_1366L_TGX_005A24A0;
                         } else {
-                            pcVar4 = "edge_military_1366r.tgx";
+                            pcVar4 = S_EDGE_MILITARY_1366R_TGX_005A2488;
                         }
                     } else {
                         iVar5 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
-                            DAT_TextureRenderCoreObject::ptr)("edge1366l.tgx");
+                            DAT_TextureRenderCoreObject::ptr)(S_EDGE1366L_TGX_005A2328);
                         if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                            pcVar4 = "edge1366l.tgx";
+                            pcVar4 = S_EDGE1366L_TGX_005A2328;
                         } else {
-                            pcVar4 = "edge1366r.tgx";
+                            pcVar4 = S_EDGE1366R_TGX_005A23B8;
                         }
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
@@ -612,21 +613,21 @@ namespace UI {
                             == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM)
                         || (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST)) {
                         iVar5 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
-                            DAT_TextureRenderCoreObject::ptr)("edge_military_1360l.tgx");
+                            DAT_TextureRenderCoreObject::ptr)(S_EDGE_MILITARY_1360L_TGX_005A2470);
                         if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                            pcVar4 = "edge_military_1360l.tgx";
+                            pcVar4 = S_EDGE_MILITARY_1360L_TGX_005A2470;
                         } else {
-                            pcVar4 = "edge_military_1360r.tgx";
+                            pcVar4 = S_EDGE_MILITARY_1360R_TGX_005A2458;
                         }
                     } else {
                         iVar5 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
-                            DAT_TextureRenderCoreObject::ptr)("edge1360l.tgx");
+                            DAT_TextureRenderCoreObject::ptr)(S_EDGE1360L_TGX_005A2318);
                         if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                            pcVar4 = "edge1360l.tgx";
+                            pcVar4 = S_EDGE1360L_TGX_005A2318;
                         } else {
-                            pcVar4 = "edge1360r.tgx";
+                            pcVar4 = S_EDGE1360R_TGX_005A23A8;
                         }
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
@@ -660,21 +661,21 @@ namespace UI {
                             == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM)
                         || (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST)) {
                         iVar5 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
-                            DAT_TextureRenderCoreObject::ptr)("edge_military_1680l.tgx");
+                            DAT_TextureRenderCoreObject::ptr)(S_EDGE_MILITARY_1680L_TGX_005A2440);
                         if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                            pcVar4 = "edge_military_1680l.tgx";
+                            pcVar4 = S_EDGE_MILITARY_1680L_TGX_005A2440;
                         } else {
-                            pcVar4 = "edge_military_1680r.tgx";
+                            pcVar4 = S_EDGE_MILITARY_1680R_TGX_005A2428;
                         }
                     } else {
                         iVar5 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
-                            DAT_TextureRenderCoreObject::ptr)("edge1680l.tgx");
+                            DAT_TextureRenderCoreObject::ptr)(S_EDGE1680L_TGX_005A2308);
                         if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                            pcVar4 = "edge1680l.tgx";
+                            pcVar4 = S_EDGE1680L_TGX_005A2308;
                         } else {
-                            pcVar4 = "edge1680r.tgx";
+                            pcVar4 = S_EDGE1680R_TGX_005A2398;
                         }
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
@@ -708,21 +709,21 @@ namespace UI {
                             == OpenSHC::UI::Enums::BASMTT_BARRACKS_OR_MPMENU_MODEM)
                         || (DAT_GameCore::instance.activeMenuTab.tabType == OpenSHC::UI::Enums::BASMTT_MERCENARYPOST)) {
                         iVar5 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
-                            DAT_TextureRenderCoreObject::ptr)("edge_military_1600l.tgx");
+                            DAT_TextureRenderCoreObject::ptr)(S_EDGE_MILITARY_1600L_TGX_005A2560);
                         if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                            pcVar4 = "edge_military_1600l.tgx";
+                            pcVar4 = S_EDGE_MILITARY_1600L_TGX_005A2560;
                         } else {
-                            pcVar4 = "edge_military_1600r.tgx";
+                            pcVar4 = S_EDGE_MILITARY_1600R_TGX_005A2548;
                         }
                     } else {
                         iVar5 = MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,
-                            DAT_TextureRenderCoreObject::ptr)("edge1600l.tgx");
+                            DAT_TextureRenderCoreObject::ptr)(S_EDGE1600L_TGX_005A2368);
                         if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_EDITOR)
                             || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)) {
-                            pcVar4 = "edge1600l.tgx";
+                            pcVar4 = S_EDGE1600L_TGX_005A2368;
                         } else {
-                            pcVar4 = "edge1600r.tgx";
+                            pcVar4 = S_EDGE1600R_TGX_005A23F8;
                         }
                     }
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxAtBufferEnd,

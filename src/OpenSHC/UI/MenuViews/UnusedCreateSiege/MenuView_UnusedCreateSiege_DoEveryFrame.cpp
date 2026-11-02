@@ -13,6 +13,7 @@
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/COL_BLACK.hpp"
 #include "OpenSHC/Globals/DAT_BottomLeftTextDisplayState.hpp"
@@ -105,8 +106,8 @@ namespace UI {
                 DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MAPEDIT, 0x22);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 pcVar2, iVar4, iVar1, TVar6, BVar7, iVar5, BVar9, iVar8);
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(" - ",
-                DAT_MenuHandlerState::instance.x + 0x8c, DAT_MenuHandlerState::instance.y + 0x23,
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                S___005A2304, DAT_MenuHandlerState::instance.x + 0x8c, DAT_MenuHandlerState::instance.y + 0x23,
                 OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x11, TRUE, 0);
             if (!INT_00b960e4::instance) {
                 iVar8 = 0;
@@ -141,7 +142,7 @@ namespace UI {
                 iVar5 = 400;
             }
             DAT_MinimapViewState::instance.needsRedraw = 1;
-            MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_18, "%dx%d", iVar5, iVar5);
+            MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_18, S__DX_D_005A22FC, iVar5, iVar5);
             switch (iVar5) {
             case 100:
                 iVar4 = iVar4 + 0xbe;

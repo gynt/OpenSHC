@@ -17,6 +17,7 @@
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/Text/TextAlignmentInt.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/CHAR_ARRAY_00eb0ab0.hpp"
 #include "OpenSHC/Globals/DAT_BlendingDefinedData.hpp"
@@ -308,7 +309,8 @@ namespace UI {
                         DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x1e, OpenSHC::Text::TTA_LEFT,
                         0xccfaff, 0, 0x10, FALSE, 0);
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow,
-                        DAT_TextManagerObject::ptr)(".", DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x1f,
+                        DAT_TextManagerObject::ptr)(s___005ab5d4,
+                        DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x1f,
                         DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x1e, OpenSHC::Text::TTA_LEFT,
                         0xccfaff, 0, 0x10, TRUE, 0);
                     _offset = DAT_GameCore::instance.extremeTrailProgress + 0x51;
@@ -321,7 +323,8 @@ namespace UI {
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x1e, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0,
                     0xf, FALSE, 0);
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow,
-                    DAT_TextManagerObject::ptr)(".", DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x1f,
+                    DAT_TextManagerObject::ptr)(s___005ab5d4,
+                    DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x1f,
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x1e, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0,
                     0xf, TRUE, 0);
                 _offset = DAT_GameCore::instance.extremeTrailProgress + 0x51;
@@ -338,7 +341,8 @@ namespace UI {
                         DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x1e, OpenSHC::Text::TTA_LEFT,
                         0xccfaff, 0, 0x10, FALSE, 0);
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow,
-                        DAT_TextManagerObject::ptr)(".", DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x1f,
+                        DAT_TextManagerObject::ptr)(s___005ab5d4,
+                        DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x1f,
                         DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x1e, OpenSHC::Text::TTA_LEFT,
                         0xccfaff, 0, 0x10, TRUE, 0);
                     _offset = DAT_GameCore::instance.warchestTrailProgress + 0x33;
@@ -351,7 +355,8 @@ namespace UI {
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x1e, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0,
                     0xf, FALSE, 0);
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow,
-                    DAT_TextManagerObject::ptr)(".", DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x1f,
+                    DAT_TextManagerObject::ptr)(s___005ab5d4,
+                    DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x1f,
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x1e, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0,
                     0xf, TRUE, 0);
                 _offset = DAT_GameCore::instance.warchestTrailProgress + 0x33;
@@ -368,7 +373,8 @@ namespace UI {
                         DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x1e, OpenSHC::Text::TTA_LEFT,
                         0xccfaff, 0, 0x10, FALSE, 0);
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow,
-                        DAT_TextManagerObject::ptr)(".", DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x1f,
+                        DAT_TextManagerObject::ptr)(s___005ab5d4,
+                        DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x1f,
                         DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x1e, OpenSHC::Text::TTA_LEFT,
                         0xccfaff, 0, 0x10, TRUE, 0);
                     _offset = DAT_GameCore::instance.skirmishTrailProgress + 1;
@@ -381,7 +387,8 @@ namespace UI {
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x1e, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0,
                     0xf, FALSE, 0);
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow,
-                    DAT_TextManagerObject::ptr)(".", DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x1f,
+                    DAT_TextManagerObject::ptr)(s___005ab5d4,
+                    DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x1f,
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x1e, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0,
                     0xf, TRUE, 0);
                 _offset = DAT_GameCore::instance.skirmishTrailProgress + 1;

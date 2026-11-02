@@ -2,6 +2,7 @@
 
 #include "OpenSHC/Rendering/Bink/BinkControlClass.func.hpp"
 #include "OpenSHC/UI/Rendering/PencilRenderCore.func.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/COL_BLACK.hpp"
 #include "OpenSHC/Globals/DAT_BinkControlState.hpp"
@@ -28,7 +29,8 @@ namespace UI {
                 0, DAT_WindowAndDirectDraw::instance.resolutionX, DAT_WindowAndDirectDraw::instance.resolutionY,
                 (ushort)(COL_BLACK::instance.shortValue));
             MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::BinkControlClass_Func::playBINK, DAT_BinkControlState::ptr)(0,
-                "intro.bik", 0, 0, DAT_MenuHandlerState::instance.x + 0x50, DAT_MenuHandlerState::instance.y + 0x3c, 0);
+                S_INTRO_BIK_005A1F80, 0, 0, DAT_MenuHandlerState::instance.x + 0x50,
+                DAT_MenuHandlerState::instance.y + 0x3c, 0);
             TIME_IntroVideo_Prepare::instance = timeGetTime();
         }
 

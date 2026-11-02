@@ -8,6 +8,7 @@
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/DAT_BinkControlState.hpp"
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
@@ -58,12 +59,14 @@ namespace UI {
                 DAT_MainMenuSwingSwordBool::instance = 0;
             LAB_00424e2e:
                 MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::BinkControlClass_Func::playBINK, DAT_BinkControlState::ptr)(
-                    0, "richard_ambient.bik", 0, 0, DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x1fc,
+                    0, S_RICHARD_AMBIENT_BIK_005A1FE4, 0, 0,
+                    DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x1fc,
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x16, 0);
             }
             if (DAT_MainMenuSwingSwordBool::instance == 1) {
                 MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::BinkControlClass_Func::playBINK, DAT_BinkControlState::ptr)(
-                    0, "richard_swordswing.bik", 0, 0, DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x1fc,
+                    0, S_RICHARD_SWORDSWING_BIK_005A1FC4, 0, 0,
+                    DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x1fc,
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x16, 0);
             }
         LAB_00424eb2:
@@ -75,7 +78,7 @@ namespace UI {
                 (DAT_WindowAndDirectDraw::instance.resolutionY
                     - DAT_TextureRenderCoreObject::instance.loadedGfxArray[DAT_UnknownGFXIndex::instance].height)
                     / 2);
-            MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_68, "V1.%d", 41);
+            MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_68, S_V1_D_005A1FDC, 41);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(local_68,
                 DAT_MenuHandlerState::instance.x + 2, (int)(DAT_MenuHandlerState::instance.y + 588),
                 OpenSHC::Text::TTA_LEFT, 0x7caaaf, 0x13, FALSE, 0);

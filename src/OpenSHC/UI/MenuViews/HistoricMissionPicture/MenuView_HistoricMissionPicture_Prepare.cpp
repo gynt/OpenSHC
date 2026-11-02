@@ -6,6 +6,7 @@
 #include "OpenSHC/UI/Helpers.func.hpp"
 #include "OpenSHC/UI/Rendering/TextureRenderCore.func.hpp"
 #include "OpenSHC/DE/SHCDE/eTextSections.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_00eb0b20.hpp"
 #include "OpenSHC/Globals/DAT_00ed2780.hpp"
@@ -30,7 +31,7 @@ namespace UI {
             uint local_4;
             local_4 = MSVC_SecurityCookie::instance ^ (uint)local_14;
             MACRO_CALL(OS_Func::_sprintf)(
-                local_14, "m%dpic.tgx", (DAT_GameCore::instance.missionNumber1to20 - 1) / 5 + 1);
+                local_14, s_m_dpic_tgx_005ab0a0, (DAT_GameCore::instance.missionNumber1to20 - 1) / 5 + 1);
             MACRO_CALL(UI::Helpers_Func::PrepareHistoryBook)();
             DAT_00eb0b20::instance = MACRO_CALL_MEMBER(
                 UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(local_14);

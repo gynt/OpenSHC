@@ -13,6 +13,7 @@
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/COL_BLACK.hpp"
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
@@ -95,10 +96,10 @@ namespace UI {
                     switch (DAT_MapPropertiesState::instance.SEC_U3_MapType2_1) {
                     case OpenSHC::Map::MT_SIEGE:
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
-                            DAT_TextManagerObject::ptr)(" - ", DAT_MenuHandlerState::instance.x + 0x8c,
+                            DAT_TextManagerObject::ptr)(S___005A2304, DAT_MenuHandlerState::instance.x + 0x8c,
                             DAT_MenuHandlerState::instance.y + 0x23, OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x11, TRUE, 0);
                         /*
-                          added by script: "Siege"
+                          added by script: S_SIEGE_005A7644
                          */
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                             OpenSHC::DE::SHCDE::TEXT_MAPEDIT, 0x1c, DAT_MenuHandlerState::instance.x + 0x8c,
@@ -106,18 +107,18 @@ namespace UI {
                         break;
                     case OpenSHC::Map::MT_INVASION:
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
-                            DAT_TextManagerObject::ptr)(" - ", DAT_MenuHandlerState::instance.x + 0x8c,
+                            DAT_TextManagerObject::ptr)(S___005A2304, DAT_MenuHandlerState::instance.x + 0x8c,
                             DAT_MenuHandlerState::instance.y + 0x23, OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x11, TRUE, 0);
                         if (!DAT_GameCore::instance.mapU3EndInt) {
                             /*
-                              added by script: "Invasion"
+                              added by script: S_INVASION_005A7638
                              */
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                                 OpenSHC::DE::SHCDE::TEXT_MAPEDIT, 0x1d, DAT_MenuHandlerState::instance.x + 0x8c,
                                 DAT_MenuHandlerState::instance.y + 0x23, OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x11, TRUE);
                         } else {
                             /*
-                              added by script: "Economic"
+                              added by script: S_ECONOMIC_005A762C
                              */
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                                 OpenSHC::DE::SHCDE::TEXT_MAPEDIT, 0x1e, DAT_MenuHandlerState::instance.x + 0x8c,
@@ -126,10 +127,10 @@ namespace UI {
                         break;
                     case OpenSHC::Map::MT_ECONOMIC:
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
-                            DAT_TextManagerObject::ptr)(" - ", DAT_MenuHandlerState::instance.x + 0x8c,
+                            DAT_TextManagerObject::ptr)(S___005A2304, DAT_MenuHandlerState::instance.x + 0x8c,
                             DAT_MenuHandlerState::instance.y + 0x23, OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x11, TRUE, 0);
                         /*
-                          added by script: "Economic"
+                          added by script: S_ECONOMIC_005A762C
                          */
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                             OpenSHC::DE::SHCDE::TEXT_MAPEDIT, 0x1e, DAT_MenuHandlerState::instance.x + 0x8c,
@@ -137,7 +138,7 @@ namespace UI {
                         break;
                     case OpenSHC::Map::MT_JUST_BUILD:
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
-                            DAT_TextManagerObject::ptr)(" - ", DAT_MenuHandlerState::instance.x + 0x8c,
+                            DAT_TextManagerObject::ptr)(S___005A2304, DAT_MenuHandlerState::instance.x + 0x8c,
                             DAT_MenuHandlerState::instance.y + 0x23, OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x11, TRUE, 0);
                         /*
                           added by script: "Landscape"
@@ -156,7 +157,7 @@ namespace UI {
                         pcVar2, iVar4, iVar1, TVar6, BVar8, iVar10, BVar11, iVar12);
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    " - ", DAT_MenuHandlerState::instance.x + 0x8c, DAT_MenuHandlerState::instance.y + 0x23,
+                    S___005A2304, DAT_MenuHandlerState::instance.x + 0x8c, DAT_MenuHandlerState::instance.y + 0x23,
                     OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x11, TRUE, 0);
                 if (!INT_00b960e4::instance) {
                     iVar12 = 0;
@@ -199,7 +200,7 @@ namespace UI {
                 iVar10 = 400;
             }
             DAT_MinimapViewState::instance.needsRedraw = 1;
-            MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_18, "%dx%d", iVar10, iVar10);
+            MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_18, S__DX_D_005A22FC, iVar10, iVar10);
             switch (iVar10) {
             case 100:
                 iVar1 = iVar1 + 0xbe;
@@ -324,7 +325,7 @@ namespace UI {
                 iVar1 = DAT_MenuHandlerState::instance.y + 0x230;
                 iVar4 = DAT_MenuHandlerState::instance.x + 300;
                 /*
-                  added by script: "Invasion"
+                  added by script: S_INVASION_005A7638
                  */
                 pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                     DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MAPEDIT, 0x1d);
@@ -341,7 +342,7 @@ namespace UI {
                 iVar1 = DAT_MenuHandlerState::instance.y + 0x230;
                 iVar4 = DAT_MenuHandlerState::instance.x + 300;
                 /*
-                  added by script: "Economic"
+                  added by script: S_ECONOMIC_005A762C
                  */
                 pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                     DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MAPEDIT, 0x1e);
@@ -352,7 +353,7 @@ namespace UI {
             if (DAT_GameCore::instance.isTimeHalted2) {
                 MACRO_CALL_MEMBER(
                     OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
-                    "Game Paused", 0x31e, 0x240, OpenSHC::Text::TTA_RIGHT, 0xa2ff, 0x3e66, 0x11, FALSE, 0);
+                    S_GAME_PAUSED_005A22F0, 0x31e, 0x240, OpenSHC::Text::TTA_RIGHT, 0xa2ff, 0x3e66, 0x11, FALSE, 0);
             }
             DAT_MapEditorProperties_ClickedButton::instance = 0;
             if (DAT_MenuTextInputState::instance.field44_0xa4) {

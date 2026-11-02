@@ -5,6 +5,7 @@
 #include "OpenSHC/UI/MenuItems/SelectCrusade.func.hpp"
 #include "OpenSHC/UI/Rendering.func.hpp"
 #include "OpenSHC/UI/Rendering/TextureRenderCore.func.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_MenuHandlerState.hpp"
 #include "OpenSHC/Globals/DAT_TextureRenderCoreObject.hpp"
@@ -21,7 +22,7 @@ namespace UI {
             Menu* pMVar1;
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
-                "frontend_combat3.tgx");
+                s_frontend_combat3_tgx_005a2134);
             MACRO_CALL(UI::Helpers_Func::LoadTGX_shc_back)();
             DAT_MenuHandlerState::instance.y = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
             DAT_MenuHandlerState::instance.x = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;

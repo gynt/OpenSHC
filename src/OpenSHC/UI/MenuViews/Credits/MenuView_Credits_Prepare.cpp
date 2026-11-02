@@ -4,6 +4,7 @@
 #include "OpenSHC/UI/Helpers.func.hpp"
 #include "OpenSHC/UI/Rendering/PencilRenderCore.func.hpp"
 #include "OpenSHC/UI/Rendering/TextureRenderCore.func.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/COL_BLACK.hpp"
 #include "OpenSHC/Globals/DAT_00b95954.hpp"
@@ -29,19 +30,19 @@ namespace UI {
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
             if (!DAT_00b95954::instance) {
                 MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
-                    "credits_1.tgx");
+                    S_CREDITS_1_TGX_005A20E8);
                 MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
-                    "credits_2.tgx");
+                    S_CREDITS_2_TGX_005A20D8);
                 MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
-                    "credits_3.tgx");
-                tgxFileName = "credits_4.tgx";
+                    S_CREDITS_3_TGX_005A20C8);
+                tgxFileName = S_CREDITS_4_TGX_005A20B8;
             } else {
-                tgxFileName = "end_credit.tgx";
+                tgxFileName = S_END_CREDIT_TGX_005A20A8;
             }
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
                 tgxFileName);
             iVar1 = MACRO_CALL_MEMBER(Text::TextEditorState_Func::findOrAddHelpSectionName, DAT_TextEditorState::ptr)(
-                "credits.hlp");
+                S_CREDITS_HLP_005A209C);
             MACRO_CALL_MEMBER(Text::TextEditorState_Func::openCreditsScrollDialog, DAT_TextEditorState::ptr)(iVar1);
             DAT_TextEditorState::instance.helpContentScrollOffsetY = 0xfffffda8;
             DAT_00b95b3c::instance = 0;

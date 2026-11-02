@@ -14,6 +14,7 @@
 #include "OpenSHC/Text/GameLanguage.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/BOOLEnum_00ed313c.hpp"
 #include "OpenSHC/Globals/DAT_CurrentlyRenderedSpriteID.hpp"
@@ -80,7 +81,7 @@ namespace UI {
                   "Afraid?"
                  */
                 MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                    "ri_kick_player_01.wav");
+                    S_RI_KICK_PLAYER_01_WAV_005A8B50);
             }
             local_8 = (DVar3 - DWORD_00ed3138::instance) / 0x32;
             if (0xf < local_8) {
@@ -236,8 +237,8 @@ namespace UI {
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 10,
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x10, OpenSHC::Text::TTA_LEFT, 0xccfaff,
                     0x10, FALSE, 0);
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(".",
-                    DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0xb,
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                    S___005AB5D4, DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0xb,
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x10, OpenSHC::Text::TTA_LEFT, 0xccfaff,
                     0x10, TRUE, 0);
                 iVar14 = 0;
@@ -259,9 +260,9 @@ namespace UI {
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x30, OpenSHC::Text::TTA_LEFT, 0xccfaff,
                     0x12, FALSE, 0);
                 if (DAT_TextManagerObject::instance.gameLanguage == OpenSHC::Text::GL_GERMAN) {
-                    pcVar5 = " n. Chr.";
+                    pcVar5 = S_N__CHR__005AB5D8;
                 } else {
-                    pcVar5 = " A.D.";
+                    pcVar5 = S_A_D__005AB5E4;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     pcVar5, DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x11,
@@ -285,9 +286,9 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     pcVar5, iVar12, iVar11, TVar16, BVar17, iVar13, BVar19, iVar14);
                 if (DAT_TextManagerObject::instance.gameLanguage == OpenSHC::Text::GL_GERMAN) {
-                    pcVar5 = " n. Chr.";
+                    pcVar5 = S_N__CHR__005AB5D8;
                 } else {
-                    pcVar5 = " A.D.";
+                    pcVar5 = S_A_D__005AB5E4;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     pcVar5, DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 700,
@@ -396,8 +397,8 @@ namespace UI {
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 10,
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x10, OpenSHC::Text::TTA_LEFT, 0xccfaff,
                     0x10, FALSE, 0);
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(".",
-                    DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0xb,
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                    S___005AB5D4, DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0xb,
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x10, OpenSHC::Text::TTA_LEFT, 0xccfaff,
                     0x10, TRUE, 0);
                 iVar14 = 0;
@@ -419,9 +420,9 @@ namespace UI {
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x30, OpenSHC::Text::TTA_LEFT, 0xccfaff,
                     0x12, FALSE, 0);
                 if (DAT_TextManagerObject::instance.gameLanguage == OpenSHC::Text::GL_GERMAN) {
-                    pcVar5 = " n. Chr.";
+                    pcVar5 = S_N__CHR__005AB5D8;
                 } else {
-                    pcVar5 = " A.D.";
+                    pcVar5 = S_A_D__005AB5E4;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     pcVar5, DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x11,
@@ -445,9 +446,9 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     pcVar5, iVar12, iVar11, TVar16, BVar17, iVar13, BVar19, iVar14);
                 if (DAT_TextManagerObject::instance.gameLanguage == OpenSHC::Text::GL_GERMAN) {
-                    pcVar5 = " n. Chr.";
+                    pcVar5 = S_N__CHR__005AB5D8;
                 } else {
-                    pcVar5 = " A.D.";
+                    pcVar5 = S_A_D__005AB5E4;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     pcVar5, DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 700,
@@ -559,8 +560,8 @@ namespace UI {
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 10,
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x10, OpenSHC::Text::TTA_LEFT, 0xccfaff,
                     0x10, FALSE, 0);
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(".",
-                    DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0xb,
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                    S___005AB5D4, DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0xb,
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x10, OpenSHC::Text::TTA_LEFT, 0xccfaff,
                     0x10, TRUE, 0);
                 iVar14 = 0;
@@ -582,9 +583,9 @@ namespace UI {
                     DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x30, OpenSHC::Text::TTA_LEFT, 0xccfaff,
                     0x12, FALSE, 0);
                 if (DAT_TextManagerObject::instance.gameLanguage == OpenSHC::Text::GL_GERMAN) {
-                    pcVar5 = " n. Chr.";
+                    pcVar5 = S_N__CHR__005AB5D8;
                 } else {
-                    pcVar5 = " A.D.";
+                    pcVar5 = S_A_D__005AB5E4;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     pcVar5, DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x11,
@@ -608,9 +609,9 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     pcVar5, iVar12, iVar11, TVar16, BVar17, iVar13, BVar19, iVar14);
                 if (DAT_TextManagerObject::instance.gameLanguage == OpenSHC::Text::GL_GERMAN) {
-                    pcVar5 = " n. Chr.";
+                    pcVar5 = S_N__CHR__005AB5D8;
                 } else {
-                    pcVar5 = " A.D.";
+                    pcVar5 = S_A_D__005AB5E4;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     pcVar5, DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 700,

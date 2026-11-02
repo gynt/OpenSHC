@@ -7,6 +7,7 @@
 #include "OpenSHC/UI/MenuItems/SaveLoadMap.func.hpp"
 #include "OpenSHC/UI/MenuTextInputState.func.hpp"
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_MinimapViewState.hpp"
 #include "OpenSHC/Globals/DAT_MouseState.hpp"
@@ -27,7 +28,7 @@ namespace UI {
         MACRO_CALL(UI::Helpers_Func::SetCursorDependingOnProgramState)();
         MACRO_CALL(OS_Func::_memset)(DAT_MinimapViewState::instance.loadedMiniMap, 0, 80000);
         INT_00b95b64::instance = 1;
-        MACRO_CALL_MEMBER(IO::ResourceManager_Func::discoverMapFiles, DAT_ResourceManager::ptr)("maps\\*.tmp");
+        MACRO_CALL_MEMBER(IO::ResourceManager_Func::discoverMapFiles, DAT_ResourceManager::ptr)(s_maps_tmp_005a75b0);
         MACRO_CALL_MEMBER(IO::ResourceManager_Func::mapNames_filterMapsIfMapLock, DAT_ResourceManager::ptr)();
         this->fileListEntryCount = DAT_ResourceManager::instance.mapFileCounter;
         int iVar1 = 0;

@@ -4,6 +4,7 @@
 #include "OpenSHC/UI/Rendering.func.hpp"
 #include "OpenSHC/UI/Rendering/PencilRenderCore.func.hpp"
 #include "OpenSHC/UI/Rendering/TextureRenderCore.func.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/COL_BLACK.hpp"
 #include "OpenSHC/Globals/DAT_BinkControlState.hpp"
@@ -43,7 +44,8 @@ namespace UI {
             _menu->yPosition = DAT_MenuHandlerState::instance.y;
             INT_00b95f68::instance = 0;
             MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::BinkControlClass_Func::playBINK, DAT_BinkControlState::ptr)(0,
-                "richard_swordswing.bik", 0, 0, (int)(DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 508),
+                S_RICHARD_SWORDSWING_BIK_005A1FC4, 0, 0,
+                (int)(DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 508),
                 (int)(DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 22), 0);
             DAT_MainMenuSwingSwordBool::instance = 0;
         }

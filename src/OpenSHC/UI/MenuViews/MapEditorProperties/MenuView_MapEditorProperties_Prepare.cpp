@@ -11,6 +11,7 @@
 #include "OpenSHC/Rendering/Colors/BGR24.hpp"
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_00b95b74.hpp"
 #include "OpenSHC/Globals/DAT_00b960f4.hpp"
@@ -53,7 +54,7 @@ namespace UI {
             DAT_MapEditorProperties_ClickedButton::instance = 0;
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                DAT_TextureRenderCoreObject::ptr)("frontend_builder2.tgx");
+                DAT_TextureRenderCoreObject::ptr)(s_frontend_builder2_tgx_005a206c);
             if (DAT_GameCore::instance.U2_mapType_singleOrMulti) {
                 DAT_GameCore::instance.mapU2PlayersCount = 0;
                 piVar4 = DAT_GameState::instance.playerDataArray[1].startResources;

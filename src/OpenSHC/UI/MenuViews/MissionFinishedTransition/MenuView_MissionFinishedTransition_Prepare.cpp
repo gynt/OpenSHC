@@ -20,6 +20,7 @@
 #include "OpenSHC/UI/Enums/BuildingsAndStatusMenuTabType.hpp"
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/CHAR_ARRAY_00eb9ac8.hpp"
 #include "OpenSHC/Globals/COL_BLACK.hpp"
@@ -121,12 +122,12 @@ namespace UI {
                     if (DAT_GameCore::instance.missionNumber1to20 - 7U < 5) {
                         iVar3 = DAT_MenuHandlerState::instance.y + 0x3c;
                         xPos = DAT_MenuHandlerState::instance.x + 0x50;
-                        pcVar5 = "arabian_win.bik";
+                        pcVar5 = S_ARABIAN_WIN_BIK_005AB800;
                     } else {
                     LAB_004e1cbd:
                         iVar3 = DAT_MenuHandlerState::instance.y + 0x3c;
                         xPos = DAT_MenuHandlerState::instance.x + 0x50;
-                        pcVar5 = "crusader_win.bik";
+                        pcVar5 = S_CRUSADER_WIN_BIK_005AB7EC;
                     }
                 } else {
                     iVar3 = MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::getLordTypeForPlayer,
@@ -135,7 +136,7 @@ namespace UI {
                         goto LAB_004e1cbd;
                     iVar3 = DAT_MenuHandlerState::instance.y + 0x3c;
                     xPos = DAT_MenuHandlerState::instance.x + 0x50;
-                    pcVar5 = "arabian_win.bik";
+                    pcVar5 = S_ARABIAN_WIN_BIK_005AB800;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::BinkControlClass_Func::playBINK, DAT_BinkControlState::ptr)(
                     0, pcVar5, 0, 0, xPos, iVar3, 2);
@@ -171,12 +172,12 @@ namespace UI {
                     /*
                       "We are victorious sire!"
                      */
-                    pcVar5 = "general_victory2.wav";
+                    pcVar5 = S_GENERAL_VICTORY2_WAV_005AB7BC;
                 } else {
                     /*
                       "Victory!"
                      */
-                    pcVar5 = "general_victory1.wav";
+                    pcVar5 = S_GENERAL_VICTORY1_WAV_005AB7D4;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(pcVar5);
             }
@@ -190,8 +191,9 @@ namespace UI {
                 INT_00ec0828::instance = 0;
                 MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::computeMissionCompletionScore,
                     DAT_MapPropertiesState::ptr)();
-                MACRO_CALL_MEMBER(OpenSHC::IO::LowLevelMemory_Func::putFileNameAndAppendFileExtension,
-                    DAT_LowLevelMemory::ptr)((char*)DAT_MapPropertiesState::ptr, (char*)((int)(local_104)), "sco");
+                MACRO_CALL_MEMBER(
+                    OpenSHC::IO::LowLevelMemory_Func::putFileNameAndAppendFileExtension, DAT_LowLevelMemory::ptr)(
+                    (char*)DAT_MapPropertiesState::ptr, (char*)((int)(local_104)), S_SCO_005AB7B8);
                 MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::resolveResourceFileName, DAT_ResourceManager::ptr)(
                     OpenSHC::IO::FRT_SCORES, (char const*)((int)(local_104)));
                 pcVar5 = MACRO_CALL_MEMBER(

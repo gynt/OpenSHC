@@ -5,6 +5,7 @@
 #include "OpenSHC/UI/Helpers.func.hpp"
 #include "OpenSHC/UI/Rendering/TextureRenderCore.func.hpp"
 #include "OpenSHC/DE/SHCDE/eTextSections.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/DAT_00eb0b20.hpp"
 #include "OpenSHC/Globals/DAT_00ed2780.hpp"
@@ -27,16 +28,16 @@ namespace UI {
             MACRO_CALL(UI::Helpers_Func::PrepareHistoryBook)();
             switch (DAT_GameCore::instance.historicCampaignNumber) {
             case 1:
-                pcVar1 = "c1pic.tgx";
+                pcVar1 = S_C1PIC_TGX_005AB0EC;
                 break;
             case 2:
-                pcVar1 = "c2pic.tgx";
+                pcVar1 = S_C2PIC_TGX_005AB0E0;
                 break;
             case 3:
-                pcVar1 = "c3pic.tgx";
+                pcVar1 = S_C3PIC_TGX_005AB0D4;
                 break;
             case 4:
-                pcVar1 = "c4pic.tgx";
+                pcVar1 = S_C4PIC_TGX_005AB0C8;
                 break;
             default:
                 goto switchD_004dbb02_caseD_4;

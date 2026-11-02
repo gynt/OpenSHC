@@ -3,6 +3,7 @@
 #include "OpenSHC/Text/TextManager.func.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_AIVPlacementFit.hpp"
 #include "OpenSHC/Globals/DAT_TextManagerObject.hpp"
@@ -20,7 +21,7 @@ namespace UI {
             int _x1 = x;
             int _x2 = x + 0x14;
             MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
-                "Village Placement Success", _x2, y + 10, Text::TTA_LEFT, 0xc2f0eb, 0, 0x12, FALSE, 0);
+                s_Village_Placement_Success_005a7760, _x2, y + 10, Text::TTA_LEFT, 0xc2f0eb, 0, 0x12, FALSE, 0);
             int yPosition = y + 0x14;
             for (x = 1; x < 9; x++) {
                 yPosition = yPosition + 0x14;
@@ -32,21 +33,21 @@ namespace UI {
                     if (integer == -3) {
                         MACRO_CALL_MEMBER(
                             Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
-                            "File missing", _x1 + 0x28, yPosition, Text::TTA_LEFT, color, 0, 0x12, FALSE, 0);
+                            s_File_missing_005a7750, _x1 + 0x28, yPosition, Text::TTA_LEFT, color, 0, 0x12, FALSE, 0);
                     } else if (integer == -2) {
-                        MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow,
-                            DAT_TextManagerObject::ptr)("Can\'t place keep", _x1 + 0x28, yPosition,
-                            Text::TTA_LEFT, color, 0, 0x12, FALSE, 0);
+                        MACRO_CALL_MEMBER(
+                            Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
+                            "Can\'t place keep", _x1 + 0x28, yPosition, Text::TTA_LEFT, color, 0, 0x12, FALSE, 0);
                     } else if (integer == 100) {
                         MACRO_CALL_MEMBER(
                             Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
-                            "Total Success", _x1 + 0x28, yPosition, Text::TTA_LEFT, color, 0, 0x12, FALSE, 0);
+                            s_Total_Success_005a772c, _x1 + 0x28, yPosition, Text::TTA_LEFT, color, 0, 0x12, FALSE, 0);
                     } else {
                         MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                             integer, _x1 + 0x28, yPosition, Text::TTA_LEFT, color, 0, 0x12, FALSE, 0);
                         MACRO_CALL_MEMBER(
                             Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
-                            "% Success", _x1 + 0x28, yPosition, Text::TTA_LEFT, color, 0, 0x12, TRUE, 0);
+                            s___Success_005a7720, _x1 + 0x28, yPosition, Text::TTA_LEFT, color, 0, 0x12, TRUE, 0);
                     }
                 }
             }

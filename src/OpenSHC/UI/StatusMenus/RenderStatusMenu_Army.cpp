@@ -5,9 +5,12 @@
 #include "OpenSHC/UI/Rendering/TextureRenderCore.func.hpp"
 #include "OpenSHC/DE/SHCDE/eGM.hpp"
 #include "OpenSHC/DE/SHCDE/eTextSections.hpp"
+#include "OpenSHC/Map/Units/UnitTypeInt.hpp"
+#include "OpenSHC/Rendering/Colors/BGR24.hpp"
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_00b95b68.hpp"
 #include "OpenSHC/Globals/DAT_00b9845c.hpp"
@@ -18,19 +21,17 @@
 #include "OpenSHC/Globals/DAT_TextManagerObject.hpp"
 #include "OpenSHC/Globals/DAT_TextureRenderCoreObject.hpp"
 #include "OpenSHC/Globals/DAT_UnitTypeRelatedCounter.hpp"
-#include "OpenSHC/Map/Units/UnitTypeInt.hpp"
-#include "OpenSHC/Rendering/Colors/BGR24.hpp"
 
 namespace OpenSHC {
 namespace UI {
 
     using OpenSHC::DE::SHCDE::eGM;
     using OpenSHC::DE::SHCDE::eTextSections;
+    using OpenSHC::Map::Units::UnitTypeInt;
+    using OpenSHC::Rendering::Colors::BGR24;
     using OpenSHC::Rendering::Enums::RenderTarget;
     using OpenSHC::Text::TextAlignment;
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
-    using OpenSHC::Map::Units::UnitTypeInt;
-    using OpenSHC::Rendering::Colors::BGR24;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00447FA0
     void StatusMenus::RenderStatusMenu_Army()
@@ -196,7 +197,7 @@ namespace UI {
             iVar5 = iVar5 + 0xa4;
         }
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
-            "%", iVar5, iVar4 + 0x1d8, OpenSHC::Text::TTA_LEFT, foregroundColor, 0, 0x12, TRUE, 0);
+            s_percentage_005a2770, iVar5, iVar4 + 0x1d8, OpenSHC::Text::TTA_LEFT, foregroundColor, 0, 0x12, TRUE, 0);
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
         DAT_TextManagerObject::instance.field8_0x20 = 0;
     }

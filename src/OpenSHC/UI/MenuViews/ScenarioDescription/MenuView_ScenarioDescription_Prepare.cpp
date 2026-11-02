@@ -9,6 +9,7 @@
 #include "OpenSHC/Game/ScenarioEvents/InGameEventExtra.hpp"
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_00eb0b24.hpp"
 #include "OpenSHC/Globals/DAT_00ed2794.hpp"
@@ -42,33 +43,33 @@ namespace UI {
             DAT_GameCore::instance.currentlyInGameUnk_0xa4 = FALSE;
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
-                "briefing_screen_background.tgx");
+                s_briefing_screen_background_tgx_005ab5b4);
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
-                "briefing_back0.tgx");
+                s_briefing_back0_tgx_005ab5a0);
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
-                "briefing_back1.tgx");
+                s_briefing_back1_tgx_005ab58c);
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
-                "briefing_back2.tgx");
+                s_briefing_back2_tgx_005ab578);
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
-                "briefing_back3.tgx");
+                s_briefing_back3_tgx_005ab564);
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
-                "briefing_back4.tgx");
+                s_briefing_back4_tgx_005ab550);
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
-                "briefing_back5.tgx");
+                s_briefing_back5_tgx_005ab53c);
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
-                "briefing_back6.tgx");
+                s_briefing_back6_tgx_005ab528);
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
-                "briefing_back7.tgx");
+                s_briefing_back7_tgx_005ab514);
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
-                "briefing_back8.tgx");
+                s_briefing_back8_tgx_005ab500);
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
-                "briefing_back9.tgx");
+                s_briefing_back9_tgx_005ab4ec);
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
-                "briefing_back10.tgx");
+                s_briefing_back10_tgx_005ab4d8);
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
-                "briefing_back11.tgx");
+                s_briefing_back11_tgx_005ab4c4);
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
-                "briefing_back12.tgx");
+                s_briefing_back12_tgx_005ab4b0);
             if (DAT_MenuView_TriggerPrepare::instance != 2
                 && (DAT_GameCore::instance.gameMode_2 == Game::GM_CAMPAIGN_MISSION
                     || (DAT_00ed2798::instance = 1,

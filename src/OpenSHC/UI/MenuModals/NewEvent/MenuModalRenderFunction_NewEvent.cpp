@@ -6,6 +6,7 @@
 #include "OpenSHC/Rendering/Colors/BGR24.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/DAT_MapPropertiesState.hpp"
 #include "OpenSHC/Globals/DAT_MissionAestheticsDefinedData.hpp"
@@ -70,7 +71,7 @@ namespace UI {
                         iVar1 = iVar3 + 0x9e;
                         MACRO_CALL_MEMBER(
                             OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                            "(", iVar1, iVar4, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, TRUE, 0);
+                            S_BRACE_CLOSE_005A2778, iVar1, iVar4, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, TRUE, 0);
                         iVar11 = 0;
                         BVar10 = TRUE;
                         iVar9 = 0x12;
@@ -89,13 +90,13 @@ namespace UI {
                             DAT_TextManagerObject::ptr)(pcVar2, iVar12, iVar6, TVar7, BVar8, iVar9, BVar10, iVar11);
                         MACRO_CALL_MEMBER(
                             OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                            ")", iVar1, iVar4, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, TRUE, 0);
+                            S_BRACE_OPEN_005A2774, iVar1, iVar4, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, TRUE, 0);
                     }
                     if (DAT_MissionAestheticsDefinedData::instance.EventConditionParamKind[iVar5] == 2) {
                         iVar1 = iVar3 + 0x9e;
                         MACRO_CALL_MEMBER(
                             OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                            "(", iVar1, iVar4, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, TRUE, 0);
+                            S_BRACE_CLOSE_005A2778, iVar1, iVar4, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, TRUE, 0);
                         iVar11 = 0;
                         BVar10 = TRUE;
                         iVar9 = 0x12;
@@ -114,7 +115,7 @@ namespace UI {
                             DAT_TextManagerObject::ptr)(pcVar2, iVar12, iVar6, TVar7, BVar8, iVar9, BVar10, iVar11);
                         MACRO_CALL_MEMBER(
                             OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                            ")", iVar1, iVar4, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, TRUE, 0);
+                            S_BRACE_OPEN_005A2774, iVar1, iVar4, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, TRUE, 0);
                     }
                     MACRO_CALL_MEMBER(
                         OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(

@@ -9,6 +9,7 @@
 #include "OpenSHC/Game/GameMode2.hpp"
 #include "OpenSHC/UI/Enums/DisplayElementID.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/BOOL_RelatedToInitialGranaryAndKeepPlacement.hpp"
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
@@ -65,14 +66,14 @@ namespace UI {
             /*
               "Place a keep to site your castle my liege"
              */
-            pcVar2 = "other_warning1.wav";
+            pcVar2 = S_OTHER_WARNING1_WAV_005A77C0;
         } else {
             if (whichBuildingIsMissing != 2) {}
             if (BOOL_RelatedToInitialGranaryAndKeepPlacement::instance) {}
             /*
               "Site your granary sire"
              */
-            pcVar2 = "other_warning2.wav";
+            pcVar2 = S_OTHER_WARNING2_WAV_005A77AC;
         }
         MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(pcVar2);
         BOOL_RelatedToInitialGranaryAndKeepPlacement::instance = TRUE;

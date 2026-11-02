@@ -14,6 +14,7 @@
 #include "OpenSHC/UI/Enums/BuildMenuTabType.hpp"
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/COL_BLACK.hpp"
 #include "OpenSHC/Globals/DAT_00eb9af8.hpp"
@@ -93,12 +94,12 @@ namespace UI {
                 if (DAT_GameCore::instance.missionNumber1to20 - 6U < 5) {
                     iVar3 = DAT_MenuHandlerState::instance.y + 0x3c;
                     xPos = DAT_MenuHandlerState::instance.x + 0x50;
-                    binkFileName = "arabian_lose.bik";
+                    binkFileName = S_ARABIAN_LOSE_BIK_005AAF04;
                 } else {
                 LAB_004d574d:
                     iVar3 = DAT_MenuHandlerState::instance.y + 0x3c;
                     xPos = DAT_MenuHandlerState::instance.x + 0x50;
-                    binkFileName = "crusader_lose.bik";
+                    binkFileName = S_CRUSADER_LOSE_BIK_005AAEF0;
                 }
             } else {
                 iVar3 = MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::getLordTypeForPlayer,
@@ -107,7 +108,7 @@ namespace UI {
                     goto LAB_004d574d;
                 iVar3 = DAT_MenuHandlerState::instance.y + 0x3c;
                 xPos = DAT_MenuHandlerState::instance.x + 0x50;
-                binkFileName = "arabian_lose.bik";
+                binkFileName = S_ARABIAN_LOSE_BIK_005AAF04;
             }
             MACRO_CALL_MEMBER(OpenSHC::Rendering::Bink::BinkControlClass_Func::playBINK, DAT_BinkControlState::ptr)(
                 0, binkFileName, 0, 0, xPos, iVar3, 2);

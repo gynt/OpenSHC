@@ -3,6 +3,7 @@
 #include "OpenSHC/UI/Helpers.func.hpp"
 #include "OpenSHC/UI/MinimapViewState.func.hpp"
 #include "OpenSHC/UI/Rendering/PencilRenderCore.func.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/COL_VERY_SOFT_YELLOW.hpp"
 #include "OpenSHC/Globals/DAT_MenuHandlerState.hpp"
@@ -18,7 +19,7 @@ namespace UI {
         void LoadMap::MenuModalRenderFunction_LoadMap(int x, int y, int width, int height)
         {
             /*
-              added by script: "Load"
+              added by script: s_Load_005a55f4
              */
             MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawHeaderTextBanner, DAT_PencilRenderCore::ptr)(
                 0x4a, 2, x, y, 0x130, height);

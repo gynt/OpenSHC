@@ -12,6 +12,7 @@
 #include "OpenSHC/Rendering/Colors/BGR24.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_00df5540.hpp"
 #include "OpenSHC/Globals/DAT_00df5544.hpp"
@@ -130,7 +131,7 @@ namespace UI {
                             DAT_SoundSystemState::ptr)(OpenSHC::Audio::MSS::enums::SND_STR_SPEECH_2),
                         !BVar1)) {
                     MACRO_CALL(OpenSHC::OS_Func::_sprintf)(
-                        local_24, "%s%s", "fx\\speech\\", DAT_00df5644::instance * 0x60 + 0xb3e4d0);
+                        local_24, s__s_s_005aa800, s_fx_speech__005a64cc, DAT_00df5644::instance * 0x60 + 0xb3e4d0);
                     MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::playAmbientStreamWithLoop,
                         DAT_SoundSystemState::ptr)(local_24);
                 }

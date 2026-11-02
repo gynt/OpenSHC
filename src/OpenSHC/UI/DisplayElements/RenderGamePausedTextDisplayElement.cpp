@@ -6,6 +6,7 @@
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/UI/Enums/DisplayElementID.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
 #include "OpenSHC/Globals/DAT_TextManagerObject.hpp"
@@ -39,7 +40,7 @@ namespace UI {
         foregroundColor = 0xc2f0eb;
         alignment = Text::TTA_CENTER;
         /*
-          added by script: "Game Paused"
+          added by script: s_Game_Paused_005a22f0
          */
         textAddress = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
             DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_FEEDBACK, 0x16);

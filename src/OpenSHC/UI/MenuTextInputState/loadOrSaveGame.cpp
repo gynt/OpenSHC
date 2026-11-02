@@ -10,6 +10,7 @@
 #include "OpenSHC/Commands/GameCommandType.hpp"
 #include "OpenSHC/Game/GameMode.hpp"
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
 #include "OpenSHC/Globals/DAT_MinimapViewState.hpp"
@@ -44,7 +45,7 @@ namespace UI {
                 || (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SKIRMISH_SINGLE_PLAYER)) {
                 std::string _savesPath
                     = MACRO_CALL_MEMBER(IO::ResourceManager_Func::paths_getSavesPath, DAT_ResourceManager::ptr)(true);
-                _savesPath.append("*.sav", 5);
+                _savesPath.append(s__sav_005a75cc, 5);
                 MACRO_CALL_MEMBER(IO::ResourceManager_Func::discoverMapFiles, DAT_ResourceManager::ptr)(
                     _savesPath.c_str());
                 this->fileListEntryCount = DAT_ResourceManager::instance.mapFileCounter;
@@ -54,7 +55,7 @@ namespace UI {
             } else {
                 std::string _savesPath
                     = MACRO_CALL_MEMBER(IO::ResourceManager_Func::paths_getSavesPath, DAT_ResourceManager::ptr)(true);
-                _savesPath.append("*.msv", 5);
+                _savesPath.append(s__msv_005a75d4, 5);
                 MACRO_CALL_MEMBER(IO::ResourceManager_Func::discoverMapFiles, DAT_ResourceManager::ptr)(
                     _savesPath.c_str());
                 this->fileListEntryCount = DAT_ResourceManager::instance.mapFileCounter;

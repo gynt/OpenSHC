@@ -5,6 +5,7 @@
 #include "OpenSHC/UI/Rendering/TextureRenderCore.func.hpp"
 #include "OpenSHC/Game/GameMode2.hpp"
 #include "OpenSHC/UI/Enums/BuildingsAndStatusMenuTabType.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
 #include "OpenSHC/Globals/DAT_GameState.hpp"
@@ -27,10 +28,10 @@ namespace UI {
         void CustomScenarios::MenuView_CustomScenarios_Prepare()
         {
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                DAT_TextureRenderCoreObject::ptr)("frontend_builder.tgx");
-            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile,
-                DAT_TextureRenderCoreObject::ptr)("frontend_builder2.tgx");
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
+                s_frontend_builder_tgx_005a2084);
+            MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(
+                s_frontend_builder2_tgx_005a206c);
             MACRO_CALL(UI::Helpers_Func::LoadTGX_shc_back)();
             DAT_UIButtonDefinedData::instance.ButtonGmDataArray[0x16f].stateTransitionTimeBaseUnk_0x18 = timeGetTime();
             DAT_UIButtonDefinedData::instance.ButtonGmDataArray[0x16c].stateTransitionTimeBaseUnk_0x18

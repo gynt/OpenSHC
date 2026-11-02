@@ -10,6 +10,7 @@
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/COL_BLACK.hpp"
 #include "OpenSHC/Globals/DAT_MenuHandlerState.hpp"
@@ -80,7 +81,7 @@ namespace UI {
                 iVar5 = 400;
             }
             DAT_MinimapViewState::instance.needsRedraw = 1;
-            MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_18, "%dx%d", iVar5, iVar5);
+            MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_18, s__dx_d_005a22fc, iVar5, iVar5);
             switch (iVar5) {
             case 100:
                 iVar3 = iVar3 + 0xf0;

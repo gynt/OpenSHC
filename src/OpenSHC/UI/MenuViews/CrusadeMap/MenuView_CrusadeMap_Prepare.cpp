@@ -3,6 +3,7 @@
 #include "OpenSHC/UI/Helpers.func.hpp"
 #include "OpenSHC/UI/Rendering/TextureRenderCore.func.hpp"
 #include "OpenSHC/Game/TrailType.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
 #include "OpenSHC/Globals/DAT_SkirmishTrailRelated1.hpp"
@@ -25,11 +26,11 @@ namespace UI {
             char* tgxFileName;
             DWORD_00ed311c::instance = 0;
             if (DAT_GameCore::instance.currentTrailType == Game::TT_EXTREME) {
-                tgxFileName = "shcx_map.tgx";
+                tgxFileName = S_SHCX_MAP_TGX_005AAFCC;
             } else if (DAT_GameCore::instance.currentTrailType == Game::TT_WARCHEST) {
-                tgxFileName = "skirmish_trail2.tgx";
+                tgxFileName = S_SKIRMISH_TRAIL2_TGX_005AAFB8;
             } else {
-                tgxFileName = "skirmish_trail.tgx";
+                tgxFileName = S_SKIRMISH_TRAIL_TGX_005AAFA4;
             }
             DAT_TextureRenderCoreObject::instance.totalLoadedGfx = 0;
             MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::loadGfxFile, DAT_TextureRenderCoreObject::ptr)(

@@ -15,6 +15,7 @@
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/COL_BLACK.hpp"
 #include "OpenSHC/Globals/COL_VERY_SOFT_YELLOW.hpp"
@@ -291,7 +292,7 @@ namespace UI {
                             pcVar11 = pcVar6;
                             pcVar6 = pcVar11 + 1;
                         } while (pcVar11[1] != '\0');
-                        strcpy(pcVar11 + 1, ".map");
+                        strcpy(pcVar11 + 1, S__MAP_005A2294);
                         MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::resolveResourceFileName,
                             DAT_ResourceManager::ptr)(OpenSHC::IO::FRT_MAPS, (char const*)((int)(local_3f4)));
                         MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::loadMapMetaByID, DAT_ResourceManager::ptr)(

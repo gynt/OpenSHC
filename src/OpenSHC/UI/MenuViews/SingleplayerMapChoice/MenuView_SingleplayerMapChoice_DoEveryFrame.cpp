@@ -9,6 +9,7 @@
 #include "OpenSHC/IO/FileResourceType.hpp"
 #include "OpenSHC/Map/MapType2.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/COL_VERY_SOFT_YELLOW.hpp"
 #include "OpenSHC/Globals/DAT_00b960dc.hpp"
@@ -102,7 +103,7 @@ namespace UI {
                             pcVar3 = pcVar6;
                             pcVar6 = pcVar3 + 1;
                         } while (pcVar3[1] != '\0');
-                        strcpy(pcVar3 + 1, ".map");
+                        strcpy(pcVar3 + 1, s__map_005a2294);
                         MACRO_CALL_MEMBER(IO::ResourceManager_Func::resolveResourceFileName, DAT_ResourceManager::ptr)(
                             IO::FRT_MAPS, (char const*)((int)(local_3f4)));
                         MACRO_CALL_MEMBER(IO::ResourceManager_Func::loadMapMetaByID, DAT_ResourceManager::ptr)(id);

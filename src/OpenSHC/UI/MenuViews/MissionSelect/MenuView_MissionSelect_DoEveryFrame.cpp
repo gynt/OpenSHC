@@ -4,6 +4,7 @@
 #include "OpenSHC/UI/Rendering/TextureRenderCore.func.hpp"
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/COL_VERY_SOFT_YELLOW.hpp"
 #include "OpenSHC/Globals/DAT_MenuHandlerState.hpp"
@@ -49,7 +50,7 @@ namespace UI {
                     x2, y1, x2, y2, (ushort)(COL_VERY_SOFT_YELLOW::instance.shortValue));
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                 /*
-                  added by script: "Mission"
+                  added by script: s_Mission_005a764c
                  */
                 MACRO_CALL_MEMBER(
                     OpenSHC::UI::Rendering::PencilRenderCore_Func::drawHeaderTextBanner, DAT_PencilRenderCore::ptr)(5,
