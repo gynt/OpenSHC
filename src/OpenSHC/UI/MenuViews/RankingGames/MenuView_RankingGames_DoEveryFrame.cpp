@@ -114,7 +114,7 @@ namespace UI {
                 iVar2 = local_88;
                 iVar9 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
                 if (local_78 < DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x18
-                    || DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 0x2f2 <= local_78 || local_74 < local_98
+                    || DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + local_78 >= 0x2f2 || local_74 < local_98
                     || local_94 <= local_74 || DAT_00eb9b60::instance <= (int)(DAT_00ed3120::instance + local_7c)) {
                     if (local_7c == (local_7c & 0xfffffffe)) {
                         iVar8 = 0x2d8;

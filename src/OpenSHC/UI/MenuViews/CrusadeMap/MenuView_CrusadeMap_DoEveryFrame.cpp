@@ -300,7 +300,7 @@ namespace UI {
                 if (0 < DAT_GameCore::instance.furthestWarchestTrailMission) {
                     local_4 = DAT_MissionDefinedData::instance.SkirmishTrailMissionRenderData[0] + 2;
                     do {
-                        if (0x1c < (int)dVar9)
+                        if ((int)dVar9 > 0x1c)
                             break;
                         if (dVar9 == DAT_GameCore::instance.warchestTrailProgress) {
                             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,
@@ -464,7 +464,7 @@ namespace UI {
                 if (0 < DAT_GameCore::instance.furthestExtremeTrailMission) {
                     local_4 = DAT_MissionDefinedData::instance.SkirmishTrailMissionRenderData[0] + 2;
                     do {
-                        if (0x12 < iVar13)
+                        if (iVar13 > 0x12)
                             break;
                         if (iVar13 == DAT_GameCore::instance.extremeTrailProgress) {
                             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGMWithBlending,

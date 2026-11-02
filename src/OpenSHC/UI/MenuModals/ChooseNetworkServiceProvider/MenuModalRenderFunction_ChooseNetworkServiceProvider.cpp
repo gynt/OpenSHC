@@ -61,7 +61,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     textAddress, iVar1, iVar3, alignment, color, iVar4, keepOffsetX, iVar5);
                 DVar2 = timeGetTime();
-                if (5000 < DVar2 - DAT_GameSynchronyState::instance.kickedAtTime) {
+                if (DVar2 > 5000 - DAT_GameSynchronyState::instance.kickedAtTime) {
                     DAT_GameSynchronyState::instance.kickedAtTime = 0;
                 }
             }
