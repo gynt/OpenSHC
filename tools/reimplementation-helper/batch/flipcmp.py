@@ -71,14 +71,16 @@ def main():
             common.write_text(path, trial)
             now = ratio(rel)
             if now is not None and now > base + 1e-9:
+                # flushed, see the note in swaparms.py
                 print("KEEP  %+.4f  %.4f -> %.4f  %-52s  %s"
-                      % (now - base, base, now, os.path.basename(rel), site.group(0).strip()[:50]))
+                      % (now - base, base, now, os.path.basename(rel), site.group(0).strip()[:50]),
+                      flush=True)
                 current, base, kept = trial, now, kept + 1
             else:
                 i += 1
             common.write_text(path, current)
             sys.stdout.flush()
-    print("kept %d of %d site(s) tried" % (kept, tried))
+    print("kept %d of %d site(s) tried" % (kept, tried), flush=True)
     return 0
 
 

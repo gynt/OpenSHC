@@ -141,12 +141,15 @@ def main():
             new = score(path)
             tried += 1
             if new is not None and new > base + 1e-9:
+                # flushed: these runs take the best part of an hour over a large selection, and
+                # a buffered stdout loses the whole record if the run is interrupted
                 print("KEEP  %+.4f  %.4f -> %.4f  %s  %s" % (
-                    new - base, base, new, os.path.basename(path), text[found[i][0]:found[i][1] - 1].strip()))
+                    new - base, base, new, os.path.basename(path), text[found[i][0]:found[i][1] - 1].strip()),
+                    flush=True)
                 text, base, kept = cand, new, kept + 1
             io.open(path, "w", encoding="utf-8", newline="").write(text)
             i += 1
-    print("kept %d of %d site(s) tried" % (kept, tried))
+    print("kept %d of %d site(s) tried" % (kept, tried), flush=True)
 
 
 if __name__ == "__main__":
