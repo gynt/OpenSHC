@@ -24,10 +24,10 @@ namespace Map {
         if (0 < this->eventsCount) {
             puVar5 = (undefined1*)((int)&this->scenarioEvents[0].data + 0xe);
             do {
-                if (*(int*)(puVar5 + -0x16) == 3) {
-                    puVar6 = (undefined4*)(puVar5 + -0x1e);
+                if (*(int*)(puVar5 - 0x16) == 3) {
+                    puVar6 = (undefined4*)(puVar5 - 0x1e);
                     puVar7 = local_c8;
-                    for (iVar4 = 0x2f; iVar4 != 0; iVar4 = iVar4 + -1) {
+                    for (iVar4 = 0x2f; iVar4 != 0; iVar4 = iVar4 - 1) {
                         *puVar7 = *puVar6;
                         puVar6 = puVar6 + 1;
                         puVar7 = puVar7 + 1;
@@ -36,18 +36,18 @@ namespace Map {
                     puVar3 = puVar5;
                     do {
                         puVar3[1] = 0;
-                        *(undefined2*)(puVar3 + -2) = 0;
+                        *(undefined2*)(puVar3 - 2) = 0;
                         *puVar3 = 0;
                         puVar3 = puVar3 + 4;
-                        iVar4 = iVar4 + -1;
+                        iVar4 = iVar4 - 1;
                     } while (iVar4);
                     iVar4 = 0;
                     puVar3 = puVar5;
                     do {
-                        uVar2 = *(undefined2*)(auStack_5a + iVar4 * 4 + -2);
+                        uVar2 = *(undefined2*)(auStack_5a + iVar4 * 4 - 2);
                         puVar3[1] = auStack_ac[iVar4 * 4];
                         uVar1 = auStack_5a[iVar4 * 4];
-                        *(undefined2*)(puVar3 + -2) = uVar2;
+                        *(undefined2*)(puVar3 - 2) = uVar2;
                         *puVar3 = uVar1;
                         iVar4 = iVar4 + 1;
                         puVar3 = puVar3 + 4;

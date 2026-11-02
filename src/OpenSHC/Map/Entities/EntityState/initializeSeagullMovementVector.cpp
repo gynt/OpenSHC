@@ -27,7 +27,7 @@ namespace Map {
                 iVar3 = param_4 - param_2;
                 this->seagullArray[seagullID].pathStepX = 1;
             }
-            this->seagullArray[seagullID].pathStepY = (ushort)(param_3 <= param_5) * 2 + -1;
+            this->seagullArray[seagullID].pathStepY = (ushort)(param_3 <= param_5) * 2 - 1;
             sVar4 = (short)iVar5;
             sVar1 = (short)iVar3;
             if (!iVar3) {

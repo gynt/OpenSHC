@@ -95,10 +95,10 @@ namespace Map {
                 psVar1 = &this->entityArray[entityID].travelledDistance;
                 *psVar1 = *psVar1 + 1;
                 psVar1 = &this->entityArray[entityID].clearanceStepsRemaining;
-                *psVar1 = *psVar1 + -1;
+                *psVar1 = *psVar1 - 1;
                 if (entityID) {
-                    MACRO_CALL_MEMBER(
-                        Map::Entities::EntityState_Func::doSomethingWithOtherEntitiesOnTile, this)(entityID);
+                    MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::doSomethingWithOtherEntitiesOnTile, this)(
+                        entityID);
                 }
                 MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::updateEntityMicroMovement, this)(entityID);
                 if ((DAT_EntityDefinedData::instance
@@ -110,14 +110,13 @@ namespace Map {
                     _height = _height + local_10;
                     iVar9 = 1;
                     iVar6 = (long)((double)fVar7);
-                    MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::updateProjectileHeightAndCollision,
-                        this)(entityID, (undefined4)((int)(_height)), iVar6, iVar9);
+                    MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::updateProjectileHeightAndCollision, this)(
+                        entityID, (undefined4)((int)(_height)), iVar6, iVar9);
                 }
-                iVar6 = MACRO_CALL_MEMBER(
-                    Map::Entities::EntityState_Func::processEntityHitBuildingOrUnit, this)(entityID);
+                iVar6 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::processEntityHitBuildingOrUnit, this)(
+                    entityID);
                 if (!iVar6) {
-                    MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::calculateEntityDrawOffset, this)(
-                        entityID);
+                    MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::calculateEntityDrawOffset, this)(entityID);
                     return TRUE;
                 }
                 MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::calculateEntityDrawOffset, this)(entityID);
@@ -135,7 +134,7 @@ namespace Map {
                     this->entityArray[_entityID].height = sVar2 + 1;
                     return TRUE;
                 }
-                if ((sVar4 < sVar2) && (this->entityArray[_entityID].height = sVar2 + -8, (short)(sVar2 + -8) < 1)) {
+                if ((sVar4 < sVar2) && (this->entityArray[_entityID].height = sVar2 - 8, (short)(sVar2 - 8) < 1)) {
                     iVar5 = (int)this->entityArray[_entityID].microY;
                     iVar6 = (int)this->entityArray[_entityID].microX;
                     this->entityArray[_entityID].someMicroY = 0;
@@ -144,8 +143,8 @@ namespace Map {
                     MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity, this)(
                         0, 0, 0, iVar6, iVar5, 0, iVar6, iVar5, 0, ((EntityType)0x1f), 0);
                     MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
-                        (int)this->entityArray[_entityID].xPosition,
-                        (int)((int)(this->entityArray[_entityID].yPosition)), DE::SHCDE::FX_GULL_DIVE);
+                        (int)this->entityArray[_entityID].xPosition, (int)(this->entityArray[_entityID].yPosition),
+                        DE::SHCDE::FX_GULL_DIVE);
                     return TRUE;
                 }
             } else {

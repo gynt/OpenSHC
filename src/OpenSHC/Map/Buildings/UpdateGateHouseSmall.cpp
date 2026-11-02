@@ -80,7 +80,7 @@ namespace Map {
                 uint uVar5 = uVar3 & 3;
                 uVar6 = uVar6 + 1;
                 uVar3 = uVar3 + 1;
-                iVar4 = iVar4 + -1;
+                iVar4 = iVar4 - 1;
                 local_10[uVar5] = uVar7 + 1;
             } while (iVar4);
         }

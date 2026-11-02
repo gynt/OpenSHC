@@ -21,7 +21,7 @@ namespace Map {
                     }
                 }
                 psVar1 = psVar1 + 0x74;
-                iVar1 = iVar1 + -1;
+                iVar1 = iVar1 - 1;
             } while (iVar1);
         }
 

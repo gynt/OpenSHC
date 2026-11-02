@@ -5,10 +5,10 @@
 #include "OpenSHC/Game/GameMode.hpp"
 #include "OpenSHC/Game/GameMode2.hpp"
 #include "OpenSHC/Map/Buildings/BuildingFailReasonEnum.hpp"
+#include "OpenSHC/Map/LogicHelpers/Logic1.hpp"
 #include "OpenSHC/Map/Units/UnitType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
-#include "OpenSHC/Map/LogicHelpers/Logic1.hpp"
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
 #include "OpenSHC/Globals/DAT_GameState.hpp"
 #include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
@@ -61,10 +61,10 @@ namespace Map {
         this->buildingPlacementFail = FALSE;
         this->illegalBuild = TRUE;
         this->field118_0x554920 = 0;
-        if (((399 < x1) || (399 < y1)) || (*(char*)(y1 * 400 + 0x21aec98 + x1) == '\0')) {
+        if (399 < x1 || 399 < y1 || *(char*)(y1 * 400 + 0x21aec98 + x1) == '\0') {
             this->buildingPlacementFail = TRUE;
         }
-        if (((399 < x2) || (399 < y2)) || (*(char*)(y2 * 400 + 0x21aec98 + x2) == '\0')) {
+        if (399 < x2 || 399 < y2 || *(char*)(y2 * 400 + 0x21aec98 + x2) == '\0') {
             this->buildingPlacementFail = TRUE;
         }
         local_1c = &DAT_ViewportRenderState::instance.translationMatrix[y1].addXgetTile;
@@ -72,16 +72,15 @@ namespace Map {
         this->DAT_SomeY = y1;
         this->DAT_SomeTile = iVar1;
         if ((short)command == 0x1b) {
-            BVar2 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isTileEnclosedByWallsOrGates, this)(
-                iVar1, (int)((int)(y1)));
+            BVar2 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isTileEnclosedByWallsOrGates, this)(iVar1, (int)(y1));
             if (!BVar2) {}
             this->maxWallHeightInPath
                 = MACRO_CALL_MEMBER(Map::TileMapState_Func::getMaxWallHeightInBrushArea, this)(iVar1, y1);
             if (this->maxWallHeightInPath < 0x11) {}
             _tileMapState = this;
             local_c = this->maxWallHeightInPath;
-        } else if (((short)command == 0x1a)
-            && (iVar1 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isTileEnclosedByWalls, this)(iVar1, (int)((int)(y1))),
+        } else if ((short)command == 0x1a
+            && (iVar1 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isTileEnclosedByWalls, this)(iVar1, (int)(y1)),
                 _tileMapState = extraout_ECX, !iVar1)) {
             extraout_ECX->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x13);
         }
@@ -102,9 +101,8 @@ namespace Map {
                     | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE | Map::LogicHelpers::L_MARSH
                     | Map::LogicHelpers::L_MOAT)) {}
             if (_tileMapState->BuildingLayer[iVar1] != 0) {}
-            if ((((_logic & Map::LogicHelpers::L_TREE | Map::LogicHelpers::L_TREE_VARIATION))
-                    && (iVar4 = (int)_tileMapState->OrganismLayer[iVar1], iVar4))
-                && (iVar4 < 2000)) {
+            if ((_logic & Map::LogicHelpers::L_TREE | Map::LogicHelpers::L_TREE_VARIATION)
+                && (iVar4 = (int)_tileMapState->OrganismLayer[iVar1], iVar4) && iVar4 < 2000) {
                 switch (DAT_LandscapeState::instance.trees[iVar4].treeType) {
                 case ((TreeType)5):
                 case ((TreeType)6):
@@ -121,17 +119,17 @@ namespace Map {
                 case ((TreeType)0x12):
                 case ((TreeType)0x13):
                     break;
-                    default:
-                        return;
+                default:
+                    return;
                 }
             }
             if ((_logic & Map::LogicHelpers::L_RIVER | Map::LogicHelpers::L_FORD)) {}
             if ((char)_logic < '\0') {}
-            if (((_tileMapState->UnitLayer[iVar1] != 0) && (!(_logic & Map::LogicHelpers::L_WALL_OR_GATEHOUSE)))
-                && (DAT_UnitsState::instance.units[(short)_tileMapState->UnitLayer[iVar1]].unitType
-                    != Map::Units::UT_CHICKEN)) {}
-            if (((DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR)
-                    && (DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT))
+            if (_tileMapState->UnitLayer[iVar1] != 0 && !(_logic & Map::LogicHelpers::L_WALL_OR_GATEHOUSE)
+                && DAT_UnitsState::instance.units[(short)_tileMapState->UnitLayer[iVar1]].unitType
+                    != Map::Units::UT_CHICKEN) {}
+            if (DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR
+                && DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT
                 && (BVar2 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isEnemyTooCloseUnk,
                         DAT_PathFindingState::ptr)(playerID, _x1, _y1, local_8),
                     BVar2)) {
@@ -139,9 +137,9 @@ namespace Map {
             }
             if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {
                 iVar4 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isOpponentBuildingInRange,
-                    DAT_PathFindingState::ptr)(playerID, (int)((int)(_x1)), (int)((int)(_y1)), local_4, -1, -1, -1);
+                    DAT_PathFindingState::ptr)(playerID, (int)(_x1), (int)(_y1), local_4, -1, -1, -1);
                 if (iVar4) {
-                    if (this->buildingPlacementFailReason == ((BuildingFailReasonEnum)0x12)) {}
+                    if (this->buildingPlacementFailReason == (BuildingFailReasonEnum)0x12) {}
                     this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x13);
                 }
                 if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {
@@ -150,15 +148,14 @@ namespace Map {
                     iVar4 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isTileInRangeOfKeepRange,
                         DAT_PathFindingState::ptr)(playerID, _x1, _y1, _castleBuildingRange);
                     if (iVar4) {
-                        if (this->buildingPlacementFailReason == ((BuildingFailReasonEnum)0x12)) {}
+                        if (this->buildingPlacementFailReason == (BuildingFailReasonEnum)0x12) {}
                         this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x13);
                     }
                 }
             }
             if ((DAT_GameCore::instance.gameMode_2 == Game::GM_EDITOR)
-                && (iVar4
-                    = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isOpponentBuildingInRange,
-                        DAT_PathFindingState::ptr)(playerID, (int)((int)(_x1)), (int)((int)(_y1)), 7, -1, -1, -1),
+                && (iVar4 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isOpponentBuildingInRange,
+                        DAT_PathFindingState::ptr)(playerID, (int)(_x1), (int)(_y1), 7, -1, -1, -1),
                     iVar4 != 0)) {
                 this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x11);
             }
@@ -173,12 +170,11 @@ namespace Map {
                 this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x15);
             }
             if ((short)command == 0x1a) {
-                iVar1 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isTileEnclosedByWalls, this)(
-                    iVar1, (int)((int)(_y1)));
+                iVar1 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isTileEnclosedByWalls, this)(iVar1, (int)(_y1));
                 if (!iVar1) {
                     *(undefined4*)(extraout_ECX_00 + 0x554938) = 0x13;
                 }
-            } else if (((short)command == 0x1b) && ((local_c < 0x11 || ((this->LogicLayer[iVar1] & 0x100U)))))
+            } else if ((short)command == 0x1b && (local_c < 0x11 || ((this->LogicLayer[iVar1] & 0x100U))))
                 break;
             uVar3 = x1;
             if ((int)_x1 < (int)x2) {
@@ -206,10 +202,10 @@ namespace Map {
                         local_1c = local_1c + 3;
                         local_18 = local_18 + 1;
                         _y1 = _y1 + 1;
-                        local_14 = local_14 + -1;
+                        local_14 = local_14 - 1;
                     } else {
-                        local_1c = local_1c + -3;
-                        local_18 = local_18 + -1;
+                        local_1c = local_1c - 3;
+                        local_18 = local_18 - 1;
                         _y1 = _y1 - 1;
                         local_14 = local_14 + 1;
                     }
@@ -231,21 +227,21 @@ namespace Map {
                         local_1c = local_1c + 3;
                         local_18 = local_18 + 1;
                         _y1 = _y1 + 1;
-                        local_14 = local_14 + -1;
+                        local_14 = local_14 - 1;
                     } else {
-                        local_1c = local_1c + -3;
-                        local_18 = local_18 + -1;
+                        local_1c = local_1c - 3;
+                        local_18 = local_18 - 1;
                         _y1 = _y1 - 1;
                         local_14 = local_14 + 1;
                     }
                 }
                 if ((_x1 == x2) && (_y1 == y2)) {
                 LAB_00502e46:
-                    local_10 = local_10 + -1;
+                    local_10 = local_10 - 1;
                 }
             }
             if (0x10 < local_c) {
-                local_c = local_c + -0x10;
+                local_c = local_c - 0x10;
             }
             _tileMapState = _tileMapState2;
         } while (((_x1 != x2) || (_y1 != y2)) || (local_10));

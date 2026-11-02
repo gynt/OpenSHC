@@ -31,7 +31,7 @@ namespace Map {
             short sVar7;
             uint entityID;
             bVar1 = false;
-            if (((0x2b < (int)entityType) && ((int)entityType < 0x5b)) || (0x5e < (int)entityType)) {
+            if (((0x2b < (int)entityType) && ((int)entityType < 0x5b)) || 0x5e < (int)entityType) {
                 return 0;
             }
             if (entityType == ~Map::Entities::ET_UNKNOWN) {
@@ -98,7 +98,7 @@ namespace Map {
             }
         LAB_00404c16:
             this->entityArray[entityID].rng_2 = 0;
-            if (entityType == ((EntityType)0x5b)) {
+            if (entityType == (EntityType)0x5b) {
                 bVar1 = true;
                 this->entityArray[entityID].rng_2 = 1;
                 entityType = Map::Entities::ET_ARROW_AND_DEFAULT;
@@ -111,24 +111,24 @@ namespace Map {
                     || (entityType == Map::Entities::ET_FIRETHROWER_UNTARGETED)) {
                     bVar1 = true;
                 }
-                if (entityType == ((EntityType)0x5c)) {
+                if (entityType == (EntityType)0x5c) {
                     bVar1 = true;
                     this->entityArray[entityID].rng_2 = 1;
                     entityType = ((EntityType)0x18);
-                } else if (entityType == ((EntityType)0x5d)) {
+                } else if (entityType == (EntityType)0x5d) {
                     bVar1 = true;
                     this->entityArray[entityID].rng_2 = 2;
                     entityType = Map::Entities::ET_ARROW_AND_DEFAULT;
-                } else if (entityType == ((EntityType)0x5e)) {
+                } else if (entityType == (EntityType)0x5e) {
                     bVar1 = true;
                     this->entityArray[entityID].rng_2 = 2;
                     entityType = ((EntityType)0x18);
-                } else if (entityType == ((EntityType)0x1b)) {
-                    targetX = targetX + -0xa0 + ((int)SEC_RNG::instance.currentNumber2 % 0x50) * 4;
-                    targetY = targetY + -0xa0 + (((int)SEC_RNG::instance.currentNumber2 >> 8) % 0x50) * 4;
-                } else if (entityType == ((EntityType)0x20)) {
-                    targetX = targetX + -0x18 + (int)SEC_RNG::instance.currentNumber2 % 0x30;
-                    targetY = targetY + -0x18 + ((int)SEC_RNG::instance.currentNumber2 >> 8) % 0x30;
+                } else if (entityType == (EntityType)0x1b) {
+                    targetX = targetX - 0xa0 + ((int)SEC_RNG::instance.currentNumber2 % 0x50) * 4;
+                    targetY = targetY - 0xa0 + (((int)SEC_RNG::instance.currentNumber2 >> 8) % 0x50) * 4;
+                } else if (entityType == (EntityType)0x20) {
+                    targetX = targetX - 0x18 + (int)SEC_RNG::instance.currentNumber2 % 0x30;
+                    targetY = targetY - 0x18 + ((int)SEC_RNG::instance.currentNumber2 >> 8) % 0x30;
                 }
             }
             switch (entityType) {
@@ -154,7 +154,7 @@ namespace Map {
             case ((EntityType)0x5e):
                 uVar5 = microX / 8;
                 uVar6 = microY / 8;
-                if (((399 < uVar5) || (399 < uVar6)) || (*(char*)(uVar6 * 400 + 0x21aec98 + uVar5) == '\0')) {
+                if (399 < uVar5 || 399 < uVar6 || *(char*)(uVar6 * 400 + 0x21aec98 + uVar5) == '\0') {
                     return 0;
                 }
                 uVar5 = targetX / 8;
@@ -202,14 +202,11 @@ namespace Map {
                 DAT_DirectionAlgorithmState::ptr)(microX, microY, targetX, targetY);
             this->entityArray[entityID].orientation = DAT_DirectionAlgorithmState::instance.orientation;
             this->entityArray[entityID].colorUnk = 0;
-            if ((((entityType == Map::Entities::ET_FLAG_1)
-                     || (entityType == Map::Entities::ET_FLAG_4))
-                    || (entityType == Map::Entities::ET_FLAG_2))
-                || (entityType == Map::Entities::ET_FLAG_3)) {
+            if (entityType == Map::Entities::ET_FLAG_1 || entityType == Map::Entities::ET_FLAG_4
+                || entityType == Map::Entities::ET_FLAG_2 || entityType == Map::Entities::ET_FLAG_3) {
                 this->entityArray[entityID].colorUnk = ownerColorUnk;
             }
-            MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::setProjectileEntityValues2, this)(
-                entityID, entityType);
+            MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::setProjectileEntityValues2, this)(entityID, entityType);
             if (this->entityArray[entityID].rng_2 != 0) {
                 this->entityArray[entityID].gmID = 0x91;
             }
@@ -228,7 +225,7 @@ namespace Map {
                     this->entityArray[entityID].rng_2 = SEC_RNG::instance.currentNumber2 % 100 + 120;
                     goto LAB_00404f8c;
                 }
-                if (entityType == ((EntityType)0x1f)) {
+                if (entityType == (EntityType)0x1f) {
                     if (unitID) {
                         this->entityArray[entityID].unkOne_1 = 2;
                     }
@@ -238,7 +235,7 @@ namespace Map {
                     goto LAB_00404f8c;
                 this->entityArray[entityID].rng_2 = SEC_RNG::instance.currentNumber2 % 500 + 300;
             } else {
-                if (entityType != ((EntityType)8))
+                if (entityType != (EntityType)8)
                     goto LAB_00404efa;
                 ownerColorUnk = DAT_UnitsState::instance.units[unitID].fixedRng;
             }
@@ -246,10 +243,10 @@ namespace Map {
         LAB_00404f8c:
             MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::initializeProjectileVelocities, this)(
                 entityID, microX, microY, totalHeight, targetX, targetY, targetZUnk);
-            if (this->entityArray[entityID].entityType == ((EntityType)0x18)) {
+            if (this->entityArray[entityID].entityType == (EntityType)0x18) {
                 this->entityArray[entityID].entityType = Map::Entities::ET_ARROW_AND_DEFAULT;
             }
-            if (this->entityArray[entityID].entityType == ((EntityType)0x19)) {
+            if (this->entityArray[entityID].entityType == (EntityType)0x19) {
                 this->entityArray[entityID].entityType = Map::Entities::ET_CROSSBOWARROW;
             }
             if (this->entityArray[entityID].entityType
@@ -263,8 +260,7 @@ namespace Map {
                 this->entityArray[entityID].gmLookupValue = 1;
             }
             if (entityID) {
-                MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::processEntityHitBuildingOrUnit, this)(
-                    entityID);
+                MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::processEntityHitBuildingOrUnit, this)(entityID);
                 MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::calculateEntityDrawOffset, this)(entityID);
                 uVar5 = DAT_CurrentEntityID::instance;
                 DAT_CurrentEntityID::instance = entityID;

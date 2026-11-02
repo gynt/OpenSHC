@@ -112,9 +112,9 @@ namespace Map {
             if ((int)uVar12 < iVar8) {
                 local_18 = (char*)((int)DAT_ViewportRenderState::ptr + uVar12 * 0x191 + 0xc0);
                 do {
-                    if (iVar6 + -8 < iVar6 + 8) {
-                        piVar13 = &DAT_ViewportRenderState::instance.translationMatrix[iVar6 + -8].addXgetTile;
-                        iVar10 = (iVar6 + 8) - (iVar6 + -8);
+                    if (iVar6 - 8 < iVar6 + 8) {
+                        piVar13 = &DAT_ViewportRenderState::instance.translationMatrix[iVar6 - 8].addXgetTile;
+                        iVar10 = (iVar6 + 8) - (iVar6 - 8);
                         do {
                             if (uVar12 < 400 && *local_18 != '\0'
                                 && (iVar7 = (int)(short)DAT_TileMapState::instance.UnitLayer[*piVar13 + uVar12],
@@ -128,7 +128,7 @@ namespace Map {
                                 } while (iVar7);
                             }
                             piVar13 = piVar13 + 3;
-                            iVar10 = iVar10 + -1;
+                            iVar10 = iVar10 - 1;
                         } while (iVar10);
                     }
                     local_18 = local_18 + 0x191;
@@ -138,7 +138,7 @@ namespace Map {
         }
         sVar3 = DAT_BuildingsState::instance.buildings[iVar9].outpostRelatedUnk3;
         if (0 < sVar3) {
-            DAT_BuildingsState::instance.buildings[iVar9].outpostRelatedUnk3 = sVar3 + -1;
+            DAT_BuildingsState::instance.buildings[iVar9].outpostRelatedUnk3 = sVar3 - 1;
         }
         _tribeID = (int)DAT_BuildingsState::instance.buildings[iVar9].tribeID;
         local_10 = (int)DAT_BuildingsState::instance.buildings[iVar9].spawnUnitTypeIndex;
@@ -157,7 +157,7 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].outpostRelatedUnk4 = 1200;
         } else {
             psVar11 = &DAT_BuildingsState::instance.buildings[iVar9].outpostRelatedUnk4;
-            *psVar11 = *psVar11 + -1;
+            *psVar11 = *psVar11 - 1;
             iVar8 = DAT_CurrentBuildingID::instance;
             if (DAT_BuildingsState::instance.buildings[iVar9].outpostRelatedUnk4 < 0) {
                 DAT_BuildingsState::instance.buildings[iVar9].outpostRelatedUnk4 = 1200;
@@ -243,18 +243,20 @@ namespace Map {
                                     / 2
                                 + (int)(short)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].x;
                             iVar6 = (int)SEC_RNG::instance.currentNumber2 % 0xe;
-                            pcVar1 = (char*)(iVar10 + -7 + iVar6);
+                            pcVar1 = (char*)(iVar10 - 7 + iVar6);
                             MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
                             iVar8 = (int)SEC_RNG::instance.currentNumber2;
                             iVar7 = (int)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance]
                                         .widthOrHeight
                                     / 2
                                 + (int)(short)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].y;
-                            uVar12 = iVar7 + -7 + iVar8 % 0xe;
+                            uVar12 = iVar7 - 7 + iVar8 % 0xe;
                             MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
                             if ((int)pcVar1 < 400 && uVar12 < 400
-                                && *(char*)(uVar12 * 400 + (int)DAT_ViewportRenderState::instance.DAT_BinaryTileMap400x400 + (int)pcVar1) != '\0') {
-                                iVar8 = DAT_ViewportRenderState::instance.translationMatrix[iVar8 % 0xe + iVar7 + -7]
+                                && *(char*)(uVar12 * 400
+                                       + (int)DAT_ViewportRenderState::instance.DAT_BinaryTileMap400x400 + (int)pcVar1)
+                                    != '\0') {
+                                iVar8 = DAT_ViewportRenderState::instance.translationMatrix[iVar8 % 0xe + iVar7 - 7]
                                             .addXgetTile;
                                 int _unitPathConnection
                                     = (short)DAT_TileMapState::instance.PathConnectionLayer
@@ -275,7 +277,7 @@ namespace Map {
                                         local_18 = pcVar1;
                                         local_14 = uVar12;
                                     }
-                                    if ((DAT_TileMapState::instance.LogicLayer[iVar6 + iVar10 + iVar8 + -7]
+                                    if ((DAT_TileMapState::instance.LogicLayer[iVar6 + iVar10 + iVar8 - 7]
                                             & 0x10000000U))
                                         break;
                                 }
@@ -456,8 +458,7 @@ namespace Map {
             sVar3 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].outpostRelatedUnk3;
             if (sVar3 < 1
                 || (int)DAT_TribesState::instance.tribes[_tribeID].size
-                    < DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].outpostRelatedUnk05
-                        + -1) {
+                    < DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].outpostRelatedUnk05 - 1) {
                 uVar12 = (uint)(DAT_BuildingDefinedData::instance.SpawnUnitProperties[local_10][4] != 0);
                 if (DAT_BuildingDefinedData::instance.SpawnUnitProperties[local_10][5] != 0) {
                     uVar12 = uVar12 + 1;
@@ -562,7 +563,7 @@ namespace Map {
                                 DAT_UnitsState::instance.units[_engineerID]
                                     .targetedUnitID__OR__engineerMannedSiegeEngineRef = (short)_randomUnitID;
                             }
-                            _requiredEngineers = _requiredEngineers + -1;
+                            _requiredEngineers = _requiredEngineers - 1;
                         } while (_requiredEngineers);
                     switchD_004121d2_caseD_29:
                         DAT_UnitsState::instance.units[_randomUnitID].aiUnitBehaviourType = 0x32;

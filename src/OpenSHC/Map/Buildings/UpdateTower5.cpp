@@ -91,7 +91,7 @@ namespace Map {
                 uVar5 = uVar2 & 7;
                 uVar4 = uVar4 + 1;
                 uVar2 = uVar2 + 1;
-                iVar1 = iVar1 + -1;
+                iVar1 = iVar1 - 1;
                 local_20[uVar5] = uVar8 + 1;
             } while (iVar1);
         }

@@ -18,18 +18,17 @@ namespace Map {
         {
             Entity* pEVar1;
             int iVar1;
-            if (entityType == ((EntityType)0x28)) {
+            if (entityType == (EntityType)0x28) {
                 if (DAT_GameState::instance.playerDataArray[playerID].someCount32 != 0) {
                     return TRUE;
                 }
-            } else if ((entityType == ((EntityType)0x29))
-                && (DAT_GameState::instance.playerDataArray[playerID].someCount33 != 0)) {
+            } else if (entityType == (EntityType)0x29
+                && DAT_GameState::instance.playerDataArray[playerID].someCount33 != 0) {
                 return TRUE;
             }
             iVar1 = 1;
             pEVar1 = &this->entityArray[1];
-            while (((!pEVar1->logicalState || ((int)(short)pEVar1->entityType != entityType))
-                || (pEVar1->owner != playerID))) {
+            while (!pEVar1->logicalState || (int)(short)pEVar1->entityType != entityType || pEVar1->owner != playerID) {
                 iVar1 = iVar1 + 1;
                 pEVar1 = pEVar1 + 0x74;
                 if (25 < iVar1) {

@@ -72,7 +72,7 @@ namespace Map {
         _y = y_2;
         _tile_2 = tile;
         bVar7 = false;
-        if ((playerID < 0)
+        if (playerID < 0
             && (_OilSmelterYPosition = -playerID, iVar9 = playerID * -4, playerID = _OilSmelterYPosition,
                 *(int*)((int)DAT_GameSynchronyState::ptr + iVar9 + 0x6a8) == -1)) {
             bVar7 = true;
@@ -86,12 +86,12 @@ namespace Map {
                 0, _iter0till8, &tile, (int*)&y_2, _tile_2, _y);
             _tile = tile;
             uVar8 = this->LogicLayer[tile];
-            if ((!(uVar8 & 0x10000400)) && (this->BuildingLayer[tile] == 0)) {
-                if ((((uVar8 & 0x100)) && (!(uVar8 & 2)))
-                    && ((_defensiveStructureOwner = this->WallOwnerLayer[tile] & 7,
+            if (!(uVar8 & 0x10000400) && this->BuildingLayer[tile] == 0) {
+                if ((uVar8 & 0x100) && !(uVar8 & 2)
+                    && (_defensiveStructureOwner = this->WallOwnerLayer[tile] & 7,
                         !bVar7
                             || (DAT_GameState::instance.mapAndTime.playerTeams[playerID]
-                                != DAT_GameState::instance.mapAndTime.playerTeams[_defensiveStructureOwner + 1])))) {
+                                != DAT_GameState::instance.mapAndTime.playerTeams[_defensiveStructureOwner + 1]))) {
                     DAT_GameState::instance.playerDataArray[_defensiveStructureOwner + 1].defensesDamagedByPlayer
                         = (short)playerID;
                     if (unitID) {
@@ -109,13 +109,13 @@ namespace Map {
                     if (0 < damage) {
                         do {
                             if (this->HeightLayer[tile] <= this->DefaultHeightLayer[tile]) {
-                                MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::destroyEntitiesOnTile,
-                                    DAT_EntityState::ptr)(tile);
+                                MACRO_CALL_MEMBER(
+                                    Map::Entities::EntityState_Func::destroyEntitiesOnTile, DAT_EntityState::ptr)(tile);
                                 this->LogicLayer[_tile] = this->LogicLayer[_tile] & 0xffbef4ff;
                                 this->HeightLayer[_tile] = this->DefaultHeightLayer[_tile];
                                 this->DamageLayer[_tile] = 0;
-                                MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::
-                                                      updatePathLinkagesInAllEightDirections,
+                                MACRO_CALL_MEMBER(
+                                    Map::Navigation::PathFindingState_Func::updatePathLinkagesInAllEightDirections,
                                     DAT_PathFindingState::ptr)(y_2, _tile);
                                 DAT_PathFindingState::instance.toggleUpdateSeparateAreaTileMap = 1;
                                 this->field204_0x554a30 = 1;
@@ -132,18 +132,15 @@ namespace Map {
             } else {
                 _buildingID = (int)this->BuildingLayer[tile];
                 BVar3 = DAT_BuildingsState::instance.buildings[_buildingID].logicalState;
-                if (((BVar3 != ((BuildingLogicalState)0))
-                        && ((((BVar3 != Map::Buildings::BLS_REMOVE
-                                  && (sVar4 = DAT_BuildingsState::instance.buildings[_buildingID].currentHealth,
-                                      sVar4 != 0))
-                                 && (_buildingType
-                                     = (int)(short)DAT_BuildingsState::instance.buildings[_buildingID].buildingType,
-                                     DAT_BuildingDefinedData::instance.BuildingTypeHasHealth[_buildingType] != 0))
-                            && ((!(uVar8 & 0xf000000) && (!(uVar8 & 2)))))))
-                    && ((!bVar7
+                if (BVar3 != (BuildingLogicalState)0 && BVar3 != Map::Buildings::BLS_REMOVE
+                    && (sVar4 = DAT_BuildingsState::instance.buildings[_buildingID].currentHealth, sVar4 != 0)
+                    && (_buildingType = (int)(short)DAT_BuildingsState::instance.buildings[_buildingID].buildingType,
+                        DAT_BuildingDefinedData::instance.BuildingTypeHasHealth[_buildingType] != 0)
+                    && !(uVar8 & 0xf000000) && !(uVar8 & 2)
+                    && (!bVar7
                         || (DAT_GameState::instance.mapAndTime.playerTeams[playerID]
                             != DAT_GameState::instance.mapAndTime
-                                .playerTeams[DAT_BuildingsState::instance.buildings[_buildingID].owner])))) {
+                                .playerTeams[DAT_BuildingsState::instance.buildings[_buildingID].owner]))) {
                     _newHealth = sVar4 - (short)damage;
                     DAT_GameCore::instance.cowPoisonTrackerUnk
                         = DAT_GameCore::instance.cowPoisonTrackerUnk + damage * 10;
@@ -171,7 +168,7 @@ namespace Map {
                         }
                     }
                     if (_newHealth < 1) {
-                        if ((_buildingType != 0x4f) && ((_buildingType < 0x56 || (0x59 < _buildingType)))) {
+                        if (_buildingType != 0x4f && (_buildingType < 0x56 || (0x59 < _buildingType))) {
                             _ownerPlayerIndex = DAT_BuildingsState::instance.buildings[_buildingID].owner;
                             piVar2 = DAT_GameSynchronyState::instance.finalResults.finalBuildingsBurned + playerID;
                             *piVar2 = *piVar2 + 1;
@@ -190,13 +187,11 @@ namespace Map {
                         case 0x4c:
                         case 0x4d:
                         case 0x4e:
-                            MACRO_CALL_MEMBER(
-                                AI::AICState_Func::playAnger2BikFromPlayerToPlayer, DAT_AICState::ptr)(
+                            MACRO_CALL_MEMBER(AI::AICState_Func::playAnger2BikFromPlayerToPlayer, DAT_AICState::ptr)(
                                 (int)DAT_BuildingsState::instance.buildings[_buildingID].owner, playerID);
                             break;
                         default:
-                            MACRO_CALL_MEMBER(
-                                AI::AICState_Func::playVictory2BikFromPlayerToPlayer, DAT_AICState::ptr)(
+                            MACRO_CALL_MEMBER(AI::AICState_Func::playVictory2BikFromPlayerToPlayer, DAT_AICState::ptr)(
                                 (int)DAT_BuildingsState::instance.buildings[_buildingID].owner, playerID);
                         }
                         switch (DAT_BuildingsState::instance.buildings[_buildingID].buildingType) {
@@ -216,15 +211,15 @@ namespace Map {
                             if (iVar9 < 5) {
                                 MACRO_CALL(Map::Entities_Func::SetPlaceOnFire)(_oilSmelterOwnerPlayerIndex,
                                     _OilSmelterXPosition * 8 + 0x10, _OilSmelterYPosition * 8 + 0x10,
-                                    (int)((int)((uint)this->HeightLayer[_oilSmelterTilePosition])), 3);
+                                    (int)((uint)this->HeightLayer[_oilSmelterTilePosition]), 3);
                             } else {
                                 iVar9 = _OilSmelterYPosition * 8 + 0x10;
                                 x = _OilSmelterXPosition * 8 + 0x10;
-                                MACRO_CALL(Map::Entities_Func::SetPlaceOnFire)(_oilSmelterOwnerPlayerIndex, x,
-                                    iVar9, (int)((int)((uint)this->HeightLayer[_oilSmelterTilePosition])), 5);
+                                MACRO_CALL(Map::Entities_Func::SetPlaceOnFire)(_oilSmelterOwnerPlayerIndex, x, iVar9,
+                                    (int)((uint)this->HeightLayer[_oilSmelterTilePosition]), 5);
                                 MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity,
                                     DAT_EntityState::ptr)(0, (undefined4)((int)(_oilSmelterOwnerPlayerIndex)), 0, x,
-                                    iVar9, (int)((int)((uint)this->HeightLayer[_oilSmelterTilePosition])), 0, 0, 0,
+                                    iVar9, (int)((uint)this->HeightLayer[_oilSmelterTilePosition]), 0, 0, 0,
                                     Map::Entities::EntityTypeInt__ET_EXPLOSION, 0);
                             }
                             MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
@@ -262,8 +257,7 @@ namespace Map {
                             }
                             uVar5 = DAT_BuildingsState::instance.buildings[_buildingID].y;
                             uVar6 = DAT_BuildingsState::instance.buildings[_buildingID].x;
-                            MACRO_CALL_MEMBER(
-                                Map::Buildings::BuildingsState_Func::processDamageToUnitsOnBuilding,
+                            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::processDamageToUnitsOnBuilding,
                                 DAT_BuildingsState::ptr)(_buildingID, 0x32);
                             this->showNoRubbleWhenDestroyingBuilding
                                 = (int)(DAT_BuildingDefinedData::instance.BuildingShowRubbleWhenDestroyed
@@ -272,20 +266,18 @@ namespace Map {
                             MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::destroyBuilding,
                                 DAT_BuildingsState::ptr)(_buildingID);
                             MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
-                                (int)(short)uVar6, (int)((int)((short)uVar5)), DE::SHCDE::FX_TOWER_SMASH);
+                                (int)(short)uVar6, (int)((short)uVar5), DE::SHCDE::FX_TOWER_SMASH);
                             break;
                         case Map::Buildings::BT_TUNNEL:
                             uVar8 = (uint)DAT_BuildingsState::instance.buildings[_buildingID].unitRefID;
                             if (DAT_UnitsState::instance.units[uVar8].state.generic
-                                != (Map::Units::States::US_STAND_UPUnk
-                                    | Map::Units::States::US_IDLEUnk)) {
+                                != (Map::Units::States::US_STAND_UPUnk | Map::Units::States::US_IDLEUnk)) {
                                 DAT_UnitsState::instance.units[uVar8].totalSizeOfPathPlan
                                     = DAT_UnitsState::instance.units[uVar8].currentIndexInPathPlan;
                                 MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::applyTunnelDamageAlongPathPlan,
                                     DAT_UnitsState::ptr)(uVar8);
                             }
-                            DAT_UnitsState::instance.units[uVar8].state.generic
-                                = Map::Units::States::US_DISAPPEAR;
+                            DAT_UnitsState::instance.units[uVar8].state.generic = Map::Units::States::US_DISAPPEAR;
                             DAT_UnitsState::instance.units[uVar8].disappearFadeAlphaCountdown = 0x20;
                             DAT_UnitsState::instance.units[uVar8].updateTickTracker = 0x20;
                         default:
@@ -298,27 +290,27 @@ namespace Map {
                                 DAT_BuildingsState::ptr)(_buildingID);
                             MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                                 (int)(short)DAT_BuildingsState::instance.buildings[_buildingID].x,
-                                (int)((int)((short)DAT_BuildingsState::instance.buildings[_buildingID].y)),
+                                (int)((short)DAT_BuildingsState::instance.buildings[_buildingID].y),
                                 DE::SHCDE::FX_BUILDING_SMASH);
-                            if ((((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
-                                     && (playerID == DAT_GameSynchronyState::instance.currentPlayerSlotID))
-                                    && (DAT_GameState::instance.mapAndTime.playerTeams[sVar4]
-                                        != DAT_GameState::instance.mapAndTime
-                                            .playerTeams[DAT_GameSynchronyState::instance.currentPlayerSlotID]))
-                                && (DAT_GameCore::instance.genieVoiceActive)) {
+                            if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY
+                                && playerID == DAT_GameSynchronyState::instance.currentPlayerSlotID
+                                && DAT_GameState::instance.mapAndTime.playerTeams[sVar4]
+                                    != DAT_GameState::instance.mapAndTime
+                                        .playerTeams[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                                && DAT_GameCore::instance.genieVoiceActive) {
                                 if ((iVar9 == 0x13) || (iVar9 == 0xb)) {
                                     /*
                                       "Excellent"
                                      */
-                                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX,
-                                        DAT_SFXState::ptr)("Genie_23.wav");
+                                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                                        "Genie_23.wav");
                                 }
                                 if ((iVar9 == 8) || (iVar9 == 9)) {
                                     /*
                                       "Bravo"
                                      */
-                                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX,
-                                        DAT_SFXState::ptr)("Genie_24.wav");
+                                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                                        "Genie_24.wav");
                                 }
                             }
                             break;
@@ -327,8 +319,7 @@ namespace Map {
                             if ((iVar9)
                                 && (DAT_BuildingsState::instance.buildings[_buildingID].unitRefUID
                                     == DAT_UnitsState::instance.units[iVar9].uid)) {
-                                DAT_UnitsState::instance.units[iVar9].state.generic
-                                    = Map::Units::States::US_DISAPPEAR;
+                                DAT_UnitsState::instance.units[iVar9].state.generic = Map::Units::States::US_DISAPPEAR;
                                 DAT_UnitsState::instance.units[iVar9].disappearFadeAlphaCountdown = 0;
                                 DAT_UnitsState::instance.units[iVar9].updateTickTracker = 0;
                                 DAT_UnitsState::instance.units[iVar9].workplaceBuildingID_1 = 0;
@@ -338,8 +329,7 @@ namespace Map {
                                 DAT_BuildingsState::ptr)(_buildingID);
                             break;
                         case Map::Buildings::BT_TOWER1:
-                            MACRO_CALL_MEMBER(
-                                Map::Buildings::BuildingsState_Func::processDamageToUnitsOnBuilding,
+                            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::processDamageToUnitsOnBuilding,
                                 DAT_BuildingsState::ptr)(_buildingID, 0x19);
                             uVar5 = DAT_BuildingsState::instance.buildings[_buildingID].x;
                             sVar4 = DAT_BuildingsState::instance.buildings[_buildingID].owner;
@@ -348,12 +338,10 @@ namespace Map {
                             MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::deleteBuilding,
                                 DAT_BuildingsState::ptr)(_buildingID);
                             MACRO_CALL_MEMBER(Map::TileMapState_Func::placeBuilding, this)((int)sVar4,
-                                (int)((int)((short)uVar5)), (int)((int)((short)uVar6)),
-                                Commands::M_MAPPER_TOWER1_DESTROYED, 3, 0xf);
+                                (int)((short)uVar5), (int)((short)uVar6), Commands::M_MAPPER_TOWER1_DESTROYED, 3, 0xf);
                             break;
                         case Map::Buildings::BT_TOWER2:
-                            MACRO_CALL_MEMBER(
-                                Map::Buildings::BuildingsState_Func::processDamageToUnitsOnBuilding,
+                            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::processDamageToUnitsOnBuilding,
                                 DAT_BuildingsState::ptr)(_buildingID, 0x32);
                             uVar5 = DAT_BuildingsState::instance.buildings[_buildingID].x;
                             sVar4 = DAT_BuildingsState::instance.buildings[_buildingID].owner;
@@ -362,12 +350,10 @@ namespace Map {
                             MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::deleteBuilding,
                                 DAT_BuildingsState::ptr)(_buildingID);
                             MACRO_CALL_MEMBER(Map::TileMapState_Func::placeBuilding, this)((int)sVar4,
-                                (int)((int)((short)uVar5)), (int)((int)((short)uVar6)),
-                                Commands::M_MAPPER_TOWER2_DESTROYED, 4, 0xf);
+                                (int)((short)uVar5), (int)((short)uVar6), Commands::M_MAPPER_TOWER2_DESTROYED, 4, 0xf);
                             break;
                         case Map::Buildings::BT_TOWER3:
-                            MACRO_CALL_MEMBER(
-                                Map::Buildings::BuildingsState_Func::processDamageToUnitsOnBuilding,
+                            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::processDamageToUnitsOnBuilding,
                                 DAT_BuildingsState::ptr)(_buildingID, 0x32);
                             uVar5 = DAT_BuildingsState::instance.buildings[_buildingID].x;
                             sVar4 = DAT_BuildingsState::instance.buildings[_buildingID].owner;
@@ -376,12 +362,10 @@ namespace Map {
                             MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::deleteBuilding,
                                 DAT_BuildingsState::ptr)(_buildingID);
                             MACRO_CALL_MEMBER(Map::TileMapState_Func::placeBuilding, this)((int)sVar4,
-                                (int)((int)((short)uVar5)), (int)((int)((short)uVar6)),
-                                Commands::M_MAPPER_TOWER3_DESTROYED, 5, 0xf);
+                                (int)((short)uVar5), (int)((short)uVar6), Commands::M_MAPPER_TOWER3_DESTROYED, 5, 0xf);
                             break;
                         case Map::Buildings::BT_TOWER4:
-                            MACRO_CALL_MEMBER(
-                                Map::Buildings::BuildingsState_Func::processDamageToUnitsOnBuilding,
+                            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::processDamageToUnitsOnBuilding,
                                 DAT_BuildingsState::ptr)(_buildingID, 0x32);
                             uVar5 = DAT_BuildingsState::instance.buildings[_buildingID].x;
                             sVar4 = DAT_BuildingsState::instance.buildings[_buildingID].owner;
@@ -390,12 +374,10 @@ namespace Map {
                             MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::deleteBuilding,
                                 DAT_BuildingsState::ptr)(_buildingID);
                             MACRO_CALL_MEMBER(Map::TileMapState_Func::placeBuilding, this)((int)sVar4,
-                                (int)((int)((short)uVar5)), (int)((int)((short)uVar6)),
-                                Commands::M_MAPPER_TOWER4_DESTROYED, 6, 0xf);
+                                (int)((short)uVar5), (int)((short)uVar6), Commands::M_MAPPER_TOWER4_DESTROYED, 6, 0xf);
                             break;
                         case Map::Buildings::BT_TOWER5:
-                            MACRO_CALL_MEMBER(
-                                Map::Buildings::BuildingsState_Func::processDamageToUnitsOnBuilding,
+                            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::processDamageToUnitsOnBuilding,
                                 DAT_BuildingsState::ptr)(_buildingID, 0x32);
                             uVar5 = DAT_BuildingsState::instance.buildings[_buildingID].x;
                             sVar4 = DAT_BuildingsState::instance.buildings[_buildingID].owner;
@@ -404,8 +386,7 @@ namespace Map {
                             MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::deleteBuilding,
                                 DAT_BuildingsState::ptr)(_buildingID);
                             MACRO_CALL_MEMBER(Map::TileMapState_Func::placeBuilding, this)((int)sVar4,
-                                (int)((int)((short)uVar5)), (int)((int)((short)uVar6)),
-                                Commands::M_MAPPER_TOWER5_DESTROYED, 6, 0xf);
+                                (int)((short)uVar5), (int)((short)uVar6), Commands::M_MAPPER_TOWER5_DESTROYED, 6, 0xf);
                         }
                     }
                 }

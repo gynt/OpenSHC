@@ -25,18 +25,17 @@ namespace Map {
         }
         MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(10);
         MACRO_CALL(OS_Func::_sprintf)(local_10, "%d", this->SEC_StartingYear);
-        MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)(
-            local_10);
+        MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)(local_10);
         this->eventListSelection = -1;
         this->eventListScrollOffset = 0;
         this->year_copy = this->SEC_StartingYear;
         for (int eventIndex = 0; eventIndex < this->eventsCount; ++eventIndex) {
             InGameEventUnionVersion& event = this->scenarioEvents[eventIndex];
             int const eventYear = event.header.year;
-            if ((eventYear <= DAT_GameState::instance.mapAndTime.year)
+            if (eventYear <= DAT_GameState::instance.mapAndTime.year
                 && ((DAT_GameState::instance.mapAndTime.year != eventYear)
                     || (DAT_GameState::instance.mapAndTime.month < event.header.month))
-                && (event.header.tl_type == 1) && (event.data.invasion.messageYear)) {
+                && event.header.tl_type == 1 && event.data.invasion.messageYear) {
                 if (!event.data.invasion.messageMonth) {
                     event.data.invasion.messageMonth = eventYear;
                 } else {

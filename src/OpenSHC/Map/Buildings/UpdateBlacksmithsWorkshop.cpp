@@ -95,26 +95,26 @@ namespace Map {
                     <= '\0') {
                 LAB_0041338d:
                     *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].animationIndex + iVar8) = 0;
-                    sVar2 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 + -8);
+                    sVar2 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 - 8);
                     if (sVar2 == 0) {
-                        *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 + -8) = 1;
+                        *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 - 8) = 1;
                     } else if (sVar2 == 1) {
-                        *(ushort*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 + -8)
+                        *(ushort*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 - 8)
                             = (ushort)(DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) * 4 + 2;
                     } else if (sVar2 == 2) {
-                        *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 + -8) = 3;
+                        *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 - 8) = 3;
                     } else if (sVar2 == 3) {
-                        *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 + -8) = 4;
+                        *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 - 8) = 4;
                     } else if (sVar2 == 4) {
-                        *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 + -8) = 5;
+                        *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 - 8) = 5;
                     } else if (sVar2 == 5) {
-                        *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 + -8) = 6;
+                        *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 - 8) = 6;
                     } else {
                         if (sVar2 != 6) {
                             bVar9 = sVar2 == 7;
                             goto LAB_0041363b;
                         }
-                        *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 + -8) = 7;
+                        *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 - 8) = 7;
                     }
                 } else {
                     DAT_BuildingsState::instance.buildings[iVar7].animationFrame
@@ -194,11 +194,11 @@ namespace Map {
                         <= '\0') {
                     LAB_00413604:
                         *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].animationIndex + iVar8) = 0;
-                        sVar2 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 + -8);
+                        sVar2 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 - 8);
                         if (sVar2 == 0) {
-                            *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 + -8) = 1;
+                            *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 - 8) = 1;
                         } else if (sVar2 == 1) {
-                            *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 + -8) = 2;
+                            *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 - 8) = 2;
                         } else {
                             bVar9 = sVar2 == 2;
                         LAB_0041363b:
@@ -208,7 +208,7 @@ namespace Map {
                                 *piVar1 = *piVar1 + 1;
                                 *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].animationCycleCompleted
                                     + iVar8) = 1;
-                                *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 + -8)
+                                *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 - 8)
                                     = 0;
                             }
                         }
@@ -304,7 +304,7 @@ namespace Map {
         MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateVisuallyActiveState, DAT_BuildingsState::ptr)(
             iVar7);
         if (*(short*)((int)&DAT_BuildingsState::instance.buildings[0].buildingIsVisuallyActive + iVar8)
-            != *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 + -0x52)) {
+            != *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 - 0x52)) {
             MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(iVar7);
             iVar7 = DAT_CurrentBuildingID::instance;
             iVar8 = DAT_CurrentBuildingID::instance * 0x32c;
@@ -325,7 +325,7 @@ namespace Map {
                     int*)((int)&DAT_BuildingsState::instance.buildings[0].campgroundVclock + iVar8)]
                 <= '\0') {
                 *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].campgroundVclock + iVar8) = 0;
-                sVar2 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 + -8);
+                sVar2 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 - 8);
                 if (sVar2 == 0) {
                     *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationFrame3 + iVar8) = 0;
                     iVar7 = (int)(char)DAT_BuildingDefinedData::instance.BlacksmithsWorkshopAnimationFrames1[*(
@@ -349,8 +349,8 @@ namespace Map {
             iVar6 = *(int*)((int)&DAT_BuildingsState::instance.buildings[0].campgroundVclock + iVar8);
             if ((iVar6 == 0) || (iVar6 == 0x10)) {
                 MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
-                    (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 + -0x32),
-                    (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 + -0x30),
+                    (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 - 0x32),
+                    (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar8 - 0x30),
                     DE::SHCDE::FX_BS_BELLOW);
                 iVar7 = DAT_CurrentBuildingID::instance;
             }

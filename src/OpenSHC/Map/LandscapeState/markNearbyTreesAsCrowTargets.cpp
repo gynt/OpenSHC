@@ -21,13 +21,12 @@ namespace Map {
         if (1 < this->maxTreeCount) {
             piVar2 = &this->trees[1];
             do {
-                if ((((piVar2->state == 2) && (piVar2->stage < 4))
-                        && (BVar1
-                            = MACRO_CALL_MEMBER(Map::LandscapeState_Func::isTreeAdult, this)(_treeID, piVar2->uid),
-                            BVar1))
+                if (piVar2->state == 2 && piVar2->stage < 4
+                    && (BVar1 = MACRO_CALL_MEMBER(Map::LandscapeState_Func::isTreeAdult, this)(_treeID, piVar2->uid),
+                        BVar1)
                     && (MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
                             DAT_DirectionAlgorithmState::ptr)(
-                            x, y, (int)((int)((short)piVar2->xPosition)), (int)((int)((short)piVar2->yPosition))),
+                            x, y, (int)((short)piVar2->xPosition), (int)((short)piVar2->yPosition)),
                         DAT_DirectionAlgorithmState::instance.distanceHigh < 4)) {
                     piVar2->unknownDistanceRelatedToCrow = 1;
                 }

@@ -35,7 +35,7 @@ namespace Map {
                     _x = 0;
                     _ptrY2 = _ptrY;
                     do {
-                        (*(int (*)[6])(_ptrY2 + -1))[0] = _x;
+                        (*(int (*)[6])(_ptrY2 - 1))[0] = _x;
                         *_ptrY2 = _y;
                         _x = _x + 1;
                         _ptrY2 = _ptrY2 + 6;
@@ -44,9 +44,9 @@ namespace Map {
                     _ptrY = _ptrY + buildingSize * 6;
                 } while (_y < buildingSize);
             }
-            iVar3 = buildingSize * buildingSize + -1;
+            iVar3 = buildingSize * buildingSize - 1;
             _x = 0;
-            iVar5 = buildingSize * 2 + -1;
+            iVar5 = buildingSize * 2 - 1;
             iVar2 = 0;
             local_14 = 0;
             _y = 1;
@@ -58,33 +58,33 @@ namespace Map {
                         iVar2 = (iVar2 + 169) * buildingSize;
                         do {
                             DAT_BuildingSizeIndexMapping::instance[0][iVar2 + _x][2] = iVar4;
-                            iVar4 = iVar4 + -1;
-                            if (iVar5 < _y + -1) {
-                                _x = _x + -1;
+                            iVar4 = iVar4 - 1;
+                            if (iVar5 < _y - 1) {
+                                _x = _x - 1;
                                 iVar2 = iVar2 + buildingSize;
                             }
                             iVar5 = iVar5 + 1;
                         } while (iVar5 < _y);
                     }
-                    _x = buildingSize + -1;
+                    _x = buildingSize - 1;
                     if (local_14 < _x) {
                         _y = _y + 1;
                         _x = local_14 + 1;
                         iVar2 = 0;
                     } else {
-                        _y = _y + -1;
-                        iVar2 = (1 - (buildingSize + -1)) + local_14;
+                        _y = _y - 1;
+                        iVar2 = (1 - (buildingSize - 1)) + local_14;
                     }
                     local_14 = local_14 + 1;
-                    iVar5 = buildingSize * 2 + -1;
+                    iVar5 = buildingSize * 2 - 1;
                 } while (local_14 < iVar5);
             }
             iVar2 = 0;
-            _y = buildingSize + -1;
+            _y = buildingSize - 1;
             local_14 = 0;
             _x = 1;
             if (0 < iVar5) {
-                local_c = buildingSize * 2 + -3;
+                local_c = buildingSize * 2 - 3;
                 local_10 = iVar3;
                 do {
                     iVar5 = 0;
@@ -92,33 +92,33 @@ namespace Map {
                         iVar2 = (iVar2 + 0xa9) * buildingSize;
                         do {
                             DAT_BuildingSizeIndexMapping::instance[0][iVar2 + _y][3] = local_10;
-                            local_10 = local_10 + -1;
-                            if (iVar5 < _x + -1) {
-                                _y = _y + -1;
+                            local_10 = local_10 - 1;
+                            if (iVar5 < _x - 1) {
+                                _y = _y - 1;
                                 iVar2 = iVar2 - buildingSize;
                             }
                             iVar5 = iVar5 + 1;
                         } while (iVar5 < _x);
                     }
-                    _y = buildingSize + -1;
+                    _y = buildingSize - 1;
                     if (local_14 < _y) {
                         _x = _x + 1;
                         iVar2 = local_14 + 1;
                     } else {
-                        _x = _x + -1;
+                        _x = _x - 1;
                         iVar2 = _y;
                         _y = local_c;
                     }
-                    local_c = local_c + -1;
+                    local_c = local_c - 1;
                     local_14 = local_14 + 1;
-                    iVar5 = buildingSize * 2 + -1;
+                    iVar5 = buildingSize * 2 - 1;
                 } while (local_14 < iVar5);
             }
-            _x = buildingSize + -1;
+            _x = buildingSize - 1;
             local_14 = 0;
             _y = 1;
             if (0 < iVar5) {
-                local_c = buildingSize + -2;
+                local_c = buildingSize - 2;
                 iVar2 = _x;
                 local_10 = iVar3;
                 do {
@@ -127,34 +127,34 @@ namespace Map {
                         _x = (_x + 0xa9) * buildingSize;
                         do {
                             DAT_BuildingSizeIndexMapping::instance[0][_x + iVar2][4] = local_10;
-                            local_10 = local_10 + -1;
-                            if (iVar5 < _y + -1) {
+                            local_10 = local_10 - 1;
+                            if (iVar5 < _y - 1) {
                                 iVar2 = iVar2 + 1;
                                 _x = _x - buildingSize;
                             }
                             iVar5 = iVar5 + 1;
                         } while (iVar5 < _y);
                     }
-                    _x = buildingSize + -1;
+                    _x = buildingSize - 1;
                     if (local_14 < _x) {
                         _y = _y + 1;
                         iVar2 = local_c;
                     } else {
-                        _y = _y + -1;
+                        _y = _y - 1;
                         iVar2 = 0;
                         _x = local_c + _x;
                     }
-                    local_c = local_c + -1;
+                    local_c = local_c - 1;
                     local_14 = local_14 + 1;
-                    iVar5 = buildingSize * 2 + -1;
+                    iVar5 = buildingSize * 2 - 1;
                 } while (local_14 < iVar5);
             }
-            iVar2 = buildingSize + -1;
+            iVar2 = buildingSize - 1;
             _x = 0;
             local_14 = 0;
             _y = 1;
             if (0 < iVar5) {
-                buildingSize = buildingSize + -2;
+                buildingSize = buildingSize - 2;
                 iVar5 = 1 - iVar2;
                 local_10 = iVar3;
                 do {
@@ -163,26 +163,26 @@ namespace Map {
                         iVar2 = (iVar2 + 0xa9) * iVar1;
                         do {
                             DAT_BuildingSizeIndexMapping::instance[0][iVar2 + _x][5] = local_10;
-                            local_10 = local_10 + -1;
-                            if (iVar3 < _y + -1) {
+                            local_10 = local_10 - 1;
+                            if (iVar3 < _y - 1) {
                                 _x = _x + 1;
                                 iVar2 = iVar2 + iVar1;
                             }
                             iVar3 = iVar3 + 1;
                         } while (iVar3 < _y);
                     }
-                    if (local_14 < iVar1 + -1) {
+                    if (local_14 < iVar1 - 1) {
                         _y = _y + 1;
                         _x = 0;
                         iVar2 = buildingSize;
                     } else {
-                        _y = _y + -1;
+                        _y = _y - 1;
                         _x = iVar5 + local_14;
                         iVar2 = 0;
                     }
-                    buildingSize = buildingSize + -1;
+                    buildingSize = buildingSize - 1;
                     local_14 = local_14 + 1;
-                } while (local_14 < iVar1 * 2 + -1);
+                } while (local_14 < iVar1 * 2 - 1);
             }
         }
     }

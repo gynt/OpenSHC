@@ -47,7 +47,7 @@ namespace Map {
             iVar9 = 0;
             uVar6 = y & 7;
             _bitFlag = MACRO_CALL_MEMBER(Map::TileMapState_Func::setBitFlagBasedOnWallTowerGatehouseOrKeep,
-                DAT_TileMapState::ptr)(x / 8, (int)((int)(y / 8)));
+                DAT_TileMapState::ptr)(x / 8, (int)(y / 8));
             switch (this->entityArray[param_1].orientation) {
             case 0x3c:
             case 0x40:
@@ -268,7 +268,7 @@ namespace Map {
                         break;
                     case 8:
                         bVar12 = (iVar5 < 100);
-                        bVar11 = (int)(-uVar3 + -0x5d) < 0;
+                        bVar11 = (int)(-uVar3 - 0x5d) < 0;
                         bVar10 = iVar5 == 100;
                         break;
                     case 0x28:
@@ -327,7 +327,7 @@ namespace Map {
                 break;
             }
             MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::somethingWithProjectileDistance,
-                DAT_DirectionAlgorithmState::ptr)(x, (int)((int)(y)), iVar5, iVar9);
+                DAT_DirectionAlgorithmState::ptr)(x, (int)(y), iVar5, iVar9);
             this->entityArray[param_1].orientation = DAT_DirectionAlgorithmState::instance.orientation;
             sVar7 = (short)iVar9;
             if (iVar9 < (int)y) {
@@ -343,9 +343,9 @@ namespace Map {
             }
             sVar8 = this->entityArray[param_1].pathDeltaX;
             this->entityArray[param_1].pathTargetX = sVar4;
-            this->entityArray[param_1].someMicroX = (ushort)((int)x <= iVar5) * 2 + -1;
+            this->entityArray[param_1].someMicroX = (ushort)((int)x <= iVar5) * 2 - 1;
             this->entityArray[param_1].pathTargetY = sVar7;
-            this->entityArray[param_1].someMicroY = (ushort)((int)y <= iVar9) * 2 + -1;
+            this->entityArray[param_1].someMicroY = (ushort)((int)y <= iVar9) * 2 - 1;
             if (!sVar8) {
                 if (this->entityArray[param_1].pathDeltaY == 0) {
                     this->entityArray[param_1].pathAxisCase = 0;
@@ -403,8 +403,7 @@ namespace Map {
             sVar8 = this->entityArray[param_1].yPosition;
             this->entityArray[param_1].gmLookupValue = 0;
             MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
-                (int)sVar4, (int)((int)(sVar8)), DE::SHCDE::FX_ARROW_BOUNCE);
-            return;
+                (int)sVar4, (int)(sVar8), DE::SHCDE::FX_ARROW_BOUNCE);
         }
 
     }

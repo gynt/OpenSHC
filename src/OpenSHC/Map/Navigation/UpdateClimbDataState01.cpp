@@ -22,10 +22,10 @@ namespace Map {
         int _id;
         _id = DAT_CurrentClimbDataID::instance;
         _unit = DAT_PathFindingState::instance.climbData[DAT_CurrentClimbDataID::instance].unitID;
-        if (((DAT_PathFindingState::instance.climbData[DAT_CurrentClimbDataID::instance].sourceUID
-                 == DAT_UnitsState::instance.units[_unit].uid)
-                && (DAT_UnitsState::instance.units[_unit].state.generic == ((UnitState)3)))
-            && (DAT_UnitsState::instance.units[_unit].dying == 0)) {
+        if (DAT_PathFindingState::instance.climbData[DAT_CurrentClimbDataID::instance].sourceUID
+                == DAT_UnitsState::instance.units[_unit].uid
+            && DAT_UnitsState::instance.units[_unit].state.generic == (UnitState)3
+            && DAT_UnitsState::instance.units[_unit].dying == 0) {
             _direction = (int)DAT_UnitsState::instance.units[_unit].facingDirection;
             DAT_PathFindingState::instance.climbData[DAT_CurrentClimbDataID::instance].isRecognizedByPathfinding = 1;
             DAT_PathFindingState::instance.climbData[_id].ladderDirection = _direction;

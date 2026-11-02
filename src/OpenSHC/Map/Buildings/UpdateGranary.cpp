@@ -63,7 +63,7 @@ namespace Map {
                 *piVar2 = *piVar2 + 1;
                 piVar2 = DAT_BuildingsState::instance.buildings[buildingID].resources + 10;
                 *piVar2 = *piVar2 + 1;
-                DAT_GameState::instance.playerDataArray[_playerID].startResources[10] = iVar8 + -1;
+                DAT_GameState::instance.playerDataArray[_playerID].startResources[10] = iVar8 - 1;
                 DAT_BuildingsState::instance.buildings[buildingID].resourceRelatedCountDown = 100;
             }
             iVar8 = DAT_GameState::instance.playerDataArray[_playerID].startResources[0xb];
@@ -71,7 +71,7 @@ namespace Map {
                 && (uVar5 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::computeResourceSumForBuilding,
                         DAT_BuildingsState::ptr)(buildingID),
                     (int)uVar5 < 0xfa)) {
-                DAT_GameState::instance.playerDataArray[_playerID].startResources[0xb] = iVar8 + -1;
+                DAT_GameState::instance.playerDataArray[_playerID].startResources[0xb] = iVar8 - 1;
                 piVar2 = DAT_GameState::instance.playerDataArray[_playerID].currentResources + 0xb;
                 *piVar2 = *piVar2 + 1;
                 piVar2 = DAT_BuildingsState::instance.buildings[buildingID].resources + 0xb;
@@ -86,7 +86,7 @@ namespace Map {
                 iVar8 = DAT_GameState::instance.playerDataArray[_playerID].startResources[0xc];
                 piVar2 = DAT_GameState::instance.playerDataArray[_playerID].currentResources + 0xc;
                 *piVar2 = *piVar2 + 1;
-                DAT_GameState::instance.playerDataArray[_playerID].startResources[0xc] = iVar8 + -1;
+                DAT_GameState::instance.playerDataArray[_playerID].startResources[0xc] = iVar8 - 1;
                 piVar2 = DAT_BuildingsState::instance.buildings[buildingID].resources + 0xc;
                 *piVar2 = *piVar2 + 1;
                 DAT_BuildingsState::instance.buildings[buildingID].resourceRelatedCountDown = 100;
@@ -102,7 +102,7 @@ namespace Map {
                 iVar8 = DAT_GameState::instance.playerDataArray[_playerID].startResources[0xd];
                 piVar2 = DAT_GameState::instance.playerDataArray[_playerID].currentResources + 0xd;
                 *piVar2 = *piVar2 + 1;
-                DAT_GameState::instance.playerDataArray[_playerID].startResources[0xd] = iVar8 + -1;
+                DAT_GameState::instance.playerDataArray[_playerID].startResources[0xd] = iVar8 - 1;
                 piVar2 = DAT_BuildingsState::instance.buildings[buildingID].resources + 0xd;
                 *piVar2 = *piVar2 + 1;
                 DAT_BuildingsState::instance.buildings[buildingID].resourceRelatedCountDown = 100;
@@ -128,7 +128,7 @@ namespace Map {
             } else {
                 DAT_BuildingsState::instance.buildings[buildingID].buildingIsVisuallyActive = 1;
                 psVar1 = &DAT_BuildingsState::instance.buildings[buildingID].resourceRelatedCountDown;
-                *psVar1 = *psVar1 + -1;
+                *psVar1 = *psVar1 - 1;
             }
             MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateVisuallyActiveState, DAT_BuildingsState::ptr)(
                 buildingID);
@@ -234,18 +234,18 @@ namespace Map {
                     if (cVar7 == '\x01') {
                         if (iVar6 < 0x21)
                             goto LAB_004155bb;
-                        _playerID = _playerID + -0x20;
+                        _playerID = _playerID - 0x20;
                         iVar8 = 0x20;
                     } else {
                         if (cVar7 == '\x02') {
                             if (0x10 < iVar6) {
-                                local_18 = local_18 + -0x10;
+                                local_18 = local_18 - 0x10;
                                 iVar8 = 0xb0;
                                 goto LAB_004155f9;
                             }
                         } else if (cVar7 == '\x03') {
                             if (0x10 < iVar6) {
-                                local_14 = local_14 + -0x10;
+                                local_14 = local_14 - 0x10;
                                 iVar8 = 0xc0;
                                 goto LAB_004155f9;
                             }

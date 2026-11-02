@@ -58,10 +58,9 @@ namespace Map {
         if (DAT_TileMapState::instance.currentMapperCommand == Commands::M_MAPPER_NULL) {
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].someResourceNumber = 0;
         }
-        if ((((!((byte)DAT_GameCore::instance.mapTimeInTicks & 3))
-                 && (DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR))
-                && (DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT))
-            && (DAT_GameState::instance.playerDataArray[_playerID].someCountdown01 == 0)) {
+        if (!((byte)DAT_GameCore::instance.mapTimeInTicks & 3) && DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR
+            && DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT
+            && DAT_GameState::instance.playerDataArray[_playerID].someCountdown01 == 0) {
             iVar7 = DAT_GameState::instance.playerDataArray[_playerID].startResources[0x11];
             if ((0 < iVar7)
                 && (uVar4 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getArmoryIDIfSpaceLeft,
@@ -72,7 +71,7 @@ namespace Map {
                 *piVar2 = *piVar2 + 1;
                 piVar2 = DAT_BuildingsState::instance.buildings[buildingID].resources + 0x11;
                 *piVar2 = *piVar2 + 1;
-                DAT_GameState::instance.playerDataArray[_playerID].startResources[0x11] = iVar7 + -1;
+                DAT_GameState::instance.playerDataArray[_playerID].startResources[0x11] = iVar7 - 1;
                 DAT_BuildingsState::instance.buildings[buildingID].resourceRelatedCountDown = 100;
             }
             if ((0 < DAT_GameState::instance.playerDataArray[_playerID].startResources[0x12])
@@ -82,7 +81,7 @@ namespace Map {
                 iVar7 = DAT_GameState::instance.playerDataArray[_playerID].startResources[0x12];
                 piVar2 = DAT_GameState::instance.playerDataArray[_playerID].currentResources + 0x12;
                 *piVar2 = *piVar2 + 1;
-                DAT_GameState::instance.playerDataArray[_playerID].startResources[0x12] = iVar7 + -1;
+                DAT_GameState::instance.playerDataArray[_playerID].startResources[0x12] = iVar7 - 1;
                 piVar2 = DAT_BuildingsState::instance.buildings[buildingID].resources + 0x12;
                 *piVar2 = *piVar2 + 1;
                 DAT_BuildingsState::instance.buildings[buildingID].resourceRelatedCountDown = 100;
@@ -95,7 +94,7 @@ namespace Map {
                 iVar7 = DAT_GameState::instance.playerDataArray[_playerID].startResources[0x13];
                 piVar2 = DAT_GameState::instance.playerDataArray[_playerID].currentResources + 0x13;
                 *piVar2 = *piVar2 + 1;
-                DAT_GameState::instance.playerDataArray[_playerID].startResources[0x13] = iVar7 + -1;
+                DAT_GameState::instance.playerDataArray[_playerID].startResources[0x13] = iVar7 - 1;
                 piVar2 = DAT_BuildingsState::instance.buildings[buildingID].resources + 0x13;
                 *piVar2 = *piVar2 + 1;
                 DAT_BuildingsState::instance.buildings[buildingID].resourceRelatedCountDown = 100;
@@ -108,7 +107,7 @@ namespace Map {
                 iVar7 = DAT_GameState::instance.playerDataArray[_playerID].startResources[0x14];
                 piVar2 = DAT_GameState::instance.playerDataArray[_playerID].currentResources + 0x14;
                 *piVar2 = *piVar2 + 1;
-                DAT_GameState::instance.playerDataArray[_playerID].startResources[0x14] = iVar7 + -1;
+                DAT_GameState::instance.playerDataArray[_playerID].startResources[0x14] = iVar7 - 1;
                 piVar2 = DAT_BuildingsState::instance.buildings[buildingID].resources + 0x14;
                 *piVar2 = *piVar2 + 1;
                 DAT_BuildingsState::instance.buildings[buildingID].resourceRelatedCountDown = 100;
@@ -121,7 +120,7 @@ namespace Map {
                 iVar7 = DAT_GameState::instance.playerDataArray[_playerID].startResources[0x15];
                 piVar2 = DAT_GameState::instance.playerDataArray[_playerID].currentResources + 0x15;
                 *piVar2 = *piVar2 + 1;
-                DAT_GameState::instance.playerDataArray[_playerID].startResources[0x15] = iVar7 + -1;
+                DAT_GameState::instance.playerDataArray[_playerID].startResources[0x15] = iVar7 - 1;
                 piVar2 = DAT_BuildingsState::instance.buildings[buildingID].resources + 0x15;
                 *piVar2 = *piVar2 + 1;
                 DAT_BuildingsState::instance.buildings[buildingID].resourceRelatedCountDown = 100;
@@ -134,7 +133,7 @@ namespace Map {
                 iVar7 = DAT_GameState::instance.playerDataArray[_playerID].startResources[0x16];
                 piVar2 = DAT_GameState::instance.playerDataArray[_playerID].currentResources + 0x16;
                 *piVar2 = *piVar2 + 1;
-                DAT_GameState::instance.playerDataArray[_playerID].startResources[0x16] = iVar7 + -1;
+                DAT_GameState::instance.playerDataArray[_playerID].startResources[0x16] = iVar7 - 1;
                 piVar2 = DAT_BuildingsState::instance.buildings[buildingID].resources + 0x16;
                 *piVar2 = *piVar2 + 1;
                 DAT_BuildingsState::instance.buildings[buildingID].resourceRelatedCountDown = 100;
@@ -147,7 +146,7 @@ namespace Map {
                 iVar7 = DAT_GameState::instance.playerDataArray[_playerID].startResources[0x17];
                 piVar2 = DAT_GameState::instance.playerDataArray[_playerID].currentResources + 0x17;
                 *piVar2 = *piVar2 + 1;
-                DAT_GameState::instance.playerDataArray[_playerID].startResources[0x17] = iVar7 + -1;
+                DAT_GameState::instance.playerDataArray[_playerID].startResources[0x17] = iVar7 - 1;
                 piVar2 = DAT_BuildingsState::instance.buildings[buildingID].resources + 0x17;
                 *piVar2 = *piVar2 + 1;
                 DAT_BuildingsState::instance.buildings[buildingID].resourceRelatedCountDown = 100;
@@ -161,26 +160,26 @@ namespace Map {
                     goto LAB_00412a53;
             } else {
                 DAT_GameState::instance.playerDataArray[_playerID].startResources[0x18]
-                    = DAT_GameState::instance.playerDataArray[_playerID].startResources[0x18] + -1;
+                    = DAT_GameState::instance.playerDataArray[_playerID].startResources[0x18] - 1;
                 piVar2 = DAT_BuildingsState::instance.buildings[buildingID].resources + 0x18;
                 *piVar2 = *piVar2 + 1;
                 DAT_GameState::instance.playerDataArray[_playerID].currentResources[0x18] = 1;
                 DAT_BuildingsState::instance.buildings[buildingID].resourceRelatedCountDown = 100;
             }
-            MACRO_CALL_MEMBER(
-                Map::Buildings::BuildingsState_Func::countPlayerResources, DAT_BuildingsState::ptr)(_playerID);
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::countPlayerResources, DAT_BuildingsState::ptr)(
+                _playerID);
         }
     LAB_00412a53:
-        uVar4 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::computeResourceSumForBuilding,
-            DAT_BuildingsState::ptr)(buildingID);
+        uVar4 = MACRO_CALL_MEMBER(
+            Map::Buildings::BuildingsState_Func::computeResourceSumForBuilding, DAT_BuildingsState::ptr)(buildingID);
         if ((int)uVar4 < 10) {
             DAT_GameState::instance.playerDataArray[_playerID].isArmouryAlmostFilledUp = 0;
         }
         sVar3 = DAT_BuildingsState::instance.buildings[buildingID].owner;
-        if ((DAT_GameState::instance.mapAndTime.playerTeams[sVar3]
-                == DAT_GameState::instance.mapAndTime.playerTeams[DAT_GameSynchronyState::instance.currentPlayerSlotID])
-            || ((DAT_GameSynchronyState::instance.currentPlayerFullIDArray[sVar3] == -1
-                && (DAT_GameSynchronyState::instance.currentAIArray[sVar3] != 0)))) {
+        if (DAT_GameState::instance.mapAndTime.playerTeams[sVar3]
+                == DAT_GameState::instance.mapAndTime.playerTeams[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+            || (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[sVar3] == -1
+                && (DAT_GameSynchronyState::instance.currentAIArray[sVar3] != 0))) {
             if (DAT_BuildingsState::instance.buildings[buildingID].resourceRelatedCountDown == 0) {
                 if (DAT_BuildingsState::instance.isFirstTickInLoop) {
                     DAT_BuildingsState::instance.buildings[buildingID].buildingIsVisuallyActive = 0;
@@ -188,10 +187,10 @@ namespace Map {
             } else {
                 DAT_BuildingsState::instance.buildings[buildingID].buildingIsVisuallyActive = 1;
                 psVar1 = &DAT_BuildingsState::instance.buildings[buildingID].resourceRelatedCountDown;
-                *psVar1 = *psVar1 + -1;
+                *psVar1 = *psVar1 - 1;
             }
-            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateVisuallyActiveState,
-                DAT_BuildingsState::ptr)(buildingID);
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateVisuallyActiveState, DAT_BuildingsState::ptr)(
+                buildingID);
         }
         bVar9 = DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY;
         DAT_BuildingsState::instance.buildings[buildingID].renderAnimation = 0;
@@ -225,8 +224,7 @@ namespace Map {
         }
         if (DAT_BuildingsState::instance.buildings[buildingID].buildingIsVisuallyActive
             != DAT_BuildingsState::instance.buildings[buildingID].oldVisualActiveState) {
-            MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
-                buildingID);
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(buildingID);
             buildingID = DAT_CurrentBuildingID::instance;
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].oldVisualActiveState
                 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].buildingIsVisuallyActive;

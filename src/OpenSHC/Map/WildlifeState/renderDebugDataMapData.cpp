@@ -69,7 +69,7 @@ namespace Map {
             MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
                 x1, iVar6, x + 0x192, iVar6, (ushort)(COL_WHITE::instance.shortValue));
             iVar6 = iVar6 + 10;
-            iVar7 = iVar7 + -1;
+            iVar7 = iVar7 - 1;
         } while (iVar7);
         iVar7 = 41;
         iVar6 = x1;
@@ -77,7 +77,7 @@ namespace Map {
             MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawLine, DAT_PencilRenderCore::ptr)(
                 iVar6, y, iVar6, y + 400, (ushort)(COL_WHITE::instance.shortValue));
             iVar6 = iVar6 + 10;
-            iVar7 = iVar7 + -1;
+            iVar7 = iVar7 - 1;
             iVar8 = 0;
         } while (iVar7);
         do {

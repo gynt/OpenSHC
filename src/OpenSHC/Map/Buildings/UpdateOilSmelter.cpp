@@ -88,7 +88,7 @@ namespace Map {
                 DAT_BuildingsState::instance.buildings[iVar5].state = 4;
             } else {
             LAB_004160fb:
-                DAT_BuildingsState::instance.buildings[iVar5].renderBlendStrength = sVar3 + -1;
+                DAT_BuildingsState::instance.buildings[iVar5].renderBlendStrength = sVar3 - 1;
             }
         } else if (sVar3 == 4) {
             DAT_BuildingsState::instance.buildings[iVar5].spriteOffetX = -0x10;
@@ -178,7 +178,7 @@ namespace Map {
                 DAT_BuildingsState::instance.buildings[iVar5].animationIndex = 0;
                 DAT_BuildingsState::instance.buildings[iVar5].state = 8;
                 piVar1 = DAT_BuildingsState::instance.buildings[iVar5].resources + 7;
-                *piVar1 = *piVar1 + -1;
+                *piVar1 = *piVar1 - 1;
                 iVar5 = DAT_BuildingsState::instance.buildings[iVar5].engineerUnitID;
                 if (iVar5 && DAT_UnitsState::instance.units[iVar5].unitType == Map::Units::UT_E_ENGINEER
                     && DAT_UnitsState::instance.units[iVar5].state.generic
@@ -211,11 +211,11 @@ namespace Map {
         } else {
             *(int*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationSprite1 + iVar6) = (char)bVar2 + 0x3d;
         }
-        if (*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar6 + -6) == 1) {
+        if (*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar6 - 6) == 1) {
             if (*(int*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationFrame1 + iVar6) == 1) {
                 MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
-                    (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar6 + -0x32),
-                    (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar6 + -0x30),
+                    (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar6 - 0x32),
+                    (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar6 - 0x30),
                     DE::SHCDE::FX_POT_FLARE_UP);
             }
             iVar4 = DAT_CurrentBuildingID::instance;
@@ -323,7 +323,7 @@ namespace Map {
         }
         *(int*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationSprite2 + iVar6) = iVar7;
     LAB_004164bc:
-        if (*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar6 + -0x52) == -1) {
+        if (*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar6 - 0x52) == -1) {
             MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
                 DAT_CurrentBuildingID::instance);
             iVar6 = DAT_CurrentBuildingID::instance * 0x32c;

@@ -17,19 +17,16 @@ namespace Map {
             EntityTypeShort EVar1;
             Entity* pEVar2;
             int iVar2;
-            if (((DAT_TileMapState::instance.MiscDisplayLayer[tile] & 0x1000))
-                && (iVar2 = 1, 1 < this->maxEntityCount)) {
+            if ((DAT_TileMapState::instance.MiscDisplayLayer[tile] & 0x1000) && (iVar2 = 1, 1 < this->maxEntityCount)) {
                 pEVar2 = &this->entityArray[1];
                 do {
-                    if (((pEVar2->logicalState == 2)
-                            && ((((EVar1 = pEVar2->entityType,
-                                      EVar1 == Map::Entities::ET_FLAG_1
-                                          || (EVar1 == Map::Entities::ET_FLAG_4))
-                                     || (EVar1 == Map::Entities::ET_FLAG_2))
-                                || (((EVar1 == Map::Entities::ET_FLAG_3
-                                         || (EVar1 == Map::Entities::ET_BRAZIER))
-                                    || (EVar1 == Map::Entities::ET_HEADS_ON_SPIKES))))))
-                        && (pEVar2->tile == tile)) {
+                    if (pEVar2->logicalState == 2
+                        && (((EVar1 = pEVar2->entityType,
+                                 EVar1 == Map::Entities::ET_FLAG_1 || (EVar1 == Map::Entities::ET_FLAG_4))
+                                || (EVar1 == Map::Entities::ET_FLAG_2))
+                            || (((EVar1 == Map::Entities::ET_FLAG_3 || (EVar1 == Map::Entities::ET_BRAZIER))
+                                || (EVar1 == Map::Entities::ET_HEADS_ON_SPIKES))))
+                        && pEVar2->tile == tile) {
                         pEVar2->logicalState = 3;
                         DAT_TileMapState::instance.MiscDisplayLayer[tile]
                             = DAT_TileMapState::instance.MiscDisplayLayer[tile] & 0xefff;

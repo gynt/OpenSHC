@@ -15,8 +15,8 @@ namespace Map {
                 DAT_TileMapState::instance.HeightLayer[iVar1] = 0;
                 DAT_TileMapState::instance.DefaultHeightLayer[iVar1] = 0;
             }
-            if ((!(DAT_TileMapState::instance.LogicLayer[iVar1] & 0x100000U))
-                && ((DAT_TileMapState::instance.Logic2Layer[iVar1] & 0x20))) {
+            if (!(DAT_TileMapState::instance.LogicLayer[iVar1] & 0x100000U)
+                && (DAT_TileMapState::instance.Logic2Layer[iVar1] & 0x20)) {
                 DAT_TileMapState::instance.HeightLayer[iVar1] = 0;
                 DAT_TileMapState::instance.DefaultHeightLayer[iVar1] = 0;
             }

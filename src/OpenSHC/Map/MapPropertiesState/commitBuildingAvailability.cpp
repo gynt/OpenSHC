@@ -29,7 +29,7 @@ namespace Map {
         /*
           bitmask for setting two shorts to 1
          */
-        for (_storedIndex = 190; _storedIndex != 0; _storedIndex = _storedIndex + -1) {
+        for (_storedIndex = 190; _storedIndex != 0; _storedIndex = _storedIndex - 1) {
             psVar1[0] = 1;
             psVar1[1] = 1;
             psVar1 = psVar1 + 2;
@@ -45,7 +45,7 @@ namespace Map {
         this->buildingAvailabilityArray2[8] = 1;
         this->buildingAvailabilityArray2[9] = 1;
         psVar1 = this->buildingAvailabilityArray2 + 10;
-        for (_storedIndex = 19; _storedIndex != 0; _storedIndex = _storedIndex + -1) {
+        for (_storedIndex = 19; _storedIndex != 0; _storedIndex = _storedIndex - 1) {
             psVar1[0] = 0;
             psVar1[1] = 0;
             psVar1 = psVar1 + 2;
@@ -112,7 +112,7 @@ namespace Map {
         this->buildingAvailabilityArray2[0x28] = 1;
         this->buildingAvailabilityArray2[0x19] = 1;
         this->buildingAvailabilityArray2[0x1c] = 1;
-        this->buildingAvailabilityRowCount = _arrayIndex + -2;
+        this->buildingAvailabilityRowCount = _arrayIndex - 2;
     }
 
 }

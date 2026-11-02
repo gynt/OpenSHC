@@ -42,8 +42,7 @@ namespace Map {
             + DAT_BuildingsState::instance.buildings[iVar5].resources[4] * 4;
         DAT_BuildingsState::instance.buildings[iVar5].spriteID = iVar6;
         if (iVar6 != DAT_BuildingsState::instance.buildings[iVar5].oldVisualActiveState) {
-            MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
-                iVar5);
+            MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(iVar5);
             iVar5 = DAT_CurrentBuildingID::instance;
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].oldVisualActiveState
                 = (short)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].spriteID;
@@ -70,7 +69,7 @@ namespace Map {
         }
         sVar2 = DAT_BuildingsState::instance.buildings[iVar6].outpostRelatedUnk4;
         if (0 < sVar2) {
-            DAT_BuildingsState::instance.buildings[iVar6].outpostRelatedUnk4 = sVar2 + -1;
+            DAT_BuildingsState::instance.buildings[iVar6].outpostRelatedUnk4 = sVar2 - 1;
         }
         sVar2 = DAT_BuildingsState::instance.buildings[iVar6].oxTetherRelatedUnitID;
         if (sVar2 <= 0) {
@@ -89,9 +88,8 @@ namespace Map {
                         sVar3 != 0)) {
                     iVar5 = MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
                         (int)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].owner, 0,
-                        (int)((int)(sVar2 * 8)), (int)((int)(sVar3 * 8)),
-                        (int)((int)(DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance]
-                                .terrainHeightUnk)),
+                        (int)(sVar2 * 8), (int)(sVar3 * 8),
+                        (int)(DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].terrainHeightUnk),
                         Map::Units::UT_QUARRYOX);
                     iVar6 = DAT_CurrentBuildingID::instance;
                     if (iVar5) {

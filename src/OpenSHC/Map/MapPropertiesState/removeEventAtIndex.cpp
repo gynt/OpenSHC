@@ -11,14 +11,14 @@ namespace Map {
         int iVar2;
         InGameEventUnionVersion* pIVar3;
         InGameEventUnionVersion* pIVar4;
-        this->eventsCount = this->eventsCount + -1;
+        this->eventsCount = this->eventsCount - 1;
         if (param_1 < this->eventsCount) {
             pIVar1 = this->scenarioEvents + param_1;
             do {
                 param_1 = param_1 + 1;
                 pIVar3 = pIVar1 + 1;
                 pIVar4 = pIVar1;
-                for (iVar2 = 57; iVar2 != 0; iVar2 = iVar2 + -1) {
+                for (iVar2 = 57; iVar2 != 0; iVar2 = iVar2 - 1) {
                     (pIVar4->header).month = (pIVar3->header).month;
                     pIVar3 = (InGameEventUnionVersion*)&(pIVar3->header).year;
                     pIVar4 = (InGameEventUnionVersion*)&(pIVar4->header).year;

@@ -12,8 +12,8 @@ namespace Map {
         byte* pbVar1;
         pbVar1 = &DAT_TileMapState::instance.moats[0].stage;
         do {
-            if (((pbVar1[-2] != '\0') && (*pbVar1 == 1))
-                && ((DAT_TileMapState::instance.LogicLayer[*(int*)(pbVar1 + -0xe)] & 0x40000000U))) {
+            if (pbVar1[-2] != '\0' && *pbVar1 == 1
+                && (DAT_TileMapState::instance.LogicLayer[*(int*)(pbVar1 - 0xe)] & 0x40000000U)) {
                 *pbVar1 = 2;
                 pbVar1[-1] = 4;
             }

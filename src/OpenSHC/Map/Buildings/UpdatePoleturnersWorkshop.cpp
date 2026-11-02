@@ -100,7 +100,7 @@ namespace Map {
                     DAT_BuildingsState::instance.buildings[buildingID].renderBlendStrength = 0x1f;
                 } else if (sVar3 < 0x1e) {
                     psVar2 = &DAT_BuildingsState::instance.buildings[buildingID].renderBlendStrength;
-                    *psVar2 = *psVar2 + -1;
+                    *psVar2 = *psVar2 - 1;
                 } else {
                     DAT_BuildingsState::instance.buildings[buildingID].renderBlendStrength = 0;
                 }
@@ -118,9 +118,9 @@ namespace Map {
             }
             if (bVar10) {
                 *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].animationIndex + iVar9) = 0;
-                sVar3 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -8);
+                sVar3 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 - 8);
                 if (!sVar3) {
-                    *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -8) = 1;
+                    *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 - 8) = 1;
                 } else {
                     bVar10 = sVar3 == 1;
                 LAB_00413c9c:
@@ -129,7 +129,7 @@ namespace Map {
                         *piVar1 = *piVar1 + 1;
                         *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].animationCycleCompleted + iVar9)
                             = 1;
-                        *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -8) = 0;
+                        *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 - 8) = 0;
                     }
                 }
             }
@@ -148,7 +148,7 @@ namespace Map {
                     DAT_BuildingsState::instance.buildings[buildingID].renderBlendStrength = 0x1f;
                 } else if (sVar3 < 0x1e) {
                     psVar2 = &DAT_BuildingsState::instance.buildings[buildingID].renderBlendStrength;
-                    *psVar2 = *psVar2 + -1;
+                    *psVar2 = *psVar2 - 1;
                 } else {
                     if (DAT_BuildingsState::instance.buildings[buildingID].animationFrame != 0x3d)
                         goto LAB_00413c50;
@@ -177,10 +177,10 @@ namespace Map {
                 bVar10 = '\0' >= (char)bVar7;
                 if (DAT_BuildingsState::instance.buildings[buildingID].animationIndex < 0x20) {
                     psVar2 = &DAT_BuildingsState::instance.buildings[buildingID].renderBlendStrength;
-                    *psVar2 = *psVar2 + -1;
+                    *psVar2 = *psVar2 - 1;
                 } else {
                 LAB_00413c50:
-                    *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -0x62) = 0;
+                    *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 - 0x62) = 0;
                 }
             } else {
                 if (sVar3 != 3)
@@ -202,28 +202,28 @@ namespace Map {
             }
             if (bVar10) {
                 *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].animationIndex + iVar9) = 0;
-                sVar3 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -8);
+                sVar3 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 - 8);
                 if (!sVar3) {
-                    *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -8) = 1;
+                    *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 - 8) = 1;
                 } else if (sVar3 == 1) {
-                    *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -8) = 2;
+                    *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 - 8) = 2;
                 } else {
                     if (sVar3 != 2) {
                         bVar10 = sVar3 == 3;
                         goto LAB_00413c9c;
                     }
-                    *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -8) = 3;
+                    *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 - 8) = 3;
                 }
             }
         }
     LAB_00413cb2:
-        sVar3 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -0x62);
+        sVar3 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 - 0x62);
         if (sVar3 < 0x20) {
             if (sVar3 < 0) {
-                *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -0x62) = 0;
+                *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 - 0x62) = 0;
             }
         } else {
-            *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -0x62) = 0x1f;
+            *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 - 0x62) = 0x1f;
         }
         iVar8 = (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].workerID + iVar9);
         if (iVar8) {
@@ -242,7 +242,7 @@ namespace Map {
         MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateVisuallyActiveState, DAT_BuildingsState::ptr)(
             buildingID);
         if (*(short*)((int)&DAT_BuildingsState::instance.buildings[0].buildingIsVisuallyActive + iVar9)
-            != *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -0x52)) {
+            != *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 - 0x52)) {
             MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
                 DAT_CurrentBuildingID::instance);
             iVar9 = DAT_CurrentBuildingID::instance * 0x32c;

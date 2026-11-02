@@ -14,10 +14,10 @@ namespace Map {
         iVar1 = 4;
         piVar1 = &this->SEC_SiegeInformation;
         do {
-            _total = _total + piVar1->archers + piVar1->crossbowmen + piVar1->spearmen + piVar1->macemen
-                + piVar1->pikemen;
+            _total
+                = _total + piVar1->archers + piVar1->crossbowmen + piVar1->spearmen + piVar1->macemen + piVar1->pikemen;
             piVar1 = (AI::Siege::SiegeUnitCounts*)(&piVar1->swordsmen);
-            iVar1 = iVar1 + -1;
+            iVar1 = iVar1 - 1;
         } while (iVar1);
         this->DAT_MapEditorUnitPointsSum = _total + this->SEC_Section1067.siegeEngineCounts[5]
             + this->SEC_Section1067.siegeEngineCounts[4] + this->SEC_Section1067.siegeEngineCounts[3]

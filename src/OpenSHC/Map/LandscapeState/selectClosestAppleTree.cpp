@@ -24,12 +24,10 @@ namespace Map {
         if (1 < this->maxTreeCount) {
             pTVar3 = &this->trees[1];
             do {
-                if (((pTVar3->state == 2) && (pTVar3->treeType == Map::Trees::TT_APPLEUnk))
-                    && (pTVar3->stage == 3)) {
-                    MACRO_CALL_MEMBER(
-                        Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
-                        DAT_DirectionAlgorithmState::ptr)(xPosition, yPosition, (int)((int)((short)pTVar3->xPosition)),
-                        (int)((int)((short)pTVar3->yPosition)));
+                if (pTVar3->state == 2 && pTVar3->treeType == Map::Trees::TT_APPLEUnk && pTVar3->stage == 3) {
+                    MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
+                        DAT_DirectionAlgorithmState::ptr)(
+                        xPosition, yPosition, (int)((short)pTVar3->xPosition), (int)((short)pTVar3->yPosition));
                     if (DAT_DirectionAlgorithmState::instance.distanceHigh < _minimumDistance) {
                         _minimumDistance = DAT_DirectionAlgorithmState::instance.distanceHigh;
                         _selectedTreeID = _treeID;
@@ -42,7 +40,7 @@ namespace Map {
                 this->x = (int)(short)this->trees[_selectedTreeID].xPosition;
                 this->y = (int)(short)this->trees[_selectedTreeID].yPosition;
                 if (!param_3) {
-                    this->x = this->x + -2;
+                    this->x = this->x - 2;
                     return _selectedTreeID;
                 }
                 if (param_3 == 1) {
@@ -53,7 +51,7 @@ namespace Map {
                     this->x = this->x + 2;
                     return _selectedTreeID;
                 }
-                this->y = this->y + -2;
+                this->y = this->y - 2;
                 return _selectedTreeID;
             }
         }

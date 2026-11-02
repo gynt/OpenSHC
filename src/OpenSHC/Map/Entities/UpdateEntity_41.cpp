@@ -25,7 +25,7 @@ namespace Map {
             DAT_GameState::instance.playerDataArray[_playerID].someCount33 = 0x46;
         } else {
             DAT_EntityState::instance.entityArray[_section1025ID].unkMinusOne
-                = (short)DAT_EntityDefinedData::instance.SharedEntityAnimationFrames[sVar1] + -1;
+                = (short)DAT_EntityDefinedData::instance.SharedEntityAnimationFrames[sVar1] - 1;
             DAT_EntityState::instance.entityArray[_section1025ID].graphicType2 = 1;
         }
         DAT_EntityState::instance.entityArray[_section1025ID].field82_0xbe = 0x2e;

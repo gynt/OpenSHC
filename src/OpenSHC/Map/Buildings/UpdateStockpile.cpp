@@ -38,12 +38,12 @@ namespace Map {
         bVar3 = false;
         bVar5 = DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY;
         DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].renderAnimation = 0;
-        if (((((bVar5) || (_owner != DAT_GameState::instance.mapAndTime.somePlayerID))
-                 && (!((byte)DAT_GameCore::instance.mapTimeInTicks & 3)))
-                && ((DAT_GameState::instance.playerDataArray[_owner].hasInitialResourceRecievingStarted == 0
-                    && (DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR))))
-            && ((DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT
-                && (DAT_GameState::instance.playerDataArray[_owner].someCountdown01 == 0)))) {
+        if (((bVar5) || (_owner != DAT_GameState::instance.mapAndTime.somePlayerID))
+            && !((byte)DAT_GameCore::instance.mapTimeInTicks & 3)
+            && DAT_GameState::instance.playerDataArray[_owner].hasInitialResourceRecievingStarted == 0
+            && DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR
+            && DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT
+            && DAT_GameState::instance.playerDataArray[_owner].someCountdown01 == 0) {
             if ((0 < DAT_GameState::instance.playerDataArray[_owner].startResources[2])
                 && (BVar4 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::buildingHasSpaceForResource,
                         DAT_BuildingsState::ptr)(_buildingID, Game::Resources::RT_WOOD),
@@ -51,7 +51,7 @@ namespace Map {
                 iVar2 = DAT_GameState::instance.playerDataArray[_owner].startResources[2];
                 piVar1 = DAT_GameState::instance.playerDataArray[_owner].currentResources + 2;
                 *piVar1 = *piVar1 + 1;
-                DAT_GameState::instance.playerDataArray[_owner].startResources[2] = iVar2 + -1;
+                DAT_GameState::instance.playerDataArray[_owner].startResources[2] = iVar2 - 1;
                 piVar1 = DAT_BuildingsState::instance.buildings[_buildingID].resources + 2;
                 *piVar1 = *piVar1 + 1;
                 MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::computeResourceSumForBuilding,
@@ -69,7 +69,7 @@ namespace Map {
                 iVar2 = DAT_GameState::instance.playerDataArray[_owner].startResources[3];
                 piVar1 = DAT_GameState::instance.playerDataArray[_owner].currentResources + 3;
                 *piVar1 = *piVar1 + 1;
-                DAT_GameState::instance.playerDataArray[_owner].startResources[3] = iVar2 + -1;
+                DAT_GameState::instance.playerDataArray[_owner].startResources[3] = iVar2 - 1;
                 piVar1 = DAT_BuildingsState::instance.buildings[_buildingID].resources + 3;
                 *piVar1 = *piVar1 + 1;
                 MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::computeResourceSumForBuilding,
@@ -89,7 +89,7 @@ namespace Map {
                 *piVar1 = *piVar1 + 1;
                 piVar1 = DAT_BuildingsState::instance.buildings[_buildingID].resources + 4;
                 *piVar1 = *piVar1 + 1;
-                DAT_GameState::instance.playerDataArray[_owner].startResources[4] = iVar2 + -1;
+                DAT_GameState::instance.playerDataArray[_owner].startResources[4] = iVar2 - 1;
                 MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::computeResourceSumForBuilding,
                     DAT_BuildingsState::ptr)(_buildingID);
                 DAT_GameState::instance.playerDataArray[_owner].hasInitialResourceRecievingStarted = 1;
@@ -107,7 +107,7 @@ namespace Map {
                 *piVar1 = *piVar1 + 1;
                 piVar1 = DAT_BuildingsState::instance.buildings[_buildingID].resources + 6;
                 *piVar1 = *piVar1 + 1;
-                DAT_GameState::instance.playerDataArray[_owner].startResources[6] = iVar2 + -1;
+                DAT_GameState::instance.playerDataArray[_owner].startResources[6] = iVar2 - 1;
                 MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::computeResourceSumForBuilding,
                     DAT_BuildingsState::ptr)(_buildingID);
                 DAT_GameState::instance.playerDataArray[_owner].hasInitialResourceRecievingStarted = 1;
@@ -123,7 +123,7 @@ namespace Map {
                 iVar2 = DAT_GameState::instance.playerDataArray[_owner].startResources[7];
                 piVar1 = DAT_GameState::instance.playerDataArray[_owner].currentResources + 7;
                 *piVar1 = *piVar1 + 1;
-                DAT_GameState::instance.playerDataArray[_owner].startResources[7] = iVar2 + -1;
+                DAT_GameState::instance.playerDataArray[_owner].startResources[7] = iVar2 - 1;
                 piVar1 = DAT_BuildingsState::instance.buildings[_buildingID].resources + 7;
                 *piVar1 = *piVar1 + 1;
                 MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::computeResourceSumForBuilding,
@@ -143,7 +143,7 @@ namespace Map {
                 *piVar1 = *piVar1 + 1;
                 piVar1 = DAT_BuildingsState::instance.buildings[_buildingID].resources + 9;
                 *piVar1 = *piVar1 + 1;
-                DAT_GameState::instance.playerDataArray[_owner].startResources[9] = iVar2 + -1;
+                DAT_GameState::instance.playerDataArray[_owner].startResources[9] = iVar2 - 1;
                 MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::computeResourceSumForBuilding,
                     DAT_BuildingsState::ptr)(_buildingID);
                 DAT_GameState::instance.playerDataArray[_owner].hasInitialResourceRecievingStarted = 1;
@@ -161,7 +161,7 @@ namespace Map {
                 *piVar1 = *piVar1 + 1;
                 piVar1 = DAT_BuildingsState::instance.buildings[_buildingID].resources + 0xe;
                 *piVar1 = *piVar1 + 1;
-                DAT_GameState::instance.playerDataArray[_owner].startResources[0xe] = iVar2 + -1;
+                DAT_GameState::instance.playerDataArray[_owner].startResources[0xe] = iVar2 - 1;
                 MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::computeResourceSumForBuilding,
                     DAT_BuildingsState::ptr)(_buildingID);
                 DAT_GameState::instance.playerDataArray[_owner].hasInitialResourceRecievingStarted = 1;
@@ -179,7 +179,7 @@ namespace Map {
                 iVar2 = DAT_GameState::instance.playerDataArray[_owner].startResources[0x10];
                 piVar1 = DAT_GameState::instance.playerDataArray[_owner].currentResources + 0x10;
                 *piVar1 = *piVar1 + 1;
-                DAT_GameState::instance.playerDataArray[_owner].startResources[0x10] = iVar2 + -1;
+                DAT_GameState::instance.playerDataArray[_owner].startResources[0x10] = iVar2 - 1;
                 piVar1 = DAT_BuildingsState::instance.buildings[_buildingID].resources + 0x10;
                 *piVar1 = *piVar1 + 1;
                 MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::computeResourceSumForBuilding,
@@ -188,8 +188,8 @@ namespace Map {
                 MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
                     _buildingID);
             }
-            MACRO_CALL_MEMBER(
-                Map::Buildings::BuildingsState_Func::countPlayerResources, DAT_BuildingsState::ptr)(_owner);
+            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::countPlayerResources, DAT_BuildingsState::ptr)(
+                _owner);
         }
     }
 

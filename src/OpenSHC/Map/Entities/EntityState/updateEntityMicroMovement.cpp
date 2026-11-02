@@ -14,10 +14,10 @@ namespace Map {
         {
             short* psVar1;
             short sVar2;
-            if ((((this->entityArray[param_1].entityType != Map::Entities::ET_SEAGULLUnk)
-                     || (this->entityArray[param_1].targetZ != 0))
-                    || (this->entityArray[param_1].microX != this->entityArray[param_1].targetX))
-                || (this->entityArray[param_1].microY != this->entityArray[param_1].targetY)) {
+            if (this->entityArray[param_1].entityType != Map::Entities::ET_SEAGULLUnk
+                || this->entityArray[param_1].targetZ != 0
+                || this->entityArray[param_1].microX != this->entityArray[param_1].targetX
+                || this->entityArray[param_1].microY != this->entityArray[param_1].targetY) {
                 switch (this->entityArray[param_1].pathAxisCase) {
                 default:
                     return;

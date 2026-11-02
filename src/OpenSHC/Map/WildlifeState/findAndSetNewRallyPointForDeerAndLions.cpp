@@ -54,10 +54,10 @@ namespace Map {
                 piVar4[-1] = 0;
                 *piVar4 = 0;
                 piVar4 = piVar4 + 0x640;
-                iVar5 = iVar5 + -1;
+                iVar5 = iVar5 - 1;
             } while (iVar5);
             piVar9 = piVar9 + 0x28;
-            iVar11 = iVar11 + -1;
+            iVar11 = iVar11 - 1;
         } while (iVar11);
         this->DAT_Y10_Array_Section1034[0] = (short)_y10;
         this->DAT_X10_Array_Section1034[0] = (short)_x10;
@@ -70,11 +70,11 @@ namespace Map {
                 this->casDisRelated = this->grid[sVar2][sVar3].casDisRelated2;
                 if (this->casDisRelated < 2)
                     break;
-                iVar11 = this->casDisRelated + -1;
+                iVar11 = this->casDisRelated - 1;
                 piVar9 = &DAT_TerrainDefinedData::instance.clockwiseCardinalTranslationMatrix[0].int_.yOffset;
                 do {
                     uVar10 = *piVar9 + (int)sVar3;
-                    uVar6 = ((Point8IntXY*)(piVar9 + -1))->xOffset + (int)sVar2;
+                    uVar6 = ((Point8IntXY*)(piVar9 - 1))->xOffset + (int)sVar2;
                     if (uVar6 < 0x28 && uVar10 < 0x28 && 0 < this->grid[uVar6][uVar10].firstMember
                         && _currentArea == this->grid[uVar6][uVar10].separateAreaID) {
                         if (!always0or1) {
@@ -122,10 +122,10 @@ namespace Map {
             iVar5 = (_randomDirection & 7) - 7;
             do {
                 iVar8 = iVar5 + 7;
-                iVar7 = iVar11 + -8;
+                iVar7 = iVar11 - 8;
                 if (7 < iVar8) {
-                    iVar8 = iVar5 + -1;
-                    iVar7 = iVar11 + -0x48;
+                    iVar8 = iVar5 - 1;
+                    iVar7 = iVar11 - 0x48;
                 }
                 uVar6
                     = *(int*)((int)DAT_TerrainDefinedData::instance.clockwiseCardinalTranslationMatrix + iVar7) + _x10;
@@ -140,7 +140,7 @@ namespace Map {
                 iVar8 = iVar11;
                 iVar7 = iVar5 + 8;
                 if (7 < iVar5 + 8) {
-                    iVar8 = iVar11 + -0x40;
+                    iVar8 = iVar11 - 0x40;
                     iVar7 = iVar5;
                 }
                 uVar10 = *(int*)((int)DAT_TerrainDefinedData::instance.clockwiseCardinalTranslationMatrix + iVar8 + 4)
@@ -157,7 +157,7 @@ namespace Map {
                 iVar7 = iVar11 + 8;
                 if (7 < iVar8) {
                     iVar8 = iVar5 + 1;
-                    iVar7 = iVar11 + -0x38;
+                    iVar7 = iVar11 - 0x38;
                 }
                 uVar10 = *(int*)((int)DAT_TerrainDefinedData::instance.clockwiseCardinalTranslationMatrix + iVar7 + 4)
                     + _y10;
@@ -173,7 +173,7 @@ namespace Map {
                 iVar7 = iVar11 + 0x10;
                 if (7 < iVar8) {
                     iVar8 = iVar5 + 2;
-                    iVar7 = iVar11 + -0x30;
+                    iVar7 = iVar11 - 0x30;
                 }
                 uVar10 = *(int*)((int)DAT_TerrainDefinedData::instance.clockwiseCardinalTranslationMatrix + iVar7 + 4)
                     + _y10;
@@ -187,7 +187,7 @@ namespace Map {
                 }
                 iVar11 = iVar11 + 0x20;
                 iVar5 = iVar5 + 4;
-                local_c = local_c + -1;
+                local_c = local_c - 1;
             } while (local_c);
             if (local_18 < 0)
                 break;
@@ -197,7 +197,10 @@ namespace Map {
             this->grid[_x10][_y10].field15_0x3c = 1;
             _destinationY = _y10 * 10 + 5;
             uVar6 = _x10 * 10 + 5;
-            if (uVar6 < 400 && _destinationY < 400 && *(char*)(_destinationY * 400 + (int)DAT_ViewportRenderState::instance.DAT_BinaryTileMap400x400 + uVar6) != '\0') {
+            if (uVar6 < 400 && _destinationY < 400
+                && *(char*)(_destinationY * 400 + (int)DAT_ViewportRenderState::instance.DAT_BinaryTileMap400x400
+                       + uVar6)
+                    != '\0') {
                 MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::pathFindingDeerAndLionsUnk,
                     DAT_PathFindingState::ptr)(_currentArea, uVar6, _destinationY);
                 DAT_TribesState::instance.tribes[tribeID]

@@ -121,7 +121,7 @@ namespace Map {
             }
             sVar6 = DAT_BuildingsState::instance.buildings[iVar5].field204_0x28a;
             if (sVar6) {
-                sVar6 = sVar6 + -1;
+                sVar6 = sVar6 - 1;
                 DAT_BuildingsState::instance.buildings[iVar5].field204_0x28a = sVar6;
                 if (!sVar6) {
                     MACRO_CALL_MEMBER(Game::GameStateStructures_Func::spawnDrunkard, DAT_GameState::ptr)(
@@ -144,20 +144,18 @@ namespace Map {
                 }
             }
         }
-        if (0 < *(short*)((int)DAT_BuildingsState::instance.buildings[0].quarryLinkedOxTethers + iVar9 + -0x1a)) {
+        if (0 < *(short*)((int)DAT_BuildingsState::instance.buildings[0].quarryLinkedOxTethers + iVar9 - 0x1a)) {
             if (iVar7
                 && (psVar2
-                    = (short*)((int)DAT_BuildingsState::instance.buildings[0].quarryLinkedOxTethers + iVar9 + -0x18),
+                    = (short*)((int)DAT_BuildingsState::instance.buildings[0].quarryLinkedOxTethers + iVar9 - 0x18),
                     *psVar2 = *psVar2 + 1,
-                    DAT_GameState::instance.playerDataArray[sVar4].aleRate
-                        <= (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].quarryLinkedOxTethers + iVar9
-                            + -0x18))) {
-                *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].quarryLinkedOxTethers + iVar9 + -0x18)
-                    = 0;
-                psVar2 = (short*)((int)DAT_BuildingsState::instance.buildings[0].quarryLinkedOxTethers + iVar9 + -0x1a);
-                *psVar2 = *psVar2 + -1;
+                    DAT_GameState::instance.playerDataArray[sVar4].aleRate <= (int)*(
+                        short*)((int)DAT_BuildingsState::instance.buildings[0].quarryLinkedOxTethers + iVar9 - 0x18))) {
+                *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].quarryLinkedOxTethers + iVar9 - 0x18) = 0;
+                psVar2 = (short*)((int)DAT_BuildingsState::instance.buildings[0].quarryLinkedOxTethers + iVar9 - 0x1a);
+                *psVar2 = *psVar2 - 1;
             }
-            if (0 < *(short*)((int)DAT_BuildingsState::instance.buildings[0].quarryLinkedOxTethers + iVar9 + -0x1a)
+            if (0 < *(short*)((int)DAT_BuildingsState::instance.buildings[0].quarryLinkedOxTethers + iVar9 - 0x1a)
                 && *(short*)((int)DAT_BuildingsState::instance.buildings[0].workerID + iVar9) != 0) {
                 piVar1 = &DAT_GameState::instance.playerDataArray[sVar4].workingInnsCount;
                 *piVar1 = *piVar1 + 1;
@@ -166,7 +164,7 @@ namespace Map {
         sVar6 = *(short*)((int)&DAT_BuildingsState::instance.buildings[0].buildingIsVisuallyActive + iVar9);
         piVar1 = &DAT_GameState::instance.playerDataArray[sVar4].countInns;
         *piVar1 = *piVar1 + 1;
-        if (sVar6 != *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -0x52)) {
+        if (sVar6 != *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 - 0x52)) {
             MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
                 DAT_CurrentBuildingID::instance);
             iVar9 = DAT_CurrentBuildingID::instance * 0x32c;

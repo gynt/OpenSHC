@@ -27,8 +27,8 @@ namespace Map {
         int local_18;
         int local_14;
         int local_10;
-        if (((unitXPosition < 400) && (unitYPosition < 400))
-            && (*(char*)(unitYPosition * 400 + 0x21aec98 + unitXPosition) != '\0')) {
+        if (unitXPosition < 400 && unitYPosition < 400
+            && *(char*)(unitYPosition * 400 + 0x21aec98 + unitXPosition) != '\0') {
             uVar2
                 = DAT_TileMapState::instance.PathConnectionLayer
                       [DAT_ViewportRenderState::instance.translationMatrix[unitYPosition].addXgetTile + unitXPosition];
@@ -39,9 +39,9 @@ namespace Map {
                 if (1 < this->maxTreeCount) {
                     psVar8 = &this->trees[1].state;
                     do {
-                        if (((*(int*)(psVar8 + 0x1e) < 4) && (*psVar8 == 2))
+                        if (*(int*)(psVar8 + 0x1e) < 4 && *psVar8 == 2
                             && (BVar3 = MACRO_CALL_MEMBER(Map::LandscapeState_Func::isTreeAdult, this)(
-                                    local_18, (int)((int)(*(int*)(psVar8 + 4)))),
+                                    local_18, (int)(*(int*)(psVar8 + 4))),
                                 BVar3)) {
                             byte bVar1 = DAT_TileMapState::instance.HeightLayer[*(uint*)(psVar8 + 0x12)];
                             for (iVar6 = 0; iVar6 < 8; iVar6++) {
@@ -54,21 +54,19 @@ namespace Map {
                                         DAT_BuildingsState::ptr)((int)DAT_TileMapState::instance.BuildingLayer[iVar7]);
                                     uVar5 = uVar5 + iVar4;
                                 }
-                                if ((((int)(uint)bVar1 <= (int)(uVar5 + 0x10))
-                                        && ((int)(uVar5 - 0x10) <= (int)(uint)bVar1))
+                                if ((int)(uint)bVar1 <= (int)(uVar5 + 0x10) && (int)(uVar5 - 0x10) <= (int)(uint)bVar1
                                     && (iVar7 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::
                                                                       calculateCanPlayerUnitsNavigateToAreaFromArea,
-                                            DAT_PathFindingState::ptr)(playerID, (dword)((int)((int)(short)uVar2)),
+                                            DAT_PathFindingState::ptr)(playerID, (dword)((int)((short)uVar2)),
                                             (dword)((int)((
                                                 int)(short)DAT_TileMapState::instance.PathConnectionLayer[iVar7])),
                                             0),
                                         iVar7 != 0)) {
-                                    if ((iVar6 < 8)
+                                    if (iVar6 < 8
                                         && (MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::
                                                                   setAxisBasedDistanceResult,
-                                                DAT_DirectionAlgorithmState::ptr)(unitXPosition,
-                                                (int)((int)(unitYPosition)), (int)((int)(psVar8[0xf])),
-                                                (int)((int)(psVar8[0x10]))),
+                                                DAT_DirectionAlgorithmState::ptr)(unitXPosition, (int)(unitYPosition),
+                                                (int)(psVar8[0xf]), (int)(psVar8[0x10])),
                                             DAT_DirectionAlgorithmState::instance.distanceHigh < local_14)) {
                                         local_14 = DAT_DirectionAlgorithmState::instance.distanceHigh;
                                         local_10 = local_18;

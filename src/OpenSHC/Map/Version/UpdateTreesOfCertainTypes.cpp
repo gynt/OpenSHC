@@ -24,10 +24,10 @@ namespace Map {
         iVar3 = 1;
         pTVar3 = &DAT_LandscapeState::instance.trees[1];
         do {
-            if ((pTVar3->state == 2)
-                && ((((TVar1 = pTVar3->treeType, TVar1 == ((TreeType)0x10) || (TVar1 == ((TreeType)0x11)))
-                         || (TVar1 == ((TreeType)0x12)))
-                    || (TVar1 == ((TreeType)0x13))))) {
+            if (pTVar3->state == 2
+                && (((TVar1 = pTVar3->treeType, TVar1 == ((TreeType)0x10) || (TVar1 == ((TreeType)0x11)))
+                        || (TVar1 == ((TreeType)0x12)))
+                    || (TVar1 == ((TreeType)0x13)))) {
                 pNVar2 = DAT_OrganismDefinedData::instance.UpdateTree[(short)TVar1];
                 pTVar3->state = 4;
                 DAT_CurrentTreeID::instance = iVar3;

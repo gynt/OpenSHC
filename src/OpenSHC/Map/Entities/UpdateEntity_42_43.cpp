@@ -22,7 +22,7 @@ namespace Map {
             DAT_EntityState::instance.entityArray[uVar2].logicalState = 3;
         } else {
             DAT_EntityState::instance.entityArray[uVar2].unkMinusOne
-                = (short)DAT_EntityDefinedData::instance.SharedEntityAnimationFrames[sVar1] + -1;
+                = (short)DAT_EntityDefinedData::instance.SharedEntityAnimationFrames[sVar1] - 1;
             DAT_EntityState::instance.entityArray[uVar2].graphicType2 = 1;
         }
         DAT_EntityState::instance.entityArray[uVar2].field82_0xbe = 0x2e;

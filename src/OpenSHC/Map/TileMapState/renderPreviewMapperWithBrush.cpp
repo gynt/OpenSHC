@@ -77,8 +77,8 @@ namespace Map {
             case Commands::M_MAPPER_MOAT:
                 _gfx = 0x39;
                 break;
-                default:
-                    goto switchD_00508acb_caseD_5;
+            default:
+                goto switchD_00508acb_caseD_5;
             case Commands::M_MAPPER_SCRUB:
             case Commands::M_MAPPER_DIRT:
                 goto switchD_00508acb_caseD_7;
@@ -158,10 +158,9 @@ namespace Map {
                 }
                 if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {
                     iVar4 = MACRO_CALL_MEMBER(Map::TileMapState_Func::getCastleBuildRangeForMapSize, this)();
-                    iVar4
-                        = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isOpponentBuildingInRange,
-                            DAT_PathFindingState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID,
-                            (int)((int)(x)), (int)((int)(y_00)), (int)((int)(param_3)), -1, -1, iVar4 + 5);
+                    iVar4 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isOpponentBuildingInRange,
+                        DAT_PathFindingState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID, (int)(x),
+                        (int)(y_00), (int)(param_3), -1, -1, iVar4 + 5);
                     if (iVar4) {
                         _gfx = 0x3e;
                     }
@@ -169,9 +168,8 @@ namespace Map {
             }
         }
         x = DAT_ViewportRenderState::instance.translationMatrix[y_00].addXgetTile + x;
-        if ((((MVar2 == Commands::M_MAPPER_DUGMOAT) || (MVar2 == Commands::M_MAPPER_UNDUGMOAT))
-                || (MVar2 == Commands::M_MAPPER_MOAT))
-            || (MVar2 == Commands::M_MAPPER_ANTIMOAT)) {
+        if (MVar2 == Commands::M_MAPPER_DUGMOAT || MVar2 == Commands::M_MAPPER_UNDUGMOAT
+            || MVar2 == Commands::M_MAPPER_MOAT || MVar2 == Commands::M_MAPPER_ANTIMOAT) {
             iVar4 = 0;
             param_3 = (Commands::MappersEnum)(y_00);
             do {

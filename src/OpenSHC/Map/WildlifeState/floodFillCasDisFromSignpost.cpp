@@ -47,10 +47,10 @@ namespace Map {
                 piVar1[-0xf] = 0;
                 *piVar1 = 0;
                 piVar1 = piVar1 + 0x640;
-                iVar3 = iVar3 + -1;
+                iVar3 = iVar3 - 1;
             } while (iVar3);
             piVar5 = piVar5 + 0x28;
-            iVar6 = iVar6 + -1;
+            iVar6 = iVar6 - 1;
         } while (iVar6);
         this->DAT_Y10_Array_Section1034[0] = (short)iVar7;
         iVar6 = this->grid[iVar2][iVar7].separateAreaID;
@@ -64,12 +64,12 @@ namespace Map {
                 iVar3 = this->casDisRelated + 1;
                 piVar5 = &DAT_TerrainDefinedData::instance.clockwiseCardinalTranslationMatrix[0].int_.yOffset;
                 do {
-                    uVar4 = ((Point8IntXY*)(piVar5 + -1))->xOffset + iVar7;
+                    uVar4 = ((Point8IntXY*)(piVar5 - 1))->xOffset + iVar7;
                     uVar8 = *piVar5 + iVar2;
-                    if ((((uVar4 < 0x28) && (uVar8 < 0x28)) && (0 < this->grid[uVar4][uVar8].firstMember))
-                        && (((iVar6 == this->grid[uVar4][uVar8].separateAreaID
-                                 && (this->grid[uVar4][uVar8].unknownNonZero01 == 0))
-                            && (this->grid[uVar4][uVar8].casDisRelated2 == 0)))) {
+                    if (uVar4 < 0x28 && uVar8 < 0x28 && 0 < this->grid[uVar4][uVar8].firstMember
+                        && iVar6 == this->grid[uVar4][uVar8].separateAreaID
+                        && this->grid[uVar4][uVar8].unknownNonZero01 == 0
+                        && this->grid[uVar4][uVar8].casDisRelated2 == 0) {
                         piVar1 = &this->grid[uVar4][uVar8].field29_0x74;
                         *piVar1 = *piVar1 + 1;
                         this->grid[uVar4][uVar8].casDisRelated2 = iVar3;
@@ -82,11 +82,10 @@ namespace Map {
                     }
                     uVar4 = piVar5[1] + iVar7;
                     uVar8 = piVar5[2] + iVar2;
-                    if (((uVar4 < 0x28) && (uVar8 < 0x28))
-                        && ((0 < this->grid[uVar4][uVar8].firstMember
-                            && (((iVar6 == this->grid[uVar4][uVar8].separateAreaID
-                                     && (this->grid[uVar4][uVar8].unknownNonZero01 == 0))
-                                && (this->grid[uVar4][uVar8].casDisRelated2 == 0)))))) {
+                    if (uVar4 < 0x28 && uVar8 < 0x28 && 0 < this->grid[uVar4][uVar8].firstMember
+                        && iVar6 == this->grid[uVar4][uVar8].separateAreaID
+                        && this->grid[uVar4][uVar8].unknownNonZero01 == 0
+                        && this->grid[uVar4][uVar8].casDisRelated2 == 0) {
                         this->grid[uVar4][uVar8].casDisRelated2 = iVar3;
                         piVar1 = &this->grid[uVar4][uVar8].field29_0x74;
                         *piVar1 = *piVar1 + 1;
@@ -99,11 +98,10 @@ namespace Map {
                     }
                     uVar4 = piVar5[3] + iVar7;
                     uVar8 = piVar5[4] + iVar2;
-                    if (((uVar4 < 0x28) && (uVar8 < 0x28))
-                        && (((0 < this->grid[uVar4][uVar8].firstMember
-                                 && ((iVar6 == this->grid[uVar4][uVar8].separateAreaID
-                                     && (this->grid[uVar4][uVar8].unknownNonZero01 == 0))))
-                            && (this->grid[uVar4][uVar8].casDisRelated2 == 0)))) {
+                    if (uVar4 < 0x28 && uVar8 < 0x28 && 0 < this->grid[uVar4][uVar8].firstMember
+                        && iVar6 == this->grid[uVar4][uVar8].separateAreaID
+                        && this->grid[uVar4][uVar8].unknownNonZero01 == 0
+                        && this->grid[uVar4][uVar8].casDisRelated2 == 0) {
                         this->grid[uVar4][uVar8].casDisRelated2 = iVar3;
                         piVar1 = &this->grid[uVar4][uVar8].field29_0x74;
                         *piVar1 = *piVar1 + 1;
@@ -116,10 +114,10 @@ namespace Map {
                     }
                     uVar4 = piVar5[5] + iVar7;
                     uVar8 = piVar5[6] + iVar2;
-                    if (((((uVar4 < 0x28) && (uVar8 < 0x28)) && (0 < this->grid[uVar4][uVar8].firstMember))
-                            && ((iVar6 == this->grid[uVar4][uVar8].separateAreaID
-                                && (this->grid[uVar4][uVar8].unknownNonZero01 == 0))))
-                        && (this->grid[uVar4][uVar8].casDisRelated2 == 0)) {
+                    if (uVar4 < 0x28 && uVar8 < 0x28 && 0 < this->grid[uVar4][uVar8].firstMember
+                        && iVar6 == this->grid[uVar4][uVar8].separateAreaID
+                        && this->grid[uVar4][uVar8].unknownNonZero01 == 0
+                        && this->grid[uVar4][uVar8].casDisRelated2 == 0) {
                         this->grid[uVar4][uVar8].casDisRelated2 = iVar3;
                         piVar1 = &this->grid[uVar4][uVar8].field29_0x74;
                         *piVar1 = *piVar1 + 1;

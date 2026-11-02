@@ -16,7 +16,7 @@ namespace Map {
             this->DAT_InvasionEventItemUnitCountSum = this->DAT_InvasionEventItemUnitCountSum
                 + piVar1->unitCountsPerUnitType[0] + piVar1->unitCountsPerUnitType[1] + piVar1->unitCountsPerUnitType[2]
                 + piVar1->unitCountsPerUnitType[4] + piVar1->unitCountsPerUnitType[3];
-            iVar1 = iVar1 + -1;
+            iVar1 = iVar1 - 1;
             piVar1 = (IngameInvasionEventItemContent*)(piVar1->unitCountsPerUnitType + 8);
         } while (iVar1);
     }

@@ -21,8 +21,7 @@ namespace Map {
     // FUNCTION: STRONGHOLDCRUSADER 0x004BB010
     BOOLEnum MapPropertiesState::isMapperAvailable(MappersEnum param_1)
     {
-        if ((param_1 == Commands::M_MAPPER_OUTPOST_EURO)
-            || (param_1 == Commands::M_MAPPER_OUTPOST_ARAB)) {
+        if ((param_1 == Commands::M_MAPPER_OUTPOST_EURO) || (param_1 == Commands::M_MAPPER_OUTPOST_ARAB)) {
             if (DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR) {
                 return FALSE;
             }
@@ -32,7 +31,7 @@ namespace Map {
             if (param_1 == Commands::M_MAPPER_KEEP1) {
                 return FALSE;
             }
-            if ((0x3d < (int)param_1) && ((int)param_1 < 0x41)) {
+            if (0x3d < (int)param_1 && (int)param_1 < 0x41) {
                 return FALSE;
             }
             return TRUE;
@@ -42,14 +41,14 @@ namespace Map {
         }
     LAB_004bb062:
         if (param_1 == Commands::M_MAPPER_DOG_CAGE) {
-            if (((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
-                    && (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SKIRMISH_SINGLE_PLAYER))
-                && (DAT_GameState::instance.mapAndTime.skirmishNoDogs)) {
+            if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY
+                && DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SKIRMISH_SINGLE_PLAYER
+                && DAT_GameState::instance.mapAndTime.skirmishNoDogs) {
                 return FALSE;
             }
-        } else if (((param_1 == Commands::M_MAPPER_HUNTER)
-                       && (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY))
-            && (!DAT_GameState::instance.mapAndTime.rawDeerCount)) {
+        } else if (param_1 == Commands::M_MAPPER_HUNTER
+            && DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY
+            && !DAT_GameState::instance.mapAndTime.rawDeerCount) {
             return FALSE;
         }
         return (int)this->buildingAvailabilityRelatedFlags[param_1];

@@ -89,25 +89,25 @@ namespace Map {
                 if (0x1d < sVar4)
                     goto LAB_004112c0;
                 psVar2 = &DAT_BuildingsState::instance.buildings[iVar5].renderBlendStrength;
-                *psVar2 = *psVar2 + -1;
+                *psVar2 = *psVar2 - 1;
             }
         LAB_004112c7:
             if (bVar7) {
                 *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].animationIndex + iVar6) = 0;
-                sVar4 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar6 + -8);
+                sVar4 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar6 - 8);
                 if (!sVar4) {
-                    *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar6 + -8) = 1;
+                    *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar6 - 8) = 1;
                 } else if (sVar4 == 1) {
-                    *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar6 + -8) = 2;
+                    *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar6 - 8) = 2;
                 } else if (sVar4 == 2) {
-                    *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar6 + -8) = 3;
+                    *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar6 - 8) = 3;
                 } else if (sVar4 == 3) {
-                    *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar6 + -8) = 4;
+                    *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar6 - 8) = 4;
                 } else if (sVar4 == 4) {
                     piVar1 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].animationCycleCount + iVar6);
                     *piVar1 = *piVar1 + 1;
                     *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].animationCycleCompleted + iVar6) = 1;
-                    *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar6 + -8) = 0;
+                    *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar6 - 8) = 0;
                 }
             }
         } else {
@@ -155,7 +155,7 @@ namespace Map {
                               [DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].animationIndex];
                 }
             LAB_004112c0:
-                *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar6 + -0x62) = 0;
+                *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar6 - 0x62) = 0;
                 goto LAB_004112c7;
             }
             if (sVar4 == 4) {
@@ -202,21 +202,21 @@ namespace Map {
                 bVar7 = (char)bVar3 < '\x01';
                 sVar4 = DAT_BuildingsState::instance.buildings[iVar5].animationIndex;
                 if (0x27 < sVar4) {
-                    DAT_BuildingsState::instance.buildings[iVar5].renderBlendStrength = sVar4 + -0x28;
+                    DAT_BuildingsState::instance.buildings[iVar5].renderBlendStrength = sVar4 - 0x28;
                 }
                 goto LAB_004112c7;
             }
         }
         if (*(short*)((int)&DAT_BuildingsState::instance.buildings[0].animationIncrement + iVar6) != 0) {
-            sVar4 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar6 + -0x62);
+            sVar4 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar6 - 0x62);
             if (0x1f < sVar4) {
-                *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar6 + -0x62) = 0x1f;
+                *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar6 - 0x62) = 0x1f;
                 goto LAB_00411360;
             }
             if (-1 < sVar4)
                 goto LAB_00411360;
         }
-        *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar6 + -0x62) = 0;
+        *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar6 - 0x62) = 0;
     LAB_00411360:
         bVar7 = DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY;
         *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationSprite1 + iVar6) = 0;

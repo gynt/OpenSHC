@@ -101,21 +101,21 @@ namespace Map {
                 DAT_BuildingsState::instance.buildings[iVar8].renderBlendStrength = 0x1f;
             } else if (sVar5 < 0xf) {
                 psVar3 = &DAT_BuildingsState::instance.buildings[iVar8].renderBlendStrength;
-                *psVar3 = *psVar3 + -2;
+                *psVar3 = *psVar3 - 2;
             } else {
                 DAT_BuildingsState::instance.buildings[iVar8].renderBlendStrength = 0;
             }
         LAB_0041495c:
             if (bVar7) {
                 *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].animationIndex + iVar9) = 0;
-                sVar5 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -8);
+                sVar5 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 - 8);
                 if (!sVar5) {
-                    *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -8) = 1;
+                    *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 - 8) = 1;
                 } else if (sVar5 == 1) {
                     piVar2 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].animationCycleCount + iVar9);
                     *piVar2 = *piVar2 + 1;
                     *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].animationCycleCompleted + iVar9) = 1;
-                    *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -8) = 0;
+                    *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 - 8) = 0;
                 }
             }
         } else if (sVar5 == 1) {
@@ -129,13 +129,13 @@ namespace Map {
                 = DAT_BuildingsState::instance.buildings[iVar8].animationIndex * 2;
             goto LAB_0041495c;
         }
-        sVar5 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -0x62);
+        sVar5 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 - 0x62);
         if (sVar5 < 0x20) {
             if (sVar5 < 0) {
-                *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -0x62) = 0;
+                *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 - 0x62) = 0;
             }
         } else {
-            *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -0x62) = 0x1f;
+            *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 - 0x62) = 0x1f;
         }
         iVar10 = (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].workerID + iVar9);
         if (iVar10) {
@@ -154,7 +154,7 @@ namespace Map {
         MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateVisuallyActiveState, DAT_BuildingsState::ptr)(
             iVar8);
         if (*(short*)((int)&DAT_BuildingsState::instance.buildings[0].buildingIsVisuallyActive + iVar9)
-            != *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -0x52)) {
+            != *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 - 0x52)) {
             MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(iVar8);
             iVar9 = DAT_CurrentBuildingID::instance * 0x32c;
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].oldVisualActiveState
@@ -164,7 +164,7 @@ namespace Map {
         *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].displayOwnerFlag + iVar9) = 1;
         if (!iVar10) {
             *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationSprite1 + iVar9) = 0;
-        } else if (*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -8) == 1) {
+        } else if (*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 - 8) == 1) {
             *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationSprite1 + iVar9) = 0x44;
         } else {
             sVar5 = *(short*)((int)&DAT_BuildingsState::instance.buildings[0].animationIndex + iVar9);

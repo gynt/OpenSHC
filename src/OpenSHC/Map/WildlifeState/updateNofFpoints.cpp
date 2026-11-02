@@ -43,7 +43,8 @@ namespace Map {
         _someY = DAT_GameState::instance.mapAndTime
                      .signpostEntryData[DAT_TroopValueState::instance.attackInfo.field128056_0x469d4]
                      .y;
-        if (uVar6 <= 0x18f && _someY <= 0x18f && DAT_ViewportRenderState::instance.DAT_BinaryTileMap400x400[_someY * 400 + uVar6] != '\0'
+        if (uVar6 <= 0x18f && _someY <= 0x18f
+            && DAT_ViewportRenderState::instance.DAT_BinaryTileMap400x400[_someY * 400 + uVar6] != '\0'
             && (_separateAreaID = DAT_TileMapState::instance
                     .PathConnectionLayer[DAT_ViewportRenderState::instance.translationMatrix[_someY].addXgetTile
                         + uVar6],
@@ -55,7 +56,7 @@ namespace Map {
                 psVar4[1] = 0;
                 *psVar4 = 0;
                 psVar4[-1] = 0;
-                (*(short (*)[8])(psVar4 + -2))[0] = 0;
+                (*(short (*)[8])(psVar4 - 2))[0] = 0;
                 psVar4 = psVar4 + 8;
             } while ((int)psVar4 < 0x1784940);
             sVar8 = 5;
@@ -106,7 +107,8 @@ namespace Map {
                                      + local_10)
                                     + uVar6],
                             _separateAreaID == uVar2)
-                        && uVar6 <= 0x18f && local_10 <= 0x12b4 && DAT_ViewportRenderState::instance.DAT_BinaryTileMap400x400[local_c + uVar6] != '\0') {
+                        && uVar6 <= 0x18f && local_10 <= 0x12b4
+                        && DAT_ViewportRenderState::instance.DAT_BinaryTileMap400x400[local_c + uVar6] != '\0') {
                         DAT_TroopValueState::instance.attackInfo.nof_fpointsArray[iVar5][0] = (short)uVar6;
                         DAT_TroopValueState::instance.attackInfo
                             .nof_fpointsArray[DAT_TroopValueState::instance.attackInfo.nof_fpoints][1] = sVar8;
@@ -241,7 +243,7 @@ namespace Map {
             do {
                 bVar3 = false;
                 iVar7 = 0;
-                if (iVar5 == 1 || iVar5 + -1 < 0) {}
+                if (iVar5 == 1 || iVar5 - 1 < 0) {}
                 src = DAT_TroopValueState::instance.attackInfo.nof_fpointsArray;
                 do {
                     if (src[1][6] < (*src)[6]) {
@@ -258,7 +260,7 @@ namespace Map {
                     }
                     iVar7 = iVar7 + 1;
                     src = src + 1;
-                } while (iVar7 < iVar5 + -1);
+                } while (iVar7 < iVar5 - 1);
             } while (bVar3);
         }
     }

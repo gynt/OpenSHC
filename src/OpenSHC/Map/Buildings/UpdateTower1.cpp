@@ -66,7 +66,7 @@ namespace Map {
                 uint uVar7 = uVar3 & 7;
                 uVar8 = uVar8 + 1;
                 uVar3 = uVar3 + 1;
-                iVar5 = iVar5 + -1;
+                iVar5 = iVar5 - 1;
                 local_20[uVar7] = uVar6 + 1;
             } while (iVar5);
         }
@@ -81,7 +81,7 @@ namespace Map {
     LAB_00418e05:
         short sVar2 = DAT_BuildingsState::instance.buildings[iVar1].tileScanCountdown;
         if ((0 < sVar2)
-            && (sVar2 = sVar2 + -1, DAT_BuildingsState::instance.buildings[iVar1].tileScanCountdown = sVar2, !sVar2)) {
+            && (sVar2 = sVar2 - 1, DAT_BuildingsState::instance.buildings[iVar1].tileScanCountdown = sVar2, !sVar2)) {
             iVar5 = 0;
             sVar2 = 0;
             do {

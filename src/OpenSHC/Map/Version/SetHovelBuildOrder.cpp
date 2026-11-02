@@ -10,9 +10,9 @@
 namespace OpenSHC {
 namespace Map {
 
+    using Map::Buildings::Building;
     using Map::Buildings::BuildingLogicalState;
     using Map::Buildings::BuildingType;
-    using Map::Buildings::Building;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0041A340
     void Version::SetHovelBuildOrder()
@@ -22,8 +22,7 @@ namespace Map {
         sVar1 = 0;
         pBVar1 = &DAT_BuildingsState::instance.buildings[1];
         do {
-            if ((pBVar1->logicalState != ((BuildingLogicalState)0))
-                && (pBVar1->buildingType == Map::Buildings::BT_HOVEL)) {
+            if (pBVar1->logicalState != (BuildingLogicalState)0 && pBVar1->buildingType == Map::Buildings::BT_HOVEL) {
                 pBVar1->buildMonthOrBuildOrder = sVar1;
                 sVar1 = sVar1 + 1;
                 *(undefined2*)&pBVar1->hovelVisualStyle = 0;

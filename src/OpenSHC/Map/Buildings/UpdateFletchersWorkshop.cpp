@@ -99,13 +99,12 @@ namespace Map {
                 sVar3 = *(short*)((int)&DAT_BuildingsState::instance.buildings[0].animationIndex + buildingID);
                 if (!sVar3) {
                     *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].animationFrame + buildingID) = 0;
-                    *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + buildingID + -0x62)
-                        = 0x1f;
+                    *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + buildingID - 0x62) = 0x1f;
                 } else if (sVar3 < 0x1e) {
-                    psVar2 = (short*)((int)DAT_BuildingsState::instance.buildings[0].resources + buildingID + -0x62);
-                    *psVar2 = *psVar2 + -1;
+                    psVar2 = (short*)((int)DAT_BuildingsState::instance.buildings[0].resources + buildingID - 0x62);
+                    *psVar2 = *psVar2 - 1;
                 } else {
-                    *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + buildingID + -0x62) = 0;
+                    *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + buildingID - 0x62) = 0;
                 }
             } else {
                 if (sVar3 != 1)
@@ -129,9 +128,9 @@ namespace Map {
             }
             if (bVar6) {
                 *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].animationIndex + buildingID) = 0;
-                sVar3 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + buildingID + -8);
+                sVar3 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + buildingID - 8);
                 if (!sVar3) {
-                    *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + buildingID + -8) = 1;
+                    *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + buildingID - 8) = 1;
                 } else if (sVar3 == 1) {
                     piVar1 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].animationCycleCount + buildingID);
                     /*
@@ -140,7 +139,7 @@ namespace Map {
                     *piVar1 = *piVar1 + 1;
                     *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].animationCycleCompleted + buildingID)
                         = 1;
-                    *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + buildingID + -8) = 0;
+                    *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + buildingID - 8) = 0;
                 }
             }
         } else {
@@ -175,13 +174,13 @@ namespace Map {
             }
         }
     LAB_00412fc8:
-        sVar3 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + buildingID + -0x62);
+        sVar3 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + buildingID - 0x62);
         if (sVar3 < 0x20) {
             if (sVar3 < 0) {
-                *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + buildingID + -0x62) = 0;
+                *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + buildingID - 0x62) = 0;
             }
         } else {
-            *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + buildingID + -0x62) = 0x1f;
+            *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + buildingID - 0x62) = 0x1f;
         }
         iVar7 = (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].workerID + buildingID);
         if (iVar7) {
@@ -202,7 +201,7 @@ namespace Map {
         MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateVisuallyActiveState, DAT_BuildingsState::ptr)(
             buildingID_00);
         if (*(short*)((int)&DAT_BuildingsState::instance.buildings[0].buildingIsVisuallyActive + buildingID)
-            != *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + buildingID + -0x52)) {
+            != *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + buildingID - 0x52)) {
             MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
                 DAT_CurrentBuildingID::instance);
             buildingID = DAT_CurrentBuildingID::instance * 0x32c;

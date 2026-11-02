@@ -22,7 +22,7 @@ namespace Map {
                 MACRO_CALL(Map::Version_Func::DeleteSeagull)();
             }
             if (receivedMapVersion == packagerMapVersion) {}
-            if (receivedMapVersion == ((PackagedFileMagicNum)100)) {
+            if (receivedMapVersion == (PackagedFileMagicNum)100) {
                 MACRO_CALL(Map::Version_Func::UpgradeSetCurrentEntityID3000)();
             } else if (0x90 < (int)receivedMapVersion)
                 goto LAB_004087a2;

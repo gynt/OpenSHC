@@ -34,7 +34,7 @@ namespace Map {
             uVar4 = microY & 7;
             bVar1 = MACRO_CALL_MEMBER(
                 Map::TileMapState_Func::setBitFlagBasedOnWallTowerGatehouseOrKeep, DAT_TileMapState::ptr)(
-                (int)(microX + ((int)microX >> 0x1f & 7U)) >> 3, (int)((int)((microY + (microY >> 0x1f & 7U)) >> 3)));
+                (int)(microX + ((int)microX >> 0x1f & 7U)) >> 3, (int)((microY + (microY >> 0x1f & 7U)) >> 3));
             switch (this->entityArray[param_1].orientation) {
             case 0x3c:
             case 0x40:
@@ -253,7 +253,7 @@ namespace Map {
                         break;
                     case 8:
                         bVar9 = (iVar3 < 100);
-                        bVar8 = (int)(-uVar2 + -0x5d) < 0;
+                        bVar8 = (int)(-uVar2 - 0x5d) < 0;
                         bVar7 = iVar3 == 100;
                         break;
                     case 0x28:
@@ -321,8 +321,8 @@ namespace Map {
             if (uVar4 != 0xfffffffb && -1 < (int)(uVar4 + 5)) {
                 do {
                     MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity, this)(0, 0, 0,
-                        (int)((int)(microX)), (int)((int)(microY)), (int)((int)(this->entityArray[param_1].height)),
-                        iVar6, iVar3, 8, ((EntityType)0x1b), 0);
+                        (int)(microX), (int)(microY), (int)(this->entityArray[param_1].height), iVar6, iVar3, 8,
+                        ((EntityType)0x1b), 0);
                     iVar5 = iVar5 + 1;
                     uVar4 = this->entityArray[param_1].rng_1 & 0x80000007;
                     if ((int)uVar4 < 0) {
@@ -331,9 +331,8 @@ namespace Map {
                 } while (iVar5 < (int)(uVar4 + 5));
             }
             iVar3 = (int)this->entityArray[param_1].height;
-            MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity, this)(0, 0, 0,
-                (int)((int)(microX)), (int)((int)(microY)), iVar3, (int)((int)(microX + 1)), (int)((int)(microY + 1)),
-                iVar3, ((EntityType)0x1e), 0);
+            MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity, this)(0, 0, 0, (int)(microX),
+                (int)(microY), iVar3, (int)(microX + 1), (int)(microY + 1), iVar3, ((EntityType)0x1e), 0);
         }
 
     }

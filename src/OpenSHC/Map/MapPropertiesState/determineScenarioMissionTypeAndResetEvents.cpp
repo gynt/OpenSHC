@@ -33,7 +33,7 @@ namespace Map {
         for (int _eventID = 0; _eventID < this->eventsCount; _eventID++) {
             if (this->scenarioEvents[_eventID].header.tl_type == 1) {
                 bVar2 = true;
-            } else if ((this->scenarioEvents[_eventID].header.tl_type == 3)
+            } else if (this->scenarioEvents[_eventID].header.tl_type == 3
                 && (iVar1 = this->scenarioEvents[_eventID].data.scenario.ScenarioEventType, -1 < iVar1)
                 && ((iVar1 < 2) || (iVar1 == 0x1a))) {
                 bVar3 = 1;

@@ -16,7 +16,7 @@ namespace Map {
     void MapPropertiesState::loadMapSiegeHeaderForMissionIndex(char* param_1)
     {
         char* pcVar1;
-        pcVar1 = param_1 + -1;
+        pcVar1 = param_1 - 1;
         if ((int)pcVar1 < 5) {
             MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::loadMapSiegeHeaderSections, this)(
                 (char*)(&DAT_MissionAestheticsDefinedData::instance.field15_0x3c)[(int)pcVar1]);

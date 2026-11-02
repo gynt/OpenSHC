@@ -2,6 +2,7 @@
 #include "../TileMapState.func.hpp"
 
 #include "OpenSHC/Map/LogicHelpers/Logic1.hpp"
+
 #include "OpenSHC/Globals/DAT_PathFindingState.hpp"
 #include "OpenSHC/Globals/DAT_TerrainDefinedData.hpp"
 #include "OpenSHC/Globals/DAT_ViewportRenderState.hpp"
@@ -50,26 +51,26 @@ namespace Map {
                                 this->DAT_SomeX = local_14;
                                 local_8 = 2;
                                 do {
-                                    if (((((uint)this->DAT_SomeX < 400) && ((uint)this->DAT_SomeY < 400))
-                                            && (*(char*)(this->DAT_SomeX + 0x21aec98 + this->DAT_SomeY * 400) != '\0'))
-                                        && ((this->DAT_SomeTile
+                                    if ((uint)this->DAT_SomeX < 400 && (uint)this->DAT_SomeY < 400
+                                        && *(char*)(this->DAT_SomeX + 0x21aec98 + this->DAT_SomeY * 400) != '\0'
+                                        && (this->DAT_SomeTile
                                             = DAT_ViewportRenderState::instance.translationMatrix[this->DAT_SomeY]
                                                     .addXgetTile
                                                 + this->DAT_SomeX,
                                             this->ChangedLayer[this->DAT_SomeTile] != 0
                                                 && ((this->LogicLayer[this->DAT_SomeTile]
-                                                    & Map::LogicHelpers::L_SEA))))) {
+                                                    & Map::LogicHelpers::L_SEA)))) {
                                         this->MacroLayer[this->DAT_SomeTile] = 0x800;
                                     }
                                     uVar2 = this->DAT_SomeX + 1;
-                                    if (((uVar2 < 400) && ((uint)this->DAT_SomeY < 400))
-                                        && (*(char*)(this->DAT_SomeX + 0x21aec99 + this->DAT_SomeY * 400) != '\0')) {
+                                    if (uVar2 < 400 && (uint)this->DAT_SomeY < 400
+                                        && *(char*)(this->DAT_SomeX + 0x21aec99 + this->DAT_SomeY * 400) != '\0') {
                                         iVar7 = DAT_ViewportRenderState::instance.translationMatrix[this->DAT_SomeY]
                                                     .addXgetTile;
                                         this->DAT_SomeTile = iVar7 + uVar2;
-                                        if ((this->ChangedLayer[this->DAT_SomeTile] != 0)
-                                            && ((this->LogicLayer[this->DAT_SomeX + iVar7 + 1]
-                                                & Map::LogicHelpers::L_SEA))) {
+                                        if (this->ChangedLayer[this->DAT_SomeTile] != 0
+                                            && (this->LogicLayer[this->DAT_SomeX + iVar7 + 1]
+                                                & Map::LogicHelpers::L_SEA)) {
                                             iVar7 = this->DAT_SomeX + iVar7 + 1;
                                             this->DAT_SomeX = uVar2;
                                             this->MacroLayer[iVar7] = 0x800;
@@ -78,14 +79,14 @@ namespace Map {
                                     }
                                     this->DAT_SomeX = uVar2;
                                     uVar2 = this->DAT_SomeX + 1;
-                                    if (((uVar2 < 400) && ((uint)this->DAT_SomeY < 400))
-                                        && (*(char*)(this->DAT_SomeX + 0x21aec99 + this->DAT_SomeY * 400) != '\0')) {
+                                    if (uVar2 < 400 && (uint)this->DAT_SomeY < 400
+                                        && *(char*)(this->DAT_SomeX + 0x21aec99 + this->DAT_SomeY * 400) != '\0') {
                                         iVar7 = DAT_ViewportRenderState::instance.translationMatrix[this->DAT_SomeY]
                                                     .addXgetTile;
                                         this->DAT_SomeTile = iVar7 + uVar2;
-                                        if ((this->ChangedLayer[this->DAT_SomeTile] != 0)
-                                            && ((this->LogicLayer[this->DAT_SomeX + iVar7 + 1]
-                                                & Map::LogicHelpers::L_SEA))) {
+                                        if (this->ChangedLayer[this->DAT_SomeTile] != 0
+                                            && (this->LogicLayer[this->DAT_SomeX + iVar7 + 1]
+                                                & Map::LogicHelpers::L_SEA)) {
                                             iVar7 = this->DAT_SomeX + iVar7 + 1;
                                             this->DAT_SomeX = uVar2;
                                             this->MacroLayer[iVar7] = 0x800;
@@ -94,14 +95,14 @@ namespace Map {
                                     }
                                     this->DAT_SomeX = uVar2;
                                     uVar2 = this->DAT_SomeX + 1;
-                                    if (((uVar2 < 400) && ((uint)this->DAT_SomeY < 400))
-                                        && (*(char*)(this->DAT_SomeX + 0x21aec99 + this->DAT_SomeY * 400) != '\0')) {
+                                    if (uVar2 < 400 && (uint)this->DAT_SomeY < 400
+                                        && *(char*)(this->DAT_SomeX + 0x21aec99 + this->DAT_SomeY * 400) != '\0') {
                                         iVar7 = DAT_ViewportRenderState::instance.translationMatrix[this->DAT_SomeY]
                                                     .addXgetTile;
                                         this->DAT_SomeTile = iVar7 + uVar2;
-                                        if ((this->ChangedLayer[this->DAT_SomeTile] != 0)
-                                            && ((this->LogicLayer[this->DAT_SomeX + iVar7 + 1]
-                                                & Map::LogicHelpers::L_SEA))) {
+                                        if (this->ChangedLayer[this->DAT_SomeTile] != 0
+                                            && (this->LogicLayer[this->DAT_SomeX + iVar7 + 1]
+                                                & Map::LogicHelpers::L_SEA)) {
                                             iVar7 = this->DAT_SomeX + iVar7 + 1;
                                             this->DAT_SomeX = uVar2;
                                             this->MacroLayer[iVar7] = 0x800;
@@ -110,14 +111,14 @@ namespace Map {
                                     }
                                     this->DAT_SomeX = uVar2;
                                     uVar2 = this->DAT_SomeX + 1;
-                                    if (((uVar2 < 400) && ((uint)this->DAT_SomeY < 400))
-                                        && (*(char*)(this->DAT_SomeX + 0x21aec99 + this->DAT_SomeY * 400) != '\0')) {
+                                    if (uVar2 < 400 && (uint)this->DAT_SomeY < 400
+                                        && *(char*)(this->DAT_SomeX + 0x21aec99 + this->DAT_SomeY * 400) != '\0') {
                                         iVar7 = DAT_ViewportRenderState::instance.translationMatrix[this->DAT_SomeY]
                                                     .addXgetTile;
                                         this->DAT_SomeTile = iVar7 + uVar2;
-                                        if ((this->ChangedLayer[this->DAT_SomeTile] != 0)
-                                            && ((this->LogicLayer[this->DAT_SomeX + iVar7 + 1]
-                                                & Map::LogicHelpers::L_SEA))) {
+                                        if (this->ChangedLayer[this->DAT_SomeTile] != 0
+                                            && (this->LogicLayer[this->DAT_SomeX + iVar7 + 1]
+                                                & Map::LogicHelpers::L_SEA)) {
                                             iVar7 = this->DAT_SomeX + iVar7 + 1;
                                             this->DAT_SomeX = uVar2;
                                             this->MacroLayer[iVar7] = 0x800;
@@ -126,7 +127,7 @@ namespace Map {
                                     }
                                     this->DAT_SomeX = uVar2;
                                     this->DAT_SomeX = this->DAT_SomeX + 1;
-                                    local_8 = local_8 + -1;
+                                    local_8 = local_8 - 1;
                                 } while (local_8);
                                 iVar8 = iVar8 + 1;
                             } while (iVar8 < 10);
@@ -160,15 +161,14 @@ namespace Map {
                                 this->DAT_SomeX = local_c;
                                 local_8 = 10;
                                 do {
-                                    if ((((uint)this->DAT_SomeX < 400) && ((uint)this->DAT_SomeY < 400))
-                                        && ((*(char*)(this->DAT_SomeY * 400 + 0x21aec98 + this->DAT_SomeX) != '\0'
-                                            && ((this->DAT_SomeTile = this->DAT_SomeX
-                                                    + DAT_ViewportRenderState::instance
-                                                        .translationMatrix[this->DAT_SomeY]
-                                                        .addXgetTile,
-                                                this->MacroLayer[this->DAT_SomeTile] == 0x800
-                                                    && ((this->LogicLayer[this->DAT_SomeTile]
-                                                        & Map::LogicHelpers::L_SEA))))))) {
+                                    if ((uint)this->DAT_SomeX < 400 && (uint)this->DAT_SomeY < 400
+                                        && *(char*)(this->DAT_SomeY * 400 + 0x21aec98 + this->DAT_SomeX) != '\0'
+                                        && (this->DAT_SomeTile = this->DAT_SomeX
+                                                + DAT_ViewportRenderState::instance.translationMatrix[this->DAT_SomeY]
+                                                    .addXgetTile,
+                                            this->MacroLayer[this->DAT_SomeTile] == 0x800
+                                                && ((this->LogicLayer[this->DAT_SomeTile]
+                                                    & Map::LogicHelpers::L_SEA)))) {
                                         uVar4 = this->RandomLayer[this->DAT_SomeTile];
                                         _someX = this->DAT_SomeTile
                                             - DAT_ViewportRenderState::instance.translationMatrix[this->DAT_SomeY]
@@ -215,7 +215,7 @@ namespace Map {
                                     }
                                 LAB_004ff539:
                                     this->DAT_SomeX = this->DAT_SomeX + 1;
-                                    local_8 = local_8 + -1;
+                                    local_8 = local_8 - 1;
                                 } while (local_8);
                             }
                         }
@@ -246,8 +246,8 @@ namespace Map {
                                 this->DAT_SomeX = local_c;
                                 local_8 = 2;
                                 do {
-                                    if (((((uint)this->DAT_SomeX < 400) && ((uint)this->DAT_SomeY < 400))
-                                            && (*(char*)(this->DAT_SomeY * 400 + 0x21aec98 + this->DAT_SomeX) != '\0'))
+                                    if ((uint)this->DAT_SomeX < 400 && (uint)this->DAT_SomeY < 400
+                                        && *(char*)(this->DAT_SomeY * 400 + 0x21aec98 + this->DAT_SomeX) != '\0'
                                         && (this->DAT_SomeTile
                                             = DAT_ViewportRenderState::instance.translationMatrix[this->DAT_SomeY]
                                                     .addXgetTile
@@ -256,8 +256,8 @@ namespace Map {
                                         this->MacroLayer[this->DAT_SomeTile] = 2;
                                     }
                                     uVar2 = this->DAT_SomeX + 1;
-                                    if (((uVar2 < 400) && ((uint)this->DAT_SomeY < 400))
-                                        && (*(char*)(this->DAT_SomeY * 400 + 0x21aec98 + uVar2) != '\0')) {
+                                    if (uVar2 < 400 && (uint)this->DAT_SomeY < 400
+                                        && *(char*)(this->DAT_SomeY * 400 + 0x21aec98 + uVar2) != '\0') {
                                         iVar7 = DAT_ViewportRenderState::instance.translationMatrix[this->DAT_SomeY]
                                                     .addXgetTile;
                                         this->DAT_SomeTile = iVar7 + uVar2;
@@ -270,8 +270,8 @@ namespace Map {
                                     }
                                     this->DAT_SomeX = uVar2;
                                     uVar2 = this->DAT_SomeX + 1;
-                                    if (((uVar2 < 400) && ((uint)this->DAT_SomeY < 400))
-                                        && (*(char*)(this->DAT_SomeY * 400 + 0x21aec98 + uVar2) != '\0')) {
+                                    if (uVar2 < 400 && (uint)this->DAT_SomeY < 400
+                                        && *(char*)(this->DAT_SomeY * 400 + 0x21aec98 + uVar2) != '\0') {
                                         iVar7 = DAT_ViewportRenderState::instance.translationMatrix[this->DAT_SomeY]
                                                     .addXgetTile;
                                         this->DAT_SomeTile = iVar7 + uVar2;
@@ -284,8 +284,8 @@ namespace Map {
                                     }
                                     this->DAT_SomeX = uVar2;
                                     uVar2 = this->DAT_SomeX + 1;
-                                    if (((uVar2 < 400) && ((uint)this->DAT_SomeY < 400))
-                                        && (*(char*)(this->DAT_SomeY * 400 + 0x21aec98 + uVar2) != '\0')) {
+                                    if (uVar2 < 400 && (uint)this->DAT_SomeY < 400
+                                        && *(char*)(this->DAT_SomeY * 400 + 0x21aec98 + uVar2) != '\0') {
                                         iVar7 = DAT_ViewportRenderState::instance.translationMatrix[this->DAT_SomeY]
                                                     .addXgetTile;
                                         this->DAT_SomeTile = iVar7 + uVar2;
@@ -298,8 +298,8 @@ namespace Map {
                                     }
                                     this->DAT_SomeX = uVar2;
                                     uVar2 = this->DAT_SomeX + 1;
-                                    if (((uVar2 < 400) && ((uint)this->DAT_SomeY < 400))
-                                        && (*(char*)(this->DAT_SomeY * 400 + 0x21aec98 + uVar2) != '\0')) {
+                                    if (uVar2 < 400 && (uint)this->DAT_SomeY < 400
+                                        && *(char*)(this->DAT_SomeY * 400 + 0x21aec98 + uVar2) != '\0') {
                                         iVar7 = DAT_ViewportRenderState::instance.translationMatrix[this->DAT_SomeY]
                                                     .addXgetTile;
                                         this->DAT_SomeTile = iVar7 + uVar2;
@@ -312,7 +312,7 @@ namespace Map {
                                     }
                                     this->DAT_SomeX = uVar2;
                                     this->DAT_SomeX = this->DAT_SomeX + 1;
-                                    local_8 = local_8 + -1;
+                                    local_8 = local_8 - 1;
                                 } while (local_8);
                                 iVar8 = iVar8 + 1;
                             } while (iVar8 < 10);

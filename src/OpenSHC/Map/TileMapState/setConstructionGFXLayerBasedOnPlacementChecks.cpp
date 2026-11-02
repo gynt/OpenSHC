@@ -57,51 +57,47 @@ namespace Map {
             }
             if (this->buildingPlacementFail) {
                 do {
-                    MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
-                        local_14, size);
+                    MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(local_14, size);
                     iVar14 = DAT_ViewportRenderState::instance.translationMatrix[this->buildingY + y].addXgetTile
                         + this->buildingX + x;
                     if (!(this->LogicLayer[iVar14] & 0x10000500U)) {
-                        iVar15 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile,
-                            this)(iVar14, (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)),
+                        iVar15 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile, this)(
+                            iVar14, (int)(DAT_GameSynchronyState::instance.currentPlayerSlotID),
                             (Commands::MappersEnum)(type), 0);
                         this->ConstructionGFXLayer[iVar14] = (-(ushort)(iVar15) & 0xfff9) + 0x3e;
                     }
                     local_14 = local_14 + 1;
                 } while (local_14 < this->constructionTileCount);
                 uVar8 = (undefined2)((uint)local_14 >> 0x10);
-                if ((((undefined2)type == Commands::M_MAPPER_KEEP1)
-                        || ((undefined2)type == Commands::M_MAPPER_KEEP2))
-                    || ((undefined2)type == Commands::M_MAPPER_KEEP3)) {
+                if ((undefined2)type == Commands::M_MAPPER_KEEP1 || (undefined2)type == Commands::M_MAPPER_KEEP2
+                    || (undefined2)type == Commands::M_MAPPER_KEEP3) {
                     piVar12
-                        = (int*)((int)DAT_TerrainDefinedData::ptr + ((short)(undefined2)type + -0x3c) * 0x60 + 0x264);
+                        = (int*)((int)DAT_TerrainDefinedData::ptr + ((short)(undefined2)type - 0x3c) * 0x60 + 0x264);
                     x = 3;
                     do {
                         iVar14 = DAT_ViewportRenderState::instance.translationMatrix[piVar12[1] + y].addXgetTile
                             + *piVar12 + iVar1;
                         if (!(this->LogicLayer[iVar14] & 0x10000500U)) {
-                            iVar15
-                                = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile,
-                                    this)(iVar14, (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)),
-                                    (Commands::MappersEnum)(type), 0);
+                            iVar15 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile, this)(
+                                iVar14, (int)(DAT_GameSynchronyState::instance.currentPlayerSlotID),
+                                (Commands::MappersEnum)(type), 0);
                             this->ConstructionGFXLayer[iVar14] = (-(ushort)(iVar15) & 0xfff9) + 0x3e;
                         }
                         piVar12 = piVar12 + 2;
-                        x = x + -1;
+                        x = x - 1;
                     } while (x);
-                    iVar3 = ((short)(undefined2)type + -0x3c) * 0x20;
+                    iVar3 = ((short)(undefined2)type - 0x3c) * 0x20;
                     iVar14 = *(int*)((int)DAT_TerrainDefinedData::ptr + iVar3 + 900);
                     iVar15 = *(int*)((int)DAT_TerrainDefinedData::ptr + iVar3 + 0x388);
                     local_14 = 0;
                     do {
-                        MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
-                            local_14, 7);
+                        MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(local_14, 7);
                         iVar13 = DAT_ViewportRenderState::instance.translationMatrix[this->buildingY + y + iVar15]
                                      .addXgetTile
                             + this->buildingX + iVar1 + iVar14;
                         if (!(this->LogicLayer[iVar13] & 0x10000500U)) {
-                            iVar4 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile,
-                                this)(iVar13, (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)),
+                            iVar4 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile, this)(
+                                iVar13, (int)(DAT_GameSynchronyState::instance.currentPlayerSlotID),
                                 (Commands::MappersEnum)(type), 0);
                             this->ConstructionGFXLayer[iVar13] = (-(ushort)(iVar4) & 0xfff9) + 0x3e;
                         }
@@ -111,16 +107,14 @@ namespace Map {
                     iVar15 = *(int*)((int)DAT_TerrainDefinedData::ptr + iVar3 + 1000);
                     iVar3 = 0;
                     do {
-                        MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
-                            iVar3, 5);
+                        MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(iVar3, 5);
                         iVar13 = this->buildingY + iVar15 + y;
                         iVar4 = DAT_ViewportRenderState::instance.translationMatrix[iVar13].addXgetTile
                             + this->buildingX + iVar14 + iVar1;
                         if (!(this->LogicLayer[iVar4] & 0x10000500U)) {
-                            iVar13
-                                = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile,
-                                    this)(iVar4, (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)),
-                                    (Commands::MappersEnum)(type), 0);
+                            iVar13 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile, this)(
+                                iVar4, (int)(DAT_GameSynchronyState::instance.currentPlayerSlotID),
+                                (Commands::MappersEnum)(type), 0);
                             iVar13 = (-(uint)(iVar13) & 0xfffffff9) + 0x3e;
                             this->ConstructionGFXLayer[iVar4] = (ushort)iVar13;
                         }
@@ -128,24 +122,23 @@ namespace Map {
                         iVar3 = iVar3 + 1;
                     } while (iVar3 < this->constructionTileCount);
                 }
-                if ((((undefined2)type == Commands::M_MAPPER_GATE_WOOD1A)
-                        || ((undefined2)type == Commands::M_MAPPER_GATE_WOOD1B))
-                    || (((undefined2)type == Commands::M_MAPPER_GATE_WOOD1C
-                        || ((undefined2)type == Commands::M_MAPPER_GATE_WOOD1D)))) {
+                if ((undefined2)type == Commands::M_MAPPER_GATE_WOOD1A
+                    || (undefined2)type == Commands::M_MAPPER_GATE_WOOD1B
+                    || (undefined2)type == Commands::M_MAPPER_GATE_WOOD1C
+                    || (undefined2)type == Commands::M_MAPPER_GATE_WOOD1D) {
                     MVar10 = (MappersEnum)(short)(undefined2)type;
-                    iVar14 = MVar10 * 3 + -0x1a4;
+                    iVar14 = MVar10 * 3 - 0x1a4;
                     iVar15 = *(int*)((int)DAT_TerrainDefinedData::ptr + iVar14 * 8 + 0x56c);
                     iVar14 = iVar14 * 8;
                     iVar3 = *(int*)((int)DAT_TerrainDefinedData::ptr + iVar14 + 0x570);
                     iVar13 = 0;
                     do {
-                        MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
-                            iVar13, 3);
+                        MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(iVar13, 3);
                         iVar5 = DAT_ViewportRenderState::instance.translationMatrix[this->buildingY + iVar3 + y]
                                     .addXgetTile
                             + this->buildingX + iVar15 + iVar1;
-                        iVar4 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile,
-                            this)(iVar5, (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)), MVar10, 0);
+                        iVar4 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile, this)(
+                            iVar5, (int)(DAT_GameSynchronyState::instance.currentPlayerSlotID), MVar10, 0);
                         iVar13 = iVar13 + 1;
                         this->ConstructionGFXLayer[iVar5] = (-(ushort)(iVar4) & 0xfff9) + 0x3e;
                     } while (iVar13 < this->constructionTileCount);
@@ -153,24 +146,22 @@ namespace Map {
                     iVar14 = *(int*)((int)DAT_TerrainDefinedData::ptr + iVar14 + 0x57c);
                     iVar3 = 0;
                     do {
-                        MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
-                            iVar3, 3);
+                        MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(iVar3, 3);
                         iVar4 = DAT_ViewportRenderState::instance.translationMatrix[this->buildingY + iVar14 + y]
                                     .addXgetTile
                             + this->buildingX + iVar15 + iVar1;
-                        iVar13 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile,
-                            this)(iVar4, (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)), MVar10, 0);
+                        iVar13 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile, this)(
+                            iVar4, (int)(DAT_GameSynchronyState::instance.currentPlayerSlotID), MVar10, 0);
                         iVar3 = iVar3 + 1;
                         this->ConstructionGFXLayer[iVar4] = (-(ushort)(iVar13) & 0xfff9) + 0x3e;
                     } while (iVar3 < this->constructionTileCount);
-                    piVar12 = (int*)((int)DAT_TerrainDefinedData::ptr + (MVar10 * 3 + -0x1a4) * 0x10 + 0x5cc);
+                    piVar12 = (int*)((int)DAT_TerrainDefinedData::ptr + (MVar10 * 3 - 0x1a4) * 0x10 + 0x5cc);
                     type = Commands::M_MAPPER_FOREST;
                     do {
                         iVar15 = DAT_ViewportRenderState::instance.translationMatrix[piVar12[1] + y].addXgetTile
                             + *piVar12 + iVar1;
-                        iVar14 = MACRO_CALL_MEMBER(
-                            Map::TileMapState_Func::isBuildingPlacementAllowedAtTile, this)(
-                            iVar15, (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)), MVar10, 0);
+                        iVar14 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile, this)(
+                            iVar15, (int)(DAT_GameSynchronyState::instance.currentPlayerSlotID), MVar10, 0);
                         iVar14 = (Commands::MappersEnum)((-(uint)(iVar14) & 0xfffffff9) + 0x3e);
                         piVar12 = piVar12 + 2;
                         type = (Commands::MappersEnum)(type - Commands::M_MAPPER_AREA);
@@ -178,20 +169,18 @@ namespace Map {
                     } while (type != Commands::M_MAPPER_NULL);
                     return iVar14;
                 }
-                if (((undefined2)type == Commands::M_MAPPER_BARRACKS_EURO)
-                    || ((undefined2)type == Commands::M_MAPPER_BARRACKS_ARAB)) {
+                if ((undefined2)type == Commands::M_MAPPER_BARRACKS_EURO
+                    || (undefined2)type == Commands::M_MAPPER_BARRACKS_ARAB) {
                     iVar14 = 0;
                     do {
-                        MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
-                            iVar14, 5);
+                        MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(iVar14, 5);
                         iVar3 = this->buildingX;
                         iVar15 = DAT_ViewportRenderState::instance.translationMatrix[this->buildingY + y].addXgetTile;
                         if (!(this->LogicLayer[iVar1 + this->buildingX + iVar15 + 5] & 0x10000500U)) {
-                            iVar13
-                                = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile,
-                                    this)(iVar15 + this->buildingX + iVar1 + 5,
-                                    (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)),
-                                    (Commands::MappersEnum)(type), 0);
+                            iVar13 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile, this)(
+                                iVar15 + this->buildingX + iVar1 + 5,
+                                (int)(DAT_GameSynchronyState::instance.currentPlayerSlotID),
+                                (Commands::MappersEnum)(type), 0);
                             this->ConstructionGFXLayer[iVar1 + iVar3 + iVar15 + 5]
                                 = (-(ushort)(iVar13) & 0xfff9) + 0x3e;
                         }
@@ -199,14 +188,13 @@ namespace Map {
                     } while (iVar14 < this->constructionTileCount);
                     iVar14 = 0;
                     do {
-                        MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
-                            iVar14, 5);
+                        MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(iVar14, 5);
                         iVar15
                             = DAT_ViewportRenderState::instance.translationMatrix[y + this->buildingY + 5].addXgetTile
                             + this->buildingX + iVar1;
                         if (!(this->LogicLayer[iVar15] & 0x10000500U)) {
-                            iVar3 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile,
-                                this)(iVar15, (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)),
+                            iVar3 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile, this)(
+                                iVar15, (int)(DAT_GameSynchronyState::instance.currentPlayerSlotID),
                                 (Commands::MappersEnum)(type), 0);
                             this->ConstructionGFXLayer[iVar15] = (-(ushort)(iVar3) & 0xfff9) + 0x3e;
                         }
@@ -214,18 +202,16 @@ namespace Map {
                     } while (iVar14 < this->constructionTileCount);
                     iVar14 = 0;
                     do {
-                        MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
-                            iVar14, 5);
+                        MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(iVar14, 5);
                         iVar3 = this->buildingX;
                         iVar13 = this->buildingY + y + 5;
                         iVar15
                             = DAT_ViewportRenderState::instance.translationMatrix[y + this->buildingY + 5].addXgetTile;
                         if (!(this->LogicLayer[iVar1 + this->buildingX + iVar15 + 5] & 0x10000500U)) {
-                            iVar13
-                                = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile,
-                                    this)(iVar15 + this->buildingX + iVar1 + 5,
-                                    (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)),
-                                    (Commands::MappersEnum)(type), 0);
+                            iVar13 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile, this)(
+                                iVar15 + this->buildingX + iVar1 + 5,
+                                (int)(DAT_GameSynchronyState::instance.currentPlayerSlotID),
+                                (Commands::MappersEnum)(type), 0);
                             iVar13 = (-(uint)(iVar13) & 0xfffffff9) + 0x3e;
                             this->ConstructionGFXLayer[iVar1 + iVar3 + iVar15 + 5] = (ushort)iVar13;
                         }
@@ -233,23 +219,21 @@ namespace Map {
                     } while (iVar14 < this->constructionTileCount);
                     return iVar13;
                 }
-                if (((undefined2)type != Commands::M_MAPPER_ENGINEERS_GUILD)
-                    && ((undefined2)type != Commands::M_MAPPER_TUNNELERS_GUILD)) {
+                if ((undefined2)type != Commands::M_MAPPER_ENGINEERS_GUILD
+                    && (undefined2)type != Commands::M_MAPPER_TUNNELERS_GUILD) {
                     if ((undefined2)type != Commands::M_MAPPER_OIL_SMELTER) {
                         return (((uint)(uVar8) << 0x10) | (uint)(ushort)((undefined2)type));
                     }
                     iVar14 = 0;
                     do {
-                        MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
-                            iVar14, 4);
+                        MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(iVar14, 4);
                         iVar15 = this->buildingY + y + 4;
                         iVar3 = DAT_ViewportRenderState::instance.translationMatrix[y + this->buildingY + 4].addXgetTile
                             + this->buildingX + iVar1;
                         if (!(this->LogicLayer[iVar3] & 0x10000500U)) {
-                            iVar15
-                                = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile,
-                                    this)(iVar3, (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)),
-                                    Commands::M_MAPPER_OIL_SMELTER, 0);
+                            iVar15 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile, this)(
+                                iVar3, (int)(DAT_GameSynchronyState::instance.currentPlayerSlotID),
+                                Commands::M_MAPPER_OIL_SMELTER, 0);
                             iVar15 = (-(uint)(iVar15) & 0xfffffff9) + 0x3e;
                             this->ConstructionGFXLayer[iVar3] = (ushort)iVar15;
                         }
@@ -259,14 +243,13 @@ namespace Map {
                 }
                 iVar14 = 0;
                 do {
-                    MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
-                        iVar14, 5);
+                    MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(iVar14, 5);
                     iVar15 = (this->buildingY + y + 5) * 3;
                     iVar3 = DAT_ViewportRenderState::instance.translationMatrix[y + this->buildingY + 5].addXgetTile
                         + this->buildingX + iVar1;
                     if (!(this->LogicLayer[iVar3] & 0x10000500U)) {
-                        iVar15 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile,
-                            this)(iVar3, (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)),
+                        iVar15 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile, this)(
+                            iVar3, (int)(DAT_GameSynchronyState::instance.currentPlayerSlotID),
                             (Commands::MappersEnum)(type), 0);
                         iVar15 = (-(uint)((Commands::MappersEnum)(iVar15)) & 0xfffffff9) + 0x3e;
                         this->ConstructionGFXLayer[iVar3] = (ushort)iVar15;
@@ -276,13 +259,12 @@ namespace Map {
                 return iVar15;
             }
         } else {
-            BVar2 = MACRO_CALL_MEMBER(
-                Map::Buildings::BuildingsState_Func::convertCommandBuildingTypeToBuildingType,
+            BVar2 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::convertCommandBuildingTypeToBuildingType,
                 DAT_BuildingsState::ptr)((Commands::MappersEnum)type);
             this->buildingSpriteSheetID_1
                 = DAT_BuildingDefinedData::instance.Building_SpriteSheet_ID_Array_1[BVar2].intValue;
-            this->buildingSpriteID1 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getSpriteID,
-                DAT_BuildingsState::ptr)((Commands::MappersEnum)type);
+            this->buildingSpriteID1 = MACRO_CALL_MEMBER(
+                Map::Buildings::BuildingsState_Func::getSpriteID, DAT_BuildingsState::ptr)((Commands::MappersEnum)type);
             this->buildingSpriteID2 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getSpriteID2,
                 DAT_BuildingsState::ptr)((Commands::MappersEnum)type);
         }
@@ -294,15 +276,13 @@ namespace Map {
             size = 3;
         } else if ((undefined2)type == Commands::M_MAPPER_CATTLEFARM) {
             size = 3;
-        } else if (((((undefined2)type == Commands::M_MAPPER_GATE_WOOD1A)
-                        || ((undefined2)type == Commands::M_MAPPER_GATE_WOOD1C))
-                       || ((undefined2)type == Commands::M_MAPPER_GATE_STONE1A))
-            || ((undefined2)type == Commands::M_MAPPER_GATE_STONE2A)) {
+        } else if ((undefined2)type == Commands::M_MAPPER_GATE_WOOD1A
+            || (undefined2)type == Commands::M_MAPPER_GATE_WOOD1C || (undefined2)type == Commands::M_MAPPER_GATE_STONE1A
+            || (undefined2)type == Commands::M_MAPPER_GATE_STONE2A) {
             this->gateOrientationVariant = 0x51;
-        } else if ((((undefined2)type == Commands::M_MAPPER_GATE_WOOD1B)
-                       || ((undefined2)type == Commands::M_MAPPER_GATE_WOOD1D))
-            || (((undefined2)type == Commands::M_MAPPER_GATE_STONE1B
-                || ((undefined2)type == Commands::M_MAPPER_GATE_STONE2B)))) {
+        } else if ((undefined2)type == Commands::M_MAPPER_GATE_WOOD1B
+            || (undefined2)type == Commands::M_MAPPER_GATE_WOOD1D || (undefined2)type == Commands::M_MAPPER_GATE_STONE1B
+            || (undefined2)type == Commands::M_MAPPER_GATE_STONE2B) {
             this->gateOrientationVariant = 0x50;
         }
         MVar10 = (MappersEnum)(short)(undefined2)type;
@@ -311,7 +291,7 @@ namespace Map {
             iVar3 = DAT_ViewportRenderState::instance.translationMatrix[this->buildingY + y].addXgetTile
                 + this->buildingX + iVar1;
             iVar15 = this->uiBuildingRotation;
-            if (((this->uiBuildingRotation != 0xf) && (this->uiBuildingRotation != 8))
+            if (this->uiBuildingRotation != 0xf && this->uiBuildingRotation != 8
                 && (iVar15 = this->uiBuildingRotation - this->mapOrientation, iVar15 < 0)) {
                 iVar15 = iVar15 + 8;
             }
@@ -323,7 +303,7 @@ namespace Map {
             LAB_00505714:
                 (*(short*)&x) = (short)this->buildingSpriteID2;
             }
-            if (((undefined2)type == Commands::M_MAPPER_DRAWBRIDGE) && (iVar15)) {
+            if ((undefined2)type == Commands::M_MAPPER_DRAWBRIDGE && iVar15) {
                 if (iVar15 == 2) {
                     iVar15 = 3;
                 } else if (iVar15 == 4) {
@@ -332,14 +312,12 @@ namespace Map {
                     iVar15 = 1;
                 }
             }
-            BVar2 = MACRO_CALL_MEMBER(
-                Map::Buildings::BuildingsState_Func::convertCommandBuildingTypeToBuildingType,
+            BVar2 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::convertCommandBuildingTypeToBuildingType,
                 DAT_BuildingsState::ptr)(MVar10);
             if (BVar2 == Map::Buildings::BT_UNKNOWN1) {
                 (*(short*)&x) = (short)x + (short)(&DAT_BuildingDefinedData::instance.field209_0x976c[9].y)[MVar10];
             } else {
-                BVar2 = MACRO_CALL_MEMBER(
-                    Map::Buildings::BuildingsState_Func::convertCommandBuildingTypeToBuildingType,
+                BVar2 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::convertCommandBuildingTypeToBuildingType,
                     DAT_BuildingsState::ptr)(MVar10);
                 if (BVar2 == Map::Buildings::BT_HOVEL) {
                     (*(short*)&x) = (short)DAT_BuildingDefinedData::instance.SomeSpriteArray1[DAT_GameState::instance
@@ -365,14 +343,14 @@ namespace Map {
             local_14 = local_14 + 1;
             if (this->constructionTileCount <= local_14) {
                 iVar15 = (((uint)((short)((uint)local_14 >> 0x10)) << 0x10) | (uint)(ushort)((undefined2)type));
-                if (((((undefined2)type == Commands::M_MAPPER_GATE_WOOD1A)
-                         || ((undefined2)type == Commands::M_MAPPER_GATE_WOOD1B))
-                        || ((undefined2)type == Commands::M_MAPPER_GATE_WOOD1C))
-                    || ((undefined2)type == Commands::M_MAPPER_GATE_WOOD1D)) {
+                if ((undefined2)type == Commands::M_MAPPER_GATE_WOOD1A
+                    || (undefined2)type == Commands::M_MAPPER_GATE_WOOD1B
+                    || (undefined2)type == Commands::M_MAPPER_GATE_WOOD1C
+                    || (undefined2)type == Commands::M_MAPPER_GATE_WOOD1D) {
                     /*
                       0 3 6 9
                      */
-                    _offset = MVar10 * 3 + -420;
+                    _offset = MVar10 * 3 - 420;
                     iVar15 = *(int*)((int)DAT_TerrainDefinedData::ptr + _offset * 8 + 0x50c);
                     iVar3 = *(int*)((int)DAT_TerrainDefinedData::ptr + _offset * 8 + 0x510);
                     /*
@@ -382,8 +360,7 @@ namespace Map {
                     iVar13 = *(int*)((int)DAT_TerrainDefinedData::ptr + iVar4 + 0x514);
                     iVar5 = 0;
                     do {
-                        MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
-                            iVar5, 2);
+                        MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(iVar5, 2);
                         iVar6 = DAT_ViewportRenderState::instance.translationMatrix[iVar3 + y + this->buildingY]
                                     .addXgetTile
                             + this->buildingX + iVar15 + iVar1;
@@ -422,8 +399,7 @@ namespace Map {
                     iVar13 = *(int*)((int)DAT_TerrainDefinedData::ptr + iVar4 + 0x520);
                     iVar4 = 0;
                     do {
-                        MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
-                            iVar4, 2);
+                        MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(iVar4, 2);
                         iVar5 = DAT_ViewportRenderState::instance.translationMatrix[iVar3 + y + this->buildingY]
                                     .addXgetTile
                             + this->buildingX + iVar15 + iVar1;
@@ -457,7 +433,7 @@ namespace Map {
                         iVar4 = iVar4 + 1;
                         pXVar11 = pXVar11 + 1;
                     } while (iVar4 < 5);
-                    piVar12 = (int*)((int)DAT_TerrainDefinedData::ptr + (MVar10 * 3 + -0x1a4) * 0x10 + 0x5cc);
+                    piVar12 = (int*)((int)DAT_TerrainDefinedData::ptr + (MVar10 * 3 - 0x1a4) * 0x10 + 0x5cc);
                     type = Commands::M_MAPPER_FOREST;
                     do {
                         iVar15 = DAT_ViewportRenderState::instance.translationMatrix[piVar12[1] + y].addXgetTile + iVar1
@@ -524,9 +500,8 @@ namespace Map {
                                               + y]
                                       .addXgetTile
                                 + DAT_TerrainDefinedData::instance.field1009_0xf5c[iVar3][iVar15 + 4].offset.x + iVar1;
-                            iVar3 = MACRO_CALL_MEMBER(
-                                Map::TileMapState_Func::getRubbleGraphicStageForDamageLevel, this)(
-                                DAT_TerrainDefinedData::instance.field1009_0xf5c[iVar3][iVar15 + 4].property);
+                            iVar3 = MACRO_CALL_MEMBER(Map::TileMapState_Func::getRubbleGraphicStageForDamageLevel,
+                                this)(DAT_TerrainDefinedData::instance.field1009_0xf5c[iVar3][iVar15 + 4].property);
                             iVar3 = iVar3 + 0x37 + GMTotalPicturesProcessed::instance[0xe];
                             this->ConstructionGFXLayer[iVar13] = (ushort)iVar3;
                             if (iVar14) {
@@ -549,12 +524,11 @@ namespace Map {
                         } while ((int)pXVar11 < 0xb49eb0);
                         return iVar15;
                     }
-                    if (((undefined2)type == Commands::M_MAPPER_BARRACKS_EURO)
-                        || ((undefined2)type == Commands::M_MAPPER_BARRACKS_ARAB)) {
+                    if ((undefined2)type == Commands::M_MAPPER_BARRACKS_EURO
+                        || (undefined2)type == Commands::M_MAPPER_BARRACKS_ARAB) {
                         iVar15 = 0;
                         do {
-                            MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
-                                iVar15, 5);
+                            MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(iVar15, 5);
                             iVar13 = this->buildingX;
                             iVar3
                                 = DAT_ViewportRenderState::instance.translationMatrix[this->buildingY + y].addXgetTile;
@@ -569,8 +543,7 @@ namespace Map {
                         } while (iVar15 < this->constructionTileCount);
                         iVar15 = 0;
                         do {
-                            MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
-                                iVar15, 5);
+                            MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(iVar15, 5);
                             iVar3 = DAT_ViewportRenderState::instance.translationMatrix[y + this->buildingY + 5]
                                         .addXgetTile
                                 + this->buildingX + iVar1;
@@ -583,8 +556,7 @@ namespace Map {
                         } while (iVar15 < this->constructionTileCount);
                         iVar15 = 0;
                         do {
-                            MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
-                                iVar15, 5);
+                            MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(iVar15, 5);
                             iVar13 = this->buildingX;
                             iVar3 = DAT_ViewportRenderState::instance.translationMatrix[y + this->buildingY + 5]
                                         .addXgetTile;
@@ -603,8 +575,7 @@ namespace Map {
                     if ((undefined2)type == Commands::M_MAPPER_ENGINEERS_GUILD) {
                         iVar15 = 0;
                         do {
-                            MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
-                                iVar15, 5);
+                            MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(iVar15, 5);
                             iVar3 = DAT_ViewportRenderState::instance.translationMatrix[y + this->buildingY + 5]
                                         .addXgetTile
                                 + this->buildingX + iVar1;
@@ -620,8 +591,7 @@ namespace Map {
                     if ((undefined2)type == Commands::M_MAPPER_TUNNELERS_GUILD) {
                         iVar15 = 0;
                         do {
-                            MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
-                                iVar15, 5);
+                            MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(iVar15, 5);
                             iVar3 = DAT_ViewportRenderState::instance.translationMatrix[y + this->buildingY + 5]
                                         .addXgetTile
                                 + this->buildingX + iVar1;
@@ -637,8 +607,7 @@ namespace Map {
                     if ((undefined2)type == Commands::M_MAPPER_OIL_SMELTER) {
                         iVar15 = 0;
                         do {
-                            MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
-                                iVar15, 4);
+                            MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(iVar15, 4);
                             iVar3 = DAT_ViewportRenderState::instance.translationMatrix[y + this->buildingY + 4]
                                         .addXgetTile
                                 + this->buildingX + iVar1;
@@ -684,8 +653,7 @@ namespace Map {
                         iVar13 = y + DAT_TerrainDefinedData::instance.unkXYOffsets_0x384[0].yOffset;
                         iVar15 = 0;
                         do {
-                            MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
-                                iVar15, 7);
+                            MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(iVar15, 7);
                             iVar4 = DAT_ViewportRenderState::instance.translationMatrix[this->buildingY + iVar13]
                                         .addXgetTile
                                 + this->buildingX + iVar3;
@@ -700,8 +668,7 @@ namespace Map {
                         iVar15 = DAT_TerrainDefinedData::instance.field132_0x3c4[4].yOffset + y;
                         iVar3 = 0;
                         do {
-                            MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
-                                iVar3, 5);
+                            MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(iVar3, 5);
                             iVar13 = DAT_ViewportRenderState::instance.translationMatrix[this->buildingY + iVar15]
                                          .addXgetTile
                                 + this->buildingX + iVar1;
@@ -714,8 +681,7 @@ namespace Map {
                         } while (iVar3 < this->constructionTileCount);
                         return iVar13;
                     }
-                    if (((undefined2)type == Commands::M_MAPPER_KEEP2)
-                        || ((undefined2)type == Commands::M_MAPPER_KEEP3)) {
+                    if ((undefined2)type == Commands::M_MAPPER_KEEP2 || (undefined2)type == Commands::M_MAPPER_KEEP3) {
                         uVar9 = (ushort)(this->mapOrientation == 2);
                         iVar15 = (MVar10 - Commands::M_MAPPER_KEEP1) * 0x60;
                         iVar3 = DAT_ViewportRenderState::instance
@@ -750,8 +716,7 @@ namespace Map {
                         iVar3 = *(int*)((int)DAT_TerrainDefinedData::ptr + iVar13 + 0x388);
                         iVar4 = 0;
                         do {
-                            MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
-                                iVar4, 7);
+                            MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(iVar4, 7);
                             iVar5 = DAT_ViewportRenderState::instance.translationMatrix[this->buildingY + y + iVar3]
                                         .addXgetTile
                                 + this->buildingX + iVar1 + iVar15;
@@ -766,8 +731,7 @@ namespace Map {
                         iVar3 = *(int*)((int)DAT_TerrainDefinedData::ptr + iVar13 + 1000);
                         iVar13 = 0;
                         do {
-                            MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
-                                iVar13, 5);
+                            MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(iVar13, 5);
                             iVar4 = DAT_ViewportRenderState::instance.translationMatrix[this->buildingY + iVar3 + y]
                                         .addXgetTile
                                 + this->buildingX + iVar15 + iVar1;

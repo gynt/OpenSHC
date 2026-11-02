@@ -37,7 +37,7 @@ namespace Map {
             = DAT_EntityState::instance.entityArray[uVar2].screenDirection + 0x81;
         sVar3 = SEC_RNG::instance.currentNumber2;
         sVar4 = DAT_EntityState::instance.entityArray[uVar2].rng_2;
-        if ((0 < sVar4) && (sVar4 = sVar4 + -1, DAT_EntityState::instance.entityArray[uVar2].rng_2 = sVar4, !sVar4)) {
+        if ((0 < sVar4) && (sVar4 = sVar4 - 1, DAT_EntityState::instance.entityArray[uVar2].rng_2 = sVar4, !sVar4)) {
             DAT_EntityState::instance.entityArray[uVar2].rng_2 = -10 - sVar3 % 0x32;
         }
         uVar1 = DAT_EntityState::instance.entityArray[uVar2].rng_2;

@@ -29,11 +29,11 @@ namespace Map {
         uint local_8;
         int local_4;
         local_4 = 0;
-        if ((((x1 < 400) && (y1 < 400)) && (*(char*)(y1 * 400 + 0x21aec98 + x1) != '\0'))
-            && (((x2 < 400 && (y2 < 400)) && (*(char*)(x2 + 0x21aec98 + y2 * 400) != '\0')))) {
+        if (x1 < 400 && y1 < 400 && *(char*)(y1 * 400 + 0x21aec98 + x1) != '\0' && x2 < 400 && y2 < 400
+            && *(char*)(x2 + 0x21aec98 + y2 * 400) != '\0') {
             this->DAT_WallTileCountCurrentDrag = 0;
             local_c = 2;
-            if (((short)command == 0x1b) && (local_4 = this->maxWallHeightInPath, !this->field118_0x554920)) {
+            if ((short)command == 0x1b && (local_4 = this->maxWallHeightInPath, !this->field118_0x554920)) {
                 this->ConstructionGFXLayer[DAT_ViewportRenderState::instance.translationMatrix[y1].addXgetTile + x1]
                     = (short)GMTotalPicturesProcessed::instance[6] + 0x13;
             }
@@ -47,14 +47,14 @@ namespace Map {
             y1 = uVar5;
             do {
                 if ((((short)command == 0x1b) && (local_4 < 0x18))
-                    || (((iVar6 = *local_14 + local_8, (short)command == 0x1b && ((this->LogicLayer[iVar6] & 0x100U)))
-                        || (this->constructionTileCount <= this->DAT_WallTileCountCurrentDrag))))
+                    || (iVar6 = *local_14 + local_8, (short)command == 0x1b && ((this->LogicLayer[iVar6] & 0x100U)))
+                    || this->constructionTileCount <= this->DAT_WallTileCountCurrentDrag)
                     break;
                 bVar1 = false;
-                if (((short)command == 0x19) && ((this->LogicLayer[iVar6] & 0x200U))) {
+                if ((short)command == 0x19 && (this->LogicLayer[iVar6] & 0x200U)) {
                     bVar1 = true;
                 }
-                if ((!(this->LogicLayer[iVar6] & 0x100U)) || (this->DamageLayer[iVar6] != 0)) {
+                if (!(this->LogicLayer[iVar6] & 0x100U) || this->DamageLayer[iVar6] != 0) {
                     iVar3 = this->DAT_WallTileCountCurrentDrag + 1;
                     if (bVar1)
                         goto LAB_004f8d6c;
@@ -72,7 +72,7 @@ namespace Map {
                                 this->ConstructionGFXLayer[iVar6] = (ushort)GMTotalPicturesProcessed::instance[6] + 4;
                             } else if ((short)command == 0x1b) {
                                 iVar3 = local_4 - (uint)this->HeightLayer[iVar6];
-                                iVar3 = ((int)(iVar3 + (iVar3 >> 0x1f & 7U)) >> 3) + -1;
+                                iVar3 = ((int)(iVar3 + (iVar3 >> 0x1f & 7U)) >> 3) - 1;
                                 if (0 < iVar3) {
                                     if (10 < iVar3) {
                                         iVar3 = 10;
@@ -80,7 +80,7 @@ namespace Map {
                                     uVar2 = (short)iVar3 + 8 + (ushort)GMTotalPicturesProcessed::instance[6];
                                     goto LAB_004f8e61;
                                 }
-                                this->DAT_WallTileCountCurrentDrag = this->DAT_WallTileCountCurrentDrag + -1;
+                                this->DAT_WallTileCountCurrentDrag = this->DAT_WallTileCountCurrentDrag - 1;
                             }
                         }
                     } else if ((short)command == 0x19) {
@@ -126,11 +126,11 @@ namespace Map {
                             local_14 = local_14 + 3;
                             uVar7 = uVar7 + 1;
                             iVar4 = iVar4 + 1;
-                            local_10 = local_10 + -1;
+                            local_10 = local_10 - 1;
                         } else {
-                            local_14 = local_14 + -3;
+                            local_14 = local_14 - 3;
                             uVar7 = uVar7 - 1;
-                            iVar4 = iVar4 + -1;
+                            iVar4 = iVar4 - 1;
                             local_10 = local_10 + 1;
                         }
                     }
@@ -151,21 +151,21 @@ namespace Map {
                             local_14 = local_14 + 3;
                             uVar7 = uVar7 + 1;
                             iVar4 = iVar4 + 1;
-                            local_10 = local_10 + -1;
+                            local_10 = local_10 - 1;
                         } else {
-                            local_14 = local_14 + -3;
+                            local_14 = local_14 - 3;
                             uVar7 = uVar7 - 1;
-                            iVar4 = iVar4 + -1;
+                            iVar4 = iVar4 - 1;
                             local_10 = local_10 + 1;
                         }
                     }
                     if ((local_8 == x2) && (uVar7 == y2)) {
                     LAB_004f8f54:
-                        local_c = local_c + -1;
+                        local_c = local_c - 1;
                     }
                 }
                 if ((0x10 < local_4) && (local_c == 2)) {
-                    local_4 = local_4 + -0x10;
+                    local_4 = local_4 - 0x10;
                 }
             } while (((local_8 != x2) || (uVar7 != y2)) || (local_c));
             if (this->illegalBuild) {

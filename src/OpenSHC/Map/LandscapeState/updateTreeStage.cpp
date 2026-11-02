@@ -37,17 +37,16 @@ namespace Map {
         int _treeID;
         int _treeType;
         TreeTypeShort _treeType_2;
-        if ((((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
-                 || ((!DAT_GameCore::instance.isTimeHalted
-                     && (BVar2 = MACRO_CALL(UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(
-                             UI::Enums::DEID_KEEP_AND_GRANERY_PLACEMENT_INFO),
-                         !BVar2))))
-                && (((this->trees[treeID].rng1 & 0x3fU) == rng
-                    && (((_treeType = (int)(short)this->trees[treeID].treeType, _treeType < 5 || (0x13 < _treeType))
-                        && (this->trees[treeID].zeroUpTo2 == 0))))))
-            && ((((short)this->trees[treeID].stageRelated2 <= (short)this->trees[treeID].stageRelated1
-                     && (this->field1_0x4))
-                && (DAT_GameCore::instance.currentMenuViewType != UI::Enums::MVT_MAP_EDITOR_LANDSCAPING)))) {
+        if (((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
+                || ((!DAT_GameCore::instance.isTimeHalted
+                    && (BVar2 = MACRO_CALL(UI::DisplayElements_Func::GetIfDisplayElementStateNotZero)(
+                            UI::Enums::DEID_KEEP_AND_GRANERY_PLACEMENT_INFO),
+                        !BVar2))))
+            && (this->trees[treeID].rng1 & 0x3fU) == rng
+            && (_treeType = (int)(short)this->trees[treeID].treeType, _treeType < 5 || (0x13 < _treeType))
+            && this->trees[treeID].zeroUpTo2 == 0
+            && (short)this->trees[treeID].stageRelated2 <= (short)this->trees[treeID].stageRelated1 && this->field1_0x4
+            && DAT_GameCore::instance.currentMenuViewType != UI::Enums::MVT_MAP_EDITOR_LANDSCAPING) {
             piVar1 = &this->trees[treeID].stageTracker;
             *piVar1 = *piVar1 + 1;
             iVar3 = this->trees[treeID].stage;
@@ -80,13 +79,11 @@ namespace Map {
                     DAT_GameState::instance.mapAndTime.newOrganismsValue2
                         = DAT_GameState::instance.mapAndTime.newOrganismsValue2 + 1;
                     iVar3 = MACRO_CALL_MEMBER(Map::LandscapeState_Func::setupBabyTreeLocation, this)(treeID,
-                        (int)((int)((short)this->trees[treeID].treeType)),
-                        (uint)((int)((int)(short)this->trees[treeID].xPosition)),
-                        (uint)((int)((int)(short)this->trees[treeID].yPosition)));
+                        (int)((short)this->trees[treeID].treeType), (uint)((int)(short)this->trees[treeID].xPosition),
+                        (uint)((int)(short)this->trees[treeID].yPosition));
                     if (iVar3) {
-                        size = MACRO_CALL_MEMBER(
-                            Map::LandscapeState_Func::getValueFrom0UpTo3ForTreeTypeAndTreeStage, this)(
-                            (int)(short)this->trees[treeID].treeType, 0);
+                        size = MACRO_CALL_MEMBER(Map::LandscapeState_Func::getValueFrom0UpTo3ForTreeTypeAndTreeStage,
+                            this)((int)(short)this->trees[treeID].treeType, 0);
                         _treeID = MACRO_CALL_MEMBER(Map::LandscapeState_Func::createTree, this)(
                             DAT_PathFindingState::instance.ALG_ResultX,
                             (undefined4)((int)(DAT_PathFindingState::instance.ALG_ResultY)),
@@ -96,12 +93,12 @@ namespace Map {
                             = DAT_TileMapState::instance.LogicLayer[DAT_PathFindingState::instance.ALG_ResultTile]
                             | 0x1000;
                         DAT_TileMapState::instance.OrganismLayer[iVar3] = (short)_treeID;
-                        MACRO_CALL_MEMBER(Map::TileMapState_Func::applyTreeBrushToLogicalLayer,
-                            DAT_TileMapState::ptr)(_treeID, 0);
+                        MACRO_CALL_MEMBER(Map::TileMapState_Func::applyTreeBrushToLogicalLayer, DAT_TileMapState::ptr)(
+                            _treeID, 0);
                         MACRO_CALL_MEMBER(
                             Map::Navigation::PathFindingState_Func::updatePathLinkagesInAllEightDirections,
                             DAT_PathFindingState::ptr)(
-                            (int)(short)this->trees[_treeID].yPosition, (int)((int)(this->trees[_treeID].tile)));
+                            (int)(short)this->trees[_treeID].yPosition, (int)(this->trees[_treeID].tile));
                         DAT_GameState::instance.mapAndTime.newOrganisms
                             = DAT_GameState::instance.mapAndTime.newOrganisms + 1;
                         DAT_PathFindingState::instance.toggleUpdateSeparateAreaTileMap = 1;

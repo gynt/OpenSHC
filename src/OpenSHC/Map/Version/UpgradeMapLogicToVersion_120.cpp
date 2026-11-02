@@ -48,10 +48,10 @@ namespace Map {
                                 if (!(uVar2 & 0x100)) {
                                     iVar4 = iVar4 + uVar7;
                                 } else {
-                                    iVar4 = iVar4 + -0x5a + uVar7;
+                                    iVar4 = iVar4 - 0x5a + uVar7;
                                 }
                             } else {
-                                iVar4 = iVar4 + -0x62 + uVar7;
+                                iVar4 = iVar4 - 0x62 + uVar7;
                             }
                             iVar8 = iVar8 + 1;
                         }
@@ -64,10 +64,10 @@ namespace Map {
                                 if (!(uVar2 & 0x100)) {
                                     iVar4 = iVar4 + uVar7;
                                 } else {
-                                    iVar4 = iVar4 + -0x5a + uVar7;
+                                    iVar4 = iVar4 - 0x5a + uVar7;
                                 }
                             } else {
-                                iVar4 = iVar4 + -0x62 + uVar7;
+                                iVar4 = iVar4 - 0x62 + uVar7;
                             }
                             iVar8 = iVar8 + 1;
                         }
@@ -80,10 +80,10 @@ namespace Map {
                                 if (!(uVar2 & 0x100)) {
                                     iVar4 = iVar4 + uVar7;
                                 } else {
-                                    iVar4 = iVar4 + -0x5a + uVar7;
+                                    iVar4 = iVar4 - 0x5a + uVar7;
                                 }
                             } else {
-                                iVar4 = iVar4 + -0x62 + uVar7;
+                                iVar4 = iVar4 - 0x62 + uVar7;
                             }
                             iVar8 = iVar8 + 1;
                         }
@@ -96,10 +96,10 @@ namespace Map {
                                 if (!(uVar2 & 0x100)) {
                                     iVar4 = iVar4 + uVar7;
                                 } else {
-                                    iVar4 = iVar4 + -0x5a + uVar7;
+                                    iVar4 = iVar4 - 0x5a + uVar7;
                                 }
                             } else {
-                                iVar4 = iVar4 + -0x62 + uVar7;
+                                iVar4 = iVar4 - 0x62 + uVar7;
                             }
                             iVar8 = iVar8 + 1;
                         }

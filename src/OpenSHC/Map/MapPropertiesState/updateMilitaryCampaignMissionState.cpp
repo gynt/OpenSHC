@@ -19,11 +19,11 @@
 #include "OpenSHC/UI/Enums/MenuViewType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
-#include "OpenSHC/Globals/DAT_MapPropertiesState.hpp"
 #include "OpenSHC/Globals/DAT_BinkControlState.hpp"
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
 #include "OpenSHC/Globals/DAT_GameState.hpp"
 #include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
+#include "OpenSHC/Globals/DAT_MapPropertiesState.hpp"
 #include "OpenSHC/Globals/DAT_MenuModalComposition1.hpp"
 #include "OpenSHC/Globals/DAT_MenuModalComposition2.hpp"
 #include "OpenSHC/Globals/DAT_MenuModalComposition3.hpp"
@@ -72,16 +72,16 @@ namespace Map {
             if ((DAT_BinkControlState::instance.binkObjPtrArray[1] == (HBINK)0x0)
                 && (!DAT_VideoBikQueue::instance.storedMessages_0x924)) {
                 DAT_GameState::instance.mapAndTime.unknownCountdown01
-                    = DAT_GameState::instance.mapAndTime.unknownCountdown01 + -1;
+                    = DAT_GameState::instance.mapAndTime.unknownCountdown01 - 1;
             }
             if (!DAT_GameState::instance.mapAndTime.unknownCountdown01) {
                 DAT_VideoBikQueue::instance.storedMessages_0x924 = 0;
-                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
-                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition2::ptr)(UI::Enums::MMT_NONE, FALSE);
-                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
-                    DAT_MenuModalComposition3::ptr)(UI::Enums::MMT_NONE, FALSE);
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
+                    UI::Enums::MMT_NONE, FALSE);
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition2::ptr)(
+                    UI::Enums::MMT_NONE, FALSE);
+                MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition3::ptr)(
+                    UI::Enums::MMT_NONE, FALSE);
                 DAT_MenuTextInputState::instance.DAT_SomeTextArrayIndex = 9;
                 MACRO_CALL_MEMBER(
                     UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, DAT_MenuTextInputState::ptr)();
@@ -119,10 +119,8 @@ namespace Map {
             }
             MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
                 UI::Enums::DEID_MISSION_WIN_DEFEAT_BANNER, 2);
-            if ((DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.tabType
-                    == UI::Enums::BASMTT_SIEGETENT_BATTERINGRAM)
-                || (DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.tabType
-                    == UI::Enums::BASMTT_SIEGETENT_SHIELD)) {
+            if ((DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.tabType == UI::Enums::BASMTT_SIEGETENT_BATTERINGRAM)
+                || (DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.tabType == UI::Enums::BASMTT_SIEGETENT_SHIELD)) {
                 DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.buildMenuTab
                     = DAT_GameCore::instance.tabTypeSiegeSubset;
                 MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
@@ -130,8 +128,7 @@ namespace Map {
             }
             DAT_TileMapState::instance.currentMapperCommand = Commands::M_MAPPER_NULL;
             if (0 < DAT_UnitsState::instance.totalUnitsInSelection) {
-                MACRO_CALL_MEMBER(
-                    Map::Units::UnitsState_Func::deselectAllUnitsOneByOne, DAT_UnitsState::ptr)();
+                MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::deselectAllUnitsOneByOne, DAT_UnitsState::ptr)();
                 MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::queueEscapeCommand, DAT_UnitsState::ptr)();
                 MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseCursorState, DAT_MouseState::ptr)();
             }
@@ -153,13 +150,13 @@ namespace Map {
                     DAT_GameState::instance.mapAndTime.militaryCampaignStage = 1;
                     pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                         DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 1);
-                    MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
-                        DAT_VideoBikQueue::ptr)(pcVar5, pcVar8, pcVar9);
+                    MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik, DAT_VideoBikQueue::ptr)(
+                        pcVar5, pcVar8, pcVar9);
                     DAT_GameState::instance.mapAndTime.monthCopy = (short)DAT_GameState::instance.mapAndTime.month + 3;
                     DAT_GameState::instance.mapAndTime.yearCopy = (short)DAT_GameState::instance.mapAndTime.year;
                     iVar7 = DAT_GameState::instance.playerDataArray[2].lordKilledByPlayerID;
                     if (0xb < DAT_GameState::instance.mapAndTime.month) {
-                        DAT_GameState::instance.mapAndTime.month = DAT_GameState::instance.mapAndTime.month + -0xc;
+                        DAT_GameState::instance.mapAndTime.month = DAT_GameState::instance.mapAndTime.month - 0xc;
                         DAT_GameState::instance.mapAndTime.year = DAT_GameState::instance.mapAndTime.year + 1;
                     }
                 }
@@ -176,15 +173,15 @@ namespace Map {
                     DAT_GameState::instance.mapAndTime.militaryCampaignStage = 2;
                     pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                         DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 2);
-                    MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
-                        DAT_VideoBikQueue::ptr)(pcVar5, pcVar8, pcVar9);
+                    MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik, DAT_VideoBikQueue::ptr)(
+                        pcVar5, pcVar8, pcVar9);
                     MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::spawnAttackWaveForPlayer, this)(
                         2, 0x18, 5, 0x4b, 10, 3);
                     DAT_GameState::instance.mapAndTime.monthCopy = (short)DAT_GameState::instance.mapAndTime.month + 1;
                     DAT_GameState::instance.playerDataArray[2].currentWaveRandomAttackingStrength = 0;
                     DAT_GameState::instance.mapAndTime.yearCopy = (short)DAT_GameState::instance.mapAndTime.year;
                     if (0xb < DAT_GameState::instance.mapAndTime.month) {
-                        DAT_GameState::instance.mapAndTime.month = DAT_GameState::instance.mapAndTime.month + -0xc;
+                        DAT_GameState::instance.mapAndTime.month = DAT_GameState::instance.mapAndTime.month - 0xc;
                         DAT_GameState::instance.mapAndTime.year = DAT_GameState::instance.mapAndTime.year + 1;
                     }
                 }
@@ -201,15 +198,15 @@ namespace Map {
                     DAT_GameState::instance.mapAndTime.militaryCampaignStage = 3;
                     pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                         DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 3);
-                    MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
-                        DAT_VideoBikQueue::ptr)(pcVar5, pcVar8, pcVar9);
+                    MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik, DAT_VideoBikQueue::ptr)(
+                        pcVar5, pcVar8, pcVar9);
                 }
                 goto LAB_004c25f4;
             }
             if (DAT_GameState::instance.mapAndTime.militaryCampaignStage == 4) {
                 if (((DAT_GameState::instance.mapAndTime.month != DAT_GameState::instance.mapAndTime.monthCopy)
                         || (DAT_GameState::instance.mapAndTime.year != DAT_GameState::instance.mapAndTime.yearCopy))
-                    && (DAT_GameState::instance.mapAndTime.year <= DAT_GameState::instance.mapAndTime.yearCopy)) {}
+                    && DAT_GameState::instance.mapAndTime.year <= DAT_GameState::instance.mapAndTime.yearCopy) {}
                 DAT_GameState::instance.mapAndTime.militaryCampaignStage = 5;
                 goto LAB_004c3082;
             }
@@ -238,12 +235,12 @@ namespace Map {
                     DAT_GameState::instance.mapAndTime.militaryCampaignStage = 1;
                     pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                         DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 5);
-                    MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
-                        DAT_VideoBikQueue::ptr)(pcVar5, pcVar8, pcVar9);
+                    MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik, DAT_VideoBikQueue::ptr)(
+                        pcVar5, pcVar8, pcVar9);
                     DAT_GameState::instance.mapAndTime.monthCopy = (short)DAT_GameState::instance.mapAndTime.month + 2;
                     DAT_GameState::instance.mapAndTime.yearCopy = (short)DAT_GameState::instance.mapAndTime.year;
                     if (0xb < DAT_GameState::instance.mapAndTime.month) {
-                        DAT_GameState::instance.mapAndTime.month = DAT_GameState::instance.mapAndTime.month + -0xc;
+                        DAT_GameState::instance.mapAndTime.month = DAT_GameState::instance.mapAndTime.month - 0xc;
                         DAT_GameState::instance.mapAndTime.year = DAT_GameState::instance.mapAndTime.year + 1;
                     }
                 }
@@ -262,8 +259,8 @@ namespace Map {
                      */
                     pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                         DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 6);
-                    MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
-                        DAT_VideoBikQueue::ptr)(pcVar5, pcVar8, pcVar9);
+                    MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik, DAT_VideoBikQueue::ptr)(
+                        pcVar5, pcVar8, pcVar9);
                     MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::spawnAttackWaveForPlayer, this)(
                         2, 0x48, 0x32, 0x47, 0x14, 3);
                     DAT_GameState::instance.playerDataArray[2].currentWaveRandomAttackingStrength = 0;
@@ -279,8 +276,8 @@ namespace Map {
                      */
                     pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                         DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 7);
-                    MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
-                        DAT_VideoBikQueue::ptr)(pcVar5, pcVar8, pcVar9);
+                    MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik, DAT_VideoBikQueue::ptr)(
+                        pcVar5, pcVar8, pcVar9);
                 }
                 bVar6 = DAT_GameState::instance.playerDataArray[2].lordKilledByPlayerID == 0;
             } else {
@@ -296,9 +293,8 @@ namespace Map {
                                   added by script: "The slimy blighters legged it sar!  He’s left his general   in
                                   charge of the castle."
                                  */
-                                pcVar5
-                                    = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
-                                        DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 9);
+                                pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                    DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 9);
                                 MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                                     DAT_VideoBikQueue::ptr)(pcVar5, pcVar8, pcVar9);
                                 DAT_GameState::instance.mapAndTime.yearCopy
@@ -309,15 +305,15 @@ namespace Map {
                                     DAT_GameState::instance.mapAndTime.year
                                         = DAT_GameState::instance.mapAndTime.year + 1;
                                     DAT_GameState::instance.mapAndTime.month
-                                        = DAT_GameState::instance.mapAndTime.month + -0xc;
+                                        = DAT_GameState::instance.mapAndTime.month - 0xc;
                                 }
                             }
                         }
                         if (((DAT_GameState::instance.mapAndTime.month != DAT_GameState::instance.mapAndTime.monthCopy)
                                 || (DAT_GameState::instance.mapAndTime.year
                                     != DAT_GameState::instance.mapAndTime.yearCopy))
-                            && (DAT_GameState::instance.mapAndTime.year
-                                <= DAT_GameState::instance.mapAndTime.yearCopy)) {}
+                            && DAT_GameState::instance.mapAndTime.year <= DAT_GameState::instance.mapAndTime.yearCopy) {
+                        }
                         DAT_GameState::instance.mapAndTime.militaryCampaignStage = 7;
                         goto LAB_004c3082;
                     }
@@ -342,7 +338,7 @@ namespace Map {
                     DAT_GameState::instance.mapAndTime.militaryCampaignStage = 4;
                     DAT_GameState::instance.mapAndTime.yearCopy = (short)DAT_GameState::instance.mapAndTime.year;
                     if (0xb < DAT_GameState::instance.mapAndTime.month) {
-                        DAT_GameState::instance.mapAndTime.month = DAT_GameState::instance.mapAndTime.month + -0xc;
+                        DAT_GameState::instance.mapAndTime.month = DAT_GameState::instance.mapAndTime.month - 0xc;
                         DAT_GameState::instance.mapAndTime.year = DAT_GameState::instance.mapAndTime.year + 1;
                     }
                 }
@@ -373,8 +369,8 @@ namespace Map {
                      */
                     pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                         DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 10);
-                    MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
-                        DAT_VideoBikQueue::ptr)(pcVar5, pcVar8, pcVar9);
+                    MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik, DAT_VideoBikQueue::ptr)(
+                        pcVar5, pcVar8, pcVar9);
                 }
                 iVar7 = DAT_GameState::instance.playerDataArray[3].lordKilledByPlayerID;
                 if (DAT_GameState::instance.playerDataArray[2].lordKilledByPlayerID == 0) {}
@@ -393,7 +389,7 @@ namespace Map {
                 if (DAT_GameState::instance.mapAndTime.militaryCampaignStage != 4) {}
                 if (((DAT_GameState::instance.mapAndTime.month != DAT_GameState::instance.mapAndTime.monthCopy)
                         || (DAT_GameState::instance.mapAndTime.year != DAT_GameState::instance.mapAndTime.yearCopy))
-                    && (DAT_GameState::instance.mapAndTime.year <= DAT_GameState::instance.mapAndTime.yearCopy)) {}
+                    && DAT_GameState::instance.mapAndTime.year <= DAT_GameState::instance.mapAndTime.yearCopy) {}
                 DAT_GameState::instance.mapAndTime.militaryCampaignStage = 5;
                 goto LAB_004c3082;
             }
@@ -416,7 +412,7 @@ namespace Map {
             DAT_GameState::instance.mapAndTime.monthCopy = sVar1 + 1;
             if (0xb < DAT_GameState::instance.mapAndTime.month) {
                 DAT_GameState::instance.mapAndTime.year = DAT_GameState::instance.mapAndTime.year + 1;
-                DAT_GameState::instance.mapAndTime.month = DAT_GameState::instance.mapAndTime.month + -0xc;
+                DAT_GameState::instance.mapAndTime.month = DAT_GameState::instance.mapAndTime.month - 0xc;
             }
         }
         if (DAT_GameCore::instance.missionNumber1to20 != 0x13) {
@@ -434,13 +430,12 @@ namespace Map {
                         DAT_GameState::instance.mapAndTime.monthCopy
                             = (short)DAT_GameState::instance.mapAndTime.month + 1;
                         if (0xb < DAT_GameState::instance.mapAndTime.month) {
-                            DAT_GameState::instance.mapAndTime.month = DAT_GameState::instance.mapAndTime.month + -0xc;
+                            DAT_GameState::instance.mapAndTime.month = DAT_GameState::instance.mapAndTime.month - 0xc;
                             DAT_GameState::instance.mapAndTime.year = DAT_GameState::instance.mapAndTime.year + 1;
                         }
-                    } else if (((!(DAT_GameState::instance.mapAndTime.militaryCampaignFlags & 0x10U))
-                                   && (DAT_GameState::instance.mapAndTime.month
-                                       == DAT_GameState::instance.mapAndTime.monthCopy))
-                        && (DAT_GameState::instance.mapAndTime.year == DAT_GameState::instance.mapAndTime.yearCopy)) {
+                    } else if (!(DAT_GameState::instance.mapAndTime.militaryCampaignFlags & 0x10U)
+                        && DAT_GameState::instance.mapAndTime.month == DAT_GameState::instance.mapAndTime.monthCopy
+                        && DAT_GameState::instance.mapAndTime.year == DAT_GameState::instance.mapAndTime.yearCopy) {
                         pcVar9 = "Ap_Milit40.wav";
                         pcVar8 = "good_soldier_taunt.bik";
                         /*
@@ -467,14 +462,13 @@ namespace Map {
                         DAT_GameState::instance.mapAndTime.yearCopy = (short)DAT_GameState::instance.mapAndTime.year;
                         bVar2 = true;
                         if (0xb < DAT_GameState::instance.mapAndTime.month) {
-                            DAT_GameState::instance.mapAndTime.month = DAT_GameState::instance.mapAndTime.month + -0xc;
+                            DAT_GameState::instance.mapAndTime.month = DAT_GameState::instance.mapAndTime.month - 0xc;
                             DAT_GameState::instance.mapAndTime.year = DAT_GameState::instance.mapAndTime.year + 1;
                             bVar2 = bVar3;
                         }
-                    } else if (((!(DAT_GameState::instance.mapAndTime.militaryCampaignFlags & 0x20U))
-                                   && (DAT_GameState::instance.mapAndTime.month
-                                       == DAT_GameState::instance.mapAndTime.monthCopy))
-                        && (DAT_GameState::instance.mapAndTime.year == DAT_GameState::instance.mapAndTime.yearCopy)) {
+                    } else if (!(DAT_GameState::instance.mapAndTime.militaryCampaignFlags & 0x20U)
+                        && DAT_GameState::instance.mapAndTime.month == DAT_GameState::instance.mapAndTime.monthCopy
+                        && DAT_GameState::instance.mapAndTime.year == DAT_GameState::instance.mapAndTime.yearCopy) {
                         if (DAT_GameState::instance.playerDataArray[4].lordKilledByPlayerID == 0) {
                             pcVar9 = "Ap_Milit41.wav";
                             pcVar8 = "good_soldier_taunt.bik";
@@ -500,13 +494,12 @@ namespace Map {
                             = (short)DAT_GameState::instance.mapAndTime.month + 1;
                         DAT_GameState::instance.mapAndTime.yearCopy = (short)DAT_GameState::instance.mapAndTime.year;
                         if (0xb < DAT_GameState::instance.mapAndTime.month) {
-                            DAT_GameState::instance.mapAndTime.month = DAT_GameState::instance.mapAndTime.month + -0xc;
+                            DAT_GameState::instance.mapAndTime.month = DAT_GameState::instance.mapAndTime.month - 0xc;
                             DAT_GameState::instance.mapAndTime.year = DAT_GameState::instance.mapAndTime.year + 1;
                         }
-                    } else if (((!(DAT_GameState::instance.mapAndTime.militaryCampaignFlags & 0x40U))
-                                   && (DAT_GameState::instance.mapAndTime.month
-                                       == DAT_GameState::instance.mapAndTime.monthCopy))
-                        && (DAT_GameState::instance.mapAndTime.year == DAT_GameState::instance.mapAndTime.yearCopy)) {
+                    } else if (!(DAT_GameState::instance.mapAndTime.militaryCampaignFlags & 0x40U)
+                        && DAT_GameState::instance.mapAndTime.month == DAT_GameState::instance.mapAndTime.monthCopy
+                        && DAT_GameState::instance.mapAndTime.year == DAT_GameState::instance.mapAndTime.yearCopy) {
                         if (DAT_GameState::instance.playerDataArray[2].lordKilledByPlayerID == 0) {
                             pcVar9 = "Ap_Milit41.wav";
                             pcVar8 = "good_soldier_taunt.bik";
@@ -533,8 +526,8 @@ namespace Map {
                      */
                     pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                         DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 0x16);
-                    MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
-                        DAT_VideoBikQueue::ptr)(pcVar5, pcVar8, pcVar9);
+                    MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik, DAT_VideoBikQueue::ptr)(
+                        pcVar5, pcVar8, pcVar9);
                 }
                 if (!bVar6) {}
                 if (!bVar2) {}
@@ -549,8 +542,8 @@ namespace Map {
                  */
                 pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                     DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 0x17);
-                MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
-                    DAT_VideoBikQueue::ptr)(pcVar5, pcVar8, pcVar9);
+                MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik, DAT_VideoBikQueue::ptr)(
+                    pcVar5, pcVar8, pcVar9);
             LAB_004c3082:
                 DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     .playerDeathRelated = 1;
@@ -568,8 +561,7 @@ namespace Map {
                 }
                 DAT_TileMapState::instance.currentMapperCommand = Commands::M_MAPPER_NULL;
                 if (0 < DAT_UnitsState::instance.totalUnitsInSelection) {
-                    MACRO_CALL_MEMBER(
-                        Map::Units::UnitsState_Func::deselectAllUnitsOneByOne, DAT_UnitsState::ptr)();
+                    MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::deselectAllUnitsOneByOne, DAT_UnitsState::ptr)();
                     MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::queueEscapeCommand, DAT_UnitsState::ptr)();
                     MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseCursorState, DAT_MouseState::ptr)();
                 }
@@ -601,8 +593,8 @@ namespace Map {
                  */
                 pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                     DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 0xe);
-                MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
-                    DAT_VideoBikQueue::ptr)(pcVar5, pcVar8, pcVar9);
+                MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik, DAT_VideoBikQueue::ptr)(
+                    pcVar5, pcVar8, pcVar9);
                 MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::spawnAttackWaveForPlayer, this)(
                     2, 0x46, 8, 0x48, 0x16, 2);
                 DAT_GameState::instance.playerDataArray[2].currentWaveRandomAttackingStrength = 0;
@@ -620,8 +612,8 @@ namespace Map {
                  */
                 pcVar9 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                     DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, iVar7);
-                MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
-                    DAT_VideoBikQueue::ptr)(pcVar9, pcVar5, pcVar8);
+                MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik, DAT_VideoBikQueue::ptr)(
+                    pcVar9, pcVar5, pcVar8);
             }
         } else if (DAT_GameState::instance.mapAndTime.militaryCampaignStage == 2) {
             if (DAT_GameState::instance.playerDataArray[2].lordKilledByPlayerID == 0) {}
@@ -643,7 +635,7 @@ namespace Map {
                     if (DAT_GameState::instance.mapAndTime.militaryCampaignStage != 5) {}
                     if (((DAT_GameState::instance.mapAndTime.month != DAT_GameState::instance.mapAndTime.monthCopy)
                             || (DAT_GameState::instance.mapAndTime.year != DAT_GameState::instance.mapAndTime.yearCopy))
-                        && (DAT_GameState::instance.mapAndTime.year <= DAT_GameState::instance.mapAndTime.yearCopy)) {}
+                        && DAT_GameState::instance.mapAndTime.year <= DAT_GameState::instance.mapAndTime.yearCopy) {}
                     DAT_GameState::instance.mapAndTime.militaryCampaignStage = 6;
                     goto LAB_004c3082;
                 }
@@ -662,8 +654,8 @@ namespace Map {
                  */
                 pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                     DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 0x11);
-                MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
-                    DAT_VideoBikQueue::ptr)(pcVar5, pcVar8, pcVar9);
+                MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik, DAT_VideoBikQueue::ptr)(
+                    pcVar5, pcVar8, pcVar9);
                 pcVar8 = "Ap_Milit38.wav";
                 pcVar5 = "bad_soldier_taunt.bik";
                 iVar7 = 0x12;

@@ -22,7 +22,7 @@ namespace Map {
                 MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                     232, '\0', (void*)((int)(destination)));
                 destination = destination + 1;
-                iVar1 = iVar1 + -1;
+                iVar1 = iVar1 - 1;
             } while (iVar1);
             destination_00 = this->seagullArray;
             iVar1 = 100;
@@ -30,7 +30,7 @@ namespace Map {
                 MACRO_CALL_MEMBER(IO::LowLevelMemory_Func::fillMemory_ByteValue, DAT_LowLevelMemory::ptr)(
                     100, '\0', (void*)((int)(destination_00)));
                 destination_00 = destination_00 + 1;
-                iVar1 = iVar1 + -1;
+                iVar1 = iVar1 - 1;
             } while (iVar1);
             this->maxEntityCount = 3000;
             this->every10Ticks = 0x19;

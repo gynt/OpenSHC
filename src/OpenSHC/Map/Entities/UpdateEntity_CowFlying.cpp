@@ -32,11 +32,11 @@ namespace Map {
                 DAT_EntityState::instance.entityArray[uVar2].unknownAnimationFrameRelated = 0x77;
             }
             psVar1 = &DAT_EntityState::instance.entityArray[uVar2].someCounter_OR_hitGround;
-            *psVar1 = *psVar1 + -1;
+            *psVar1 = *psVar1 - 1;
             if (DAT_EntityState::instance.entityArray[uVar2].someCounter_OR_hitGround < 1) {
                 DAT_EntityState::instance.entityArray[uVar2].logicalState = 7;
             }
-            iVar3 = DAT_EntityState::instance.entityArray[uVar2].unknownAnimationFrameRelated + -100;
+            iVar3 = DAT_EntityState::instance.entityArray[uVar2].unknownAnimationFrameRelated - 100;
             DAT_EntityState::instance.entityArray[uVar2].graphicType2 = ((int)(iVar3 + (iVar3 >> 0x1f & 3U)) >> 2) + 0xc
                 + (int)DAT_EntityState::instance.entityArray[uVar2].graphicType2RelatedOffset;
             DAT_EntityState::instance.entityArray[uVar2].imageID = 0;

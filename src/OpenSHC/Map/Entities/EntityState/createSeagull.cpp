@@ -72,7 +72,7 @@ namespace Map {
                 this->seagullArray[_id].someAngle = 1;
             }
             sVar2 = this->seagullArray[_id].angle;
-            fVar6 = ((double)(sVar2 + -0xb4) * (double)3.1415926535) / (double)180.0;
+            fVar6 = ((double)(sVar2 - 0xb4) * (double)3.1415926535) / (double)180.0;
             sVar2 = this->seagullArray[_id].someAngle * 0x14 + sVar2;
             this->seagullArray[_id].angleStep = (-(ushort)((SEC_RNG::instance.currentNumber2 & 2U)) & 2) - 1;
             this->seagullArray[_id].angle = sVar2;
@@ -81,7 +81,7 @@ namespace Map {
             }
             sVar2 = this->seagullArray[_id].angle;
             if (sVar2 < 0) {
-                this->seagullArray[_id].angle = sVar2 + -0x168;
+                this->seagullArray[_id].angle = sVar2 - 0x168;
             }
             iVar4 = (int)this->seagullArray[_id].unknownCounter_0x16;
             this->seagullArray[_id].field12_0x1a = -0x14;
@@ -95,7 +95,7 @@ namespace Map {
             this->seagullArray[_id].x_3 = _x;
             this->seagullArray[_id].y_3 = _y;
             MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::initializeSeagullMovementVector, this)(
-                _id, (int)((int)(_x2)), (int)((int)(_y2)), (int)((int)(_x)), (int)((int)(_y)));
+                _id, (int)(_x2), (int)(_y2), (int)(_x), (int)(_y));
             this->seagullArray[_id].pathStepDelay = 5;
             _entityID = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity, this)(
                 _id, 0, 0, x, y, 0xfa, iVar3 + x, iVar4 + y, 0xfa, Map::Entities::ET_SEAGULLUnk, 0);

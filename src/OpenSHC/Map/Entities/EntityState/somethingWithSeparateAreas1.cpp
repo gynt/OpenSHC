@@ -44,45 +44,42 @@ namespace Map {
             if (1 < this->maxEntityCount) {
                 pEVar6 = &this->entityArray[1];
                 do {
-                    if ((((pEVar6->logicalState == 2) && (pEVar6->entityType == Map::Entities::ET_COW_POISON_CLOUD))
-                            && (pEVar6->unknownAnimationFrameRelated < 0x3e9))
-                        && (!pEVar6->unknownDistanceRelatedValue)) {
+                    if (pEVar6->logicalState == 2 && pEVar6->entityType == Map::Entities::ET_COW_POISON_CLOUD
+                        && pEVar6->unknownAnimationFrameRelated < 0x3e9 && !pEVar6->unknownDistanceRelatedValue) {
                         sVar1 = pEVar6->unitID_healer;
                         if (sVar1) {
-                            if ((pEVar6->unitUID == DAT_UnitsState::instance.units[sVar1].uid)
-                                && ((UVar2 = DAT_UnitsState::instance.units[sVar1].state.generic,
+                            if (pEVar6->unitUID == DAT_UnitsState::instance.units[sVar1].uid
+                                && (UVar2 = DAT_UnitsState::instance.units[sVar1].state.generic,
                                     UVar2 == Map::Units::States::US_AIM_WEAPONUnk
-                                        || (UVar2 == Map::Units::States::US_FIRE_WEAPONUnk))))
+                                        || (UVar2 == Map::Units::States::US_FIRE_WEAPONUnk)))
                                 goto LAB_0040184d;
                             pEVar6->unitID_healer = 0;
                         }
-                        if (((((int)(short)DAT_TileMapState::instance.PathConnectionLayer[pEVar6->tile]
-                                  == (int)(short)_separateAreaNumber)
-                                 || (iVar3 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::
-                                                                   calculateCanPlayerUnitsNavigateToAreaFromArea,
-                                         DAT_PathFindingState::ptr)((int)DAT_UnitsState::instance.units[unitID].owner,
-                                         (dword)((int)((int)(short)_separateAreaNumber)),
-                                         (dword)((int)((
-                                             int)(short)DAT_TileMapState::instance.PathConnectionLayer[pEVar6->tile])),
-                                         0),
-                                     iVar3 != 0))
-                                && ((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY
-                                    || ((iVar3 = (int)DAT_UnitsState::instance.units[unitID].workplaceBuildingID_1,
-                                        iVar3 == 0
-                                            || (MACRO_CALL_MEMBER(
-                                                    Map::Navigation::DirectionAlgorithmState_Func::
-                                                        setAxisBasedDistanceResult,
-                                                    DAT_DirectionAlgorithmState::ptr)(
-                                                    (int)(short)DAT_BuildingsState::instance.buildings[iVar3].x,
-                                                    (int)((
-                                                        int)((short)DAT_BuildingsState::instance.buildings[iVar3].y)),
-                                                    (int)((int)(pEVar6->xPosition)), (int)((int)(pEVar6->yPosition))),
-                                                DAT_DirectionAlgorithmState::instance.distanceHigh < 0x1f))))))
+                        if ((((int)(short)DAT_TileMapState::instance.PathConnectionLayer[pEVar6->tile]
+                                 == (int)(short)_separateAreaNumber)
+                                || (iVar3 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::
+                                                                  calculateCanPlayerUnitsNavigateToAreaFromArea,
+                                        DAT_PathFindingState::ptr)((int)DAT_UnitsState::instance.units[unitID].owner,
+                                        (dword)((int)((short)_separateAreaNumber)),
+                                        (dword)((int)((
+                                            int)(short)DAT_TileMapState::instance.PathConnectionLayer[pEVar6->tile])),
+                                        0),
+                                    iVar3 != 0))
+                            && (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY
+                                || ((iVar3 = (int)DAT_UnitsState::instance.units[unitID].workplaceBuildingID_1,
+                                    iVar3 == 0
+                                        || (MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::
+                                                                  setAxisBasedDistanceResult,
+                                                DAT_DirectionAlgorithmState::ptr)(
+                                                (int)(short)DAT_BuildingsState::instance.buildings[iVar3].x,
+                                                (int)((int)((short)DAT_BuildingsState::instance.buildings[iVar3].y)),
+                                                (int)(pEVar6->xPosition), (int)(pEVar6->yPosition)),
+                                            DAT_DirectionAlgorithmState::instance.distanceHigh < 0x1f))))
                             && (MACRO_CALL_MEMBER(
                                     Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
                                     DAT_DirectionAlgorithmState::ptr)((int)DAT_UnitsState::instance.units[unitID].x,
-                                    (int)((int)(DAT_UnitsState::instance.units[unitID].y)),
-                                    (int)((int)(pEVar6->xPosition)), (int)((int)(pEVar6->yPosition))),
+                                    (int)(DAT_UnitsState::instance.units[unitID].y), (int)(pEVar6->xPosition),
+                                    (int)(pEVar6->yPosition)),
                                 DAT_DirectionAlgorithmState::instance.distanceHigh < iVar5)) {
                             iVar5 = DAT_DirectionAlgorithmState::instance.distanceHigh;
                             local_8 = iVar4;

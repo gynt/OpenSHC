@@ -61,7 +61,7 @@ namespace Map {
             sVar4 = this->seagullArray[seagullID].someCountDown;
             _entityID = (int)this->seagullArray[seagullID].entityID;
             if (sVar4) {
-                sVar4 = sVar4 + -1;
+                sVar4 = sVar4 - 1;
                 this->seagullArray[seagullID].someCountDown = sVar4;
                 if (sVar4) {
                     return;
@@ -71,12 +71,11 @@ namespace Map {
                 _yPosition = this->entityArray[_entityID].yPosition;
                 this->entityArray[_entityID].targetY = _y;
                 MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
-                    (int)this->entityArray[_entityID].xPosition, (int)((int)(_yPosition)),
-                    DE::SHCDE::FX_GULL_SURFACE);
+                    (int)this->entityArray[_entityID].xPosition, (int)(_yPosition), DE::SHCDE::FX_GULL_SURFACE);
             }
             _microX = (int)this->entityArray[_entityID].microX;
             _targetX = _microX - this->entityArray[_entityID].targetX;
-            if (((int)((_targetX ^ (int)_targetX >> 0x1f) - ((int)_targetX >> 0x1f)) < 3)
+            if ((int)((_targetX ^ (int)_targetX >> 0x1f) - ((int)_targetX >> 0x1f)) < 3
                 && (_yDiff = (int)this->entityArray[_entityID].microY - (int)this->entityArray[_entityID].targetY,
                     (int)((_yDiff ^ (int)_yDiff >> 0x1f) - ((int)_yDiff >> 0x1f)) < 3)) {
                 if (((int)this->seagullArray[seagullID].randomNumber ^ this->entityArray[_entityID].rng_1
@@ -88,8 +87,8 @@ namespace Map {
                     _newMicroX = this->entityArray[_entityID].someMicroX + _microX;
                     _newY = _newMicroY / 8;
                     _newX = _newMicroX / 8;
-                    _newBounds = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::xyAreValid,
-                        DAT_ViewportRenderState::ptr)(_newX, _newY);
+                    _newBounds = MACRO_CALL_MEMBER(
+                        Rendering::ViewportRenderState_Func::xyAreValid, DAT_ViewportRenderState::ptr)(_newX, _newY);
                     if (_newBounds) {
                         _oldMicroY = (int)this->entityArray[_entityID].microY;
                         _oldMicroX = (int)this->entityArray[_entityID].microX;
@@ -97,45 +96,45 @@ namespace Map {
                         _oldX = _oldMicroX / 8;
                         _oldBounds = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::xyAreValid,
                             DAT_ViewportRenderState::ptr)(_oldX, _oldY);
-                        if (((_oldBounds)
-                                && ((
-                                    DAT_TileMapState::instance.LogicLayer
-                                        [DAT_ViewportRenderState::instance.translationMatrix[_newY].addXgetTile + _newX]
-                                    & 1)))
-                            && ((DAT_TileMapState::instance
-                                     .LogicLayer[DAT_ViewportRenderState::instance.translationMatrix[_oldY].addXgetTile
-                                         + _oldX]
-                                & 1))) {
+                        if (_oldBounds
+                            && (DAT_TileMapState::instance
+                                    .LogicLayer[DAT_ViewportRenderState::instance.translationMatrix[_newY].addXgetTile
+                                        + _newX]
+                                & 1)
+                            && (DAT_TileMapState::instance
+                                    .LogicLayer[DAT_ViewportRenderState::instance.translationMatrix[_oldY].addXgetTile
+                                        + _oldX]
+                                & 1)) {
                             this->seagullArray[seagullID].someCountDown = 160;
-                            MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::setProjectileTargetPosition,
-                                this)(_entityID, (int)((int)(this->entityArray[_entityID].microX)),
-                                (int)((int)(this->entityArray[_entityID].microY)), 0xfa, _newMicroX, _newMicroY, 0);
+                            MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::setProjectileTargetPosition, this)(
+                                _entityID, (int)(this->entityArray[_entityID].microX),
+                                (int)(this->entityArray[_entityID].microY), 0xfa, _newMicroX, _newMicroY, 0);
                             MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                                 (int)this->entityArray[_entityID].xPosition,
-                                (int)((int)(this->entityArray[_entityID].yPosition)), DE::SHCDE::FX_GULL);
+                                (int)(this->entityArray[_entityID].yPosition), DE::SHCDE::FX_GULL);
                             return;
                         }
                     }
                 }
                 sVar4 = this->seagullArray[seagullID].angle;
-                dVar3 = ((double)(sVar4 + -0xb4) * 3.1415926535) / 180.0;
+                dVar3 = ((double)(sVar4 - 0xb4) * 3.1415926535) / 180.0;
                 _newAngle = this->seagullArray[seagullID].someAngle * 20 + sVar4;
                 this->seagullArray[seagullID].angle = _newAngle;
                 if (360 < _newAngle) {
                     MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber1, SEC_RNG::ptr)();
                     if ((int)SEC_RNG::instance.currentNumber1 % 5 == 1) {
                         MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
-                            (int)this->entityArray[_entityID].xPosition,
-                            (int)((int)(this->entityArray[_entityID].yPosition)), DE::SHCDE::FX_GULL);
+                            (int)this->entityArray[_entityID].xPosition, (int)(this->entityArray[_entityID].yPosition),
+                            DE::SHCDE::FX_GULL);
                     }
                     sVar4 = this->seagullArray[seagullID].field12_0x1a;
-                    this->seagullArray[seagullID].angle = this->seagullArray[seagullID].angle + -360;
+                    this->seagullArray[seagullID].angle = this->seagullArray[seagullID].angle - 360;
                     if (sVar4 < 0) {
                         this->seagullArray[seagullID].unknownCounter_0x16
                             = this->seagullArray[seagullID].unknownCounter_0x16 + 1;
                     } else if (0 < sVar4) {
                         this->seagullArray[seagullID].unknownCounter_0x16
-                            = this->seagullArray[seagullID].unknownCounter_0x16 + -1;
+                            = this->seagullArray[seagullID].unknownCounter_0x16 - 1;
                     }
                     if (this->seagullArray[seagullID].unknownCounter_0x16 < 24) {
                         this->seagullArray[seagullID].unknownCounter_0x16 = 24;
@@ -157,7 +156,7 @@ namespace Map {
                             = this->seagullArray[seagullID].unknownCounter_0x16 + 1;
                     } else if (0 < sVar4) {
                         this->seagullArray[seagullID].unknownCounter_0x16
-                            = this->seagullArray[seagullID].unknownCounter_0x16 + -1;
+                            = this->seagullArray[seagullID].unknownCounter_0x16 - 1;
                     }
                     if (this->seagullArray[seagullID].unknownCounter_0x16 < 0x18) {
                         this->seagullArray[seagullID].unknownCounter_0x16 = 0x18;
@@ -178,9 +177,9 @@ namespace Map {
                 sVar4 = this->seagullArray[seagullID].angle_2;
                 sVar5 = this->seagullArray[seagullID].angleStep + sVar4;
                 this->seagullArray[seagullID].angle_2 = sVar5;
-                fVar10 = ((double)(sVar4 + -0xb4) * (double)3.1415926535) / (double)180.0;
+                fVar10 = ((double)(sVar4 - 0xb4) * (double)3.1415926535) / (double)180.0;
                 if (sVar5 >= 0x168) {
-                    this->seagullArray[seagullID].angle_2 = sVar5 + -0x168;
+                    this->seagullArray[seagullID].angle_2 = sVar5 - 0x168;
                 }
                 sVar4 = this->seagullArray[seagullID].angle_2;
                 if (sVar4 < 0) {
@@ -196,11 +195,10 @@ namespace Map {
                 _targetYPart1 = (short)iVar8;
                 _targetYPart1 = _targetYPart1 + this->seagullArray[seagullID].y;
                 this->seagullArray[seagullID].y_2 = _targetYPart1;
-                MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::setProjectileTargetPosition, this)(
-                    _entityID, (int)((int)(this->entityArray[_entityID].microX)),
-                    (int)((int)(this->entityArray[_entityID].microY)),
-                    (int)((int)(this->entityArray[_entityID].height)), _targetXPart1 + _targetXPart2,
-                    _targetYPart1 + _targetYPart2, (int)((int)(250)));
+                MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::setProjectileTargetPosition, this)(_entityID,
+                    (int)(this->entityArray[_entityID].microX), (int)(this->entityArray[_entityID].microY),
+                    (int)(this->entityArray[_entityID].height), _targetXPart1 + _targetXPart2,
+                    _targetYPart1 + _targetYPart2, (int)(250));
             }
             sVar4 = this->seagullArray[seagullID].x;
             iVar8 = (int)sVar4;
@@ -210,11 +208,11 @@ namespace Map {
                     || (uVar7 = (int)this->seagullArray[seagullID].y - (int)this->seagullArray[seagullID].y_3,
                         uVar9 = (int)uVar7 >> 0x1f, 1 < (int)((uVar7 ^ uVar9) - uVar9)))
                 && (sVar5 = this->seagullArray[seagullID].pathMajorLength, 0 < sVar5)) {
-                this->seagullArray[seagullID].pathStepDelay = this->seagullArray[seagullID].pathStepDelay + -1;
+                this->seagullArray[seagullID].pathStepDelay = this->seagullArray[seagullID].pathStepDelay - 1;
                 if (this->seagullArray[seagullID].pathStepDelay < 1) {
                     sVar2 = this->seagullArray[seagullID].pathAxisCase;
                     this->seagullArray[seagullID].pathStepDelay = 10;
-                    this->seagullArray[seagullID].pathMajorLength = sVar5 + -1;
+                    this->seagullArray[seagullID].pathMajorLength = sVar5 - 1;
                     if (sVar2) {
                         if (sVar2 == 2) {
                             this->seagullArray[seagullID].x = this->seagullArray[seagullID].pathStepX + sVar4;
@@ -260,26 +258,23 @@ namespace Map {
             }
             sVar4 = this->seagullArray[seagullID].rngMax799_countdown;
             if (0 < sVar4) {
-                this->seagullArray[seagullID].rngMax799_countdown = sVar4 + -1;
+                this->seagullArray[seagullID].rngMax799_countdown = sVar4 - 1;
                 return;
             }
             _entityID = (int)this->seagullArray[seagullID].y;
             this->seagullArray[seagullID].rngMax799_countdown = SEC_RNG::instance.currentNumber2 % 400 + 400;
-            MACRO_CALL_MEMBER(
-                Map::Navigation::PathFindingState_Func::findFurthestSeaTile, DAT_PathFindingState::ptr)(
+            MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::findFurthestSeaTile, DAT_PathFindingState::ptr)(
                 (int)((((ulonglong)((int)SEC_RNG::instance.currentNumber2 >> 0x1f) << 0x20)
                     | (uint)((uint)((int)((int)SEC_RNG::instance.currentNumber2 >> 4) % 200) + 400))),
-                (uint)((int)(iVar8 / 8)), _entityID / 8);
+                (uint)(iVar8 / 8), _entityID / 8);
             this->seagullArray[seagullID].x_3 = (short)DAT_PathFindingState::instance.ALG_ResultX * 8;
             sVar4 = this->seagullArray[seagullID].x_3;
             sVar2 = (short)DAT_PathFindingState::instance.ALG_ResultY * 8;
             sVar5 = this->seagullArray[seagullID].x;
             this->seagullArray[seagullID].y_3 = sVar2;
             MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::initializeSeagullMovementVector, this)(
-                seagullID, (int)((int)(sVar5)), (int)((int)(this->seagullArray[seagullID].y)), (int)((int)(sVar4)),
-                (int)((int)(sVar2)));
+                seagullID, (int)(sVar5), (int)(this->seagullArray[seagullID].y), (int)(sVar4), (int)(sVar2));
             this->seagullArray[seagullID].pathStepDelay = 10;
-            return;
         }
 
     }

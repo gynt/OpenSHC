@@ -53,8 +53,8 @@ namespace Map {
             sVar9 = this->entityArray[entityID].pathDeltaX;
             this->entityArray[entityID].pathTargetX = sVar10;
             this->entityArray[entityID].pathTargetY = sVar5;
-            this->entityArray[entityID].someMicroX = (ushort)(x <= targetX) * 2 + -1;
-            this->entityArray[entityID].someMicroY = (ushort)(y <= targetY) * 2 + -1;
+            this->entityArray[entityID].someMicroX = (ushort)(x <= targetX) * 2 - 1;
+            this->entityArray[entityID].someMicroY = (ushort)(y <= targetY) * 2 - 1;
             if (!sVar9) {
                 if (this->entityArray[entityID].pathDeltaY == 0) {
                     this->entityArray[entityID].pathAxisCase = 0;
@@ -99,8 +99,8 @@ namespace Map {
                 sVar10 = this->entityArray[entityID].velocityUnk;
             } else {
                 if (iVar7 == 1) {
-                    uVar6 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::computeLineOfSightDistance,
-                        this)(x, y, height, targetX, targetY, targetZ, 1);
+                    uVar6 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::computeLineOfSightDistance, this)(
+                        x, y, height, targetX, targetY, targetZ, 1);
                     iVar7 = this->entityArray[entityID].heightDifference;
                     sVar5 = (short)uVar6;
                     this->entityArray[entityID].field62_0x94 = sVar5;
@@ -108,13 +108,13 @@ namespace Map {
                     this->entityArray[entityID].clearanceStepsRemaining = (short)this->lineOfSightClearanceSteps;
                     iVar7 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::computeVelocity, this)(
                         (int)(short)this->entityArray[entityID].entityType,
-                        (double)((int)((int)this->entityArray[entityID].startingAngle)), (int)((int)(sVar5)), iVar7);
+                        (double)((int)((int)this->entityArray[entityID].startingAngle)), (int)(sVar5), iVar7);
                     this->entityArray[entityID].velocityUnk = (short)iVar7;
                     goto LAB_00403f37;
                 }
                 if (iVar7 == 2) {
-                    uVar6 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::computeLineOfSightDistance,
-                        this)(x, y, height, targetX, targetY, targetZ, 1);
+                    uVar6 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::computeLineOfSightDistance, this)(
+                        x, y, height, targetX, targetY, targetZ, 1);
                     sVar5 = this->entityArray[entityID].height;
                     sVar10 = this->entityArray[entityID].targetZ;
                     sVar9 = (short)uVar6;
@@ -127,13 +127,13 @@ namespace Map {
                     iVar7 = this->entityArray[entityID].heightDifference;
                     iVar11 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::computeVelocity, this)(
                         (int)(short)this->entityArray[entityID].entityType,
-                        (double)((int)((int)this->entityArray[entityID].startingAngle)), (int)((int)(sVar9)), iVar7);
+                        (double)((int)((int)this->entityArray[entityID].startingAngle)), (int)(sVar9), iVar7);
                     this->entityArray[entityID].velocityUnk = (short)iVar11;
                     if ((short)iVar11 < 1) {
                         EVar4 = this->entityArray[entityID].entityType;
                         this->entityArray[entityID].startingAngle = 0xf;
                         iVar7 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::computeVelocity, this)(
-                            (int)(short)EVar4, 15.0, (int)((int)(sVar9)), iVar7);
+                            (int)(short)EVar4, 15.0, (int)(sVar9), iVar7);
                         this->entityArray[entityID].velocityUnk = (short)iVar7;
                     }
                     goto LAB_00403f37;
@@ -218,15 +218,13 @@ namespace Map {
                 sVar10 = this->entityArray[entityID].velocityUnk;
             }
             iVar7 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::math_atan_1, this)(
-                (int)(short)this->entityArray[entityID].entityType, (double)((int)((int)sVar10)), (int)((int)(sVar5)),
+                (int)(short)this->entityArray[entityID].entityType, (double)((int)(sVar10)), (int)(sVar5),
                 this->entityArray[entityID].heightDifference);
             this->entityArray[entityID].startingAngle = (short)iVar7;
         LAB_00403f37:
             EVar4 = this->entityArray[entityID].entityType;
-            if ((((EVar4 == Map::Entities::ET_ARROW_AND_DEFAULT)
-                     || (EVar4 == Map::Entities::ET_CROSSBOWARROW))
-                    && (height + 0x36 < targetZ))
-                && (this->entityArray[entityID].rng_1 % 10 == 5)) {
+            if (((EVar4 == Map::Entities::ET_ARROW_AND_DEFAULT) || (EVar4 == Map::Entities::ET_CROSSBOWARROW))
+                && height + 0x36 < targetZ && this->entityArray[entityID].rng_1 % 10 == 5) {
                 this->entityArray[entityID].hasDoneEffectUnk = 1;
             }
             iVar11 = (int)this->entityArray[entityID].startingAngle;
@@ -238,10 +236,8 @@ namespace Map {
             this->entityArray[entityID].vCos = (float)(fVar13 * (double)iVar7);
             fVar12 = sin((double)fVar12);
             this->entityArray[entityID].vSin = (float)(fVar12 * (double)iVar7);
-            uVar8
-                = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::angleToRotationFrameIndex, this)(iVar11);
+            uVar8 = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::angleToRotationFrameIndex, this)(iVar11);
             this->entityArray[entityID].rotationFrameIndex = (short)uVar8;
-            return;
         }
 
     }

@@ -29,7 +29,7 @@ namespace Map {
             if (0xf < sVar2) {
                 DAT_EntityState::instance.entityArray[uVar3].unknownAnimationFrameRelated = 8;
             }
-            uVar4 = DAT_EntityState::instance.entityArray[uVar3].rng_1 + -8
+            uVar4 = DAT_EntityState::instance.entityArray[uVar3].rng_1 - 8
                     + (int)DAT_EntityState::instance.entityArray[uVar3].unknownAnimationFrameRelated
                 & 0x80000007;
             if ((int)uVar4 < 0) {
@@ -44,8 +44,8 @@ namespace Map {
             DAT_EntityState::instance.entityArray[uVar3].logicalState = 3;
         } else {
             DAT_EntityState::instance.entityArray[uVar3].graphicType2
-                = DAT_EntityState::instance.entityArray[uVar3].graphicType2RelatedOffset + -0x3f0 + (int)sVar2;
-            sVar2 = (DAT_EntityState::instance.entityArray[uVar3].unknownAnimationFrameRelated + -0x3f8) * 4;
+                = DAT_EntityState::instance.entityArray[uVar3].graphicType2RelatedOffset - 0x3f0 + (int)sVar2;
+            sVar2 = (DAT_EntityState::instance.entityArray[uVar3].unknownAnimationFrameRelated - 0x3f8) * 4;
             DAT_EntityState::instance.entityArray[uVar3].unkMinusOne = sVar2;
             if (0x1f < sVar2) {
                 DAT_EntityState::instance.entityArray[uVar3].unkMinusOne = 0x1f;
@@ -61,9 +61,9 @@ namespace Map {
                 == DAT_EntityState::instance.entityArray[sVar2].uid) {
                 MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::setAxisBasedDistanceResult,
                     DAT_DirectionAlgorithmState::ptr)((int)DAT_EntityState::instance.entityArray[sVar2].xPosition,
-                    (int)((int)(DAT_EntityState::instance.entityArray[sVar2].yPosition)),
-                    (int)((int)(DAT_EntityState::instance.entityArray[uVar3].xPosition)),
-                    (int)((int)(DAT_EntityState::instance.entityArray[uVar3].yPosition)));
+                    (int)(DAT_EntityState::instance.entityArray[sVar2].yPosition),
+                    (int)(DAT_EntityState::instance.entityArray[uVar3].xPosition),
+                    (int)(DAT_EntityState::instance.entityArray[uVar3].yPosition));
                 if (6 < DAT_DirectionAlgorithmState::instance.distanceHigh) {
                     DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].unknownDistanceRelatedValue
                         = 0;

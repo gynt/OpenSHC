@@ -21,9 +21,9 @@ namespace Map {
         if (0 < DAT_MapPropertiesState::instance.eventsCount) {
             piVar2 = &DAT_MapPropertiesState::instance.scenarioEvents[0].data.scenario.ScenarioEventType;
             do {
-                if ((piVar2[-3] == 3)
-                    && ((((iVar1 = *piVar2, iVar1 == 1 || (iVar1 == 0x1b)) || (!iVar1)) || (iVar1 == 0x1a)))) {
-                    *(undefined2*)(piVar2 + -2) = 1;
+                if (piVar2[-3] == 3
+                    && (((iVar1 = *piVar2, iVar1 == 1 || (iVar1 == 0x1b)) || (!iVar1)) || (iVar1 == 0x1a))) {
+                    *(undefined2*)(piVar2 - 2) = 1;
                 }
                 iVar3 = iVar3 + 1;
                 piVar2 = piVar2 + 0x39;

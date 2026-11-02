@@ -48,14 +48,13 @@ namespace Map {
             DAT_EntityState::instance.entityArray[uVar2].logicalState = 3;
             MACRO_CALL(Map::Entities_Func::SomeFireSpreadFunction)(
                 (int)DAT_EntityState::instance.entityArray[uVar2].owner,
-                (int)((int)(DAT_EntityState::instance.entityArray[uVar2].microX)),
-                (int)((int)(DAT_EntityState::instance.entityArray[uVar2].microY)),
-                (int)((int)(DAT_TileMapState::instance.HeightLayer[DAT_EntityState::instance.entityArray[uVar2].tile]
-                    + 8)),
+                (int)(DAT_EntityState::instance.entityArray[uVar2].microX),
+                (int)(DAT_EntityState::instance.entityArray[uVar2].microY),
+                (int)(DAT_TileMapState::instance.HeightLayer[DAT_EntityState::instance.entityArray[uVar2].tile] + 8),
                 5);
             MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                 (int)DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].xPosition,
-                (int)((int)(DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].yPosition)),
+                (int)(DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].yPosition),
                 DE::SHCDE::FX_FIRE_START);
         }
         uVar2 = DAT_CurrentEntityID::instance;

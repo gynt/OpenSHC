@@ -72,7 +72,7 @@ namespace Map {
         }
         sVar4 = DAT_BuildingsState::instance.buildings[iVar10].burningWorkerCountdown;
         if (0 < sVar4) {
-            DAT_BuildingsState::instance.buildings[iVar10].burningWorkerCountdown = sVar4 + -1;
+            DAT_BuildingsState::instance.buildings[iVar10].burningWorkerCountdown = sVar4 - 1;
         }
         DAT_BuildingsState::instance.buildings[iVar10].renderAnimation
             = (ushort)(DAT_BuildingsState::instance.buildings[iVar10].workers[0] != 0);
@@ -175,35 +175,35 @@ namespace Map {
         }
     LAB_004236b9:
         *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].animationIndex + iVar9) = 0;
-        sVar4 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -8);
+        sVar4 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 - 8);
         if (!sVar4) {
-            *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -8) = 1;
+            *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 - 8) = 1;
         } else if (sVar4 == 1) {
-            *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -8) = 2;
+            *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 - 8) = 2;
         } else if (sVar4 == 2) {
-            *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -8) = 3;
+            *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 - 8) = 3;
         } else if (sVar4 == 3) {
-            *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -8) = 4;
+            *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 - 8) = 4;
         } else if (sVar4 == 4) {
-            *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -8) = 5;
+            *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 - 8) = 5;
         } else if (sVar4 == 5) {
-            *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -8) = 6;
+            *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 - 8) = 6;
         } else if (sVar4 == 6) {
-            *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -8) = 7;
+            *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 - 8) = 7;
         } else if (sVar4 == 7) {
             piVar1 = (int*)((int)&DAT_BuildingsState::instance.buildings[0].animationCycleCount + iVar9);
             *piVar1 = *piVar1 + 1;
             *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].animationCycleCompleted + iVar9) = 1;
-            *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -8) = 0;
+            *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 - 8) = 0;
         }
     LAB_004237a8:
-        sVar4 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -0x62);
+        sVar4 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 - 0x62);
         if (sVar4 < 0x20) {
             if (sVar4 < 0) {
-                *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -0x62) = 0;
+                *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 - 0x62) = 0;
             }
         } else {
-            *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + -0x62) = 0x1f;
+            *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 - 0x62) = 0x1f;
         }
         iVar10 = *(int*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar9 + 0x30);
         if (iVar10 == 1) {
@@ -220,7 +220,7 @@ namespace Map {
             *(uint*)((int)&DAT_BuildingsState::instance.buildings[0].extraAnimationSprite1 + iVar9)
                 = (iVar10 != 6) - 1 & 0x19;
         }
-        *(undefined1*)((int)DAT_BuildingsState::instance.buildings[0].quarryLinkedOxTethers + iVar9 + -0x33) = 0;
+        *(undefined1*)((int)DAT_BuildingsState::instance.buildings[0].quarryLinkedOxTethers + iVar9 - 0x33) = 0;
         if (*(short*)((int)DAT_BuildingsState::instance.buildings[0].workerID + iVar9 + 2) == 0) {
             *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].workerID + iVar9 + 2) = 0;
         }

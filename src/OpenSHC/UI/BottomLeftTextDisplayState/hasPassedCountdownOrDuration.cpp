@@ -14,7 +14,7 @@ namespace UI {
         DWORD _textRelatedTime;
         if (!this->currentlyDisplayedTextIsDisplayedUnk) {
             if (this->unknownCountdown01) {
-                this->unknownCountdown01 = this->unknownCountdown01 + -1;
+                this->unknownCountdown01 = this->unknownCountdown01 - 1;
             }
         } else if (!this->textMessageDurationUnk) {
             this->textMessageDurationUnk = -1;

@@ -34,7 +34,7 @@ namespace Map {
             DAT_PathFindingState::instance.climbData[iVar2].bottomXPosition = iVar3 + 5;
             iVar4 = (short)DAT_BuildingsState::instance.buildings[iVar1].y + 2;
             DAT_PathFindingState::instance.climbData[iVar2].bottomYPosition = iVar4;
-            iVar3 = iVar3 + -1;
+            iVar3 = iVar3 - 1;
         } else {
             if (iVar3)
                 goto LAB_004a504e;
@@ -42,7 +42,7 @@ namespace Map {
             iVar3 = (short)DAT_BuildingsState::instance.buildings[iVar1].x + 2;
             DAT_PathFindingState::instance.climbData[iVar2].bottomXPosition = iVar3;
             DAT_PathFindingState::instance.climbData[iVar2].bottomYPosition = iVar4 + 5;
-            iVar4 = iVar4 + -1;
+            iVar4 = iVar4 - 1;
         }
         DAT_PathFindingState::instance.climbData[iVar2].topXPosition = iVar3;
         DAT_PathFindingState::instance.climbData[iVar2].topYPosition = iVar4;

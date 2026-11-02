@@ -65,7 +65,7 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[_currentBuildingID].campgroundVclock = 4000;
         }
         iVar4 = DAT_BuildingsState::instance.buildings[_currentBuildingID].campgroundVclock / 40;
-        _vclock = iVar4 + -0x32;
+        _vclock = iVar4 - 0x32;
         DAT_BuildingsState::instance.buildings[_currentBuildingID].campgroundVclock = _vclock;
         if (_vclock < 0) {
             DAT_BuildingsState::instance.buildings[_currentBuildingID].extraAnimationSprite1
@@ -89,7 +89,7 @@ namespace Map {
                     DAT_BuildingsState::instance.buildings[_currentBuildingID].renderAnimation = 0;
                 }
                 DAT_BuildingsState::instance.buildings[_currentBuildingID].extraOverlayImage10
-                    = DAT_BuildingsState::instance.buildings[_currentBuildingID].extraOverlayImage10 + -1;
+                    = DAT_BuildingsState::instance.buildings[_currentBuildingID].extraOverlayImage10 - 1;
                 goto LAB_004182b0;
             }
             DAT_BuildingsState::instance.buildings[_currentBuildingID].extraOverlayImage10 = 0;

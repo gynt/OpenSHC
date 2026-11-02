@@ -79,7 +79,7 @@ namespace Map {
         }
         sVar8 = DAT_BuildingsState::instance.buildings[iVar7].flagonsOfAleOrCheeseOrReleaseDogs;
         if (sVar8) {
-            DAT_BuildingsState::instance.buildings[iVar7].flagonsOfAleOrCheeseOrReleaseDogs = sVar8 + -1;
+            DAT_BuildingsState::instance.buildings[iVar7].flagonsOfAleOrCheeseOrReleaseDogs = sVar8 - 1;
         }
         if (DAT_BuildingsState::instance.buildings[iVar7].workers[0] == 0) {
             DAT_BuildingsState::instance.buildings[iVar7].outpostRelatedUnk4 = 0;
@@ -129,7 +129,7 @@ namespace Map {
         if (bVar2 == 1) {
             DAT_BuildingsState::instance.buildings[iVar7].extraAnimationSprite1 = 0x46;
             DAT_BuildingsState::instance.buildings[iVar7].renderBlendStrength
-                = DAT_BuildingsState::instance.buildings[iVar7].renderBlendStrength + -1;
+                = DAT_BuildingsState::instance.buildings[iVar7].renderBlendStrength - 1;
             if (DAT_BuildingsState::instance.buildings[iVar7].renderBlendStrength <= 0) {
                 DAT_BuildingsState::instance.buildings[iVar7].renderBlendStrength = 0;
                 DAT_BuildingsState::instance.buildings[iVar7].campgroundVclock = 0;
@@ -142,7 +142,7 @@ namespace Map {
                 DAT_BuildingsState::instance.buildings[iVar7].extraAnimationSprite1 = 0x10;
                 DAT_BuildingsState::instance.buildings[iVar7].extraAnimationSprite2 = 0x1c;
                 DAT_BuildingsState::instance.buildings[iVar7].renderBlendStrength
-                    = DAT_BuildingsState::instance.buildings[iVar7].renderBlendStrength + -1;
+                    = DAT_BuildingsState::instance.buildings[iVar7].renderBlendStrength - 1;
                 if (DAT_BuildingsState::instance.buildings[iVar7].renderBlendStrength <= 0) {
                     DAT_BuildingsState::instance.buildings[iVar7].renderBlendStrength = 0;
                     DAT_BuildingsState::instance.buildings[iVar7].campgroundVclock = 0;
@@ -254,7 +254,7 @@ namespace Map {
                 if ((*piVar5 != DAT_UnitsState::instance.units[*psVar9].uid)
                     || (DAT_UnitsState::instance.units[*psVar9].logicalState == Map::Units::ULS_REMOVE)) {
                     DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].workerID[iVar4] = 0;
-                    iVar10 = iVar4 + -1;
+                    iVar10 = iVar4 - 1;
                     break;
                 }
                 iVar4 = iVar4 + 1;

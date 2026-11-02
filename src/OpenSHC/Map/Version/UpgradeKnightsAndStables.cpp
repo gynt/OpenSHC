@@ -10,8 +10,8 @@
 namespace OpenSHC {
 namespace Map {
 
-    using Map::Units::UnitType;
     using Map::Units::Unit;
+    using Map::Units::UnitType;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0041A650
     void Version::UpgradeKnightsAndStables()
@@ -29,32 +29,31 @@ namespace Map {
         local_4 = 0;
         iVar5 = 0;
         do {
-            if (*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar3 + -0x4e) == 0x23) {
+            if (*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar3 - 0x4e) == 0x23) {
                 sVar4 = 0;
-                *(undefined1*)((int)DAT_BuildingsState::instance.buildings[0].quarryLinkedOxTethers + iVar3 + -0x23)
-                    = 0;
+                *(undefined1*)((int)DAT_BuildingsState::instance.buildings[0].quarryLinkedOxTethers + iVar3 - 0x23) = 0;
                 psVar4 = &DAT_UnitsState::instance.units[0];
                 do {
-                    if (((psVar4->unitType == Map::Units::UT_E_KNIGHT)
-                            && (psVar4->horseOriginStablesBuildingIndexUnk == local_4))
+                    if (psVar4->unitType == Map::Units::UT_E_KNIGHT
+                        && psVar4->horseOriginStablesBuildingIndexUnk == local_4
                         && (*(int*)&psVar4->horseOriginStableIDUnk
-                            == *(int*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar3 + -0x48))) {
+                            == *(int*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar3 - 0x48))) {
                         iVar2 = psVar4->uid;
                         DAT_BuildingsState::instance.buildings[0].quarryLinkedOxTethers
                             [*(char*)((int)DAT_BuildingsState::instance.buildings[0].quarryLinkedOxTethers + iVar3
-                                 + -0x23)
+                                 - 0x23)
                                 + iVar5 + 0xb] = sVar4;
                         *(int*)(DAT_BuildingsState::instance.buildings[0].quarryLinkedOxTethers
                             + (*(char*)((int)DAT_BuildingsState::instance.buildings[0].quarryLinkedOxTethers + iVar3
-                                   + -0x23)
+                                   - 0x23)
                                   + iVar6)
                                 * 2
                             + 0xf) = iVar2;
                         pcVar1 = (char*)((int)DAT_BuildingsState::instance.buildings[0].quarryLinkedOxTethers + iVar3
-                            + -0x23);
+                            - 0x23);
                         *pcVar1 = *pcVar1 + '\x01';
                         if ('\x03' < *(char*)((int)DAT_BuildingsState::instance.buildings[0].quarryLinkedOxTethers
-                                + iVar3 + -0x23))
+                                + iVar3 - 0x23))
                             break;
                     }
                     psVar4 = psVar4 + 0x248;

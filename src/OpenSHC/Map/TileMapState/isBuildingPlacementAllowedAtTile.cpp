@@ -4,10 +4,10 @@
 #include "OpenSHC/Synchrony/GameSynchronyState.func.hpp"
 #include "OpenSHC/Commands/MappersEnum.hpp"
 #include "OpenSHC/Game/GameMode.hpp"
+#include "OpenSHC/Map/LogicHelpers/Logic1.hpp"
 #include "OpenSHC/Map/Units/UnitType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
-#include "OpenSHC/Map/LogicHelpers/Logic1.hpp"
 #include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
 #include "OpenSHC/Globals/DAT_LandscapeState.hpp"
 #include "OpenSHC/Globals/DAT_UnitsState.hpp"
@@ -41,7 +41,7 @@ namespace Map {
         _wallOrGate = _tileLogic & Map::LogicHelpers::L_WALL_OR_GATEHOUSE;
         bVar1 = false;
         _height = (uint)this->HeightLayer[tile];
-        if ((_wallOrGate) && ((this->WallOwnerLayer[tile] & 7) + 1 == playerID)) {
+        if (_wallOrGate && (this->WallOwnerLayer[tile] & 7) + 1 == playerID) {
             switch (commandBuildingType) {
             case Commands::M_MAPPER_GATEHOUSE:
             case Commands::M_MAPPER_GATE_MAIN:
@@ -90,7 +90,7 @@ namespace Map {
         if (this->buildingMaxHeightDifference + this->buildingMinHeight < (int)_height) {
             return 1;
         }
-        if (((_tileLogic & 8)) && (commandBuildingType == Commands::M_MAPPER_PITCH_DITCH)) {
+        if ((_tileLogic & 8) && commandBuildingType == Commands::M_MAPPER_PITCH_DITCH) {
             return 1;
         }
         if (this->BuildingLayer[tile] != 0) {
@@ -98,8 +98,8 @@ namespace Map {
         }
         _unitID = this->UnitLayer[tile];
         if (_unitID) {
-            _isAI2 = MACRO_CALL_MEMBER(
-                Synchrony::GameSynchronyState_Func::isAIPlayer, DAT_GameSynchronyState::ptr)(playerID);
+            _isAI2 = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::isAIPlayer, DAT_GameSynchronyState::ptr)(
+                playerID);
             if (!_isAI2) {
                 if (DAT_UnitsState::instance.units[(short)_unitID].unitType != Map::Units::UT_CHICKEN) {
                     return 1;
@@ -157,18 +157,17 @@ namespace Map {
                 case Commands::M_MAPPER_GATE_STONE2A:
                 case Commands::M_MAPPER_GATE_STONE2B:
                     break;
-                    default:
-                        return 1;
+                default:
+                    return 1;
                 }
             }
             if (((!(_tileLogic & Map::LogicHelpers::L_PLAIN1_AND_FARM)) || (param_4))
-                && (!(_tileLogic & Map::LogicHelpers::L_BUILDING | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE))) {
+                && !(_tileLogic & Map::LogicHelpers::L_BUILDING | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)) {
                 /*
                   not a keep and not a building
                  */
-                if ((((_tileLogic & Map::LogicHelpers::L_TREE | Map::LogicHelpers::L_TREE_VARIATION))
-                        && (_orgID = (int)this->OrganismLayer[tile], _orgID))
-                    && (_orgID < 2000)) {
+                if ((_tileLogic & Map::LogicHelpers::L_TREE | Map::LogicHelpers::L_TREE_VARIATION)
+                    && (_orgID = (int)this->OrganismLayer[tile], _orgID) && _orgID < 2000) {
                     /*
                       tree or tree_variation
                      */
@@ -188,13 +187,12 @@ namespace Map {
                     case ((TreeType)0x12):
                     case ((TreeType)0x13):
                         break;
-                        default:
-                            if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)
-                        {
+                    default:
+                        if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
                             return 1;
                         }
-                        _isAI = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::isAIPlayer,
-                            DAT_GameSynchronyState::ptr)(playerID);
+                        _isAI = MACRO_CALL_MEMBER(
+                            Synchrony::GameSynchronyState_Func::isAIPlayer, DAT_GameSynchronyState::ptr)(playerID);
                         if (!_isAI) {
                             return 1;
                         }
@@ -206,15 +204,15 @@ namespace Map {
                 if (((!(_tileLogic & Map::LogicHelpers::L_FARM_FIELD_WHEAT | Map::LogicHelpers::L_FARM_FIELD_HOP
                          | Map::LogicHelpers::L_FARM_FIELD_APPLE | Map::LogicHelpers::L_FARM_FIELD_DAIRY))
                         || (param_4))
-                    && (!(_tileLogic & Map::LogicHelpers::L_FORD))) {
-                    if (((char)_tileLogic < 0) && (!_wallOrGate)) {
+                    && !(_tileLogic & Map::LogicHelpers::L_FORD)) {
+                    if ((char)_tileLogic < 0 && !_wallOrGate) {
                         bVar1 = true;
                     }
                     _result = 1;
-                    if ((((!bVar1) || (this->buildingPlacementProperty_4))
-                            && ((!(_tileLogic & Map::LogicHelpers::L_MOAT) || (this->buildingPlacementProperty_7))))
-                        && (((this->buildingPlacementProperty_6 == 2 || (!(_tileLogic & Map::LogicHelpers::L_MARSH)))
-                            || (this->buildingPlacementProperty_6)))) {
+                    if (((!bVar1) || (this->buildingPlacementProperty_4))
+                        && (!(_tileLogic & Map::LogicHelpers::L_MOAT) || (this->buildingPlacementProperty_7))
+                        && ((this->buildingPlacementProperty_6 == 2 || (!(_tileLogic & Map::LogicHelpers::L_MARSH)))
+                            || (this->buildingPlacementProperty_6))) {
                         /*
                           not moat and marsh
                          */

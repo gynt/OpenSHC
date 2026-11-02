@@ -26,7 +26,7 @@ namespace Map {
                              - ((fVar5 + fVar5) * (double)(heightDifference / 2)) / (fVar6 * fVar6 * (double)9.812))
                 - (double)1.0);
             fVar6 = (double)dVar1 - fVar5;
-            if (((double)DOUBLE_00b941c0::instance == fVar6) || (iVar2 = _isnan((double)fVar6), iVar2)) {
+            if ((double)DOUBLE_00b941c0::instance == fVar6 || (iVar2 = _isnan((double)fVar6), iVar2)) {
                 iVar2 = 1000;
             } else {
                 fVar6 = atan((double)fVar6);

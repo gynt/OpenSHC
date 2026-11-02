@@ -69,8 +69,8 @@ namespace Map {
             } else {
                 iVar11 = targetX - x;
             }
-            iVar1 = (uint)(x <= targetX) * 2 + -1;
-            iVar2 = (uint)(y <= targetY) * 2 + -1;
+            iVar1 = (uint)(x <= targetX) * 2 - 1;
+            iVar2 = (uint)(y <= targetY) * 2 - 1;
             if (!iVar11) {
                 if (iVar7) {
                     if (0x1b < uVar12) {
@@ -84,7 +84,7 @@ namespace Map {
                     do {
                         local_38 = local_38 + iVar2;
                         iVar6 = iVar9;
-                        if (((local_44 & 1)) && (!param_7)) {
+                        if ((local_44 & 1) && !param_7) {
                             iVar6 = DAT_ViewportRenderState::instance
                                         .translationMatrix[(int)(local_38 + (local_38 >> 0x1f & 7U)) >> 3]
                                         .addXgetTile
@@ -102,13 +102,13 @@ namespace Map {
                                     }
                                 } else {
                                     bVar5 = false;
-                                    if (((char)DAT_TileMapState::instance.LogicLayer[iVar6] < '\0')
-                                        || ((sVar3 != DAT_TileMapState::instance.BuildingLayer[iVar6]
+                                    if ((char)DAT_TileMapState::instance.LogicLayer[iVar6] < '\0'
+                                        || (sVar3 != DAT_TileMapState::instance.BuildingLayer[iVar6]
                                             && ((!bVar4
-                                                || (!(DAT_TileMapState::instance.LogicLayer[iVar6] & 0x400200U))))))) {
+                                                || (!(DAT_TileMapState::instance.LogicLayer[iVar6] & 0x400200U)))))) {
                                         bVar5 = true;
-                                        uVar8 = MACRO_CALL_MEMBER(Map::TileMapState_Func::returnSomeHeight,
-                                            DAT_TileMapState::ptr)(iVar6, 1);
+                                        uVar8 = MACRO_CALL_MEMBER(
+                                            Map::TileMapState_Func::returnSomeHeight, DAT_TileMapState::ptr)(iVar6, 1);
                                         uVar12 = local_38 - y >> 0x1f;
                                         iVar9 = ((local_38 - y ^ uVar12) - uVar12) * (targetHeight - height);
                                     LAB_004033cf:
@@ -141,7 +141,7 @@ namespace Map {
                     this->lineOfSightClearanceSteps = uVar12;
                     while (true) {
                         local_3c = local_3c + iVar1;
-                        if (((local_44 & 1)) && (!param_7)) {
+                        if ((local_44 & 1) && !param_7) {
                             iVar9 = ((int)(local_3c + (local_3c >> 0x1f & 7U)) >> 3)
                                 + DAT_ViewportRenderState::instance.translationMatrix[iVar6].addXgetTile;
                             if (!(DAT_TileMapState::instance.LogicLayer[iVar9] & 0x400300U)) {
@@ -151,7 +151,7 @@ namespace Map {
                             if (!uVar8) {
                                 if (local_1c == iVar9) {
                                     local_1c = iVar9;
-                                    if ((bVar5)
+                                    if (bVar5
                                         && (uVar12 = local_3c - x >> 0x1f,
                                             (int)(((local_3c - x ^ uVar12) - uVar12) * (targetHeight - height)) / iVar11
                                                     + height
@@ -160,15 +160,15 @@ namespace Map {
                                     }
                                 } else {
                                     bVar5 = false;
-                                    if (((char)DAT_TileMapState::instance.LogicLayer[iVar9] < '\0')
-                                        || ((local_1c = iVar9,
+                                    if ((char)DAT_TileMapState::instance.LogicLayer[iVar9] < '\0'
+                                        || (local_1c = iVar9,
                                             sVar3 != DAT_TileMapState::instance.BuildingLayer[iVar9]
                                                 && ((!bVar4
-                                                    || (!(DAT_TileMapState::instance.LogicLayer[iVar9]
-                                                        & 0x400200U))))))) {
+                                                    || (!(
+                                                        DAT_TileMapState::instance.LogicLayer[iVar9] & 0x400200U)))))) {
                                         bVar5 = true;
-                                        local_30 = MACRO_CALL_MEMBER(Map::TileMapState_Func::returnSomeHeight,
-                                            DAT_TileMapState::ptr)(iVar9, 1);
+                                        local_30 = MACRO_CALL_MEMBER(
+                                            Map::TileMapState_Func::returnSomeHeight, DAT_TileMapState::ptr)(iVar9, 1);
                                         uVar12 = local_3c - x >> 0x1f;
                                         local_1c = iVar9;
                                         if ((int)(((local_3c - x ^ uVar12) - uVar12) * (targetHeight - height)) / iVar11
@@ -198,12 +198,12 @@ namespace Map {
                     if ((targetHeight < height) && (uVar12)) {
                         uVar8 = targetX - x >> 0x1f;
                         iVar10 = (targetX - x ^ uVar8) - uVar8;
-                        iVar10 = ((int)(iVar10 + (iVar10 >> 0x1f & 7U)) >> 3) + -1;
+                        iVar10 = ((int)(iVar10 + (iVar10 >> 0x1f & 7U)) >> 3) - 1;
                         if (4 < iVar10) {
                             iVar10 = 4;
                         }
                         if (1 < iVar10) {
-                            y = iVar10 + -1;
+                            y = iVar10 - 1;
                             iVar10 = iVar1;
                             do {
                                 local_30 = MACRO_CALL_MEMBER(Map::TileMapState_Func::returnSomeHeight,
@@ -216,7 +216,7 @@ namespace Map {
                                     uVar12 = 0x1c;
                                 }
                                 iVar10 = iVar10 + iVar1;
-                                y = y + -1;
+                                y = y - 1;
                             } while (y);
                         }
                     }
@@ -235,7 +235,7 @@ namespace Map {
                         }
                         iVar6 = iVar6 + iVar13;
                         iVar13 = iVar14;
-                        if (((local_44 & 1)) && (!param_7)) {
+                        if ((local_44 & 1) && !param_7) {
                             iVar13 = ((int)(iVar10 + (iVar10 >> 0x1f & 7U)) >> 3)
                                 + DAT_ViewportRenderState::instance
                                       .translationMatrix[(int)(iVar9 + (iVar9 >> 0x1f & 7U)) >> 3]
@@ -246,7 +246,7 @@ namespace Map {
                             }
                             if (!local_40) {
                                 if (iVar14 == iVar13) {
-                                    if ((bVar5)
+                                    if (bVar5
                                         && (uVar12 = iVar10 - x >> 0x1f,
                                             (int)(((iVar10 - x ^ uVar12) - uVar12) * (targetHeight - height)) / iVar11
                                                     + height
@@ -255,13 +255,13 @@ namespace Map {
                                     }
                                 } else {
                                     bVar5 = false;
-                                    if (((char)DAT_TileMapState::instance.LogicLayer[iVar13] < '\0')
-                                        || ((sVar3 != DAT_TileMapState::instance.BuildingLayer[iVar13]
+                                    if ((char)DAT_TileMapState::instance.LogicLayer[iVar13] < '\0'
+                                        || (sVar3 != DAT_TileMapState::instance.BuildingLayer[iVar13]
                                             && ((!bVar4
-                                                || (!(DAT_TileMapState::instance.LogicLayer[iVar13] & 0x400200U))))))) {
+                                                || (!(DAT_TileMapState::instance.LogicLayer[iVar13] & 0x400200U)))))) {
                                         bVar5 = true;
-                                        local_30 = MACRO_CALL_MEMBER(Map::TileMapState_Func::returnSomeHeight,
-                                            DAT_TileMapState::ptr)(iVar13, 1);
+                                        local_30 = MACRO_CALL_MEMBER(
+                                            Map::TileMapState_Func::returnSomeHeight, DAT_TileMapState::ptr)(iVar13, 1);
                                         uVar12 = iVar10 - x >> 0x1f;
                                         iVar9 = local_38;
                                         if ((int)(((iVar10 - x ^ uVar12) - uVar12) * (targetHeight - height)) / iVar11
@@ -290,14 +290,14 @@ namespace Map {
                 if ((targetHeight < height) && (local_40)) {
                     uVar12 = targetY - y >> 0x1f;
                     iVar6 = (targetY - y ^ uVar12) - uVar12;
-                    iVar6 = ((int)(iVar6 + (iVar6 >> 0x1f & 7U)) >> 3) + -1;
+                    iVar6 = ((int)(iVar6 + (iVar6 >> 0x1f & 7U)) >> 3) - 1;
                     if (4 < iVar6) {
                         iVar6 = 4;
                     }
                     if (1 < iVar6) {
                         piVar15 = (int*)((int)DAT_ViewportRenderState::ptr
                             + (((int)(targetY + (targetY >> 0x1f & 7U)) >> 3) - iVar2) * 0xc + 0x188728);
-                        iVar6 = iVar6 + -1;
+                        iVar6 = iVar6 - 1;
                         do {
                             local_30 = MACRO_CALL_MEMBER(Map::TileMapState_Func::returnSomeHeight,
                                 DAT_TileMapState::ptr)(*piVar15 + ((int)(targetX + (targetX >> 0x1f & 7U)) >> 3), 1);
@@ -305,7 +305,7 @@ namespace Map {
                                 local_40 = 0x1c;
                             }
                             piVar15 = piVar15 + iVar2 * -3;
-                            iVar6 = iVar6 + -1;
+                            iVar6 = iVar6 - 1;
                         } while (iVar6);
                     }
                 }
@@ -324,7 +324,7 @@ namespace Map {
                     }
                     iVar9 = iVar9 + iVar14;
                     iVar14 = iVar10;
-                    if (((local_44 & 1)) && (!param_7)) {
+                    if ((local_44 & 1) && !param_7) {
                         iVar14 = ((int)(x + (x >> 0x1f & 7U)) >> 3)
                             + DAT_ViewportRenderState::instance
                                   .translationMatrix[(int)(iVar6 + (iVar6 >> 0x1f & 7U)) >> 3]
@@ -335,7 +335,7 @@ namespace Map {
                         }
                         if (!local_40) {
                             if (iVar10 == iVar14) {
-                                if ((bVar5)
+                                if (bVar5
                                     && (uVar12 = iVar6 - y >> 0x1f,
                                         (int)(((iVar6 - y ^ uVar12) - uVar12) * (targetHeight - height)) / iVar7
                                                 + height
@@ -344,13 +344,13 @@ namespace Map {
                                 }
                             } else {
                                 bVar5 = false;
-                                if (((char)DAT_TileMapState::instance.LogicLayer[iVar14] < '\0')
-                                    || ((sVar3 != DAT_TileMapState::instance.BuildingLayer[iVar14]
+                                if ((char)DAT_TileMapState::instance.LogicLayer[iVar14] < '\0'
+                                    || (sVar3 != DAT_TileMapState::instance.BuildingLayer[iVar14]
                                         && ((!bVar4
-                                            || (!(DAT_TileMapState::instance.LogicLayer[iVar14] & 0x400200U))))))) {
+                                            || (!(DAT_TileMapState::instance.LogicLayer[iVar14] & 0x400200U)))))) {
                                     bVar5 = true;
-                                    local_30 = MACRO_CALL_MEMBER(Map::TileMapState_Func::returnSomeHeight,
-                                        DAT_TileMapState::ptr)(iVar14, 1);
+                                    local_30 = MACRO_CALL_MEMBER(
+                                        Map::TileMapState_Func::returnSomeHeight, DAT_TileMapState::ptr)(iVar14, 1);
                                     uVar12 = iVar6 - y >> 0x1f;
                                     x = local_3c;
                                     if ((int)(((iVar6 - y ^ uVar12) - uVar12) * (targetHeight - height)) / iVar7

@@ -1,18 +1,18 @@
 #include "../../Map.func.hpp"
 #include "../LandscapeState.func.hpp"
 
+#include "OpenSHC/Map/Trees/TreeTypeShort.hpp"
+
 #include "OpenSHC/Globals/DAT_CurrentTreeID.hpp"
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
 #include "OpenSHC/Globals/DAT_OrganismDefinedData.hpp"
 #include "OpenSHC/Globals/DAT_TextureRenderCoreObject.hpp"
 #include "OpenSHC/Globals/DAT_TileMapState.hpp"
 #include "OpenSHC/Globals/DAT_ViewportRenderState.hpp"
-#include "OpenSHC/Map/Trees/TreeTypeShort.hpp"
 
 namespace OpenSHC {
 namespace Map {
     using Map::Trees::TreeTypeShort;
-
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004F1CE0
     int LandscapeState::createTree(undefined4 x, undefined4 y, TreeType treeType, undefined4 size,
@@ -53,7 +53,7 @@ namespace Map {
         /*
          ***   Set initial state of tree   ***
          */
-        if (((int)treeType < 0x10) || (0x13 < (int)treeType)) {
+        if ((int)treeType < 0x10 || 0x13 < (int)treeType) {
             this->trees[_treeID].state = 1;
         } else {
             this->trees[_treeID].state = 4;

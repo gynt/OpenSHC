@@ -74,52 +74,44 @@ namespace Map {
         this->placementWarning = 0;
         this->field127_0x554944 = 0;
         this->uiBuildingRotation = 0xf;
-        _buildingType
-            = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::convertCommandBuildingTypeToBuildingType,
-                DAT_BuildingsState::ptr)(_commandBuildingType);
+        _buildingType = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::convertCommandBuildingTypeToBuildingType,
+            DAT_BuildingsState::ptr)(_commandBuildingType);
         this->buildingSpriteSheetID_1
             = DAT_BuildingDefinedData::instance.Building_SpriteSheet_ID_Array_1[_buildingType].intValue;
         this->buildingSpriteID1 = MACRO_CALL_MEMBER(
             Map::Buildings::BuildingsState_Func::getSpriteID, DAT_BuildingsState::ptr)(_commandBuildingType);
         this->buildingSpriteID2 = MACRO_CALL_MEMBER(
             Map::Buildings::BuildingsState_Func::getSpriteID2, DAT_BuildingsState::ptr)(_commandBuildingType);
-        _buildingType
-            = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::convertCommandBuildingTypeToBuildingType,
-                DAT_BuildingsState::ptr)(_commandBuildingType);
+        _buildingType = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::convertCommandBuildingTypeToBuildingType,
+            DAT_BuildingsState::ptr)(_commandBuildingType);
         this->buildingHeightLimit = DAT_BuildingDefinedData::instance.BuildingPlacement_HeightLimit[_buildingType];
-        _buildingType
-            = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::convertCommandBuildingTypeToBuildingType,
-                DAT_BuildingsState::ptr)(_commandBuildingType);
+        _buildingType = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::convertCommandBuildingTypeToBuildingType,
+            DAT_BuildingsState::ptr)(_commandBuildingType);
         this->buildingMaxHeightDifference
             = DAT_BuildingDefinedData::instance.BuildingPlacement_MaxHeightDifference[_buildingType];
-        _buildingType
-            = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::convertCommandBuildingTypeToBuildingType,
-                DAT_BuildingsState::ptr)(_commandBuildingType);
+        _buildingType = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::convertCommandBuildingTypeToBuildingType,
+            DAT_BuildingsState::ptr)(_commandBuildingType);
         this->buildingPlacementProperty_3
             = DAT_BuildingDefinedData::instance.BuildingPlacement_Property_3[_buildingType];
-        _buildingType
-            = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::convertCommandBuildingTypeToBuildingType,
-                DAT_BuildingsState::ptr)(_commandBuildingType);
+        _buildingType = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::convertCommandBuildingTypeToBuildingType,
+            DAT_BuildingsState::ptr)(_commandBuildingType);
         this->buildingPlacementProperty_4
             = DAT_BuildingDefinedData::instance.BuildingPlacement_Property_4[_buildingType];
-        if (((DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY)
-                || (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[playerID] != -1))
-            || (DAT_GameSynchronyState::instance.currentAIArray[playerID] == 0)) {
+        if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY
+            || DAT_GameSynchronyState::instance.currentPlayerFullIDArray[playerID] != -1
+            || DAT_GameSynchronyState::instance.currentAIArray[playerID] == 0) {
             this->buildingPlacementProperty_4 = 0;
         }
-        _buildingType
-            = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::convertCommandBuildingTypeToBuildingType,
-                DAT_BuildingsState::ptr)(_commandBuildingType);
+        _buildingType = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::convertCommandBuildingTypeToBuildingType,
+            DAT_BuildingsState::ptr)(_commandBuildingType);
         this->buildingPlacementProperty_5
             = DAT_BuildingDefinedData::instance.BuildingPlacement_Property_5[_buildingType];
-        _buildingType
-            = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::convertCommandBuildingTypeToBuildingType,
-                DAT_BuildingsState::ptr)(_commandBuildingType);
+        _buildingType = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::convertCommandBuildingTypeToBuildingType,
+            DAT_BuildingsState::ptr)(_commandBuildingType);
         this->buildingPlacementProperty_6
             = DAT_BuildingDefinedData::instance.BuildingPlacement_Property_6[_buildingType];
-        _buildingType
-            = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::convertCommandBuildingTypeToBuildingType,
-                DAT_BuildingsState::ptr)(_commandBuildingType);
+        _buildingType = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::convertCommandBuildingTypeToBuildingType,
+            DAT_BuildingsState::ptr)(_commandBuildingType);
         this->buildingPlacementProperty_7
             = DAT_BuildingDefinedData::instance.BuildingPlacement_Property_7[_buildingType];
         if ((undefined2)commandBuildingType == Commands::M_MAPPER_SIEGE_TOWER_BASE) {}
@@ -145,11 +137,10 @@ namespace Map {
                 bVar11 = true;
                 x = 0;
                 do {
-                    MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
-                        x, buildingSize);
-                    BVar3 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isEnemyTooCloseUnk,
-                        DAT_PathFindingState::ptr)(playerID, this->buildingX + _x, this->buildingY + _y,
-                        (int)((int)((-(uint)bVar10 & 0xfffffff1) + 0x1e)));
+                    MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(x, buildingSize);
+                    BVar3 = MACRO_CALL_MEMBER(
+                        Map::Navigation::PathFindingState_Func::isEnemyTooCloseUnk, DAT_PathFindingState::ptr)(playerID,
+                        this->buildingX + _x, this->buildingY + _y, (int)((-(uint)bVar10 & 0xfffffff1) + 0x1e));
                     if (BVar3) {
                         this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x11);
                         bVar11 = false;
@@ -183,10 +174,9 @@ namespace Map {
                 do {
                     MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
                         iVar8, buildingSize);
-                    iVar4
-                        = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isOpponentBuildingInRange,
-                            DAT_PathFindingState::ptr)(playerID, (int)((int)(this->buildingX + x)),
-                            (int)((int)(this->buildingY + _y)), 7, -1, -1, -1);
+                    iVar4 = MACRO_CALL_MEMBER(
+                        Map::Navigation::PathFindingState_Func::isOpponentBuildingInRange, DAT_PathFindingState::ptr)(
+                        playerID, (int)(this->buildingX + x), (int)(this->buildingY + _y), 7, -1, -1, -1);
                     if (iVar4)
                         goto LAB_005039d6;
                     iVar8 = iVar8 + 1;
@@ -196,15 +186,14 @@ namespace Map {
                     _distance = 30;
                     _range = 30;
                 } else {
-                    MACRO_CALL_MEMBER(
-                        Synchrony::GameSynchronyState_Func::isAIPlayer, DAT_GameSynchronyState::ptr)(playerID);
+                    MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::isAIPlayer, DAT_GameSynchronyState::ptr)(
+                        playerID);
                     _distance = 15;
                     _range = 7;
                 }
                 x = 0;
                 do {
-                    MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
-                        x, buildingSize);
+                    MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(x, buildingSize);
                     BVar3 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isEnemyTooCloseUnk,
                         DAT_PathFindingState::ptr)(playerID, this->buildingX + _x, this->buildingY + _y, _distance);
                     if (BVar3) {
@@ -215,16 +204,13 @@ namespace Map {
                         break;
                     }
                     if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {
-                        iVar8 = MACRO_CALL_MEMBER(
-                            Map::Navigation::PathFindingState_Func::isOpponentBuildingInRange,
-                            DAT_PathFindingState::ptr)(playerID, (int)((int)(this->buildingX + _x)),
-                            (int)((int)(this->buildingY + _y)), _range, -1, -1, -1);
+                        iVar8 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isOpponentBuildingInRange,
+                            DAT_PathFindingState::ptr)(
+                            playerID, (int)(this->buildingX + _x), (int)(this->buildingY + _y), _range, -1, -1, -1);
                         if (iVar8)
                             goto LAB_00503b32;
-                        _buildRange
-                            = MACRO_CALL_MEMBER(Map::TileMapState_Func::getCastleBuildRangeForMapSize, this)();
-                        iVar8 = MACRO_CALL_MEMBER(
-                            Map::Navigation::PathFindingState_Func::isTileInRangeOfKeepRange,
+                        _buildRange = MACRO_CALL_MEMBER(Map::TileMapState_Func::getCastleBuildRangeForMapSize, this)();
+                        iVar8 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isTileInRangeOfKeepRange,
                             DAT_PathFindingState::ptr)(
                             playerID, this->buildingX + _x, this->buildingY + _y, _buildRange + local_4);
                         if (!iVar8)
@@ -332,8 +318,7 @@ namespace Map {
         if (!this->buildingPlacementFail) {
             iVar8 = 0;
             do {
-                MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
-                    iVar8, buildingSize);
+                MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(iVar8, buildingSize);
                 iVar4 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::findSomeSuitableLocationUnk,
                     DAT_PathFindingState::ptr)(playerID, this->buildingX + _x, this->buildingY + _y, 2);
                 if (iVar4) {
@@ -345,8 +330,7 @@ namespace Map {
             } while (iVar8 < this->constructionTileCount);
         }
     switchD_0050397c_caseD_33:
-        if (((undefined2)commandBuildingType == Commands::M_MAPPER_DRAWBRIDGE)
-            && (0xc < this->buildingMaxHeight)) {
+        if ((undefined2)commandBuildingType == Commands::M_MAPPER_DRAWBRIDGE && 0xc < this->buildingMaxHeight) {
             this->buildingPlacementFail = TRUE;
         }
         x = 0;
@@ -406,10 +390,10 @@ namespace Map {
             }
             x = x + 1;
         } while ((int)x < this->constructionTileCount);
-        if (((((undefined2)commandBuildingType == Commands::M_MAPPER_CATTLEFARM)
-                 || ((undefined2)commandBuildingType == Commands::M_MAPPER_WHEATFARM))
-                || ((undefined2)commandBuildingType == Commands::M_MAPPER_HOPSFARM))
-            || ((undefined2)commandBuildingType == Commands::M_MAPPER_APPLEFARM)) {
+        if ((undefined2)commandBuildingType == Commands::M_MAPPER_CATTLEFARM
+            || (undefined2)commandBuildingType == Commands::M_MAPPER_WHEATFARM
+            || (undefined2)commandBuildingType == Commands::M_MAPPER_HOPSFARM
+            || (undefined2)commandBuildingType == Commands::M_MAPPER_APPLEFARM) {
             if ((int)y < this->constructionTileCount) {
                 this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x16);
                 this->buildingPlacementFail = TRUE;
@@ -420,9 +404,9 @@ namespace Map {
             }
         } else {
             if ((undefined2)commandBuildingType != Commands::M_MAPPER_QUARRY) {
-                if ((((undefined2)commandBuildingType == Commands::M_MAPPER_KEEP1)
-                        || ((undefined2)commandBuildingType == Commands::M_MAPPER_KEEP2))
-                    || ((undefined2)commandBuildingType == Commands::M_MAPPER_KEEP3)) {
+                if ((undefined2)commandBuildingType == Commands::M_MAPPER_KEEP1
+                    || (undefined2)commandBuildingType == Commands::M_MAPPER_KEEP2
+                    || (undefined2)commandBuildingType == Commands::M_MAPPER_KEEP3) {
                     buildingSize = (_commandBuildingType - Commands::M_MAPPER_KEEP1) * 0x60 + 0xb491b8;
                     commandBuildingType = Commands::M_MAPPER_NULL;
                     do {
@@ -437,14 +421,13 @@ namespace Map {
                         if ((this->LogicLayer[iVar8] & 0x30)) {
                             this->buildingPlacementFail = 2;
                         }
-                        iVar8 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile,
-                            this)(iVar8, playerID, _commandBuildingType, 0);
+                        iVar8 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile, this)(
+                            iVar8, playerID, _commandBuildingType, 0);
                         if (iVar8) {
                             this->buildingPlacementFail = TRUE;
                         }
                         buildingSize = buildingSize + 8;
-                        commandBuildingType
-                            = (Commands::MappersEnum)(commandBuildingType + Commands::M_MAPPER_AREA);
+                        commandBuildingType = (Commands::MappersEnum)(commandBuildingType + Commands::M_MAPPER_AREA);
                     } while ((int)commandBuildingType < 3);
                     iVar4 = (_commandBuildingType - Commands::M_MAPPER_KEEP1) * 0x20;
                     iVar6 = _x + *(int*)((int)DAT_TerrainDefinedData::ptr + iVar4 + 900);
@@ -468,8 +451,8 @@ namespace Map {
                         if ((this->LogicLayer[iVar7] & 0x30)) {
                             this->buildingPlacementFail = 2;
                         }
-                        iVar7 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile,
-                            this)(iVar7, playerID, _commandBuildingType, 0);
+                        iVar7 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile, this)(
+                            iVar7, playerID, _commandBuildingType, 0);
                         if (iVar7) {
                             this->buildingPlacementFail = TRUE;
                         }
@@ -489,8 +472,8 @@ namespace Map {
                                     + iVar4,
                                 (this->LogicLayer[iVar6] & 0x30) != 0))
                             break;
-                        iVar6 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile,
-                            this)(iVar6, playerID, _commandBuildingType, 0);
+                        iVar6 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile, this)(
+                            iVar6, playerID, _commandBuildingType, 0);
                         if (iVar6) {
                             this->buildingPlacementFail = TRUE;
                         }
@@ -498,10 +481,10 @@ namespace Map {
                         if (this->constructionTileCount <= (int)x) {}
                     }
                 } else {
-                    if (((((undefined2)commandBuildingType != Commands::M_MAPPER_GATE_WOOD1A)
-                             && ((undefined2)commandBuildingType != Commands::M_MAPPER_GATE_WOOD1B))
-                            && ((undefined2)commandBuildingType != Commands::M_MAPPER_GATE_WOOD1C))
-                        && ((undefined2)commandBuildingType != Commands::M_MAPPER_GATE_WOOD1D)) {
+                    if ((undefined2)commandBuildingType != Commands::M_MAPPER_GATE_WOOD1A
+                        && (undefined2)commandBuildingType != Commands::M_MAPPER_GATE_WOOD1B
+                        && (undefined2)commandBuildingType != Commands::M_MAPPER_GATE_WOOD1C
+                        && (undefined2)commandBuildingType != Commands::M_MAPPER_GATE_WOOD1D) {
                         if ((undefined2)commandBuildingType == Commands::M_MAPPER_IRON_MINE) {
                             if (3 < _ironCount) {}
                             this->buildingPlacementFailReason = Map::Buildings::BFRE_NOT_IRON_ORE;
@@ -514,14 +497,12 @@ namespace Map {
                         }
                         if ((undefined2)commandBuildingType == Commands::M_MAPPER_STORES) {
                             if (DAT_GameState::instance.playerDataArray[playerID].stockpile.id == 0) {}
-                            iVar8
-                                = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getEmptyBuildingCount,
-                                    DAT_BuildingsState::ptr)(playerID, Map::Buildings::BT_STOCKPILE);
+                            iVar8 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getEmptyBuildingCount,
+                                DAT_BuildingsState::ptr)(playerID, Map::Buildings::BT_STOCKPILE);
                             if (iVar8 < 0x20) {
-                                BVar3 = MACRO_CALL_MEMBER(
-                                    Map::Buildings::BuildingsState_Func::hasBuildingAsNeighbour,
-                                    DAT_BuildingsState::ptr)(playerID, (int)((int)(_x)), (int)((int)(_y)), buildingSize,
-                                    Map::Buildings::BT_STOCKPILE);
+                                BVar3 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::hasBuildingAsNeighbour,
+                                    DAT_BuildingsState::ptr)(
+                                    playerID, (int)(_x), (int)(_y), buildingSize, Map::Buildings::BT_STOCKPILE);
                                 if (BVar3) {}
                                 this->buildingPlacementFail = TRUE;
                                 this->buildingPlacementFailReason = Map::Buildings::BFRE_NOT_ADJ_STOCKPILE;
@@ -530,14 +511,12 @@ namespace Map {
                         }
                         if ((undefined2)commandBuildingType == Commands::M_MAPPER_GRANARY) {
                             if (DAT_GameState::instance.playerDataArray[playerID].granary.id == 0) {}
-                            iVar8
-                                = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getEmptyBuildingCount,
-                                    DAT_BuildingsState::ptr)(playerID, Map::Buildings::BT_GRANARY);
+                            iVar8 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getEmptyBuildingCount,
+                                DAT_BuildingsState::ptr)(playerID, Map::Buildings::BT_GRANARY);
                             if (iVar8 < 8) {
-                                BVar3 = MACRO_CALL_MEMBER(
-                                    Map::Buildings::BuildingsState_Func::hasBuildingAsNeighbour,
-                                    DAT_BuildingsState::ptr)(playerID, (int)((int)(_x)), (int)((int)(_y)), buildingSize,
-                                    Map::Buildings::BT_GRANARY);
+                                BVar3 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::hasBuildingAsNeighbour,
+                                    DAT_BuildingsState::ptr)(
+                                    playerID, (int)(_x), (int)(_y), buildingSize, Map::Buildings::BT_GRANARY);
                                 if (BVar3) {}
                                 this->buildingPlacementFail = TRUE;
                                 this->buildingPlacementFailReason = Map::Buildings::BFRE_NOT_ADJ_GRANARY;
@@ -546,22 +525,20 @@ namespace Map {
                         }
                         if ((undefined2)commandBuildingType == Commands::M_MAPPER_ARMOURY) {
                             if (DAT_GameState::instance.playerDataArray[playerID].armory.id == 0) {}
-                            iVar8
-                                = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getEmptyBuildingCount,
-                                    DAT_BuildingsState::ptr)(playerID, Map::Buildings::BT_ARMORY);
+                            iVar8 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::getEmptyBuildingCount,
+                                DAT_BuildingsState::ptr)(playerID, Map::Buildings::BT_ARMORY);
                             if (iVar8 < 8) {
-                                BVar3 = MACRO_CALL_MEMBER(
-                                    Map::Buildings::BuildingsState_Func::hasBuildingAsNeighbour,
-                                    DAT_BuildingsState::ptr)(playerID, (int)((int)(_x)), (int)((int)(_y)), buildingSize,
-                                    Map::Buildings::BT_ARMORY);
+                                BVar3 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::hasBuildingAsNeighbour,
+                                    DAT_BuildingsState::ptr)(
+                                    playerID, (int)(_x), (int)(_y), buildingSize, Map::Buildings::BT_ARMORY);
                                 if (BVar3) {}
                                 this->buildingPlacementFail = TRUE;
                                 this->buildingPlacementFailReason = Map::Buildings::BFRE_NOT_ADJ_ARMORY;
                             }
                             this->buildingPlacementFail = TRUE;
                         }
-                        if (((undefined2)commandBuildingType == Commands::M_MAPPER_BARRACKS_EURO)
-                            || ((undefined2)commandBuildingType == Commands::M_MAPPER_BARRACKS_ARAB)) {
+                        if ((undefined2)commandBuildingType == Commands::M_MAPPER_BARRACKS_EURO
+                            || (undefined2)commandBuildingType == Commands::M_MAPPER_BARRACKS_ARAB) {
                             iVar4 = _x
                                 + DAT_TerrainDefinedData::instance
                                       .BuildingPartsOffsets[this->DAT_TempBuildingRotation][0]
@@ -571,8 +548,7 @@ namespace Map {
                                         .y;
                             x = 0;
                             while (true) {
-                                MACRO_CALL_MEMBER(
-                                    Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(x, 5);
+                                MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(x, 5);
                                 uVar5 = this->buildingY + _y + iVar8;
                                 BVar3 = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::xyAreValid,
                                     DAT_ViewportRenderState::ptr)(this->buildingX + iVar4, uVar5);
@@ -583,9 +559,8 @@ namespace Map {
                                     + this->buildingX + iVar4;
                                 if ((this->LogicLayer[iVar6] & 0x30))
                                     break;
-                                iVar6 = MACRO_CALL_MEMBER(
-                                    Map::TileMapState_Func::isBuildingPlacementAllowedAtTile, this)(
-                                    iVar6, playerID, _commandBuildingType, 0);
+                                iVar6 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile,
+                                    this)(iVar6, playerID, _commandBuildingType, 0);
                                 if (iVar6) {
                                     this->buildingPlacementFail = TRUE;
                                 }
@@ -601,12 +576,10 @@ namespace Map {
                                     x = 0;
                                     while (true) {
                                         MACRO_CALL_MEMBER(
-                                            Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
-                                            x, 5);
+                                            Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(x, 5);
                                         iVar6 = this->buildingX;
                                         uVar5 = this->buildingY + iVar8 + _y;
-                                        BVar3 = MACRO_CALL_MEMBER(
-                                            Rendering::ViewportRenderState_Func::xyAreValid,
+                                        BVar3 = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::xyAreValid,
                                             DAT_ViewportRenderState::ptr)(this->buildingX + iVar4, uVar5);
                                         if (!BVar3) {
                                             this->buildingPlacementFail = 2;
@@ -633,13 +606,13 @@ namespace Map {
                                             x = 0;
                                             while (true) {
                                                 MACRO_CALL_MEMBER(
-                                                    Map::TileMapState_Func::getBuildingSizeIndexMappingData,
-                                                    this)(x, 5);
+                                                    Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
+                                                    x, 5);
                                                 iVar6 = this->buildingX;
                                                 uVar5 = this->buildingY + iVar8 + _y;
-                                                BVar3 = MACRO_CALL_MEMBER(
-                                                    Rendering::ViewportRenderState_Func::xyAreValid,
-                                                    DAT_ViewportRenderState::ptr)(this->buildingX + iVar4, uVar5);
+                                                BVar3
+                                                    = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::xyAreValid,
+                                                        DAT_ViewportRenderState::ptr)(this->buildingX + iVar4, uVar5);
                                                 if (!BVar3) {
                                                     this->buildingPlacementFail = 2;
                                                 }
@@ -649,8 +622,8 @@ namespace Map {
                                                 if ((this->LogicLayer[iVar6] & 0x30))
                                                     break;
                                                 iVar6 = MACRO_CALL_MEMBER(
-                                                    Map::TileMapState_Func::isBuildingPlacementAllowedAtTile,
-                                                    this)(iVar6, playerID, _commandBuildingType, 0);
+                                                    Map::TileMapState_Func::isBuildingPlacementAllowedAtTile, this)(
+                                                    iVar6, playerID, _commandBuildingType, 0);
                                                 if (iVar6) {
                                                     this->buildingPlacementFail = TRUE;
                                                 }
@@ -665,8 +638,8 @@ namespace Map {
                             }
                             this->buildingPlacementFail = 2;
                         }
-                        if (((undefined2)commandBuildingType == Commands::M_MAPPER_ENGINEERS_GUILD)
-                            || ((undefined2)commandBuildingType == Commands::M_MAPPER_TUNNELERS_GUILD)) {
+                        if ((undefined2)commandBuildingType == Commands::M_MAPPER_ENGINEERS_GUILD
+                            || (undefined2)commandBuildingType == Commands::M_MAPPER_TUNNELERS_GUILD) {
                             iVar4 = _x
                                 + DAT_TerrainDefinedData::instance
                                       .BuildingPartsOffsets[this->DAT_TempBuildingRotation][1]
@@ -676,8 +649,7 @@ namespace Map {
                                         .y;
                             x = 0;
                             while (true) {
-                                MACRO_CALL_MEMBER(
-                                    Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(x, 5);
+                                MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(x, 5);
                                 uVar5 = this->buildingY + _y + iVar8;
                                 BVar3 = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::xyAreValid,
                                     DAT_ViewportRenderState::ptr)(this->buildingX + iVar4, uVar5);
@@ -688,9 +660,8 @@ namespace Map {
                                     + this->buildingX + iVar4;
                                 if ((this->LogicLayer[iVar6] & 0x30))
                                     break;
-                                iVar6 = MACRO_CALL_MEMBER(
-                                    Map::TileMapState_Func::isBuildingPlacementAllowedAtTile, this)(
-                                    iVar6, playerID, _commandBuildingType, 0);
+                                iVar6 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile,
+                                    this)(iVar6, playerID, _commandBuildingType, 0);
                                 if (iVar6) {
                                     this->buildingPlacementFail = TRUE;
                                 }
@@ -705,8 +676,7 @@ namespace Map {
                             iVar8 = DAT_TerrainDefinedData::instance.field63_0x19c[this->DAT_TempBuildingRotation].y;
                             x = 0;
                             while (true) {
-                                MACRO_CALL_MEMBER(
-                                    Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(x, 4);
+                                MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(x, 4);
                                 uVar5 = this->buildingY + _y + iVar8;
                                 BVar3 = MACRO_CALL_MEMBER(Rendering::ViewportRenderState_Func::xyAreValid,
                                     DAT_ViewportRenderState::ptr)(this->buildingX + iVar4, uVar5);
@@ -717,9 +687,8 @@ namespace Map {
                                     + this->buildingX + iVar4;
                                 if ((this->LogicLayer[iVar6] & 0x30))
                                     break;
-                                iVar6 = MACRO_CALL_MEMBER(
-                                    Map::TileMapState_Func::isBuildingPlacementAllowedAtTile, this)(
-                                    iVar6, playerID, Commands::M_MAPPER_OIL_SMELTER, 0);
+                                iVar6 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile,
+                                    this)(iVar6, playerID, Commands::M_MAPPER_OIL_SMELTER, 0);
                                 if (iVar6) {
                                     this->buildingPlacementFail = TRUE;
                                 }
@@ -730,12 +699,11 @@ namespace Map {
                         }
                         if ((undefined2)commandBuildingType != Commands::M_MAPPER_TUNNEL_CONSTRUCTION) {}
                         MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::algTunnelerFindTarget,
-                            DAT_PathFindingState::ptr)(
-                            playerID, 0, (int)((int)(76)), (int)((int)(_x)), (int)((int)(_y)));
+                            DAT_PathFindingState::ptr)(playerID, 0, (int)(76), (int)(_x), (int)(_y));
                         if (DAT_PathFindingState::instance.ALG_TargetTile) {}
                         this->buildingPlacementFail = TRUE;
                     }
-                    iVar8 = _commandBuildingType * 3 + -0x1a4;
+                    iVar8 = _commandBuildingType * 3 - 0x1a4;
                     iVar6 = _x + *(int*)((int)DAT_TerrainDefinedData::ptr + iVar8 * 8 + 0x56c);
                     iVar8 = iVar8 * 8;
                     iVar4 = *(int*)((int)DAT_TerrainDefinedData::ptr + iVar8 + 0x570);
@@ -753,8 +721,8 @@ namespace Map {
                         if ((this->LogicLayer[iVar7] & 0x30)) {
                             this->buildingPlacementFail = 2;
                         }
-                        iVar7 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile,
-                            this)(iVar7, playerID, _commandBuildingType, 0);
+                        iVar7 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile, this)(
+                            iVar7, playerID, _commandBuildingType, 0);
                         if (iVar7) {
                             this->buildingPlacementFail = TRUE;
                         }
@@ -776,8 +744,8 @@ namespace Map {
                         if ((this->LogicLayer[iVar6] & 0x30)) {
                             this->buildingPlacementFail = 2;
                         }
-                        iVar6 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile,
-                            this)(iVar6, playerID, _commandBuildingType, 0);
+                        iVar6 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile, this)(
+                            iVar6, playerID, _commandBuildingType, 0);
                         if (iVar6) {
                             this->buildingPlacementFail = TRUE;
                         }
@@ -785,7 +753,7 @@ namespace Map {
                     } while ((int)x < this->constructionTileCount);
                     commandBuildingType = Commands::M_MAPPER_NULL;
                     piVar9
-                        = (int*)((int)DAT_TerrainDefinedData::ptr + (_commandBuildingType * 3 + -0x1a4) * 0x10 + 0x5cc);
+                        = (int*)((int)DAT_TerrainDefinedData::ptr + (_commandBuildingType * 3 - 0x1a4) * 0x10 + 0x5cc);
                     while (true) {
                         iVar8 = piVar9[1];
                         iVar4 = *piVar9;
@@ -796,13 +764,12 @@ namespace Map {
                                     + iVar4 + _x,
                                 (this->LogicLayer[iVar8] & 0x30) != 0))
                             break;
-                        iVar8 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile,
-                            this)(iVar8, playerID, _commandBuildingType, 0);
+                        iVar8 = MACRO_CALL_MEMBER(Map::TileMapState_Func::isBuildingPlacementAllowedAtTile, this)(
+                            iVar8, playerID, _commandBuildingType, 0);
                         if (iVar8) {
                             this->buildingPlacementFail = TRUE;
                         }
-                        commandBuildingType
-                            = (Commands::MappersEnum)(commandBuildingType + Commands::M_MAPPER_AREA);
+                        commandBuildingType = (Commands::MappersEnum)(commandBuildingType + Commands::M_MAPPER_AREA);
                         piVar9 = piVar9 + 2;
                         if (5 < (int)commandBuildingType) {}
                     }

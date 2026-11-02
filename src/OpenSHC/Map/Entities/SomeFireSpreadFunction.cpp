@@ -43,7 +43,7 @@ namespace Map {
         microY = y + DAT_EntityDefinedData::instance.XYOffsetsInAllDirections[_rng & 0x3f][1];
         _x = microX / 8;
         _y = microY / 8;
-        if (((399 < _x) || (399 < _y)) || (*(char*)(_y * 400 + 0x21aec98 + _x) == '\0')) {
+        if (399 < _x || 399 < _y || *(char*)(_y * 400 + 0x21aec98 + _x) == '\0') {
             return 0;
         }
         _tile = DAT_ViewportRenderState::instance.translationMatrix[_y].addXgetTile + _x;
@@ -52,27 +52,25 @@ namespace Map {
             _buildingID = DAT_TileMapState::instance.BuildingLayer[_tile];
             if (_buildingID) {
                 _buildingType = DAT_BuildingsState::instance.buildings[_buildingID].buildingType;
-                if (((_buildingType != Map::Buildings::BT_TUNNEL)
-                        && (_buildingType != Map::Buildings::BT_KILLINGPIT))
-                    && (_buildingType != Map::Buildings::BT_UNKNOWN4)) {
-                    MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::lightUpBuilding,
-                        DAT_BuildingsState::ptr)((int)_buildingID, param_1, 0);
+                if (_buildingType != Map::Buildings::BT_TUNNEL && _buildingType != Map::Buildings::BT_KILLINGPIT
+                    && _buildingType != Map::Buildings::BT_UNKNOWN4) {
+                    MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::lightUpBuilding, DAT_BuildingsState::ptr)(
+                        (int)_buildingID, param_1, 0);
                     return 0;
                 }
             }
-            _entityID = MACRO_CALL_MEMBER(
-                Map::Entities::EntityState_Func::getFireEntityIDAtTile, DAT_EntityState::ptr)(_tile);
+            _entityID = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::getFireEntityIDAtTile, DAT_EntityState::ptr)(
+                _tile);
             if (!_entityID) {
                 if ((_rng & 0x1000)) {
-                    MACRO_CALL_MEMBER(Map::LandscapeState_Func::lightUpTree, DAT_LandscapeState::ptr)(
-                        _tile, param_1);
+                    MACRO_CALL_MEMBER(Map::LandscapeState_Func::lightUpTree, DAT_LandscapeState::ptr)(_tile, param_1);
                 }
-                _fireEntityID = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity,
-                    DAT_EntityState::ptr)(0, (undefined4)((int)(param_1)), 0, microX, microY, param_4, 0, 0, 0,
-                    Map::Entities::ET_FIRE, 0);
-                if ((2 < param_5) && (!(DAT_TileMapState::instance.RandomLayer[_tile] & 3))) {
-                    MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity,
-                        DAT_EntityState::ptr)(0, (undefined4)((int)(param_1)), 0, microX, microY, param_4, 0, 0, 0,
+                _fireEntityID
+                    = MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity, DAT_EntityState::ptr)(0,
+                        (undefined4)((int)(param_1)), 0, microX, microY, param_4, 0, 0, 0, Map::Entities::ET_FIRE, 0);
+                if (2 < param_5 && !(DAT_TileMapState::instance.RandomLayer[_tile] & 3)) {
+                    MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnProjectileEntity, DAT_EntityState::ptr)(0,
+                        (undefined4)((int)(param_1)), 0, microX, microY, param_4, 0, 0, 0,
                         Map::Entities::EntityTypeInt__ET_EXPLOSION, 0);
                 }
                 if (_fireEntityID) {

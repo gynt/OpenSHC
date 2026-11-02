@@ -55,10 +55,10 @@ namespace Map {
                     piVar6[-1] = 0;
                     *piVar6 = 0;
                     piVar6 = piVar6 + 0x640;
-                    iVar3 = iVar3 + -1;
+                    iVar3 = iVar3 - 1;
                 } while (iVar3);
                 piVar4 = piVar4 + 0x28;
-                iVar12 = iVar12 + -1;
+                iVar12 = iVar12 - 1;
             } while (iVar12);
             this->DAT_Y10_Array_Section1034[0] = (short)local_1c;
             this->DAT_X10_Array_Section1034[0] = (short)iVar5;
@@ -71,7 +71,7 @@ namespace Map {
                     piVar4 = &DAT_TerrainDefinedData::instance.clockwiseCardinalTranslationMatrix[0].int_.yOffset;
                     do {
                         uVar9 = *piVar4 + iVar3;
-                        uVar7 = ((Point8IntXY*)(piVar4 + -1))->xOffset + iVar8;
+                        uVar7 = ((Point8IntXY*)(piVar4 - 1))->xOffset + iVar8;
                         if (uVar7 < 0x28 && uVar9 < 0x28 && 0 < this->grid[uVar7][uVar9].firstMember
                             && iVar12 == this->grid[uVar7][uVar9].separateAreaID
                             && (iVar10 = this->grid[uVar7][uVar9].field20_0x50, 0 < iVar10)
@@ -146,10 +146,10 @@ namespace Map {
                 iVar3 = (uVar7 & 7) * 8 + 8;
                 do {
                     iVar8 = iVar12 + 7;
-                    iVar10 = iVar3 + -8;
+                    iVar10 = iVar3 - 8;
                     if (7 < iVar8) {
-                        iVar8 = iVar12 + -1;
-                        iVar10 = iVar3 + -72;
+                        iVar8 = iVar12 - 1;
+                        iVar10 = iVar3 - 72;
                     }
                     uVar9 = *(int*)((int)DAT_TerrainDefinedData::instance.clockwiseCardinalTranslationMatrix + iVar10)
                         + iVar5;
@@ -165,7 +165,7 @@ namespace Map {
                     iVar8 = iVar3;
                     iVar10 = iVar12 + 8;
                     if (7 < iVar12 + 8) {
-                        iVar8 = iVar3 + -0x40;
+                        iVar8 = iVar3 - 0x40;
                         iVar10 = iVar12;
                     }
                     uVar11
@@ -183,7 +183,7 @@ namespace Map {
                     iVar10 = iVar3 + 8;
                     if (7 < iVar8) {
                         iVar8 = iVar12 + 1;
-                        iVar10 = iVar3 + -0x38;
+                        iVar10 = iVar3 - 0x38;
                     }
                     uVar11
                         = *(int*)((int)DAT_TerrainDefinedData::instance.clockwiseCardinalTranslationMatrix + iVar10 + 4)
@@ -200,7 +200,7 @@ namespace Map {
                     iVar10 = iVar3 + 0x10;
                     if (7 < iVar8) {
                         iVar8 = iVar12 + 2;
-                        iVar10 = iVar3 + -0x30;
+                        iVar10 = iVar3 - 0x30;
                     }
                     uVar11
                         = *(int*)((int)DAT_TerrainDefinedData::instance.clockwiseCardinalTranslationMatrix + iVar10 + 4)
@@ -215,7 +215,7 @@ namespace Map {
                     }
                     iVar3 = iVar3 + 0x20;
                     iVar12 = iVar12 + 4;
-                    local_10 = local_10 + -1;
+                    local_10 = local_10 - 1;
                 } while (local_10);
                 if (local_14 < 0)
                     break;
@@ -227,7 +227,9 @@ namespace Map {
                 this->grid[iVar5][local_1c].field15_0x3c = 1;
                 uVar9 = iVar5 * 10 + 5;
                 uVar11 = local_1c * 10 + 5;
-                if (uVar9 < 400 && uVar11 < 400 && *(char*)(uVar11 * 400 + (int)DAT_ViewportRenderState::instance.DAT_BinaryTileMap400x400 + uVar9) != '\0') {
+                if (uVar9 < 400 && uVar11 < 400
+                    && *(char*)(uVar11 * 400 + (int)DAT_ViewportRenderState::instance.DAT_BinaryTileMap400x400 + uVar9)
+                        != '\0') {
                     DAT_TribesState::instance.tribes[param_1]
                         .rallyPointArray[DAT_TribesState::instance.tribes[param_1].rallyPointCount][0]
                         = (short)iVar5 * 10 + 5;

@@ -362,10 +362,8 @@ namespace Map {
                     LAB_0041dcd4:
                         if (bVar12) {
                             MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
-                                (int)*(
-                                    short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar7 + -0x32),
-                                (int)*(
-                                    short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar7 + -0x30),
+                                (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar7 - 0x32),
+                                (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar7 - 0x30),
                                 DE::SHCDE::FX_PRYER_LEVER);
                         }
                     } else {

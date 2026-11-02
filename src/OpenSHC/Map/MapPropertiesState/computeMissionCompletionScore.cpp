@@ -40,19 +40,19 @@ namespace Map {
             pcVar7 = (char*)((int)&this->scenarioEvents[0].data + 0xf);
             iVar6 = 1;
             do {
-                if (*(int*)(pcVar7 + -0x17) != 3)
+                if (*(int*)(pcVar7 - 0x17) != 3)
                     goto LAB_004be33e;
-                if (((*(int*)(pcVar7 + -0xb) == 1) || (*(int*)(pcVar7 + -0xb) == 0x1b)) && (*pcVar7 != '\0')) {
-                    local_4 = *(int*)(pcVar7 + -0x1f);
-                    local_8 = *(int*)(pcVar7 + -0x1b);
+                if (((*(int*)(pcVar7 - 0xb) == 1) || (*(int*)(pcVar7 - 0xb) == 0x1b)) && *pcVar7 != '\0') {
+                    local_4 = *(int*)(pcVar7 - 0x1f);
+                    local_8 = *(int*)(pcVar7 - 0x1b);
                 }
-                if ((*(int*)(pcVar7 + -0xb) != 0) && (*(int*)(pcVar7 + -0xb) != 0x1a))
+                if ((*(int*)(pcVar7 - 0xb) != 0) && (*(int*)(pcVar7 - 0xb) != 0x1a))
                     goto LAB_004be33e;
                 if (iVar6 < this->eventsCount) {
                     piVar2 = (int*)(pcVar7 + 0xd9);
                     iVar5 = iVar6;
                     do {
-                        if ((piVar2[-3] == 3) && ((*piVar2 == 0 || (*piVar2 == 0x1a))))
+                        if (piVar2[-3] == 3 && (*piVar2 == 0 || (*piVar2 == 0x1a)))
                             goto LAB_004be33e;
                         iVar5 = iVar5 + 1;
                         piVar2 = piVar2 + 0x39;
@@ -228,8 +228,8 @@ namespace Map {
             LAB_004be25c:
                 if (pcVar7[0x10] != '\0') {
                     this->objectiveGoodsType[this->objectiveGoodsCount] = 0xf;
-                    iVar5 = MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::getDifficultyMultipliedValue,
-                        this)((int)*(short*)(pcVar7 + 0xd));
+                    iVar5 = MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::getDifficultyMultipliedValue, this)(
+                        (int)*(short*)(pcVar7 + 0xd));
                     this->objectiveGoodsSurplus[this->objectiveGoodsCount]
                         = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                               .currentResources[0xf]
@@ -242,8 +242,8 @@ namespace Map {
                 }
                 if (pcVar7[4] != '\0') {
                     this->objectiveGoodsType[this->objectiveGoodsCount] = -1;
-                    iVar5 = MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::getDifficultyMultipliedValue,
-                        this)((int)*(short*)(pcVar7 + 1));
+                    iVar5 = MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::getDifficultyMultipliedValue, this)(
+                        (int)*(short*)(pcVar7 + 1));
                     this->objectiveGoodsSurplus[this->objectiveGoodsCount]
                         = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                               .currentPopulation
@@ -283,14 +283,12 @@ namespace Map {
             } while (iVar5 < this->objectiveGoodsCount);
         }
         this->troopSurvivalScore = 0;
-        if ((DAT_GameCore::instance.gameMode_2 == Game::GM_CAMPAIGN_MISSION)
-            || ((DAT_GameCore::instance.gameMode_2 == Game::GM_BUILDERUnk
-                && ((int)this->SEC_U3_MapType2_1 < 2)))) {
+        if (DAT_GameCore::instance.gameMode_2 == Game::GM_CAMPAIGN_MISSION
+            || (DAT_GameCore::instance.gameMode_2 == Game::GM_BUILDERUnk && ((int)this->SEC_U3_MapType2_1 < 2))) {
             psVar8 = &DAT_UnitsState::instance.units[1].owner;
             iVar5 = DAT_GameSynchronyState::instance.currentPlayerSlotID;
             do {
-                if (((psVar8[-5] != Map::Units::ULS_INVISIBLE) && (*psVar8 == iVar5))
-                    && (psVar8[0x107] != 0)) {
+                if (psVar8[-5] != Map::Units::ULS_INVISIBLE && *psVar8 == iVar5 && psVar8[0x107] != 0) {
                     iVar5 = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::getValueOfTroopType,
                         DAT_TroopValueState::ptr)((Map::Units::UnitType)((int)psVar8[-4]));
                     iVar6 = iVar6 + iVar5;
@@ -310,7 +308,7 @@ namespace Map {
             iVar5 = 0;
             psVar8 = &DAT_UnitsState::instance.units[1].owner;
             do {
-                if (((psVar8[-5] != Map::Units::ULS_INVISIBLE) && (*psVar8 == 1)) && (psVar8[0x107] != 0)) {
+                if (psVar8[-5] != Map::Units::ULS_INVISIBLE && *psVar8 == 1 && psVar8[0x107] != 0) {
                     iVar6 = MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::getValueOfTroopType,
                         DAT_TroopValueState::ptr)((Map::Units::UnitType)((int)psVar8[-4]));
                     iVar5 = iVar5 + iVar6;

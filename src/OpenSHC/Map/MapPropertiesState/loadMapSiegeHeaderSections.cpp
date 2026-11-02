@@ -25,15 +25,15 @@ namespace Map {
         MACRO_CALL_MEMBER(IO::ResourceManager_Func::resolveResourceFileName, DAT_ResourceManager::ptr)(
             IO::FRT_MAPS, (char const*)((int)(param_1)));
         MACRO_CALL_MEMBER(IO::FilePackager_Func::readMapHeaderSectionByID, FilePackagerObj::ptr)(
-            DAT_MapDefinedData::instance.MapSectionAddressArray, (int)((int)(1063)));
+            DAT_MapDefinedData::instance.MapSectionAddressArray, (int)(1063));
         MACRO_CALL_MEMBER(IO::FilePackager_Func::readMapHeaderSectionByID, FilePackagerObj::ptr)(
-            DAT_MapDefinedData::instance.MapSectionAddressArray, (int)((int)(1062)));
+            DAT_MapDefinedData::instance.MapSectionAddressArray, (int)(1062));
         MACRO_CALL_MEMBER(IO::FilePackager_Func::readMapHeaderSectionByID, FilePackagerObj::ptr)(
-            DAT_MapDefinedData::instance.MapSectionAddressArray, (int)((int)(1064)));
+            DAT_MapDefinedData::instance.MapSectionAddressArray, (int)(1064));
         MACRO_CALL_MEMBER(IO::FilePackager_Func::readMapHeaderSectionByID, FilePackagerObj::ptr)(
-            DAT_MapDefinedData::instance.MapSectionAddressArray, (int)((int)(1056)));
+            DAT_MapDefinedData::instance.MapSectionAddressArray, (int)(1056));
         MACRO_CALL_MEMBER(IO::FilePackager_Func::readMapHeaderSectionByID, FilePackagerObj::ptr)(
-            DAT_MapDefinedData::instance.MapSectionAddressArray, (int)((int)(1057)));
+            DAT_MapDefinedData::instance.MapSectionAddressArray, (int)(1057));
         if ((int)FilePackagerObj::instance.versionNumOfCurrentFileTypeUnk < 154) {
             MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::removeProcessedInvasionEvents, this)();
         }

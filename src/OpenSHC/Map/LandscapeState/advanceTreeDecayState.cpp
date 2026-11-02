@@ -11,7 +11,7 @@ namespace Map {
         if (this->trees[treeID].uid == param_2) {
             sVar1 = this->trees[treeID].treeAdultHoodStageRelatedVisual3;
             if (0 < sVar1) {
-                this->trees[treeID].treeAdultHoodStageRelatedVisual3 = sVar1 + -1;
+                this->trees[treeID].treeAdultHoodStageRelatedVisual3 = sVar1 - 1;
             }
             if ((short)this->trees[treeID].treeAdultHoodStageRelatedVisual3 < 1) {
                 this->trees[treeID].state = 3;

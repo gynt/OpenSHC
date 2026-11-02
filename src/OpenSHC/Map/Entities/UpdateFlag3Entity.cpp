@@ -34,7 +34,7 @@ namespace Map {
         }
         if (0 < iVar2) {
             DAT_EntityState::instance.entityArray[uVar1].graphicType2
-                = DAT_EntityState::instance.entityArray[uVar1].graphicType2 + iVar2 + -1;
+                = DAT_EntityState::instance.entityArray[uVar1].graphicType2 + iVar2 - 1;
         }
         DAT_EntityState::instance.entityArray[uVar1].unknownAnimationFrameRelated = 0;
         DAT_EntityState::instance.entityArray[uVar1].someTracker = DAT_EntityState::instance.entityArray[uVar1].rng_2;

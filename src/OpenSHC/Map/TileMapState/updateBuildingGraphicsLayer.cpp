@@ -46,14 +46,13 @@ namespace Map {
             - (int)DAT_BuildingsState::instance.buildings[buildingID].someResourceNumber;
         do {
             MACRO_CALL_MEMBER(Map::TileMapState_Func::getBuildingSizeIndexMappingData, this)(
-                local_c, (int)((int)(DAT_BuildingsState::instance.buildings[buildingID].widthOrHeight)));
+                local_c, (int)(DAT_BuildingsState::instance.buildings[buildingID].widthOrHeight));
             targetedTile
                 = DAT_ViewportRenderState::instance.translationMatrix[this->buildingY + (short)uVar2].addXgetTile
                 + (int)(short)uVar1 + this->buildingX;
             if (!this->disableElevationRendering) {
                 BVar3 = DAT_BuildingsState::instance.buildings[buildingID].buildingType;
-                if ((BVar3 == Map::Buildings::BT_STOCKPILE)
-                    || (BVar3 == Map::Buildings::BT_QUARRYSTOCKPILE)) {
+                if ((BVar3 == Map::Buildings::BT_STOCKPILE) || (BVar3 == Map::Buildings::BT_QUARRYSTOCKPILE)) {
                     if (iVar7 < 1) {
                         uVar10 = (short)this->buildingRotationRelatedValue
                             + (short)GMTotalPicturesProcessed::instance[0xf] + 4;
@@ -65,7 +64,7 @@ namespace Map {
                         sVar6 = (short)this->buildingRotationRelatedValue
                             + ((short)(iVar8 / 4) + ((ushort)iVar8 & 3) * 0xc) * 4;
                     } else if (DAT_TerrainDefinedData::instance.field1001_0x8b4[sVar5] == 0) {
-                        sVar6 = (short)this->buildingRotationRelatedValue + -4 + (short)iVar7 * 4;
+                        sVar6 = (short)this->buildingRotationRelatedValue - 4 + (short)iVar7 * 4;
                     } else {
                         sVar6 = (short)this->buildingRotationRelatedValue
                             + ((short)DAT_BuildingsState::instance.buildings[buildingID].currentLimitOfResource
@@ -73,10 +72,9 @@ namespace Map {
                                 * 4;
                     }
                     this->GfxLayer[targetedTile] = (short)GMTotalPicturesProcessed::instance[0xf]
-                        + (short)DAT_TerrainDefinedData::instance.field996_0x84c[sVar5] + -1 + sVar6;
-                } else if (((BVar3 == Map::Buildings::BT_MERCENARYPOST)
-                               || (BVar3 == Map::Buildings::BT_BARRACKS))
-                    || (BVar3 == Map::Buildings::BT_OUTPOST_EUROPEAN)) {
+                        + (short)DAT_TerrainDefinedData::instance.field996_0x84c[sVar5] - 1 + sVar6;
+                } else if (BVar3 == Map::Buildings::BT_MERCENARYPOST || BVar3 == Map::Buildings::BT_BARRACKS
+                    || BVar3 == Map::Buildings::BT_OUTPOST_EUROPEAN) {
                 LAB_005065bd:
                     this->GfxLayer[targetedTile]
                         = ((short)GMTotalPicturesProcessed::instance
@@ -146,9 +144,8 @@ namespace Map {
                                   + (short)DAT_BuildingsState::instance.buildings[buildingID].gfxOffset)
                             - 1;
                     }
-                } else if (((BVar3 == Map::Buildings::BT_GATEHOUSELARGE)
-                               || (BVar3 == Map::Buildings::BT_GATEHOUSESMALL))
-                    || (BVar3 == Map::Buildings::BT_WOODGATE1)) {
+                } else if (BVar3 == Map::Buildings::BT_GATEHOUSELARGE || BVar3 == Map::Buildings::BT_GATEHOUSESMALL
+                    || BVar3 == Map::Buildings::BT_WOODGATE1) {
                     if ((this->mapOrientation == 2) || (this->mapOrientation == 6)) {
                         iVar8 = (DAT_BuildingsState::instance.buildings[buildingID].buildingVariation == 0x50) + 0x50;
                     } else {
@@ -198,8 +195,7 @@ namespace Map {
                         = DAT_TerrainDefinedData::instance.field2467_0x1fec
                               [(int)DAT_BuildingsState::instance.buildings[buildingID].buildingVariation / 2][local_c];
                     if (!iVar8) {
-                        iVar8 = MACRO_CALL_MEMBER(Map::TileMapState_Func::returnOwnedMoatAtTile, this)(
-                            targetedTile);
+                        iVar8 = MACRO_CALL_MEMBER(Map::TileMapState_Func::returnOwnedMoatAtTile, this)(targetedTile);
                         if (!iVar8) {
                             this->GfxLayer[targetedTile] = ((byte)this->RandomLayer[targetedTile] & 3)
                                 + (ushort)this->LuminesenceLayer[targetedTile] * 4
@@ -222,7 +218,7 @@ namespace Map {
                                        == DAT_GameState::instance.mapAndTime
                                            .playerTeams[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                    || (DAT_GameCore::instance.gameMode_2 == Game::GM_EDITOR))))
-                    && (BVar3 != Map::Buildings::BT_SIEGETOWER_PLACED)) {
+                    && BVar3 != Map::Buildings::BT_SIEGETOWER_PLACED) {
                     sVar5 = DAT_BuildingsState::instance.buildings[buildingID].buildingVariation;
                     if (sVar5 == 0xf) {
                         if (DAT_BuildingsState::instance.buildings[buildingID].useOffsetGraphics == 0) {

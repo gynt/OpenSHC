@@ -90,7 +90,7 @@ namespace Map {
                     }
                     psVar1 = &this->trees[DAT_CurrentTreeID::instance].rng200till300;
                     if (this->trees[DAT_CurrentTreeID::instance].rng200till300 != 0) {
-                        *psVar1 = *psVar1 + -1;
+                        *psVar1 = *psVar1 - 1;
                     }
                     uVar2 = DAT_CurrentTreeID::instance;
                     if (isItNOTScenarioGameMode && _loadBalanceValue == 4) {
@@ -106,7 +106,7 @@ namespace Map {
                         }
                         if (1 < this->trees[DAT_CurrentTreeID::instance].field92_0x98) {
                             psVar1 = &this->trees[DAT_CurrentTreeID::instance].field92_0x98;
-                            *psVar1 = *psVar1 + -1;
+                            *psVar1 = *psVar1 - 1;
                         }
                     }
                     break;

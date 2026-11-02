@@ -11,7 +11,7 @@ namespace Map {
     {
         this->wind.counter = this->wind.counter + 1;
         if (1 < this->wind.counter) {
-            this->wind.countdown = this->wind.countdown + -1;
+            this->wind.countdown = this->wind.countdown - 1;
             this->wind.counter = 0;
             this->wind.valueIs2 = 0;
             this->wind.valueIs1 = 0;

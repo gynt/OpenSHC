@@ -30,10 +30,10 @@ namespace Map {
         psVar2 = this->SEC_MercRecruitable;
         iVar3 = 7;
         do {
-            (((BarracksRecruitabilityShort*)(psVar2 + -7))->recruitability).archers = 1;
+            (((BarracksRecruitabilityShort*)(psVar2 - 7))->recruitability).archers = 1;
             *psVar2 = 1;
             psVar2 = psVar2 + 1;
-            iVar3 = iVar3 + -1;
+            iVar3 = iVar3 - 1;
         } while (iVar3);
     }
 

@@ -26,9 +26,9 @@ namespace Map {
         DAT_PathFindingState::instance.climbData[iVar2].topXPosition
             = DAT_PathFindingState::instance.climbData[iVar2].bottomXPosition;
         iVar1 = DAT_PathFindingState::instance.climbData[iVar2].bottomYPosition;
-        DAT_PathFindingState::instance.climbData[iVar2].topYPosition = iVar1 + -2;
+        DAT_PathFindingState::instance.climbData[iVar2].topYPosition = iVar1 - 2;
         DAT_PathFindingState::instance.climbData[iVar2].topTilePositionUnk
-            = DAT_ViewportRenderState::instance.translationMatrix[iVar1 + -2].addXgetTile
+            = DAT_ViewportRenderState::instance.translationMatrix[iVar1 - 2].addXgetTile
             + DAT_PathFindingState::instance.climbData[iVar2].topXPosition;
         DAT_PathFindingState::instance.climbData[iVar2].area
             = (int)(short)DAT_TileMapState::instance

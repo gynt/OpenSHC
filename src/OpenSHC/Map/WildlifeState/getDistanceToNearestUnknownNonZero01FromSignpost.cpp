@@ -48,10 +48,10 @@ namespace Map {
             do {
                 *piVar1 = 0;
                 piVar1 = piVar1 + 0x640;
-                iVar4 = iVar4 + -1;
+                iVar4 = iVar4 - 1;
             } while (iVar4);
             piVar2 = piVar2 + 0x28;
-            iVar3 = iVar3 + -1;
+            iVar3 = iVar3 - 1;
         } while (iVar3);
         this->DAT_Y10_Array_Section1034[0] = (short)_zoneY;
         _area = this->grid[_zoneX][_zoneY].separateAreaID;
@@ -67,11 +67,10 @@ namespace Map {
                 iVar3 = this->casDisRelated + 1;
                 piVar2 = &DAT_TerrainDefinedData::instance.clockwiseCardinalTranslationMatrix[0].int_.yOffset;
                 do {
-                    _newZoneX = ((Point8IntXY*)(piVar2 + -1))->xOffset + (int)_candidateZoneX;
+                    _newZoneX = ((Point8IntXY*)(piVar2 - 1))->xOffset + (int)_candidateZoneX;
                     _newZoneY = *piVar2 + (int)_candidateZoneY;
-                    if ((((_newZoneX < 0x28) && (_newZoneY < 0x28))
-                            && (0 < this->grid[_newZoneX][_newZoneY].firstMember))
-                        && (_area == this->grid[_newZoneX][_newZoneY].separateAreaID)) {
+                    if (_newZoneX < 0x28 && _newZoneY < 0x28 && 0 < this->grid[_newZoneX][_newZoneY].firstMember
+                        && _area == this->grid[_newZoneX][_newZoneY].separateAreaID) {
                         if (this->grid[_newZoneX][_newZoneY].unknownNonZero01 != 0) {
                             return (int)(this->casDisRelated);
                         }

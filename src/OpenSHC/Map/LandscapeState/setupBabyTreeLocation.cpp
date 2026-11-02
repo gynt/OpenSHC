@@ -35,7 +35,7 @@ namespace Map {
         DAT_PathFindingState::instance.ALG_ResultTile = 0;
         DAT_PathFindingState::instance.ALG_ResultY = 0;
         DAT_PathFindingState::instance.ALG_ResultX = 0;
-        if (((399 < x) || (399 < y)) || (*(char*)(y * 400 + 0x21aec98 + x) == '\0')) {
+        if (399 < x || 399 < y || *(char*)(y * 400 + 0x21aec98 + x) == '\0') {
             return (undefined4)(0);
         }
         uVar5 = (uint) * (byte*)(DAT_ViewportRenderState::instance.translationMatrix[y].addXgetTile + 0x1d32c38 + x);
@@ -49,20 +49,19 @@ namespace Map {
             if (7 < (int)_randomNumber) {
                 _randomNumber = 0;
             }
-            if (((_newX < 400) && (_newY < 400)) && (*(char*)(_newY * 400 + 0x21aec98 + _newX) != '\0')) {
+            if (_newX < 400 && _newY < 400 && *(char*)(_newY * 400 + 0x21aec98 + _newX) != '\0') {
                 iVar3 = DAT_ViewportRenderState::instance.translationMatrix[_newY].addXgetTile;
                 bVar2 = *(byte*)(iVar3 + 0x1c471e8 + _newX);
                 _newTile = iVar3 + _newX;
-                if (((DAT_TileMapState::instance.OrganismLayer[_newTile] == 0)
-                        && (!(DAT_TileMapState::instance.LogicLayer[_newTile] & 0x703e25b5U)))
-                    && ((DAT_TileMapState::instance.UnitLayer[_newTile] == 0
-                        && (DAT_TileMapState::instance.BuildingLayer[_newTile] == 0)))) {
+                if (DAT_TileMapState::instance.OrganismLayer[_newTile] == 0
+                    && !(DAT_TileMapState::instance.LogicLayer[_newTile] & 0x703e25b5U)
+                    && DAT_TileMapState::instance.UnitLayer[_newTile] == 0
+                    && DAT_TileMapState::instance.BuildingLayer[_newTile] == 0) {
                     if (treeType == 1) {
                         if (!(bVar2 & 0x90)) {
                         LAB_004f2f32:
-                            if ((((uint)DAT_TileMapState::instance.HeightLayer[_newTile] <= uVar5 + 0x40)
-                                    && ((int)(uVar5 - 0x40)
-                                        <= (int)(uint)DAT_TileMapState::instance.HeightLayer[_newTile]))
+                            if ((uint)DAT_TileMapState::instance.HeightLayer[_newTile] <= uVar5 + 0x40
+                                && (int)(uVar5 - 0x40) <= (int)(uint)DAT_TileMapState::instance.HeightLayer[_newTile]
                                 && (_treeID = MACRO_CALL_MEMBER(
                                         Map::Navigation::PathFindingState_Func::setupBabyTreeLocationInfo,
                                         DAT_PathFindingState::ptr)(local_8, treeType, _newX, _newY),

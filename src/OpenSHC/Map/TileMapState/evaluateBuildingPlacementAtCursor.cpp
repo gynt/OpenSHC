@@ -6,16 +6,16 @@
 #include "OpenSHC/Game/GameMode2.hpp"
 #include "OpenSHC/Map/Buildings/BuildingFailReasonEnum.hpp"
 #include "OpenSHC/Map/Buildings/BuildingType.hpp"
+#include "OpenSHC/Map/Buildings/BuildingTypeShort.hpp"
+#include "OpenSHC/Map/LogicHelpers/Logic1.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
-#include "OpenSHC/Map/LogicHelpers/Logic1.hpp"
 #include "OpenSHC/Globals/DAT_BuildingsState.hpp"
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
 #include "OpenSHC/Globals/DAT_GameState.hpp"
 #include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
 #include "OpenSHC/Globals/DAT_PathFindingState.hpp"
 #include "OpenSHC/Globals/DAT_ViewportRenderState.hpp"
-#include "OpenSHC/Map/Buildings/BuildingTypeShort.hpp"
 
 namespace OpenSHC {
 namespace Map {
@@ -24,9 +24,9 @@ namespace Map {
     using Game::GameMode2;
     using Map::Buildings::BuildingFailReasonEnum;
     using Map::Buildings::BuildingType;
-    using WindowsHelper::Enums::BOOLEnum;
     using Map::Buildings::BuildingTypeShort;
     using Map::LogicHelpers::Logic1;
+    using WindowsHelper::Enums::BOOLEnum;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00504A30
     void TileMapState::evaluateBuildingPlacementAtCursor(int playerID, uint x, uint y)
@@ -38,7 +38,7 @@ namespace Map {
         int local_4;
         uVar3 = x;
         local_4 = 0;
-        if (((399 < x) || (399 < y)) || (*(char*)(y * 400 + 0x21aec98 + x) == '\0')) {
+        if (399 < x || 399 < y || *(char*)(y * 400 + 0x21aec98 + x) == '\0') {
             this->buildingPlacementFail = TRUE;
         }
         this->buildingPlacementFail = FALSE;
@@ -57,7 +57,7 @@ namespace Map {
             iVar4 = 0;
             if (!(this->LogicLayer[DAT_ViewportRenderState::instance.viewportState.mouseTile] & 0x100U))
                 goto LAB_00504ae2;
-            if ((!(this->LogicLayer[DAT_ViewportRenderState::instance.viewportState.mouseTile] & 2U)) || (!x)) {
+            if (!(this->LogicLayer[DAT_ViewportRenderState::instance.viewportState.mouseTile] & 2U) || !x) {
                 DAT_ViewportRenderState::instance.viewportState.cursorWallTile
                     = DAT_ViewportRenderState::instance.viewportState.mouseTile;
                 iVar4 = DAT_ViewportRenderState::instance.viewportState.mouseTile;
@@ -67,13 +67,12 @@ namespace Map {
             uVar3 = (uint)(short)DAT_BuildingsState::instance.buildings[x].x;
             y = (uint)(short)DAT_BuildingsState::instance.buildings[x].y;
         }
-        if (((DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR)
-                && (DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT))
+        if (DAT_GameCore::instance.gameMode_2 != Game::GM_EDITOR
+            && DAT_GameCore::instance.gameMode_2 != Game::GM_SIEGE_THAT
             && (BVar2 = MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::isEnemyTooCloseUnk,
                     DAT_PathFindingState::ptr)(playerID, uVar3, y,
-                    (int)((int)((-(uint)(DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
-                                    & 0xfffffff1)
-                        + 0x1e))),
+                    (int)((-(uint)(DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) & 0xfffffff1)
+                        + 0x1e)),
                 BVar2)) {
             this->demolishBlocked = 1;
             this->buildingPlacementFail = TRUE;
@@ -104,7 +103,7 @@ namespace Map {
                 this->buildingPlacementFailReason = ((BuildingFailReasonEnum)0x14);
                 this->demolishBlocked = 1;
             }
-            if ((0 < local_4) && ((this->LogicLayer[local_4] & Map::LogicHelpers::L_MOAT))) {
+            if (0 < local_4 && (this->LogicLayer[local_4] & Map::LogicHelpers::L_MOAT)) {
                 iVar4 = MACRO_CALL_MEMBER(Map::TileMapState_Func::returnOwnedMoatAtTile, this)(local_4);
                 if (!iVar4) {}
                 if (DAT_GameState::instance.mapAndTime.playerTeams[this->moats[iVar4].owner]
@@ -119,12 +118,12 @@ namespace Map {
             }
             this->cursorTargetID = -DAT_ViewportRenderState::instance.viewportState.somePitchDitchID;
         }
-        if (((int)x < 1) || ((DAT_BuildingsState::instance.buildings[x].owner != playerID && (playerID)))) {
+        if ((int)x < 1 || (DAT_BuildingsState::instance.buildings[x].owner != playerID && (playerID))) {
             this->buildingPlacementFail = TRUE;
         }
         if (iVar4 < 1) {
         LAB_00504d0f:
-            if (((local_4 < 1) || (!(this->LogicLayer[local_4] & Map::LogicHelpers::L_MOAT))) || (x)) {
+            if (local_4 < 1 || !(this->LogicLayer[local_4] & Map::LogicHelpers::L_MOAT) || x) {
                 if ((this->placementOnWall) || (this->placementOnMoat))
                     goto LAB_00504da2;
             } else if (!this->placementOnWall) {
@@ -141,10 +140,10 @@ namespace Map {
             }
         } else {
             uVar3 = this->LogicLayer[iVar4] & Map::LogicHelpers::L_WALL_OR_GATEHOUSE;
-            if ((uVar3) && ((this->LogicLayer[iVar4] & Map::LogicHelpers::L_STOCKPILEUnk))) {
+            if (uVar3 && (this->LogicLayer[iVar4] & Map::LogicHelpers::L_STOCKPILEUnk)) {
                 this->buildingPlacementFail = TRUE;
             }
-            if (((!uVar3) || (this->BuildingLayer[iVar4] != 0)) || (this->placementOnMoat))
+            if (!uVar3 || this->BuildingLayer[iVar4] != 0 || this->placementOnMoat)
                 goto LAB_00504d0f;
             if ((this->WallOwnerLayer[iVar4] & 7) + 1 != playerID) {}
             this->buildingPlacementFail = FALSE;
@@ -183,17 +182,15 @@ namespace Map {
             this->cursorTargetID = x;
         }
     LAB_00504e15:
-        if (((((((!(this->LogicLayer[DAT_BuildingsState::instance.buildings[x].currentTilePositionAdjusted]
-                         & Map::LogicHelpers::L_BUILDING
-                     | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE))
-                    && (BVar1 = DAT_BuildingsState::instance.buildings[x].buildingType,
-                        BVar1 != Map::Buildings::BT_GATEHOUSELARGE))
-                   && (BVar1 != Map::Buildings::BT_GATEHOUSESMALL))
-                  && ((BVar1 != Map::Buildings::BT_WOODGATE1 && (BVar1 != Map::Buildings::BT_WOODGATE2))))
-                 && ((BVar1 != Map::Buildings::BT_KEEPDOOR
-                     && ((BVar1 != Map::Buildings::BT_DRAWBRIDGE && (BVar1 != Map::Buildings::BT_KILLINGPIT))))))
-                && (!this->placementOnWall))
-            && (!this->placementOnMoat)) {
+        if (!(this->LogicLayer[DAT_BuildingsState::instance.buildings[x].currentTilePositionAdjusted]
+                    & Map::LogicHelpers::L_BUILDING
+                | Map::LogicHelpers::L_KEEP_NON_MANOR_HOUSE)
+            && (BVar1 = DAT_BuildingsState::instance.buildings[x].buildingType,
+                BVar1 != Map::Buildings::BT_GATEHOUSELARGE)
+            && BVar1 != Map::Buildings::BT_GATEHOUSESMALL && BVar1 != Map::Buildings::BT_WOODGATE1
+            && BVar1 != Map::Buildings::BT_WOODGATE2 && BVar1 != Map::Buildings::BT_KEEPDOOR
+            && BVar1 != Map::Buildings::BT_DRAWBRIDGE && BVar1 != Map::Buildings::BT_KILLINGPIT
+            && !this->placementOnWall && !this->placementOnMoat) {
             this->buildingPlacementFail = TRUE;
         }
         this->cursorTargetID = x;

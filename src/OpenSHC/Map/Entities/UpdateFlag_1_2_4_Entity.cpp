@@ -36,9 +36,9 @@ namespace Map {
             <= (int)((byte)DAT_EntityState::instance.entityArray[uVar2].yPosition & 0x1f)) {
             sVar4 = (short)DAT_LandscapeState::instance.wind.value;
         }
-        if (((DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY)
-                && (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[_owner] == -1))
-            && (DAT_GameSynchronyState::instance.currentAIArray[_owner] != 0)) {
+        if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY
+            && DAT_GameSynchronyState::instance.currentPlayerFullIDArray[_owner] == -1
+            && DAT_GameSynchronyState::instance.currentAIArray[_owner] != 0) {
             if (DAT_GameState::instance.playerDataArray[_owner].aiBuildingDestroyChoiceTracker == 0) {
                 if (DAT_GameState::instance.playerDataArray[_owner].aiNervousActionsTracker == 0) {
                     AVar1 = DAT_GameState::instance.playerDataArray[_owner].aiRecruitUnitChoiceState;
@@ -81,7 +81,7 @@ namespace Map {
             DAT_EntityState::instance.entityArray[uVar2].someTracker = sVar4;
         }
         DAT_EntityState::instance.entityArray[uVar2].graphicType2
-            = DAT_EntityState::instance.entityArray[uVar2].graphicType2 + iVar3 + -1;
+            = DAT_EntityState::instance.entityArray[uVar2].graphicType2 + iVar3 - 1;
     }
 
 }

@@ -24,12 +24,16 @@
 #include "OpenSHC/DE/SHCDE/eTextSections.hpp"
 #include "OpenSHC/Game/GameMode.hpp"
 #include "OpenSHC/Game/GameMode2.hpp"
+#include "OpenSHC/Game/ScenarioEvents/ScenarioEventCondition.hpp"
 #include "OpenSHC/Map/Buildings/BuildingLogicalState.hpp"
 #include "OpenSHC/Map/Buildings/BuildingType.hpp"
+#include "OpenSHC/Map/Buildings/BuildingTypeShort.hpp"
 #include "OpenSHC/Map/MapType2.hpp"
 #include "OpenSHC/Map/Units/Instructions/UnitMatchSpeedEnum.hpp"
 #include "OpenSHC/Map/Units/UnitLogicState.hpp"
 #include "OpenSHC/Map/Units/UnitType.hpp"
+#include "OpenSHC/Map/Units/UnitTypeInt.hpp"
+#include "OpenSHC/Map/Units/UnitTypeShort.hpp"
 #include "OpenSHC/UI/Enums/BuildMenuTabType.hpp"
 #include "OpenSHC/UI/Enums/BuildingsAndStatusMenuTabType.hpp"
 #include "OpenSHC/UI/Enums/DisplayElementID.hpp"
@@ -59,10 +63,6 @@
 #include "OpenSHC/Globals/DAT_VideoBikQueue.hpp"
 #include "OpenSHC/Globals/DAT_ViewportRenderState.hpp"
 #include "OpenSHC/Globals/SEC_RNG.hpp"
-#include "OpenSHC/Game/ScenarioEvents/ScenarioEventCondition.hpp"
-#include "OpenSHC/Map/Buildings/BuildingTypeShort.hpp"
-#include "OpenSHC/Map/Units/UnitTypeInt.hpp"
-#include "OpenSHC/Map/Units/UnitTypeShort.hpp"
 
 namespace OpenSHC {
 namespace Map {
@@ -72,11 +72,15 @@ namespace Map {
     using DE::SHCDE::eTextSections;
     using Game::GameMode;
     using Game::GameMode2;
+    using Game::ScenarioEvents::ScenarioEventCondition;
     using Map::MapType2;
     using Map::Buildings::BuildingLogicalState;
     using Map::Buildings::BuildingType;
+    using Map::Buildings::BuildingTypeShort;
     using Map::Units::UnitLogicState;
     using Map::Units::UnitType;
+    using Map::Units::UnitTypeInt;
+    using Map::Units::UnitTypeShort;
     using Map::Units::Instructions::UnitMatchSpeedEnum;
     using UI::Enums::BuildingsAndStatusMenuTabType;
     using UI::Enums::BuildMenuTabType;
@@ -84,10 +88,6 @@ namespace Map {
     using UI::Enums::MenuModalType;
     using UI::Enums::MenuViewType;
     using WindowsHelper::Enums::BOOLEnum;
-    using Game::ScenarioEvents::ScenarioEventCondition;
-    using Map::Buildings::BuildingTypeShort;
-    using Map::Units::UnitTypeInt;
-    using Map::Units::UnitTypeShort;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004C31A0
     void MapPropertiesState::processSingleplayerEvents()
@@ -160,7 +160,7 @@ namespace Map {
                             .playerDeathRelated
                         == 0) {
                         if ((this->SEC_Section1081) && (0 < this->SEC_Section1080)) {
-                            this->SEC_Section1080 = this->SEC_Section1080 + -1;
+                            this->SEC_Section1080 = this->SEC_Section1080 - 1;
                         }
                         if (DAT_GameState::instance.mapAndTime.startOfDay) {
                             if (DAT_GameCore::instance.unknownAlwaysZero) {
@@ -206,11 +206,11 @@ namespace Map {
                             local_48[0x10] = 0;
                             local_70[8] = 0;
                             local_48[0x11] = 0;
-                            if ((((DAT_GameState::instance.mapAndTime.month == this->SEC_StartingMonth)
-                                     && (DAT_GameState::instance.mapAndTime.year == this->SEC_StartingYear + 1))
-                                    && (DAT_GameState::instance.gameTicksLoadBalancer == 1))
-                                && ((!DAT_GameState::instance.mapAndTime.week
-                                    && (bVar23 = false, 0 < this->eventsCount)))) {
+                            if (DAT_GameState::instance.mapAndTime.month == this->SEC_StartingMonth
+                                && DAT_GameState::instance.mapAndTime.year == this->SEC_StartingYear + 1
+                                && DAT_GameState::instance.gameTicksLoadBalancer == 1
+                                && !DAT_GameState::instance.mapAndTime.week
+                                && (bVar23 = false, 0 < this->eventsCount)) {
                                 _pConditionIsMet = &this->scenarioEvents[0].data.scenario.ScenarioEventType;
                                 iVar18 = this->eventsCount;
                                 do {
@@ -218,7 +218,7 @@ namespace Map {
                                         bVar23 = true;
                                     }
                                     _pConditionIsMet = _pConditionIsMet + 0x39;
-                                    iVar18 = iVar18 + -1;
+                                    iVar18 = iVar18 - 1;
                                 } while (iVar18);
                                 if (bVar23) {
                                     /*
@@ -228,11 +228,11 @@ namespace Map {
                                     if (0 < DAT_BuildingsState::instance.maxBuildingsCount) {
                                         pBVar13 = &DAT_BuildingsState::instance.buildings[0].buildingType;
                                         do {
-                                            if (((pBVar13[-1] != ((BuildingLogicalState)0))
-                                                    && ((short)pBVar13[2]
-                                                        == DAT_GameSynchronyState::instance.currentPlayerSlotID))
-                                                && ((*pBVar13 == Map::Buildings::BT_WELL
-                                                    || (*pBVar13 == Map::Buildings::BT_WATERPOT))))
+                                            if (pBVar13[-1] != (BuildingLogicalState)0
+                                                && (short)pBVar13[2]
+                                                    == DAT_GameSynchronyState::instance.currentPlayerSlotID
+                                                && (*pBVar13 == Map::Buildings::BT_WELL
+                                                    || (*pBVar13 == Map::Buildings::BT_WATERPOT)))
                                                 goto LAB_004c3637;
                                             iVar18 = iVar18 + 1;
                                             pBVar13 = pBVar13 + 0x196;
@@ -245,8 +245,7 @@ namespace Map {
                                       great danger."   added by script: "There are no wells in the castle my Liege.
                                       Should a fire   break out we would be in great danger."
                                      */
-                                    pcVar10 = MACRO_CALL_MEMBER(
-                                        Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                    pcVar10 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                                         DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, 0x12);
                                     MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                                         DAT_VideoBikQueue::ptr)(pcVar10, pcVar25, pcVar27);
@@ -257,10 +256,10 @@ namespace Map {
                             if (0 < this->eventsCount) {
                                 do {
                                     iVar18 = this->scenarioEvents[_eventIndex].header.year;
-                                    if ((DAT_GameState::instance.mapAndTime.year < iVar18)
-                                        || ((DAT_GameState::instance.mapAndTime.year == iVar18
+                                    if (DAT_GameState::instance.mapAndTime.year < iVar18
+                                        || (DAT_GameState::instance.mapAndTime.year == iVar18
                                             && (DAT_GameState::instance.mapAndTime.month
-                                                < this->scenarioEvents[_eventIndex].header.month))))
+                                                < this->scenarioEvents[_eventIndex].header.month)))
                                         break;
                                     /*
                                       "next Event"
@@ -500,8 +499,8 @@ namespace Map {
                                         } while (_subIndex < 0x19);
                                         iVar18 = (&DAT_TroopValueState::instance.attackInfo.unknownSignpostRelatedArray)
                                             [DAT_TroopValueState::instance.attackInfo.inv_count];
-                                        MACRO_CALL_MEMBER(UI::MinimapViewState_Func::setSpawnMoment,
-                                            DAT_MinimapViewState::ptr)(
+                                        MACRO_CALL_MEMBER(
+                                            UI::MinimapViewState_Func::setSpawnMoment, DAT_MinimapViewState::ptr)(
                                             DAT_GameState::instance.mapAndTime.signpostEntryData[iVar18].x,
                                             DAT_GameState::instance.mapAndTime.signpostEntryData[iVar18].y);
                                         DAT_TroopValueState::instance.attackInfo.inv_count = local_80;
@@ -522,14 +521,13 @@ namespace Map {
                                                 pcVar10 = "good_soldier_nervous.bik";
                                                 goto LAB_004c5e44;
                                             }
-                                            if ((DAT_GameCore::instance.currentMenuViewType
-                                                    == UI::Enums::MVT_BUILD_MENU)
-                                                && ((DAT_GameCore::instance.activeMenuTab.tabType
+                                            if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILD_MENU
+                                                && (DAT_GameCore::instance.activeMenuTab.tabType
                                                         == UI::Enums::BASMTT_SIEGETENT_SIEGETOWER
                                                     || (DAT_GameCore::instance.activeMenuTab.tabType
-                                                        == UI::Enums::BASMTT_SIEGETENT_SHIELD)))) {
-                                                MACRO_CALL_MEMBER(Game::GameCore_Func::swapBuildMenuTab,
-                                                    DAT_GameCore::ptr)();
+                                                        == UI::Enums::BASMTT_SIEGETENT_SHIELD))) {
+                                                MACRO_CALL_MEMBER(
+                                                    Game::GameCore_Func::swapBuildMenuTab, DAT_GameCore::ptr)();
                                                 if (DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.tabType
                                                     == UI::Enums::BASMTT_SIEGETENT_SIEGETOWER) {
                                                     if (DAT_GameCore::instance.currentMenuViewType
@@ -541,8 +539,10 @@ namespace Map {
                                                         DAT_GameCore::instance.landscapingmenuMenuTabToSwitchTo = 0xe7;
                                                     }
                                                 }
-                                                MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView,
-                                                    DAT_GameCore::ptr)((UI::Enums::MenuViewType)DAT_GameCore::instance.currentMenuViewType, 0);
+                                                MACRO_CALL_MEMBER(
+                                                    Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                                                    (UI::Enums::MenuViewType)DAT_GameCore::instance.currentMenuViewType,
+                                                    0);
                                             }
                                         }
                                         _repeatMonths = this->scenarioEvents[_eventIndex].data.invasion.repeatMonths;
@@ -557,12 +557,11 @@ namespace Map {
                                             iVar22 = this->scenarioEvents[_eventIndex].header.month;
                                             this->scenarioEvents[_eventIndex].header.pre_done = 0;
                                             if (0xb < iVar22) {
-                                                this->scenarioEvents[_eventIndex].header.month = iVar22 + -0xc;
+                                                this->scenarioEvents[_eventIndex].header.month = iVar22 - 0xc;
                                                 this->scenarioEvents[_eventIndex].header.year = iVar18 + 1;
                                             }
-                                            MACRO_CALL_MEMBER(
-                                                Map::MapPropertiesState_Func::sortEventsByDate, this)();
-                                            _eventIndex = _eventIndex + -1;
+                                            MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::sortEventsByDate, this)();
+                                            _eventIndex = _eventIndex - 1;
                                         }
                                         goto LAB_004c5f28;
                                     }
@@ -606,8 +605,8 @@ namespace Map {
                                             break;
                                         case 1:
                                             iVar22 = MACRO_CALL_MEMBER(
-                                                Map::MapPropertiesState_Func::getDifficultyMultipliedValue,
-                                                this)((int)this->scenarioEvents[_eventIndex]
+                                                Map::MapPropertiesState_Func::getDifficultyMultipliedValue, this)(
+                                                (int)this->scenarioEvents[_eventIndex]
                                                     .data.scenario.conditions[1]
                                                     .value);
                                             iVar18 = DAT_GameState::instance
@@ -626,7 +625,7 @@ namespace Map {
                                                 break;
                                             cVar17 = *(char*)((int)&this->scenarioEvents[_eventIndex].data
                                                 + _conditionOffset + 0xe);
-                                            if (((cVar17 != '\0') && (iVar18 != 10)) && (cVar17 + 1 != iVar18))
+                                            if (cVar17 != '\0' && iVar18 != 10 && cVar17 + 1 != iVar18)
                                                 goto LAB_004c37cd;
                                             goto LAB_004c3fcd;
                                         case 3:
@@ -642,8 +641,8 @@ namespace Map {
                                             goto LAB_004c37cd;
                                         case 4:
                                             iVar22 = MACRO_CALL_MEMBER(
-                                                Map::MapPropertiesState_Func::getDifficultyMultipliedValue,
-                                                this)((int)this->scenarioEvents[_eventIndex]
+                                                Map::MapPropertiesState_Func::getDifficultyMultipliedValue, this)(
+                                                (int)this->scenarioEvents[_eventIndex]
                                                     .data.scenario.conditions[4]
                                                     .value);
                                             iVar18 = DAT_GameState::instance
@@ -655,8 +654,8 @@ namespace Map {
                                             goto LAB_004c3fc7;
                                         case 5:
                                             iVar18 = MACRO_CALL_MEMBER(
-                                                Map::MapPropertiesState_Func::getDifficultyMultipliedValue,
-                                                this)((int)this->scenarioEvents[_eventIndex]
+                                                Map::MapPropertiesState_Func::getDifficultyMultipliedValue, this)(
+                                                (int)this->scenarioEvents[_eventIndex]
                                                     .data.scenario.conditions[5]
                                                     .value);
                                             cVar17 = *(char*)((int)&this->scenarioEvents[_eventIndex].data
@@ -697,9 +696,9 @@ namespace Map {
                                         case 6:
                                         case 0x11:
                                             iVar18 = MACRO_CALL_MEMBER(
-                                                Map::MapPropertiesState_Func::getDifficultyMultipliedValue,
-                                                this)((int)*(short*)((int)&this->scenarioEvents[_eventIndex].data
-                                                + _subIndex * 4 + 0xc));
+                                                Map::MapPropertiesState_Func::getDifficultyMultipliedValue, this)(
+                                                (int)*(short*)((int)&this->scenarioEvents[_eventIndex].data
+                                                    + _subIndex * 4 + 0xc));
                                             cVar17 = *(char*)((int)&this->scenarioEvents[_eventIndex].data
                                                 + _conditionOffset + 0xe);
                                             if (cVar17 != '\0')
@@ -741,8 +740,8 @@ namespace Map {
                                             goto LAB_004c3fc7;
                                         case 7:
                                             iVar18 = MACRO_CALL_MEMBER(
-                                                Map::MapPropertiesState_Func::getDifficultyMultipliedValue,
-                                                this)((int)this->scenarioEvents[_eventIndex]
+                                                Map::MapPropertiesState_Func::getDifficultyMultipliedValue, this)(
+                                                (int)this->scenarioEvents[_eventIndex]
                                                     .data.scenario.conditions[7]
                                                     .value);
                                             cVar17 = *(char*)((int)&this->scenarioEvents[_eventIndex].data
@@ -797,17 +796,17 @@ namespace Map {
                                                 == 0) {
                                                 _scenarioEventType
                                                     = this->scenarioEvents[_eventIndex].data.scenario.ScenarioEventType;
-                                                if (((_scenarioEventType == 0x1a) || (!_scenarioEventType))
-                                                    || (_scenarioEventType == 0x17)) {
+                                                if (_scenarioEventType == 0x1a || !_scenarioEventType
+                                                    || _scenarioEventType == 0x17) {
                                                     iVar18 = _eventIndex + 1;
                                                     if (iVar18 < this->eventsCount) {
                                                         pSVar15 = this->scenarioEvents[_eventIndex + 1]
                                                                       .data.scenario.conditions
                                                             + 0x19;
                                                         do {
-                                                            if (((*(const int*)&pSVar15[-0x1e] == 1)
-                                                                    && (*(const int*)pSVar15 == 0))
-                                                                && (pSVar15[-0x1d].value == 0))
+                                                            if ((*(int const*)&pSVar15[-0x1e] == 1)
+                                                                && *(int const*)pSVar15 == 0
+                                                                && pSVar15[-0x1d].value == 0)
                                                                 goto switchD_004c3756_caseD_18;
                                                             iVar18 = iVar18 + 1;
                                                             pSVar15 = pSVar15 + 0x39;
@@ -823,8 +822,7 @@ namespace Map {
                                             break;
                                         case 9:
                                             BVar11 = MACRO_CALL_MEMBER(
-                                                Game::GameStateStructures_Func::checkKeepEnclosed,
-                                                DAT_GameState::ptr)(
+                                                Game::GameStateStructures_Func::checkKeepEnclosed, DAT_GameState::ptr)(
                                                 DAT_GameSynchronyState::instance.currentPlayerSlotID);
                                             if (!BVar11)
                                                 goto LAB_004c37cd;
@@ -843,7 +841,7 @@ namespace Map {
                                                     iVar18 = iVar18 + 1;
                                                 }
                                                 pUVar12 = pUVar12 + 0x248;
-                                                iVar22 = iVar22 + -1;
+                                                iVar22 = iVar22 - 1;
                                             } while (iVar22);
                                             if (iVar18)
                                                 goto LAB_004c37cd;
@@ -867,28 +865,24 @@ namespace Map {
                                             pUVar12 = &DAT_UnitsState::instance.units[1].unitType;
                                             iVar22 = DAT_UnitsState::instance.maxUnitCount - 1;
                                             do {
-                                                if (((((pUVar12[-1] == Map::Units::ULS_NORMAL)
-                                                          && ((short)pUVar12[4]
-                                                              == DAT_GameSynchronyState::instance.currentPlayerSlotID))
-                                                         && (*(byte*)(pUVar12 + 0x14f) == 0))
-                                                        && (((((pUVar12[0x165] == 0
-                                                                   && (UVar6 = *pUVar12,
-                                                                       UVar6 != Map::Units::UT_E_LADDER))
-                                                                  && ((UVar6 != Map::Units::UT_E_ENGINEER
-                                                                      || (pUVar12[0x17d] != 0))))
-                                                                 && ((UVar6 != Map::Units::UT_S_TOWER
-                                                                     && (UVar6
-                                                                         != Map::Units::UT_S_BATTERINGRAM))))
-                                                            && (UVar6 != Map::Units::UT_S_SHIELD))))
-                                                    && ((((UVar6 != Map::Units::UT_S_MANGONEL
-                                                              && (UVar6 != Map::Units::UT_S_BALLISTA))
-                                                             && (UVar6 != Map::Units::UT_S_CATAPULT))
-                                                        && ((UVar6 != Map::Units::UT_S_FBALLISTA
-                                                            && (UVar6 != Map::Units::UT_S_TREBUCHET)))))) {
+                                                if (pUVar12[-1] == Map::Units::ULS_NORMAL
+                                                    && (short)pUVar12[4]
+                                                        == DAT_GameSynchronyState::instance.currentPlayerSlotID
+                                                    && *(byte*)(pUVar12 + 0x14f) == 0 && pUVar12[0x165] == 0
+                                                    && (UVar6 = *pUVar12, UVar6 != Map::Units::UT_E_LADDER)
+                                                    && (UVar6 != Map::Units::UT_E_ENGINEER || (pUVar12[0x17d] != 0))
+                                                    && UVar6 != Map::Units::UT_S_TOWER
+                                                    && UVar6 != Map::Units::UT_S_BATTERINGRAM
+                                                    && UVar6 != Map::Units::UT_S_SHIELD
+                                                    && UVar6 != Map::Units::UT_S_MANGONEL
+                                                    && UVar6 != Map::Units::UT_S_BALLISTA
+                                                    && UVar6 != Map::Units::UT_S_CATAPULT
+                                                    && UVar6 != Map::Units::UT_S_FBALLISTA
+                                                    && UVar6 != Map::Units::UT_S_TREBUCHET) {
                                                     iVar18 = iVar18 + 1;
                                                 }
                                                 pUVar12 = pUVar12 + 0x248;
-                                                iVar22 = iVar22 + -1;
+                                                iVar22 = iVar22 - 1;
                                             } while (iVar22);
                                             if (iVar18)
                                                 goto LAB_004c37cd;
@@ -910,7 +904,8 @@ namespace Map {
                                                         + DAT_GameState::instance.mapAndTime.hitsDealtToPlayerArray[5]
                                                         + DAT_GameState::instance.mapAndTime.hitsDealtToPlayerArray[6]
                                                         + DAT_GameState::instance.mapAndTime.hitsDealtToPlayerArray[7]
-                                                        + DAT_GameState::instance.mapAndTime.hitsDealtToPlayerArray[8]) {
+                                                        + DAT_GameState::instance.mapAndTime
+                                                            .hitsDealtToPlayerArray[8]) {
                                                     DAT_GameState::instance.mapAndTime.hitsDealtToPlayerArray[0] = 0;
                                                     DAT_GameState::instance.mapAndTime.hitsDealtToPlayerArray[1] = 0;
                                                     DAT_GameState::instance.mapAndTime.hitsDealtToPlayerArray[2] = 0;
@@ -923,12 +918,12 @@ namespace Map {
                                                     this->SEC_EventsExtra[_eventIndex].conditionIsTrue[13] = 1;
                                                     local_a0 = local_a0 + 1;
                                                 }
-                                            } else if (((byte)(cVar17 - 1U) < 4)
-                                                && ((int)this->scenarioEvents[_eventIndex]
+                                            } else if ((byte)(cVar17 - 1U) < 4
+                                                && (int)this->scenarioEvents[_eventIndex]
                                                         .data.scenario.conditions[0xd]
                                                         .value
-                                                    <= DAT_GameState::instance.mapAndTime.emenyHitArray[cVar17 + -8])) {
-                                                DAT_GameState::instance.mapAndTime.emenyHitArray[cVar17 + -8] = 0;
+                                                    <= DAT_GameState::instance.mapAndTime.emenyHitArray[cVar17 - 8]) {
+                                                DAT_GameState::instance.mapAndTime.emenyHitArray[cVar17 - 8] = 0;
                                                 *_pConditionIsMet = 1;
                                                 local_a0 = local_a0 + 1;
                                             }
@@ -961,11 +956,11 @@ namespace Map {
                                                     this->SEC_EventsExtra[_eventIndex].conditionIsTrue[14] = 1;
                                                     local_a0 = local_a0 + 1;
                                                 }
-                                            } else if (((byte)(cVar17 - 1U) < 4)
-                                                && ((int)this->scenarioEvents[_eventIndex]
+                                            } else if ((byte)(cVar17 - 1U) < 4
+                                                && (int)this->scenarioEvents[_eventIndex]
                                                         .data.scenario.conditions[0xe]
                                                         .value
-                                                    <= DAT_GameState::instance.mapAndTime.emenyHitArray[cVar17 + 1])) {
+                                                    <= DAT_GameState::instance.mapAndTime.emenyHitArray[cVar17 + 1]) {
                                                 DAT_GameState::instance.mapAndTime.emenyHitArray[cVar17 + 1] = 0;
                                                 *_pConditionIsMet = 1;
                                                 local_a0 = local_a0 + 1;
@@ -980,13 +975,13 @@ namespace Map {
                                                 *_pConditionIsMet = 1;
                                                 local_a0 = local_a0 + 1;
                                             } else {
-                                                if (((DAT_GameCore::instance.gameMode_2 != Game::GM_BUILDERUnk)
-                                                        || (this->SEC_U3_MapType2_1 != Map::MT_SIEGE))
-                                                    || ((DAT_GameSynchronyState::instance.currentPlayerSlotID != 1
-                                                        || (BVar11 = MACRO_CALL_MEMBER(
-                                                                Map::Units::TroopValueState_Func::isAttackWaveComplete,
-                                                                DAT_TroopValueState::ptr)(),
-                                                            !BVar11))))
+                                                if (DAT_GameCore::instance.gameMode_2 != Game::GM_BUILDERUnk
+                                                    || this->SEC_U3_MapType2_1 != Map::MT_SIEGE
+                                                    || DAT_GameSynchronyState::instance.currentPlayerSlotID != 1
+                                                    || (BVar11 = MACRO_CALL_MEMBER(
+                                                            Map::Units::TroopValueState_Func::isAttackWaveComplete,
+                                                            DAT_TroopValueState::ptr)(),
+                                                        !BVar11))
                                                     goto LAB_004c37cd;
                                                 *_pConditionIsMet = 1;
                                                 local_a0 = local_a0 + 1;
@@ -1004,18 +999,18 @@ namespace Map {
                                                 if (DAT_BuildingsState::instance.maxBuildingsCount < 2)
                                                     goto LAB_004c37cd;
                                                 pBVar13 = &DAT_BuildingsState::instance.buildings[1].buildingType;
-                                                iVar22 = DAT_BuildingsState::instance.maxBuildingsCount + -1;
+                                                iVar22 = DAT_BuildingsState::instance.maxBuildingsCount - 1;
                                                 do {
-                                                    if (((pBVar13[-1] != ((BuildingLogicalState)0))
-                                                            && (*pBVar13 == Map::Buildings::BT_DAIRYFARM))
-                                                        && (pBVar13[0x65] == 0)) {
+                                                    if (pBVar13[-1] != (BuildingLogicalState)0
+                                                        && *pBVar13 == Map::Buildings::BT_DAIRYFARM
+                                                        && pBVar13[0x65] == 0) {
                                                         iVar18 = iVar18 + 1;
                                                     }
                                                     pBVar13 = pBVar13 + 0x196;
-                                                    iVar22 = iVar22 + -1;
+                                                    iVar22 = iVar22 - 1;
                                                 } while (iVar22);
                                                 bVar24 = (iVar18 < 4);
-                                                bVar23 = iVar18 + -4 < 0;
+                                                bVar23 = iVar18 - 4 < 0;
                                                 goto LAB_004c3fc7;
                                             }
                                             break;
@@ -1025,19 +1020,18 @@ namespace Map {
                                                 if (DAT_BuildingsState::instance.maxBuildingsCount < 2)
                                                     goto LAB_004c37cd;
                                                 pBVar13 = &DAT_BuildingsState::instance.buildings[1].buildingType;
-                                                iVar22 = DAT_BuildingsState::instance.maxBuildingsCount + -1;
+                                                iVar22 = DAT_BuildingsState::instance.maxBuildingsCount - 1;
                                                 do {
-                                                    if ((((pBVar13[-1] != ((BuildingLogicalState)0))
-                                                             && (*pBVar13 == Map::Buildings::BT_INN))
-                                                            && (pBVar13[0x65] == 0))
-                                                        && (0 < (short)pBVar13[0xef])) {
+                                                    if (pBVar13[-1] != (BuildingLogicalState)0
+                                                        && *pBVar13 == Map::Buildings::BT_INN && pBVar13[0x65] == 0
+                                                        && 0 < (short)pBVar13[0xef]) {
                                                         iVar18 = iVar18 + 1;
                                                     }
                                                     pBVar13 = pBVar13 + 0x196;
-                                                    iVar22 = iVar22 + -1;
+                                                    iVar22 = iVar22 - 1;
                                                 } while (iVar22);
                                                 bVar24 = (iVar18 < 2);
-                                                bVar23 = iVar18 + -2 < 0;
+                                                bVar23 = iVar18 - 2 < 0;
                                                 goto LAB_004c3fc7;
                                             }
                                             break;
@@ -1054,8 +1048,7 @@ namespace Map {
                                             goto LAB_004c3deb;
                                         case 0x15:
                                             iVar18 = MACRO_CALL_MEMBER(
-                                                Game::GameStateStructures_Func::computeAleCoverage,
-                                                DAT_GameState::ptr)(
+                                                Game::GameStateStructures_Func::computeAleCoverage, DAT_GameState::ptr)(
                                                 DAT_GameSynchronyState::instance.currentPlayerSlotID);
                                             iVar22 = (int)this->scenarioEvents[_eventIndex]
                                                          .data.scenario.conditions[0x15]
@@ -1121,7 +1114,7 @@ namespace Map {
                                     }
                                     if (((*(short*)((int)&this->scenarioEvents[_eventIndex].data + 8) != 0)
                                             || (!local_a0))
-                                        && (local_a0 < _spawnUnitCount))
+                                        && local_a0 < _spawnUnitCount)
                                         goto LAB_004c5f28;
                                     iVar18 = this->scenarioEvents[_eventIndex].data.scenario.ScenarioEventType;
                                     this->scenarioEvents[_eventIndex].header.done = 1;
@@ -1138,25 +1131,22 @@ namespace Map {
                                                 _pConditionIsMet = &this->scenarioEvents[_eventIndex + 1]
                                                                         .data.scenario.ScenarioEventType;
                                                 do {
-                                                    if (((_pConditionIsMet[-3] == 3)
-                                                            && (((*_pConditionIsMet == 0 || (*_pConditionIsMet == 0x1a))
-                                                                && (_pConditionIsMet[-4]
-                                                                    <= DAT_GameState::instance.mapAndTime.year))))
-                                                        && ((DAT_GameState::instance.mapAndTime.year
+                                                    if (_pConditionIsMet[-3] == 3
+                                                        && (*_pConditionIsMet == 0 || (*_pConditionIsMet == 0x1a))
+                                                        && _pConditionIsMet[-4]
+                                                            <= DAT_GameState::instance.mapAndTime.year
+                                                        && (DAT_GameState::instance.mapAndTime.year
                                                                 != _pConditionIsMet[-4]
                                                             || (_pConditionIsMet[-5]
-                                                                < DAT_GameState::instance.mapAndTime.month))))
+                                                                < DAT_GameState::instance.mapAndTime.month)))
                                                         goto switchD_004c382e_caseD_2;
                                                     iVar18 = iVar18 + 1;
                                                     _pConditionIsMet = _pConditionIsMet + 0x39;
                                                 } while (iVar18 < this->eventsCount);
                                             }
-                                            if (((DAT_GameCore::instance.gameMode_2
-                                                     == Game::GM_CAMPAIGN_MISSION)
-                                                    || (DAT_GameCore::instance.gameMode_2
-                                                        == Game::GM_ECONOMIC_CAMPAIGN_SH1))
-                                                || (DAT_GameCore::instance.gameMode_2
-                                                    == Game::GM_BUILDERUnk)) {
+                                            if (DAT_GameCore::instance.gameMode_2 == Game::GM_CAMPAIGN_MISSION
+                                                || DAT_GameCore::instance.gameMode_2 == Game::GM_ECONOMIC_CAMPAIGN_SH1
+                                                || DAT_GameCore::instance.gameMode_2 == Game::GM_BUILDERUnk) {
                                                 DAT_GameState::instance
                                                     .playerDataArray[DAT_GameSynchronyState::instance
                                                             .currentPlayerSlotID]
@@ -1180,74 +1170,63 @@ namespace Map {
                                                     MACRO_CALL_MEMBER(
                                                         Map::Units::UnitsState_Func::deselectAllUnitsOneByOne,
                                                         DAT_UnitsState::ptr)();
-                                                    MACRO_CALL_MEMBER(
-                                                        Map::Units::UnitsState_Func::queueEscapeCommand,
+                                                    MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::queueEscapeCommand,
                                                         DAT_UnitsState::ptr)();
-                                                    MACRO_CALL_MEMBER(
-                                                        Input::MouseState_Func::resetMouseCursorState,
+                                                    MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseCursorState,
                                                         DAT_MouseState::ptr)();
                                                 }
                                                 if (*(char*)((int)&this->scenarioEvents[_eventIndex].data + 0x13)
                                                     == '\0') {
                                                     if (*(char*)((int)&this->scenarioEvents[_eventIndex].data + 0x1f)
                                                         == '\0') {
-                                                        if ((((*(char*)((int)&this->scenarioEvents[_eventIndex].data
-                                                                   + 0x23)
-                                                                  == '\0')
-                                                                 && (*(char*)((int)&this->scenarioEvents[_eventIndex]
-                                                                                  .data
-                                                                         + 0x27)
-                                                                     == '\0'))
-                                                                && (*(char*)((int)&this->scenarioEvents[_eventIndex]
-                                                                                 .data
-                                                                        + 0x2b)
-                                                                    == '\0'))
-                                                            && (*(char*)((int)&this->scenarioEvents[_eventIndex].data
-                                                                    + 0x53)
-                                                                == '\0')) {
+                                                        if (*(char*)((int)&this->scenarioEvents[_eventIndex].data
+                                                                + 0x23)
+                                                                == '\0'
+                                                            && *(char*)((int)&this->scenarioEvents[_eventIndex].data
+                                                                   + 0x27)
+                                                                == '\0'
+                                                            && *(char*)((int)&this->scenarioEvents[_eventIndex].data
+                                                                   + 0x2b)
+                                                                == '\0'
+                                                            && *(char*)((int)&this->scenarioEvents[_eventIndex].data
+                                                                   + 0x53)
+                                                                == '\0') {
                                                             this->field133_0x145d8 = 1;
                                                             MACRO_CALL_MEMBER(
-                                                                Map::MapPropertiesState_Func::sortEventsByDate,
-                                                                this)();
+                                                                Map::MapPropertiesState_Func::sortEventsByDate, this)();
                                                         } else {
                                                             this->field133_0x145d8 = 3;
                                                             MACRO_CALL_MEMBER(
-                                                                Map::MapPropertiesState_Func::sortEventsByDate,
-                                                                this)();
+                                                                Map::MapPropertiesState_Func::sortEventsByDate, this)();
                                                         }
                                                     } else {
                                                         this->field133_0x145d8 = 2;
                                                         MACRO_CALL_MEMBER(
-                                                            Map::MapPropertiesState_Func::sortEventsByDate,
-                                                            this)();
+                                                            Map::MapPropertiesState_Func::sortEventsByDate, this)();
                                                     }
                                                 } else {
                                                     this->field133_0x145d8 = 1;
                                                     MACRO_CALL_MEMBER(
-                                                        Map::MapPropertiesState_Func::sortEventsByDate,
-                                                        this)();
+                                                        Map::MapPropertiesState_Func::sortEventsByDate, this)();
                                                 }
                                                 break;
                                             }
                                         }
                                         goto switchD_004c382e_caseD_2;
                                     case 1:
-                                        if ((DAT_GameState::instance
+                                        if (DAT_GameState::instance
                                                     .playerDataArray[DAT_GameSynchronyState::instance
                                                             .currentPlayerSlotID]
                                                     .playerDeathRelated
-                                                == 0)
-                                            && ((
-                                                (DAT_GameCore::instance.gameMode_2 == Game::GM_CAMPAIGN_MISSION
+                                                == 0
+                                            && ((DAT_GameCore::instance.gameMode_2 == Game::GM_CAMPAIGN_MISSION
                                                     || (DAT_GameCore::instance.gameMode_2
                                                         == Game::GM_ECONOMIC_CAMPAIGN_SH1))
-                                                || (DAT_GameCore::instance.gameMode_2
-                                                    == Game::GM_BUILDERUnk)))) {
+                                                || (DAT_GameCore::instance.gameMode_2 == Game::GM_BUILDERUnk))) {
                                             DAT_GameState::instance
                                                 .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                                 .playerDeathRelated = 2;
-                                            MACRO_CALL_MEMBER(
-                                                Map::Units::UnitsState_Func::setAIControlStatusTo100000,
+                                            MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::setAIControlStatusTo100000,
                                                 DAT_UnitsState::ptr)();
                                             DAT_GameState::instance.mapAndTime.unknownCountdown01 = 0xf0;
                                             if ((DAT_GameCore::instance.gameMode_2 == Game::GM_BUILDERUnk)
@@ -1266,17 +1245,13 @@ namespace Map {
                                                 MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView,
                                                     DAT_GameCore::ptr)(UI::Enums::MVT_BUILD_MENU, 0);
                                             }
-                                            DAT_TileMapState::instance.currentMapperCommand
-                                                = Commands::M_MAPPER_NULL;
+                                            DAT_TileMapState::instance.currentMapperCommand = Commands::M_MAPPER_NULL;
                                             if (0 < DAT_UnitsState::instance.totalUnitsInSelection) {
-                                                MACRO_CALL_MEMBER(
-                                                    Map::Units::UnitsState_Func::deselectAllUnitsOneByOne,
+                                                MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::deselectAllUnitsOneByOne,
                                                     DAT_UnitsState::ptr)();
-                                                MACRO_CALL_MEMBER(
-                                                    Map::Units::UnitsState_Func::queueEscapeCommand,
+                                                MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::queueEscapeCommand,
                                                     DAT_UnitsState::ptr)();
-                                                MACRO_CALL_MEMBER(
-                                                    Input::MouseState_Func::resetMouseCursorState,
+                                                MACRO_CALL_MEMBER(Input::MouseState_Func::resetMouseCursorState,
                                                     DAT_MouseState::ptr)();
                                                 MACRO_CALL_MEMBER(
                                                     Map::MapPropertiesState_Func::sortEventsByDate, this)();
@@ -1286,26 +1261,23 @@ namespace Map {
                                     default:
                                         goto switchD_004c382e_caseD_2;
                                     case 3:
-                                        MACRO_CALL_MEMBER(Map::Units::TribesState_Func::flagTribesOfType,
-                                            DAT_TribesState::ptr)(0xe);
                                         MACRO_CALL_MEMBER(
-                                            Map::MapPropertiesState_Func::sortEventsByDate, this)();
+                                            Map::Units::TribesState_Func::flagTribesOfType, DAT_TribesState::ptr)(0xe);
+                                        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::sortEventsByDate, this)();
                                         break;
                                     case 4:
                                         iVar18 = this->scenarioEvents[_eventIndex].data.scenario.actionData;
                                         if (!iVar18) {
                                             iVar18 = 1;
                                         }
-                                        MACRO_CALL_MEMBER(
-                                            Map::Units::TribesState_Func::consumeFlaggedTribesOfType,
+                                        MACRO_CALL_MEMBER(Map::Units::TribesState_Func::consumeFlaggedTribesOfType,
                                             DAT_TribesState::ptr)(0xe, iVar18);
-                                        MACRO_CALL_MEMBER(
-                                            Map::MapPropertiesState_Func::sortEventsByDate, this)();
+                                        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::sortEventsByDate, this)();
                                         break;
                                     case 5:
-                                        MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit,
-                                            DAT_UnitsState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID,
-                                            (int)((int)(SEC_RNG::instance.currentNumber2 % 9)),
+                                        MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
+                                            DAT_GameSynchronyState::instance.currentPlayerSlotID,
+                                            (int)(SEC_RNG::instance.currentNumber2 % 9),
                                             DAT_GameState::instance
                                                     .playerDataArray[DAT_GameSynchronyState::instance
                                                             .currentPlayerSlotID]
@@ -1316,14 +1288,13 @@ namespace Map {
                                                             .currentPlayerSlotID]
                                                     .campground.yEntry
                                                 * 8,
-                                            (int)((int)((
-                                                uint)DAT_TileMapState::instance.HeightLayer[DAT_GameState::instance
+                                            (int)((uint)DAT_TileMapState::instance.HeightLayer[DAT_GameState::instance
                                                     .playerDataArray[DAT_GameSynchronyState::instance
                                                             .currentPlayerSlotID]
-                                                    .campground.tileEntry])),
+                                                    .campground.tileEntry]),
                                             Map::Units::UT_JUGGLER);
-                                        MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit,
-                                            DAT_UnitsState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID,
+                                        MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
+                                            DAT_GameSynchronyState::instance.currentPlayerSlotID,
                                             (SEC_RNG::instance.currentNumber2 >> 3) % 9,
                                             DAT_GameState::instance
                                                     .playerDataArray[DAT_GameSynchronyState::instance
@@ -1341,8 +1312,8 @@ namespace Map {
                                                             .currentPlayerSlotID]
                                                     .campground.tileEntry])),
                                             Map::Units::UT_JUGGLER);
-                                        MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit,
-                                            DAT_UnitsState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID,
+                                        MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
+                                            DAT_GameSynchronyState::instance.currentPlayerSlotID,
                                             (SEC_RNG::instance.currentNumber2 >> 6) % 9,
                                             DAT_GameState::instance
                                                     .playerDataArray[DAT_GameSynchronyState::instance
@@ -1360,8 +1331,8 @@ namespace Map {
                                                             .currentPlayerSlotID]
                                                     .campground.tileEntry])),
                                             Map::Units::UT_JUGGLER);
-                                        MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit,
-                                            DAT_UnitsState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID,
+                                        MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
+                                            DAT_GameSynchronyState::instance.currentPlayerSlotID,
                                             (SEC_RNG::instance.currentNumber2 >> 9) % 9,
                                             DAT_GameState::instance
                                                     .playerDataArray[DAT_GameSynchronyState::instance
@@ -1379,8 +1350,8 @@ namespace Map {
                                                             .currentPlayerSlotID]
                                                     .campground.tileEntry])),
                                             Map::Units::UT_FIREEATER);
-                                        MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit,
-                                            DAT_UnitsState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID,
+                                        MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
+                                            DAT_GameSynchronyState::instance.currentPlayerSlotID,
                                             (SEC_RNG::instance.currentNumber2 >> 0xc) % 9,
                                             DAT_GameState::instance
                                                     .playerDataArray[DAT_GameSynchronyState::instance
@@ -1404,11 +1375,10 @@ namespace Map {
                                           "a travelling fair has come to town my lord"   added by script: "A ‘Travelling
                                           Fair’ has come to town, my Lord."
                                          */
-                                        pcVar10 = MACRO_CALL_MEMBER(
-                                            Text::TextManager_Func::getTextStringInGroupAtOffset,
-                                            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, 1);
-                                        MACRO_CALL_MEMBER(
-                                            Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                                        pcVar10
+                                            = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, 1);
+                                        MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                                             DAT_VideoBikQueue::ptr)(pcVar10, pcVar26, pcVar25);
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
                                         if ((!bVar4)
@@ -1432,40 +1402,34 @@ namespace Map {
                                         if (0xb < iVar18) {
                                             _pConditionIsMet = &this->scenarioEvents[_eventIndex].header.year;
                                             *_pConditionIsMet = *_pConditionIsMet + 1;
-                                            this->scenarioEvents[_eventIndex].header.month = iVar18 + -0xc;
+                                            this->scenarioEvents[_eventIndex].header.month = iVar18 - 0xc;
                                         }
                                     LAB_004c4621:
-                                        MACRO_CALL_MEMBER(
-                                            Map::MapPropertiesState_Func::sortEventsByDate, this)();
-                                        _eventIndex = _eventIndex + -1;
+                                        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::sortEventsByDate, this)();
+                                        _eventIndex = _eventIndex - 1;
                                         break;
                                     case 6:
                                         DAT_GameCore::instance.isTimeHalted = TRUE;
-                                        MACRO_CALL_MEMBER(
-                                            Map::MapPropertiesState_Func::sortEventsByDate, this)();
+                                        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::sortEventsByDate, this)();
                                         break;
                                     case 7:
                                         DAT_GameCore::instance.isTimeHalted = FALSE;
-                                        MACRO_CALL_MEMBER(
-                                            Map::MapPropertiesState_Func::sortEventsByDate, this)();
+                                        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::sortEventsByDate, this)();
                                         break;
                                     case 8:
-                                        MACRO_CALL_MEMBER(
-                                            Game::GameStateStructures_Func::switchPlayerOwnership,
+                                        MACRO_CALL_MEMBER(Game::GameStateStructures_Func::switchPlayerOwnership,
                                             DAT_GameState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID);
-                                        MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::
-                                                              setupBarracksCampgroundPositions,
-                                            DAT_BuildingsState::ptr)(
-                                            DAT_GameSynchronyState::instance.currentPlayerSlotID);
-                                        MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::
-                                                              setupMercenaryPostCampgroundPositions,
+                                        MACRO_CALL_MEMBER(
+                                            Map::Buildings::BuildingsState_Func::setupBarracksCampgroundPositions,
                                             DAT_BuildingsState::ptr)(
                                             DAT_GameSynchronyState::instance.currentPlayerSlotID);
                                         MACRO_CALL_MEMBER(
-                                            Map::Units::UnitsState_Func::triggerStoneTowerDeathForPlayer,
+                                            Map::Buildings::BuildingsState_Func::setupMercenaryPostCampgroundPositions,
+                                            DAT_BuildingsState::ptr)(
+                                            DAT_GameSynchronyState::instance.currentPlayerSlotID);
+                                        MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::triggerStoneTowerDeathForPlayer,
                                             DAT_UnitsState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID);
-                                        MACRO_CALL_MEMBER(
-                                            Map::Buildings::BuildingsState_Func::countPlayerResources,
+                                        MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::countPlayerResources,
                                             DAT_BuildingsState::ptr)(
                                             DAT_GameSynchronyState::instance.currentPlayerSlotID);
                                         DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.tabType
@@ -1473,23 +1437,20 @@ namespace Map {
                                         DAT_GameCore::instance.secondaryActiveMenuTabToSwitchTo.tabType
                                             = UI::Enums::BASMTT_HUNTERSHUT;
                                         DAT_GameCore::instance.tabTypeSiegeSubset = UI::Enums::BMTT_CASTLE;
-                                        if (((DAT_GameCore::instance.currentMenuViewType
-                                                 == UI::Enums::MVT_BUILD_MENU)
-                                                && ((DAT_GameCore::instance.activeMenuTab.tabType
-                                                        != UI::Enums::BASMTT_STOCKS
-                                                    || (MACRO_CALL_MEMBER(
-                                                            Game::GameCore_Func::switchToMenuView,
-                                                            DAT_GameCore::ptr)(UI::Enums::MVT_BUILD_MENU, 0),
-                                                        DAT_GameCore::instance.currentMenuViewType
-                                                            == UI::Enums::MVT_BUILD_MENU))))
-                                            && ((DAT_GameCore::instance.activeMenuTab.tabType
+                                        if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILD_MENU
+                                            && (DAT_GameCore::instance.activeMenuTab.tabType != UI::Enums::BASMTT_STOCKS
+                                                || (MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView,
+                                                        DAT_GameCore::ptr)(UI::Enums::MVT_BUILD_MENU, 0),
+                                                    DAT_GameCore::instance.currentMenuViewType
+                                                        == UI::Enums::MVT_BUILD_MENU))
+                                            && (DAT_GameCore::instance.activeMenuTab.tabType
                                                     == UI::Enums::BASMTT_SIEGETENT_BATTERINGRAM
                                                 || (DAT_GameCore::instance.activeMenuTab.tabType
-                                                    == UI::Enums::BASMTT_SIEGETENT_SHIELD)))) {
+                                                    == UI::Enums::BASMTT_SIEGETENT_SHIELD))) {
                                             DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.tabType
                                                 = UI::Enums::BASMTT_SIEGETENT_BATTERINGRAM;
-                                            MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView,
-                                                DAT_GameCore::ptr)(UI::Enums::MVT_BUILD_MENU, 0);
+                                            MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                                                UI::Enums::MVT_BUILD_MENU, 0);
                                         }
                                         iVar22 = DAT_GameSynchronyState::instance.currentPlayerSlotID;
                                         iVar18
@@ -1507,13 +1468,11 @@ namespace Map {
                                             .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                             .lordID = 0;
                                         DAT_GameState::instance.playerDataArray[iVar22].lordUID = 0;
-                                        MACRO_CALL_MEMBER(
-                                            Map::MapPropertiesState_Func::sortEventsByDate, this)();
+                                        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::sortEventsByDate, this)();
                                         break;
                                     case 9:
                                         DAT_GameCore::instance.xbowProducible_logic = 1;
-                                        MACRO_CALL_MEMBER(
-                                            Map::MapPropertiesState_Func::sortEventsByDate, this)();
+                                        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::sortEventsByDate, this)();
                                         break;
                                     case 0xb:
                                         DAT_GameState::instance
@@ -1522,7 +1481,7 @@ namespace Map {
                                         iVar22 = DAT_GameState::instance.playerDataArray[iVar18].popularity;
                                         if (6000 < iVar22) {
                                             DAT_GameState::instance.playerDataArray[iVar18].popularity
-                                                = (iVar22 + -6000) / 2 + 6000;
+                                                = (iVar22 - 6000) / 2 + 6000;
                                         }
                                         MACRO_CALL_MEMBER(Game::GameStateStructures_Func::
                                                               spawnPoisonCloudsAtRandomStorageOrArmyBuilding,
@@ -1533,11 +1492,10 @@ namespace Map {
                                         /*
                                           added by script: "Plague has descended on our castle your lordship."
                                          */
-                                        pcVar10 = MACRO_CALL_MEMBER(
-                                            Text::TextManager_Func::getTextStringInGroupAtOffset,
-                                            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, 2);
-                                        MACRO_CALL_MEMBER(
-                                            Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                                        pcVar10
+                                            = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, 2);
+                                        MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                                             DAT_VideoBikQueue::ptr)(pcVar10, pcVar26, pcVar25);
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
                                         if ((!bVar4)
@@ -1562,10 +1520,9 @@ namespace Map {
                                             goto LAB_004c4621;
                                         _pConditionIsMet = &this->scenarioEvents[_eventIndex].header.year;
                                         *_pConditionIsMet = *_pConditionIsMet + 1;
-                                        this->scenarioEvents[_eventIndex].header.month = iVar18 + -0xc;
-                                        MACRO_CALL_MEMBER(
-                                            Map::MapPropertiesState_Func::sortEventsByDate, this)();
-                                        _eventIndex = _eventIndex + -1;
+                                        this->scenarioEvents[_eventIndex].header.month = iVar18 - 0xc;
+                                        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::sortEventsByDate, this)();
+                                        _eventIndex = _eventIndex - 1;
                                         break;
                                     case 0xc:
                                         iVar18 = MACRO_CALL_MEMBER(
@@ -1586,8 +1543,7 @@ namespace Map {
                                             pcVar10 = MACRO_CALL_MEMBER(
                                                 Text::TextManager_Func::getTextStringInGroupAtOffset,
                                                 DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, 3);
-                                            MACRO_CALL_MEMBER(
-                                                Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                                            MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                                                 DAT_VideoBikQueue::ptr)(pcVar10, pcVar26, pcVar25);
                                         }
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
@@ -1613,10 +1569,9 @@ namespace Map {
                                             goto LAB_004c4621;
                                         _pConditionIsMet = &this->scenarioEvents[_eventIndex].header.year;
                                         *_pConditionIsMet = *_pConditionIsMet + 1;
-                                        this->scenarioEvents[_eventIndex].header.month = iVar18 + -0xc;
-                                        MACRO_CALL_MEMBER(
-                                            Map::MapPropertiesState_Func::sortEventsByDate, this)();
-                                        _eventIndex = _eventIndex + -1;
+                                        this->scenarioEvents[_eventIndex].header.month = iVar18 - 0xc;
+                                        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::sortEventsByDate, this)();
+                                        _eventIndex = _eventIndex - 1;
                                         break;
                                     case 0xd:
                                         iVar18 = MACRO_CALL_MEMBER(
@@ -1625,8 +1580,7 @@ namespace Map {
                                             DAT_GameSynchronyState::instance.currentPlayerSlotID,
                                             Map::Buildings::BT_HOPFARM);
                                         if (iVar18) {
-                                            MACRO_CALL_MEMBER(
-                                                Map::Buildings::BuildingsState_Func::harmHopFarmsOfPlayer,
+                                            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::harmHopFarmsOfPlayer,
                                                 DAT_BuildingsState::ptr)(
                                                 DAT_GameSynchronyState::instance.currentPlayerSlotID);
                                             pcVar25 = "Random_Events4.wav";
@@ -1638,8 +1592,7 @@ namespace Map {
                                             pcVar10 = MACRO_CALL_MEMBER(
                                                 Text::TextManager_Func::getTextStringInGroupAtOffset,
                                                 DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, 4);
-                                            MACRO_CALL_MEMBER(
-                                                Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                                            MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                                                 DAT_VideoBikQueue::ptr)(pcVar10, pcVar26, pcVar25);
                                         }
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
@@ -1665,10 +1618,9 @@ namespace Map {
                                             goto LAB_004c4621;
                                         _pConditionIsMet = &this->scenarioEvents[_eventIndex].header.year;
                                         *_pConditionIsMet = *_pConditionIsMet + 1;
-                                        this->scenarioEvents[_eventIndex].header.month = iVar18 + -0xc;
-                                        MACRO_CALL_MEMBER(
-                                            Map::MapPropertiesState_Func::sortEventsByDate, this)();
-                                        _eventIndex = _eventIndex + -1;
+                                        this->scenarioEvents[_eventIndex].header.month = iVar18 - 0xc;
+                                        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::sortEventsByDate, this)();
+                                        _eventIndex = _eventIndex - 1;
                                         break;
                                     case 0xe:
                                         iVar18 = MACRO_CALL_MEMBER(
@@ -1677,8 +1629,8 @@ namespace Map {
                                             DAT_GameSynchronyState::instance.currentPlayerSlotID,
                                             Map::Buildings::BT_APPLEFARM);
                                         if (iVar18) {
-                                            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::
-                                                                  harmAppleFarmTreesOfPlayer,
+                                            MACRO_CALL_MEMBER(
+                                                Map::Buildings::BuildingsState_Func::harmAppleFarmTreesOfPlayer,
                                                 DAT_BuildingsState::ptr)(
                                                 DAT_GameSynchronyState::instance.currentPlayerSlotID);
                                             pcVar27 = "Random_Events5.wav";
@@ -1690,13 +1642,12 @@ namespace Map {
                                             pcVar10 = MACRO_CALL_MEMBER(
                                                 Text::TextManager_Func::getTextStringInGroupAtOffset,
                                                 DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, 5);
-                                            MACRO_CALL_MEMBER(
-                                                Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                                            MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                                                 DAT_VideoBikQueue::ptr)(pcVar10, pcVar25, pcVar27);
-                                            MACRO_CALL_MEMBER(
-                                                Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                                            MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                                                 DAT_VideoBikQueue::ptr)("",
-                                                (char*)((int)(DAT_MissionAestheticsDefinedData::instance.RandomEvent5VideoName)),
+                                                (char*)((int)(DAT_MissionAestheticsDefinedData::instance
+                                                        .RandomEvent5VideoName)),
                                                 "");
                                         }
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
@@ -1722,25 +1673,23 @@ namespace Map {
                                             goto LAB_004c4621;
                                         _pConditionIsMet = &this->scenarioEvents[_eventIndex].header.year;
                                         *_pConditionIsMet = *_pConditionIsMet + 1;
-                                        this->scenarioEvents[_eventIndex].header.month = iVar18 + -0xc;
-                                        MACRO_CALL_MEMBER(
-                                            Map::MapPropertiesState_Func::sortEventsByDate, this)();
-                                        _eventIndex = _eventIndex + -1;
+                                        this->scenarioEvents[_eventIndex].header.month = iVar18 - 0xc;
+                                        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::sortEventsByDate, this)();
+                                        _eventIndex = _eventIndex - 1;
                                         break;
                                     case 0xf:
-                                        MACRO_CALL_MEMBER(Map::LandscapeState_Func::killEveryFifthTree,
-                                            DAT_LandscapeState::ptr)();
+                                        MACRO_CALL_MEMBER(
+                                            Map::LandscapeState_Func::killEveryFifthTree, DAT_LandscapeState::ptr)();
                                         pcVar25 = "Random_Events6.wav";
                                         pcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent6VideoName;
                                         /*
                                           added by script: "Sire, woodcutters report that the recent drought has killed
                                           off many trees."
                                          */
-                                        pcVar10 = MACRO_CALL_MEMBER(
-                                            Text::TextManager_Func::getTextStringInGroupAtOffset,
-                                            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, 6);
-                                        MACRO_CALL_MEMBER(
-                                            Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                                        pcVar10
+                                            = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, 6);
+                                        MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                                             DAT_VideoBikQueue::ptr)(pcVar10, pcVar26, pcVar25);
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
                                         if ((!bVar4)
@@ -1765,31 +1714,30 @@ namespace Map {
                                             goto LAB_004c4621;
                                         _pConditionIsMet = &this->scenarioEvents[_eventIndex].header.year;
                                         *_pConditionIsMet = *_pConditionIsMet + 1;
-                                        this->scenarioEvents[_eventIndex].header.month = iVar18 + -0xc;
-                                        MACRO_CALL_MEMBER(
-                                            Map::MapPropertiesState_Func::sortEventsByDate, this)();
-                                        _eventIndex = _eventIndex + -1;
+                                        this->scenarioEvents[_eventIndex].header.month = iVar18 - 0xc;
+                                        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::sortEventsByDate, this)();
+                                        _eventIndex = _eventIndex - 1;
                                         break;
                                     case 0x10:
-                                        iVar18 = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::
-                                                                       hasAvailableSpawnSlotForWildlifeOrMercs,
+                                        iVar18 = MACRO_CALL_MEMBER(
+                                            Map::Units::TribesState_Func::hasAvailableSpawnSlotForWildlifeOrMercs,
                                             DAT_TribesState::ptr)();
-                                        if ((iVar18)
-                                            && ((iVar18 = MACRO_CALL_MEMBER(
-                                                     Map::Buildings::BuildingsState_Func::findBuildingOfTypeForPlayer,
-                                                     DAT_BuildingsState::ptr)(
-                                                     DAT_GameSynchronyState::instance.currentPlayerSlotID,
-                                                     Map::Buildings::BT_HOPFARM),
+                                        if (iVar18
+                                            && (iVar18 = MACRO_CALL_MEMBER(
+                                                    Map::Buildings::BuildingsState_Func::findBuildingOfTypeForPlayer,
+                                                    DAT_BuildingsState::ptr)(
+                                                    DAT_GameSynchronyState::instance.currentPlayerSlotID,
+                                                    Map::Buildings::BT_HOPFARM),
                                                 iVar18 != 0
                                                     || (iVar18 = MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::
                                                                                        findBuildingOfTypeForPlayer,
                                                             DAT_BuildingsState::ptr)(
                                                             DAT_GameSynchronyState::instance.currentPlayerSlotID,
                                                             Map::Buildings::BT_WHEATFARM),
-                                                        iVar18 != 0)))) {
+                                                        iVar18 != 0))) {
                                             DAT_GameState::instance.mapAndTime.eventCountdownRabbitInfestation = 1200;
-                                            MACRO_CALL_MEMBER(Map::Units::TribesState_Func::
-                                                                  spawnWildlifeOrMercAtAvailableSlot,
+                                            MACRO_CALL_MEMBER(
+                                                Map::Units::TribesState_Func::spawnWildlifeOrMercAtAvailableSlot,
                                                 DAT_TribesState::ptr)();
                                             MACRO_CALL_MEMBER(UI::MinimapViewState_Func::setSpawnMoment,
                                                 DAT_MinimapViewState::ptr)(DAT_TribesState::instance.unknownX_01,
@@ -1803,8 +1751,7 @@ namespace Map {
                                             pcVar10 = MACRO_CALL_MEMBER(
                                                 Text::TextManager_Func::getTextStringInGroupAtOffset,
                                                 DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, 7);
-                                            MACRO_CALL_MEMBER(
-                                                Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                                            MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                                                 DAT_VideoBikQueue::ptr)(pcVar10, pcVar26, pcVar25);
                                         }
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
@@ -1830,10 +1777,9 @@ namespace Map {
                                             goto LAB_004c4621;
                                         _pConditionIsMet = &this->scenarioEvents[_eventIndex].header.year;
                                         *_pConditionIsMet = *_pConditionIsMet + 1;
-                                        this->scenarioEvents[_eventIndex].header.month = iVar18 + -0xc;
-                                        MACRO_CALL_MEMBER(
-                                            Map::MapPropertiesState_Func::sortEventsByDate, this)();
-                                        _eventIndex = _eventIndex + -1;
+                                        this->scenarioEvents[_eventIndex].header.month = iVar18 - 0xc;
+                                        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::sortEventsByDate, this)();
+                                        _eventIndex = _eventIndex - 1;
                                         break;
                                     case 0x11:
                                         iVar18 = MACRO_CALL_MEMBER(
@@ -1851,26 +1797,25 @@ namespace Map {
                                             iVar22 = DAT_GameState::instance.playerDataArray[iVar18].popularity;
                                             if (6000 < iVar22) {
                                                 DAT_GameState::instance.playerDataArray[iVar18].popularity
-                                                    = (iVar22 + -6000) / 2 + 6000;
+                                                    = (iVar22 - 6000) / 2 + 6000;
                                             }
                                             iVar18 = 0;
                                             if (0 < this->scenarioEvents[_eventIndex].data.scenario.actionData) {
                                                 do {
-                                                    MACRO_CALL_MEMBER(Map::Units::TribesState_Func::
-                                                                          findRecentOrSignpostSpawnLocation,
-                                                        DAT_TribesState::ptr)(&uStack_78, &uStack_7c);
-                                                    dVar14 = MACRO_CALL_MEMBER(
-                                                        Map::Units::TribesState_Func::createAnimal,
-                                                        DAT_TribesState::ptr)(Commands::M_MAPPER_LION,
-                                                        uStack_78, uStack_7c,
-                                                        (int)((int)((uint)
-                                                            * (byte*)(DAT_ViewportRenderState::instance
-                                                                          .translationMatrix[uStack_7c]
-                                                                          .addXgetTile
-                                                                + 0x1d32c38 + uStack_78))));
                                                     MACRO_CALL_MEMBER(
-                                                        UI::MinimapViewState_Func::setSpawnMoment,
-                                                        DAT_MinimapViewState::ptr)(uStack_78, (int)((int)(uStack_7c)));
+                                                        Map::Units::TribesState_Func::findRecentOrSignpostSpawnLocation,
+                                                        DAT_TribesState::ptr)(&uStack_78, &uStack_7c);
+                                                    dVar14
+                                                        = MACRO_CALL_MEMBER(Map::Units::TribesState_Func::createAnimal,
+                                                            DAT_TribesState::ptr)(Commands::M_MAPPER_LION, uStack_78,
+                                                            uStack_7c,
+                                                            (int)((uint)
+                                                                * (byte*)(DAT_ViewportRenderState::instance
+                                                                              .translationMatrix[uStack_7c]
+                                                                              .addXgetTile
+                                                                    + 0x1d32c38 + uStack_78)));
+                                                    MACRO_CALL_MEMBER(UI::MinimapViewState_Func::setSpawnMoment,
+                                                        DAT_MinimapViewState::ptr)(uStack_78, (int)(uStack_7c));
                                                     iVar18 = iVar18 + 1;
                                                     DAT_TribesState::instance.tribes[dVar14].unknownBool02 = 0;
                                                     DAT_TribesState::instance.tribes[dVar14].unknownBool01 = 1;
@@ -1886,8 +1831,7 @@ namespace Map {
                                             pcVar10 = MACRO_CALL_MEMBER(
                                                 Text::TextManager_Func::getTextStringInGroupAtOffset,
                                                 DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, 8);
-                                            MACRO_CALL_MEMBER(
-                                                Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                                            MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                                                 DAT_VideoBikQueue::ptr)(pcVar10, pcVar25, pcVar27);
                                         }
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
@@ -1913,15 +1857,13 @@ namespace Map {
                                             goto LAB_004c4621;
                                         _pConditionIsMet = &this->scenarioEvents[_eventIndex].header.year;
                                         *_pConditionIsMet = *_pConditionIsMet + 1;
-                                        this->scenarioEvents[_eventIndex].header.month = iVar18 + -0xc;
-                                        MACRO_CALL_MEMBER(
-                                            Map::MapPropertiesState_Func::sortEventsByDate, this)();
-                                        _eventIndex = _eventIndex + -1;
+                                        this->scenarioEvents[_eventIndex].header.month = iVar18 - 0xc;
+                                        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::sortEventsByDate, this)();
+                                        _eventIndex = _eventIndex - 1;
                                         break;
                                     case 0x12:
-                                        BVar11
-                                            = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::hasAnySignpost,
-                                                DAT_GameState::ptr)();
+                                        BVar11 = MACRO_CALL_MEMBER(
+                                            Game::GameStateStructures_Func::hasAnySignpost, DAT_GameState::ptr)();
                                         if (BVar11) {
                                             DAT_GameState::instance
                                                 .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -1937,8 +1879,8 @@ namespace Map {
                                                 DAT_TroopValueState::instance.attackInfo.inv_count, 0);
                                             DAT_TroopValueState::instance.attackInfo.attackWavePlayerIDArray
                                                 [DAT_TroopValueState::instance.attackInfo.inv_count] = 8;
-                                            iVar18 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::
-                                                                           pickRandomAccessibleSignpostEntry,
+                                            iVar18 = MACRO_CALL_MEMBER(
+                                                Game::GameStateStructures_Func::pickRandomAccessibleSignpostEntry,
                                                 DAT_GameState::ptr)();
                                             dVar14 = MACRO_CALL_MEMBER(
                                                 Map::Units::TribesState_Func::createTribeWithSpawnedUnit,
@@ -1947,8 +1889,8 @@ namespace Map {
                                                 DAT_GameState::instance.mapAndTime.signpostEntryData[iVar18].y, 8,
                                                 Map::Units::UT_E_MACE,
                                                 this->scenarioEvents[_eventIndex].data.scenario.actionData + 1);
-                                            MACRO_CALL_MEMBER(UI::MinimapViewState_Func::setSpawnMoment,
-                                                DAT_MinimapViewState::ptr)(
+                                            MACRO_CALL_MEMBER(
+                                                UI::MinimapViewState_Func::setSpawnMoment, DAT_MinimapViewState::ptr)(
                                                 DAT_GameState::instance.mapAndTime.signpostEntryData[iVar18].x,
                                                 DAT_GameState::instance.mapAndTime.signpostEntryData[iVar18].y);
                                             iVar18 = 0;
@@ -1973,8 +1915,7 @@ namespace Map {
                                             pcVar10 = MACRO_CALL_MEMBER(
                                                 Text::TextManager_Func::getTextStringInGroupAtOffset,
                                                 DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, 9);
-                                            MACRO_CALL_MEMBER(
-                                                Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                                            MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                                                 DAT_VideoBikQueue::ptr)(pcVar10, pcVar26, pcVar25);
                                         }
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
@@ -2000,10 +1941,9 @@ namespace Map {
                                             goto LAB_004c4621;
                                         _pConditionIsMet = &this->scenarioEvents[_eventIndex].header.year;
                                         *_pConditionIsMet = *_pConditionIsMet + 1;
-                                        this->scenarioEvents[_eventIndex].header.month = iVar18 + -0xc;
-                                        MACRO_CALL_MEMBER(
-                                            Map::MapPropertiesState_Func::sortEventsByDate, this)();
-                                        _eventIndex = _eventIndex + -1;
+                                        this->scenarioEvents[_eventIndex].header.month = iVar18 - 0xc;
+                                        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::sortEventsByDate, this)();
+                                        _eventIndex = _eventIndex - 1;
                                         break;
                                     case 0x13:
                                         iVar18 = MACRO_CALL_MEMBER(
@@ -2012,8 +1952,7 @@ namespace Map {
                                             DAT_GameSynchronyState::instance.currentPlayerSlotID,
                                             Map::Buildings::BT_DAIRYFARM);
                                         if (iVar18) {
-                                            MACRO_CALL_MEMBER(
-                                                Map::Units::UnitsState_Func::setRandomNumberOnCows,
+                                            MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::setRandomNumberOnCows,
                                                 DAT_UnitsState::ptr)(
                                                 DAT_GameSynchronyState::instance.currentPlayerSlotID);
                                             MACRO_CALL_MEMBER(
@@ -2029,13 +1968,12 @@ namespace Map {
                                             pcVar10 = MACRO_CALL_MEMBER(
                                                 Text::TextManager_Func::getTextStringInGroupAtOffset,
                                                 DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, 10);
-                                            MACRO_CALL_MEMBER(
-                                                Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                                            MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                                                 DAT_VideoBikQueue::ptr)(pcVar10, pcVar25, pcVar27);
-                                            MACRO_CALL_MEMBER(
-                                                Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                                            MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                                                 DAT_VideoBikQueue::ptr)("",
-                                                (char*)((int)(DAT_MissionAestheticsDefinedData::instance.RandomEvent10VideoName)),
+                                                (char*)((int)(DAT_MissionAestheticsDefinedData::instance
+                                                        .RandomEvent10VideoName)),
                                                 "");
                                         }
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
@@ -2061,18 +1999,16 @@ namespace Map {
                                             goto LAB_004c4621;
                                         _pConditionIsMet = &this->scenarioEvents[_eventIndex].header.year;
                                         *_pConditionIsMet = *_pConditionIsMet + 1;
-                                        this->scenarioEvents[_eventIndex].header.month = iVar18 + -0xc;
-                                        MACRO_CALL_MEMBER(
-                                            Map::MapPropertiesState_Func::sortEventsByDate, this)();
-                                        _eventIndex = _eventIndex + -1;
+                                        this->scenarioEvents[_eventIndex].header.month = iVar18 - 0xc;
+                                        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::sortEventsByDate, this)();
+                                        _eventIndex = _eventIndex - 1;
                                         break;
                                     case 0x14:
-                                        BVar11
-                                            = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::hasAnySignpost,
-                                                DAT_GameState::ptr)();
+                                        BVar11 = MACRO_CALL_MEMBER(
+                                            Game::GameStateStructures_Func::hasAnySignpost, DAT_GameState::ptr)();
                                         if (BVar11) {
-                                            iVar18 = MACRO_CALL_MEMBER(Game::GameStateStructures_Func::
-                                                                           pickRandomAccessibleSignpostEntry,
+                                            iVar18 = MACRO_CALL_MEMBER(
+                                                Game::GameStateStructures_Func::pickRandomAccessibleSignpostEntry,
                                                 DAT_GameState::ptr)();
                                             iVar22 = 0;
                                             dVar14 = MACRO_CALL_MEMBER(
@@ -2080,7 +2016,7 @@ namespace Map {
                                                 DAT_TribesState::ptr)(0, 3,
                                                 DAT_GameState::instance.mapAndTime.signpostEntryData[iVar18].x,
                                                 DAT_GameState::instance.mapAndTime.signpostEntryData[iVar18].y,
-                                                (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)),
+                                                (int)(DAT_GameSynchronyState::instance.currentPlayerSlotID),
                                                 Map::Units::UT_E_ARCHER,
                                                 this->scenarioEvents[_eventIndex].data.scenario.actionData);
                                             tribeID = MACRO_CALL_MEMBER(
@@ -2088,10 +2024,10 @@ namespace Map {
                                                 DAT_TribesState::ptr)(0, 0xc,
                                                 DAT_GameState::instance.mapAndTime.signpostEntryData[iVar18].x,
                                                 DAT_GameState::instance.mapAndTime.signpostEntryData[iVar18].y,
-                                                (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)),
+                                                (int)(DAT_GameSynchronyState::instance.currentPlayerSlotID),
                                                 Map::Units::UT_E_MONK, 1);
-                                            MACRO_CALL_MEMBER(UI::MinimapViewState_Func::setSpawnMoment,
-                                                DAT_MinimapViewState::ptr)(
+                                            MACRO_CALL_MEMBER(
+                                                UI::MinimapViewState_Func::setSpawnMoment, DAT_MinimapViewState::ptr)(
                                                 DAT_GameState::instance.mapAndTime.signpostEntryData[iVar18].x,
                                                 DAT_GameState::instance.mapAndTime.signpostEntryData[iVar18].y);
                                             DAT_TribesState::instance.tribes[dVar14].pendingScatterMove = 0;
@@ -2163,12 +2099,12 @@ namespace Map {
                                                 }
                                                 MACRO_CALL_MEMBER(
                                                     Map::Units::TribesState_Func::giveTribeMoveInstruction,
-                                                    DAT_TribesState::ptr)(dVar14, uVar19, y1, 0, 0,
-                                                    Map::Units::Instructions::UMSE_0);
+                                                    DAT_TribesState::ptr)(
+                                                    dVar14, uVar19, y1, 0, 0, Map::Units::Instructions::UMSE_0);
                                                 MACRO_CALL_MEMBER(
                                                     Map::Units::TribesState_Func::giveTribeMoveInstruction,
-                                                    DAT_TribesState::ptr)(tribeID, uVar19, y1, 0, 0,
-                                                    Map::Units::Instructions::UMSE_0);
+                                                    DAT_TribesState::ptr)(
+                                                    tribeID, uVar19, y1, 0, 0, Map::Units::Instructions::UMSE_0);
                                             }
                                             pcVar25 = "Random_Events11.wav";
                                             pcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent11VideoName;
@@ -2179,8 +2115,7 @@ namespace Map {
                                             pcVar10 = MACRO_CALL_MEMBER(
                                                 Text::TextManager_Func::getTextStringInGroupAtOffset,
                                                 DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, 0xb);
-                                            MACRO_CALL_MEMBER(
-                                                Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                                            MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                                                 DAT_VideoBikQueue::ptr)(pcVar10, pcVar26, pcVar25);
                                         }
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
@@ -2206,10 +2141,9 @@ namespace Map {
                                             goto LAB_004c4621;
                                         _pConditionIsMet = &this->scenarioEvents[_eventIndex].header.year;
                                         *_pConditionIsMet = *_pConditionIsMet + 1;
-                                        this->scenarioEvents[_eventIndex].header.month = iVar18 + -0xc;
-                                        MACRO_CALL_MEMBER(
-                                            Map::MapPropertiesState_Func::sortEventsByDate, this)();
-                                        _eventIndex = _eventIndex + -1;
+                                        this->scenarioEvents[_eventIndex].header.month = iVar18 - 0xc;
+                                        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::sortEventsByDate, this)();
+                                        _eventIndex = _eventIndex - 1;
                                         break;
                                     case 0x15:
                                         DAT_GameState::instance.mapAndTime.unitLadyRelated = 1;
@@ -2224,16 +2158,14 @@ namespace Map {
                                         /*
                                           added by script: "The people rejoice at your forthcoming marriage, Sire."
                                          */
-                                        pcVar10 = MACRO_CALL_MEMBER(
-                                            Text::TextManager_Func::getTextStringInGroupAtOffset,
-                                            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, 0xc);
-                                        MACRO_CALL_MEMBER(
-                                            Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                                        pcVar10
+                                            = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, 0xc);
+                                        MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                                             DAT_VideoBikQueue::ptr)(pcVar10, pcVar26, pcVar25);
                                         MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::setUpSFXToPlayUnk,
                                             DAT_SFXState::ptr)(Audio::SFX::SEID_CHAPEL_BELL);
-                                        MACRO_CALL_MEMBER(
-                                            Map::MapPropertiesState_Func::sortEventsByDate, this)();
+                                        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::sortEventsByDate, this)();
                                         break;
                                     case 0x16:
                                         DAT_GameState::instance.mapAndTime.unitJesterRelated = 1;
@@ -2249,23 +2181,21 @@ namespace Map {
                                           added by script: "A Jester has arrived at the castle Liege.  I have taken the
                                           liberty of offering him employment."
                                          */
-                                        pcVar10 = MACRO_CALL_MEMBER(
-                                            Text::TextManager_Func::getTextStringInGroupAtOffset,
-                                            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, 0xd);
-                                        MACRO_CALL_MEMBER(
-                                            Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                                        pcVar10
+                                            = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, 0xd);
+                                        MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                                             DAT_VideoBikQueue::ptr)(pcVar10, pcVar26, pcVar25);
-                                        MACRO_CALL_MEMBER(
-                                            Map::MapPropertiesState_Func::sortEventsByDate, this)();
+                                        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::sortEventsByDate, this)();
                                         break;
                                     case 0x17:
-                                        if (((DAT_GameCore::instance.gameMode_2 != Game::GM_CAMPAIGN_MISSION)
-                                                && (this->scenarioEvents[_eventIndex].header.year == 0x43d))
-                                            && (this->scenarioEvents[_eventIndex].header.month == 0xb)) {
+                                        if (DAT_GameCore::instance.gameMode_2 != Game::GM_CAMPAIGN_MISSION
+                                            && this->scenarioEvents[_eventIndex].header.year == 0x43d
+                                            && this->scenarioEvents[_eventIndex].header.month == 0xb) {
                                             dVar14 = MACRO_CALL_MEMBER(
                                                 Map::Units::TribesState_Func::createTribeWithSpawnedUnit,
                                                 DAT_TribesState::ptr)(0, 3, 0x85, 0x116,
-                                                (int)((int)(DAT_GameSynchronyState::instance.currentPlayerSlotID)),
+                                                (int)(DAT_GameSynchronyState::instance.currentPlayerSlotID),
                                                 Map::Units::UT_E_ARCHER, 0x14);
                                             sVar7 = DAT_TribesState::instance.tribes[dVar14].size;
                                             DAT_TribesState::instance.tribes[dVar14].pendingScatterMove = 3;
@@ -2289,13 +2219,11 @@ namespace Map {
                                         goto switchD_004c382e_caseD_2;
                                     case 0x18:
                                         DAT_GameCore::instance.section1076 = 0;
-                                        MACRO_CALL_MEMBER(
-                                            Map::MapPropertiesState_Func::sortEventsByDate, this)();
+                                        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::sortEventsByDate, this)();
                                         break;
                                     case 0x19:
                                         DAT_GameCore::instance.section1076 = 1;
-                                        MACRO_CALL_MEMBER(
-                                            Map::MapPropertiesState_Func::sortEventsByDate, this)();
+                                        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::sortEventsByDate, this)();
                                         break;
                                     case 0x1a:
                                         if (DAT_GameState::instance
@@ -2307,14 +2235,14 @@ namespace Map {
                                                 _pConditionIsMet = &this->scenarioEvents[_eventIndex + 1]
                                                                         .data.scenario.ScenarioEventType;
                                                 do {
-                                                    if ((_pConditionIsMet[-3] == 3)
-                                                        && ((((*_pConditionIsMet == 0 || (*_pConditionIsMet == 0x1a))
-                                                                 && (_pConditionIsMet[-4]
-                                                                     <= DAT_GameState::instance.mapAndTime.year))
-                                                            && ((DAT_GameState::instance.mapAndTime.year
-                                                                    != _pConditionIsMet[-4]
-                                                                || (_pConditionIsMet[-5]
-                                                                    < DAT_GameState::instance.mapAndTime.month))))))
+                                                    if (_pConditionIsMet[-3] == 3
+                                                        && (*_pConditionIsMet == 0 || (*_pConditionIsMet == 0x1a))
+                                                        && _pConditionIsMet[-4]
+                                                            <= DAT_GameState::instance.mapAndTime.year
+                                                        && (DAT_GameState::instance.mapAndTime.year
+                                                                != _pConditionIsMet[-4]
+                                                            || (_pConditionIsMet[-5]
+                                                                < DAT_GameState::instance.mapAndTime.month)))
                                                         goto switchD_004c382e_caseD_2;
                                                     iVar18 = iVar18 + 1;
                                                     _pConditionIsMet = _pConditionIsMet + 0x39;
@@ -2331,7 +2259,7 @@ namespace Map {
                                             if (0xb < iVar22) {
                                                 _pConditionIsMet = &this->scenarioEvents[_eventIndex].header.year;
                                                 *_pConditionIsMet = *_pConditionIsMet + 1;
-                                                this->scenarioEvents[_eventIndex].header.month = iVar18 + -0xb;
+                                                this->scenarioEvents[_eventIndex].header.month = iVar18 - 0xb;
                                                 MACRO_CALL_MEMBER(
                                                     Map::MapPropertiesState_Func::sortEventsByDate, this)();
                                                 break;
@@ -2355,8 +2283,8 @@ namespace Map {
                                         if (0 < this->eventsCount) {
                                             pSVar15 = this->scenarioEvents[0].data.scenario.conditions + 0x19;
                                             do {
-                                                if ((*(const int*)&pSVar15[-0x1e] == 1)
-                                                    && (*(const int*)pSVar15 != 0)) {
+                                                if ((*(int const*)&pSVar15[-0x1e] == 1)
+                                                    && (*(int const*)pSVar15 != 0)) {
                                                     pSVar15->value = 0;
                                                     pSVar15->subType = 0;
                                                     pSVar15->enabled = 0;
@@ -2370,16 +2298,15 @@ namespace Map {
                                             } while (iVar18 < this->eventsCount);
                                         }
                                     switchD_004c382e_caseD_2:
-                                        MACRO_CALL_MEMBER(
-                                            Map::MapPropertiesState_Func::sortEventsByDate, this)();
+                                        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::sortEventsByDate, this)();
                                         break;
                                     case 0x1d:
                                         if (DAT_GameState::instance
                                                 .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                                 .totalFood
                                             != 0) {
-                                            MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::
-                                                                  applyFoodLossPercentageToPlayer,
+                                            MACRO_CALL_MEMBER(
+                                                Map::Buildings::BuildingsState_Func::applyFoodLossPercentageToPlayer,
                                                 DAT_BuildingsState::ptr)(
                                                 DAT_GameSynchronyState::instance.currentPlayerSlotID,
                                                 this->scenarioEvents[_eventIndex].data.scenario.actionData);
@@ -2396,8 +2323,7 @@ namespace Map {
                                             pcVar25 = MACRO_CALL_MEMBER(
                                                 Text::TextManager_Func::getTextStringInGroupAtOffset,
                                                 DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, iVar18);
-                                            MACRO_CALL_MEMBER(
-                                                Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                                            MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                                                 DAT_VideoBikQueue::ptr)(pcVar25, pcVar26, pcVar10);
                                         }
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
@@ -2423,10 +2349,9 @@ namespace Map {
                                             goto LAB_004c4621;
                                         _pConditionIsMet = &this->scenarioEvents[_eventIndex].header.year;
                                         *_pConditionIsMet = *_pConditionIsMet + 1;
-                                        this->scenarioEvents[_eventIndex].header.month = iVar18 + -0xc;
-                                        MACRO_CALL_MEMBER(
-                                            Map::MapPropertiesState_Func::sortEventsByDate, this)();
-                                        _eventIndex = _eventIndex + -1;
+                                        this->scenarioEvents[_eventIndex].header.month = iVar18 - 0xc;
+                                        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::sortEventsByDate, this)();
+                                        _eventIndex = _eventIndex - 1;
                                         break;
                                     case 0x1e:
                                         DAT_GameState::instance
@@ -2461,11 +2386,10 @@ namespace Map {
                                           added by script: "There is fire in the castle and we have not built any wells
                                           my Liege!"
                                          */
-                                        pcVar10 = MACRO_CALL_MEMBER(
-                                            Text::TextManager_Func::getTextStringInGroupAtOffset,
-                                            DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, iVar18);
-                                        MACRO_CALL_MEMBER(
-                                            Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                                        pcVar10
+                                            = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_ACTION, iVar18);
+                                        MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                                             DAT_VideoBikQueue::ptr)(pcVar10, pcVar26, pcVar25);
                                         bVar4 = this->scenarioEvents[_eventIndex].data.scenario.repeat;
                                         if ((!bVar4)
@@ -2490,10 +2414,9 @@ namespace Map {
                                             goto LAB_004c4621;
                                         _pConditionIsMet = &this->scenarioEvents[_eventIndex].header.year;
                                         *_pConditionIsMet = *_pConditionIsMet + 1;
-                                        this->scenarioEvents[_eventIndex].header.month = iVar18 + -0xc;
-                                        MACRO_CALL_MEMBER(
-                                            Map::MapPropertiesState_Func::sortEventsByDate, this)();
-                                        _eventIndex = _eventIndex + -1;
+                                        this->scenarioEvents[_eventIndex].header.month = iVar18 - 0xc;
+                                        MACRO_CALL_MEMBER(Map::MapPropertiesState_Func::sortEventsByDate, this)();
+                                        _eventIndex = _eventIndex - 1;
                                     }
                                 LAB_004c5f28:
                                     _eventIndex = _eventIndex + 1;
@@ -2502,7 +2425,7 @@ namespace Map {
                             iVar18 = DAT_GameState::instance.mapAndTime.month + 3;
                             local_88 = DAT_GameState::instance.mapAndTime.year;
                             if (0xb < iVar18) {
-                                iVar18 = DAT_GameState::instance.mapAndTime.month + -9;
+                                iVar18 = DAT_GameState::instance.mapAndTime.month - 9;
                                 local_88 = DAT_GameState::instance.mapAndTime.year + 1;
                             }
                             local_70[0] = 0;
@@ -2518,12 +2441,12 @@ namespace Map {
                             if (0 < this->eventsCount) {
                                 psVar21 = &this->scenarioEvents[0];
                                 do {
-                                    if ((((local_88 == psVar21->header.year) && (iVar18 == psVar21->header.month))
-                                            && ((!psVar21->header.pre_done
-                                                && ((iVar22 = psVar21->header.tl_type, psVar21->header.pre_done = 1,
-                                                    iVar22 == 1
-                                                        && (DAT_GameState::instance.mapAndTime.field3171_0x27a8 = 1,
-                                                            DAT_GameCore::instance.section1076 == 0))))))
+                                    if (local_88 == psVar21->header.year && iVar18 == psVar21->header.month
+                                        && !psVar21->header.pre_done
+                                        && (iVar22 = psVar21->header.tl_type, psVar21->header.pre_done = 1,
+                                            iVar22 == 1
+                                                && (DAT_GameState::instance.mapAndTime.field3171_0x27a8 = 1,
+                                                    DAT_GameCore::instance.section1076 == 0))
                                         && (iVar22 = (psVar21->data).invasion.crusaderArabian, local_70[iVar22] == 0)) {
                                         iVar20 = 0;
                                         iVar1 = iVar22 * 4;
@@ -2533,7 +2456,7 @@ namespace Map {
                                         do {
                                             iVar20 = iVar20 + _pConditionIsMet[-3] + _pConditionIsMet[-2]
                                                 + _pConditionIsMet[-1] + _pConditionIsMet[1] + *_pConditionIsMet;
-                                            iVar21 = iVar21 + -1;
+                                            iVar21 = iVar21 - 1;
                                             _pConditionIsMet = _pConditionIsMet + 5;
                                         } while (iVar21);
                                         if (0x18 < iVar20) {
@@ -2557,12 +2480,10 @@ namespace Map {
                                                     .field59_0xec)[numInGroup];
                                             pcVar10 = "good_soldier_nervous.bik";
                                         }
-                                        pcVar25 = MACRO_CALL_MEMBER(
-                                            Text::TextManager_Func::getTextStringInGroupAtOffset,
-                                            DAT_TextManagerObject::ptr)(
-                                            DE::SHCDE::TEXT_SANDS_OF_TIME, numInGroup);
-                                        MACRO_CALL_MEMBER(
-                                            Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
+                                        pcVar25
+                                            = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
+                                                DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_SANDS_OF_TIME, numInGroup);
+                                        MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                                             DAT_VideoBikQueue::ptr)(pcVar25, pcVar10, pcVar26);
                                     }
                                 LAB_004c609a:
@@ -2575,15 +2496,15 @@ namespace Map {
                                 iVar22 = DAT_GameState::instance.mapAndTime.month + 1;
                                 iVar18 = DAT_GameState::instance.mapAndTime.year;
                                 if (0xb < iVar22) {
-                                    iVar22 = DAT_GameState::instance.mapAndTime.month + -0xb;
+                                    iVar22 = DAT_GameState::instance.mapAndTime.month - 0xb;
                                     iVar18 = DAT_GameState::instance.mapAndTime.year + 1;
                                 }
                                 iVar21 = 0;
                                 if (0 < this->eventsCount) {
                                     pIVar16 = this->scenarioEvents;
                                     do {
-                                        if (((iVar18 == (pIVar16->header).year) && (iVar22 == (pIVar16->header).month))
-                                            && ((pIVar16->header).tl_type == 1)) {
+                                        if (iVar18 == (pIVar16->header).year && iVar22 == (pIVar16->header).month
+                                            && (pIVar16->header).tl_type == 1) {
                                             DAT_GameState::instance.mapAndTime.gameEventRelatedCountdown = 40;
                                         }
                                         iVar21 = iVar21 + 1;
@@ -2596,7 +2517,7 @@ namespace Map {
                         if ((DAT_BinkControlState::instance.binkObjPtrArray[1] == (HBINK)0x0)
                             && (!DAT_VideoBikQueue::instance.storedMessages_0x924)) {
                             DAT_GameState::instance.mapAndTime.unknownCountdown01
-                                = DAT_GameState::instance.mapAndTime.unknownCountdown01 + -1;
+                                = DAT_GameState::instance.mapAndTime.unknownCountdown01 - 1;
                         }
                         if (!DAT_GameState::instance.mapAndTime.unknownCountdown01) {
                             DAT_VideoBikQueue::instance.storedMessages_0x924 = 0;
@@ -2607,8 +2528,8 @@ namespace Map {
                             MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
                                 DAT_MenuModalComposition3::ptr)(UI::Enums::MMT_NONE, FALSE);
                             DAT_MenuTextInputState::instance.DAT_SomeTextArrayIndex = 9;
-                            MACRO_CALL_MEMBER(UI::MenuTextInputState_Func::clearAnyOtherModalDialogs,
-                                DAT_MenuTextInputState::ptr)();
+                            MACRO_CALL_MEMBER(
+                                UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, DAT_MenuTextInputState::ptr)();
                             if (DAT_GameCore::instance.gameMode_2 == Game::GM_CAMPAIGN_MISSION) {
                                 if (DAT_GameState::instance
                                         .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -2622,15 +2543,13 @@ namespace Map {
                                         .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                         .playerDeathRelated
                                     == 2) {
-                                    MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView,
-                                        DAT_GameCore::ptr)(UI::Enums::MVT_GAME_LOSTUnk, 0);
+                                    MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                                        UI::Enums::MVT_GAME_LOSTUnk, 0);
                                     DAT_GameCore::instance.section1066 = 0;
                                 }
-                                MACRO_CALL(UI::DisplayElements_Func::
-                                        CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
+                                MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
                                     UI::Enums::DEID_MISSION_WIN_DEFEAT_BANNER, 0);
-                                MACRO_CALL(UI::DisplayElements_Func::
-                                        CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
+                                MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
                                     UI::Enums::DEID_MISSION_WIN_DEFEAT_BANNER, 0);
                             }
                             if (DAT_GameCore::instance.gameMode_2 != Game::GM_ECONOMIC_CAMPAIGN_SH1) {
@@ -2639,8 +2558,8 @@ namespace Map {
                                         DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 7;
                                         MACRO_CALL(UI::MenuItems::General_Func::
                                                 MenuItemActionHandler_General_LaunchOrQuitMultiplayerGameUnk)(0x16);
-                                        MACRO_CALL(UI::DisplayElements_Func::
-                                                CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
+                                        MACRO_CALL(
+                                            UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
                                             UI::Enums::DEID_MISSION_WIN_DEFEAT_BANNER, 0);
                                     }
                                     if (DAT_GameState::instance
@@ -2648,8 +2567,7 @@ namespace Map {
                                             .playerDeathRelated
                                         == 1) {
                                         if ((int)this->SEC_U3_MapType2_1 < 2) {
-                                            MACRO_CALL_MEMBER(
-                                                Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                                            MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                                                 UI::Enums::MVT_MISSION_FINISHED_TRANSITION, 0);
                                         } else {
                                             DAT_GameCore::instance.section1095 = 1;
@@ -2663,13 +2581,12 @@ namespace Map {
                                             .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                                             .playerDeathRelated
                                         == 2) {
-                                        MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView,
-                                            DAT_GameCore::ptr)(UI::Enums::MVT_GAME_LOSTUnk, 0);
+                                        MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                                            UI::Enums::MVT_GAME_LOSTUnk, 0);
                                     }
                                     DAT_GameCore::instance.section1066 = 2;
                                 }
-                                MACRO_CALL(UI::DisplayElements_Func::
-                                        CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
+                                MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
                                     UI::Enums::DEID_MISSION_WIN_DEFEAT_BANNER, 0);
                             }
                             if (DAT_GameState::instance
@@ -2685,11 +2602,9 @@ namespace Map {
                                 MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                                     UI::Enums::MVT_GAME_LOSTUnk, 0);
                             }
-                            MACRO_CALL(
-                                UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
+                            MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
                                 UI::Enums::DEID_MISSION_WIN_DEFEAT_BANNER, 0);
-                            MACRO_CALL(
-                                UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
+                            MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
                                 UI::Enums::DEID_MISSION_WIN_DEFEAT_BANNER, 0);
                         }
                     }

@@ -20,7 +20,7 @@ namespace Map {
         } else if (sVar1 < 0x28) {
             DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].unkMinusOne = 0;
         } else if (sVar1 < 0x48) {
-            DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].unkMinusOne = sVar1 + -0x28;
+            DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].unkMinusOne = sVar1 - 0x28;
         } else {
             DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].unkMinusOne = 0x1f;
         }

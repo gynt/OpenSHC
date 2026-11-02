@@ -15,8 +15,8 @@ namespace OpenSHC {
 namespace Map {
 
     using Map::Trees::TreeType;
-    using WindowsHelper::Enums::BOOLEnum;
     using Map::Trees::TreeTypeShort;
+    using WindowsHelper::Enums::BOOLEnum;
 
     /*
       fixme:todo:bug:Is this the origin of the not visualized foliage bug?   decompilerscript: committed: 2025-01-30
@@ -34,8 +34,7 @@ namespace Map {
         _pTree = &DAT_LandscapeState::instance.trees[1];
         do {
             TVar1 = _pTree->treeType;
-            if ((((TVar1 == ((TreeType)1)) || (TVar1 == ((TreeType)2))) || (TVar1 == ((TreeType)3)))
-                || (TVar1 == ((TreeType)4))) {
+            if (TVar1 == (TreeType)1 || TVar1 == (TreeType)2 || TVar1 == (TreeType)3 || TVar1 == (TreeType)4) {
                 iVar2 = DAT_TextureRenderCoreObject::instance.gmFileHeaderColorpaletteArray[_pTree->treeTypeBasedValue1]
                             .originY;
                 _pTree->gmOriginX = (short)DAT_TextureRenderCoreObject::instance
@@ -44,7 +43,7 @@ namespace Map {
                 _pTree->gmOriginY = (short)iVar2;
                 BVar3 = MACRO_CALL_MEMBER(
                     Map::Navigation::PathFindingState_Func::findNoTreeInRange, DAT_PathFindingState::ptr)(
-                    2, (uint)((int)((int)(short)_pTree->xPosition)), (uint)((int)((int)(short)_pTree->yPosition)));
+                    2, (uint)((int)(short)_pTree->xPosition), (uint)((int)(short)_pTree->yPosition));
                 if (!BVar3) {
                     MACRO_CALL_MEMBER(Map::LandscapeState_Func::removeTree, DAT_LandscapeState::ptr)(_treeID);
                 }

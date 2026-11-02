@@ -30,7 +30,7 @@ namespace Map {
             this->entityArray[entityID].unkOne_1
                 = (short)DAT_EntityDefinedData::instance.EntityPropertyArray_3[entityType];
             iVar3 = DAT_EntityDefinedData::instance.EntityArrayCurveTypeForProjectileType[entityType];
-            if (((!iVar3) || (iVar3 == 6)) || (iVar3 == 9)) {
+            if (!iVar3 || iVar3 == 6 || iVar3 == 9) {
                 this->entityArray[entityID].velocityUnk
                     = (short)DAT_EntityDefinedData::instance.EntityArrayProjectileVelocityForProjectileType[entityType];
             } else {
@@ -39,28 +39,29 @@ namespace Map {
             }
             this->entityArray[entityID]._elapsedTimeOrGravityAccumulator
                 = DAT_EntityDefinedData::instance.ProjectileGravityPerEntityType[entityType];
-            this->entityArray[entityID].field37_0x5a = (short)DAT_EntityDefinedData::instance.field6_0x270[entityType
-                + (Map::Entities::ET_MANGONEL | Map::Entities::ET_ARROW_AND_DEFAULT)];
+            this->entityArray[entityID].field37_0x5a
+                = (short)DAT_EntityDefinedData::instance
+                      .field6_0x270[entityType + (Map::Entities::ET_MANGONEL | Map::Entities::ET_ARROW_AND_DEFAULT)];
             this->entityArray[entityID].gmLookupValue
                 = (short)DAT_EntityDefinedData::instance.EntityPropertyArray_3[entityType + ((EntityType)0x2e)];
             switch (entityType - Map::Entities::ET_FLAG_1) {
             case Map::Entities::ET_UNKNOWN:
             case Map::Entities::ET_MANGONEL:
             case Map::Entities::ET_MANGONEL | Map::Entities::ET_ARROW_AND_DEFAULT:
-                this->entityArray[entityID].originX = this->entityArray[entityID].originX + -1;
-                this->entityArray[entityID].originY = this->entityArray[entityID].originY + -7;
+                this->entityArray[entityID].originX = this->entityArray[entityID].originX - 1;
+                this->entityArray[entityID].originY = this->entityArray[entityID].originY - 7;
                 break;
             case Map::Entities::ET_ARROW_AND_DEFAULT:
-                this->entityArray[entityID].originX = this->entityArray[entityID].originX + -1;
-                this->entityArray[entityID].originY = this->entityArray[entityID].originY + -2;
+                this->entityArray[entityID].originX = this->entityArray[entityID].originX - 1;
+                this->entityArray[entityID].originY = this->entityArray[entityID].originY - 2;
                 return;
             case Map::Entities::ET_CATAPULT:
                 this->entityArray[entityID].originX = this->entityArray[entityID].originX + 8;
-                this->entityArray[entityID].originY = this->entityArray[entityID].originY + -8;
+                this->entityArray[entityID].originY = this->entityArray[entityID].originY - 8;
                 return;
             case Map::Entities::ET_TREBUCHET:
                 this->entityArray[entityID].originX = this->entityArray[entityID].originX + 8;
-                this->entityArray[entityID].originY = this->entityArray[entityID].originY + -7;
+                this->entityArray[entityID].originY = this->entityArray[entityID].originY - 7;
             }
         }
 
