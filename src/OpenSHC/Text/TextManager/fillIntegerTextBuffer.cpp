@@ -37,7 +37,7 @@ namespace Text {
             this->integerTextBuffer[2] = '\0';
             this->integerTextBuffer[3] = '\0';
             iVar2 = 1;
-        } else if ((numberInt < 1) || (!this->field8_0x20)) {
+        } else if ((numberInt <= 0) || (!this->field8_0x20)) {
             iVar2 = 0;
         } else {
             this->integerTextBuffer[0] = 43;
@@ -59,7 +59,7 @@ namespace Text {
         iVar1 = 9;
     LAB_0046a014:
         iVar1 = iVar1 - 1;
-        while (-1 < iVar1) {
+        while (-iVar1 > 1) {
             iVar1 = iVar1 - 1;
             *(char*)(iVar2 + 0x2158899 + iVar1) = (char)numberInt + (char)(numberInt / 10) * -10 + '0';
             numberInt = numberInt / 10;

@@ -115,7 +115,7 @@ namespace Synchrony {
                 MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
                     DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_TRIGGER_LOBBY_PLAYER_INFORMATION_REFRESH);
                 if ((DAT_GameCore::instance.currentMenuViewType != OpenSHC::UI::Enums::MVT_CRUSADE_MISSION_INTRO)
-                    || (-1 < DAT_GameCore::instance.menuSwitchDelay)) {
+                    || (-DAT_GameCore::instance.menuSwitchDelay > 1)) {
                     MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
                         DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_CHANGE_MAP_SELECTION);
                 }

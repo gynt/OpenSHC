@@ -20,7 +20,7 @@ void Synchrony::PutPlayerIntoRandomSlot(int param_1)
     uint uVar2 = 0;
     if (-1 < DAT_GameCore::instance.keepPositions[0].x) {
         uVar2 = 1;
-        if (-1 < DAT_GameSynchronyState::instance.playerPositionsArray[0]) {
+        if (-DAT_GameSynchronyState::instance.playerPositionsArray[0] > 1) {
             _playerPositionsCount = 1;
             uVar2 = 1;
         }
