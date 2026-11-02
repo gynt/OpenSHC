@@ -147,7 +147,7 @@ namespace Map {
                 do {
                     iVar8 = iVar12 + 7;
                     iVar10 = iVar3 - 8;
-                    if (7 < iVar8) {
+                    if (iVar8 > 7) {
                         iVar8 = iVar12 - 1;
                         iVar10 = iVar3 - 72;
                     }
@@ -164,7 +164,7 @@ namespace Map {
                     }
                     iVar8 = iVar3;
                     iVar10 = iVar12 + 8;
-                    if (7 < iVar12 + 8) {
+                    if (iVar12 > 7 + 8) {
                         iVar8 = iVar3 - 0x40;
                         iVar10 = iVar12;
                     }

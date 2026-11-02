@@ -112,7 +112,7 @@ namespace Map {
             if ((int)uVar12 < iVar8) {
                 local_18 = (char*)((int)DAT_ViewportRenderState::ptr + uVar12 * 0x191 + 0xc0);
                 do {
-                    if (iVar6 - 8 < iVar6 + 8) {
+                    if (iVar6 - iVar6 > 8 + 8) {
                         piVar13 = &DAT_ViewportRenderState::instance.translationMatrix[iVar6 - 8].addXgetTile;
                         iVar10 = (iVar6 + 8) - (iVar6 - 8);
                         do {
@@ -288,7 +288,7 @@ namespace Map {
                         } while (local_c < 0xf);
                         local_14 = uVar12;
                         local_18 = pcVar1;
-                        if (-1 < (int)local_18) {
+                        if (-(int)local_18 > 1) {
                             MACRO_CALL_MEMBER(Map::Units::UnitsState_Func::setDestinationForUnit, DAT_UnitsState::ptr)(
                                 iVar9, (uint)(local_18), local_14, 0);
                         }
@@ -452,7 +452,7 @@ namespace Map {
         sVar3 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].outpostRelatedUnk2;
         psVar11 = &DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].field268_0x308;
         *psVar11 = *psVar11 + 1;
-        if (((sVar3 * -0xf + 100) * iVar6) / 100 <= (int)DAT_BuildingsState::instance.buildings[iVar8].field268_0x308) {
+        if (((sVar3 * -0xf + 100) * iVar6) / (int)DAT_BuildingsState::instance.buildings[iVar8].field268_0x308 >= 100) {
             DAT_BuildingsState::instance.buildings[iVar8].field268_0x308 = SEC_RNG::instance.currentNumber2 % 0x28;
             MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber2, SEC_RNG::ptr)();
             sVar3 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].outpostRelatedUnk3;

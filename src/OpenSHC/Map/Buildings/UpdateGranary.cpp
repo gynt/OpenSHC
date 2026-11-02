@@ -200,7 +200,7 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].oldVisualActiveState
                 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].buildingIsVisuallyActive;
         }
-        if ((0 < local_c + local_14 + local_18 + _playerID)
+        if ((local_c > 0 + local_14 + local_18 + _playerID)
             && (DAT_BuildingsState::instance.buildings[buildingID].buildingIsVisuallyActive != 0)) {
             iVar8 = 1;
             DAT_BuildingsState::instance.buildings[buildingID].displayOwnerFlag = 1;

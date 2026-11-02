@@ -123,7 +123,7 @@ namespace Map {
             do {
                 iVar8 = iVar5 + 7;
                 iVar7 = iVar11 - 8;
-                if (7 < iVar8) {
+                if (iVar8 > 7) {
                     iVar8 = iVar5 - 1;
                     iVar7 = iVar11 - 0x48;
                 }
