@@ -341,7 +341,10 @@ Diff patterns that were reliable (more in the cheat sheet):
   Keep it per site even so: over the UI view and modal folders the same sweep paid on 6 of 9 files but cost
   `MenuView_CrusadeMap_Prepare` 12.8 points on its three sites, more than it gained anywhere, so applied wholesale
   it is a net loss of 0.065 of namespace average. "Worth sweeping" means worth trying everywhere, not keeping
-  everywhere.
+  everywhere. The yield varies a lot by namespace and is not the ~60% the UI folders suggest: 6 of 9, 4 of 7 and
+  5 of 7 there, but 29 of 35 over `Map`, where the sweep was worth +0.35 of namespace average on its own. Four of
+  the six Map losers are `Update<Building>` functions, which hints the exception tracks a code shape rather than a
+  namespace - unconfirmed, worth checking on the next batch.
 - **Rule 12's two forms are not interchangeable, and the choice is a code-generation one.**
   `string-literals.hpp` gives `char const* const s_x = S_X;`, a pointer *variable*, so a use is a load where the
   original materialises the string address as an immediate; `string-macros.hpp` gives `S_X`, which expands to the
@@ -358,8 +361,14 @@ Diff patterns that were reliable (more in the cheat sheet):
   flip took 25 of 314, then 4 of 222 and 9 of 244, worth about +0.02 each. Both are free of behaviour risk, so run
   both - but the swap is where the points are, and it is also the one that produces the readable result, since the
   original's fall-through arm belongs first.
-  Confirm either on reccmp and revert per file: 5 of 33 swapped files lost in one namespace and 3 of 26 in
-  another, and 2 of 9 flipped sites lost. A `quick_diff` gain is a candidate, not a result.
+  Confirm either on reccmp and revert per file: 5 of 33 swapped files lost in one namespace, 3 of 26 in another,
+  6 of 41 and 3 of 22 over `Map`, and 2 of 9 then 1 of 5 flipped sites lost. A `quick_diff` gain is a candidate,
+  not a result.
+  The gap widens with the size of the selection. Over `Map`'s 298 functions the swap took 77 of 218 sites for
+  +1.38 of namespace average, while the flip took 8 of 726 - a 1.1% hit rate, about two hours of compiles - for
+  +0.05. Run the swap first and do not skip the flip on that basis alone, though: `UpdateOutpostBuilding` gained
+  5.3 points from a flip after its arm swap had been reverted for costing 0.2, so the two are not substitutes and
+  a function one cannot help may still pay on the other.
 - **Rule 11 pays on a field at a computed offset and loses on a loop induction pointer.** Resolving
   `(int)DAT_X::ptr + i * 4 + OFFSET` into the array the header declares was worth 3.5 points on
   `MenuItemActionHandler_UnusedChooseAvailableKeeps_Main` and 4.4 on
