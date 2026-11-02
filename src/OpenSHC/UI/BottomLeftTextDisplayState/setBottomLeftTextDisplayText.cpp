@@ -2,6 +2,7 @@
 
 #include "OpenSHC/Audio/SFX/SFXState.func.hpp"
 #include "OpenSHC/UI/Enums/TextMessageBLLookupStructTypeEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_RenderingDefinedData.hpp"
 #include "OpenSHC/Globals/DAT_SFXState.hpp"
@@ -66,7 +67,8 @@ namespace UI {
                 /*
                   "Not enough workers available to run this building."
                  */
-                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)("placement_warning1.wav");
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                    s_placement_warning1_wav_005ab8f4);
             }
         }
         this->currentlyDisplayedUnktextExtraObject = param_4;

@@ -23,6 +23,7 @@
 #include "OpenSHC/Map/LogicHelpers/Logic1.hpp"
 #include "OpenSHC/Map/Units/States/UnitState.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_AICState.hpp"
 #include "OpenSHC/Globals/DAT_BuildingDefinedData.hpp"
@@ -329,7 +330,7 @@ namespace Map {
             /*
               "Watch it crumble"
              */
-            MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)("Genie_36.wav");
+            MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(s_Genie_36_wav_005ab92c);
         }
         switch (DAT_BuildingsState::instance.buildings[_buildingIDAtTile].buildingType) {
         case Map::Buildings::BT_OILSMELTER:
@@ -527,13 +528,13 @@ namespace Map {
                 /*
                   "Excellent"
                  */
-                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)("Genie_23.wav");
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(s_Genie_23_wav_005ab91c);
             }
             if ((_owner == 8) || (_owner == 9)) {
                 /*
                   "Bravo"
                  */
-                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)("Genie_24.wav");
+                MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(s_Genie_24_wav_005ab90c);
             }
         }
     LAB_005175ec:

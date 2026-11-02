@@ -40,6 +40,7 @@
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
 #include "OpenSHC/UI/Enums/MenuViewType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/DAT_BinkControlState.hpp"
 #include "OpenSHC/Globals/DAT_BuildingsState.hpp"
@@ -332,8 +333,8 @@ namespace Map {
                                             pBVar13 = pBVar13 + 0x196;
                                         } while (iVar18 < DAT_BuildingsState::instance.maxBuildingsCount);
                                     }
-                                    pcVar27 = "general_message3.wav";
-                                    pcVar25 = "ap_civil12.bik";
+                                    pcVar27 = S_GENERAL_MESSAGE3_WAV_005AA2C0;
+                                    pcVar25 = S_AP_CIVIL12_BIK_005AAAE8;
                                     /*
                                       "there are no wells in the castle my liege. should a fire break out, we are   int
                                       great danger."   added by script: "There are no wells in the castle my Liege.
@@ -604,15 +605,15 @@ namespace Map {
                                                 local_70[_crusaderOrArabian] == 0)) {
                                             local_70[_crusaderOrArabian] = 1;
                                             if (!_crusaderOrArabian) {
-                                                pcVar25 = "infidel_attack.wav";
-                                                pcVar10 = "sultan_nervous.bik";
+                                                pcVar25 = S_INFIDEL_ATTACK_WAV_005AA808;
+                                                pcVar10 = S_SULTAN_NERVOUS_BIK_005A79D4;
                                             LAB_004c5e44:
                                                 MACRO_CALL_MEMBER(
                                                     Rendering::Bink::AIMessageQueue_Func::playEventVideoBik,
                                                     DAT_VideoBikQueue::ptr)("", pcVar10, pcVar25);
                                             } else if (_crusaderOrArabian == 1) {
-                                                pcVar25 = "arabian_attack.wav";
-                                                pcVar10 = "good_soldier_nervous.bik";
+                                                pcVar25 = S_ARABIAN_ATTACK_WAV_005AA838;
+                                                pcVar10 = S_GOOD_SOLDIER_NERVOUS_BIK_005AA81C;
                                                 goto LAB_004c5e44;
                                             }
                                             if (DAT_GameCore::instance.currentMenuViewType == UI::Enums::MVT_BUILD_MENU
@@ -1463,7 +1464,7 @@ namespace Map {
                                                             .currentPlayerSlotID]
                                                     .campground.tileEntry])),
                                             Map::Units::UT_FIREEATER);
-                                        pcVar25 = "Random_Events1.wav";
+                                        pcVar25 = S_RANDOM_EVENTS1_WAV_005AA8EC;
                                         pcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent1VideoName;
                                         /*
                                           "a travelling fair has come to town my lord"   added by script: "A ‘Travelling
@@ -1581,7 +1582,7 @@ namespace Map {
                                                               spawnPoisonCloudsAtRandomStorageOrArmyBuilding,
                                             DAT_GameState::ptr)(
                                             iVar18, this->scenarioEvents[_eventIndex].data.scenario.actionData);
-                                        pcVar25 = "Random_Events2.wav";
+                                        pcVar25 = S_RANDOM_EVENTS2_WAV_005AA888;
                                         pcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent2VideoName;
                                         /*
                                           added by script: "Plague has descended on our castle your lordship."
@@ -1629,7 +1630,7 @@ namespace Map {
                                                 Map::Buildings::BuildingsState_Func::harmWheatFarmsOfPlayer,
                                                 DAT_BuildingsState::ptr)(
                                                 DAT_GameSynchronyState::instance.currentPlayerSlotID);
-                                            pcVar25 = "Random_Events3.wav";
+                                            pcVar25 = S_RANDOM_EVENTS3_WAV_005AAAD4;
                                             pcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent3VideoName;
                                             /*
                                               added by script: "A pestilence is devastating our wheat crops, Sire."
@@ -1677,7 +1678,7 @@ namespace Map {
                                             MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::harmHopFarmsOfPlayer,
                                                 DAT_BuildingsState::ptr)(
                                                 DAT_GameSynchronyState::instance.currentPlayerSlotID);
-                                            pcVar25 = "Random_Events4.wav";
+                                            pcVar25 = S_RANDOM_EVENTS4_WAV_005AAAC0;
                                             pcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent4VideoName;
                                             /*
                                               added by script: "Our hops plants are overrun with hop weevil, the crop is
@@ -1727,7 +1728,7 @@ namespace Map {
                                                 Map::Buildings::BuildingsState_Func::harmAppleFarmTreesOfPlayer,
                                                 DAT_BuildingsState::ptr)(
                                                 DAT_GameSynchronyState::instance.currentPlayerSlotID);
-                                            pcVar27 = "Random_Events5.wav";
+                                            pcVar27 = S_RANDOM_EVENTS5_WAV_005AAAAC;
                                             pcVar25 = "";
                                             /*
                                               added by script: "Our apple orchards are barren, my lord.  The people
@@ -1774,7 +1775,7 @@ namespace Map {
                                     case 0xf:
                                         MACRO_CALL_MEMBER(
                                             Map::LandscapeState_Func::killEveryFifthTree, DAT_LandscapeState::ptr)();
-                                        pcVar25 = "Random_Events6.wav";
+                                        pcVar25 = S_RANDOM_EVENTS6_WAV_005AA8C4;
                                         pcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent6VideoName;
                                         /*
                                           added by script: "Sire, woodcutters report that the recent drought has killed
@@ -1836,7 +1837,7 @@ namespace Map {
                                             MACRO_CALL_MEMBER(UI::MinimapViewState_Func::setSpawnMoment,
                                                 DAT_MinimapViewState::ptr)(DAT_TribesState::instance.unknownX_01,
                                                 DAT_TribesState::instance.unknownY_01);
-                                            pcVar25 = "Random_Events7.wav";
+                                            pcVar25 = S_RANDOM_EVENTS7_WAV_005AA8D8;
                                             pcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent7VideoName;
                                             /*
                                               added by script: "Rabbits are breeding at an alarming rate Liege.  Our
@@ -2001,7 +2002,7 @@ namespace Map {
                                                         = Map::Units::ULS_NORMAL;
                                                 } while (iVar18 < sVar7);
                                             }
-                                            pcVar25 = "Random_Events9.wav";
+                                            pcVar25 = S_RANDOM_EVENTS9_WAV_005AA860;
                                             pcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent9VideoName;
                                             /*
                                               added by script: "Bandits are operating near the castle Lordship."
@@ -2053,7 +2054,7 @@ namespace Map {
                                                 Map::Buildings::BuildingsState_Func::setDairyFarmCheeseCounter,
                                                 DAT_BuildingsState::ptr)(
                                                 DAT_GameSynchronyState::instance.currentPlayerSlotID);
-                                            pcVar27 = "Random_Events10.wav";
+                                            pcVar27 = S_RANDOM_EVENTS10_WAV_005AAA98;
                                             pcVar25 = "";
                                             /*
                                               added by script: "Our cows have been struck down by a strange malady, my
@@ -2200,7 +2201,7 @@ namespace Map {
                                                     DAT_TribesState::ptr)(
                                                     tribeID, uVar19, y1, 0, 0, Map::Units::Instructions::UMSE_0);
                                             }
-                                            pcVar25 = "Random_Events11.wav";
+                                            pcVar25 = S_RANDOM_EVENTS11_WAV_005AA84C;
                                             pcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent11VideoName;
                                             /*
                                               added by script: "Some outlaws from the woods have returned to our cause,
@@ -2247,7 +2248,7 @@ namespace Map {
                                         if (10000 < DAT_GameState::instance.playerDataArray[iVar18].popularity) {
                                             DAT_GameState::instance.playerDataArray[iVar18].popularity = 10000;
                                         }
-                                        pcVar25 = "Random_Events12.wav";
+                                        pcVar25 = S_RANDOM_EVENTS12_WAV_005AA8B0;
                                         pcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent12VideoName;
                                         /*
                                           added by script: "The people rejoice at your forthcoming marriage, Sire."
@@ -2269,7 +2270,7 @@ namespace Map {
                                         if (10000 < DAT_GameState::instance.playerDataArray[iVar18].popularity) {
                                             DAT_GameState::instance.playerDataArray[iVar18].popularity = 10000;
                                         }
-                                        pcVar25 = "Random_Events13.wav";
+                                        pcVar25 = S_RANDOM_EVENTS13_WAV_005AA89C;
                                         pcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent13VideoName;
                                         /*
                                           added by script: "A Jester has arrived at the castle Liege.  I have taken the
@@ -2404,7 +2405,7 @@ namespace Map {
                                                 DAT_BuildingsState::ptr)(
                                                 DAT_GameSynchronyState::instance.currentPlayerSlotID,
                                                 this->scenarioEvents[_eventIndex].data.scenario.actionData);
-                                            pcVar10 = "general_message3.wav";
+                                            pcVar10 = S_GENERAL_MESSAGE3_WAV_005AA2C0;
                                             if (this->scenarioEvents[_eventIndex].data.scenario.actionData == 100) {
                                                 iVar18 = 0x10;
                                             } else {
@@ -2474,7 +2475,7 @@ namespace Map {
                                         } else {
                                             iVar18 = 0xf;
                                         }
-                                        pcVar25 = "general_warning16.wav";
+                                        pcVar25 = S_GENERAL_WARNING16_WAV_005AAA80;
                                         pcVar26 = DAT_MissionAestheticsDefinedData::instance.RandomEvent15VideoName;
                                         /*
                                           added by script: "There is fire in the castle and we have not built any wells
@@ -2566,13 +2567,13 @@ namespace Map {
                                         if (!iVar22) {
                                             pcVar26 = (&DAT_MissionAestheticsDefinedData::instance
                                                     .field59_0xec)[numInGroup];
-                                            pcVar10 = "good_arab_nervous.bik";
+                                            pcVar10 = S_GOOD_ARAB_NERVOUS_BIK_005AAA68;
                                         } else {
                                             if (iVar22 != 1)
                                                 goto LAB_004c609a;
                                             pcVar26 = (&DAT_MissionAestheticsDefinedData::instance
                                                     .field59_0xec)[numInGroup];
-                                            pcVar10 = "good_soldier_nervous.bik";
+                                            pcVar10 = S_GOOD_SOLDIER_NERVOUS_BIK_005AA81C;
                                         }
                                         pcVar25
                                             = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,

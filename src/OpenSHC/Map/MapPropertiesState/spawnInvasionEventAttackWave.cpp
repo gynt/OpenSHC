@@ -6,6 +6,7 @@
 #include "OpenSHC/Rendering/Bink/AIMessageQueue.func.hpp"
 #include "OpenSHC/Map/Units/UnitType.hpp"
 #include "OpenSHC/Map/Units/UnitTypeInt.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/DAT_GameState.hpp"
 #include "OpenSHC/Globals/DAT_TribesState.hpp"
@@ -220,14 +221,14 @@ namespace Map {
             _sliderIndex = _sliderIndex + 1;
             if (0x18 < _sliderIndex) {
                 if (!this->invasionEventContent.crusaderArabian) {
-                    eventWavFile = "infidel_attack.wav";
-                    eventVideoBik = "sultan_nervous.bik";
+                    eventWavFile = S_INFIDEL_ATTACK_WAV_005AA808;
+                    eventVideoBik = S_SULTAN_NERVOUS_BIK_005A79D4;
                 } else {
                     if (this->invasionEventContent.crusaderArabian != 1) {
                         this->eventsCount = 0;
                     }
-                    eventWavFile = "arabian_attack.wav";
-                    eventVideoBik = "good_soldier_nervous.bik";
+                    eventWavFile = S_ARABIAN_ATTACK_WAV_005AA838;
+                    eventVideoBik = S_GOOD_SOLDIER_NERVOUS_BIK_005AA81C;
                 }
                 MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik, DAT_VideoBikQueue::ptr)(
                     "", eventVideoBik, eventWavFile);

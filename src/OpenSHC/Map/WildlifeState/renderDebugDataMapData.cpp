@@ -5,6 +5,7 @@
 #include "OpenSHC/UI/Rendering/PencilRenderCore.func.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/COL_BLACK.hpp"
 #include "OpenSHC/Globals/COL_BLUE.hpp"
@@ -35,27 +36,27 @@ namespace Map {
         char* textAddress;
         int x1 = x + 2;
         if (!this->DAT_DebugDataMapDataDisplayType) {
-            textAddress = "Connect ";
+            textAddress = S_CONNECT_005ABBCC;
         } else if (this->DAT_DebugDataMapDataDisplayType == 1) {
-            textAddress = "Chimps  ";
+            textAddress = S_CHIMPS_005ABBC0;
         } else if (this->DAT_DebugDataMapDataDisplayType == 2) {
-            textAddress = "Farmland   ";
+            textAddress = S_FARMLAND_005ABBB4;
         } else if (this->DAT_DebugDataMapDataDisplayType == 3) {
-            textAddress = "Humans  ";
+            textAddress = S_HUMANS_005ABBA8;
         } else if (this->DAT_DebugDataMapDataDisplayType == 4) {
-            textAddress = "Mankind  ";
+            textAddress = S_MANKIND_005ABB9C;
         } else if (this->DAT_DebugDataMapDataDisplayType == 5) {
-            textAddress = "Deer  ";
+            textAddress = S_DEER_005ABB94;
         } else if (this->DAT_DebugDataMapDataDisplayType == 6) {
-            textAddress = "Route  ";
+            textAddress = S_ROUTE_005ABB8C;
         } else if (this->DAT_DebugDataMapDataDisplayType == 7) {
-            textAddress = "Panic  ";
+            textAddress = S_PANIC_005ABB84;
         } else if (this->DAT_DebugDataMapDataDisplayType == 8) {
-            textAddress = "Siege  ";
+            textAddress = S_SIEGE_005ABB7C;
         } else {
             if (this->DAT_DebugDataMapDataDisplayType != 9)
                 goto LAB_0052c0db;
-            textAddress = "Slink  ";
+            textAddress = S_SLINK_005ABB74;
         }
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             textAddress, x + 0x1a6, y + 4, Text::TTA_LEFT, 0xffffff, 0x11, FALSE, 0);

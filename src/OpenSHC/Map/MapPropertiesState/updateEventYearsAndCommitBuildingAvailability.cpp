@@ -4,6 +4,7 @@
 #include "OpenSHC/OS.func.hpp"
 #include "OpenSHC/Text/UserTextHandler.func.hpp"
 #include "OpenSHC/Game/ScenarioEvents/InGameEventUnionVersion.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_GameState.hpp"
 #include "OpenSHC/Globals/DAT_UserTextHandlerState.hpp"
@@ -24,7 +25,7 @@ namespace Map {
             this->SEC_StartingYear = 1181;
         }
         MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(10);
-        MACRO_CALL(OS_Func::_sprintf)(local_10, "%d", this->SEC_StartingYear);
+        MACRO_CALL(OS_Func::_sprintf)(local_10, s__d_005aa7f0, this->SEC_StartingYear);
         MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)(local_10);
         this->eventListSelection = -1;
         this->eventListScrollOffset = 0;

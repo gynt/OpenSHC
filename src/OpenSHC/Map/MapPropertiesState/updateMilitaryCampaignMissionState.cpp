@@ -18,6 +18,7 @@
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
 #include "OpenSHC/UI/Enums/MenuViewType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/DAT_BinkControlState.hpp"
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
@@ -145,8 +146,8 @@ namespace Map {
                         + DAT_GameState::instance.mapAndTime.emenyHitArray[7]
                         + DAT_GameState::instance.mapAndTime.emenyHitArray[8]
                         + DAT_GameState::instance.mapAndTime.emenyHitArray[3]) {
-                    pcVar9 = "Ap_Milit21.wav";
-                    pcVar8 = "good_soldier_nervous.bik";
+                    pcVar9 = S_AP_MILIT21_WAV_005AAA58;
+                    pcVar8 = S_GOOD_SOLDIER_NERVOUS_BIK_005AA81C;
                     DAT_GameState::instance.mapAndTime.militaryCampaignStage = 1;
                     pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                         DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 1);
@@ -168,8 +169,8 @@ namespace Map {
             if (DAT_GameState::instance.mapAndTime.militaryCampaignStage == 1) {
                 if ((DAT_GameState::instance.mapAndTime.month == DAT_GameState::instance.mapAndTime.monthCopy)
                     && (DAT_GameState::instance.mapAndTime.year == DAT_GameState::instance.mapAndTime.yearCopy)) {
-                    pcVar9 = "Ap_Milit22.wav";
-                    pcVar8 = "good_soldier_nervous.bik";
+                    pcVar9 = S_AP_MILIT22_WAV_005AAA48;
+                    pcVar8 = S_GOOD_SOLDIER_NERVOUS_BIK_005AA81C;
                     DAT_GameState::instance.mapAndTime.militaryCampaignStage = 2;
                     pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                         DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 2);
@@ -193,8 +194,8 @@ namespace Map {
             if (DAT_GameState::instance.mapAndTime.militaryCampaignStage == 2) {
                 if ((DAT_GameState::instance.mapAndTime.month == DAT_GameState::instance.mapAndTime.monthCopy)
                     && (DAT_GameState::instance.mapAndTime.year == DAT_GameState::instance.mapAndTime.yearCopy)) {
-                    pcVar9 = "Ap_Milit23.wav";
-                    pcVar8 = "bad_arab_taunt.bik";
+                    pcVar9 = S_AP_MILIT23_WAV_005AAA38;
+                    pcVar8 = S_BAD_ARAB_TAUNT_BIK_005A7D2C;
                     DAT_GameState::instance.mapAndTime.militaryCampaignStage = 3;
                     pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                         DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 3);
@@ -212,8 +213,8 @@ namespace Map {
             }
             if (DAT_GameState::instance.mapAndTime.militaryCampaignStage != 3) {}
             if (DAT_GameState::instance.playerDataArray[2].lordKilledByPlayerID == 0) {}
-            pcVar9 = "Ap_Milit24.wav";
-            pcVar8 = "good_soldier_taunt.bik";
+            pcVar9 = S_AP_MILIT24_WAV_005AAA28;
+            pcVar8 = S_GOOD_SOLDIER_TAUNT_BIK_005AAA10;
             DAT_GameState::instance.mapAndTime.militaryCampaignStage = 4;
             /*
               added by script: "The old Rat’s made a run for it.  We’ve done it sar!"
@@ -230,8 +231,8 @@ namespace Map {
             if (!DAT_GameState::instance.mapAndTime.militaryCampaignStage) {
                 if ((DAT_GameState::instance.mapAndTime.month == DAT_GameState::instance.mapAndTime.monthCopy)
                     && (DAT_GameState::instance.mapAndTime.year == DAT_GameState::instance.mapAndTime.yearCopy)) {
-                    pcVar9 = "Ap_Milit25.wav";
-                    pcVar8 = "good_soldier_nervous.bik";
+                    pcVar9 = S_AP_MILIT25_WAV_005AAA00;
+                    pcVar8 = S_GOOD_SOLDIER_NERVOUS_BIK_005AA81C;
                     DAT_GameState::instance.mapAndTime.militaryCampaignStage = 1;
                     pcVar5 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                         DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 5);
@@ -251,8 +252,8 @@ namespace Map {
             if (DAT_GameState::instance.mapAndTime.militaryCampaignStage == 1) {
                 if ((DAT_GameState::instance.mapAndTime.month == DAT_GameState::instance.mapAndTime.monthCopy)
                     && (DAT_GameState::instance.mapAndTime.year == DAT_GameState::instance.mapAndTime.yearCopy)) {
-                    pcVar9 = "Ap_Milit26.wav";
-                    pcVar8 = "good_soldier_nervous.bik";
+                    pcVar9 = S_AP_MILIT26_WAV_005AA9F0;
+                    pcVar8 = S_GOOD_SOLDIER_NERVOUS_BIK_005AA81C;
                     DAT_GameState::instance.mapAndTime.militaryCampaignStage = 2;
                     /*
                       added by script: "Here they come sar.  Men, to arms!"
@@ -268,8 +269,8 @@ namespace Map {
                 bVar6 = DAT_GameState::instance.playerDataArray[2].lordKilledByPlayerID == 0;
             } else if (DAT_GameState::instance.mapAndTime.militaryCampaignStage == 2) {
                 if (DAT_GameState::instance.playerDataArray[2].aiPlayerState == 4) {
-                    pcVar9 = "Ap_Milit27.wav";
-                    pcVar8 = "bad_soldier_taunt.bik";
+                    pcVar9 = S_AP_MILIT27_WAV_005AA9E0;
+                    pcVar8 = S_BAD_SOLDIER_TAUNT_BIK_005A7824;
                     DAT_GameState::instance.mapAndTime.militaryCampaignStage = 3;
                     /*
                       added by script: "It’s now or never men.  Attack!"
@@ -286,8 +287,8 @@ namespace Map {
                         if (DAT_GameState::instance.mapAndTime.militaryCampaignStage != 6) {
                             if (DAT_GameState::instance.mapAndTime.militaryCampaignStage != 5) {}
                             if (DAT_GameState::instance.playerDataArray[2].lordKilledByPlayerID != 0) {
-                                pcVar9 = "Ap_Milit29.wav";
-                                pcVar8 = "good_soldier_taunt.bik";
+                                pcVar9 = S_AP_MILIT29_WAV_005AA9C0;
+                                pcVar8 = S_GOOD_SOLDIER_TAUNT_BIK_005AAA10;
                                 DAT_GameState::instance.mapAndTime.militaryCampaignStage = 6;
                                 /*
                                   added by script: "The slimy blighters legged it sar!  He’s left his general   in
@@ -319,8 +320,8 @@ namespace Map {
                     }
                     if ((DAT_GameState::instance.mapAndTime.month == DAT_GameState::instance.mapAndTime.monthCopy)
                         && (DAT_GameState::instance.mapAndTime.year == DAT_GameState::instance.mapAndTime.yearCopy)) {
-                        pcVar9 = "Ap_Milit28.wav";
-                        pcVar8 = "good_soldier_taunt.bik";
+                        pcVar9 = S_AP_MILIT28_WAV_005AA9D0;
+                        pcVar8 = S_GOOD_SOLDIER_TAUNT_BIK_005AAA10;
                         DAT_GameState::instance.mapAndTime.militaryCampaignStage = 5;
                         /*
                           added by script: "I think we’ve rattled the snake sar!"
@@ -360,8 +361,8 @@ namespace Map {
             if (DAT_GameState::instance.mapAndTime.militaryCampaignStage == 1) {
                 if ((1 < DAT_GameState::instance.playerDataArray[2].aiPlayerState)
                     && (1 < DAT_GameState::instance.playerDataArray[3].aiPlayerState)) {
-                    pcVar9 = "Ap_Milit30.wav";
-                    pcVar8 = "good_soldier_nervous.bik";
+                    pcVar9 = S_AP_MILIT30_WAV_005AA9B0;
+                    pcVar8 = S_GOOD_SOLDIER_NERVOUS_BIK_005AA81C;
                     DAT_GameState::instance.mapAndTime.militaryCampaignStage = 2;
                     /*
                       added by script: "Sar, the Truffe brothers are launching a joint attack!  How   are we supposed to
@@ -379,8 +380,8 @@ namespace Map {
             if (DAT_GameState::instance.mapAndTime.militaryCampaignStage == 2) {
                 if ((DAT_GameState::instance.playerDataArray[2].lordKilledByPlayerID == 0)
                     && (DAT_GameState::instance.playerDataArray[3].lordKilledByPlayerID == 0)) {}
-                pcVar8 = "Ap_Milit32.wav";
-                pcVar5 = "good_soldier_taunt.bik";
+                pcVar8 = S_AP_MILIT32_WAV_005AA9A0;
+                pcVar5 = S_GOOD_SOLDIER_TAUNT_BIK_005AAA10;
                 DAT_GameState::instance.mapAndTime.militaryCampaignStage = 3;
                 iVar7 = 0xc;
                 goto LAB_004c2dc2;
@@ -395,8 +396,8 @@ namespace Map {
             }
             if (DAT_GameState::instance.playerDataArray[2].lordKilledByPlayerID == 0) {}
             if (DAT_GameState::instance.playerDataArray[3].lordKilledByPlayerID == 0) {}
-            pcVar9 = "Ap_Milit33.wav";
-            pcVar8 = "good_soldier_taunt.bik";
+            pcVar9 = S_AP_MILIT33_WAV_005AA990;
+            pcVar8 = S_GOOD_SOLDIER_TAUNT_BIK_005AAA10;
             DAT_GameState::instance.mapAndTime.militaryCampaignStage = 4;
             /*
               added by script: "Not so bad after all.  Mission accomplished sar!"
@@ -436,8 +437,8 @@ namespace Map {
                     } else if (!(DAT_GameState::instance.mapAndTime.militaryCampaignFlags & 0x10U)
                         && DAT_GameState::instance.mapAndTime.month == DAT_GameState::instance.mapAndTime.monthCopy
                         && DAT_GameState::instance.mapAndTime.year == DAT_GameState::instance.mapAndTime.yearCopy) {
-                        pcVar9 = "Ap_Milit40.wav";
-                        pcVar8 = "good_soldier_taunt.bik";
+                        pcVar9 = S_AP_MILIT40_WAV_005AA920;
+                        pcVar8 = S_GOOD_SOLDIER_TAUNT_BIK_005AAA10;
                         /*
                           added by script: "Sar!  The Stoat is officially out of commission.  Looks   like we’re making
                           progress sar."
@@ -470,8 +471,8 @@ namespace Map {
                         && DAT_GameState::instance.mapAndTime.month == DAT_GameState::instance.mapAndTime.monthCopy
                         && DAT_GameState::instance.mapAndTime.year == DAT_GameState::instance.mapAndTime.yearCopy) {
                         if (DAT_GameState::instance.playerDataArray[4].lordKilledByPlayerID == 0) {
-                            pcVar9 = "Ap_Milit41.wav";
-                            pcVar8 = "good_soldier_taunt.bik";
+                            pcVar9 = S_AP_MILIT41_WAV_005AA910;
+                            pcVar8 = S_GOOD_SOLDIER_TAUNT_BIK_005AAA10;
                             /*
                               added by script: "Another bites the dust sar!  Only one rodent left and we   can get
                               started on the Wolf."
@@ -501,8 +502,8 @@ namespace Map {
                         && DAT_GameState::instance.mapAndTime.month == DAT_GameState::instance.mapAndTime.monthCopy
                         && DAT_GameState::instance.mapAndTime.year == DAT_GameState::instance.mapAndTime.yearCopy) {
                         if (DAT_GameState::instance.playerDataArray[2].lordKilledByPlayerID == 0) {
-                            pcVar9 = "Ap_Milit41.wav";
-                            pcVar8 = "good_soldier_taunt.bik";
+                            pcVar9 = S_AP_MILIT41_WAV_005AA910;
+                            pcVar8 = S_GOOD_SOLDIER_TAUNT_BIK_005AAA10;
                             /*
                               added by script: "Another bites the dust sar!  Only one rodent left and we   can get
                               started on the Wolf."
@@ -518,8 +519,8 @@ namespace Map {
                 }
                 if ((1 < DAT_GameState::instance.playerDataArray[5].aiPlayerState)
                     && (!DAT_GameState::instance.mapAndTime.field3183_0x27dc)) {
-                    pcVar9 = "Ap_Milit42.wav";
-                    pcVar8 = "good_soldier_taunt.bik";
+                    pcVar9 = S_AP_MILIT42_WAV_005AA900;
+                    pcVar8 = S_GOOD_SOLDIER_TAUNT_BIK_005AAA10;
                     DAT_GameState::instance.mapAndTime.field3183_0x27dc = 1;
                     /*
                       added by script: "Sar!  The Wolf is launching a charge.  What are your   orders?"
@@ -569,8 +570,8 @@ namespace Map {
             }
             if (DAT_GameState::instance.mapAndTime.month != DAT_GameState::instance.mapAndTime.monthCopy) {}
             if (DAT_GameState::instance.mapAndTime.year != DAT_GameState::instance.mapAndTime.yearCopy) {}
-            pcVar8 = "Ap_Milit39.wav";
-            pcVar5 = "good_soldier_nervous.bik";
+            pcVar8 = S_AP_MILIT39_WAV_005AA930;
+            pcVar5 = S_GOOD_SOLDIER_NERVOUS_BIK_005AA81C;
             DAT_GameState::instance.mapAndTime.militaryCampaignStage = 1;
             iVar7 = 0x13;
         LAB_004c2dc2:
@@ -585,8 +586,8 @@ namespace Map {
         if (!DAT_GameState::instance.mapAndTime.militaryCampaignStage) {
             if ((DAT_GameState::instance.mapAndTime.month == DAT_GameState::instance.mapAndTime.monthCopy)
                 && (DAT_GameState::instance.mapAndTime.year == DAT_GameState::instance.mapAndTime.yearCopy)) {
-                pcVar9 = "Ap_Milit34.wav";
-                pcVar8 = "bad_soldier_taunt.bik";
+                pcVar9 = S_AP_MILIT34_WAV_005AA980;
+                pcVar8 = S_BAD_SOLDIER_TAUNT_BIK_005A7824;
                 DAT_GameState::instance.mapAndTime.militaryCampaignStage = 1;
                 /*
                   added by script: "The time for vengeance is upon us.  No surrender!"
@@ -601,8 +602,8 @@ namespace Map {
             }
         } else if (DAT_GameState::instance.mapAndTime.militaryCampaignStage == 1) {
             if (1 < DAT_GameState::instance.playerDataArray[2].aiPlayerState) {
-                pcVar8 = "Ap_Milit35.wav";
-                pcVar5 = "good_soldier_nervous.bik";
+                pcVar8 = S_AP_MILIT35_WAV_005AA970;
+                pcVar5 = S_GOOD_SOLDIER_NERVOUS_BIK_005AA81C;
                 DAT_GameState::instance.mapAndTime.militaryCampaignStage = 2;
                 iVar7 = 0xf;
             LAB_004c2c95:
@@ -617,8 +618,8 @@ namespace Map {
             }
         } else if (DAT_GameState::instance.mapAndTime.militaryCampaignStage == 2) {
             if (DAT_GameState::instance.playerDataArray[2].lordKilledByPlayerID == 0) {}
-            pcVar9 = "Ap_Milit36.wav";
-            pcVar8 = "good_soldier_taunt.bik";
+            pcVar9 = S_AP_MILIT36_WAV_005AA960;
+            pcVar8 = S_GOOD_SOLDIER_TAUNT_BIK_005AAA10;
             DAT_GameState::instance.mapAndTime.militaryCampaignStage = 3;
             /*
               added by script: "Sar!  I’m pleased to report that we’ve caught the   slippery eel.  He’s taking the long
@@ -645,8 +646,8 @@ namespace Map {
                 goto LAB_004c2cfc;
             }
             if (0xe < DAT_GameState::instance.mapAndTime.emenyHitArray[3]) {
-                pcVar9 = "Ap_Milit37.wav";
-                pcVar8 = "good_soldier_taunt.bik";
+                pcVar9 = S_AP_MILIT37_WAV_005AA950;
+                pcVar8 = S_GOOD_SOLDIER_TAUNT_BIK_005AAA10;
                 DAT_GameState::instance.mapAndTime.militaryCampaignStage = 4;
                 /*
                   added by script: "Sar!  The Wolf’s retreated into the Kingdom of Jerusalem.   Well have to track him
@@ -656,8 +657,8 @@ namespace Map {
                     DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_NEW_TEXT2, 0x11);
                 MACRO_CALL_MEMBER(Rendering::Bink::AIMessageQueue_Func::playEventVideoBik, DAT_VideoBikQueue::ptr)(
                     pcVar5, pcVar8, pcVar9);
-                pcVar8 = "Ap_Milit38.wav";
-                pcVar5 = "bad_soldier_taunt.bik";
+                pcVar8 = S_AP_MILIT38_WAV_005AA940;
+                pcVar5 = S_BAD_SOLDIER_TAUNT_BIK_005A7824;
                 iVar7 = 0x12;
                 goto LAB_004c2c95;
             }

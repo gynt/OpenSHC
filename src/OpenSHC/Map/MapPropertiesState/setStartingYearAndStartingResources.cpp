@@ -4,6 +4,7 @@
 #include "OpenSHC/OS.func.hpp"
 #include "OpenSHC/Text/UserTextHandler.func.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_GameState.hpp"
 #include "OpenSHC/Globals/DAT_MapPropertiesState.hpp"
@@ -106,7 +107,7 @@ namespace Map {
         DAT_MapPropertiesState::instance.SEC_Section1067.siegeEngineCounts[5] = 0;
         DAT_MapPropertiesState::instance.SEC_StartingPopularity = 100;
         MACRO_CALL_MEMBER(Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(10);
-        MACRO_CALL(OS_Func::_sprintf)(local_10, "%d", DAT_MapPropertiesState::instance.SEC_StartingYear);
+        MACRO_CALL(OS_Func::_sprintf)(local_10, s__d_005aa7f0, DAT_MapPropertiesState::instance.SEC_StartingYear);
         MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)(local_10);
         DAT_MapPropertiesState::instance.eventListSelection = -1;
         DAT_MapPropertiesState::instance.eventListScrollOffset = 0;

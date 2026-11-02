@@ -17,6 +17,7 @@
 #include "OpenSHC/Map/Entities/EntityType.hpp"
 #include "OpenSHC/Map/Units/States/UnitState.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_AICState.hpp"
 #include "OpenSHC/Globals/DAT_BuildingDefinedData.hpp"
@@ -303,14 +304,14 @@ namespace Map {
                                       "Excellent"
                                      */
                                     MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                                        "Genie_23.wav");
+                                        s_Genie_23_wav_005ab91c);
                                 }
                                 if ((iVar9 == 8) || (iVar9 == 9)) {
                                     /*
                                       "Bravo"
                                      */
                                     MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                                        "Genie_24.wav");
+                                        s_Genie_24_wav_005ab90c);
                                 }
                             }
                             break;
