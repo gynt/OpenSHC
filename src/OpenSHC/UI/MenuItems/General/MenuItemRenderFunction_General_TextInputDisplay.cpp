@@ -39,10 +39,11 @@ namespace UI {
         {
             int _textWidth;
             char* pcVar1;
+            int xParam;
             int iVar2;
             int _textArrayIndex;
             if ((param_1 == 3) && (DAT_GameCore::instance.unknownFlag_0x118 == TRUE)) {
-                return;
+                return; // 0x47CCB1
             }
             _textWidth = MACRO_CALL_MEMBER(
                 OpenSHC::Text::UserTextHandler_Func::getTextWidthUntilCurrentCursor, DAT_UserTextHandlerState::ptr)();
@@ -93,7 +94,6 @@ namespace UI {
                 if (DAT_GameCore::instance.currentMenuViewType != OpenSHC::UI::Enums::MVT_MAIN_MENU) {
                     DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
                     DAT_TextManagerObject::instance.textSurfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
-                    return;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawColorBox,
                     DAT_PencilRenderCore::ptr)(DAT_ButtonX::instance + 6 + _textWidth,
@@ -108,14 +108,16 @@ namespace UI {
                     pcVar1, iVar2, _textArrayIndex, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x11, FALSE, 0);
                 DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                 DAT_TextManagerObject::instance.textSurfaceTarget = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
+                return; // 0x47CEBF
             default:
-                break;
+                return; // 0x47CCDF: ja 0x47CEBF (ret)
             }
             iVar2 = DAT_ButtonY::instance + 6;
+            xParam = DAT_ButtonX::instance + 6;
             pcVar1 = MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::getTextArrayPointer,
                 DAT_UserTextHandlerState::ptr)(_textArrayIndex);
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                pcVar1, DAT_ButtonX::instance + 6, iVar2, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x11, FALSE, 0);
+                pcVar1, xParam, iVar2, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x11, FALSE, 0);
         }
 
     }
