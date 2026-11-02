@@ -6,6 +6,7 @@
 #include "OpenSHC/Rendering/Colors/BGR24.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_ButtonX.hpp"
 #include "OpenSHC/Globals/DAT_ButtonY.hpp"
@@ -36,7 +37,7 @@ namespace UI {
                         DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, 0x24),
                     DAT_ButtonX::instance, yParam, OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, FALSE, 0);
                 if (DAT_GameSynchronyState::instance.lanOrWan != FALSE) {
-                    MACRO_CALL(OpenSHC::OS_Func::_sprintf)(ipText, "   %d.%d.%d.%d  /  %d.%d.%d.%d",
+                    MACRO_CALL(OpenSHC::OS_Func::_sprintf)(ipText, s__d_d_d_d____d_d_d_d_005a6f10,
                         (uint)DAT_GameSynchronyState::instance.lanIP.S_un.S_un_b.s_b1,
                         (uint)DAT_GameSynchronyState::instance.lanIP.S_un.S_un_b.s_b2,
                         (uint)DAT_GameSynchronyState::instance.lanIP.S_un.S_un_b.s_b3,
@@ -46,7 +47,7 @@ namespace UI {
                         (uint)DAT_GameSynchronyState::instance.wanIP.S_un.S_un_b.s_b3,
                         (uint)DAT_GameSynchronyState::instance.wanIP.S_un.S_un_b.s_b4);
                 } else {
-                    MACRO_CALL(OpenSHC::OS_Func::_sprintf)(ipText, "   %d.%d.%d.%d",
+                    MACRO_CALL(OpenSHC::OS_Func::_sprintf)(ipText, s__d_d_d_d_005a6f00,
                         (uint)DAT_GameSynchronyState::instance.lanIP.S_un.S_un_b.s_b1,
                         (uint)DAT_GameSynchronyState::instance.lanIP.S_un.S_un_b.s_b2,
                         (uint)DAT_GameSynchronyState::instance.lanIP.S_un.S_un_b.s_b3,

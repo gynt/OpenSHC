@@ -9,6 +9,7 @@
 #include "OpenSHC/Audio/SFX/SoundEffectID.hpp"
 #include "OpenSHC/Commands/GameCommandType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/BOOL_CurrentMenuClickState.hpp"
 #include "OpenSHC/Globals/DAT_BuildingsState.hpp"
@@ -74,7 +75,7 @@ namespace UI {
                       "Not enough gold"
                      */
                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                        "space_warning8.wav");
+                        s_space_warning8_wav_005a5964);
                     return;
                 }
                 int _space = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::getResourceSpace,
@@ -94,7 +95,7 @@ namespace UI {
                           "No stockpile built"
                          */
                         MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                            "space_warning2.wav");
+                            s_space_warning2_wav_005a5950);
                     }
                     if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .storageMarketFailState
@@ -103,18 +104,18 @@ namespace UI {
                           "No Granary built"
                          */
                         MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                            "space_warning1.wav");
+                            s_space_warning1_wav_005a593c);
                     }
                     if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .storageMarketFailState
                         != 7) {
-                            return;
-                        }
+                        return;
+                    }
                     /*
                       "No Armory built"
                      */
                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                        "space_warning3.wav");
+                        s_space_warning3_wav_005a5928);
                 }
                 if (_space < 5) {
                     MACRO_CALL(OpenSHC::UI::Actions_Func::SetStorageMarketFailState)(4,
@@ -128,7 +129,7 @@ namespace UI {
                           "No space in the stockpile"
                          */
                         MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                            "space_warning5.wav");
+                            s_space_warning5_wav_005a50b0);
                     }
                     if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .storageMarketFailState
@@ -137,18 +138,18 @@ namespace UI {
                           "No space in the granary"
                          */
                         MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                            "space_warning4.wav");
+                            s_space_warning4_wav_005a5914);
                     }
                     if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .storageMarketFailState
                         != 10) {
-                            return;
-                        }
+                        return;
+                    }
                     /*
                       "No space in the armory"
                      */
                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                        "space_warning6.wav");
+                        s_space_warning6_wav_005a5900);
                 }
             } else {
                 _player = DAT_GameSynchronyState::instance.currentPlayerSlotID;
@@ -168,7 +169,7 @@ namespace UI {
                       "Not enough goods"
                      */
                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                        "space_warning7.wav");
+                        s_space_warning7_wav_005a58ec);
                 }
             }
             MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::setUpSFXToPlayUnk, DAT_SFXState::ptr)(

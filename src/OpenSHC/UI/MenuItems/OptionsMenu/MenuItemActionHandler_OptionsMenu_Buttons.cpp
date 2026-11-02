@@ -12,6 +12,7 @@
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
 #include "OpenSHC/UI/Enums/MenuViewType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
 #include "OpenSHC/Globals/DAT_GameState.hpp"
@@ -71,7 +72,7 @@ namespace UI {
                 return;
             case 2:
                 /*
-                  "Load"
+                  s_Load_005a55f4
                  */
                 if (DAT_GameCore::instance.currentMenuViewType != OpenSHC::UI::Enums::MVT_MAIN_MENU) {
                     if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY) {
@@ -97,7 +98,7 @@ namespace UI {
                 return;
             case 3:
                 /*
-                  "Save"
+                  s_Save_005a55ec
                  */
                 if (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY) {
                     if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]

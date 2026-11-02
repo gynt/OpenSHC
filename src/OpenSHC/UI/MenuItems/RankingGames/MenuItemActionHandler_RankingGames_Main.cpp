@@ -9,6 +9,7 @@
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
 #include "OpenSHC/UI/Enums/MenuViewType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/CHAR_ARRAY_00eb9ac8.hpp"
 #include "OpenSHC/Globals/DAT_00eb9b60.hpp"
@@ -69,13 +70,13 @@ namespace UI {
                     DAT_GameSynchronyState::instance.currentGameMode
                         = OpenSHC::Game::GM_SKIRMISH_END_OF_GAME_SINGLE_PLAYER;
                     if (iVar3 != 0) {
-                        strcpy(CHAR_ARRAY_00eb9ac8::instance, "win_screen_crusader.tgx");
+                        strcpy(CHAR_ARRAY_00eb9ac8::instance, S_WIN_SCREEN_CRUSADER_TGX_005AB024);
                         if (DAT_SkMasters2DataArray::instance[iVar1].lordType != 0) {
-                            strcpy(CHAR_ARRAY_00eb9ac8::instance, "win_screen_arab.tgx");
+                            strcpy(CHAR_ARRAY_00eb9ac8::instance, S_WIN_SCREEN_ARAB_TGX_005AB010);
                         }
                     } else {
                         iVar1 = DAT_SkMasters2DataArray::instance[iVar1].lordType;
-                        pcVar5 = "lose_screen_crusader.tgx";
+                        pcVar5 = S_LOSE_SCREEN_CRUSADER_TGX_005AAFF4;
                         pcVar7 = CHAR_ARRAY_00eb9ac8::instance;
                         for (iVar3 = 6; iVar3 != 0; iVar3 = iVar3 - 1) {
                             *(undefined4*)pcVar7 = *(undefined4*)pcVar5;
@@ -84,7 +85,7 @@ namespace UI {
                         }
                         *pcVar7 = *pcVar5;
                         if (iVar1 != 0) {
-                            memcpy(CHAR_ARRAY_00eb9ac8::instance, "lose_screen_arab.tgx", 20);
+                            memcpy(CHAR_ARRAY_00eb9ac8::instance, S_LOSE_SCREEN_ARAB_TGX_005AAFDC, 20);
                             (*(uint*)(CHAR_ARRAY_00eb9ac8::instance + 20))
                                 = (*(uint*)(CHAR_ARRAY_00eb9ac8::instance + 20)) & 0xffffff00;
                         }

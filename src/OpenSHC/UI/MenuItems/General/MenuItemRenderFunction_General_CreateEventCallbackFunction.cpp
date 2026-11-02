@@ -10,6 +10,7 @@
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/AlphaAndButtonSurfaceObj.hpp"
 #include "OpenSHC/Globals/DAT_ButtonCurrentlyInteracting.hpp"
@@ -120,7 +121,7 @@ namespace UI {
                 }
                 iVar1 = DAT_TextManagerObject::instance.currentXOffset_0x0;
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    " - ",
+                    S___005A2304,
                     (int)(DAT_TextManagerObject::instance.currentXOffset_0x0 / 2 - 0xf + (int)DAT_ButtonW::instance / 2
                         + DAT_ButtonX::instance),
                     (int)(DAT_ButtonY::instance + 6), OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, FALSE, 0);

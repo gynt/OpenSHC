@@ -10,6 +10,7 @@
 #include "OpenSHC/Commands/GameCommandType.hpp"
 #include "OpenSHC/Game/GameMode.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/DAT_ClickedMercUnitType.hpp"
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
@@ -75,7 +76,7 @@ namespace UI {
                               "Your army is approaching its maximum size"
                              */
                             MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                                "Genie_27.wav");
+                                S_GENIE_27_WAV_005A599C);
                             param_1 = DAT_ClickedMercUnitType::instance;
                         }
                     }
@@ -113,7 +114,7 @@ namespace UI {
                       "Your army is at its maximum size"
                      */
                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSpeechSFXFile, DAT_SFXState::ptr)(
-                        "Genie_26.wav");
+                        S_GENIE_26_WAV_005A598C);
                     return;
                 }
                 if (iVar3 == 4)
@@ -131,7 +132,8 @@ namespace UI {
             /*
               "Recruits needed sire"
              */
-            MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)("other_warning5.wav");
+            MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                S_OTHER_WARNING5_WAV_005A58C4);
         }
 
     }

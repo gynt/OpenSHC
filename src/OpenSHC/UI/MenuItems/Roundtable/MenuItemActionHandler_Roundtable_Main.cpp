@@ -7,6 +7,7 @@
 #include "OpenSHC/Synchrony/GameSynchronyState.func.hpp"
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_00df423c.hpp"
 #include "OpenSHC/Globals/DAT_00df4240.hpp"
@@ -75,7 +76,7 @@ namespace UI {
                                   "Not the rodent"
                                  */
                                 MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                                    "Genie_13.wav");
+                                    s_Genie_13_wav_005a7710);
                             }
                             DAT_00df4240::instance = 1;
                         }
@@ -86,7 +87,7 @@ namespace UI {
                                   "Oh no"
                                  */
                                 MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                                    "Genie_14.wav");
+                                    s_Genie_14_wav_005a7700);
                             }
                             DAT_00df4298::instance = 1;
                         }
@@ -146,49 +147,49 @@ namespace UI {
                                       "We will be invincible"
                                      */
                                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX,
-                                        DAT_SFXState::ptr)("genie_05.wav");
+                                        DAT_SFXState::ptr)(s_genie_05_wav_005a76f0);
                                     break;
                                 case 1:
                                     /*
                                       "A worthy ally"
                                      */
                                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX,
-                                        DAT_SFXState::ptr)("genie_06.wav");
+                                        DAT_SFXState::ptr)(s_genie_06_wav_005a76e0);
                                     break;
                                 case 2:
                                     /*
                                       "Watch my back"
                                      */
                                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX,
-                                        DAT_SFXState::ptr)("genie_07.wav");
+                                        DAT_SFXState::ptr)(s_genie_07_wav_005a76d0);
                                     break;
                                 case 3:
                                     /*
                                       "Yeeees"
                                      */
                                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX,
-                                        DAT_SFXState::ptr)("genie_08.wav");
+                                        DAT_SFXState::ptr)(s_genie_08_wav_005a76c0);
                                     break;
                                 case 4:
                                     /*
                                       "On my honour"
                                      */
                                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX,
-                                        DAT_SFXState::ptr)("genie_09.wav");
+                                        DAT_SFXState::ptr)(s_genie_09_wav_005a76b0);
                                     break;
                                 case 5:
                                     /*
                                       "We rule"
                                      */
                                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX,
-                                        DAT_SFXState::ptr)("genie_10.wav");
+                                        DAT_SFXState::ptr)(s_genie_10_wav_005a76a0);
                                     break;
                                 case 6:
                                     /*
                                       "I pledge allegiance"
                                      */
                                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX,
-                                        DAT_SFXState::ptr)("genie_04.wav");
+                                        DAT_SFXState::ptr)(s_genie_04_wav_005a7690);
                                 }
                             }
                         } else {
@@ -249,7 +250,7 @@ namespace UI {
                       "The sides are drawn"
                      */
                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                        "Genie_02.wav");
+                        s_Genie_02_wav_005a7680);
                 }
             } else {
                 if (param_1 == 0x65) {

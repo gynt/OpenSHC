@@ -23,6 +23,7 @@
 #include "OpenSHC/Map/Units/UnitType.hpp"
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/DAT_BuildingsState.hpp"
 #include "OpenSHC/Globals/DAT_GameState.hpp"
@@ -363,7 +364,7 @@ namespace UI {
                             .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .campground.tileEntry])),
                     OpenSHC::Map::Units::UT_FIREEATER);
-                pcVar10 = "Random_Events1.wav";
+                pcVar10 = S_RANDOM_EVENTS1_WAV_005AA8EC;
                 iVar8 = 1;
                 ppcVar9 = DAT_MissionAestheticsDefinedData::instance.RandomEvent1VideoName;
                 break;
@@ -388,13 +389,13 @@ namespace UI {
                     OpenSHC::Map::Units::TribesState_Func::spawnWildlifeOrMercAtAvailableSlot, DAT_TribesState::ptr)();
                 MACRO_CALL_MEMBER(OpenSHC::UI::MinimapViewState_Func::setSpawnMoment, DAT_MinimapViewState::ptr)(
                     DAT_TribesState::instance.unknownX_01, DAT_TribesState::instance.unknownY_01);
-                pcVar10 = "Random_Events7.wav";
+                pcVar10 = S_RANDOM_EVENTS7_WAV_005AA8D8;
                 iVar8 = 7;
                 ppcVar9 = DAT_MissionAestheticsDefinedData::instance.RandomEvent7VideoName;
                 break;
             case 0x8f:
                 MACRO_CALL_MEMBER(OpenSHC::Map::LandscapeState_Func::killEveryFifthTree, DAT_LandscapeState::ptr)();
-                pcVar10 = "Random_Events6.wav";
+                pcVar10 = S_RANDOM_EVENTS6_WAV_005AA8C4;
                 iVar8 = 6;
                 ppcVar9 = DAT_MissionAestheticsDefinedData::instance.RandomEvent6VideoName;
                 break;
@@ -408,7 +409,7 @@ namespace UI {
                     DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .popularity = 10000;
                 }
-                pcVar3 = "Random_Events12.wav";
+                pcVar3 = S_RANDOM_EVENTS12_WAV_005AA8B0;
                 ppcVar9 = DAT_MissionAestheticsDefinedData::instance.RandomEvent12VideoName;
                 /*
                   added by script: "The people rejoice at your forthcoming marriage, Sire."
@@ -433,7 +434,7 @@ namespace UI {
                     DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                         .popularity = 10000;
                 }
-                pcVar10 = "Random_Events13.wav";
+                pcVar10 = S_RANDOM_EVENTS13_WAV_005AA89C;
                 iVar8 = 0xd;
                 ppcVar9 = DAT_MissionAestheticsDefinedData::instance.RandomEvent13VideoName;
                 break;
@@ -475,7 +476,7 @@ namespace UI {
                         OpenSHC::Game::GameStateStructures_Func::spawnPoisonCloudsAtRandomStorageOrArmyBuilding,
                         DAT_GameState::ptr)(DAT_GameSynchronyState::instance.currentPlayerSlotID,
                         DAT_MapPropertiesState::instance.invasionEventContent.field49_0xa8);
-                    pcVar10 = "Random_Events2.wav";
+                    pcVar10 = S_RANDOM_EVENTS2_WAV_005AA888;
                     iVar8 = 2;
                     ppcVar9 = DAT_MissionAestheticsDefinedData::instance.RandomEvent2VideoName;
                     break;
@@ -549,7 +550,7 @@ namespace UI {
                             DAT_TribesState::instance.tribes[dVar5].unknownBool01 = 1;
                         } while (iVar8 < iVar7);
                     }
-                    pcVar10 = "Random_Events8.wav";
+                    pcVar10 = S_RANDOM_EVENTS8_WAV_005AA874;
                     iVar8 = 8;
                     ppcVar9 = DAT_MissionAestheticsDefinedData::instance.RandomEvent8VideoName;
                     break;
@@ -591,7 +592,7 @@ namespace UI {
                             DAT_UnitsState::instance.units[iVar8].logicalState = OpenSHC::Map::Units::ULS_NORMAL;
                         } while (unitSelectionIndex < sVar1);
                     }
-                    pcVar10 = "Random_Events9.wav";
+                    pcVar10 = S_RANDOM_EVENTS9_WAV_005AA860;
                     iVar8 = 9;
                     ppcVar9 = DAT_MissionAestheticsDefinedData::instance.RandomEvent9VideoName;
                     break;
@@ -667,7 +668,7 @@ namespace UI {
                         MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::giveTribeMoveInstruction,
                             DAT_TribesState::ptr)(dStack_4, x1, y1, 0, 0, OpenSHC::Map::Units::Instructions::UMSE_0);
                     }
-                    pcVar10 = "Random_Events11.wav";
+                    pcVar10 = S_RANDOM_EVENTS11_WAV_005AA84C;
                     iVar8 = 0xb;
                     ppcVar9 = DAT_MissionAestheticsDefinedData::instance.RandomEvent11VideoName;
                     break;
@@ -684,7 +685,7 @@ namespace UI {
                         iVar8 = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::findFirstBuildingOfType,
                             DAT_BuildingsState::ptr)(
                             DAT_GameSynchronyState::instance.currentPlayerSlotID, OpenSHC::Map::Buildings::BT_WATERPOT);
-                        pcVar10 = "general_message3.wav";
+                        pcVar10 = S_GENERAL_MESSAGE3_WAV_005AA2C0;
                         ppcVar9 = DAT_MissionAestheticsDefinedData::instance.RandomEvent15VideoName;
                         if (iVar8 == 0) {
                             iVar8 = 0x11;
@@ -692,7 +693,7 @@ namespace UI {
                             iVar8 = 0xf;
                         }
                     } else {
-                        pcVar10 = "general_message3.wav";
+                        pcVar10 = S_GENERAL_MESSAGE3_WAV_005AA2C0;
                         iVar8 = 0xf;
                         ppcVar9 = DAT_MissionAestheticsDefinedData::instance.RandomEvent15VideoName;
                     }

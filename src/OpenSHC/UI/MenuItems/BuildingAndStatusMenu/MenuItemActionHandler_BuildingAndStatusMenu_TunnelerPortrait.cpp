@@ -7,6 +7,7 @@
 #include "OpenSHC/Audio/SFX/SoundEffectID.hpp"
 #include "OpenSHC/Commands/GameCommandType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_EnoughGoldForRequestedUnit.hpp"
 #include "OpenSHC/Globals/DAT_GameState.hpp"
@@ -51,7 +52,7 @@ namespace UI {
                            "Yeeeess?"
                          */
                         MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                            "tunnel_s2.wav");
+                            s_tunnel_s2_wav_005a4ab4);
                         DWORD_00df336c::instance = timeGetTime();
                     }
                 } else {
@@ -62,13 +63,13 @@ namespace UI {
                           "You do not have enough gold to train this unit"
                          */
                         MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                            "units_warning3.wav");
+                            s_units_warning3_wav_005a58d8);
                     }
                     /*
                       "Recruits needed sire"
                      */
                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                        "other_warning5.wav");
+                        s_other_warning5_wav_005a58c4);
                 }
             }
         }

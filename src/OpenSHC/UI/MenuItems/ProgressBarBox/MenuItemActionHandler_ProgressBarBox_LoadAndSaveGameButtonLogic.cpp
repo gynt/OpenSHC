@@ -27,6 +27,7 @@
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
 #include "OpenSHC/UI/Enums/MenuViewType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_BinkControlState.hpp"
 #include "OpenSHC/Globals/DAT_BuildingsState.hpp"
@@ -162,7 +163,7 @@ namespace UI {
                             pcVar2 = pcVar5;
                             pcVar5 = pcVar2 + 1;
                         } while (pcVar2[1] != '\0');
-                        strcpy(pcVar2 + 1, ".sav");
+                        strcpy(pcVar2 + 1, s__sav_005a75a0);
                         FVar7 = OpenSHC::IO::FRT_UNKNOWN;
                     } else {
                         iVar3 = 0;
@@ -193,7 +194,7 @@ namespace UI {
                                 pcVar5 = pcVar5 + 1;
                             } while (*pcVar2 != '\0');
                         }
-                        strcpy(pcVar5, ".msv");
+                        strcpy(pcVar5, s__msv_005a7498);
                         MACRO_CALL_MEMBER(
                             OpenSHC::Map::TileMapState_Func::setupAllMapSections, DAT_TileMapState::ptr)();
                         FVar7 = OpenSHC::IO::FRT_UNKNOWN;
@@ -366,7 +367,7 @@ namespace UI {
                             pcVar2 = pcVar5;
                             pcVar5 = pcVar2 + 1;
                         } while (pcVar2[1] != '\0');
-                        strcpy(pcVar2 + 1, ".sav");
+                        strcpy(pcVar2 + 1, s__sav_005a75a0);
                         FVar7 = OpenSHC::IO::FRT_UNKNOWN;
                     } else {
                         iVar3 = 0;
@@ -381,7 +382,7 @@ namespace UI {
                                 pcVar2 = pcVar5;
                                 pcVar5 = pcVar2 + 1;
                             } while (pcVar2[1] != '\0');
-                            strcpy(pcVar2 + 1, ".msv");
+                            strcpy(pcVar2 + 1, s__msv_005a7498);
                             FVar7 = OpenSHC::IO::FRT_UNKNOWN;
                         } else {
                             do {
@@ -394,7 +395,7 @@ namespace UI {
                                 pcVar2 = pcVar5;
                                 pcVar5 = pcVar2 + 1;
                             } while (pcVar2[1] != '\0');
-                            strcpy(pcVar2 + 1, ".msv");
+                            strcpy(pcVar2 + 1, s__msv_005a7498);
                             FVar7 = OpenSHC::IO::FRT_UNKNOWN;
                         }
                     }

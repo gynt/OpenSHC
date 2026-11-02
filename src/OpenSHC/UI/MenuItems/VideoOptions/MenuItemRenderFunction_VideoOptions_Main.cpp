@@ -9,6 +9,7 @@
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/AlphaAndButtonSurfaceObj.hpp"
 #include "OpenSHC/Globals/DAT_ButtonCurrentlyInteracting.hpp"
@@ -79,91 +80,91 @@ namespace UI {
                         switch (DAT_MenuTextInputState::instance.menuCurrentlySelectedResolution) {
                         case 1:
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
-                                DAT_TextManagerObject::ptr)("800x600",
+                                DAT_TextManagerObject::ptr)(S_800X600_005A7598,
                                 (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
                                 (int)(DAT_ButtonY::instance + 7), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE, 0);
                             return;
                         case 2:
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
-                                DAT_TextManagerObject::ptr)("1024x768",
+                                DAT_TextManagerObject::ptr)(S_1024X768_005A7580,
                                 (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
                                 (int)(DAT_ButtonY::instance + 7), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE, 0);
                             return;
                         case 3:
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
-                                DAT_TextManagerObject::ptr)("1280x720",
+                                DAT_TextManagerObject::ptr)(S_1280X720_005A755C,
                                 (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
                                 (int)(DAT_ButtonY::instance + 7), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE, 0);
                             return;
                         case 4:
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
-                                DAT_TextManagerObject::ptr)("1280x1024",
+                                DAT_TextManagerObject::ptr)(S_1280X1024_005A7574,
                                 (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
                                 (int)(DAT_ButtonY::instance + 7), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE, 0);
                             return;
                         case 5:
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
-                                DAT_TextManagerObject::ptr)("1366x768",
+                                DAT_TextManagerObject::ptr)(S_1366X768_005A7514,
                                 (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
                                 (int)(DAT_ButtonY::instance + 7), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE, 0);
                             return;
                         case 6:
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
-                                DAT_TextManagerObject::ptr)("1440x900",
+                                DAT_TextManagerObject::ptr)(S_1440X900_005A7550,
                                 (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
                                 (int)(DAT_ButtonY::instance + 7), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE, 0);
                             return;
                         case 7:
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
-                                DAT_TextManagerObject::ptr)("1600x900",
+                                DAT_TextManagerObject::ptr)(S_1600X900_005A74F0,
                                 (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
                                 (int)(DAT_ButtonY::instance + 7), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE, 0);
                             return;
                         case 8:
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
-                                DAT_TextManagerObject::ptr)("1600x1200",
+                                DAT_TextManagerObject::ptr)(S_1600X1200_005A7568,
                                 (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
                                 (int)(DAT_ButtonY::instance + 7), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE, 0);
                             return;
                         case 9:
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
-                                DAT_TextManagerObject::ptr)("1680x1050",
+                                DAT_TextManagerObject::ptr)(S_1680X1050_005A74FC,
                                 (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
                                 (int)(DAT_ButtonY::instance + 7), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE, 0);
                             return;
                         case 10:
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
-                                DAT_TextManagerObject::ptr)("1920x1080",
+                                DAT_TextManagerObject::ptr)(S_1920X1080_005A7544,
                                 (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
                                 (int)(DAT_ButtonY::instance + 7), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE, 0);
                             return;
                         case 0xb:
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
-                                DAT_TextManagerObject::ptr)("1920x1200",
+                                DAT_TextManagerObject::ptr)(S_1920X1200_005A7538,
                                 (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
                                 (int)(DAT_ButtonY::instance + 7), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE, 0);
                             return;
                         case 0xc:
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
-                                DAT_TextManagerObject::ptr)("2560x1440",
+                                DAT_TextManagerObject::ptr)(S_2560X1440_005A752C,
                                 (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
                                 (int)(DAT_ButtonY::instance + 7), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE, 0);
                             return;
                         case 0xd:
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
-                                DAT_TextManagerObject::ptr)("2560x1600",
+                                DAT_TextManagerObject::ptr)(S_2560X1600_005A7520,
                                 (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
                                 (int)(DAT_ButtonY::instance + 7), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE, 0);
                             return;
                         case 0xe:
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
-                                DAT_TextManagerObject::ptr)("1360x768",
+                                DAT_TextManagerObject::ptr)(S_1360X768_005A7508,
                                 (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
                                 (int)(DAT_ButtonY::instance + 7), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE, 0);
                             return;
                         case 0xf:
                             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
-                                DAT_TextManagerObject::ptr)("1024x600",
+                                DAT_TextManagerObject::ptr)(S_1024X600_005A758C,
                                 (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
                                 (int)(DAT_ButtonY::instance + 7), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x12, FALSE, 0);
                             return;

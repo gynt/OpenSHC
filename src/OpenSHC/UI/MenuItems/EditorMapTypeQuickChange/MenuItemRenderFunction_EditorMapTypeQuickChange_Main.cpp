@@ -8,6 +8,7 @@
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/AlphaAndButtonSurfaceObj.hpp"
 #include "OpenSHC/Globals/DAT_ButtonCurrentlyInteracting.hpp"
@@ -89,46 +90,46 @@ namespace UI {
             textAddress = "";
             switch (param_1) {
             case 0:
-                textAddress = "Editable";
+                textAddress = S_EDITABLE_005A7660;
                 break;
             case 1:
-                textAddress = "Playable";
+                textAddress = S_PLAYABLE_005A7654;
                 break;
             case 2:
-                textAddress = "Mission";
+                textAddress = S_MISSION_005A764C;
                 break;
             case 3:
-                textAddress = "Siege";
+                textAddress = S_SIEGE_005A7644;
                 break;
             case 4:
-                textAddress = "Invasion";
+                textAddress = S_INVASION_005A7638;
                 break;
             case 5:
-                textAddress = "Economic";
+                textAddress = S_ECONOMIC_005A762C;
                 break;
             case 6:
-                textAddress = "Just Build";
+                textAddress = S_JUST_BUILD_005A7620;
                 break;
             case 10:
-                textAddress = "Single";
+                textAddress = S_SINGLE_005A7618;
                 break;
             case 0xb:
-                textAddress = "Multi";
+                textAddress = S_MULTI_005A7610;
                 break;
             case 0xc:
-                textAddress = "King of the Hill";
+                textAddress = S_KING_OF_THE_HILL_005A75FC;
                 break;
             case 0x14:
-                textAddress = "160x160";
+                textAddress = S_160X160_005A75F4;
                 break;
             case 0x15:
-                textAddress = "200x200";
+                textAddress = S_200X200_005A75EC;
                 break;
             case 0x16:
-                textAddress = "300x300";
+                textAddress = S_300X300_005A75E4;
                 break;
             case 0x17:
-                textAddress = "400x400";
+                textAddress = S_400X400_005A75DC;
             }
             if (BVar2 != FALSE) {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(

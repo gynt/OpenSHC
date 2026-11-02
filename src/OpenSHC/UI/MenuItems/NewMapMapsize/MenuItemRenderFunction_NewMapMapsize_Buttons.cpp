@@ -8,6 +8,7 @@
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_ButtonCurrentlyInteracting.hpp"
 #include "OpenSHC/Globals/DAT_ButtonW.hpp"
@@ -96,7 +97,7 @@ namespace UI {
                     uVar1 = 0xa0;
                     break;
                 }
-                MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_18, "%dx%d", uVar1, uVar1);
+                MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_18, s__dx_d_005a22fc, uVar1, uVar1);
                 MACRO_CALL_MEMBER(
                     OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(local_18,
                     (int)(DAT_ButtonX::instance), (int)(DAT_ButtonY::instance + 0x13),

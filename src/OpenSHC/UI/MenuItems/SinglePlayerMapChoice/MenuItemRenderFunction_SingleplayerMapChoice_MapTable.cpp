@@ -11,6 +11,7 @@
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_ButtonBackgroundBlendStrength.hpp"
 #include "OpenSHC/Globals/DAT_ButtonCurrentlyInteracting.hpp"
@@ -93,9 +94,9 @@ namespace UI {
                 (iVar3 / 32) + 0x20);
             dVar1 = DAT_ResourceManager::instance.mapFileTimes[DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices
                     [DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionOffset + param_1 - 1]];
-            MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_24, "%02d/%02d/%02d %02d:%02d", (int)dVar1 >> 0x10 & 0x1f,
-                (int)dVar1 >> 0x15 & 0xf, ((int)dVar1 >> 0x19) - 0x14, (int)dVar1 >> 0xb & 0x1f,
-                (int)dVar1 >> 5 & 0x3f);
+            MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_24, s__02d_02d_02d__02d_02d_005a229c,
+                (int)dVar1 >> 0x10 & 0x1f, (int)dVar1 >> 0x15 & 0xf, ((int)dVar1 >> 0x19) - 0x14,
+                (int)dVar1 >> 0xb & 0x1f, (int)dVar1 >> 5 & 0x3f);
             iVar4 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(local_24,
                 (int)(DAT_ButtonX::instance + 0x134), (int)(DAT_ButtonY::instance + 3), OpenSHC::Text::TTA_LEFT,

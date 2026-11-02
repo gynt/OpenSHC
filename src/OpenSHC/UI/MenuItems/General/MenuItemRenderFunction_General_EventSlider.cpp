@@ -6,6 +6,7 @@
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/AlphaAndButtonSurfaceObj.hpp"
 #include "OpenSHC/Globals/COL_DARK_LIME.hpp"
@@ -78,8 +79,9 @@ namespace UI {
                 (int)(DAT_ButtonH::instance - 4 + DAT_ButtonY::instance), (ushort)(color));
             if ((param_1 == -2) && (param_3 == 10)) {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow,
-                    DAT_TextManagerObject::ptr)("-", (int)(DAT_ButtonW::instance + 0xc + DAT_ButtonX::instance),
-                    (int)(DAT_ButtonY::instance + 6), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0, 0x12, FALSE, 0);
+                    DAT_TextManagerObject::ptr)(S___005A2280,
+                    (int)(DAT_ButtonW::instance + 0xc + DAT_ButtonX::instance), (int)(DAT_ButtonY::instance + 6),
+                    OpenSHC::Text::TTA_CENTER, 0xccfaff, 0, 0x12, FALSE, 0);
                 return;
             }
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(param_3,

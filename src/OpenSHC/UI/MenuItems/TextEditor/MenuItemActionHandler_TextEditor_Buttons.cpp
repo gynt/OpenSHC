@@ -4,6 +4,7 @@
 #include "OpenSHC/Text/TextEditorState.func.hpp"
 #include "OpenSHC/Text/Enums/HelpTextToken.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_ResourceManager.hpp"
 #include "OpenSHC/Globals/DAT_TextEditorState.hpp"
@@ -93,7 +94,7 @@ namespace UI {
                 DAT_ResourceManager::instance.strFileTitle[0] = '\0';
                 DAT_ResourceManager::instance.strFile[0] = '\0';
                 BVar7 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::showOpenHelpFileDialog,
-                    DAT_ResourceManager::ptr)("Select help file to load");
+                    DAT_ResourceManager::ptr)(s_Select_help_file_to_load_005a5894);
                 if (BVar7 != FALSE) {
                     pcVar8 = DAT_ResourceManager::instance.strFileTitle;
                     do {
@@ -197,7 +198,7 @@ namespace UI {
                 DAT_ResourceManager::instance.strFileTitle[0] = '\0';
                 DAT_ResourceManager::instance.strFile[0] = '\0';
                 BVar7 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::showOpenHelpFileDialog,
-                    DAT_ResourceManager::ptr)("Select help file to link to");
+                    DAT_ResourceManager::ptr)(s_Select_help_file_to_link_to_005a5878);
                 if (BVar7 != FALSE) {
                     pcVar8 = DAT_ResourceManager::instance.strFileTitle;
                     do {
@@ -408,7 +409,7 @@ namespace UI {
                 DAT_ResourceManager::instance.strFileTitle[0] = '\0';
                 DAT_ResourceManager::instance.strFile[0] = '\0';
                 BVar7 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::showOpenHelpFileDialog,
-                    DAT_ResourceManager::ptr)("Select help file to include");
+                    DAT_ResourceManager::ptr)(s_Select_help_file_to_include_005a585c);
                 if (BVar7 != FALSE) {
                     pcVar8 = DAT_ResourceManager::instance.strFileTitle;
                     do {
@@ -461,7 +462,7 @@ namespace UI {
                     DAT_ResourceManager::instance.strFileTitle[0] = '\0';
                     DAT_ResourceManager::instance.strFile[0] = '\0';
                     BVar7 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::showOpenHelpFileDialog,
-                        DAT_ResourceManager::ptr)("Select help file to link to");
+                        DAT_ResourceManager::ptr)(s_Select_help_file_to_link_to_005a5878);
                     if (BVar7 != FALSE) {
                         pcVar8 = DAT_ResourceManager::instance.strFileTitle;
                         do {
@@ -482,7 +483,7 @@ namespace UI {
                     DAT_ResourceManager::instance.strFileTitle[0] = '\0';
                     DAT_ResourceManager::instance.strFile[0] = '\0';
                     BVar7 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::showOpenHelpFileDialog,
-                        DAT_ResourceManager::ptr)("Select help file to include");
+                        DAT_ResourceManager::ptr)(s_Select_help_file_to_include_005a585c);
                     if (BVar7 != FALSE) {
                         pcVar8 = DAT_ResourceManager::instance.strFileTitle;
                         do {

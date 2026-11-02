@@ -9,6 +9,7 @@
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/AlphaAndButtonSurfaceObj.hpp"
 #include "OpenSHC/Globals/COL_BLACK.hpp"
@@ -91,25 +92,25 @@ namespace UI {
                         return;
                     case 6:
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen2,
-                            DAT_TextManagerObject::ptr)("Symbols", (int)(DAT_ButtonX::instance),
+                            DAT_TextManagerObject::ptr)(S_SYMBOLS_005A5608, (int)(DAT_ButtonX::instance),
                             (int)(DAT_ButtonY::instance + 3), (TextAlignment)((int)(DAT_ButtonW::instance)),
                             (BGR24)((int)(DAT_TextManagerObject::instance.textColor)), 0x13, FALSE);
                         return;
                     case 7:
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen2,
-                            DAT_TextManagerObject::ptr)("New Page", (int)(DAT_ButtonX::instance),
+                            DAT_TextManagerObject::ptr)(S_NEW_PAGE_005A55FC, (int)(DAT_ButtonX::instance),
                             (int)(DAT_ButtonY::instance + 3), (TextAlignment)((int)(DAT_ButtonW::instance)),
                             (BGR24)((int)(DAT_TextManagerObject::instance.textColor)), 0x13, FALSE);
                         return;
                     case 8:
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen2,
-                            DAT_TextManagerObject::ptr)("Load", (int)(DAT_ButtonX::instance),
+                            DAT_TextManagerObject::ptr)(S_LOAD_005A55F4, (int)(DAT_ButtonX::instance),
                             (int)(DAT_ButtonY::instance + 3), (TextAlignment)((int)(DAT_ButtonW::instance)),
                             (BGR24)((int)(DAT_TextManagerObject::instance.textColor)), 0x13, FALSE);
                         return;
                     case 9:
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen2,
-                            DAT_TextManagerObject::ptr)("Save", (int)(DAT_ButtonX::instance),
+                            DAT_TextManagerObject::ptr)(S_SAVE_005A55EC, (int)(DAT_ButtonX::instance),
                             (int)(DAT_ButtonY::instance + 3), (TextAlignment)((int)(DAT_ButtonW::instance)),
                             (BGR24)((int)(DAT_TextManagerObject::instance.textColor)), 0x13, FALSE);
                         return;
@@ -121,67 +122,67 @@ namespace UI {
                         return;
                     case 0xb:
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen2,
-                            DAT_TextManagerObject::ptr)("Link", (int)(DAT_ButtonX::instance),
+                            DAT_TextManagerObject::ptr)(S_LINK_005A55D8, (int)(DAT_ButtonX::instance),
                             (int)(DAT_ButtonY::instance + 3), (TextAlignment)((int)(DAT_ButtonW::instance)),
                             (BGR24)((int)(DAT_TextManagerObject::instance.textColor)), 0x13, FALSE);
                         return;
                     case 0xc:
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen2,
-                            DAT_TextManagerObject::ptr)("\\Link", (int)(DAT_ButtonX::instance),
+                            DAT_TextManagerObject::ptr)(S__LINK_005A55D0, (int)(DAT_ButtonX::instance),
                             (int)(DAT_ButtonY::instance + 3), (TextAlignment)((int)(DAT_ButtonW::instance)),
                             (BGR24)((int)(DAT_TextManagerObject::instance.textColor)), 0x13, FALSE);
                         return;
                     case 0xd:
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen2,
-                            DAT_TextManagerObject::ptr)("Font", (int)(DAT_ButtonX::instance),
+                            DAT_TextManagerObject::ptr)(S_FONT_005A55C8, (int)(DAT_ButtonX::instance),
                             (int)(DAT_ButtonY::instance + 3), (TextAlignment)((int)(DAT_ButtonW::instance)),
                             (BGR24)((int)(DAT_TextManagerObject::instance.textColor)), 0x13, FALSE);
                         return;
                     case 0xe:
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen2,
-                            DAT_TextManagerObject::ptr)("Centre", (int)(DAT_ButtonX::instance),
+                            DAT_TextManagerObject::ptr)(S_CENTRE_005A55C0, (int)(DAT_ButtonX::instance),
                             (int)(DAT_ButtonY::instance + 3), (TextAlignment)((int)(DAT_ButtonW::instance)),
                             (BGR24)((int)(DAT_TextManagerObject::instance.textColor)), 0x13, FALSE);
                         return;
                     case 0xf:
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen2,
-                            DAT_TextManagerObject::ptr)("\\Centre", (int)(DAT_ButtonX::instance),
+                            DAT_TextManagerObject::ptr)(S__CENTRE_005A55B8, (int)(DAT_ButtonX::instance),
                             (int)(DAT_ButtonY::instance + 3), (TextAlignment)((int)(DAT_ButtonW::instance)),
                             (BGR24)((int)(DAT_TextManagerObject::instance.textColor)), 0x13, FALSE);
                         return;
                     case 0x10:
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen2,
-                            DAT_TextManagerObject::ptr)("Colour", (int)(DAT_ButtonX::instance),
+                            DAT_TextManagerObject::ptr)(S_COLOUR_005A55B0, (int)(DAT_ButtonX::instance),
                             (int)(DAT_ButtonY::instance + 3), (TextAlignment)((int)(DAT_ButtonW::instance)),
                             (BGR24)((int)(DAT_TextManagerObject::instance.textColor)), 0x13, FALSE);
                         return;
                     case 0x11:
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen2,
-                            DAT_TextManagerObject::ptr)("LinkClr", (int)(DAT_ButtonX::instance),
+                            DAT_TextManagerObject::ptr)(S_LINKCLR_005A55A8, (int)(DAT_ButtonX::instance),
                             (int)(DAT_ButtonY::instance + 3), (TextAlignment)((int)(DAT_ButtonW::instance)),
                             (BGR24)((int)(DAT_TextManagerObject::instance.textColor)), 0x13, FALSE);
                         return;
                     case 0x12:
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen2,
-                            DAT_TextManagerObject::ptr)("Sound", (int)(DAT_ButtonX::instance),
+                            DAT_TextManagerObject::ptr)(S_SOUND_005A55A0, (int)(DAT_ButtonX::instance),
                             (int)(DAT_ButtonY::instance + 3), (TextAlignment)((int)(DAT_ButtonW::instance)),
                             (BGR24)((int)(DAT_TextManagerObject::instance.textColor)), 0x13, FALSE);
                         return;
                     case 0x13:
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen2,
-                            DAT_TextManagerObject::ptr)("String", (int)(DAT_ButtonX::instance),
+                            DAT_TextManagerObject::ptr)(S_STRING_005A5598, (int)(DAT_ButtonX::instance),
                             (int)(DAT_ButtonY::instance + 3), (TextAlignment)((int)(DAT_ButtonW::instance)),
                             (BGR24)((int)(DAT_TextManagerObject::instance.textColor)), 0x13, FALSE);
                         return;
                     case 0x14:
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen2,
-                            DAT_TextManagerObject::ptr)("Include", (int)(DAT_ButtonX::instance),
+                            DAT_TextManagerObject::ptr)(S_INCLUDE_005A5590, (int)(DAT_ButtonX::instance),
                             (int)(DAT_ButtonY::instance + 3), (TextAlignment)((int)(DAT_ButtonW::instance)),
                             (BGR24)((int)(DAT_TextManagerObject::instance.textColor)), 0x13, FALSE);
                         return;
                     case 0x19:
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen2,
-                            DAT_TextManagerObject::ptr)("ScrSize", (int)(DAT_ButtonX::instance),
+                            DAT_TextManagerObject::ptr)(S_SCRSIZE_005A55E4, (int)(DAT_ButtonX::instance),
                             (int)(DAT_ButtonY::instance + 3), (TextAlignment)((int)(DAT_ButtonW::instance)),
                             (BGR24)((int)(DAT_TextManagerObject::instance.textColor)), 0x13, FALSE);
                     }
@@ -195,57 +196,57 @@ namespace UI {
                 switch (DAT_TextEditorState::instance.field52_0x23970) {
                 case 1:
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        "PIC", (int)(DAT_ButtonX::instance + 3), (int)(DAT_ButtonY::instance + 3),
+                        S_PIC_005A558C, (int)(DAT_ButtonX::instance + 3), (int)(DAT_ButtonY::instance + 3),
                         OpenSHC::Text::TTA_LEFT, 0xffffff, 0x13, FALSE, 0);
                     return;
                 case 2:
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        "FONT", (int)(DAT_ButtonX::instance + 3), (int)(DAT_ButtonY::instance + 3),
+                        S_FONT_005A5584, (int)(DAT_ButtonX::instance + 3), (int)(DAT_ButtonY::instance + 3),
                         OpenSHC::Text::TTA_LEFT, 0xffffff, 0x13, FALSE, 0);
                     return;
                 case 3:
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        "COLOUR", (int)(DAT_ButtonX::instance + 3), (int)(DAT_ButtonY::instance + 3),
+                        S_COLOUR_005A557C, (int)(DAT_ButtonX::instance + 3), (int)(DAT_ButtonY::instance + 3),
                         OpenSHC::Text::TTA_LEFT, 0xffffff, 0x13, FALSE, 0);
                     return;
                 case 4:
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        "LINK", (int)(DAT_ButtonX::instance + 3), (int)(DAT_ButtonY::instance + 3),
+                        S_LINK_005A556C, (int)(DAT_ButtonX::instance + 3), (int)(DAT_ButtonY::instance + 3),
                         OpenSHC::Text::TTA_LEFT, 0xffffff, 0x13, FALSE, 0);
                     return;
                 case 5:
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        "\\LINK", (int)(DAT_ButtonX::instance + 3), (int)(DAT_ButtonY::instance + 3),
+                        S__LINK_005A5564, (int)(DAT_ButtonX::instance + 3), (int)(DAT_ButtonY::instance + 3),
                         OpenSHC::Text::TTA_LEFT, 0xffffff, 0x13, FALSE, 0);
                     return;
                 case 7:
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        "CENTRE", (int)(DAT_ButtonX::instance + 3), (int)(DAT_ButtonY::instance + 3),
+                        S_CENTRE_005A555C, (int)(DAT_ButtonX::instance + 3), (int)(DAT_ButtonY::instance + 3),
                         OpenSHC::Text::TTA_LEFT, 0xffffff, 0x13, FALSE, 0);
                     return;
                 case 8:
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        "\\CENTRE", (int)(DAT_ButtonX::instance + 3), (int)(DAT_ButtonY::instance + 3),
+                        S__CENTRE_005A5554, (int)(DAT_ButtonX::instance + 3), (int)(DAT_ButtonY::instance + 3),
                         OpenSHC::Text::TTA_LEFT, 0xffffff, 0x13, FALSE, 0);
                     return;
                 case 10:
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        "LINKCLR", (int)(DAT_ButtonX::instance + 3), (int)(DAT_ButtonY::instance + 3),
+                        S_LINKCLR_005A5574, (int)(DAT_ButtonX::instance + 3), (int)(DAT_ButtonY::instance + 3),
                         OpenSHC::Text::TTA_LEFT, 0xffffff, 0x13, FALSE, 0);
                     return;
                 case 0xb:
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        "SOUND", (int)(DAT_ButtonX::instance + 3), (int)(DAT_ButtonY::instance + 3),
+                        S_SOUND_005A554C, (int)(DAT_ButtonX::instance + 3), (int)(DAT_ButtonY::instance + 3),
                         OpenSHC::Text::TTA_LEFT, 0xffffff, 0x13, FALSE, 0);
                     return;
                 case 0xc:
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        "STRING", (int)(DAT_ButtonX::instance + 3), (int)(DAT_ButtonY::instance + 3),
+                        S_STRING_005A5544, (int)(DAT_ButtonX::instance + 3), (int)(DAT_ButtonY::instance + 3),
                         OpenSHC::Text::TTA_LEFT, 0xffffff, 0x13, FALSE, 0);
                     return;
                 case 0xe:
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        "INCLUDE", (int)(DAT_ButtonX::instance + 3), (int)(DAT_ButtonY::instance + 3),
+                        S_INCLUDE_005A553C, (int)(DAT_ButtonX::instance + 3), (int)(DAT_ButtonY::instance + 3),
                         OpenSHC::Text::TTA_LEFT, 0xffffff, 0x13, FALSE, 0);
                 }
                 break;
@@ -360,7 +361,7 @@ namespace UI {
                                 ? 0xff
                                 : 0xffffff);
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        "Left", (int)(DAT_ButtonX::instance + 3), (int)(DAT_ButtonY::instance + 3),
+                        S_LEFT_005A5534, (int)(DAT_ButtonX::instance + 3), (int)(DAT_ButtonY::instance + 3),
                         OpenSHC::Text::TTA_LEFT, (BGR24)((int)(DAT_TextManagerObject::instance.textColor)), 0x13, FALSE,
                         0);
                     return;
@@ -381,7 +382,7 @@ namespace UI {
                         (int)(DAT_ButtonH::instance + DAT_ButtonY::instance),
                         DAT_PencilRenderCore::instance.otherColorUnk_0x0);
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen2, DAT_TextManagerObject::ptr)(
-                        "PREV", (int)(DAT_ButtonX::instance), (int)(DAT_ButtonY::instance + 3),
+                        S_PREV_005A552C, (int)(DAT_ButtonX::instance), (int)(DAT_ButtonY::instance + 3),
                         (TextAlignment)((int)(DAT_ButtonW::instance)),
                         (BGR24)((int)(DAT_TextManagerObject::instance.textColor)), 0x13, FALSE);
                 }
@@ -400,7 +401,7 @@ namespace UI {
                                 ? 0xff
                                 : 0xffffff);
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        "Centre", (int)(DAT_ButtonX::instance + 3), (int)(DAT_ButtonY::instance + 3),
+                        S_CENTRE_005A55C0, (int)(DAT_ButtonX::instance + 3), (int)(DAT_ButtonY::instance + 3),
                         OpenSHC::Text::TTA_LEFT, (BGR24)((int)(DAT_TextManagerObject::instance.textColor)), 0x13, FALSE,
                         0);
                     return;
@@ -422,7 +423,7 @@ namespace UI {
                         (int)(DAT_ButtonH::instance + DAT_ButtonY::instance),
                         DAT_PencilRenderCore::instance.otherColorUnk_0x0);
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen2, DAT_TextManagerObject::ptr)(
-                        "NEXT", (int)(DAT_ButtonX::instance), (int)(DAT_ButtonY::instance + 3),
+                        S_NEXT_005A5524, (int)(DAT_ButtonX::instance), (int)(DAT_ButtonY::instance + 3),
                         (TextAlignment)((int)(DAT_ButtonW::instance)),
                         (BGR24)((int)(DAT_TextManagerObject::instance.textColor)), 0x13, FALSE);
                 }
@@ -440,7 +441,7 @@ namespace UI {
                                 ? 0xff
                                 : 0xffffff);
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        "Right", (int)(DAT_ButtonX::instance + 3), (int)(DAT_ButtonY::instance + 3),
+                        S_RIGHT_005A551C, (int)(DAT_ButtonX::instance + 3), (int)(DAT_ButtonY::instance + 3),
                         OpenSHC::Text::TTA_LEFT, (BGR24)((int)(DAT_TextManagerObject::instance.textColor)), 0x13, FALSE,
                         0);
                 }
@@ -458,7 +459,7 @@ namespace UI {
                                 ? 0xff
                                 : 0xffffff);
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        "Here", (int)(DAT_ButtonX::instance + 3), (int)(DAT_ButtonY::instance + 3),
+                        S_HERE_005A5514, (int)(DAT_ButtonX::instance + 3), (int)(DAT_ButtonY::instance + 3),
                         OpenSHC::Text::TTA_LEFT, (BGR24)((int)(DAT_TextManagerObject::instance.textColor)), 0x13, FALSE,
                         0);
                 }

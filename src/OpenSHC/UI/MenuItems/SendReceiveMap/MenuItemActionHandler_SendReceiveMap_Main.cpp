@@ -8,6 +8,7 @@
 #include "OpenSHC/IO/FileResourceType.hpp"
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
 #include "OpenSHC/Globals/DAT_MenuModalComposition1.hpp"
@@ -53,7 +54,7 @@ namespace UI {
                         pcVar2 = pcVar3;
                         pcVar3 = pcVar2 + 1;
                     } while (pcVar2[1] != '\0');
-                    strcpy(pcVar2 + 1, ".map");
+                    strcpy(pcVar2 + 1, S__MAP_005A2294);
                     MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::resolveResourceFileName,
                         DAT_ResourceManager::ptr)(OpenSHC::IO::FRT_MAPS, (char const*)((int)(local_3f4)));
                     DAT_GameSynchronyState::instance.mapSendingFileSize = MACRO_CALL_MEMBER(
@@ -70,7 +71,7 @@ namespace UI {
                             _fileName = MACRO_CALL_MEMBER(
                                 OpenSHC::IO::ResourceManager_Func::getFileNameOfCurrentActiveResource,
                                 DAT_ResourceManager::ptr)();
-                            _fileHandle = MACRO_CALL(OpenSHC::OS_Func::_fopen)(_fileName, "rb");
+                            _fileHandle = MACRO_CALL(OpenSHC::OS_Func::_fopen)(_fileName, S_RB_005A4E18);
                             DAT_GameSynchronyState::instance.mapSendingFileHandles[_addressee] = _fileHandle;
                             DAT_GameSynchronyState::instance.DAT_GameCommandParam0
                                 = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices

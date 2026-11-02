@@ -11,6 +11,7 @@
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/AlphaAndButtonSurfaceObj.hpp"
 #include "OpenSHC/Globals/DAT_ButtonCurrentlyInteracting.hpp"
@@ -129,7 +130,7 @@ namespace UI {
                         (int)(DAT_ButtonY::instance + 7), OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, FALSE);
                     if (0 <= iVar2) {
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
-                            DAT_TextManagerObject::ptr)(" - ", (int)(DAT_ButtonX::instance + 0x14),
+                            DAT_TextManagerObject::ptr)(S___005A2304, (int)(DAT_ButtonX::instance + 0x14),
                             (int)(DAT_ButtonY::instance + 7), OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, TRUE, 0);
                         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue
                             = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
@@ -168,7 +169,8 @@ namespace UI {
                         return;
                     case 0xb2:
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
-                            DAT_TextManagerObject::ptr)("%", (int)(DAT_ButtonW::instance - 0xe + DAT_ButtonX::instance),
+                            DAT_TextManagerObject::ptr)(S_PERCENTAGE_005A2770,
+                            (int)(DAT_ButtonW::instance - 0xe + DAT_ButtonX::instance),
                             (int)(DAT_ButtonY::instance + 7), OpenSHC::Text::TTA_RIGHT, 0xccfaff, 0x12, FALSE, 0);
                         MACRO_CALL_MEMBER(
                             OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
@@ -193,7 +195,7 @@ namespace UI {
                     return;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                    " - ", (int)(DAT_ButtonX::instance + 0x14), (int)(DAT_ButtonY::instance + 7),
+                    S___005A2304, (int)(DAT_ButtonX::instance + 0x14), (int)(DAT_ButtonY::instance + 7),
                     OpenSHC::Text::TTA_LEFT, 0xc2f0eb, 0x12, TRUE, 0);
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,

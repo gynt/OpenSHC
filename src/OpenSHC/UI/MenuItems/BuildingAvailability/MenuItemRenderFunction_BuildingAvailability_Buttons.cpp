@@ -9,6 +9,7 @@
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/AlphaAndButtonSurfaceObj.hpp"
 #include "OpenSHC/Globals/DAT_ButtonCurrentlyInteracting.hpp"
@@ -87,13 +88,13 @@ namespace UI {
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                     if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
-                        MACRO_CALL_MEMBER(
-                            OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)("!",
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
+                            DAT_TextManagerObject::ptr)(S___005AA7FC,
                             (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
                             (int)(DAT_ButtonY::instance + 6), OpenSHC::Text::TTA_CENTER, 0xc2f0eb, 0x13, FALSE, 0);
                     } else {
-                        MACRO_CALL_MEMBER(
-                            OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)("!",
+                        MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen,
+                            DAT_TextManagerObject::ptr)(S___005AA7FC,
                             (int)((int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
                             (int)(DAT_ButtonY::instance + 6), OpenSHC::Text::TTA_CENTER, 0xccfaff, 0x13, FALSE, 0);
                     }

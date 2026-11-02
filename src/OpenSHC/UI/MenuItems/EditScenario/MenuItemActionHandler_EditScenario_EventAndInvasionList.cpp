@@ -5,6 +5,7 @@
 #include "OpenSHC/UI/MenuModalComposition.func.hpp"
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_MapPropertiesState.hpp"
 #include "OpenSHC/Globals/DAT_MenuModalComposition1.hpp"
@@ -32,7 +33,7 @@ namespace UI {
                         = DAT_MapPropertiesState::instance.scenarioEvents[iVar1].header.tl_type;
                     MACRO_CALL_MEMBER(
                         OpenSHC::Text::UserTextHandler_Func::resetToTextIndex, DAT_UserTextHandlerState::ptr)(0xb);
-                    MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_10, "%d",
+                    MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_10, s__d_005aa7f0,
                         DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                             .header.year);
                     MACRO_CALL_MEMBER(OpenSHC::Text::UserTextHandler_Func::copyIntoTextArray,

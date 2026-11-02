@@ -10,6 +10,7 @@
 #include "OpenSHC/IO/FileResourceType.hpp"
 #include "OpenSHC/Rendering/Colors/BGR24.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/DAT_00b95b74.hpp"
 #include "OpenSHC/Globals/DAT_00b960f4.hpp"
@@ -91,7 +92,7 @@ namespace UI {
                 puVar3 = puVar2;
                 puVar2 = puVar3 + 1;
             } while (puVar3[1] != '\0');
-            strcpy(puVar3 + 1, ".map");
+            strcpy(puVar3 + 1, S__MAP_005A2294);
             MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::resolveResourceFileName, DAT_ResourceManager::ptr)(
                 OpenSHC::IO::FRT_MAPS, (char const*)((int)(local_3f4)));
             MACRO_CALL_MEMBER(OpenSHC::IO::FilePackager_Func::readMapHeader, FilePackagerObj::ptr)(TRUE);

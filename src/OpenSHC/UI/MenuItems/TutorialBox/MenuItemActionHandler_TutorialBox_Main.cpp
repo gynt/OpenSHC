@@ -12,6 +12,7 @@
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
 #include "OpenSHC/UI/Enums/MenuViewType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_00df5540.hpp"
 #include "OpenSHC/Globals/DAT_00df5554.hpp"
@@ -92,7 +93,8 @@ namespace UI {
                         == 1) {
                         iVar1 = DAT_00df556c::instance * 0x60;
                         DAT_00df556c::instance = DAT_00df556c::instance + 1;
-                        MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_24, "%s%s", "fx\\speech\\", iVar1 + 0xb3d810);
+                        MACRO_CALL(OpenSHC::OS_Func::_sprintf)(
+                            local_24, s__s_s_005aa800, s_fx_speech__005a64cc, iVar1 + 0xb3d810);
                         MACRO_CALL_MEMBER(OpenSHC::Audio::MSS::SoundSystem_Func::playAmbientStreamWithLoop,
                             DAT_SoundSystemState::ptr)(local_24);
                         if (0x27 < (int)DAT_00df556c::instance) {

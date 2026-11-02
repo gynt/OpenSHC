@@ -7,6 +7,7 @@
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/DAT_ButtonCurrentlyInteracting.hpp"
 #include "OpenSHC/Globals/DAT_ButtonX.hpp"
@@ -106,9 +107,9 @@ namespace UI {
                     == 1) {
                     return;
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)("(",
-                    (int)(DAT_ButtonX::instance + 0x154), (int)(DAT_ButtonY::instance + 4), OpenSHC::Text::TTA_LEFT,
-                    color, 0x12, FALSE, 0);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                    S_BRACE_CLOSE_005A2778, (int)(DAT_ButtonX::instance + 0x154), (int)(DAT_ButtonY::instance + 4),
+                    OpenSHC::Text::TTA_LEFT, color, 0x12, FALSE, 0);
                 bVar1 = DAT_MapPropertiesState::instance
                             .scenarioEvents[DAT_MapPropertiesState::instance.eventListScrollOffset + param_1]
                             .data.scenario.repeatMonths;
@@ -117,9 +118,9 @@ namespace UI {
                         DAT_TextManagerObject::ptr)((uint)bVar1, (int)(DAT_ButtonX::instance + 0x154),
                         (int)(DAT_ButtonY::instance + 4), OpenSHC::Text::TTA_LEFT, (uint)(color), 0x12, TRUE);
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)("x",
-                    (int)(DAT_ButtonX::instance + 0x154), (int)(DAT_ButtonY::instance + 4), OpenSHC::Text::TTA_LEFT,
-                    color, 0x12, TRUE, 0);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                    S_X_005AA7F8, (int)(DAT_ButtonX::instance + 0x154), (int)(DAT_ButtonY::instance + 4),
+                    OpenSHC::Text::TTA_LEFT, color, 0x12, TRUE, 0);
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                     (uint)DAT_MapPropertiesState::instance
                         .scenarioEvents[DAT_MapPropertiesState::instance.eventListScrollOffset + param_1]
@@ -139,7 +140,7 @@ namespace UI {
                 iVar4 = DAT_ButtonX::instance + 0x50;
                 BVar7 = color;
                 /*
-                  added by script: "Invasion"
+                  added by script: S_INVASION_005A7638
                  */
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
@@ -157,9 +158,9 @@ namespace UI {
                     == 0) {
                     return;
                 }
-                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)("(x",
-                    (int)(DAT_ButtonX::instance + 0x154), (int)(DAT_ButtonY::instance + 4), OpenSHC::Text::TTA_LEFT,
-                    color, 0x12, FALSE, 0);
+                MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                    S__X_005AA7F4, (int)(DAT_ButtonX::instance + 0x154), (int)(DAT_ButtonY::instance + 4),
+                    OpenSHC::Text::TTA_LEFT, color, 0x12, FALSE, 0);
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                     DAT_MapPropertiesState::instance
                         .scenarioEvents[DAT_MapPropertiesState::instance.eventListScrollOffset + param_1]
@@ -182,9 +183,9 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                 OpenSHC::DE::SHCDE::TEXT_SCENARIO, iVar3, (int)(DAT_ButtonX::instance + 0x15a),
                 (int)(DAT_ButtonY::instance + 4), OpenSHC::Text::TTA_LEFT, (uint)(color), 0x12, TRUE);
-            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(")",
-                (int)(DAT_ButtonX::instance + 0x15a), (int)(DAT_ButtonY::instance + 4), OpenSHC::Text::TTA_LEFT, color,
-                0x12, TRUE, 0);
+            MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
+                S_BRACE_OPEN_005A2774, (int)(DAT_ButtonX::instance + 0x15a), (int)(DAT_ButtonY::instance + 4),
+                OpenSHC::Text::TTA_LEFT, color, 0x12, TRUE, 0);
         }
 
     }

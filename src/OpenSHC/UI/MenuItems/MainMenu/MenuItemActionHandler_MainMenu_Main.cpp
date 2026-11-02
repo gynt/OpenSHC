@@ -18,6 +18,7 @@
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
 #include "OpenSHC/UI/Enums/MenuViewType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/DAT_00b95954.hpp"
 #include "OpenSHC/Globals/DAT_00df5554.hpp"
@@ -145,8 +146,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                     OpenSHC::UI::Enums::MVT_CUSTOM_SCENARIOS, 0);
                 return;
-            case 6:
-            {
+            case 6: {
                 /*
                   tutorial
                  */
@@ -162,7 +162,7 @@ namespace UI {
                 DAT_GameSynchronyState::instance.currentPlayerSlotID = 1;
                 DAT_GameSynchronyState::instance.currentPlayerFullIDArray[1] = 1;
                 MACRO_CALL_MEMBER(OpenSHC::Map::MapPropertiesState_Func::loadMap, DAT_MapPropertiesState::ptr)(
-                    "Crusader_tutorial.map");
+                    S_CRUSADER_TUTORIAL_MAP_005A1FF8);
                 DAT_GameCore::instance.buildmenuMenuTabToSwitchTo.buildMenuTab = OpenSHC::UI::Enums::BMTT_CASTLE;
                 MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
                     OpenSHC::UI::Enums::MVT_BUILD_MENU, 0);
@@ -191,8 +191,7 @@ namespace UI {
                 MACRO_CALL(OpenSHC::UI::Helpers_Func::ResetTutorialActionTrackers)();
                 return;
             }
-            case 8:
-            {
+            case 8: {
                 /*
                   options
                  */
@@ -205,8 +204,7 @@ namespace UI {
                     ((SoundEffectID)0x101));
                 return;
             }
-            case 5:
-            {
+            case 5: {
                 /*
                   quit
                  */
@@ -217,8 +215,7 @@ namespace UI {
                     OpenSHC::Rendering::Bink::BinkControlClass_Func::stopBinkPlayback, DAT_BinkControlState::ptr)(0);
                 return;
             }
-            case 7:
-            {
+            case 7: {
                 /*
                   credits
                  */

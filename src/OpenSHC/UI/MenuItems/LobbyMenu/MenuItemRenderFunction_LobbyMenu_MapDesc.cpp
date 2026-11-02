@@ -9,6 +9,7 @@
 #include "OpenSHC/DE/SHCDE/eTextSections.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/COL_VERY_SOFT_YELLOW.hpp"
 #include "OpenSHC/Globals/DAT_00b960f4.hpp"
@@ -98,8 +99,8 @@ namespace UI {
                         FALSE, (iVar6 / 32) + 0x20);
                     iVar6 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
-                        "-", iVar7 - 0x5e, (iVar2 - DAT_00b960f4::instance) - 8, OpenSHC::Text::TTA_LEFT, 0xc2f0eb,
-                        0x13, TRUE, (iVar6 / 32) + 0x20);
+                        S___005A2280, iVar7 - 0x5e, (iVar2 - DAT_00b960f4::instance) - 8, OpenSHC::Text::TTA_LEFT,
+                        0xc2f0eb, 0x13, TRUE, (iVar6 / 32) + 0x20);
                     iVar6 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
                     if (DAT_GameCore::instance.savedMapBalance != 0) {
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextFromTextGroup,

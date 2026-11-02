@@ -14,6 +14,7 @@
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_ButtonBackgroundBlendStrength.hpp"
 #include "OpenSHC/Globals/DAT_ButtonW.hpp"
@@ -295,7 +296,7 @@ namespace UI {
                     pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                         DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x5e);
                     MACRO_CALL(OS_Func::_sprintf)(
-                        DAT_GameSynchronyState::instance.receivedChatMessage, "%s :%s", pcVar2, pcVar1);
+                        DAT_GameSynchronyState::instance.receivedChatMessage, s__s__s_005a228c, pcVar2, pcVar1);
                 }
                 if (DAT_GameSynchronyState::instance.skirmishAutoSaveEveryMinutes == 5) {
                     /*
@@ -309,7 +310,7 @@ namespace UI {
                     pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                         DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x5e);
                     MACRO_CALL(OS_Func::_sprintf)(
-                        DAT_GameSynchronyState::instance.receivedChatMessage, "%s :%s", pcVar2, pcVar1);
+                        DAT_GameSynchronyState::instance.receivedChatMessage, s__s__s_005a228c, pcVar2, pcVar1);
                 }
                 if (DAT_GameSynchronyState::instance.skirmishAutoSaveEveryMinutes == 10) {
                     /*
@@ -323,7 +324,7 @@ namespace UI {
                     pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                         DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_XPLAY_WAITING_ROOM, 0x5e);
                     MACRO_CALL(OS_Func::_sprintf)(
-                        DAT_GameSynchronyState::instance.receivedChatMessage, "%s :%s", pcVar2, pcVar1);
+                        DAT_GameSynchronyState::instance.receivedChatMessage, s__s__s_005a228c, pcVar2, pcVar1);
                 }
                 if (DAT_GameSynchronyState::instance.skirmishAutoSaveEveryMinutes == 20) {
                     /*
@@ -340,7 +341,7 @@ namespace UI {
                     pcVar2 = MACRO_CALL_MEMBER(
                         Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(eVar4, iVar5);
                     MACRO_CALL(OS_Func::_sprintf)(
-                        DAT_GameSynchronyState::instance.receivedChatMessage, "%s :%s", pcVar2, pcVar1);
+                        DAT_GameSynchronyState::instance.receivedChatMessage, s__s__s_005a228c, pcVar2, pcVar1);
                 }
             LAB_0042a3af:
                 MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)(
@@ -387,7 +388,7 @@ namespace UI {
                 pcVar2 = MACRO_CALL_MEMBER(
                     Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(eVar4, iVar5);
                 MACRO_CALL(OS_Func::_sprintf)(
-                    DAT_GameSynchronyState::instance.receivedChatMessage, "%s :%s", pcVar2, pcVar1);
+                    DAT_GameSynchronyState::instance.receivedChatMessage, s__s__s_005a228c, pcVar2, pcVar1);
                 MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)(
                     DAT_GameSynchronyState::instance.receivedChatMessage);
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[0] = 1;
@@ -628,7 +629,7 @@ namespace UI {
                             pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                                 DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_SKIRMISH_MISC, 7);
                             MACRO_CALL(OS_Func::_sprintf)(
-                                DAT_GameSynchronyState::instance.receivedChatMessage, "%s :%s", pcVar2, pcVar1);
+                                DAT_GameSynchronyState::instance.receivedChatMessage, s__s__s_005a228c, pcVar2, pcVar1);
                             goto LAB_0042a3af;
                         }
                         goto LAB_0042a3af;
@@ -659,7 +660,7 @@ namespace UI {
                 pcVar2 = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset,
                     DAT_TextManagerObject::ptr)(DE::SHCDE::TEXT_SKIRMISH_MISC, iVar5);
                 MACRO_CALL(OS_Func::_sprintf)(
-                    DAT_GameSynchronyState::instance.receivedChatMessage, "%s :%s", pcVar2, pcVar1);
+                    DAT_GameSynchronyState::instance.receivedChatMessage, s__s__s_005a228c, pcVar2, pcVar1);
                 MACRO_CALL_MEMBER(Text::UserTextHandler_Func::copyIntoTextArray, DAT_UserTextHandlerState::ptr)(
                     DAT_GameSynchronyState::instance.receivedChatMessage);
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[0] = 1;

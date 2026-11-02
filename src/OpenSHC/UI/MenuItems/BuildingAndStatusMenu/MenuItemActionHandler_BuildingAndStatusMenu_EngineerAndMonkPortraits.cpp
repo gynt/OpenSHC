@@ -7,6 +7,7 @@
 #include "OpenSHC/Audio/SFX/SoundEffectID.hpp"
 #include "OpenSHC/Commands/GameCommandType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/DAT_BuildingsState.hpp"
 #include "OpenSHC/Globals/DAT_EnoughGoldForRequestedUnit.hpp"
@@ -64,12 +65,12 @@ namespace UI {
                     /*
                        "Okay, sir"
                      */
-                    wav_filename = "ladder_s1.wav";
+                    wav_filename = S_LADDER_S1_WAV_005A4BB4;
                 } else {
                     /*
                       "Your grace"
                      */
-                    wav_filename = "engineer_s2.wav";
+                    wav_filename = S_ENGINEER_S2_WAV_005A4A94;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(wav_filename);
                 INT_00df3368::instance = param_1;
@@ -99,13 +100,14 @@ namespace UI {
                   "You do not have enough gold to train this unit"
                  */
                 MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                    "units_warning3.wav");
+                    S_UNITS_WARNING3_WAV_005A58D8);
             }
         LAB_00466f49:
             /*
               "Recruits needed sire"
              */
-            MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)("other_warning5.wav");
+            MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                S_OTHER_WARNING5_WAV_005A58C4);
         }
 
     }

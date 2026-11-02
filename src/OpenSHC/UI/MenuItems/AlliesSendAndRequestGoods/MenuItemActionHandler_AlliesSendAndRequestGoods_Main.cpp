@@ -13,6 +13,7 @@
 #include "OpenSHC/Game/Resources/ResourceTypeMin1Int.hpp"
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_00df4284.hpp"
 #include "OpenSHC/Globals/DAT_AICState.hpp"
@@ -128,7 +129,7 @@ namespace UI {
                                       "No stockpile built"
                                      */
                                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX,
-                                        DAT_SFXState::ptr)("space_warning2.wav");
+                                        DAT_SFXState::ptr)(s_space_warning2_wav_005a5950);
                                 }
                                 if (DAT_GameState::instance
                                         .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -138,7 +139,7 @@ namespace UI {
                                       "No granary built"
                                      */
                                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX,
-                                        DAT_SFXState::ptr)("space_warning1.wav");
+                                        DAT_SFXState::ptr)(s_space_warning1_wav_005a593c);
                                 }
                                 if (DAT_GameState::instance
                                         .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -151,7 +152,7 @@ namespace UI {
                                   "No armory built"
                                  */
                                 MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                                    "space_warning3.wav");
+                                    s_space_warning3_wav_005a5928);
                                 DAT_MenuModalComposition1::instance.activeModalDialogID = OpenSHC::UI::Enums::MMT_NONE;
                             }
                             if (iVar2 < (int)DAT_SentOrRequestedGoodsAmount::instance) {
@@ -165,7 +166,7 @@ namespace UI {
                                       "No space in the stockpile"
                                      */
                                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX,
-                                        DAT_SFXState::ptr)("space_warning5.wav");
+                                        DAT_SFXState::ptr)(s_space_warning5_wav_005a50b0);
                                 }
                                 if (DAT_GameState::instance
                                         .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -175,7 +176,7 @@ namespace UI {
                                       "No space in the granary"
                                      */
                                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX,
-                                        DAT_SFXState::ptr)("space_warning4.wav");
+                                        DAT_SFXState::ptr)(s_space_warning4_wav_005a5914);
                                 }
                                 if (DAT_GameState::instance
                                         .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
@@ -188,7 +189,7 @@ namespace UI {
                                   "No space in the armory"
                                  */
                                 MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                                    "space_warning6.wav");
+                                    s_space_warning6_wav_005a5900);
                                 DAT_MenuModalComposition1::instance.activeModalDialogID = OpenSHC::UI::Enums::MMT_NONE;
                                 return;
                             }

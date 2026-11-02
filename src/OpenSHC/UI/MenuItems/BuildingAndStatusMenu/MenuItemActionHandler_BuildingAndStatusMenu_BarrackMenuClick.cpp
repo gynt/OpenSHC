@@ -13,6 +13,7 @@
 #include "OpenSHC/Game/Resources/ResourceTypeInt.hpp"
 #include "OpenSHC/Map/Units/EuroRecruitableState.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/DAT_00df3374.hpp"
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
@@ -62,7 +63,7 @@ namespace UI {
                       @TheRedDaemon: Army is Max Size Message
                      */
                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSpeechSFXFile, DAT_SFXState::ptr)(
-                        "Genie_26.wav");
+                        S_GENIE_26_WAV_005A598C);
                     return;
                 }
                 if (_recruitableState != OpenSHC::Map::Units::ERS_UNABLE_MISSING_PEASANTS) {
@@ -77,7 +78,7 @@ namespace UI {
                           "Weapons needed sire"
                          */
                         MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                            "other_warning6.wav");
+                            S_OTHER_WARNING6_WAV_005A5978);
                     }
                 LAB_00467488:
                     MACRO_CALL_MEMBER(OpenSHC::Audio::MissingResourceState_Func::playResourceLackSFX,
@@ -88,7 +89,7 @@ namespace UI {
                   "Recruits needed sire"
                  */
                 MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                    "other_warning5.wav");
+                    S_OTHER_WARNING5_WAV_005A58C4);
             }
             int _recruitSuccess = MACRO_CALL_MEMBER(
                 OpenSHC::Map::Units::UnitsState_Func::euroRecruit, DAT_UnitsState::ptr)(barrackUnitIdUnk,
@@ -139,7 +140,7 @@ namespace UI {
                       "Your army is approaching its maximum size"
                      */
                     MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                        "Genie_27.wav");
+                        S_GENIE_27_WAV_005A599C);
                     barrackUnitIdUnk = DAT_00df3374::instance;
                 }
             }

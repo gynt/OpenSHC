@@ -11,6 +11,7 @@
 #include "OpenSHC/UI/Enums/MenuModalType.hpp"
 #include "OpenSHC/UI/Enums/MenuViewType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
 #include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
@@ -62,7 +63,7 @@ namespace UI {
                 break;
             case 2:
                 /*
-                  "Load"
+                  S_LOAD_005A55F4
                  */
                 if (DAT_MenuTextInputState::instance.DAT_MenuLoadGameRelativeSelectionIndex == -1)
                     goto LAB_0049461b;
@@ -94,7 +95,7 @@ namespace UI {
                             pcVar6 = pcVar6 + 1;
                         } while (*_mapName != '\0');
                         /*
-                          ".map" stored as one dword, which is what the original writes
+                          S__MAP_005A2294 stored as one dword, which is what the original writes
                          */
                         uVar4 = 0x70616d2e;
                         goto LAB_00494566;
@@ -107,7 +108,7 @@ namespace UI {
                             _mapName = pcVar6;
                             pcVar6 = _mapName + 1;
                         } while (_mapName[1] != '\0');
-                        strcpy(_mapName + 1, ".sav");
+                        strcpy(_mapName + 1, S__SAV_005A75A0);
                         FVar9 = OpenSHC::IO::FRT_UNKNOWN;
                     } else {
                         pcVar6 = (local_3f4 - 1);
@@ -115,7 +116,7 @@ namespace UI {
                             _mapName = pcVar6;
                             pcVar6 = _mapName + 1;
                         } while (_mapName[1] != '\0');
-                        strcpy(_mapName + 1, ".msv");
+                        strcpy(_mapName + 1, S__MSV_005A7498);
                         FVar9 = OpenSHC::IO::FRT_UNKNOWN;
                     }
                 } else {
@@ -125,7 +126,7 @@ namespace UI {
                         pcVar6 = pcVar6 + 1;
                     } while (*_mapName != '\0');
                     /*
-                      ".tmp" stored as one dword, which is what the original writes
+                      S__TMP_005A75A8 stored as one dword, which is what the original writes
                      */
                     uVar4 = 0x706d742e;
                 LAB_00494566:
@@ -187,7 +188,7 @@ namespace UI {
                         _mapName = pcVar6 + 1;
                         pcVar6 = pcVar6 + 1;
                     } while (*_mapName != '\0');
-                    strcpy(pcVar6, ".tmp");
+                    strcpy(pcVar6, S__TMP_005A75A8);
                     FVar9 = OpenSHC::IO::FRT_MAPS;
                 } else {
                     if (DAT_GameCore::instance.currentMenuViewType == OpenSHC::UI::Enums::MVT_MAP_EDITOR_PROPERTIES) {
@@ -205,7 +206,7 @@ namespace UI {
                             _mapName = pcVar6 + 1;
                             pcVar6 = pcVar6 + 1;
                         } while (*_mapName != '\0');
-                        strcpy(pcVar6, ".map");
+                        strcpy(pcVar6, S__MAP_005A2294);
                         FVar9 = OpenSHC::IO::FRT_MAPS;
                     } else if ((DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY)
                         || (DAT_GameSynchronyState::instance.currentGameMode
@@ -224,7 +225,7 @@ namespace UI {
                             _mapName = pcVar6;
                             pcVar6 = _mapName + 1;
                         } while (_mapName[1] != '\0');
-                        strcpy(_mapName + 1, ".sav");
+                        strcpy(_mapName + 1, S__SAV_005A75A0);
                         FVar9 = OpenSHC::IO::FRT_UNKNOWN;
                     } else {
                         pcVar6 = MACRO_CALL_MEMBER(
@@ -241,7 +242,7 @@ namespace UI {
                             _mapName = pcVar6;
                             pcVar6 = _mapName + 1;
                         } while (_mapName[1] != '\0');
-                        strcpy(_mapName + 1, ".msv");
+                        strcpy(_mapName + 1, S__MSV_005A7498);
                         FVar9 = OpenSHC::IO::FRT_UNKNOWN;
                     }
                 }

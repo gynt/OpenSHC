@@ -8,6 +8,7 @@
 #include "OpenSHC/Rendering/Colors/BGR24.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_ButtonCurrentlyInteracting.hpp"
 #include "OpenSHC/Globals/DAT_ButtonX.hpp"
@@ -61,9 +62,9 @@ namespace UI {
                 DAT_TextManagerObject::instance.field12_0x30 = 1;
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderMultilineText5Unk, DAT_TextManagerObject::ptr)(
                     text, xPos, yPos, 0xc3, color, 0x12, 0);
-                MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_24, "%02d/%02d/%02d %02d:%02d", (int)dVar1 >> 0x10 & 0x1f,
-                    (int)dVar1 >> 0x15 & 0xf, ((int)dVar1 >> 0x19) - 0x14, (int)dVar1 >> 0xb & 0x1f,
-                    (int)dVar1 >> 5 & 0x3f);
+                MACRO_CALL(OpenSHC::OS_Func::_sprintf)(local_24, s__02d_02d_02d__02d_02d_005a229c,
+                    (int)dVar1 >> 0x10 & 0x1f, (int)dVar1 >> 0x15 & 0xf, ((int)dVar1 >> 0x19) - 0x14,
+                    (int)dVar1 >> 0xb & 0x1f, (int)dVar1 >> 5 & 0x3f);
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     local_24, (int)(DAT_ButtonX::instance + 0xd0), (int)(DAT_ButtonY::instance + 3),
                     OpenSHC::Text::TTA_LEFT, (BGR24)((int)(color)), 0x12, FALSE, 0);
