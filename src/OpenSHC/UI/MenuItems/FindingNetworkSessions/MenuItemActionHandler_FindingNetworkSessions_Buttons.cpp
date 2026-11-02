@@ -42,8 +42,8 @@ namespace UI {
             int _status;
             DPSESSIONDESC2 local_54;
             uVar1 = MSVC_SecurityCookie::instance ^ (uint)&local_54;
-            if (param_1 < ((FindingNetworkSessions_ButtonParameters)0x80000000)) {
-                if (param_1 != ((FindingNetworkSessions_ButtonParameters)3)) {
+            if (param_1 < (FindingNetworkSessions_ButtonParameters)0x80000000) {
+                if (param_1 != (FindingNetworkSessions_ButtonParameters)3) {
                     if ((param_1 == UI::Multiplayer::FNSBP_JOIN)
                         && (DAT_GameSynchronyState::instance.scrollBarIndex != -1)) {
                         MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::fetchSessionGUID,
@@ -115,7 +115,7 @@ namespace UI {
                     goto LAB_Return;
                 }
             } else {
-                if (param_1 == ((FindingNetworkSessions_ButtonParameters)0xffffffff)) {
+                if (param_1 == (FindingNetworkSessions_ButtonParameters)0xffffffff) {
                     if (0 < DAT_GameSynchronyState::instance.scrollBarItemOffset) {
                         DAT_GameSynchronyState::instance.scrollBarItemOffset
                             = DAT_GameSynchronyState::instance.scrollBarItemOffset - 1;
@@ -124,10 +124,10 @@ namespace UI {
                     }
                     goto LAB_Return;
                 }
-                if (param_1 != ((FindingNetworkSessions_ButtonParameters)0xffffd8f0)) {
-                    if ((param_1 == ((FindingNetworkSessions_ButtonParameters)0xfffffffe))
-                        && (DAT_GameSynchronyState::instance.scrollBarItemOffset
-                            < DAT_GameSynchronyState::instance.DPLAY_SessionsCount - 10)) {
+                if (param_1 != (FindingNetworkSessions_ButtonParameters)0xffffd8f0) {
+                    if (param_1 == (FindingNetworkSessions_ButtonParameters)0xfffffffe
+                        && DAT_GameSynchronyState::instance.scrollBarItemOffset
+                            < DAT_GameSynchronyState::instance.DPLAY_SessionsCount - 10) {
                         DAT_GameSynchronyState::instance.scrollBarItemOffset
                             = DAT_GameSynchronyState::instance.scrollBarItemOffset + 1;
                         ;

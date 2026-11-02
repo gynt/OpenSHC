@@ -79,9 +79,9 @@ namespace UI {
             char local_3f4[1008];
             uint local_4;
             local_4 = MSVC_SecurityCookie::instance ^ (uint)local_3f4;
-            if (((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
-                    && (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER))
-                && (DAT_GameSynchronyState::instance.saveRelated))
+            if (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY
+                && DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER
+                && DAT_GameSynchronyState::instance.saveRelated)
                 goto LAB_004957df;
             if (DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter == 0x1f) {
                 /*

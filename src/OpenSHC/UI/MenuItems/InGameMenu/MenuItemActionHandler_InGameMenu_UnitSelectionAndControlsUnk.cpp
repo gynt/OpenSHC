@@ -388,6 +388,10 @@ namespace UI {
                             if (!bVar15 && bVar16 == iVar14 < 0)
                                 goto LAB_00434f28;
                         }
+                        // Stays a do-while against style guide rule 9: docount.py turns this into
+                        // `for (int _playerID = 1; _playerID < 9; _playerID = _playerID + 4)`,
+                        // which measured worse (quick_diff ratio 0.5080 -> 0.5041), so the
+                        // original really did compile a do-while here.
                         _playerID = 1;
                         do {
                             if (0 < DAT_GameState::instance.playerDataArray[_playerID].keep.id
@@ -1206,11 +1210,10 @@ namespace UI {
                                                     break;
                                                 default:
                                                 switchD_004364b3_caseD_18:
-                                                    if (((DAT_GameSynchronyState::instance.currentGameMode
-                                                             == Game::GM_SOLITARY)
-                                                            || (DAT_GameState::instance.mapAndTime.skirmishStrongWalls
-                                                                == 0))
-                                                        || (UVar4 == Map::Units::UT_S_BATTERINGRAM))
+                                                    if (DAT_GameSynchronyState::instance.currentGameMode
+                                                            == Game::GM_SOLITARY
+                                                        || DAT_GameState::instance.mapAndTime.skirmishStrongWalls == 0
+                                                        || UVar4 == Map::Units::UT_S_BATTERINGRAM)
                                                         goto switchD_004364b3_caseD_3a;
                                                     _shooterID = -1;
                                                     bVar6 = 1;
@@ -1690,13 +1693,10 @@ namespace UI {
                         DAT_TileMapState::instance.cursorOverlayGmID = 0xac;
                         local_20 = 4;
                     } else {
-                        uVar9 = (DAT_DirectionAlgorithmState::instance.orientation
-                                    - DAT_TileMapState::instance.mapOrientation)
-                                + 0xcU
-                            & 0x80000007;
-                        if ((int)uVar9 < 0) {
-                            uVar9 = (uVar9 - 1 | 0xfffffff8) + 1;
-                        }
+                        uVar9 = (int)((DAT_DirectionAlgorithmState::instance.orientation
+                                          - DAT_TileMapState::instance.mapOrientation)
+                                    + 0xc)
+                            % 8;
                         DAT_UnitsState::instance.units[_otherUnitIDUnk].field46_0x6e = (short)uVar9 + 1;
                     }
                     goto LAB_00436d33;

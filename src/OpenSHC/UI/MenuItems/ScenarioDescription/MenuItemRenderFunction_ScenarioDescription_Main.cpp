@@ -41,9 +41,8 @@ namespace UI {
             uint uVar2;
             DAT_ButtonUnknownZero::instance = 1;
             DAT_StopHandlingMenuItems::instance = 0;
-            if ((((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_BUILDERUnk) && (param_1 != 10))
-                    && (param_1 != 0xc))
-                && (((param_1 != 0xd && (param_1 != -3)) && ((param_1 != -4 && (param_1 != -1)))))) {
+            if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_BUILDERUnk && param_1 != 10 && param_1 != 0xc
+                && param_1 != 0xd && param_1 != -3 && param_1 != -4 && param_1 != -1) {
                 DAT_StopHandlingMenuItems::instance = 0;
                 DAT_ButtonUnknownZero::instance = 1;
                 return;
@@ -91,12 +90,12 @@ namespace UI {
                     uVar2 = 0xccfaff;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                    OpenSHC::DE::SHCDE::TEXT_MAINOPTIONS, 0x18, (int)((int)(DAT_ButtonX::instance + 10)),
-                    (int)((int)(DAT_ButtonY::instance + 8)), OpenSHC::Text::TTA_LEFT, uVar2, 0x12, FALSE);
+                    OpenSHC::DE::SHCDE::TEXT_MAINOPTIONS, 0x18, (int)(DAT_ButtonX::instance + 10),
+                    (int)(DAT_ButtonY::instance + 8), OpenSHC::Text::TTA_LEFT, uVar2, 0x12, FALSE);
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                     OpenSHC::DE::SHCDE::TEXT_MAINOPTIONS, DAT_GameState::instance.mapAndTime.difficulty + 0x13,
-                    (int)((int)(DAT_ButtonW::instance - 10 + DAT_ButtonX::instance)),
-                    (int)((int)(DAT_ButtonY::instance + 8)), OpenSHC::Text::TTA_RIGHT, 0xff00, 0x12, FALSE);
+                    (int)(DAT_ButtonW::instance - 10 + DAT_ButtonX::instance), (int)(DAT_ButtonY::instance + 8),
+                    OpenSHC::Text::TTA_RIGHT, 0xff00, 0x12, FALSE);
                 return;
             }
             if (param_1 == -2) {
@@ -125,8 +124,8 @@ namespace UI {
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                     OpenSHC::DE::SHCDE::TEXT_MISSION_BUTTONS, 10,
-                    (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
-                    (int)((int)(DAT_ButtonY::instance + 8)), OpenSHC::Text::TTA_CENTER, uVar2, 0x12, FALSE);
+                    (int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance), (int)(DAT_ButtonY::instance + 8),
+                    OpenSHC::Text::TTA_CENTER, uVar2, 0x12, FALSE);
                 return;
             }
             if (param_1 == -3) {
@@ -150,8 +149,8 @@ namespace UI {
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                     OpenSHC::DE::SHCDE::TEXT_MISSION_BUTTONS, 0xb,
-                    (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
-                    (int)((int)(DAT_ButtonY::instance + 8)), OpenSHC::Text::TTA_CENTER, uVar2, 0x12, FALSE);
+                    (int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance), (int)(DAT_ButtonY::instance + 8),
+                    OpenSHC::Text::TTA_CENTER, uVar2, 0x12, FALSE);
                 return;
             }
             if (param_1 == -4) {
@@ -174,14 +173,13 @@ namespace UI {
                     uVar2 = 0xccfaff;
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
-                    OpenSHC::DE::SHCDE::TEXT_MAPEDIT, 10,
-                    (int)((int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance)),
-                    (int)((int)(DAT_ButtonY::instance + 8)), OpenSHC::Text::TTA_CENTER, uVar2, 0x12, FALSE);
+                    OpenSHC::DE::SHCDE::TEXT_MAPEDIT, 10, (int)(DAT_ButtonW::instance / 2 + DAT_ButtonX::instance),
+                    (int)(DAT_ButtonY::instance + 8), OpenSHC::Text::TTA_CENTER, uVar2, 0x12, FALSE);
                 return;
             }
             if (((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION)
                     || (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_ECONOMIC_CAMPAIGN_SH1))
-                && (DAT_00ed27bc::instance != 1)) {
+                && DAT_00ed27bc::instance != 1) {
                 if (param_1 == 0xc) {
                     DAT_StopHandlingMenuItems::instance = 0;
                     DAT_ButtonUnknownZero::instance = 1;

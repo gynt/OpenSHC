@@ -59,8 +59,7 @@ namespace UI {
                 *(undefined1*)((int)&pIVar3->data + 0x6f) = uVar5;
                 DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                     .data.invasion.totalUnitCount = 0;
-                iVar6 = 0;
-                do {
+                for (int iVar6 = 0; iVar6 < 25; iVar6 = iVar6 + 5) {
                     pIVar1 = &DAT_MapPropertiesState::instance
                                   .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                                   .data;
@@ -101,8 +100,7 @@ namespace UI {
                                       .scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                                       .data
                             + iVar6 * 4 + 0x14);
-                    iVar6 = iVar6 + 5;
-                } while (iVar6 < 25);
+                }
             LAB_004bf791:
                 MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog, DAT_MenuModalComposition1::ptr)(
                     UI::Enums::MMT_NONE, FALSE);

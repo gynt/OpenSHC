@@ -37,26 +37,30 @@ namespace UI {
         using OpenSHC::UI::Enums::MenuModalType;
         using OpenSHC::WindowsHelper::Enums::BOOLEnum;
 
+        // The 23 `((int)(iVar1 + (iVar1 >> 0x1f & 0x1fU)) >> 5) + 0x20` below are each a signed
+        // `iVar1 / 32`, and undiv.py rewrites them, but measured: raw match 40.4% -> 24.6%. The
+        // opcodes are unchanged - the division frees a register, MSVC then picks ebx where the
+        // original uses edi, and every instruction after it is renamed. Normalized match rises
+        // 41.1% -> 48.1%, so the division is arguably the closer stream; it is kept in the shift
+        // form only because the raw percentage is the gate. Retry together with whatever fixes
+        // this function's register allocation.
         // FUNCTION: STRONGHOLDCRUSADER 0x00428AC0
         void General::MenuItemRenderFunction_General_AdvancedGameOptions(int param_1, ...)
         {
             int iVar1;
             uint _color;
             int iVar2;
-            if (((DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_LOAD_MAP)
-                    || (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_SEND_MAP_TO))
-                || (DAT_MenuModalComposition1::instance.activeModalDialogID
-                    == OpenSHC::UI::Enums::MMT_RECEIVE_MAP_FROM)) {
+            if (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_LOAD_MAP
+                || DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_SEND_MAP_TO
+                || DAT_MenuModalComposition1::instance.activeModalDialogID
+                    == OpenSHC::UI::Enums::MMT_RECEIVE_MAP_FROM) {
                 return;
             }
             if (DAT_MenuModalComposition1::instance.activeModalDialogID
                 == OpenSHC::UI::Enums::MMT_SKIRMISH_PLAY_OPTIONS) {
-                if ((((param_1 != -1000) && (param_1 != -10))
-                        && ((param_1 != -0xb && ((param_1 != -0xc && (param_1 != -0xd))))))
-                    && ((param_1 != -0xe
-                        && (((((param_1 != 99 && (param_1 != 100)) && (param_1 != 0x53))
-                                 && ((param_1 != 0x6d && (param_1 != 0x52))))
-                            && (param_1 != 0x5e)))))) {
+                if (param_1 != -1000 && param_1 != -10 && param_1 != -0xb && param_1 != -0xc && param_1 != -0xd
+                    && param_1 != -0xe && param_1 != 99 && param_1 != 100 && param_1 != 0x53 && param_1 != 0x6d
+                    && param_1 != 0x52 && param_1 != 0x5e) {
                     return;
                 }
             } else {
