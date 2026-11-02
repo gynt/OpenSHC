@@ -82,7 +82,12 @@ namespace UI {
                 _maxLoopDurationOfTheLast100 = _millisecLoopPointer[3];
             }
             _millisecLoopPointer = _millisecLoopPointer + 5;
-        } while ((int)_millisecLoopPointer < 0xdf552c);
+            // 0xdf552c was the end of the buffer, not a value: it is DAT_GameLoopDurationBuffer
+            // (0x00df5398) plus 100 ints, less the +1 this pointer started at (style guide
+            // rule 11). The pointer walk itself stays - as an index loop stepping by 5 over
+            // both loops this function measured 59.1% -> 55.7%, so the original really did
+            // walk pointers here.
+        } while (_millisecLoopPointer < DAT_GameLoopDurationBuffer::instance + 100 - 1);
         if (elementState != 0xfffffc18) {
             MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, DAT_TextManagerObject::ptr)(
                 _averageMillisecLoopMain, posX + 0x30, posY, Text::TTA_LEFT, 0x80ff, 0, 0x11, FALSE, 0);
