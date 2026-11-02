@@ -3,6 +3,7 @@
 
 #include "OpenSHC/Audio/MSS/SoundSystem.func.hpp"
 #include "OpenSHC/Audio/SFX/SFXState.func.hpp"
+#include "OpenSHC/string-macros.hpp"
 
 #include "OpenSHC/Globals/DAT_SFXState.hpp"
 #include "OpenSHC/Globals/DAT_SoundSystemState.hpp"
@@ -15,16 +16,16 @@ namespace Map {
         void TroopValueState::playAttackAlarmSound()
         {
             char* filename;
-            MACRO_CALL_MEMBER(Audio::MSS::SoundSystem_Func::playBattleGloryMusicIfConditionsMet,
-                DAT_SoundSystemState::ptr)();
+            MACRO_CALL_MEMBER(
+                Audio::MSS::SoundSystem_Func::playBattleGloryMusicIfConditionsMet, DAT_SoundSystemState::ptr)();
             switch (this->attackInfo.attacker) {
             case 2:
             case 3:
             case 4:
-                filename = "battlehorn.wav";
+                filename = S_BATTLEHORN_WAV_005A77D8;
                 break;
             case 5:
-                filename = "drumhorn.wav";
+                filename = S_DRUMHORN_WAV_005ABB58;
                 break;
             default:
                 goto switchD_0051b6d7_caseD_4;

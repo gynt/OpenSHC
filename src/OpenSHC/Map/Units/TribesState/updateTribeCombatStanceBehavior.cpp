@@ -50,8 +50,7 @@ namespace Map {
             _buildingIndex_2 = this->tribes[tribeID].someUnitID;
             if (!_buildingIndex_2) {
                 if (this->tribes[tribeID].unitStance == Map::Units::Behavior::USE_AGGRESSIVE) {
-                    local_c = 0;
-                    do {
+                    for (int local_c = 0; local_c < 10; local_c = local_c + 1) {
                         iVar5 = ((this->tribes[tribeID].someUnitArrayIndex - local_c) + 10) % 10;
                         _unitID = (int)this->tribes[tribeID].someUnitArray[iVar5];
                         if (_unitID) {
@@ -85,8 +84,7 @@ namespace Map {
                                 this->tribes[tribeID].someUnitArray[iVar5] = 0;
                             }
                         }
-                        local_c = local_c + 1;
-                    } while (local_c < 10);
+                    }
                 }
             } else {
                 iVar5 = (int)_buildingIndex_2;

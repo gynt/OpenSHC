@@ -48,13 +48,11 @@ namespace Map {
                               .aiControlStatusRelated;
                 if (iVar2 != -1000) {
                     if (!iVar2) {
-                        iVar2 = 0;
-                        do {
+                        for (int iVar2 = 0; iVar2 < 0x32; iVar2 = iVar2 + 1) {
                             if ((DAT_TroopValueState::instance.attackInfo.nof_tribes[iVar2] != 0)
                                 && (DAT_TroopValueState::instance.attackInfo.value3Array01[iVar2] != 6))
                                 goto LAB_0052103d;
-                            iVar2 = iVar2 + 1;
-                        } while (iVar2 < 0x32);
+                        }
                         *piVar1 = 600;
                     } else if (iVar2 >= 1) {
                         *piVar1 = iVar2 - 1;

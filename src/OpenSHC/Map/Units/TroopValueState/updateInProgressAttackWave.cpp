@@ -4,6 +4,7 @@
 #include "OpenSHC/Map/Units/TroopValueState.func.hpp"
 #include "OpenSHC/Map/Units/SomeTribeBehaviorType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
+#include "OpenSHC/string-literals.hpp"
 
 #include "OpenSHC/Globals/DAT_AttackInfoDefinedData.hpp"
 #include "OpenSHC/Globals/DAT_GameCore.hpp"
@@ -71,7 +72,7 @@ namespace Map {
                     /*
                       "we are the macemen"
                      */
-                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)("Mace_s4.wav");
+                    MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(s_Mace_s4_wav_005abb68);
                 }
             }
         }
