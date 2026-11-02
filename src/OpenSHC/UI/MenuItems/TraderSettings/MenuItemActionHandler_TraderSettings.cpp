@@ -21,7 +21,7 @@ namespace UI {
             BOOLEnum* pBVar1;
             if (param_1 < 0) {
                 pBVar1 = DAT_MapPropertiesState::instance.SEC_Section1065.tradeabilityArray
-                    + *(int*)((int)DAT_MissionAestheticsDefinedData::ptr + (-1 - param_1) * 4 + 0x345c);
+                    + DAT_MissionAestheticsDefinedData::instance.field1237_0x345c[-1 - param_1];
                 *pBVar1 = *pBVar1 ^ TRUE;
             }
             if (param_1 == 0x25) {

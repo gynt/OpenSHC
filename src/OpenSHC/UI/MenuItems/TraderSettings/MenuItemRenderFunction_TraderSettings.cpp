@@ -50,11 +50,11 @@ namespace UI {
                 int const traderIndex = -1 - param_1;
                 DAT_ButtonCurrentlyInteracting::instance
                     = (BOOLEnum)(DAT_MapPropertiesState::instance.SEC_Section1065.tradeabilityArray[(
-                                     (int*)((int)DAT_MissionAestheticsDefinedData::ptr + 0x345c))[traderIndex]]
+                                     DAT_MissionAestheticsDefinedData::instance.field1237_0x345c)[traderIndex]]
                         != FALSE);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                int iVar2 = ((int*)((int)DAT_MissionAestheticsDefinedData::ptr + 0x345c))[traderIndex];
+                int iVar2 = DAT_MissionAestheticsDefinedData::instance.field1237_0x345c[traderIndex];
                 int iVar1 = iVar2 * 2 + 0x8d;
                 if (iVar1 == 0x9d) {
                     iVar1 = 0x9b;

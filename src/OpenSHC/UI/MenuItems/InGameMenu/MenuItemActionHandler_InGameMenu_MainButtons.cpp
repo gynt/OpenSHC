@@ -196,7 +196,7 @@ namespace UI {
                                 DAT_GameSynchronyState::instance.currentPlayerFullIDArray[6] = -1;
                                 DAT_GameSynchronyState::instance.currentPlayerFullIDArray[7] = -1;
                                 DAT_GameSynchronyState::instance.currentPlayerFullIDArray[8] = -1;
-                                *(undefined4*)((int)DAT_GameSynchronyState::ptr + (-9 - param_1) * 4 + 0x6a8) = 1;
+                                DAT_GameSynchronyState::instance.currentPlayerFullIDArray[-9 - param_1] = 1;
                                 DAT_GameSynchronyState::instance.currentPlayerSlotID = -9 - param_1;
                                 return;
                             }

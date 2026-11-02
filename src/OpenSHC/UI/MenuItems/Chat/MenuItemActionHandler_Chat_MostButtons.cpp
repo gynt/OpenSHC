@@ -40,7 +40,7 @@ namespace UI {
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[6] = 0;
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[7] = 0;
                 DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[8] = 0;
-                *(undefined4*)((int)DAT_GameSynchronyState::ptr + param_1 * -4 + 0x109264) = 1;
+                DAT_GameSynchronyState::instance.DAT_ChatMessageReceiverArray[-param_1] = 1;
                 DAT_GameSynchronyState::instance
                     .DAT_ChatMessageReceiverArray[DAT_GameSynchronyState::instance.currentPlayerSlotID] = 1;
                 return;

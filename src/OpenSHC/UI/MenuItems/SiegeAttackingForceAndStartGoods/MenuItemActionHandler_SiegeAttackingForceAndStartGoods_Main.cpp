@@ -40,13 +40,11 @@ namespace UI {
                 if (iVar1 < 0x14) {
                     MACRO_CALL_MEMBER(
                         UI::MenuModalComposition_Func::setSliderParameters, DAT_MenuModalComposition2::ptr)(0,
-                        *(int*)((int)DAT_MissionAestheticsDefinedData::ptr + iVar1 * 4 + 0x34b4),
-                        (int)(DAT_MapPropertiesState::instance.SEC_StartingResources[*(
-                            int*)(DAT_MissionAestheticsDefinedData::ptr + iVar1 * 4 + 0x345c)]),
-                        (undefined*)((int)(
-
-                            (DAT_MapPropertiesState::instance.SEC_StartingResources
-                                + *(int*)((int)DAT_MissionAestheticsDefinedData::ptr + iVar1 * 4 + 0x345c)))),
+                        DAT_MissionAestheticsDefinedData::instance.field1238_0x34b4[iVar1],
+                        DAT_MapPropertiesState::instance
+                            .SEC_StartingResources[DAT_MissionAestheticsDefinedData::instance.field1237_0x345c[iVar1]],
+                        (undefined*)(DAT_MapPropertiesState::instance.SEC_StartingResources
+                            + DAT_MissionAestheticsDefinedData::instance.field1237_0x345c[iVar1]),
                         (void*)MACRO_CALL(UI::Helpers_Func::SumUnitPoints));
                     DAT_MenuModalComposition2::instance.textIndex
                         = DAT_MissionAestheticsDefinedData::instance
