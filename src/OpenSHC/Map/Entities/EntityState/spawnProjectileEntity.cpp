@@ -212,7 +212,11 @@ namespace Map {
             }
             this->entityArray[entityID].field7_0x12 = 0;
             this->entityArray[entityID].unknownAnimationFrameRelated = 0;
-            if (entityType == Map::Entities::ET_DUST_CLOUD) {
+            if (entityType != Map::Entities::ET_DUST_CLOUD) {
+                if (entityType != (EntityType)8)
+                    goto LAB_00404efa;
+                ownerColorUnk = DAT_UnitsState::instance.units[unitID].fixedRng;
+            } else {
                 if (param_11 == 1) {
                     this->entityArray[entityID].unknownAnimationFrameRelated = 200;
                 }
@@ -234,10 +238,6 @@ namespace Map {
                 if (entityType != Map::Entities::ET_HEADS_ON_SPIKES)
                     goto LAB_00404f8c;
                 this->entityArray[entityID].rng_2 = SEC_RNG::instance.currentNumber2 % 500 + 300;
-            } else {
-                if (entityType != (EntityType)8)
-                    goto LAB_00404efa;
-                ownerColorUnk = DAT_UnitsState::instance.units[unitID].fixedRng;
             }
             this->entityArray[entityID].rng_1 = ownerColorUnk;
         LAB_00404f8c:

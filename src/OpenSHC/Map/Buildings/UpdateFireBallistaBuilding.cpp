@@ -83,7 +83,9 @@ namespace Map {
                 = (int)DAT_BuildingsState::instance.buildings[_fireballistaUnit].owner;
             DAT_BuildingsState::instance.buildings[_fireballistaUnit].renderAnimation = 1;
             DAT_BuildingsState::instance.buildings[_fireballistaUnit].displayOwnerFlag = 0;
-            if (_fullID == -1) {
+            if (_fullID != -1) {
+                DAT_BuildingsState::instance.buildings[_fireballistaUnit].animationFrame = 1;
+            } else {
                 _lordType = MACRO_CALL_MEMBER(
                     Synchrony::GameSynchronyState_Func::getLordTypeForPlayer, DAT_GameSynchronyState::ptr)(_owner);
                 _fireballistaUnit = DAT_CurrentBuildingID::instance;
@@ -92,8 +94,6 @@ namespace Map {
                 } else {
                     DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].animationFrame = 2;
                 }
-            } else {
-                DAT_BuildingsState::instance.buildings[_fireballistaUnit].animationFrame = 1;
             }
             MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(
                 _fireballistaUnit);

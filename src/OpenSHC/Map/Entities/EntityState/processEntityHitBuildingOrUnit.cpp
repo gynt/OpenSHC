@@ -400,7 +400,22 @@ namespace Map {
                                 || (_y & 0xf000000))
                                 goto LAB_00408150;
                             if (DAT_UnitsState::instance.units[_entityOriginUnitID].unitType
-                                == Map::Units::UT_S_FBALLISTA) {
+                                != Map::Units::UT_S_FBALLISTA) {
+                                if (this->entityArray[entityID].entityType == Map::Entities::ET_BALLISTA) {
+                                    _playerID = this->entityArray[entityID].owner;
+                                    _yPosition = this->entityArray[entityID].yPosition;
+                                    _xPosition = this->entityArray[entityID].xPosition;
+                                    _buildingID = 2;
+                                } else {
+                                    _playerID = this->entityArray[entityID].owner;
+                                    _yPosition = this->entityArray[entityID].yPosition;
+                                    _xPosition = this->entityArray[entityID].xPosition;
+                                    _buildingID = 1;
+                                }
+                                MACRO_CALL_MEMBER(Map::TileMapState_Func::processDamageToBuilding,
+                                    DAT_TileMapState::ptr)(_someTile, (uint)(_xPosition), (uint)(_yPosition),
+                                    _buildingID, 0, (int)(_playerID), FALSE, _entityOriginUnitID);
+                            } else {
                                 MACRO_CALL_MEMBER(
                                     Map::TileMapState_Func::processDamageToBuilding, DAT_TileMapState::ptr)(_someTile,
                                     (uint)((int)this->entityArray[entityID].xPosition),
@@ -419,21 +434,6 @@ namespace Map {
                                     this->entityArray[entityID].someCounter_OR_hitGround = 1;
                                     goto LAB_00408148;
                                 }
-                            } else {
-                                if (this->entityArray[entityID].entityType == Map::Entities::ET_BALLISTA) {
-                                    _playerID = this->entityArray[entityID].owner;
-                                    _yPosition = this->entityArray[entityID].yPosition;
-                                    _xPosition = this->entityArray[entityID].xPosition;
-                                    _buildingID = 2;
-                                } else {
-                                    _playerID = this->entityArray[entityID].owner;
-                                    _yPosition = this->entityArray[entityID].yPosition;
-                                    _xPosition = this->entityArray[entityID].xPosition;
-                                    _buildingID = 1;
-                                }
-                                MACRO_CALL_MEMBER(Map::TileMapState_Func::processDamageToBuilding,
-                                    DAT_TileMapState::ptr)(_someTile, (uint)(_xPosition), (uint)(_yPosition),
-                                    _buildingID, 0, (int)(_playerID), FALSE, _entityOriginUnitID);
                             }
                             this->entityArray[entityID].someCounter_OR_hitGround = 1;
                         }

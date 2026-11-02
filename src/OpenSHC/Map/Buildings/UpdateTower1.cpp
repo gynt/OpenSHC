@@ -52,11 +52,11 @@ namespace Map {
         iVar5 = 9
             - (DAT_BuildingsState::instance.buildings[iVar1].currentHealth * 9)
                 / (int)DAT_BuildingsState::instance.buildings[iVar1].maxHealth;
-        if (iVar5 < 9) {
+        if (iVar5 >= 9) {
+            iVar5 = 8;
+        } else {
             if (!iVar5)
                 goto LAB_00418e05;
-        } else {
-            iVar5 = 8;
         }
         if (0 < iVar5) {
             uint uVar8 = DAT_BuildingsState::instance.buildings[iVar1].fireRelatedRNG1;

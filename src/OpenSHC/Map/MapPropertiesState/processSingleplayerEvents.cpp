@@ -158,7 +158,101 @@ namespace Map {
                 if (DAT_GameCore::instance.section1095 != 1) {
                     if (DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .playerDeathRelated
-                        == 0) {
+                        != 0) {
+                        if ((DAT_BinkControlState::instance.binkObjPtrArray[1] == (HBINK)0x0)
+                            && (!DAT_VideoBikQueue::instance.storedMessages_0x924)) {
+                            DAT_GameState::instance.mapAndTime.unknownCountdown01
+                                = DAT_GameState::instance.mapAndTime.unknownCountdown01 - 1;
+                        }
+                        if (!DAT_GameState::instance.mapAndTime.unknownCountdown01) {
+                            DAT_VideoBikQueue::instance.storedMessages_0x924 = 0;
+                            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                                DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
+                            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                                DAT_MenuModalComposition2::ptr)(UI::Enums::MMT_NONE, FALSE);
+                            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
+                                DAT_MenuModalComposition3::ptr)(UI::Enums::MMT_NONE, FALSE);
+                            DAT_MenuTextInputState::instance.DAT_SomeTextArrayIndex = 9;
+                            MACRO_CALL_MEMBER(
+                                UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, DAT_MenuTextInputState::ptr)();
+                            if (DAT_GameCore::instance.gameMode_2 == Game::GM_CAMPAIGN_MISSION) {
+                                if (DAT_GameState::instance
+                                        .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                                        .playerDeathRelated
+                                    == 1) {
+                                    MACRO_CALL_MEMBER(
+                                        Game::GameCore_Func::incrementMissionProgress, DAT_GameCore::ptr)();
+                                    DAT_GameCore::instance.section1066 = 2;
+                                }
+                                if (DAT_GameState::instance
+                                        .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                                        .playerDeathRelated
+                                    == 2) {
+                                    MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                                        UI::Enums::MVT_GAME_LOSTUnk, 0);
+                                    DAT_GameCore::instance.section1066 = 0;
+                                }
+                                MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
+                                    UI::Enums::DEID_MISSION_WIN_DEFEAT_BANNER, 0);
+                                MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
+                                    UI::Enums::DEID_MISSION_WIN_DEFEAT_BANNER, 0);
+                            }
+                            if (DAT_GameCore::instance.gameMode_2 != Game::GM_ECONOMIC_CAMPAIGN_SH1) {
+                                if (DAT_GameCore::instance.gameMode_2 == Game::GM_BUILDERUnk) {
+                                    if (DAT_GameCore::instance.field24_0x6c) {
+                                        DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 7;
+                                        MACRO_CALL(UI::MenuItems::General_Func::
+                                                MenuItemActionHandler_General_LaunchOrQuitMultiplayerGameUnk)(0x16);
+                                        MACRO_CALL(
+                                            UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
+                                            UI::Enums::DEID_MISSION_WIN_DEFEAT_BANNER, 0);
+                                    }
+                                    if (DAT_GameState::instance
+                                            .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                                            .playerDeathRelated
+                                        == 1) {
+                                        if ((int)this->SEC_U3_MapType2_1 < 2) {
+                                            MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                                                UI::Enums::MVT_MISSION_FINISHED_TRANSITION, 0);
+                                        } else {
+                                            DAT_GameCore::instance.section1095 = 1;
+                                            DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 0x2f;
+                                            MACRO_CALL_MEMBER(
+                                                UI::MenuTextInputState_Func::activateModalDialogAndClearText,
+                                                DAT_MenuTextInputState::ptr)(UI::Enums::MMT_QUIT_DIALOG);
+                                        }
+                                    }
+                                    if (DAT_GameState::instance
+                                            .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                                            .playerDeathRelated
+                                        == 2) {
+                                        MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                                            UI::Enums::MVT_GAME_LOSTUnk, 0);
+                                    }
+                                    DAT_GameCore::instance.section1066 = 2;
+                                }
+                                MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
+                                    UI::Enums::DEID_MISSION_WIN_DEFEAT_BANNER, 0);
+                            }
+                            if (DAT_GameState::instance
+                                    .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                                    .playerDeathRelated
+                                == 1) {
+                                MACRO_CALL_MEMBER(Game::GameCore_Func::incrementMission, DAT_GameCore::ptr)();
+                            }
+                            if (DAT_GameState::instance
+                                    .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
+                                    .playerDeathRelated
+                                == 2) {
+                                MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
+                                    UI::Enums::MVT_GAME_LOSTUnk, 0);
+                            }
+                            MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
+                                UI::Enums::DEID_MISSION_WIN_DEFEAT_BANNER, 0);
+                            MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
+                                UI::Enums::DEID_MISSION_WIN_DEFEAT_BANNER, 0);
+                        }
+                    } else {
                         if ((this->SEC_Section1081) && (0 < this->SEC_Section1080)) {
                             this->SEC_Section1080 = this->SEC_Section1080 - 1;
                         }
@@ -456,12 +550,7 @@ namespace Map {
                                                              [DAT_TroopValueState::instance.attackInfo.inv_count]
                                                     + 4;
                                                 *pbVar3 = *pbVar3 + cVar17;
-                                            } else if (_unitAIBehaviourTypeUnk == 0x18) {
-                                                pbVar3 = DAT_TroopValueState::instance.attackInfo.someSinglePlayerScore
-                                                             [DAT_TroopValueState::instance.attackInfo.inv_count]
-                                                    + 8;
-                                                *pbVar3 = *pbVar3 + cVar17;
-                                            } else {
+                                            } else if (_unitAIBehaviourTypeUnk != 0x18) {
                                                 _spawnUnitCount = _amplifiedUnitTotalForUnitType
                                                     / (_amplifiedUnitTotalForUnitType / _unitSpawnTotalAdjustment + 1);
                                                 while (0 < _amplifiedUnitTotalForUnitType) {
@@ -493,6 +582,11 @@ namespace Map {
                                                         local_88 = 0;
                                                     }
                                                 }
+                                            } else {
+                                                pbVar3 = DAT_TroopValueState::instance.attackInfo.someSinglePlayerScore
+                                                             [DAT_TroopValueState::instance.attackInfo.inv_count]
+                                                    + 8;
+                                                *pbVar3 = *pbVar3 + cVar17;
                                             }
                                         LAB_004c5db4:
                                             _subIndex = _subIndex + 1;
@@ -796,8 +890,11 @@ namespace Map {
                                                 == 0) {
                                                 _scenarioEventType
                                                     = this->scenarioEvents[_eventIndex].data.scenario.ScenarioEventType;
-                                                if (_scenarioEventType == 0x1a || !_scenarioEventType
+                                                if (_scenarioEventType != 0x1a || !_scenarioEventType
                                                     || _scenarioEventType == 0x17) {
+                                                    *_pConditionIsMet = 1;
+                                                    local_a0 = local_a0 + 1;
+                                                } else {
                                                     iVar18 = _eventIndex + 1;
                                                     if (iVar18 < this->eventsCount) {
                                                         pSVar15 = this->scenarioEvents[_eventIndex + 1]
@@ -812,9 +909,6 @@ namespace Map {
                                                             pSVar15 = pSVar15 + 0x39;
                                                         } while (iVar18 < this->eventsCount);
                                                     }
-                                                    *_pConditionIsMet = 1;
-                                                    local_a0 = local_a0 + 1;
-                                                } else {
                                                     *_pConditionIsMet = 1;
                                                     local_a0 = local_a0 + 1;
                                                 }
@@ -2512,100 +2606,6 @@ namespace Map {
                                     } while (iVar21 < this->eventsCount);
                                 }
                             }
-                        }
-                    } else {
-                        if ((DAT_BinkControlState::instance.binkObjPtrArray[1] == (HBINK)0x0)
-                            && (!DAT_VideoBikQueue::instance.storedMessages_0x924)) {
-                            DAT_GameState::instance.mapAndTime.unknownCountdown01
-                                = DAT_GameState::instance.mapAndTime.unknownCountdown01 - 1;
-                        }
-                        if (!DAT_GameState::instance.mapAndTime.unknownCountdown01) {
-                            DAT_VideoBikQueue::instance.storedMessages_0x924 = 0;
-                            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
-                                DAT_MenuModalComposition1::ptr)(UI::Enums::MMT_NONE, FALSE);
-                            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
-                                DAT_MenuModalComposition2::ptr)(UI::Enums::MMT_NONE, FALSE);
-                            MACRO_CALL_MEMBER(UI::MenuModalComposition_Func::activateModalDialog,
-                                DAT_MenuModalComposition3::ptr)(UI::Enums::MMT_NONE, FALSE);
-                            DAT_MenuTextInputState::instance.DAT_SomeTextArrayIndex = 9;
-                            MACRO_CALL_MEMBER(
-                                UI::MenuTextInputState_Func::clearAnyOtherModalDialogs, DAT_MenuTextInputState::ptr)();
-                            if (DAT_GameCore::instance.gameMode_2 == Game::GM_CAMPAIGN_MISSION) {
-                                if (DAT_GameState::instance
-                                        .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                                        .playerDeathRelated
-                                    == 1) {
-                                    MACRO_CALL_MEMBER(
-                                        Game::GameCore_Func::incrementMissionProgress, DAT_GameCore::ptr)();
-                                    DAT_GameCore::instance.section1066 = 2;
-                                }
-                                if (DAT_GameState::instance
-                                        .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                                        .playerDeathRelated
-                                    == 2) {
-                                    MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                                        UI::Enums::MVT_GAME_LOSTUnk, 0);
-                                    DAT_GameCore::instance.section1066 = 0;
-                                }
-                                MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
-                                    UI::Enums::DEID_MISSION_WIN_DEFEAT_BANNER, 0);
-                                MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
-                                    UI::Enums::DEID_MISSION_WIN_DEFEAT_BANNER, 0);
-                            }
-                            if (DAT_GameCore::instance.gameMode_2 != Game::GM_ECONOMIC_CAMPAIGN_SH1) {
-                                if (DAT_GameCore::instance.gameMode_2 == Game::GM_BUILDERUnk) {
-                                    if (DAT_GameCore::instance.field24_0x6c) {
-                                        DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 7;
-                                        MACRO_CALL(UI::MenuItems::General_Func::
-                                                MenuItemActionHandler_General_LaunchOrQuitMultiplayerGameUnk)(0x16);
-                                        MACRO_CALL(
-                                            UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
-                                            UI::Enums::DEID_MISSION_WIN_DEFEAT_BANNER, 0);
-                                    }
-                                    if (DAT_GameState::instance
-                                            .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                                            .playerDeathRelated
-                                        == 1) {
-                                        if ((int)this->SEC_U3_MapType2_1 < 2) {
-                                            MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                                                UI::Enums::MVT_MISSION_FINISHED_TRANSITION, 0);
-                                        } else {
-                                            DAT_GameCore::instance.section1095 = 1;
-                                            DAT_MenuTextInputState::instance.DAT_MenuOptionsActionParameter = 0x2f;
-                                            MACRO_CALL_MEMBER(
-                                                UI::MenuTextInputState_Func::activateModalDialogAndClearText,
-                                                DAT_MenuTextInputState::ptr)(UI::Enums::MMT_QUIT_DIALOG);
-                                        }
-                                    }
-                                    if (DAT_GameState::instance
-                                            .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                                            .playerDeathRelated
-                                        == 2) {
-                                        MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                                            UI::Enums::MVT_GAME_LOSTUnk, 0);
-                                    }
-                                    DAT_GameCore::instance.section1066 = 2;
-                                }
-                                MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
-                                    UI::Enums::DEID_MISSION_WIN_DEFEAT_BANNER, 0);
-                            }
-                            if (DAT_GameState::instance
-                                    .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                                    .playerDeathRelated
-                                == 1) {
-                                MACRO_CALL_MEMBER(Game::GameCore_Func::incrementMission, DAT_GameCore::ptr)();
-                            }
-                            if (DAT_GameState::instance
-                                    .playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                                    .playerDeathRelated
-                                == 2) {
-                                MACRO_CALL_MEMBER(Game::GameCore_Func::switchToMenuView, DAT_GameCore::ptr)(
-                                    UI::Enums::MVT_GAME_LOSTUnk, 0);
-                            }
-                            MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
-                                UI::Enums::DEID_MISSION_WIN_DEFEAT_BANNER, 0);
-                            MACRO_CALL(UI::DisplayElements_Func::CheckDisplayElementByIDAndSetForUnlimitedDisplay)(
-                                UI::Enums::DEID_MISSION_WIN_DEFEAT_BANNER, 0);
                         }
                     }
                 }

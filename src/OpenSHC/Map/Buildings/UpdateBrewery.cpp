@@ -166,16 +166,7 @@ namespace Map {
                             .BreweryAnimationFrames2[DAT_BuildingsState::instance.buildings[buildingID].animationIndex];
                 goto LAB_00414d7d;
             }
-            if (sVar3 == 5) {
-                if ('\0' < (char)DAT_BuildingDefinedData::instance
-                        .BreweryAnimationFrames4[DAT_BuildingsState::instance.buildings[buildingID].animationIndex]) {
-                    DAT_BuildingsState::instance.buildings[buildingID].animationFrame
-                        = (char)DAT_BuildingDefinedData::instance.BreweryAnimationFrames4
-                              [DAT_BuildingsState::instance.buildings[buildingID].animationIndex]
-                        + 0x10;
-                    goto LAB_00415004;
-                }
-            } else {
+            if (sVar3 != 5) {
                 if (sVar3 != 6) {
                     if (sVar3 != 7)
                         goto LAB_00415004;
@@ -196,6 +187,15 @@ namespace Map {
                         = (char)DAT_BuildingDefinedData::instance.BreweryAnimationFrames5
                               [DAT_BuildingsState::instance.buildings[buildingID].animationIndex]
                         + 0x20;
+                    goto LAB_00415004;
+                }
+            } else {
+                if ('\0' < (char)DAT_BuildingDefinedData::instance
+                        .BreweryAnimationFrames4[DAT_BuildingsState::instance.buildings[buildingID].animationIndex]) {
+                    DAT_BuildingsState::instance.buildings[buildingID].animationFrame
+                        = (char)DAT_BuildingDefinedData::instance.BreweryAnimationFrames4
+                              [DAT_BuildingsState::instance.buildings[buildingID].animationIndex]
+                        + 0x10;
                     goto LAB_00415004;
                 }
             }

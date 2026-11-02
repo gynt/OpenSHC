@@ -81,7 +81,9 @@ namespace Map {
                 = (int)DAT_BuildingsState::instance.buildings[iVar11].owner;
             DAT_BuildingsState::instance.buildings[iVar11].renderAnimation = 1;
             DAT_BuildingsState::instance.buildings[iVar11].displayOwnerFlag = 0;
-            if (iVar10 == -1) {
+            if (iVar10 != -1) {
+                DAT_BuildingsState::instance.buildings[iVar11].animationFrame = 1;
+            } else {
                 iVar10 = MACRO_CALL_MEMBER(
                     Synchrony::GameSynchronyState_Func::getLordTypeForPlayer, DAT_GameSynchronyState::ptr)(playerID);
                 iVar11 = DAT_CurrentBuildingID::instance;
@@ -90,8 +92,6 @@ namespace Map {
                 } else {
                     DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].animationFrame = 2;
                 }
-            } else {
-                DAT_BuildingsState::instance.buildings[iVar11].animationFrame = 1;
             }
             MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(iVar11);
             iVar11 = DAT_CurrentBuildingID::instance;
@@ -114,15 +114,7 @@ namespace Map {
                 (int)DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].owner,
                 DAT_CurrentBuildingID::instance, iVar10);
             iVar11 = 3;
-            if (DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].currentEmployeeCount == 3) {
-                psVar8 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].workerID;
-                do {
-                    sVar2 = *psVar8;
-                    psVar8 = psVar8 + 1;
-                    iVar11 = iVar11 - 1;
-                    DAT_UnitsState::instance.units[sVar2].state.generic = Map::Units::States::US_AIM_WEAPONUnk;
-                } while (iVar11);
-            } else {
+            if (DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].currentEmployeeCount != 3) {
                 uVar13 = (int)SEC_RNG::instance.currentNumber2 & 0x8000000f;
                 if ((int)uVar13 < 0) {
                     uVar13 = (uVar13 - 1 | 0xfffffff0) + 1;
@@ -177,6 +169,14 @@ namespace Map {
                     } while (local_c < DAT_BuildingsState::instance.buildings[iVar11].currentEmployeeCount);
                 }
                 DAT_BuildingsState::instance.buildings[iVar11].currentEmployeeCount = 0;
+            } else {
+                psVar8 = DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].workerID;
+                do {
+                    sVar2 = *psVar8;
+                    psVar8 = psVar8 + 1;
+                    iVar11 = iVar11 - 1;
+                    DAT_UnitsState::instance.units[sVar2].state.generic = Map::Units::States::US_AIM_WEAPONUnk;
+                } while (iVar11);
             }
             MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::calculatePreferredRelativeOrientation,
                 DAT_DirectionAlgorithmState::ptr)((int)DAT_UnitsState::instance.units[iVar10].x,

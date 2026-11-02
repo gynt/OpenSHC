@@ -53,10 +53,10 @@ namespace Map {
         /*
          ***   Set initial state of tree   ***
          */
-        if ((int)treeType < 0x10 || 0x13 < (int)treeType) {
-            this->trees[_treeID].state = 1;
-        } else {
+        if ((int)treeType >= 0x10 || 0x13 < (int)treeType) {
             this->trees[_treeID].state = 4;
+        } else {
+            this->trees[_treeID].state = 1;
         }
         /*
          ***   Set (initial) values for tree   ***
@@ -128,20 +128,20 @@ namespace Map {
         case ((TreeType)4):
             uVar4 = this->trees[_treeID].rng1 & 0xf;
             this->trees[_treeID].appleTreeColorVariation = uVar4;
-            if (uVar4 < 0xf) {
-                if (uVar4 < 0xd) {
-                    if (uVar4 < 0xb) {
+            if (uVar4 >= 0xf) {
+                this->trees[_treeID].appleTreeColorVariation = 4;
+            } else {
+                if (uVar4 >= 0xd) {
+                    this->trees[_treeID].appleTreeColorVariation = 6;
+                } else {
+                    if (uVar4 >= 0xb) {
+                        this->trees[_treeID].appleTreeColorVariation = 1;
+                    } else {
                         if (8 < uVar4) {
                             this->trees[_treeID].appleTreeColorVariation = 0;
                         }
-                    } else {
-                        this->trees[_treeID].appleTreeColorVariation = 1;
                     }
-                } else {
-                    this->trees[_treeID].appleTreeColorVariation = 6;
                 }
-            } else {
-                this->trees[_treeID].appleTreeColorVariation = 4;
             }
             if (this->trees[_treeID].appleTreeColorVariation < 9)
                 break;

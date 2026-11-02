@@ -111,19 +111,19 @@ namespace Map {
                             && (_gmLookupValue = this->entityArray[DAT_CurrentEntityID::instance].gmLookupValue,
                                 _gmLookupValue != 0)
                             && this->entityArray[DAT_CurrentEntityID::instance].someCounter_OR_hitGround == 0) {
-                            if (_gmLookupValue == 3) {
+                            if (_gmLookupValue != 3) {
+                                MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnEntityEffect2, this)(
+                                    (int)this->entityArray[DAT_CurrentEntityID::instance].microX,
+                                    (undefined4)((int)((int)this->entityArray[DAT_CurrentEntityID::instance].microY)),
+                                    (undefined4)((int)((int)this->entityArray[DAT_CurrentEntityID::instance].height)),
+                                    5, (int)(_gmLookupValue));
+                            } else {
                                 MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnEntityEffect1, this)(
                                     this->entityArray[DAT_CurrentEntityID::instance].microX,
                                     this->entityArray[DAT_CurrentEntityID::instance].microY,
                                     (undefined4)((int)((int)this->entityArray[DAT_CurrentEntityID::instance].height)),
                                     6, (int)(this->entityArray[DAT_CurrentEntityID::instance].gmID),
                                     this->entityArray[DAT_CurrentEntityID::instance].graphicType2);
-                            } else {
-                                MACRO_CALL_MEMBER(Map::Entities::EntityState_Func::spawnEntityEffect2, this)(
-                                    (int)this->entityArray[DAT_CurrentEntityID::instance].microX,
-                                    (undefined4)((int)((int)this->entityArray[DAT_CurrentEntityID::instance].microY)),
-                                    (undefined4)((int)((int)this->entityArray[DAT_CurrentEntityID::instance].height)),
-                                    5, (int)(_gmLookupValue));
                             }
                         }
                         if (this->entityArray[DAT_CurrentEntityID::instance].someCounter_OR_hitGround == 0) {

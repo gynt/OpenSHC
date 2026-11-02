@@ -105,10 +105,7 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite4 = 1;
         } else {
             sVar4 = DAT_BuildingsState::instance.buildings[buildingID].outpostRelatedUnk4;
-            if (sVar4 < 1) {
-                DAT_BuildingsState::instance.buildings[buildingID].extraAnimationFrame3 = 0;
-                DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite4 = 1;
-            } else {
+            if (sVar4 >= 1) {
                 uVar6 = sVar4 - 1;
                 DAT_BuildingsState::instance.buildings[buildingID].outpostRelatedUnk4 = uVar6;
                 if ((short)uVar6 < 0x33) {
@@ -136,6 +133,9 @@ namespace Map {
                 DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite4
                     = (int)(char)DAT_BuildingDefinedData::instance.MillAnimationFrames1
                           [DAT_BuildingsState::instance.buildings[buildingID].extraAnimationFrame3];
+            } else {
+                DAT_BuildingsState::instance.buildings[buildingID].extraAnimationFrame3 = 0;
+                DAT_BuildingsState::instance.buildings[buildingID].extraAnimationSprite4 = 1;
             }
         }
         if (cVar8 == '\0' || sVar3

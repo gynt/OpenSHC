@@ -31,10 +31,10 @@ namespace Map {
             DAT_EntityState::instance.entityArray[uVar2].unkMinusOne = 0;
         }
         iVar3 = DAT_EntityState::instance.entityArray[uVar2].unknownAnimationFrameRelated + 1;
-        if (iVar3 < 0x48) {
-            DAT_EntityState::instance.entityArray[uVar2].graphicType2 = iVar3;
-        } else {
+        if (iVar3 >= 0x48) {
             DAT_EntityState::instance.entityArray[uVar2].logicalState = 3;
+        } else {
+            DAT_EntityState::instance.entityArray[uVar2].graphicType2 = iVar3;
         }
         DAT_EntityState::instance.entityArray[uVar2].imageID
             = (short)DAT_EntityState::instance.entityArray[uVar2].graphicType2 + 0x50;

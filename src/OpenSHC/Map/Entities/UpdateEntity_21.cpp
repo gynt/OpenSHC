@@ -15,7 +15,21 @@ namespace Map {
         int iVar3;
         uVar2 = DAT_CurrentEntityID::instance;
         sVar1 = DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].unknownAnimationFrameRelated;
-        if (DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].unitID == 2) {
+        if (DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].unitID != 2) {
+            iVar3 = sVar1 * 0xf;
+            DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].unkMinusOne
+                = ((short)(iVar3 / 400) + (sVar1 >> 0xf) + 0x10) - (short)((longlong)iVar3 * 0x51eb851f >> 0x3f);
+            sVar1 = DAT_EntityState::instance.entityArray[uVar2].unknownAnimationFrameRelated;
+            if (sVar1 < 400) {
+                if (sVar1 < 8) {
+                    DAT_EntityState::instance.entityArray[uVar2].graphicType2
+                        = ((int)DAT_EntityState::instance.entityArray[uVar2].graphicType2RelatedOffset - (int)sVar1)
+                        + 7;
+                }
+                DAT_EntityState::instance.entityArray[uVar2].graphicType2
+                    = (sVar1 * 0xf) / 400 + (int)DAT_EntityState::instance.entityArray[uVar2].graphicType2RelatedOffset;
+            }
+        } else {
             iVar3 = sVar1 * 7;
             DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].unkMinusOne
                 = ((short)(iVar3 / 200) + (sVar1 >> 0xf) + 0x18) - (short)((longlong)iVar3 * 0x51eb851f >> 0x3f);
@@ -34,20 +48,6 @@ namespace Map {
                 }
                 DAT_EntityState::instance.entityArray[uVar2].graphicType2
                     = DAT_EntityState::instance.entityArray[uVar2].graphicType2RelatedOffset + 0xb + iVar3;
-            }
-        } else {
-            iVar3 = sVar1 * 0xf;
-            DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].unkMinusOne
-                = ((short)(iVar3 / 400) + (sVar1 >> 0xf) + 0x10) - (short)((longlong)iVar3 * 0x51eb851f >> 0x3f);
-            sVar1 = DAT_EntityState::instance.entityArray[uVar2].unknownAnimationFrameRelated;
-            if (sVar1 < 400) {
-                if (sVar1 < 8) {
-                    DAT_EntityState::instance.entityArray[uVar2].graphicType2
-                        = ((int)DAT_EntityState::instance.entityArray[uVar2].graphicType2RelatedOffset - (int)sVar1)
-                        + 7;
-                }
-                DAT_EntityState::instance.entityArray[uVar2].graphicType2
-                    = (sVar1 * 0xf) / 400 + (int)DAT_EntityState::instance.entityArray[uVar2].graphicType2RelatedOffset;
             }
         }
         DAT_EntityState::instance.entityArray[uVar2].logicalState = 3;

@@ -122,16 +122,7 @@ namespace Map {
                               [DAT_BuildingsState::instance.buildings[iVar7].animationIndex]
                         + 0x18;
                 }
-            } else if (sVar2 == 2) {
-                if ((char)DAT_BuildingDefinedData::instance.BlacksmithsWorkshopAnimationFrames4
-                        [DAT_BuildingsState::instance.buildings[iVar7].animationIndex]
-                    <= '\0')
-                    goto LAB_0041338d;
-                DAT_BuildingsState::instance.buildings[iVar7].animationFrame
-                    = (char)DAT_BuildingDefinedData::instance.BlacksmithsWorkshopAnimationFrames4
-                          [DAT_BuildingsState::instance.buildings[iVar7].animationIndex]
-                    + 0x18;
-            } else {
+            } else if (sVar2 != 2) {
                 if (sVar2 == 3)
                     goto LAB_004131d2;
                 if (sVar2 == 4) {
@@ -184,6 +175,15 @@ namespace Map {
                               [DAT_BuildingsState::instance.buildings[iVar7].animationIndex]
                         + 0x18;
                 }
+            } else {
+                if ((char)DAT_BuildingDefinedData::instance.BlacksmithsWorkshopAnimationFrames4
+                        [DAT_BuildingsState::instance.buildings[iVar7].animationIndex]
+                    <= '\0')
+                    goto LAB_0041338d;
+                DAT_BuildingsState::instance.buildings[iVar7].animationFrame
+                    = (char)DAT_BuildingDefinedData::instance.BlacksmithsWorkshopAnimationFrames4
+                          [DAT_BuildingsState::instance.buildings[iVar7].animationIndex]
+                    + 0x18;
             }
         } else if (RVar4 == Game::Resources::RT_MACE) {
             sVar2 = DAT_BuildingsState::instance.buildings[iVar7].state;
@@ -287,10 +287,7 @@ namespace Map {
         }
     LAB_00413651:
         iVar6 = (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].workerID + iVar8);
-        if (iVar6 == 0) {
-        LAB_0041368b:
-            *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].buildingIsVisuallyActive + iVar8) = 0;
-        } else {
+        if (iVar6 != 0) {
             UVar5 = DAT_UnitsState::instance.units[iVar6].state.generic;
             if (UVar5 == Map::Units::States::US_FIRE_WEAPONUnk) {
                 *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].buildingIsVisuallyActive + iVar8) = 1;
@@ -299,6 +296,9 @@ namespace Map {
                     goto LAB_0041368b;
                 *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].buildingIsVisuallyActive + iVar8) = 1;
             }
+        } else {
+        LAB_0041368b:
+            *(undefined2*)((int)&DAT_BuildingsState::instance.buildings[0].buildingIsVisuallyActive + iVar8) = 0;
         }
         sVar2 = *(short*)((int)&DAT_BuildingsState::instance.buildings[0].buildingIsVisuallyActive + iVar8);
         MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateVisuallyActiveState, DAT_BuildingsState::ptr)(

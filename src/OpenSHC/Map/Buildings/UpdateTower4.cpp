@@ -80,11 +80,11 @@ namespace Map {
         iVar1 = 9
             - (DAT_BuildingsState::instance.buildings[iVar5].currentHealth * 9)
                 / (int)DAT_BuildingsState::instance.buildings[iVar5].maxHealth;
-        if (iVar1 < 9) {
+        if (iVar1 >= 9) {
+            iVar1 = 8;
+        } else {
             if (!iVar1)
                 goto LAB_0041efa6;
-        } else {
-            iVar1 = 8;
         }
         iVar8 = iVar5;
         if (0 < iVar1) {

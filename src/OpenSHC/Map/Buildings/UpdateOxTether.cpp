@@ -51,9 +51,7 @@ namespace Map {
         MACRO_CALL_MEMBER(Game::GameStateStructures_Func::addBuildingInRegistry, DAT_GameState::ptr)(
             DAT_CurrentBuildingID::instance);
         iVar6 = DAT_CurrentBuildingID::instance;
-        if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
-            DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].overlayImageID = 0;
-        } else {
+        if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {
             DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].displayOwnerFlag = 1;
             piVar1 = &DAT_BuildingsState::instance.buildings[iVar6].flagSlot.ownerFlagFrame;
             *piVar1 = *piVar1 + 1;
@@ -66,6 +64,8 @@ namespace Map {
             DAT_BuildingsState::instance.buildings[iVar6].overlayImageID
                 = (int)(char)DAT_BuildingDefinedData::instance.SharedOverlayAnimationFrames
                       [DAT_BuildingsState::instance.buildings[iVar6].flagSlot.ownerFlagFrame / 2];
+        } else {
+            DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].overlayImageID = 0;
         }
         sVar2 = DAT_BuildingsState::instance.buildings[iVar6].outpostRelatedUnk4;
         if (0 < sVar2) {

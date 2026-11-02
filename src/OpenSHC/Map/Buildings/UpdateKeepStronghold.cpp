@@ -40,12 +40,12 @@ namespace Map {
             _currentStartingGold = DAT_GameState::instance.playerDataArray[sVar2].startResources[0xf];
             if (0 < _currentStartingGold) {
                 _goldStep = 1;
-                if (_currentStartingGold < 0x3e9) {
+                if (_currentStartingGold >= 0x3e9) {
+                    _goldStep = 100;
+                } else {
                     if (100 < _currentStartingGold) {
                         _goldStep = 10;
                     }
-                } else {
-                    _goldStep = 100;
                 }
                 piVar1 = DAT_GameState::instance.playerDataArray[sVar2].currentResources + 0xf;
                 *piVar1 = *piVar1 + _goldStep;

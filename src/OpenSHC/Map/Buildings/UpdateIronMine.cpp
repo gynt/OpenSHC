@@ -51,11 +51,7 @@ namespace Map {
         *piVar1 = *piVar1 + 1;
         if (DAT_BuildingsState::instance.buildings[iVar4].animationTickCounter < 2) {}
         DAT_BuildingsState::instance.buildings[iVar4].animationTickCounter = 0;
-        if (DAT_BuildingsState::instance.buildings[iVar4].workers[0] == 0) {
-            DAT_BuildingsState::instance.buildings[iVar4].state = 0;
-            DAT_BuildingsState::instance.buildings[iVar4].campgroundVclock = 0;
-            DAT_BuildingsState::instance.buildings[iVar4].extraAnimationSprite1 = 0;
-        } else {
+        if (DAT_BuildingsState::instance.buildings[iVar4].workers[0] != 0) {
             sVar3 = DAT_BuildingsState::instance.buildings[iVar4].state;
             if (!sVar3) {
                 piVar1 = &DAT_BuildingsState::instance.buildings[iVar4].campgroundVclock;
@@ -208,6 +204,10 @@ namespace Map {
                     + 0x4e;
                 goto LAB_0041cf6f;
             }
+        } else {
+            DAT_BuildingsState::instance.buildings[iVar4].state = 0;
+            DAT_BuildingsState::instance.buildings[iVar4].campgroundVclock = 0;
+            DAT_BuildingsState::instance.buildings[iVar4].extraAnimationSprite1 = 0;
         }
         if (*(short*)((int)DAT_BuildingsState::instance.buildings[0].workers + iVar5) == 0) {
             *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar5 - 4) = 0;
@@ -472,10 +472,10 @@ namespace Map {
         iVar4 = *(int*)((int)DAT_BuildingsState::instance.buildings[0].resources + iVar5 + 0x18);
         if (iVar4 <= 0) {
             *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].extraOverlayImage1 + iVar5) = 0;
-        } else if (iVar4 < 8) {
-            *(int*)((int)&DAT_BuildingsState::instance.buildings[0].extraOverlayImage1 + iVar5) = iVar4 + 0xa2;
-        } else {
+        } else if (iVar4 >= 8) {
             *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].extraOverlayImage1 + iVar5) = 0xaa;
+        } else {
+            *(int*)((int)&DAT_BuildingsState::instance.buildings[0].extraOverlayImage1 + iVar5) = iVar4 + 0xa2;
         }
         if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
             *(undefined4*)((int)&DAT_BuildingsState::instance.buildings[0].overlayImageID + iVar5) = 0;

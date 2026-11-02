@@ -134,15 +134,15 @@ namespace Map {
                             .buildings[DAT_TileMapState::instance.BuildingLayer
                                     [DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].tile]]
                             .fireDuration
-                        == 0) {
-                        DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].someTracker = 2;
-                    } else {
+                        != 0) {
                         if (DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].fireParameter_0xb6
                             < 3) {
                             DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].fireParameter_0xb6 = 3;
                         }
                         DAT_EntityState::instance.entityArray[uVar2].someTracker = 1;
                         DAT_EntityState::instance.entityArray[uVar2].someCounter_OR_hitGround = 0;
+                    } else {
+                        DAT_EntityState::instance.entityArray[DAT_CurrentEntityID::instance].someTracker = 2;
                     }
                 }
             } else if (_height0 == 2) {

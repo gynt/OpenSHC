@@ -80,7 +80,9 @@ namespace Map {
                 = (int)DAT_BuildingsState::instance.buildings[iVar8].owner;
             DAT_BuildingsState::instance.buildings[iVar8].renderAnimation = 1;
             DAT_BuildingsState::instance.buildings[iVar8].displayOwnerFlag = 0;
-            if (iVar11 == -1) {
+            if (iVar11 != -1) {
+                DAT_BuildingsState::instance.buildings[iVar8].animationFrame = 1;
+            } else {
                 iVar11 = MACRO_CALL_MEMBER(
                     Synchrony::GameSynchronyState_Func::getLordTypeForPlayer, DAT_GameSynchronyState::ptr)(playerID);
                 iVar8 = DAT_CurrentBuildingID::instance;
@@ -89,8 +91,6 @@ namespace Map {
                 } else {
                     DAT_BuildingsState::instance.buildings[DAT_CurrentBuildingID::instance].animationFrame = 2;
                 }
-            } else {
-                DAT_BuildingsState::instance.buildings[iVar8].animationFrame = 1;
             }
             MACRO_CALL_MEMBER(Map::TileMapState_Func::updateBuildingGraphicsLayer, DAT_TileMapState::ptr)(iVar8);
             iVar8 = DAT_CurrentBuildingID::instance;

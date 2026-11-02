@@ -36,12 +36,12 @@ namespace Map {
             iVar4 = DAT_GameState::instance.playerDataArray[sVar2].startResources[0xf];
             if (0 < iVar4) {
                 iVar7 = 1;
-                if (iVar4 < 0x3e9) {
+                if (iVar4 >= 0x3e9) {
+                    iVar7 = 100;
+                } else {
                     if (100 < iVar4) {
                         iVar7 = 10;
                     }
-                } else {
-                    iVar7 = 100;
                 }
                 piVar1 = DAT_GameState::instance.playerDataArray[sVar2].currentResources + 0xf;
                 *piVar1 = *piVar1 + iVar7;

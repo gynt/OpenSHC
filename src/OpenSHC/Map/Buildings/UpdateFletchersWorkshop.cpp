@@ -84,10 +84,10 @@ namespace Map {
                 bVar6 = true;
                 buildingID = buildingID_00 * 0x32c;
                 sVar3 = DAT_BuildingsState::instance.buildings[buildingID_00].animationIndex;
-                if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
-                    animcycle = DAT_BuildingDefinedData::instance.field43_0x430c[sVar3];
-                } else {
+                if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {
                     animcycle = DAT_BuildingDefinedData::instance.FletcherWorkshopAnimationCycle[sVar3];
+                } else {
+                    animcycle = DAT_BuildingDefinedData::instance.field43_0x430c[sVar3];
                 }
                 if ('\0' < (char)animcycle) {
                     iVar7 = (int)(char)animcycle;
@@ -145,10 +145,10 @@ namespace Map {
         } else {
             if (!sVar3) {
                 sVar3 = DAT_BuildingsState::instance.buildings[buildingID_00].animationIndex;
-                if (DAT_GameSynchronyState::instance.currentGameMode == Game::GM_SOLITARY) {
-                    animcycle = DAT_BuildingDefinedData::instance.field45_0x44e4[sVar3];
-                } else {
+                if (DAT_GameSynchronyState::instance.currentGameMode != Game::GM_SOLITARY) {
                     animcycle = DAT_BuildingDefinedData::instance.field46_0x4674[sVar3];
+                } else {
+                    animcycle = DAT_BuildingDefinedData::instance.field45_0x44e4[sVar3];
                 }
                 if ('\0' < (char)animcycle) {
                     iVar7 = (char)animcycle + 0x24;
@@ -175,12 +175,12 @@ namespace Map {
         }
     LAB_00412fc8:
         sVar3 = *(short*)((int)DAT_BuildingsState::instance.buildings[0].resources + buildingID - 0x62);
-        if (sVar3 < 0x20) {
+        if (sVar3 >= 0x20) {
+            *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + buildingID - 0x62) = 0x1f;
+        } else {
             if (sVar3 < 0) {
                 *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + buildingID - 0x62) = 0;
             }
-        } else {
-            *(undefined2*)((int)DAT_BuildingsState::instance.buildings[0].resources + buildingID - 0x62) = 0x1f;
         }
         iVar7 = (int)*(short*)((int)DAT_BuildingsState::instance.buildings[0].workerID + buildingID);
         if (iVar7) {

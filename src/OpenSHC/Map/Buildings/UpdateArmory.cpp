@@ -180,14 +180,14 @@ namespace Map {
                 == DAT_GameState::instance.mapAndTime.playerTeams[DAT_GameSynchronyState::instance.currentPlayerSlotID]
             || (DAT_GameSynchronyState::instance.currentPlayerFullIDArray[sVar3] == -1
                 && (DAT_GameSynchronyState::instance.currentAIArray[sVar3] != 0))) {
-            if (DAT_BuildingsState::instance.buildings[buildingID].resourceRelatedCountDown == 0) {
-                if (DAT_BuildingsState::instance.isFirstTickInLoop) {
-                    DAT_BuildingsState::instance.buildings[buildingID].buildingIsVisuallyActive = 0;
-                }
-            } else {
+            if (DAT_BuildingsState::instance.buildings[buildingID].resourceRelatedCountDown != 0) {
                 DAT_BuildingsState::instance.buildings[buildingID].buildingIsVisuallyActive = 1;
                 psVar1 = &DAT_BuildingsState::instance.buildings[buildingID].resourceRelatedCountDown;
                 *psVar1 = *psVar1 - 1;
+            } else {
+                if (DAT_BuildingsState::instance.isFirstTickInLoop) {
+                    DAT_BuildingsState::instance.buildings[buildingID].buildingIsVisuallyActive = 0;
+                }
             }
             MACRO_CALL_MEMBER(Map::Buildings::BuildingsState_Func::updateVisuallyActiveState, DAT_BuildingsState::ptr)(
                 buildingID);

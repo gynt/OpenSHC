@@ -94,13 +94,7 @@ namespace Map {
                                 this->lineOfSightClearanceSteps = local_44;
                             }
                             if (!local_40) {
-                                if (iVar9 == iVar6) {
-                                    if (bVar5) {
-                                        uVar12 = local_38 - y >> 0x1f;
-                                        iVar9 = ((local_38 - y ^ uVar12) - uVar12) * (targetHeight - height);
-                                        goto LAB_004033cf;
-                                    }
-                                } else {
+                                if (iVar9 != iVar6) {
                                     bVar5 = false;
                                     if ((char)DAT_TileMapState::instance.LogicLayer[iVar6] < '\0'
                                         || (sVar3 != DAT_TileMapState::instance.BuildingLayer[iVar6]
@@ -115,6 +109,12 @@ namespace Map {
                                         if (iVar9 / iVar7 + height < (int)uVar8) {
                                             return 0;
                                         }
+                                    }
+                                } else {
+                                    if (bVar5) {
+                                        uVar12 = local_38 - y >> 0x1f;
+                                        iVar9 = ((local_38 - y ^ uVar12) - uVar12) * (targetHeight - height);
+                                        goto LAB_004033cf;
                                     }
                                 }
                             } else {
@@ -149,16 +149,7 @@ namespace Map {
                                 this->lineOfSightClearanceSteps = local_44;
                             }
                             if (!uVar8) {
-                                if (local_1c == iVar9) {
-                                    local_1c = iVar9;
-                                    if (bVar5
-                                        && (uVar12 = local_3c - x >> 0x1f,
-                                            (int)(((local_3c - x ^ uVar12) - uVar12) * (targetHeight - height)) / iVar11
-                                                    + height
-                                                < (int)local_30)) {
-                                        return 0;
-                                    }
-                                } else {
+                                if (local_1c != iVar9) {
                                     bVar5 = false;
                                     if ((char)DAT_TileMapState::instance.LogicLayer[iVar9] < '\0'
                                         || (local_1c = iVar9,
@@ -176,6 +167,15 @@ namespace Map {
                                             < (int)local_30) {
                                             return 0;
                                         }
+                                    }
+                                } else {
+                                    local_1c = iVar9;
+                                    if (bVar5
+                                        && (uVar12 = local_3c - x >> 0x1f,
+                                            (int)(((local_3c - x ^ uVar12) - uVar12) * (targetHeight - height)) / iVar11
+                                                    + height
+                                                < (int)local_30)) {
+                                        return 0;
                                     }
                                 }
                             } else {
@@ -334,15 +334,7 @@ namespace Map {
                             this->lineOfSightClearanceSteps = local_44;
                         }
                         if (!local_40) {
-                            if (iVar10 == iVar14) {
-                                if (bVar5
-                                    && (uVar12 = iVar6 - y >> 0x1f,
-                                        (int)(((iVar6 - y ^ uVar12) - uVar12) * (targetHeight - height)) / iVar7
-                                                + height
-                                            < (int)local_30)) {
-                                    return 0;
-                                }
-                            } else {
+                            if (iVar10 != iVar14) {
                                 bVar5 = false;
                                 if ((char)DAT_TileMapState::instance.LogicLayer[iVar14] < '\0'
                                     || (sVar3 != DAT_TileMapState::instance.BuildingLayer[iVar14]
@@ -358,6 +350,14 @@ namespace Map {
                                         < (int)local_30) {
                                         return 0;
                                     }
+                                }
+                            } else {
+                                if (bVar5
+                                    && (uVar12 = iVar6 - y >> 0x1f,
+                                        (int)(((iVar6 - y ^ uVar12) - uVar12) * (targetHeight - height)) / iVar7
+                                                + height
+                                            < (int)local_30)) {
+                                    return 0;
                                 }
                             }
                         } else {

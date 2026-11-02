@@ -72,14 +72,14 @@ namespace Map {
             _dx = (long)(_dxRaw * (double)0.25);
             fVar7 = extraout_ST1;
             iVar5 = (long)(_gravConstant_2 + _gravConstant_2);
-            if ((double)0 == _vSin) {
-                fVar7 = (double)(int)this->entityArray[entityID].startingAngle;
-            } else {
+            if ((double)0 != _vSin) {
                 fVar8 = _vSin - (double)this->entityArray[entityID]._elapsedTimeOrGravityAccumulator;
                 fVar7 = atan(((extraout_ST0 - (_gravityConstantDiv2 * fVar8 - fVar8 * fVar8 * extraout_ST1_00))
                                  / (fVar7 - _dxRaw * fVar8))
                     * (double)3.0);
                 fVar7 = (fVar7 * (double)180.0) / (double)3.1415926535;
+            } else {
+                fVar7 = (double)(int)this->entityArray[entityID].startingAngle;
             }
             iVar6 = (long)(fVar7);
             _accum_2 = this->entityArray[entityID]._elapsedTimeOrGravityAccumulator;

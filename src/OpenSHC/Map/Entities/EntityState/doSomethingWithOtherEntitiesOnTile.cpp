@@ -18,11 +18,11 @@ namespace Map {
             _tile = this->entityArray[entityID].tile;
             iVar4 = 0;
             if (_tile) {
-                if ((int)entityID < 0x19) {
-                    uVar3 = (uint)(byte)DAT_TileMapState::instance.EntityLayerLT25[_tile];
+                if ((int)entityID >= 0x19) {
+                    uVar3 = (uint)DAT_TileMapState::instance.EntityLayer[_tile];
                     if (uVar3 == entityID) {
-                        DAT_TileMapState::instance.EntityLayerLT25[_tile]
-                            = (char)this->entityArray[entityID].nextEntityOnThisTileByID;
+                        DAT_TileMapState::instance.EntityLayer[_tile]
+                            = this->entityArray[entityID].nextEntityOnThisTileByID;
                         this->entityArray[entityID].nextEntityOnThisTileByID = 0;
                     }
                     uVar1 = uVar3;
@@ -35,10 +35,10 @@ namespace Map {
                         }
                     }
                 } else {
-                    uVar3 = (uint)DAT_TileMapState::instance.EntityLayer[_tile];
+                    uVar3 = (uint)(byte)DAT_TileMapState::instance.EntityLayerLT25[_tile];
                     if (uVar3 == entityID) {
-                        DAT_TileMapState::instance.EntityLayer[_tile]
-                            = this->entityArray[entityID].nextEntityOnThisTileByID;
+                        DAT_TileMapState::instance.EntityLayerLT25[_tile]
+                            = (char)this->entityArray[entityID].nextEntityOnThisTileByID;
                         this->entityArray[entityID].nextEntityOnThisTileByID = 0;
                     }
                     uVar1 = uVar3;

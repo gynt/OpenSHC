@@ -67,33 +67,14 @@ namespace Map {
         iVar4 = DAT_BuildingsState::instance.buildings[_currentBuildingID].campgroundVclock / 40;
         _vclock = iVar4 - 0x32;
         DAT_BuildingsState::instance.buildings[_currentBuildingID].campgroundVclock = _vclock;
-        if (_vclock < 0) {
-            DAT_BuildingsState::instance.buildings[_currentBuildingID].extraAnimationSprite1
-                = *(int*)((int)DAT_BuildingDefinedData::ptr + _vclock * -4 + 0xa46c) + 51;
-        } else {
+        if (_vclock >= 0) {
             DAT_BuildingsState::instance.buildings[_currentBuildingID].extraAnimationSprite1
                 = DAT_BuildingDefinedData::instance.SpawnUnitProperties[0xc][iVar4 + 6];
-        }
-        if (DAT_BuildingsState::instance.buildings[_currentBuildingID].field192_0x270 == 0) {
-            if (DAT_BuildingsState::instance.buildings[_currentBuildingID].field193_0x272 != 0) {
-                if (DAT_BuildingsState::instance.buildings[_currentBuildingID].renderAnimation == 0) {
-                    if (0x27 < DAT_BuildingsState::instance.buildings[_currentBuildingID].extraOverlayImage10) {
-                        DAT_BuildingsState::instance.buildings[_currentBuildingID].renderAnimation = 1;
-                    }
-                    goto LAB_0041827d;
-                }
-                goto LAB_00418285;
-            }
-            if (DAT_BuildingsState::instance.buildings[_currentBuildingID].renderAnimation != 0) {
-                if (DAT_BuildingsState::instance.buildings[_currentBuildingID].extraOverlayImage10 <= 0) {
-                    DAT_BuildingsState::instance.buildings[_currentBuildingID].renderAnimation = 0;
-                }
-                DAT_BuildingsState::instance.buildings[_currentBuildingID].extraOverlayImage10
-                    = DAT_BuildingsState::instance.buildings[_currentBuildingID].extraOverlayImage10 - 1;
-                goto LAB_004182b0;
-            }
-            DAT_BuildingsState::instance.buildings[_currentBuildingID].extraOverlayImage10 = 0;
         } else {
+            DAT_BuildingsState::instance.buildings[_currentBuildingID].extraAnimationSprite1
+                = *(int*)((int)DAT_BuildingDefinedData::ptr + _vclock * -4 + 0xa46c) + 51;
+        }
+        if (DAT_BuildingsState::instance.buildings[_currentBuildingID].field192_0x270 != 0) {
             if (DAT_BuildingsState::instance.buildings[_currentBuildingID].renderAnimation == 0) {
                 if (DAT_BuildingsState::instance.buildings[_currentBuildingID].extraOverlayImage10 < 0x28) {
                 LAB_0041827d:
@@ -113,6 +94,25 @@ namespace Map {
                 = (char)DAT_BuildingDefinedData::instance.CampGroundAnimationFrames
                       [DAT_BuildingsState::instance.buildings[_currentBuildingID].animationIndex]
                 + 0xb;
+        } else {
+            if (DAT_BuildingsState::instance.buildings[_currentBuildingID].field193_0x272 != 0) {
+                if (DAT_BuildingsState::instance.buildings[_currentBuildingID].renderAnimation == 0) {
+                    if (0x27 < DAT_BuildingsState::instance.buildings[_currentBuildingID].extraOverlayImage10) {
+                        DAT_BuildingsState::instance.buildings[_currentBuildingID].renderAnimation = 1;
+                    }
+                    goto LAB_0041827d;
+                }
+                goto LAB_00418285;
+            }
+            if (DAT_BuildingsState::instance.buildings[_currentBuildingID].renderAnimation != 0) {
+                if (DAT_BuildingsState::instance.buildings[_currentBuildingID].extraOverlayImage10 <= 0) {
+                    DAT_BuildingsState::instance.buildings[_currentBuildingID].renderAnimation = 0;
+                }
+                DAT_BuildingsState::instance.buildings[_currentBuildingID].extraOverlayImage10
+                    = DAT_BuildingsState::instance.buildings[_currentBuildingID].extraOverlayImage10 - 1;
+                goto LAB_004182b0;
+            }
+            DAT_BuildingsState::instance.buildings[_currentBuildingID].extraOverlayImage10 = 0;
         }
         _ownerPlayerIndex = DAT_BuildingsState::instance.buildings[_currentBuildingID].field192_0x270;
         if (_ownerPlayerIndex <= 1) {
