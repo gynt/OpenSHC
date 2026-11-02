@@ -24,7 +24,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004AB790
         void NewEvent::MenuModalRenderFunction_NewEvent(int x, int y, int width, int height)
         {
-            int iVar1;
             char* pcVar2;
             int iVar3;
             int iVar4;
@@ -45,7 +44,7 @@ namespace UI {
             x = 0;
             iVar4 = y + 0xa5;
             iVar5 = 0;
-            iVar1 = DAT_MapPropertiesState::instance.currentEventID;
+            int iVar1 = DAT_MapPropertiesState::instance.currentEventID;
             do {
                 if (*(char*)((int)&DAT_MapPropertiesState::instance.scenarioEvents[iVar1].data + iVar5 * 4 + 0xf)
                     != '\0') {

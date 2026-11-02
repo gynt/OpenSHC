@@ -24,7 +24,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004ABA20
         void NewEventCondition::MenuModalRenderFunction_NewEventCondition(int x, int y, int width, int height)
         {
-            int numInGroup;
             char* textAddress;
             int yParam;
             int xParam;
@@ -41,7 +40,7 @@ namespace UI {
             if (DAT_MissionAestheticsDefinedData::instance
                     .EventConditionParamKind[DAT_MapPropertiesState::instance.invasionTroopIndex]
                 != 0) {
-                numInGroup = DAT_MapPropertiesState::instance.invasionTroopIndex + 0x6a;
+                int numInGroup = DAT_MapPropertiesState::instance.invasionTroopIndex + 0x6a;
                 if (0x7d < numInGroup) {
                     numInGroup = DAT_MapPropertiesState::instance.invasionTroopIndex + 0xaa;
                 }

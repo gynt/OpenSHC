@@ -38,7 +38,6 @@ namespace UI {
     // FUNCTION: STRONGHOLDCRUSADER 0x00447A50
     void StatusMenus::RenderStatusMenu_Chimp()
     {
-        byte bVar1;
         char (*pacVar2)[32];
         int _yParam;
         char* pcVar3;
@@ -86,7 +85,7 @@ namespace UI {
                     (int)((char)DAT_UnitsState::instance.units[_unitID].firstNameIndex));
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     pcVar3, _xParam, _yParam, alignment, color, fontSize, keepOffsetX, blendStrength);
-                bVar1 = DAT_UnitsState::instance.units[_unitID].rng1_to_70;
+                byte bVar1 = DAT_UnitsState::instance.units[_unitID].rng1_to_70;
                 if (bVar1) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                         OpenSHC::DE::SHCDE::TEXT_PEASANT_SURNAMES, (int)((char)bVar1),

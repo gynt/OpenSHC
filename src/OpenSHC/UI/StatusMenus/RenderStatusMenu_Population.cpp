@@ -30,11 +30,6 @@ namespace UI {
     // FUNCTION: STRONGHOLDCRUSADER 0x0043F6A0
     void StatusMenus::RenderStatusMenu_Population()
     {
-        uint uVar1;
-        int iVar2;
-        int iVar3;
-        short sVar4;
-        int iVar5;
         char* pcVar6;
         short (*pasVar7)[300];
         int iVar8;
@@ -48,8 +43,8 @@ namespace UI {
         int local_10;
         int local_c;
         iVar8 = DAT_GameSynchronyState::instance.currentPlayerSlotID;
-        iVar3 = DAT_MenuHandlerState::instance.y;
-        iVar2 = DAT_MenuHandlerState::instance.x;
+        int iVar3 = DAT_MenuHandlerState::instance.y;
+        int iVar2 = DAT_MenuHandlerState::instance.x;
         local_c = DAT_GameState::instance.mapAndTime.populationIndex;
         if (300 < DAT_GameState::instance.mapAndTime.populationIndex) {
             local_c = 300;
@@ -62,7 +57,7 @@ namespace UI {
         iVar12 = 0x11;
         BVar11 = 0;
         TVar10 = OpenSHC::Text::TTA_LEFT;
-        iVar5 = DAT_MenuHandlerState::instance.y + 0x1d3;
+        int iVar5 = DAT_MenuHandlerState::instance.y + 0x1d3;
         iVar9 = DAT_MenuHandlerState::instance.x + 0x19;
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
         /*
@@ -107,7 +102,7 @@ namespace UI {
             DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_REPORT_BUTTONS, 0xd);
         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
             pcVar6, iVar12, iVar9, TVar10, BVar11, iVar14, BVar13, blendStrength);
-        sVar4 = 0;
+        short sVar4 = 0;
         if (0 < local_c) {
             pasVar7 = DAT_GameState::instance.mapAndTime.playerPopulationStatistics + iVar8;
             iVar9 = local_c;
@@ -150,7 +145,7 @@ namespace UI {
         iVar12 = 0;
         iVar9 = 0;
         do {
-            uVar1 = (DAT_GameState::instance.mapAndTime.populationIndex - 300) / 0xc;
+            uint uVar1 = (DAT_GameState::instance.mapAndTime.populationIndex - 300) / 0xc;
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                 (((int)uVar1 < 0) - 1 & uVar1) + iVar12, iVar9 / 0x19 + 0xbe + iVar2, iVar3 + 0x241,
                 OpenSHC::Text::TTA_LEFT, 0, 0x13, FALSE, 0);

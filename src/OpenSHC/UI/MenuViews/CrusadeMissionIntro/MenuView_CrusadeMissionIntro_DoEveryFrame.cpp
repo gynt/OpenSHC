@@ -51,7 +51,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004DD7B0
         void CrusadeMissionIntro::MenuView_CrusadeMissionIntro_DoEveryFrame()
         {
-            int iVar1;
             char* pcVar2;
             char* _pExtremeTrailName;
             int _extremeTrailNameWidth;
@@ -96,7 +95,7 @@ namespace UI {
             int _blendStrength;
             if (!DAT_MissionDefinedData::instance.field26_0xaf8) {}
             MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderGfxHelperUnk)(0, 0, 0);
-            iVar1 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
+            int iVar1 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight;
             _textX_01 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth;
             if (DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_EXTREME) {
                 if (0x13 < DAT_GameCore::instance.extremeTrailProgress) {

@@ -28,7 +28,6 @@ namespace UI {
     // FUNCTION: STRONGHOLDCRUSADER 0x0043FAC0
     void StatusMenus::RenderStatusMenu_Food()
     {
-        int iVar1;
         char* pcVar2;
         int iVar3;
         int iVar4;
@@ -47,7 +46,7 @@ namespace UI {
         BVar8 = 0;
         TVar7 = OpenSHC::Text::TTA_LEFT;
         iVar3 = DAT_MenuHandlerState::instance.y + 0x1d3;
-        iVar1 = DAT_MenuHandlerState::instance.x + 0x19;
+        int iVar1 = DAT_MenuHandlerState::instance.x + 0x19;
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
         /*
           added by script: "Food"

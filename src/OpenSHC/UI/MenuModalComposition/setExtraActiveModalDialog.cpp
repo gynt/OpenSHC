@@ -22,7 +22,6 @@ namespace UI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004AA0A0
     void MenuModalComposition::setExtraActiveModalDialog(MenuModalType menuModalID, int dialogX, int dialogY)
     {
-        uint uVar1;
         BOOLEnum BVar2;
         MenuModal* _modalMenu;
         DWORD DVar3;
@@ -51,7 +50,7 @@ namespace UI {
                 _modalMenu = (MenuModal*)&_modalMenu->x;
             }
         }
-        uVar1 = (this->modalMenu).borderStyle;
+        uint uVar1 = (this->modalMenu).borderStyle;
         this->modalDragDropUnk = 0;
         (this->modalMenu).x = dialogX;
         (this->modalMenu).y = dialogY;

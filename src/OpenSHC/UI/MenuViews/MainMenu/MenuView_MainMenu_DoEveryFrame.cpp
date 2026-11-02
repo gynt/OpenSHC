@@ -33,8 +33,7 @@ namespace UI {
         void MainMenu::MenuView_MainMenu_DoEveryFrame()
         {
             char local_68[100];
-            uint local_4;
-            local_4 = MSVC_SecurityCookie::instance ^ (uint)local_68;
+            uint local_4 = MSVC_SecurityCookie::instance ^ (uint)local_68;
             if (DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_NONE) {
                 DAT_UnknownGFXIndex::instance = 1;
                 if (DAT_BinkControlState::instance.binkObjPtrArray[0] != (HBINK)0x0) {

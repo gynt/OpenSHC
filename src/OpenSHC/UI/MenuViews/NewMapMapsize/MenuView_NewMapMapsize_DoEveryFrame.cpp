@@ -34,7 +34,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x0042F3F0
         void NewMapMapsize::MenuView_NewMapMapsize_DoEveryFrame()
         {
-            int iVar1;
             char* textAddress;
             int iVar2;
             int iVar3;
@@ -66,7 +65,7 @@ namespace UI {
             iVar5 = 0x10;
             color = 0xc2f0eb;
             alignment = OpenSHC::Text::TTA_CENTER;
-            iVar1 = DAT_MenuHandlerState::instance.y + 0x3b;
+            int iVar1 = DAT_MenuHandlerState::instance.y + 0x3b;
             iVar3 = DAT_MenuHandlerState::instance.x + 400;
             /*
               added by script: "Select New Map Size"

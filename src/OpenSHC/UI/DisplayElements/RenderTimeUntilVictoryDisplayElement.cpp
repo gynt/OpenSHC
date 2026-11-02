@@ -32,7 +32,6 @@ namespace UI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004B1EB0
     void DisplayElements::RenderTimeUntilVictoryDisplayElement(int posX, int posY, DWORD elementState)
     {
-        int iVar1;
         char* pcVar2;
         int left;
         int iVar3;
@@ -89,7 +88,7 @@ namespace UI {
         }
         DAT_00df4290::instance = iVar4 + 0x10;
         iVar3 = iVar4 / 2;
-        iVar1 = posX + 10 + iVar3;
+        int iVar1 = posX + 10 + iVar3;
         left = iVar1 - iVar3;
         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
             DAT_PencilRenderCore::ptr)(left - 7, posY - 5, iVar3 + 5 + iVar1, posY + 0x1e, 0x10);

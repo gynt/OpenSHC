@@ -55,8 +55,6 @@ namespace UI {
         void LobbyMenu::MenuView_LobbyMenu_DoEveryFrame()
         {
             char cVar1;
-            MenuModalTypeInt MVar2;
-            BOOLEnum BVar3;
             int iVar4;
             int* piVar5;
             char* pcVar6;
@@ -77,7 +75,7 @@ namespace UI {
             char local_3f4[1008];
             uint local_4;
             local_4 = MSVC_SecurityCookie::instance ^ (uint)&local_400;
-            MVar2 = timeGetTime();
+            MenuModalTypeInt MVar2 = timeGetTime();
             local_3fc = MVar2;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::drawGfxOnFlaggedSurface,
                 DAT_TextureRenderCoreObject::ptr)(0,
@@ -107,7 +105,7 @@ namespace UI {
                     }
                 }
             }
-            BVar3 = MACRO_CALL(OpenSHC::UI::Helpers_Func::AModalDialogIsActiveButIsNotQuitting)();
+            BOOLEnum BVar3 = MACRO_CALL(OpenSHC::UI::Helpers_Func::AModalDialogIsActiveButIsNotQuitting)();
             if (!BVar3) {
                 DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
                 MACRO_CALL_MEMBER(

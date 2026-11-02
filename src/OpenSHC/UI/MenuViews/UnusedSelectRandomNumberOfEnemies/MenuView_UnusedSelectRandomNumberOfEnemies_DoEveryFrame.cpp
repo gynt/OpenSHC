@@ -27,7 +27,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x0042B960
         void UnusedSelectRandomNumberOfEnemies::MenuView_UnusedSelectRandomNumberOfEnemies_DoEveryFrame()
         {
-            int iVar1;
             char* pcVar2;
             int iVar3;
             TextAlignment alignment;
@@ -54,7 +53,7 @@ namespace UI {
             iVar4 = 0x11;
             color = 0xccfaff;
             alignment = OpenSHC::Text::TTA_CENTER;
-            iVar1 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 200;
+            int iVar1 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 200;
             iVar3 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 400;
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             /*

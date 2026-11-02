@@ -38,7 +38,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00433030
         void BuildMenu::MenuView_BuildMenu_DoEveryFrame()
         {
-            DWORD _currentTime;
             if ((DAT_GameCore::instance.activeMenuTab.buildMenuTab != OpenSHC::UI::Enums::BMTT_MENU_HIDDEN)
                 && (DAT_GameCore::instance.activeMenuTab.buildMenuTab
                     != (OpenSHC::UI::Enums::BuildMenuTabTypeShort)0x3e)) {
@@ -96,7 +95,7 @@ namespace UI {
             if (DAT_GameCore::instance.isVictoryOrDefeatUnk) {
                 DAT_GameCore::instance.isVictoryOrDefeatUnk = 0;
                 DAT_GameState::instance.mapAndTime.gameOver = TRUE;
-                _currentTime = timeGetTime();
+                DWORD _currentTime = timeGetTime();
                 DAT_GameState::instance.mapAndTime.gameOverTime = _currentTime - 6000;
                 DAT_GameState::instance.mapAndTime.playerIsAlive[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                     = 1;

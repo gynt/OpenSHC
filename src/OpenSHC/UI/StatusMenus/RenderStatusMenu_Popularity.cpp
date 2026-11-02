@@ -35,7 +35,6 @@ namespace UI {
         short sVar4;
         short sVar5;
         short sVar6;
-        int iVar7;
         char* pcVar8;
         int iVar9;
         uint uVar10;
@@ -66,7 +65,7 @@ namespace UI {
         iVar16 = 0x11;
         BVar15 = 0;
         TVar14 = OpenSHC::Text::TTA_LEFT;
-        iVar7 = DAT_MenuHandlerState::instance.y + 0x1d3;
+        int iVar7 = DAT_MenuHandlerState::instance.y + 0x1d3;
         iVar9 = DAT_MenuHandlerState::instance.x + 0x19;
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
         /*

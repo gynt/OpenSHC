@@ -10,11 +10,6 @@ namespace UI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004B5F70
     void MinimapViewState::locatePlayerKeepPositionsOnMinimap(uint param_1, int param_2, int param_3)
     {
-        int iVar1;
-        int iVar2;
-        int iVar3;
-        uint uVar4;
-        uint uVar5;
         int* piVar6;
         int iVar7;
         int iVar8;
@@ -28,7 +23,7 @@ namespace UI {
         int local_24;
         int local_20;
         int local_18;
-        iVar1 = DAT_ViewportRenderState::instance.viewportState.viewportHeight;
+        int iVar1 = DAT_ViewportRenderState::instance.viewportState.viewportHeight;
         iVar8 = 1;
         local_2c = 0;
         iVar7 = 8;
@@ -58,7 +53,7 @@ namespace UI {
             local_2c = 100;
             local_24 = 1;
         }
-        iVar2 = DAT_ViewportRenderState::instance.viewportState.viewportHeight + 1;
+        int iVar2 = DAT_ViewportRenderState::instance.viewportState.viewportHeight + 1;
         if (DAT_TileMapState::instance.mapOrientation) {
             if (DAT_TileMapState::instance.mapOrientation == 6) {
                 iVar7 = 0x13a18;
@@ -68,7 +63,7 @@ namespace UI {
                 iVar7 = 0x3ae38;
             }
         }
-        uVar5 = local_2c / 2;
+        uint uVar5 = local_2c / 2;
         iVar9 = iVar8 * 200 - local_2c;
         iVar7 = uVar5 * 0x191 + 1 + iVar7;
         if ((int)local_2c < iVar9) {
@@ -93,12 +88,12 @@ namespace UI {
                         local_20 = local_20 - uVar5;
                         piVar6 = DAT_ViewportRenderState::instance.screenPointToTileNumber + uVar5 + iVar7 - 8;
                         do {
-                            iVar3 = (int)DAT_TileMapState::instance.BuildingLayer[*piVar6];
+                            int iVar3 = (int)DAT_TileMapState::instance.BuildingLayer[*piVar6];
                             if (iVar3
                                 && (int)(short)DAT_BuildingsState::instance.buildings[iVar3].buildingType - 0x28U < 5
                                 && (iVar3 = (int)DAT_BuildingsState::instance.buildings[iVar3].owner,
                                     this->DAT_MapU4B64.keepPositions[iVar3 - 1].x == -1)) {
-                                uVar4 = param_1;
+                                uint uVar4 = param_1;
                                 iVar11 = iVar10;
                                 if (local_34 != 1) {
                                     uVar4 = (int)param_1 / local_34;

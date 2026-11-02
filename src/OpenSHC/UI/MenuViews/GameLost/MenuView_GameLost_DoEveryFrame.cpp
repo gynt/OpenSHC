@@ -47,7 +47,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004DC9E0
         void GameLost::MenuView_GameLost_DoEveryFrame()
         {
-            DWORD DVar1;
             if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER) {
                 MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderGreatestLordScreen)();
             } else if (DAT_BinkControlState::instance.binkObjPtrArray[0] == (HBINK)0x0) {
@@ -60,7 +59,7 @@ namespace UI {
                 if (!DWORD_00ed27b4::instance) {
                     DWORD_00ed27b4::instance = timeGetTime();
                 } else {
-                    DVar1 = timeGetTime();
+                    DWORD DVar1 = timeGetTime();
                     if (5000 < DVar1 - DWORD_00ed27b4::instance)
                         goto LAB_004dca69;
                 }

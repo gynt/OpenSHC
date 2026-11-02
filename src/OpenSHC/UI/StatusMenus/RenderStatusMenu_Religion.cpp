@@ -4,6 +4,7 @@
 #include "OpenSHC/UI/Rendering.func.hpp"
 #include "OpenSHC/UI/Rendering/TextureRenderCore.func.hpp"
 #include "OpenSHC/DE/SHCDE/eTextSections.hpp"
+#include "OpenSHC/Rendering/Colors/BGR24.hpp"
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
@@ -14,23 +15,19 @@
 #include "OpenSHC/Globals/DAT_MenuHandlerState.hpp"
 #include "OpenSHC/Globals/DAT_TextManagerObject.hpp"
 #include "OpenSHC/Globals/DAT_TextureRenderCoreObject.hpp"
-#include "OpenSHC/Rendering/Colors/BGR24.hpp"
 
 namespace OpenSHC {
 namespace UI {
 
     using OpenSHC::DE::SHCDE::eTextSections;
+    using OpenSHC::Rendering::Colors::BGR24;
     using OpenSHC::Rendering::Enums::RenderTarget;
     using OpenSHC::Text::TextAlignment;
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
-    using OpenSHC::Rendering::Colors::BGR24;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0043FE10
     void StatusMenus::RenderStatusMenu_Religion()
     {
-        int iVar1;
-        int iVar2;
-        int iVar3;
         char* pcVar4;
         int iVar5;
         TextAlignment TVar6;
@@ -41,8 +38,8 @@ namespace UI {
         int iVar11;
         int blendStrength;
         int local_4;
-        iVar2 = DAT_MenuHandlerState::instance.y;
-        iVar1 = DAT_MenuHandlerState::instance.x;
+        int iVar2 = DAT_MenuHandlerState::instance.y;
+        int iVar1 = DAT_MenuHandlerState::instance.x;
         DAT_00b98448::instance = DAT_00b98448::instance + 1;
         if (0x28 < DAT_00b98448::instance) {
             DAT_00b98448::instance = 0;
@@ -55,7 +52,7 @@ namespace UI {
         iVar8 = 0x11;
         BVar7 = 0;
         TVar6 = OpenSHC::Text::TTA_LEFT;
-        iVar3 = DAT_MenuHandlerState::instance.y + 0x1d3;
+        int iVar3 = DAT_MenuHandlerState::instance.y + 0x1d3;
         iVar5 = DAT_MenuHandlerState::instance.x + 0x19;
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
         /*

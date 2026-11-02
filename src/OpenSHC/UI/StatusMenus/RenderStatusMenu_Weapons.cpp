@@ -29,9 +29,6 @@ namespace UI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004401A0
     void StatusMenus::RenderStatusMenu_Weapons()
     {
-        int iVar1;
-        int iVar2;
-        int iVar3;
         char* textAddress;
         int yParam;
         int iVar4;
@@ -42,17 +39,17 @@ namespace UI {
         int fontSize;
         BOOLEnum keepOffsetX;
         int blendStrength;
-        iVar2 = DAT_MenuHandlerState::instance.y;
+        int iVar2 = DAT_MenuHandlerState::instance.y;
         iVar4 = 0;
         blendStrength = 0;
         keepOffsetX = FALSE;
         fontSize = 0x11;
         color = 0;
-        iVar1 = DAT_MenuHandlerState::instance.y + 0x1fb;
+        int iVar1 = DAT_MenuHandlerState::instance.y + 0x1fb;
         alignment = OpenSHC::Text::TTA_LEFT;
         yParam = DAT_MenuHandlerState::instance.y + 0x1d3;
         iVar6 = DAT_MenuHandlerState::instance.x + 0x69;
-        iVar3 = DAT_MenuHandlerState::instance.x + 0x19;
+        int iVar3 = DAT_MenuHandlerState::instance.x + 0x19;
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
         /*
           added by script: "Weapons"
@@ -64,7 +61,8 @@ namespace UI {
         pPVar5 = DAT_RenderingDefinedData::instance.ArmoryIconsPositionNudges;
         do {
             iVar3 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
-                        .currentResources[*(int*)((int)DAT_RenderingDefinedData::instance.ArmoryMenuResourceTypes + iVar4)];
+                        .currentResources[*(
+                            int*)((int)DAT_RenderingDefinedData::instance.ArmoryMenuResourceTypes + iVar4)];
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                 DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2,
                 *(int*)((int)DAT_RenderingDefinedData::instance.ArmoryMenuResourceIcons + iVar4), pPVar5->x + iVar6,

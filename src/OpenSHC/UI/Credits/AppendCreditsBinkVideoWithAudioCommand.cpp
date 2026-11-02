@@ -10,10 +10,9 @@ namespace UI {
     void Credits::AppendCreditsBinkVideoWithAudioCommand(char* param_1, int param_2, int param_3, int param_4)
     {
         char cVar1;
-        int iVar2;
         if (DAT_UnknownBinkCount::instance < 0x120) {
             DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].commandType = 0xd;
-            iVar2 = (DAT_UnknownBinkCount::instance * 0x5c + 0xeb9ba4) - (int)param_1;
+            int iVar2 = (DAT_UnknownBinkCount::instance * 0x5c + 0xeb9ba4) - (int)param_1;
             do {
                 cVar1 = *param_1;
                 param_1[iVar2] = cVar1;

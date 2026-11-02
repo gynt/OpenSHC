@@ -52,9 +52,7 @@ namespace UI {
         void MissionFinishedTransition::MenuView_MissionFinishedTransition_DoEveryFrame()
         {
             short sVar1;
-            DWORD DVar2;
             int iVar3;
-            dword dVar4;
             MenuViewType menuID;
             if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SKIRMISH_AND_MULTIPLAYER) {
                 if (DAT_GameSynchronyState::instance.currentGameMode
@@ -80,7 +78,7 @@ namespace UI {
                     DWORD_00ed27b4::instance = timeGetTime();
                     goto LAB_004dc5a5;
                 }
-                DVar2 = timeGetTime();
+                DWORD DVar2 = timeGetTime();
                 if (DVar2 - DWORD_00ed27b4::instance < 0x1389)
                     goto LAB_004dc5a5;
             } else {
@@ -185,7 +183,7 @@ namespace UI {
                 }
                 MACRO_CALL(OpenSHC::Game::Skirmish_Func::StoreGameIntoSKMasters)(iVar3);
             }
-            dVar4 = DAT_GameCore::instance.extremeTrailProgress;
+            dword dVar4 = DAT_GameCore::instance.extremeTrailProgress;
             if ((DAT_GameCore::instance.currentTrailType != OpenSHC::Game::TT_EXTREME)
                 && (dVar4 = DAT_GameCore::instance.skirmishTrailProgress,
                     DAT_GameCore::instance.currentTrailType == OpenSHC::Game::TT_WARCHEST)) {

@@ -28,7 +28,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x0042BBF0
         void SelectCrusade::MenuView_SelectCrusade_DoEveryFrame()
         {
-            int iVar1;
             char* pcVar2;
             int iVar3;
             TextAlignment TVar4;
@@ -56,7 +55,7 @@ namespace UI {
             iVar6 = 0x10;
             BVar5 = 0xccfaff;
             TVar4 = OpenSHC::Text::TTA_CENTER;
-            iVar1 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x82;
+            int iVar1 = DAT_WindowAndDirectDraw::instance.mainMenuBorderHeight + 0x82;
             iVar3 = DAT_WindowAndDirectDraw::instance.mainMenuBorderWidth + 400;
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             /*

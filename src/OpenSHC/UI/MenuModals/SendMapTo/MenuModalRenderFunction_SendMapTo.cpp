@@ -25,9 +25,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004AC310
         void SendMapTo::MenuModalRenderFunction_SendMapTo(int x, int y, int width, int height)
         {
-            int iVar1;
-            int iVar2;
-            int local_10;
             char (*local_c)[250];
             short* local_8;
             /*
@@ -35,10 +32,10 @@ namespace UI {
              */
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawHeaderTextBanner,
                 DAT_PencilRenderCore::ptr)(0x4f, 0x6a, x, y, width, height);
-            iVar1 = 0;
+            int iVar1 = 0;
             local_c = DAT_GameSynchronyState::instance.DAT_PlayerNames;
             local_8 = DAT_GameSynchronyState::instance.mapTransferStatePerPlayer + 1;
-            local_10 = 0;
+            int local_10 = 0;
             do {
                 local_c = local_c + 1;
                 if (*local_8 == 1) {
@@ -48,7 +45,7 @@ namespace UI {
                             int*)((int)DAT_BlendingDefinedData::instance.PlayerSlotUnitColor + local_10 + 4)])),
                         0x11, FALSE, 0);
                     if (DAT_GameSynchronyState::instance.DAT_MapFileReceivingState) {
-                        iVar2 = width / 2;
+                        int iVar2 = width / 2;
                         MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderBox,
                             DAT_PencilRenderCore::ptr)(iVar2 + x - 1, iVar1 + 0x52 + y, width - 0x13 + x,
                             iVar1 + 99 + y, (ushort)(COL_BLACK::instance.shortValue));

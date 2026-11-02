@@ -4,6 +4,7 @@
 #include "OpenSHC/UI/Rendering.func.hpp"
 #include "OpenSHC/UI/Rendering/TextureRenderCore.func.hpp"
 #include "OpenSHC/DE/SHCDE/eTextSections.hpp"
+#include "OpenSHC/Rendering/Colors/BGR24.hpp"
 #include "OpenSHC/Rendering/Enums/RenderTarget.hpp"
 #include "OpenSHC/Text/GameLanguage.hpp"
 #include "OpenSHC/Text/TextAlignment.hpp"
@@ -14,23 +15,20 @@
 #include "OpenSHC/Globals/DAT_MenuHandlerState.hpp"
 #include "OpenSHC/Globals/DAT_TextManagerObject.hpp"
 #include "OpenSHC/Globals/DAT_TextureRenderCoreObject.hpp"
-#include "OpenSHC/Rendering/Colors/BGR24.hpp"
 
 namespace OpenSHC {
 namespace UI {
 
     using OpenSHC::DE::SHCDE::eTextSections;
+    using OpenSHC::Rendering::Colors::BGR24;
     using OpenSHC::Rendering::Enums::RenderTarget;
     using OpenSHC::Text::GameLanguage;
     using OpenSHC::Text::TextAlignment;
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
-    using OpenSHC::Rendering::Colors::BGR24;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x0043F2F0
     void StatusMenus::RenderStatusMenu_FearFactor()
     {
-        int iVar1;
-        int iVar2;
         char* pcVar3;
         int iVar4;
         int iVar5;
@@ -44,8 +42,8 @@ namespace UI {
         int iVar13;
         int local_4;
         int _fearFactorLevel;
-        iVar2 = DAT_MenuHandlerState::instance.y;
-        iVar1 = DAT_MenuHandlerState::instance.x;
+        int iVar2 = DAT_MenuHandlerState::instance.y;
+        int iVar1 = DAT_MenuHandlerState::instance.x;
         local_4 = 0;
         if ((DAT_TextManagerObject::instance.gameLanguage != OpenSHC::Text::GL_ENGLISH)
             && (DAT_TextManagerObject::instance.gameLanguage != OpenSHC::Text::GL_AMERICAN)) {

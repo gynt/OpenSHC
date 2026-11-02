@@ -6,13 +6,12 @@ namespace UI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004B6480
     void MinimapViewState::clearOldSpawnMoment()
     {
-        DWORD _now;
         int* piVar1;
         int _index;
         int _nextIndex;
         DWORD* _ptrMoment;
         if (this->spawnMomentCount) {
-            _now = timeGetTime();
+            DWORD _now = timeGetTime();
             if (0 < this->spawnMomentCount) {
                 _ptrMoment = this->spawnMoment;
                 _index = 0;

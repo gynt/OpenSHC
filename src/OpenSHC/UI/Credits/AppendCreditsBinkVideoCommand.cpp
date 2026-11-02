@@ -11,10 +11,9 @@ namespace UI {
         undefined4 param_1, char* param_2, int param_3, int param_4, int param_5, SoundFlagsAndLoopCount param_6)
     {
         char cVar1;
-        int iVar2;
         if (DAT_UnknownBinkCount::instance < 0x120) {
             DAT_ARRAY_00eb9b68::instance[DAT_UnknownBinkCount::instance].commandType = 0xc;
-            iVar2 = (DAT_UnknownBinkCount::instance * 0x5c + 0xeb9ba4) - (int)param_2;
+            int iVar2 = (DAT_UnknownBinkCount::instance * 0x5c + 0xeb9ba4) - (int)param_2;
             do {
                 cVar1 = *param_2;
                 param_2[iVar2] = cVar1;

@@ -27,13 +27,12 @@ namespace UI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004B1D30
     void DisplayElements::RenderPlayerPingUnkDisplayElement22(int posX, int posY, DWORD elementState)
     {
-        int integer;
         int* piVar1;
         int yPosition;
         if ((DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SOLITARY)
             && (DAT_GameSynchronyState::instance.currentGameMode != OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER)) {
             timeGetTime();
-            integer = 1;
+            int integer = 1;
             DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBorderedBoxWithBlendedBackground,
                 DAT_PencilRenderCore::ptr)(posX, posY, 0x78, 0xc0);

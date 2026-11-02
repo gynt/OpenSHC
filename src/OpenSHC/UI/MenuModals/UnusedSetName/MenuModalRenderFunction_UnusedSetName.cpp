@@ -24,7 +24,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004266E0
         void UnusedSetName::MenuModalRenderFunction_UnusedSetName(int x, int y, int width, int height)
         {
-            int iVar1;
             char* textAddress;
             int yParam;
             TextAlignment alignment;
@@ -32,7 +31,7 @@ namespace UI {
             int fontSize;
             BOOLEnum keepOffsetX;
             int blendStrength;
-            iVar1 = (width - 400) / 2;
+            int iVar1 = (width - 400) / 2;
             MACRO_CALL_MEMBER(
                 OpenSHC::UI::Rendering::PencilRenderCore_Func::drawBoxWithRoundedEdges, DAT_PencilRenderCore::ptr)(
                 iVar1 + x, y + 10, (x - iVar1) + width, y + 0x3c, OpenSHC::UI::Enums::RBERL_STRONG);

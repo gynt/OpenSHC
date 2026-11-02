@@ -43,16 +43,9 @@ namespace UI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004B0B30
     void MenuModalComposition::renderMenuModal()
     {
-        uint uVar1;
         BOOLEnum _areWeInAnInGameMenu;
-        int _width;
         DWORD _currentTime;
-        int imageID;
-        int _top;
         int _left;
-        int _color;
-        int _height;
-        int _top2;
         Menu* _menu;
         int _x;
         if ((this->activeModalDialogID != OpenSHC::UI::Enums::MMT_NONE)
@@ -69,7 +62,7 @@ namespace UI {
             }
             _areWeInAnInGameMenu
                 = MACRO_CALL_MEMBER(OpenSHC::Game::GameCore_Func::getAreWeInAInGameMenu, DAT_GameCore::ptr)();
-            _top = (this->modalMenu).y;
+            int _top = (this->modalMenu).y;
             if (!_areWeInAnInGameMenu) {
                 _left = (this->modalMenu).x;
             } else {
@@ -77,13 +70,13 @@ namespace UI {
                 _top = _top + DAT_ViewportRenderState::instance.viewportState.currentCameraOffsetY;
                 DAT_PencilRenderCore::instance.surfaceTarget = OpenSHC::Rendering::Enums::RT_MAP_GAME;
             }
-            _width = (this->modalMenu).width;
+            int _width = (this->modalMenu).width;
             _x = (this->modalMenu).x;
             if (DAT_WindowAndDirectDraw::instance.resolutionX < _x + _width) {
                 _width = DAT_WindowAndDirectDraw::instance.resolutionX - _x;
             }
-            _height = (this->modalMenu).height;
-            _color = (this->modalMenu).backgroundColourIndex;
+            int _height = (this->modalMenu).height;
+            int _color = (this->modalMenu).backgroundColourIndex;
             switch (_color) {
             case 1:
                 _color = (int)COL_RED::instance.shortValue;
@@ -127,7 +120,7 @@ namespace UI {
                  */
                 this->disappearAfter = this->disappearAfter + (_currentTime - this->timeItIsSet) / 75;
             }
-            _top2 = _top;
+            int _top2 = _top;
             if ((this->modalMenu).borderStyle & 2) {
                 _top2 = _top + 0xc;
                 MACRO_CALL_MEMBER(
@@ -166,7 +159,7 @@ namespace UI {
                     DAT_PencilRenderCore::ptr)(_left + 3, _top2 + 3, _width + _left - 3, _height + _top2 - 3,
                     (ushort)(_color), OpenSHC::UI::Enums::RBERL_STRONG);
             }
-            uVar1 = (this->modalMenu).borderStyle;
+            uint uVar1 = (this->modalMenu).borderStyle;
             if ((uVar1 & 0x200) || (uVar1 & 0x20)) {
                 _height = 0;
                 if (0 < (this->modalMenu).height) {
@@ -179,7 +172,7 @@ namespace UI {
                         _x = 0;
                         if (0 < (this->modalMenu).width) {
                             do {
-                                imageID = _width;
+                                int imageID = _width;
                                 if (!_x) {
                                 LAB_004b0e31:
                                     MACRO_CALL_MEMBER(

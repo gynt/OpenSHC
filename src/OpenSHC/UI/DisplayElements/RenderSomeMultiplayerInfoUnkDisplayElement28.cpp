@@ -41,7 +41,6 @@ namespace UI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004B2530
     void DisplayElements::RenderSomeMultiplayerInfoUnkDisplayElement28(int posX, int posY, DWORD elementState)
     {
-        DWORD _currentTime;
         char* pcVar1;
         int iVar2;
         eTextSections offsetIndex;
@@ -51,7 +50,7 @@ namespace UI {
         int iVar6;
         BOOLEnum BVar7;
         int iVar8;
-        _currentTime = timeGetTime();
+        DWORD _currentTime = timeGetTime();
         if (DAT_GameCore::instance.mapU4Int0) {
             posY = posY + 0x41;
         }

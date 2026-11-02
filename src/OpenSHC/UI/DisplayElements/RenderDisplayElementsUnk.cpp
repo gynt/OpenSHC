@@ -22,13 +22,12 @@ namespace UI {
     // FUNCTION: STRONGHOLDCRUSADER 0x004AF700
     void DisplayElements::RenderDisplayElementsUnk()
     {
-        DWORD _currentTime;
         DisplayElementPositionModifierInt _positionModifier;
         int _yPos;
         int _xPos;
         DisplayElementPositionModifierInt _xPosModifier;
         DisplayElement* _displayElementPtr;
-        _currentTime = timeGetTime();
+        DWORD _currentTime = timeGetTime();
         for (_displayElementPtr = DAT_PointerToDisplayElementStackTop::instance;
             _displayElementPtr != (DisplayElement*)0x0;
             _displayElementPtr = _displayElementPtr->nextDisplayElement_0x20) {

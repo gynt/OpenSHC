@@ -26,7 +26,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00493390
         void YesNoDialog::MenuModalRenderFunction_YesNoDialog(int x, int y, int width, int height)
         {
-            int xParam;
             char* textAddress;
             int iVar1;
             int xParam_00;
@@ -69,7 +68,7 @@ namespace UI {
                 color = 0xc2f0eb;
                 alignment = OpenSHC::Text::TTA_CENTER;
                 iVar1 = y + 0xf;
-                xParam = width / 2 + x;
+                int xParam = width / 2 + x;
                 xParam_00 = xParam;
                 /*
                   added by script: "Receiving Map"

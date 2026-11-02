@@ -24,7 +24,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004D9CC0
         void DeleteGameRecord::MenuModalRenderFunctionMenuModal_DeleteGameRecord(int x, int y, int width, int height)
         {
-            int xParam;
             char* textAddress;
             int yParam;
             TextAlignment alignment;
@@ -48,7 +47,7 @@ namespace UI {
             color = 0xc2f0eb;
             alignment = OpenSHC::Text::TTA_CENTER;
             yParam = y + 0x1b;
-            xParam = width / 2 + x;
+            int xParam = width / 2 + x;
             /*
               added by script: "Delete Game Record?"
              */
