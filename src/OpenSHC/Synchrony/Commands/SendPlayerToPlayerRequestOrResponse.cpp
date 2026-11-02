@@ -49,38 +49,38 @@ namespace Synchrony {
                 case 0:
                     MACRO_CALL(OpenSHC::Synchrony::Actions_Func::ProcessAllyRequestAttackDefense)(
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam1,
-                        (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam2)),
-                        (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam3)),
-                        (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam4)));
+                        (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam2),
+                        (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam3),
+                        (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam4));
                     return;
                 case 1:
                     MACRO_CALL(OpenSHC::Synchrony::Actions_Func::ProcessAllyRequestingGoods)(
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam1,
-                        (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam2)),
-                        (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam3)),
-                        (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam4)));
+                        (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam2),
+                        (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam3),
+                        (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam4));
                     return;
                 case 2:
                     MACRO_CALL(OpenSHC::Synchrony::Actions_Func::ProcessAllyGoodsRequest)(
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam1,
                         (ResourceType)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam2)),
-                        (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam3)),
-                        (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam4)));
+                        (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam3),
+                        (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam4));
                     return;
                 case 3:
                     MACRO_CALL(OpenSHC::Synchrony::Actions_Func::ProcessAllyDeniesRequest)(
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam1,
-                        (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam4)));
+                        (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam4));
                     return;
                 case 4:
                     MACRO_CALL(OpenSHC::Synchrony::Actions_Func::ProcessAllyAcceptsRequest)(
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam1,
-                        (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam4)));
+                        (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam4));
                     return;
                 case 5:
                     MACRO_CALL(OpenSHC::Synchrony::Actions_Func::ProcessAllyDeniesRequest2)(
                         DAT_GameSynchronyState::instance.DAT_GameCommandParam1,
-                        (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam4)));
+                        (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam4));
                 }
             }
         }

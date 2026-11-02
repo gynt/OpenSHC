@@ -13,7 +13,7 @@ void Synchrony::PutPlayerIntoRandomSlot(int param_1)
 {
     int iVar1 = 0;
     do {
-        if ((int)DAT_GameSynchronyState::instance.playerPositionsArray[iVar1] == param_1 + -1) {}
+        if ((int)DAT_GameSynchronyState::instance.playerPositionsArray[iVar1] == param_1 - 1) {}
         iVar1 = iVar1 + 1;
     } while (iVar1 < 8);
     uint _playerPositionsCount = 0;
@@ -58,11 +58,11 @@ void Synchrony::PutPlayerIntoRandomSlot(int param_1)
         MACRO_CALL_MEMBER(Random::RNG_Func::nextRandomNumber1, SEC_RNG::ptr)();
         iVar1 = 0;
         while (DAT_GameCore::instance.keepPositions[iVar1].x < 0
-            || -1 < DAT_GameSynchronyState::instance.playerPositionsArray[iVar1] || (iVar3 = iVar3 + -1, -1 < iVar3)) {
+            || -1 < DAT_GameSynchronyState::instance.playerPositionsArray[iVar1] || (iVar3 = iVar3 - 1, -1 < iVar3)) {
             iVar1 = iVar1 + 1;
             if (7 < iVar1) {}
         }
-        DAT_GameSynchronyState::instance.playerPositionsArray[iVar1] = (char)param_1 + -1;
+        DAT_GameSynchronyState::instance.playerPositionsArray[iVar1] = (char)param_1 - 1;
     }
 }
 

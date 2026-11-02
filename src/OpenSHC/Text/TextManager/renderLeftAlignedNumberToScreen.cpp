@@ -14,7 +14,6 @@ namespace Text {
     {
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, this)(
             number, xParam, yParam, Text::TTA_LEFT, color, fontSize, (BOOLEnum)((int)(keepOffsetX)), 0);
-        return;
     }
 
 }

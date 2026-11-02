@@ -8,7 +8,6 @@ namespace Text {
     {
         this->textClipMin = param_1;
         this->textClipMax = param_2;
-        return;
     }
 
 }

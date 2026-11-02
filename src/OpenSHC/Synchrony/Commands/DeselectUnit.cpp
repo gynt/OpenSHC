@@ -35,7 +35,7 @@ namespace Synchrony {
             MACRO_CALL_MEMBER(
                 OpenSHC::Map::Units::UnitsState_Func::clearOrDeselectUnitFromSelection, DAT_UnitsState::ptr)(
                 (int)DAT_UnitsState::instance.units[DAT_GameSynchronyState::instance.DAT_GameCommandParam0].owner,
-                (uint)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0)), 0);
+                (uint)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0), 0);
         }
     }
 

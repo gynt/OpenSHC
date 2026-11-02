@@ -47,8 +47,8 @@ namespace Synchrony {
             DAT_GameSynchronyState::instance.DAT_GameCommandParam2 = (int)local_4[0];
             MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::handleActivateTacticalPowers,
                 DAT_GameState::ptr)(DAT_GameSynchronyState::instance.DAT_GameCommandParam2,
-                (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0)),
-                (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1)));
+                (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0),
+                (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1));
         }
     }
 

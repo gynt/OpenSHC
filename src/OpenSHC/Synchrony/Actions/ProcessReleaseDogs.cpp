@@ -37,7 +37,7 @@ namespace Synchrony {
                 *piVar8 = 0;
                 psVar6 = psVar6 + 1;
                 piVar8 = piVar8 + 1;
-                iVar9 = iVar9 + -1;
+                iVar9 = iVar9 - 1;
             } while (iVar9);
             iVar9 = (short)uVar2 * 8;
             int iVar5 = (short)uVar1 * 8;

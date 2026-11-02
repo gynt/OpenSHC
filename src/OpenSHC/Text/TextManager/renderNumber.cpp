@@ -14,7 +14,6 @@ namespace Text {
     {
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumber2, this)(
             number, xPosition, yPosition, Text::TTA_LEFT, color1, color2, fontSize, keepOffsetX, 0);
-        return;
     }
 
 }

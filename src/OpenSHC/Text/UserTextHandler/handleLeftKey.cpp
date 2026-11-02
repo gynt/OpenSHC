@@ -7,9 +7,8 @@ namespace Text {
     void UserTextHandler::handleLeftKey()
     {
         if (0 < this->textCursorIndexArray[this->textArrayIndex]) {
-            this->textCursorIndexArray[this->textArrayIndex] = this->textCursorIndexArray[this->textArrayIndex] + -1;
+            this->textCursorIndexArray[this->textArrayIndex] = this->textCursorIndexArray[this->textArrayIndex] - 1;
         }
-        return;
     }
 
 }

@@ -1,4 +1,5 @@
 #include "../../Synchrony.func.hpp"
+#include "../Commands.func.hpp"
 
 #include "OpenSHC/Audio/SFX/SFXState.func.hpp"
 #include "OpenSHC/Map/Buildings/BuildingsState.func.hpp"
@@ -15,7 +16,6 @@
 #include "OpenSHC/Globals/DAT_GameSynchronyState.hpp"
 #include "OpenSHC/Globals/DAT_SFXState.hpp"
 #include "OpenSHC/Globals/DAT_TileMapState.hpp"
-#include "../Commands.func.hpp"
 
 namespace OpenSHC {
 namespace Synchrony {
@@ -93,9 +93,8 @@ namespace Synchrony {
                     DAT_TileMapState::instance.showNoRubbleWhenDestroyingBuilding = 1;
                     MACRO_CALL_MEMBER(
                         OpenSHC::Map::Buildings::BuildingsState_Func::giveBackResourceForDestroyedBuilding,
-                        DAT_BuildingsState::ptr)(iVar1,
-                        (int)((int)(DAT_GameSynchronyState::instance.protocolInvokerPlayerID)),
-                        (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1)));
+                        DAT_BuildingsState::ptr)(iVar1, (int)(DAT_GameSynchronyState::instance.protocolInvokerPlayerID),
+                        (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1));
                     MACRO_CALL_MEMBER(
                         OpenSHC::Map::Buildings::BuildingsState_Func::destroyBuilding, DAT_BuildingsState::ptr)(iVar1);
                     iVar1 = MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::findParticularBuilding,
@@ -109,8 +108,8 @@ namespace Synchrony {
                         MACRO_CALL_MEMBER(
                             OpenSHC::Map::Buildings::BuildingsState_Func::giveBackResourceForDestroyedBuilding,
                             DAT_BuildingsState::ptr)(iVar1,
-                            (int)((int)(DAT_GameSynchronyState::instance.protocolInvokerPlayerID)),
-                            (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1)));
+                            (int)(DAT_GameSynchronyState::instance.protocolInvokerPlayerID),
+                            (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1));
                         MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::destroyBuilding,
                             DAT_BuildingsState::ptr)(iVar1);
                     }
@@ -120,8 +119,8 @@ namespace Synchrony {
                     MACRO_CALL_MEMBER(
                         OpenSHC::Map::Buildings::BuildingsState_Func::giveBackResourceForDestroyedBuilding,
                         DAT_BuildingsState::ptr)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0,
-                        (int)((int)(DAT_GameSynchronyState::instance.protocolInvokerPlayerID)),
-                        (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1)));
+                        (int)(DAT_GameSynchronyState::instance.protocolInvokerPlayerID),
+                        (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1));
                 }
                 if ((_buildingID)
                     && (DAT_BuildingsState::instance.buildings[_buildingID].owner
@@ -136,22 +135,21 @@ namespace Synchrony {
                     case OpenSHC::Map::Buildings::BT_TOWER5:
                         MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playSFXAtLocation, DAT_SFXState::ptr)(
                             (int)(short)DAT_BuildingsState::instance.buildings[_buildingID].x,
-                            (int)((int)((short)DAT_BuildingsState::instance.buildings[_buildingID].y)),
+                            (int)((short)DAT_BuildingsState::instance.buildings[_buildingID].y),
                             OpenSHC::DE::SHCDE::FX_TOWER_SMASH);
                         break;
-                        default:
-                            /*
-                              Plays building destroy sound
-                             */
-                            MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
-                                "buildingwreck_01.wav");
+                    default:
+                        /*
+                          Plays building destroy sound
+                         */
+                        MACRO_CALL_MEMBER(OpenSHC::Audio::SFX::SFXState_Func::playWAVSFX, DAT_SFXState::ptr)(
+                            "buildingwreck_01.wav");
                     }
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::destroyBuilding,
                     DAT_BuildingsState::ptr)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0);
             }
         }
-        return;
     }
 
 }

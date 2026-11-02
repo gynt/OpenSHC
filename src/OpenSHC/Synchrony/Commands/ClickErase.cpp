@@ -48,8 +48,8 @@ namespace Synchrony {
                 OpenSHC::Commands::GCPL_DYNAMIC_COMMAND_DATA_ADDRESS, OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
             MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::eraseAreaWithBrush, DAT_TileMapState::ptr)(
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam0,
-                (uint)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1)),
-                (uint)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam2)));
+                (uint)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1),
+                (uint)(DAT_GameSynchronyState::instance.DAT_GameCommandParam2));
         }
     }
 

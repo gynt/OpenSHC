@@ -41,11 +41,11 @@ namespace Synchrony {
             if (!DAT_GameSynchronyState::instance.DAT_GameCommandParam1) {
                 MACRO_CALL(OpenSHC::Synchrony::Actions_Func::TryAcquireAmmunitionOrPlanToBuyStone)(
                     DAT_GameSynchronyState::instance.protocolInvokerPlayerID,
-                    (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0)));
+                    (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0));
             }
             MACRO_CALL(OpenSHC::Synchrony::Actions_Func::SelectionReplenishAmmo)(
                 DAT_GameSynchronyState::instance.protocolInvokerPlayerID,
-                (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0)));
+                (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0));
         }
     }
 

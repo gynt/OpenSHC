@@ -11,7 +11,7 @@ namespace Text {
         char* pcVar1;
         char (*pacVar2)[250];
         if (0 < this->textCursorIndexArray[this->textArrayIndex]) {
-            this->textCursorIndexArray[this->textArrayIndex] = this->textCursorIndexArray[this->textArrayIndex] + -1;
+            this->textCursorIndexArray[this->textArrayIndex] = this->textCursorIndexArray[this->textArrayIndex] - 1;
             MACRO_CALL_MEMBER(Text::UserTextHandler_Func::shiftTextLeftAtCursor, this)(
                 this->textCursorIndexArray[this->textArrayIndex],
                 (int)(this->textContentLengthArray[this->textArrayIndex]
@@ -24,7 +24,6 @@ namespace Text {
             this->textContentLengthArray[this->textArrayIndex]
                 = (int)pacVar2 - (this->textArrayIndex * 0xfa + 0x1652891);
         }
-        return;
     }
 
 }

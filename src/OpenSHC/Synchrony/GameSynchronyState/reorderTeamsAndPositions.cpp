@@ -77,7 +77,7 @@ namespace Synchrony {
                 }
                 _counter2 = _counter2 + 1;
             }
-            _counter = _counter + -1;
+            _counter = _counter - 1;
         } while (_counter);
         _counter = 1;
     LAB_0048c857:
@@ -91,7 +91,7 @@ namespace Synchrony {
                     if (-1 < (char)*_playerGroupArray) {
                         *_playerGroupArray = 0;
                     }
-                    iVar3 = iVar3 + -1;
+                    iVar3 = iVar3 - 1;
                 } while (iVar3);
                 local_38[_counter] = 0;
             LAB_0048c8b5:
@@ -133,8 +133,8 @@ namespace Synchrony {
                         }
                         if (_counter3 + 1 < 5) {
                             piVar5 = _currentPlayerFullIdArray;
-                            piVar6 = _currentPlayerFullIdArray + -1;
-                            for (_counter = 5 - (_counter3 + 1); _counter != 0; _counter = _counter + -1) {
+                            piVar6 = _currentPlayerFullIdArray - 1;
+                            for (_counter = 5 - (_counter3 + 1); _counter != 0; _counter = _counter - 1) {
                                 *piVar6 = *piVar5;
                                 piVar5 = piVar5 + 1;
                                 piVar6 = piVar6 + 1;
@@ -159,7 +159,7 @@ namespace Synchrony {
                                     bVar4 = 10;
                                 }
                                 if ((char)bVar4 < (char)_group || pcVar2 == (char*)0xffffffff) {
-                                    pcVar2 = (char*)(_playerGroupArray + -0x1a275b6);
+                                    pcVar2 = (char*)(_playerGroupArray - 0x1a275b6);
                                     _group = bVar4;
                                 }
                             }
@@ -169,7 +169,7 @@ namespace Synchrony {
                                     bVar4 = 10;
                                 }
                                 if ((char)bVar4 < (char)_group || pcVar2 == (char*)0xffffffff) {
-                                    pcVar2 = (char*)(_playerGroupArray + -0x1a275b5);
+                                    pcVar2 = (char*)(_playerGroupArray - 0x1a275b5);
                                     _group = bVar4;
                                 }
                             }
@@ -179,7 +179,7 @@ namespace Synchrony {
                                     bVar4 = 10;
                                 }
                                 if ((char)bVar4 < (char)_group || pcVar2 == (char*)0xffffffff) {
-                                    pcVar2 = (char*)(_playerGroupArray + -0x1a275b4);
+                                    pcVar2 = (char*)(_playerGroupArray - 0x1a275b4);
                                     _group = bVar4;
                                 }
                             }
@@ -189,11 +189,11 @@ namespace Synchrony {
                                     bVar4 = 10;
                                 }
                                 if ((char)bVar4 < (char)_group || pcVar2 == (char*)0xffffffff) {
-                                    pcVar2 = (char*)(_playerGroupArray + -0x1a275b3);
+                                    pcVar2 = (char*)(_playerGroupArray - 0x1a275b3);
                                     _group = bVar4;
                                 }
                             }
-                            pcVar1 = (char*)(_playerGroupArray + -0x1a275b2);
+                            pcVar1 = (char*)(_playerGroupArray - 0x1a275b2);
                             _currentPlayerFullIdArray = _currentPlayerFullIdArray + 4;
                             _playerGroupArray = _playerGroupArray + 4;
                         } while ((int)pcVar1 < 9);
@@ -222,7 +222,7 @@ namespace Synchrony {
                     if ((char)*_playerGroupArray == _counter) {
                         *_playerGroupArray = 0;
                     }
-                    iVar3 = iVar3 + -1;
+                    iVar3 = iVar3 - 1;
                 } while (iVar3);
                 local_38[_counter] = 0;
             }

@@ -17,7 +17,6 @@ namespace Text {
                 text, xPos, yPos, maxWidth, color, blendStrength, 0);
         }
         this->field12_0x30 = 0;
-        return;
     }
 
 }

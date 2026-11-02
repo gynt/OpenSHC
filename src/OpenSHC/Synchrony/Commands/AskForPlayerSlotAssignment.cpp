@@ -58,7 +58,7 @@ namespace Synchrony {
                 DAT_GameSynchronyState::instance.currentPlayerFullIDArray[1] = 1;
                 MACRO_CALL(OpenSHC::OS_Func::_memcpy)(
                     (void*)((int)DAT_TextureRenderCoreObject::instance.bitmapsFaces_0x94 + 0x29400),
-                    (void*)((DAT_GameCore::instance.lordIconUnk + -2) * 0x2100
+                    (void*)((DAT_GameCore::instance.lordIconUnk - 2) * 0x2100
                         + (int)DAT_TextureRenderCoreObject::instance.bitmapsFaces_0x94),
                     0x2100);
                 DAT_TextureRenderCoreObject::instance
@@ -99,7 +99,7 @@ namespace Synchrony {
                     MACRO_CALL(OpenSHC::OS_Func::_memcpy)(
                         (void*)((DAT_GameSynchronyState::instance.currentPlayerSlotID + 0x13) * 0x2100
                             + (int)DAT_TextureRenderCoreObject::instance.bitmapsFaces_0x94),
-                        (void*)((DAT_GameCore::instance.lordIconUnk + -2) * 0x2100
+                        (void*)((DAT_GameCore::instance.lordIconUnk - 2) * 0x2100
                             + (int)DAT_TextureRenderCoreObject::instance.bitmapsFaces_0x94),
                         0x2100);
                     DAT_TextureRenderCoreObject::instance

@@ -52,7 +52,7 @@ namespace Synchrony {
                 OpenSHC::Commands::GCPL_DYNAMIC_COMMAND_DATA_ADDRESS, OpenSHC::Commands::GCPRW_SERIALIZE_INTO_PARAM_1);
             MACRO_CALL_MEMBER(OpenSHC::Util::WideCharMultiByteState_Func::multiByteToWideCharWithSize,
                 DAT_WideCharMultiByteState::ptr)(
-                &local_4c, (LPCSTR)((int)(DAT_GameSynchronyState::instance.shortMapName)), (int)((int)(33)));
+                &local_4c, (LPCSTR)((int)(DAT_GameSynchronyState::instance.shortMapName)), (int)(33));
             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
                 DAT_GameSynchronyState::ptr)(&local_4c, (size_t)((int)(66)),
                 OpenSHC::Commands::GCPL_DYNAMIC_COMMAND_DATA_ADDRESS, OpenSHC::Commands::GCPRW_SERIALIZE_INTO_PARAM_1);
@@ -89,7 +89,7 @@ namespace Synchrony {
                     pWVar3 = pWVar3 + 1;
                 } while (WVar1 != L'\0');
                 MACRO_CALL(OpenSHC::IO_Func::Base64Encode)((char*)&local_4c,
-                    (int)((int)((pWVar3 - (WCHAR*)local_4a >> 1) * 2)),
+                    (int)((pWVar3 - (WCHAR*)local_4a >> 1) * 2),
                     (char*)((int)(DAT_GameSynchronyState::instance.shortMapName)), &_base64State);
             } else {
                 MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,

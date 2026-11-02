@@ -65,13 +65,13 @@ namespace Synchrony {
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam5 = (uint)(char)local_8;
                 entityID = MACRO_CALL_MEMBER(OpenSHC::Map::Entities::EntityState_Func::spawnProjectileEntity,
                     DAT_EntityState::ptr)(0, DAT_GameSynchronyState::instance.DAT_GameCommandParam0,
-                    (uint)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam5)),
-                    (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1)),
-                    (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam2)),
-                    (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam3)),
-                    (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1)),
-                    (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam2)),
-                    (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam3)),
+                    (uint)(DAT_GameSynchronyState::instance.DAT_GameCommandParam5),
+                    (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1),
+                    (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam2),
+                    (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam3),
+                    (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1),
+                    (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam2),
+                    (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam3),
                     (EntityType)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam4)), 0);
                 if ((DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT)
                     && (DAT_GameSynchronyState::instance.DAT_GameCommandParam4 == OpenSHC::Map::Entities::ET_BRAZIER)) {

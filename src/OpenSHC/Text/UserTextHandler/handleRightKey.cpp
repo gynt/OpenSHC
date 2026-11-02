@@ -9,7 +9,6 @@ namespace Text {
         if (this->textCursorIndexArray[this->textArrayIndex] < this->textContentLengthArray[this->textArrayIndex]) {
             this->textCursorIndexArray[this->textArrayIndex] = this->textCursorIndexArray[this->textArrayIndex] + 1;
         }
-        return;
     }
 
 }

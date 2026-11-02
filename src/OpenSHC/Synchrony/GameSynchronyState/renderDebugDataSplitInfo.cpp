@@ -64,7 +64,7 @@ namespace Synchrony {
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
                     *piVar3, xParam, y + 0x54, Text::TTA_LEFT, color, 0x12, FALSE, 0);
                 xParam = xParam + 0x28;
-                iVar2 = iVar2 + -1;
+                iVar2 = iVar2 - 1;
             } while (iVar2);
         }
         if (this->splinterType == 1) {

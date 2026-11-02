@@ -71,7 +71,7 @@ namespace Text {
             _decimalNumberToRender = _decimalNumberToRender + ((iVar2 >> 2) - (iVar2 >> 0x1f)) * 10;
             break;
         case -1:
-            this->currentXOffset_0x0 = this->currentXOffset_0x0 + -2;
+            this->currentXOffset_0x0 = this->currentXOffset_0x0 - 2;
             xPosUnk = xPosUnk + 2;
             _decimalNumberToRender = 10;
         }
@@ -91,10 +91,10 @@ namespace Text {
     LAB_0046a45a:
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = this->textSurfaceTarget;
         int _imageId = _decimalNumberToRender + GMTotalPicturesProcessed::instance[0x92];
-        MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderTextChar,
-            DAT_TextureRenderCoreObject::ptr)(this->currentXOffset_0x0 + xPosUnk, iVar2 + yPosUnk, _imageId,
-            Text::FRT_BLENDED_COLOR, iVar2, (ushort)(fillColor), 0);
-        int _widthOfRenderedNumber = DAT_GMImageHeaders::instance.imh[_imageId].width + -2;
+        MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::renderTextChar, DAT_TextureRenderCoreObject::ptr)(
+            this->currentXOffset_0x0 + xPosUnk, iVar2 + yPosUnk, _imageId, Text::FRT_BLENDED_COLOR, iVar2,
+            (ushort)(fillColor), 0);
+        int _widthOfRenderedNumber = DAT_GMImageHeaders::instance.imh[_imageId].width - 2;
         this->currentXOffset_0x0 = this->currentXOffset_0x0 + _widthOfRenderedNumber;
         DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = RVar1;
         return _widthOfRenderedNumber;

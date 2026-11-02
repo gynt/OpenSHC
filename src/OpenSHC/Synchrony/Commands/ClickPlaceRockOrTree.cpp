@@ -56,12 +56,12 @@ namespace Synchrony {
             if (DAT_GameSynchronyState::instance.DAT_GameCommandParam2 == 20) {
                 MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::placeRock, DAT_TileMapState::ptr)(
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam0,
-                    (uint)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1)),
-                    (uint)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam3 & 0xffff)));
+                    (uint)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1),
+                    (uint)(DAT_GameSynchronyState::instance.DAT_GameCommandParam3 & 0xffff));
             }
             MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::placeTree, DAT_TileMapState::ptr)(
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam0,
-                (uint)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1)),
+                (uint)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1),
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam2);
         }
     }

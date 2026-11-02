@@ -16,13 +16,12 @@ namespace Text {
             /*
               Moves everything an index forward to make space for the new char.   --TheRedDaemon
              */
-            next = count + -1;
+            next = count - 1;
             /*
               write character
              */
             this->textArray[this->textArrayIndex][count + startIndex]
-                = this->textArray[this->textArrayIndex - Text::TAIT_ONE__FILTER_B]
-                                 [count + startIndex + 0xf9];
+                = this->textArray[this->textArrayIndex - Text::TAIT_ONE__FILTER_B][count + startIndex + 0xf9];
             count = next;
         } while (0 < next);
     }

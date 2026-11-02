@@ -1,7 +1,7 @@
 #include "../../Synchrony.func.hpp"
 
-#include "OpenSHC/Synchrony/GameSynchronyState.func.hpp"
 #include "OpenSHC/Synchrony.func.hpp"
+#include "OpenSHC/Synchrony/GameSynchronyState.func.hpp"
 
 #include "OpenSHC/Globals/GUID_CLSID_DirectPlay.hpp"
 #include "OpenSHC/Globals/GUID_CLSID_DirectPlayLobby.hpp"
@@ -29,8 +29,8 @@ namespace Synchrony {
         _dplay4 = (IDirectPlay4A*)0x0;
         _dplaylobby3 = (IDirectPlayLobby3*)0x0;
         this->scrollBarItemCount = 3;
-        HVar1 = CoCreateInstance(*GUID_CLSID_DirectPlay::ptr, (IUnknown*)0x0, 1, *GUID_IID_IDirectPlay4::ptr,
-            (LPVOID*)&_dplay4);
+        HVar1 = CoCreateInstance(
+            *GUID_CLSID_DirectPlay::ptr, (IUnknown*)0x0, 1, *GUID_IID_IDirectPlay4::ptr, (LPVOID*)&_dplay4);
         if (-1 < HVar1) {
             HVar1 = CoCreateInstance(*GUID_CLSID_DirectPlayLobby::ptr, (IUnknown*)0x0, 1,
                 *GUID_IID_IDirectPlayLobby3::ptr, (LPVOID*)&_dplaylobby3);
@@ -50,7 +50,7 @@ namespace Synchrony {
                         ppGVar2 = ppGVar2 + 1;
                     } while (iVar3 < this->scrollBarItemCount);
                 }
-                this->scrollBarItemCount = this->scrollBarItemCount + -1;
+                this->scrollBarItemCount = this->scrollBarItemCount - 1;
             }
             ppGVar2 = this->guids;
             if (this->guids[1] == (GUID*)0x0) {
@@ -63,7 +63,7 @@ namespace Synchrony {
                         iVar3 = iVar3 + 1;
                     } while (iVar3 < this->scrollBarItemCount);
                 }
-                this->scrollBarItemCount = this->scrollBarItemCount + -1;
+                this->scrollBarItemCount = this->scrollBarItemCount - 1;
             }
             ppGVar2 = this->guids;
             if (this->guids[0] == (GUID*)0x0) {
@@ -76,13 +76,12 @@ namespace Synchrony {
                         ppGVar2 = ppGVar2 + 1;
                     } while (iVar3 < this->scrollBarItemCount);
                 }
-                this->scrollBarItemCount = this->scrollBarItemCount + -1;
+                this->scrollBarItemCount = this->scrollBarItemCount - 1;
             }
             MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::setMenuTypeBasedOnDirectPlayGUID, this)();
             this->DPLAYX_LOBBY = _dplaylobby3;
             _dplay4->Release();
         }
-        return;
     }
 
 }

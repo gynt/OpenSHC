@@ -76,7 +76,7 @@ namespace Synchrony {
         x = 1;
         y = 0x1997fe0;
         do {
-            if (*(int*)(y + -0x7a1cc) != -1) {
+            if (*(int*)(y - 0x7a1cc) != -1) {
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     " p", xParam, iVar1, Text::TTA_LEFT, 0xffffff, 0x12, TRUE, 0);
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
@@ -106,7 +106,7 @@ namespace Synchrony {
         x = 1;
         y = 0x1998004;
         do {
-            if (*(int*)(y + -0x7a1f0) != -1) {
+            if (*(int*)(y - 0x7a1f0) != -1) {
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     " p", xParam, iVar1, Text::TTA_LEFT, 0xffffff, 0x12, TRUE, 0);
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(
@@ -125,7 +125,7 @@ namespace Synchrony {
         x = 1;
         y = 0x1998028;
         do {
-            if (*(int*)(y + -0x7a214) != -1) {
+            if (*(int*)(y - 0x7a214) != -1) {
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     " p", xParam, iVar1, Text::TTA_LEFT, 0xffffff, 0x12, TRUE, 0);
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, DAT_TextManagerObject::ptr)(

@@ -26,7 +26,7 @@ namespace Text {
             pacVar2 = pacVar1;
             pacVar1 = (char (*)[250])(*pacVar2 + 1);
         } while ((*pacVar2)[0] != '\0');
-        this->textContentLengthArray[1] = (int)(pacVar2 + -0x16dbc) + 0xe;
+        this->textContentLengthArray[1] = (int)(pacVar2 - 0x16dbc) + 0xe;
         this->textArrayFontSizes[2] = 0x12;
         this->textBoxMaxCharactersArray[2] = 0x20;
         this->textBoxMaxTextWidthDimensionArray[2] = 0xb4;
@@ -36,7 +36,7 @@ namespace Text {
             pacVar2 = pacVar1;
             pacVar1 = (char (*)[250])(*pacVar2 + 1);
         } while ((*pacVar2)[0] != '\0');
-        this->textContentLengthArray[2] = (int)(pacVar2 + -0x16dbd) + 0xe;
+        this->textContentLengthArray[2] = (int)(pacVar2 - 0x16dbd) + 0xe;
         this->textArrayFontSizes[3] = 0x12;
         this->textBoxMaxCharactersArray[3] = 0x20;
         this->textBoxMaxTextWidthDimensionArray[3] = 0xb4;
@@ -46,7 +46,7 @@ namespace Text {
             pacVar2 = pacVar1;
             pacVar1 = (char (*)[250])(*pacVar2 + 1);
         } while ((*pacVar2)[0] != '\0');
-        this->textContentLengthArray[3] = (int)(pacVar2 + -0x16dbe) + 0xe;
+        this->textContentLengthArray[3] = (int)(pacVar2 - 0x16dbe) + 0xe;
         this->textArrayFontSizes[4] = 0x13;
         this->textBoxMaxCharactersArray[4] = 0xf9;
         this->textBoxMaxTextWidthDimensionArray[4] = 400;
@@ -56,7 +56,7 @@ namespace Text {
             pacVar2 = pacVar1;
             pacVar1 = (char (*)[250])(*pacVar2 + 1);
         } while ((*pacVar2)[0] != '\0');
-        this->textContentLengthArray[4] = (int)(pacVar2 + -0x16dbf) + 0xe;
+        this->textContentLengthArray[4] = (int)(pacVar2 - 0x16dbf) + 0xe;
         this->textArrayFontSizes[5] = 0x11;
         this->textArrayFontSizes[6] = 0x11;
         this->textArrayFontSizes[7] = 0x11;
@@ -78,7 +78,7 @@ namespace Text {
             pacVar2 = pacVar1;
             pacVar1 = (char (*)[250])(*pacVar2 + 1);
         } while ((*pacVar2)[0] != '\0');
-        this->textContentLengthArray[10] = (int)(pacVar2 + -0x16dc5) + 0xe;
+        this->textContentLengthArray[10] = (int)(pacVar2 - 0x16dc5) + 0xe;
         this->textArrayFontSizes[0xb] = 0x12;
         this->textBoxMaxCharactersArray[0xb] = 4;
         this->textBoxMaxTextWidthDimensionArray[0xb] = 0x3c;
@@ -88,7 +88,7 @@ namespace Text {
             pacVar2 = pacVar1;
             pacVar1 = (char (*)[250])(*pacVar2 + 1);
         } while ((*pacVar2)[0] != '\0');
-        this->textContentLengthArray[0xb] = (int)(pacVar2 + -0x16dc6) + 0xe;
+        this->textContentLengthArray[0xb] = (int)(pacVar2 - 0x16dc6) + 0xe;
         this->textArrayFontSizes[0xc] = 0x12;
         this->textBoxMaxCharactersArray[0xc] = 4;
         this->textBoxMaxTextWidthDimensionArray[0xc] = 0x3c;
@@ -98,7 +98,7 @@ namespace Text {
             pacVar2 = pacVar1;
             pacVar1 = (char (*)[250])(*pacVar2 + 1);
         } while ((*pacVar2)[0] != '\0');
-        this->textContentLengthArray[0xc] = (int)(pacVar2 + -0x16dc7) + 0xe;
+        this->textContentLengthArray[0xc] = (int)(pacVar2 - 0x16dc7) + 0xe;
         this->textArrayFontSizes[0xd] = 0x12;
         this->textBoxMaxCharactersArray[0xd] = 4;
         this->textBoxMaxTextWidthDimensionArray[0xd] = 0x3c;
@@ -108,7 +108,7 @@ namespace Text {
             pacVar2 = pacVar1;
             pacVar1 = (char (*)[250])(*pacVar2 + 1);
         } while ((*pacVar2)[0] != '\0');
-        this->textContentLengthArray[0xd] = (int)(pacVar2 + -0x16dc8) + 0xe;
+        this->textContentLengthArray[0xd] = (int)(pacVar2 - 0x16dc8) + 0xe;
         this->textArrayFontSizes[0xe] = 0x12;
         this->textBoxMaxCharactersArray[0xe] = 99;
         this->textBoxMaxTextWidthDimensionArray[0xe] = 0x181;
@@ -118,7 +118,7 @@ namespace Text {
             pacVar2 = pacVar1;
             pacVar1 = (char (*)[250])(*pacVar2 + 1);
         } while ((*pacVar2)[0] != '\0');
-        this->textContentLengthArray[0xe] = (int)(pacVar2 + -0x16dc9) + 0xe;
+        this->textContentLengthArray[0xe] = (int)(pacVar2 - 0x16dc9) + 0xe;
         this->textArrayFontSizes[0xf] = 0x12;
         this->textBoxMaxCharactersArray[0xf] = 0x20;
         this->textBoxMaxTextWidthDimensionArray[0xf] = 0xb4;
@@ -128,7 +128,7 @@ namespace Text {
             pacVar2 = pacVar1;
             pacVar1 = (char (*)[250])(*pacVar2 + 1);
         } while ((*pacVar2)[0] != '\0');
-        this->textContentLengthArray[0xf] = (int)(pacVar2 + -0x16dca) + 0xe;
+        this->textContentLengthArray[0xf] = (int)(pacVar2 - 0x16dca) + 0xe;
         this->allowUserTextInput = 0;
     }
 

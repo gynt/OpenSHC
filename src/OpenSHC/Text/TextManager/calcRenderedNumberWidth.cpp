@@ -26,7 +26,7 @@ namespace Text {
             } else {
                 iVar3 = (-(uint)(param_2 != 2) & 0xb) + 0x20;
             }
-            return DAT_GMImageHeaders::instance.imh[GMTotalPicturesProcessed::instance[0x92] + iVar3].width + -2;
+            return DAT_GMImageHeaders::instance.imh[GMTotalPicturesProcessed::instance[0x92] + iVar3].width - 2;
         }
         int iVar1 = param_1 / 100000;
         if (iVar1) {
@@ -39,7 +39,7 @@ namespace Text {
             } else if (param_2 == 3) {
                 iVar1 = iVar1 + 0x21;
             }
-            iVar3 = DAT_GMImageHeaders::instance.imh[iVar1 + GMTotalPicturesProcessed::instance[0x92]].width + -2;
+            iVar3 = DAT_GMImageHeaders::instance.imh[iVar1 + GMTotalPicturesProcessed::instance[0x92]].width - 2;
         }
         iVar1 = param_1 / 10000;
         if (iVar1) {
@@ -52,7 +52,7 @@ namespace Text {
             } else if (param_2 == 3) {
                 iVar1 = iVar1 + 0x21;
             }
-            iVar3 = iVar3 + -2
+            iVar3 = iVar3 - 2
                 + (int)DAT_GMImageHeaders::instance.imh[iVar1 + GMTotalPicturesProcessed::instance[0x92]].width;
         }
         iVar1 = param_1 / 1000;
@@ -66,7 +66,7 @@ namespace Text {
             } else if (param_2 == 3) {
                 iVar1 = iVar1 + 0x21;
             }
-            iVar3 = iVar3 + -2
+            iVar3 = iVar3 - 2
                 + (int)DAT_GMImageHeaders::instance.imh[iVar1 + GMTotalPicturesProcessed::instance[0x92]].width;
         }
         iVar1 = param_1 / 100;
@@ -80,7 +80,7 @@ namespace Text {
             } else if (param_2 == 3) {
                 iVar1 = iVar1 + 0x21;
             }
-            iVar3 = iVar3 + -2
+            iVar3 = iVar3 - 2
                 + (int)DAT_GMImageHeaders::instance.imh[iVar1 + GMTotalPicturesProcessed::instance[0x92]].width;
         }
         iVar1 = param_1 / 10;
@@ -94,7 +94,7 @@ namespace Text {
             } else if (param_2 == 3) {
                 iVar1 = iVar1 + 0x21;
             }
-            iVar3 = iVar3 + -2
+            iVar3 = iVar3 - 2
                 + (int)DAT_GMImageHeaders::instance.imh[iVar1 + GMTotalPicturesProcessed::instance[0x92]].width;
         }
         iVar1 = param_1 % 10;
@@ -105,7 +105,7 @@ namespace Text {
         } else if (param_2 == 3) {
             iVar1 = iVar1 + 0x21;
         }
-        return DAT_GMImageHeaders::instance.imh[GMTotalPicturesProcessed::instance[0x92] + iVar1].width + -2 + iVar3;
+        return DAT_GMImageHeaders::instance.imh[GMTotalPicturesProcessed::instance[0x92] + iVar1].width - 2 + iVar3;
     }
 
 }

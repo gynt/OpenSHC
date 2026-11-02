@@ -11,7 +11,6 @@ namespace Text {
     {
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderNumberToScreen2, this)(
             number, xParam, yParam, alignment, color, fontSize, keepOffsetX, 0);
-        return;
     }
 
 }

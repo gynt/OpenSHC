@@ -21,8 +21,7 @@ namespace Synchrony {
         undefined2* local_c;
         int local_8;
         char (*local_4)[250];
-        pcVar3 = MACRO_CALL_MEMBER(
-            Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0);
+        pcVar3 = MACRO_CALL_MEMBER(Text::UserTextHandler_Func::getTextArrayPointer, DAT_UserTextHandlerState::ptr)(0);
         pacVar5 = this->DAT_PlayerNames + 1;
         do {
             cVar2 = *pcVar3;
@@ -87,7 +86,7 @@ namespace Synchrony {
             local_8 = local_8 + 0x5a;
         } while (iVar6 < 9);
         paiVar7 = this->finalResults.finalKillMatrix;
-        for (iVar6 = 0x51; iVar6 != 0; iVar6 = iVar6 + -1) {
+        for (iVar6 = 0x51; iVar6 != 0; iVar6 = iVar6 - 1) {
             (*paiVar7)[0] = 0;
             paiVar7 = (int (*)[9])(*paiVar7 + 1);
         }

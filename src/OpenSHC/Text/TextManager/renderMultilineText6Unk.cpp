@@ -23,10 +23,9 @@ namespace Text {
         this->field10_0x28 = iVar1;
         MACRO_CALL_MEMBER(Text::FontSizeClass_Func::renderMultilineTextUnk,
             &DAT_TextManagerObject::instance.fontSizeClassArray[fontSize])(
-            text, xPos + -2, yPos + -1, maxWidth, color1, blendStrength, 0);
+            text, xPos - 2, yPos - 1, maxWidth, color1, blendStrength, 0);
         this->drawingTextShadow = 0;
         this->field12_0x30 = 0;
-        return;
     }
 
 }

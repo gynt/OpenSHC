@@ -39,8 +39,8 @@ namespace Synchrony {
                 OpenSHC::Commands::GCPL_DYNAMIC_COMMAND_DATA_ADDRESS, OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
             MACRO_CALL(OpenSHC::Synchrony::Actions_Func::ProcessReleaseDogs)(
                 DAT_GameSynchronyState::instance.protocolInvokerPlayerID,
-                (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0)),
-                (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1)));
+                (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0),
+                (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1));
         }
     }
 

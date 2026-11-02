@@ -14,7 +14,6 @@ namespace Text {
         MACRO_CALL_MEMBER(Text::FontSizeClass_Func::renderSomeSpecificTextUnk,
             &DAT_TextManagerObject::instance.fontSizeClassArray[fontSize])(
             lengthUnk, otherBlendValueUnk, xPos, yPos, color);
-        return;
     }
 
 }

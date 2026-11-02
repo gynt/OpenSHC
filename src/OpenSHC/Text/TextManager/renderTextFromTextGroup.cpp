@@ -10,11 +10,10 @@ namespace Text {
         TextAlignment alignment, uint color, int fontSize, BOOLEnum keepOffsetX, int blendStrength)
     {
         char* _textAddress;
-        _textAddress = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, this)(
-            offsetIndex, numInGroup);
+        _textAddress
+            = MACRO_CALL_MEMBER(Text::TextManager_Func::getTextStringInGroupAtOffset, this)(offsetIndex, numInGroup);
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, this)(
             _textAddress, xParam, yParam, alignment, (BGR24)((int)(color)), fontSize, keepOffsetX, blendStrength);
-        return;
     }
 
 }

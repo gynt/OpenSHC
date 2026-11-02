@@ -8,7 +8,6 @@ namespace Text {
     {
         this->textClipMin = 0;
         this->textClipMax = 10000;
-        return;
     }
 
 }

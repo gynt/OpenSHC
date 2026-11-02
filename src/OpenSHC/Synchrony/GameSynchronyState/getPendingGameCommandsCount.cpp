@@ -23,7 +23,7 @@ namespace Synchrony {
                     iVar1 = iVar1 + 1;
                 }
                 pGVar3 = pGVar3 + 0x4f8;
-                iVar2 = iVar2 + -1;
+                iVar2 = iVar2 - 1;
             } while (iVar2);
         }
         return iVar1;

@@ -12,7 +12,6 @@ namespace Text {
     {
         MACRO_CALL_MEMBER(Text::FontSizeClass_Func::wrapTextIntoLines,
             &DAT_TextManagerObject::instance.fontSizeClassArray[fontSize])(text, allowedWidth);
-        return;
     }
 
 }

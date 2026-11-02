@@ -41,8 +41,8 @@ namespace Synchrony {
             DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = (uint)local_4;
             MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::spreadBrazierPlacementAlgorithm, DAT_TileMapState::ptr)(
                 DAT_GameSynchronyState::instance.protocolInvokerPlayerID,
-                (uint)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0)),
-                (uint)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1)));
+                (uint)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0),
+                (uint)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1));
         }
     }
 

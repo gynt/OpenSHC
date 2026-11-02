@@ -16,7 +16,6 @@ namespace Text {
         this->textCursorIndexArray[this->textArrayIndex] = 0;
         this->unknown01 = 1;
         this->returnPressed = 0;
-        return;
     }
 
 }

@@ -23,20 +23,20 @@ void Synchrony::ResetAiVariationArrayValue(int playerID)
         local_24[0] = 0;
         piVar1 = DAT_GameSynchronyState::instance.aiVariationArray + 1;
         do {
-            if (((piVar1[-0x24] == -1) && (piVar1[-9] == DAT_GameSynchronyState::instance.currentAIArray[playerID]))
-                && (*piVar1 != -1)) {
+            if (piVar1[-0x24] == -1 && piVar1[-9] == DAT_GameSynchronyState::instance.currentAIArray[playerID]
+                && *piVar1 != -1) {
                 local_24[*piVar1] = 1;
             }
-            if (((piVar1[-0x23] == -1) && (piVar1[-8] == DAT_GameSynchronyState::instance.currentAIArray[playerID]))
-                && (piVar1[1] != -1)) {
+            if (piVar1[-0x23] == -1 && piVar1[-8] == DAT_GameSynchronyState::instance.currentAIArray[playerID]
+                && piVar1[1] != -1) {
                 local_24[piVar1[1]] = 1;
             }
-            if (((piVar1[-0x22] == -1) && (piVar1[-7] == DAT_GameSynchronyState::instance.currentAIArray[playerID]))
-                && (piVar1[2] != -1)) {
+            if (piVar1[-0x22] == -1 && piVar1[-7] == DAT_GameSynchronyState::instance.currentAIArray[playerID]
+                && piVar1[2] != -1) {
                 local_24[piVar1[2]] = 1;
             }
-            if (((piVar1[-0x21] == -1) && (piVar1[-6] == DAT_GameSynchronyState::instance.currentAIArray[playerID]))
-                && (piVar1[3] != -1)) {
+            if (piVar1[-0x21] == -1 && piVar1[-6] == DAT_GameSynchronyState::instance.currentAIArray[playerID]
+                && piVar1[3] != -1) {
                 local_24[piVar1[3]] = 1;
             }
             piVar1 = piVar1 + 4;

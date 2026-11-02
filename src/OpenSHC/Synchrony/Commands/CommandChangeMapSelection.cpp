@@ -49,7 +49,7 @@ namespace Synchrony {
             if (_selectionIndex < 0) {
                 mapIndex = 0;
             } else {
-                mapIndex = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[_selectionIndex + -1];
+                mapIndex = DAT_MenuTextInputState::instance.DAT_ArrayOfMapIndices[_selectionIndex - 1];
             }
             numberOfSymbols = 1000;
             lpMultiByteStr = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,

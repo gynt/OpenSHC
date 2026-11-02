@@ -7,6 +7,7 @@
 #include "OpenSHC/Text/TextManager.func.hpp"
 #include "OpenSHC/Text/UserTextHandler.func.hpp"
 #include "OpenSHC/Util/WideCharMultiByteState.func.hpp"
+#include "OpenSHC/Audio/mss/SoundFlagsAndLoopCount.hpp"
 #include "OpenSHC/Commands/GameCommandParameterLocation.hpp"
 #include "OpenSHC/Commands/GameCommandParameterReadWrite.hpp"
 #include "OpenSHC/Commands/GameCommandScheduling.hpp"
@@ -21,17 +22,16 @@
 #include "OpenSHC/Globals/DAT_UserTextHandlerState.hpp"
 #include "OpenSHC/Globals/DAT_WideCharMultiByteState.hpp"
 #include "OpenSHC/Globals/MSVC_SecurityCookie.hpp"
-#include "OpenSHC/Audio/mss/SoundFlagsAndLoopCount.hpp"
 
 namespace OpenSHC {
 namespace Synchrony {
 
+    using OpenSHC::Audio::MSS::SoundFlagsAndLoopCount;
     using OpenSHC::Commands::GameCommandParameterLocation;
     using OpenSHC::Commands::GameCommandParameterReadWrite;
     using OpenSHC::Commands::GameCommandScheduling;
     using OpenSHC::DE::SHCDE::eTextSections;
     using OpenSHC::IO::FileResourceType;
-    using OpenSHC::Audio::MSS::SoundFlagsAndLoopCount;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004895E0
     void Commands::ClickTauntOrChat()
@@ -67,8 +67,8 @@ namespace Synchrony {
                     DAT_GameSynchronyState::ptr)(_messageRaw, 500, OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS,
                     OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
                 MACRO_CALL_MEMBER(OpenSHC::Util::WideCharMultiByteState_Func::wideCharToMultiByteWithSize,
-                    DAT_WideCharMultiByteState::ptr)(DAT_GameSynchronyState::instance.receivedChatMessage,
-                    (LPWSTR)((int)(_messageRaw)), (int)((int)(250)));
+                    DAT_WideCharMultiByteState::ptr)(
+                    DAT_GameSynchronyState::instance.receivedChatMessage, (LPWSTR)((int)(_messageRaw)), (int)(250));
                 MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
                     DAT_GameSynchronyState::ptr)(_tauntOrChat + 1, (size_t)((int)(36)),
                     OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS,
@@ -85,9 +85,8 @@ namespace Synchrony {
                         iVar4 = 0;
                     } else if (_tauntOrChat[0] < 0) {
                         _tauntOrChat[0] = -1 - _tauntOrChat[0];
-                        pcVar2 = MACRO_CALL_MEMBER(
-                            OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset, DAT_TextManagerObject::ptr)(
-                            OpenSHC::DE::SHCDE::TEXT_INSULTS, (int)((int)(_tauntOrChat[0])));
+                        pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
+                            DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_INSULTS, (int)(_tauntOrChat[0]));
                         pcVar3 = DAT_GameSynchronyState::instance.receivedChatMessage;
                         do {
                             cVar1 = *pcVar2;
@@ -109,8 +108,7 @@ namespace Synchrony {
                         iVar4 = DAT_GameSynchronyState::instance.protocolInvokerPlayerID;
                         if (_tauntOrChat[0] != 0) {
                             pcVar2 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
-                                DAT_TextManagerObject::ptr)(
-                                OpenSHC::DE::SHCDE::TEXT_INSULTS, (int)((int)(_tauntOrChat[0])));
+                                DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_INSULTS, (int)(_tauntOrChat[0]));
                             pcVar3 = DAT_GameSynchronyState::instance.receivedChatMessage;
                             do {
                                 cVar1 = *pcVar2;

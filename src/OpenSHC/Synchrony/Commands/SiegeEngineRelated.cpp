@@ -47,8 +47,8 @@ namespace Synchrony {
             DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = (int)local_4[0];
             MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::selectSiegeEngineAndPlayFeedback,
                 DAT_UnitsState::ptr)(DAT_GameSynchronyState::instance.protocolInvokerPlayerID,
-                (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0)),
-                (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1)));
+                (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0),
+                (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1));
         }
     }
 

@@ -74,8 +74,7 @@ namespace Synchrony {
             iVar2 = -4;
         }
         MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::giveBackResourceForDestroyedBuilding,
-            DAT_BuildingsState::ptr)(
-            iVar2, (int)((int)(DAT_GameSynchronyState::instance.protocolInvokerPlayerID)), 100);
+            DAT_BuildingsState::ptr)(iVar2, (int)(DAT_GameSynchronyState::instance.protocolInvokerPlayerID), 100);
     LAB_00484c1b:
         DAT_UnitsState::instance.units[_entity].logicalState = OpenSHC::Map::Units::ULS_REMOVE;
     }

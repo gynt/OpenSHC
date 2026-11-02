@@ -17,10 +17,9 @@ namespace Text {
             alignment, (BGR24)((int)(backgroundColor)), fontSize, keepOffsetX, blendStrength);
         this->field10_0x28 = iVar2;
         this->currentXOffset_0x0 = iVar1;
-        MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, this)((char*)textAddress, xParam + -2,
-            yParam + -1, alignment, (BGR24)((int)(foregroundColor)), fontSize, keepOffsetX, blendStrength);
+        MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, this)((char*)textAddress, xParam - 2, yParam - 1,
+            alignment, (BGR24)((int)(foregroundColor)), fontSize, keepOffsetX, blendStrength);
         this->drawingTextShadow = 0;
-        return;
     }
 
 }

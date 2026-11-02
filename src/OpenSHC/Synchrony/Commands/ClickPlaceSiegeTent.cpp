@@ -12,6 +12,7 @@
 #include "OpenSHC/Commands/MappersEnum.hpp"
 #include "OpenSHC/Game/GameMode.hpp"
 #include "OpenSHC/Map/Buildings/BuildingType.hpp"
+#include "OpenSHC/Map/Buildings/BuildingTypeShort.hpp"
 #include "OpenSHC/Map/Units/UnitType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
@@ -22,7 +23,6 @@
 #include "OpenSHC/Globals/DAT_UnitsState.hpp"
 #include "OpenSHC/Globals/DAT_ViewportRenderState.hpp"
 #include "OpenSHC/Globals/DAT_WallAndPitchState.hpp"
-#include "OpenSHC/Map/Buildings/BuildingTypeShort.hpp"
 
 namespace OpenSHC {
 namespace Synchrony {
@@ -33,9 +33,9 @@ namespace Synchrony {
     using OpenSHC::Commands::MappersEnum;
     using OpenSHC::Game::GameMode;
     using OpenSHC::Map::Buildings::BuildingType;
+    using OpenSHC::Map::Buildings::BuildingTypeShort;
     using OpenSHC::Map::Units::UnitType;
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
-    using OpenSHC::Map::Buildings::BuildingTypeShort;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x004827E0
     void Commands::ClickPlaceSiegeTent()
@@ -90,24 +90,24 @@ namespace Synchrony {
             iVar2 = MACRO_CALL_MEMBER(
                 OpenSHC::Game::GameStateStructures_Func::checkRequiredResourcesForBuildingOrPlanToBuy,
                 DAT_GameState::ptr)(
-                commandBuildingType, (int)((int)(DAT_GameSynchronyState::instance.protocolInvokerPlayerID)), FALSE);
+                commandBuildingType, (int)(DAT_GameSynchronyState::instance.protocolInvokerPlayerID), FALSE);
             if (!iVar2) {}
         }
     LAB_0048290e:
-        if ((((DAT_GameSynchronyState::instance.DAT_GameCommandParam3 == OpenSHC::Map::Units::UT_S_MANGONEL)
-                 || (DAT_GameSynchronyState::instance.DAT_GameCommandParam3 == OpenSHC::Map::Units::UT_S_BALLISTA))
-                && (DAT_TileMapState::instance.BuildingLayer
-                        [DAT_ViewportRenderState::instance
-                                .translationMatrix[(int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1
-                                                       + (DAT_GameSynchronyState::instance.DAT_GameCommandParam1 >> 0x1f
-                                                           & 7U))
-                                    >> 3]
-                                .addXgetTile
-                            + ((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0
-                                   + (DAT_GameSynchronyState::instance.DAT_GameCommandParam0 >> 0x1f & 7U))
-                                >> 3)]
-                    != 0))
-            && (DAT_BuildingsState::instance
+        if (((DAT_GameSynchronyState::instance.DAT_GameCommandParam3 == OpenSHC::Map::Units::UT_S_MANGONEL)
+                || (DAT_GameSynchronyState::instance.DAT_GameCommandParam3 == OpenSHC::Map::Units::UT_S_BALLISTA))
+            && DAT_TileMapState::instance
+                    .BuildingLayer[DAT_ViewportRenderState::instance
+                                       .translationMatrix
+                                           [(int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1
+                                                + (DAT_GameSynchronyState::instance.DAT_GameCommandParam1 >> 0x1f & 7U))
+                                               >> 3]
+                                       .addXgetTile
+                        + ((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0
+                               + (DAT_GameSynchronyState::instance.DAT_GameCommandParam0 >> 0x1f & 7U))
+                            >> 3)]
+                != 0
+            && DAT_BuildingsState::instance
                     .buildings[DAT_TileMapState::instance.BuildingLayer
                             [DAT_ViewportRenderState::instance
                                     .translationMatrix
@@ -119,13 +119,13 @@ namespace Synchrony {
                                        + (DAT_GameSynchronyState::instance.DAT_GameCommandParam0 >> 0x1f & 7U))
                                     >> 3)]]
                     .containsSiegeMangonel1OrBallista2
-                != 0)) {}
+                != 0) {}
         _unitID = MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::spawnUnit, DAT_UnitsState::ptr)(
             DAT_GameSynchronyState::instance.protocolInvokerPlayerID,
-            (int)((int)(DAT_GameSynchronyState::instance.protocolInvokerPlayerID)),
-            (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0)),
-            (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1)),
-            (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam2)),
+            (int)(DAT_GameSynchronyState::instance.protocolInvokerPlayerID),
+            (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0),
+            (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1),
+            (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam2),
             (UnitType)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam3)));
         if (DAT_GameSynchronyState::instance.DAT_GameCommandParam3 == OpenSHC::Map::Units::UT_S_MANGONEL) {
             buildingType = OpenSHC::Map::Buildings::BT_MANGONEL;
@@ -139,8 +139,7 @@ namespace Synchrony {
     LAB_004829bb:
         if (((DAT_GameSynchronyState::instance.DAT_GameCommandParam3 == OpenSHC::Map::Units::UT_S_MANGONEL)
                 || (DAT_GameSynchronyState::instance.DAT_GameCommandParam3 == OpenSHC::Map::Units::UT_S_BALLISTA))
-            && ((
-                iVar2 = (int)DAT_TileMapState::instance
+            && (iVar2 = (int)DAT_TileMapState::instance
                     .BuildingLayer[DAT_ViewportRenderState::instance
                                        .translationMatrix
                                            [(int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1
@@ -153,7 +152,7 @@ namespace Synchrony {
                 iVar2 != 0
                     && ((BVar1 = DAT_BuildingsState::instance.buildings[iVar2].buildingType,
                         BVar1 == OpenSHC::Map::Buildings::BT_TOWER1
-                            || (BVar1 == OpenSHC::Map::Buildings::BT_TOWER4)))))) {
+                            || (BVar1 == OpenSHC::Map::Buildings::BT_TOWER4))))) {
             DAT_BuildingsState::instance.buildings[iVar2].hasUnitsOntop = 1;
             DAT_BuildingsState::instance.buildings[iVar2].tileScanCountdown = 100;
         }

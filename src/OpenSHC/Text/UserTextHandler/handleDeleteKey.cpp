@@ -25,7 +25,6 @@ namespace Text {
             this->textContentLengthArray[this->textArrayIndex]
                 = (int)pacVar3 - (this->textArrayIndex * 0xfa + 0x1652891);
         }
-        return;
     }
 
 }

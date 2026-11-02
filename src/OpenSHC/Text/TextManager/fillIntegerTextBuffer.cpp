@@ -58,9 +58,9 @@ namespace Text {
         } while (iVar1 < 8);
         iVar1 = 9;
     LAB_0046a014:
-        iVar1 = iVar1 + -1;
+        iVar1 = iVar1 - 1;
         while (-1 < iVar1) {
-            iVar1 = iVar1 + -1;
+            iVar1 = iVar1 - 1;
             *(char*)(iVar2 + 0x2158899 + iVar1) = (char)numberInt + (char)(numberInt / 10) * -10 + '0';
             numberInt = numberInt / 10;
         }
@@ -84,7 +84,6 @@ namespace Text {
         this->integerTextBuffer[0x11] = DAT_TextManagerObject::instance.integerTextBuffer[0x11];
         this->integerTextBuffer[0x12] = DAT_TextManagerObject::instance.integerTextBuffer[0x12];
         this->integerTextBuffer[0x13] = DAT_TextManagerObject::instance.integerTextBuffer[0x13];
-        return;
     }
 
 }

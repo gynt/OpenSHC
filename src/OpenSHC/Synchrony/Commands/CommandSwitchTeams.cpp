@@ -267,13 +267,12 @@ namespace Synchrony {
                     iVar7 = MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::countPlayersInSameTeam,
                         DAT_GameSynchronyState::ptr)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0);
                     iVar3 = DAT_GameSynchronyState::instance.protocolInvokerPlayerID;
-                    if (((iVar7 < 2)
-                            && (iVar7
-                                = MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::countPlayersInSameTeam,
-                                    DAT_GameSynchronyState::ptr)(
-                                    DAT_GameSynchronyState::instance.protocolInvokerPlayerID),
-                                iVar7 < 2))
-                        && (bVar2)) {
+                    if (iVar7 < 2
+                        && (iVar7
+                            = MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::countPlayersInSameTeam,
+                                DAT_GameSynchronyState::ptr)(DAT_GameSynchronyState::instance.protocolInvokerPlayerID),
+                            iVar7 < 2)
+                        && bVar2) {
                         DAT_GameState::instance.mapAndTime.playerTeams[iVar6]
                             = DAT_GameState::instance.mapAndTime.playerTeams[iVar3];
                         /*
@@ -290,7 +289,7 @@ namespace Synchrony {
                         } while (cVar1 != '\0');
                         MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::addChatMessageToDisplayList,
                             DAT_GameSynchronyState::ptr)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0,
-                            (int)((int)(DAT_GameSynchronyState::instance.protocolInvokerPlayerID)));
+                            (int)(DAT_GameSynchronyState::instance.protocolInvokerPlayerID));
                     }
                 }
             }

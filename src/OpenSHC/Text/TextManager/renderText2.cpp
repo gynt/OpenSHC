@@ -16,7 +16,6 @@ namespace Text {
             textOffsetIndex, textNumInGroup);
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderTextToScreen, this)(
             textAddress, xParam, yParam, alignment, (BGR24)((int)(color)), fontSize, keepOffsetX, blendStrength);
-        return;
     }
 
 }

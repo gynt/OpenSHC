@@ -69,7 +69,6 @@ namespace Synchrony {
             pvVar4 = GlobalHandle(_allocateMemLock);
             GlobalFree(pvVar4);
         };
-        return;
     }
 
 }

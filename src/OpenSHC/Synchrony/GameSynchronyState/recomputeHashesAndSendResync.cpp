@@ -139,7 +139,7 @@ namespace Synchrony {
                     piVar2 = (int*)(psVar38 + 0x16);
                     piVar3 = (int*)(psVar38 + 0x14);
                     psVar38[0x16e] = sVar5;
-                    piVar4 = (int*)(psVar38 + -8);
+                    piVar4 = (int*)(psVar38 - 8);
                     psVar38 = psVar38 + 0x196;
                     iVar39 = (int)sVar6 + uVar19 + *piVar41 + *piVar1 + *piVar2 + *piVar3 + *piVar4;
                     _hashSubTotal = _hashSubTotal + iVar39;
@@ -196,7 +196,7 @@ namespace Synchrony {
                     piVar43->animationSpeed = 0;
                     piVar43->animationTicker = 0;
                     uVar19 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
-                        DAT_DirectionAlgorithmState::ptr)(14748, (int*)((int)(piVar43 + -0xe13)));
+                        DAT_DirectionAlgorithmState::ptr)(14748, (int*)((int)(piVar43 - 0xe13)));
                     _hashSubTotal = _hashSubTotal + uVar19;
                     this->HASH_PlayerDatas[this->currentPlayerSlotID][_playerDataIndex] = uVar19;
                     piVar43->animationSpeed = iVar45;
@@ -222,13 +222,13 @@ namespace Synchrony {
                     this->HASH_Section1023[this->currentPlayerSlotID][iVar45] = uVar19;
                     _someIndex = iVar45 + 1;
                 } while ((int)piVar41 < 0x11bc94c);
-                uVar19 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
-                    DAT_DirectionAlgorithmState::ptr)(0x10,
+                uVar19 = MACRO_CALL_MEMBER(
+                    Map::Navigation::DirectionAlgorithmState_Func::computeHash, DAT_DirectionAlgorithmState::ptr)(0x10,
                     (int*)((
                         int)(((int)DAT_GameState::instance.mapAndTime.signpostsMapEdge + iVar45 * 0x38e6 + 0x1022))));
                 this->HASH_Section1023[this->currentPlayerSlotID][iVar45 + 1] = uVar19;
-                uVar21 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
-                    DAT_DirectionAlgorithmState::ptr)(
+                uVar21 = MACRO_CALL_MEMBER(
+                    Map::Navigation::DirectionAlgorithmState_Func::computeHash, DAT_DirectionAlgorithmState::ptr)(
                     0x330, (int*)((int)(&DAT_AIVState::instance.mapExtraInfo.totalWoodAvailable)));
                 iVar39 = iVar39 + uVar19 + uVar21;
                 this->HASH_Section1023[this->currentPlayerSlotID][0x13] = uVar21;
@@ -256,7 +256,7 @@ namespace Synchrony {
                       tree and rock id tile map
                      */
                     uVar19 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
-                        DAT_DirectionAlgorithmState::ptr)(2512, (int*)((int)((psVar38 + -0x13a10))));
+                        DAT_DirectionAlgorithmState::ptr)(2512, (int*)((int)((psVar38 - 0x13a10))));
                     this->HASH_LogicalTileMap[this->currentPlayerSlotID].hashDataArray[3].componentArray[iVar39]
                         = uVar19;
                     /*
@@ -301,9 +301,9 @@ namespace Synchrony {
                     this->HASH_LogicalTileMap[this->currentPlayerSlotID].hashDataArray[10].componentArray[iVar39]
                         = uVar19;
                     this->HASH_LogicalTileMap[this->currentPlayerSlotID].hashDataArray[0xb].componentArray[iVar39] = 0;
-                    uVar21 = MACRO_CALL_MEMBER(
-                        Map::Navigation::DirectionAlgorithmState_Func::computeMaskedBitAccumulator,
-                        DAT_DirectionAlgorithmState::ptr)(2512, (uint*)((int)(pbVar42)), 0x7070707);
+                    uVar21
+                        = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeMaskedBitAccumulator,
+                            DAT_DirectionAlgorithmState::ptr)(2512, (uint*)((int)(pbVar42)), 0x7070707);
                     this->HASH_LogicalTileMap[this->currentPlayerSlotID].hashDataArray[0xc].componentArray[iVar39]
                         = uVar21;
                     uVar22 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
@@ -315,7 +315,7 @@ namespace Synchrony {
                     this->HASH_LogicalTileMap[this->currentPlayerSlotID].hashDataArray[0xe].componentArray[iVar39]
                         = uVar23;
                     uVar24 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
-                        DAT_DirectionAlgorithmState::ptr)(0x9d0, (int*)((int)((pbVar42 + -0x27420))));
+                        DAT_DirectionAlgorithmState::ptr)(0x9d0, (int*)((int)((pbVar42 - 0x27420))));
                     this->HASH_LogicalTileMap[this->currentPlayerSlotID].hashDataArray[0xf].componentArray[iVar39]
                         = uVar24;
                     uVar25 = MACRO_CALL_MEMBER(Map::Navigation::DirectionAlgorithmState_Func::computeHash,
@@ -389,8 +389,8 @@ namespace Synchrony {
                     sVar9 = psVar38[7];
                     sVar10 = psVar38[10];
                     sVar11 = psVar38[0x59];
-                    iVar39 = ((Entity*)(psVar38 + -6))->graphicType2;
-                    address = (Entity*)(psVar38 + -6);
+                    iVar39 = ((Entity*)(psVar38 - 6))->graphicType2;
+                    address = (Entity*)(psVar38 - 6);
                     iVar45 = *(int*)(psVar38 + 0x5c);
                     sVar12 = psVar38[0x5a];
                     sVar13 = psVar38[0x5e];
@@ -523,7 +523,7 @@ namespace Synchrony {
                         Commands::GCT_ANNOUNCE_PLAYER_INFORMATION_AVAILABLE_AIVSSPECIALTRANSMITLOGIC);
                 }
             } else {
-                this->DAT_HashCountdown = this->DAT_HashCountdown + -1;
+                this->DAT_HashCountdown = this->DAT_HashCountdown - 1;
             }
         }
     }

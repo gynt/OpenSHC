@@ -89,7 +89,7 @@ namespace Synchrony {
             piVar2[0x23161] = 0;
             *piVar2 = -1;
             pbVar4[0x33] = 0;
-            pbVar1 = (byte*)(piVar2 + -0x1e846);
+            pbVar1 = (byte*)(piVar2 - 0x1e846);
             pbVar1[0] = 0;
             pbVar1[1] = 0;
             pbVar1[2] = 0;
@@ -107,7 +107,7 @@ namespace Synchrony {
             piVar2[0x90] = FALSE;
             piVar2[0x87] = 0;
             pbVar4[0x12] = 0;
-            ((HashContainerElement*)(piVar3 + -1))->domain01 = 0;
+            ((HashContainerElement*)(piVar3 - 1))->domain01 = 0;
             *piVar3 = 0;
             piVar3[1] = 0;
             piVar3[2] = 0;
@@ -118,7 +118,7 @@ namespace Synchrony {
             do {
                 (*local_10)[0][0] = 0;
                 local_10 = (int (*)[100][2])(*local_10 + 1);
-                local_c = (int (*)[100][2])((int)local_c + -1);
+                local_c = (int (*)[100][2])((int)local_c - 1);
             } while (local_c != (int (*)[100][2])0x0);
             local_14 = local_14 + 1;
             piVar5[-4] = 0;
@@ -160,7 +160,7 @@ namespace Synchrony {
             pbVar4 = pbVar4 + 1;
             piVar3 = piVar3 + 0xc;
             piVar5 = piVar5 + 9;
-            local_4 = local_4 + -1;
+            local_4 = local_4 - 1;
             local_c = local_10;
         } while (local_4);
         this->skirmishUnknownSetting1[0] = 1;

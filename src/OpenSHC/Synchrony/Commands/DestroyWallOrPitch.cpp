@@ -61,16 +61,16 @@ namespace Synchrony {
             if (DAT_GameSynchronyState::instance.DAT_GameCommandParam3 == 3) {
                 MACRO_CALL_MEMBER(OpenSHC::Map::WallAndPitchState_Func::destroyWall, DAT_WallAndPitchState::ptr)(
                     DAT_GameSynchronyState::instance.protocolInvokerPlayerID,
-                    (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0)),
-                    (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1)),
-                    (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam2)));
+                    (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0),
+                    (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1),
+                    (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam2));
             }
             if (DAT_GameSynchronyState::instance.DAT_GameCommandParam3 == 4) {
                 MACRO_CALL_MEMBER(OpenSHC::Map::WallAndPitchState_Func::destroyPitch, DAT_WallAndPitchState::ptr)(
                     DAT_GameSynchronyState::instance.protocolInvokerPlayerID,
-                    (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0)),
-                    (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1)),
-                    (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam2)));
+                    (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0),
+                    (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1),
+                    (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam2));
             }
         }
     }

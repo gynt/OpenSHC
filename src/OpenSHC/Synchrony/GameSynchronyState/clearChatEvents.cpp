@@ -27,7 +27,7 @@ namespace Synchrony {
             _chatEventPtr->time = 0;
             _chatEventPtr->flag = 0;
             _chatEventPtr = _chatEventPtr + 4;
-            _chatEventCounter = _chatEventCounter + -1;
+            _chatEventCounter = _chatEventCounter - 1;
         } while (_chatEventCounter);
         this->chatScrollOffset = 0;
     }

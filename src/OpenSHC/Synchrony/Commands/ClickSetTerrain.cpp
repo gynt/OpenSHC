@@ -71,24 +71,24 @@ namespace Synchrony {
             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
                 DAT_GameSynchronyState::ptr)(&DAT_GameSynchronyState::instance.DAT_GameCommandParam4, 1,
                 OpenSHC::Commands::GCPL_DYNAMIC_COMMAND_DATA_ADDRESS, OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
-            if (((DAT_GameSynchronyState::instance.DAT_GameCommandParam0 < ((GameCommandScheduling)400))
-                    && (DAT_GameSynchronyState::instance.DAT_GameCommandParam1 < 400))
-                && (*(char*)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1 * 400 + 0x21aec98
-                        + DAT_GameSynchronyState::instance.DAT_GameCommandParam0)
-                    != '\0')) {
+            if (DAT_GameSynchronyState::instance.DAT_GameCommandParam0 < (GameCommandScheduling)400
+                && DAT_GameSynchronyState::instance.DAT_GameCommandParam1 < 400
+                && *(char*)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1 * 400 + 0x21aec98
+                       + DAT_GameSynchronyState::instance.DAT_GameCommandParam0)
+                    != '\0') {
                 MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::setTerrain, DAT_TileMapState::ptr)(
                     DAT_GameSynchronyState::instance.protocolInvokerPlayerID,
-                    (int)((int)(DAT_ViewportRenderState::instance
-                                    .translationMatrix[DAT_GameSynchronyState::instance.DAT_GameCommandParam1]
-                                    .addXgetTile
-                        + DAT_GameSynchronyState::instance.DAT_GameCommandParam0)),
-                    (uint)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1)),
-                    (uint)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam2)),
+                    (int)(DAT_ViewportRenderState::instance
+                              .translationMatrix[DAT_GameSynchronyState::instance.DAT_GameCommandParam1]
+                              .addXgetTile
+                        + DAT_GameSynchronyState::instance.DAT_GameCommandParam0),
+                    (uint)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1),
+                    (uint)(DAT_GameSynchronyState::instance.DAT_GameCommandParam2),
                     (Logic1)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam3)),
                     (Logic2)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam4)));
                 MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::updateWalkAndPathLayer,
-                    DAT_PathFindingState::ptr)(9, (uint)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0)),
-                    (uint)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1)));
+                    DAT_PathFindingState::ptr)(9, (uint)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0),
+                    (uint)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1));
                 if (DAT_GameSynchronyState::instance.DAT_GameCommandParam3 != OpenSHC::Map::LogicHelpers::L_MOAT) {
                     DAT_TileMapState::instance.forceUpdateMacroLayerFlag = 1;
                 }

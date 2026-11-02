@@ -30,7 +30,6 @@ namespace Text {
         MACRO_CALL_MEMBER(Text::FontSizeClass_Func::setupFontSizeClassObject,
             &DAT_TextManagerObject::instance.fontSizeClassArray[0x13])(IO::Graphics::GID_FONT_STRONGHOLD_AA,
             this->sizeOfOneFontSet_0x3c * 4, Text::FRT_BLENDED_COLOR, 10, 0x10, 1, 3);
-        return;
     }
 
 }

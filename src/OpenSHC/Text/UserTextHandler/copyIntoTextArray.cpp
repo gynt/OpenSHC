@@ -34,7 +34,6 @@ namespace Text {
         this->textCursorIndexArray[this->textArrayIndex] = (int)param_1 - (int)pcVar2;
         this->unknown01 = 1;
         this->returnPressed = 0;
-        return;
     }
 
 }

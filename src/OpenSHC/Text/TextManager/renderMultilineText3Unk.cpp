@@ -14,7 +14,6 @@ namespace Text {
             textOffsetIndex, textNumInGroup);
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText6Unk, this)(
             _text, xPos, yPos, maxWidth, color1, color2, fontSize, blendStrength);
-        return;
     }
 
 }

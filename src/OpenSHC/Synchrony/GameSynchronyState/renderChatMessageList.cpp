@@ -28,12 +28,12 @@ namespace Synchrony {
         }
         int iVar2 = 0;
         MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::setScreenMenuSurfaceHeightRange,
-            DAT_TextureRenderCoreObject::ptr)(yPos + -0x48, yPos + 0x12);
+            DAT_TextureRenderCoreObject::ptr)(yPos - 0x48, yPos + 0x12);
         DAT_TextManagerObject::instance.field13_0x34 = 0x11;
         param_3 = 0;
         do {
             if (this->DAT_ChatEventArray[this->chatMessageRenderIndex].flag == 1) {
-                int iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
+                int iVar1 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
                     this->DAT_ChatMessageSubjectPlayerNameArray[this->chatMessageRenderIndex], xPos, yPos,
                     Text::TTA_LEFT,
@@ -46,8 +46,8 @@ namespace Synchrony {
                     this->DAT_ChatMessageArray[this->chatMessageRenderIndex], 0, 0,
                     0x1ee - DAT_TextManagerObject::instance.currentXOffset_0x0, 0, 0, 1);
                 if (0x18 < iVar1) {
-                    iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
-                    yPos = yPos + -0x12;
+                    iVar1 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
+                    yPos = yPos - 0x12;
                     iVar2 = iVar2 + 1;
                     MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
                         this->DAT_ChatMessageSubjectPlayerNameArray[this->chatMessageRenderIndex], xPos, yPos,
@@ -57,19 +57,19 @@ namespace Synchrony {
                                         [this->DAT_ChatEventArray[this->chatMessageRenderIndex].subjectPlayer]]),
                         0, 0x13, FALSE, (iVar1 / 32) + 0x20);
                 }
-                iVar1 = (DAT_ButtonBackgroundBlendStrength::instance + -0x20) * 0x20;
+                iVar1 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
                 MACRO_CALL_MEMBER(Text::TextManager_Func::renderMultilineText6Unk, DAT_TextManagerObject::ptr)(
                     this->DAT_ChatMessageArray[this->chatMessageRenderIndex],
                     DAT_TextManagerObject::instance.currentXOffset_0x0 + 6 + xPos, yPos,
                     0x1ee - DAT_TextManagerObject::instance.currentXOffset_0x0, 0xa2ff, 0x3e66, 0x13,
                     (iVar1 / 32) + 0x20);
             }
-            this->chatMessageRenderIndex = this->chatMessageRenderIndex + -1;
+            this->chatMessageRenderIndex = this->chatMessageRenderIndex - 1;
             if (this->chatMessageRenderIndex < 0) {
                 this->chatMessageRenderIndex = 0x13;
             }
             iVar2 = iVar2 + 1;
-            yPos = yPos + -0x11;
+            yPos = yPos - 0x11;
         } while ((iVar2 < 5) && (param_3 = param_3 + 1, param_3 < 5));
         DAT_TextManagerObject::instance.field13_0x34 = 0;
         MACRO_CALL_MEMBER(UI::Rendering::TextureRenderCore_Func::setScreenMenuSurfaceHeightRangeToResolution,

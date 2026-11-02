@@ -64,7 +64,7 @@ namespace Synchrony {
                     if (_chatEventArray->flag == 1) {
                         if (_chatEventArray->subjectPlayer == _clickedByPlayer) {
                             _clickerPlayerName = DAT_GameSynchronyState::instance.DAT_PlayerNames + _clickedByPlayer;
-                            pacVar1 = _playerName + -0x14;
+                            pacVar1 = _playerName - 0x14;
                             do {
                                 _character = (*_clickerPlayerName)[0];
                                 (*pacVar1)[0] = _character;

@@ -51,11 +51,11 @@ namespace Synchrony {
                 OpenSHC::Commands::GCPL_DYNAMIC_COMMAND_DATA_ADDRESS, OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
             MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::raiseLand2, DAT_PathFindingState::ptr)(
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam0,
-                (uint)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1)),
-                (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam2)));
+                (uint)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1),
+                (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam2));
             MACRO_CALL_MEMBER(OpenSHC::Map::Navigation::PathFindingState_Func::updateWalkAndPathLayer,
-                DAT_PathFindingState::ptr)(0x10, (uint)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0)),
-                (uint)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1)));
+                DAT_PathFindingState::ptr)(0x10, (uint)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0),
+                (uint)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1));
             DAT_TileMapState::instance.forceUpdateMacroLayerFlag = 1;
             MACRO_CALL_MEMBER(OpenSHC::UI::MinimapViewState_Func::triggerMinimapRedraw, DAT_MinimapViewState::ptr)(2);
         }

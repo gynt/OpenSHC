@@ -41,7 +41,7 @@ namespace Synchrony {
                 DAT_GameSynchronyState::ptr)(&DAT_GameSynchronyState::instance.DAT_GameCommandParam1, 4,
                 OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS, OpenSHC::Commands::GCPRW_SERIALIZE_INTO_PARAM_1);
             iVar3 = DAT_GameSynchronyState::instance.DAT_GameCommandParam0
-                + (DAT_GameCore::instance.lordIconUnk + -2) * 0x42;
+                + (DAT_GameCore::instance.lordIconUnk - 2) * 0x42;
             for (iVar2 = 0; iVar2 < 0x40; iVar2++) {
                 local_84[iVar2] = *(undefined1*)((int)DAT_TextureRenderCoreObject::instance.bitmapsFaces_0x94
                     + iVar2 * 2 + iVar3 * 0x80);

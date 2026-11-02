@@ -14,7 +14,6 @@ namespace Text {
             250, '\0', (void*)((int)(this->textArray + param_1)));
         this->textContentLengthArray[param_1] = 0;
         this->textCursorIndexArray[param_1] = 0;
-        return;
     }
 
 }

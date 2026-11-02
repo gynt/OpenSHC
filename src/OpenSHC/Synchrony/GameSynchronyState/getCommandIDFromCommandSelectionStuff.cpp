@@ -35,14 +35,14 @@ namespace Synchrony {
                   stateAddress - 9 = time address
                  */
                 if (*_stateAddress != (GameCommandState)0 && (char)*_stateAddress < '\n'
-                    && (int)((GameCommand*)(_stateAddress + -9))->time <= (int)DAT_GameCore::instance.mapTimeInTicks) {
+                    && (int)((GameCommand*)(_stateAddress - 9))->time <= (int)DAT_GameCore::instance.mapTimeInTicks) {
                     /*
                       if this command has not been processed, but should be processed, and it has   been its time state
                       address - 5 = player
                      */
                     this->protocolInvokerPlayerID
                         = MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::translateMultiplayerIDsIntoPlayerIDs,
-                            this)(*(int*)(_stateAddress + -5));
+                            this)(*(int*)(_stateAddress - 5));
                     this->MBR_SelectedGameCommands[this->MBR_someIndex][0] = _currentIndexCounter;
                     this->MBR_SelectedGameCommands[this->MBR_someIndex][1] = this->protocolInvokerPlayerID;
                     this->MBR_someIndex = this->MBR_someIndex + 1;
@@ -72,13 +72,13 @@ namespace Synchrony {
                     _selectedPlayerIDAddress = this->MBR_SelectedGameCommands[0] + 1;
                     do {
                         _nextPlayerID = _selectedPlayerIDAddress[2];
-                        _commandID = (*(int (*)[2])(_selectedPlayerIDAddress + -1))[0];
+                        _commandID = (*(int (*)[2])(_selectedPlayerIDAddress - 1))[0];
                         _playerID = *_selectedPlayerIDAddress;
                         if (!_nextPlayerID) {
                             return 0;
                         }
                         if (_nextPlayerID < _playerID) {
-                            (*(int (*)[2])(_selectedPlayerIDAddress + -1))[0] = _selectedPlayerIDAddress[1];
+                            (*(int (*)[2])(_selectedPlayerIDAddress - 1))[0] = _selectedPlayerIDAddress[1];
                             *_selectedPlayerIDAddress = _nextPlayerID;
                             _selectedPlayerIDAddress[1] = _commandID;
                             _selectedPlayerIDAddress[2] = _playerID;

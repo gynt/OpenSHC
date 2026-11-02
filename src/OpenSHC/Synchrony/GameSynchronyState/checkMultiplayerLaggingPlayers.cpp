@@ -94,7 +94,7 @@ namespace Synchrony {
                     MACRO_CALL_MEMBER(Synchrony::GameSynchronyState_Func::sendSomeMultiplayerSyncMessageWithType, this)(
                         0),
                     0 < this->syncRelatedCountdown)) {
-                this->syncRelatedCountdown = this->syncRelatedCountdown + -1;
+                this->syncRelatedCountdown = this->syncRelatedCountdown - 1;
             }
         }
         this->connectionLagInfoArray[0].time = 0;

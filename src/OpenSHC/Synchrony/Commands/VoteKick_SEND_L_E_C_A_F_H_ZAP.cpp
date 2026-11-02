@@ -58,7 +58,7 @@ namespace Synchrony {
                 DAT_GameSynchronyState::instance.connectionNoticeShown = 0;
                 pcVar4 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                     DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION,
-                    (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1)));
+                    (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1));
                 pcVar5 = DAT_GameSynchronyState::instance.receivedChatMessage;
                 do {
                     cVar1 = *pcVar4;
@@ -73,9 +73,8 @@ namespace Synchrony {
                     .currentPlayerFullIDArray[DAT_GameSynchronyState::instance.DAT_GameCommandParam0]
                 != 0xffffffff) {
                 if (DAT_GameSynchronyState::instance.DPLAYX_4A != (IDirectPlay4A*)0x0) {
-                    DAT_GameSynchronyState::instance.DPLAYX_4A
-                        ->DestroyPlayer(DAT_GameSynchronyState::instance
-                                .currentPlayerFullIDArray[DAT_GameSynchronyState::instance.DAT_GameCommandParam0]);
+                    DAT_GameSynchronyState::instance.DPLAYX_4A->DestroyPlayer(DAT_GameSynchronyState::instance
+                            .currentPlayerFullIDArray[DAT_GameSynchronyState::instance.DAT_GameCommandParam0]);
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::destroyPlayerCompletely, DAT_GameState::ptr)(
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam0);

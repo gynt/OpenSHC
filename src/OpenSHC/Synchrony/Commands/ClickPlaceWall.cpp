@@ -80,12 +80,12 @@ namespace Synchrony {
             DAT_GameSynchronyState::instance.DAT_GameCommandParam5 = (int)local_4[0];
             MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::placeWalls, DAT_TileMapState::ptr)(
                 DAT_GameSynchronyState::instance.protocolInvokerPlayerID,
-                (uint)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0)),
-                (uint)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1)),
-                (uint)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam2)),
-                (uint)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam3)),
+                (uint)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0),
+                (uint)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1),
+                (uint)(DAT_GameSynchronyState::instance.DAT_GameCommandParam2),
+                (uint)(DAT_GameSynchronyState::instance.DAT_GameCommandParam3),
                 (MappersEnum)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam4 & 0xffff)),
-                (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam5)));
+                (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam5));
         }
     }
 

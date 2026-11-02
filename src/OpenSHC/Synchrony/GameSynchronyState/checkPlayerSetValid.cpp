@@ -66,7 +66,7 @@ namespace Synchrony {
                 _someCounter = _someCounter + 1;
             }
             _pFullIDs = _pFullIDs + 4;
-            local_2c = local_2c + -1;
+            local_2c = local_2c - 1;
             if (!local_2c) {
                 if (1 < _someCounter) {
                     _somePlayerID = 1;

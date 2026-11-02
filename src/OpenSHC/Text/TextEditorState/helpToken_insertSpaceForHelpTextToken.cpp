@@ -16,8 +16,8 @@ namespace Text {
             do {
                 *(WCHAR*)(iVar3 + (int)this->DAT_PointerToTemporaryTextMemory)
                     = this->DAT_PointerToTemporaryTextMemory[iVar2];
-                iVar2 = iVar2 + -1;
-                iVar3 = iVar3 + -2;
+                iVar2 = iVar2 - 1;
+                iVar3 = iVar3 - 2;
             } while (this->activeHelpHotspotIndex <= iVar2);
         }
         this->customHelpTextLength = this->customHelpTextLength + iVar1;

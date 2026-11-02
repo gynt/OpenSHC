@@ -72,7 +72,7 @@ namespace Synchrony {
                 piVar7 = piVar7 + 1;
                 if (*piVar7 != -1) {
                     pGVar8 = DAT_GameSynchronyState::instance
-                                 .guids[(int)(pbVar5 + (iVar4 * 3 + 0x7a8e) * 4 + -0x1998244 + -3)];
+                                 .guids[(int)(pbVar5 + (iVar4 * 3 + 0x7a8e) * 4 - 0x1998244 - 3)];
                     break;
                 }
                 iVar4 = iVar4 + 1;
@@ -109,7 +109,7 @@ namespace Synchrony {
                 && (pGVar8 != (GUID*)pHVar6[6].domain01)) {
                 *pbVar5 = 1;
             }
-            puVar1 = pbVar5 + -0x1998243;
+            puVar1 = pbVar5 - 0x1998243;
             pHVar6 = (HashContainerElement*)&pHVar6->domain02;
             pbVar5 = pbVar5 + 1;
             if (14 < (int)puVar1) {

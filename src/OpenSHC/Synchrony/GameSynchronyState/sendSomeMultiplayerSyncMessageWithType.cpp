@@ -36,7 +36,7 @@ namespace Synchrony {
             this->matchTimesArray[_playerID - 1] = DAT_GameCore::instance.mapTimeInTicks;
             this->receivedMatchTimesTrackerUnk = this->receivedMatchTimesTrackerUnk + 1;
             if (6 < this->receivedMatchTimesTrackerUnk) {
-                this->commandDelay = this->commandDelay + -1;
+                this->commandDelay = this->commandDelay - 1;
                 this->receivedMatchTimesTrackerUnk = 0;
                 if (!this->syncRelatedCountdown) {
                     int _maxLatency = 0;
@@ -85,7 +85,7 @@ namespace Synchrony {
                         this->commandDelay = _countdown;
                     }
                 }
-                this->clTimeDiff = this->clTimeDiff + -1;
+                this->clTimeDiff = this->clTimeDiff - 1;
                 if (this->clTimeDiff < 0) {
                     this->clTimeDiff = 0;
                 }

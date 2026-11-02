@@ -45,8 +45,8 @@ namespace Synchrony {
                 OpenSHC::Commands::GCPL_DYNAMIC_COMMAND_DATA_ADDRESS, OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
             MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::clearOrDeselectUnitFromSelection,
                 DAT_UnitsState::ptr)(DAT_GameSynchronyState::instance.protocolInvokerPlayerID,
-                (uint)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0)),
-                (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1)));
+                (uint)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0),
+                (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1));
         }
     }
 

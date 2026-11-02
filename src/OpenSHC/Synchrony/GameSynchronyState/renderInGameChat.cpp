@@ -75,7 +75,7 @@ namespace Synchrony {
                     }
                     DAT_PencilRenderCore::instance.surfaceTarget = Rendering::Enums::RT_MAP_GAME;
                     MACRO_CALL_MEMBER(UI::Rendering::PencilRenderCore_Func::drawBlendedBlackBox,
-                        DAT_PencilRenderCore::ptr)(param_1 + -5, param_2 + -4, iVar3 + param_1, param_2 + 9, 0x10);
+                        DAT_PencilRenderCore::ptr)(param_1 - 5, param_2 - 4, iVar3 + param_1, param_2 + 9, 0x10);
                     DAT_PencilRenderCore::instance.surfaceTarget = Rendering::Enums::RT_SCREEN_MENU;
                     MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
                         this->DAT_ChatMessageSubjectPlayerNameArray[this->chatMessageRenderIndex], param_1, param_2,
@@ -125,12 +125,12 @@ namespace Synchrony {
                     this->DAT_ChatEventArray[iVar3].flag = 0;
                 }
             }
-            this->chatMessageRenderIndex = this->chatMessageRenderIndex + -1;
+            this->chatMessageRenderIndex = this->chatMessageRenderIndex - 1;
             if (this->chatMessageRenderIndex < 0) {
                 this->chatMessageRenderIndex = 0x13;
             }
-            param_2 = param_2 + -0xe;
-            local_4 = local_4 + -1;
+            param_2 = param_2 - 0xe;
+            local_4 = local_4 - 1;
         } while (local_4);
     }
 

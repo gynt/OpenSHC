@@ -43,7 +43,6 @@ namespace Text {
                 &DAT_TextManagerObject::instance.fontSizeClassArray[fontSize])(
                 wideText, (int)pWVar2 - (int)(wideText + 1) >> 1, _x, yPos, color, blendStrength);
         }
-        return;
     }
 
 }

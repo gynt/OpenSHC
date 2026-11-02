@@ -76,14 +76,14 @@ namespace Synchrony {
                 if (DAT_GameSynchronyState::instance.DAT_GameCommandParam0) {}
                 DAT_GameSynchronyState::instance
                     .quitGameVoteArray[DAT_GameSynchronyState::instance.protocolInvokerPlayerID] = 1;
-                if ((DAT_GameSynchronyState::instance.quitGameVoteArray[8] != 0)
-                    && (DAT_GameSynchronyState::instance.quitGameVoteArray[7] != 0
-                        && (DAT_GameSynchronyState::instance.quitGameVoteArray[6] != 0
-                            && (DAT_GameSynchronyState::instance.quitGameVoteArray[5] != 0
-                                && (DAT_GameSynchronyState::instance.quitGameVoteArray[4] != 0
-                                    && (DAT_GameSynchronyState::instance.quitGameVoteArray[3] != 0
-                                        && (DAT_GameSynchronyState::instance.quitGameVoteArray[2] != 0
-                                            && DAT_GameSynchronyState::instance.quitGameVoteArray[1] != 0))))))) {
+                if (DAT_GameSynchronyState::instance.quitGameVoteArray[8] != 0
+                    && DAT_GameSynchronyState::instance.quitGameVoteArray[7] != 0
+                    && DAT_GameSynchronyState::instance.quitGameVoteArray[6] != 0
+                    && DAT_GameSynchronyState::instance.quitGameVoteArray[5] != 0
+                    && DAT_GameSynchronyState::instance.quitGameVoteArray[4] != 0
+                    && DAT_GameSynchronyState::instance.quitGameVoteArray[3] != 0
+                    && DAT_GameSynchronyState::instance.quitGameVoteArray[2] != 0
+                    && DAT_GameSynchronyState::instance.quitGameVoteArray[1] != 0) {
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = 1;
                     MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand,
                         DAT_GameSynchronyState::ptr)(OpenSHC::Commands::GCT_KILL_GAME);

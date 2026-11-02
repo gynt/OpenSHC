@@ -92,10 +92,10 @@ namespace Synchrony {
             }
         LAB_0047e6ef:
             _gameSynchronyState = (GameSynchronyState*)(_gameSynchronyState->matchTimesArray + 4);
-            iVar3 = iVar3 + -1;
+            iVar3 = iVar3 - 1;
             if (!iVar3) {
                 this->playerMapTimeSpread = this->mapTimeInTicksSinglePlayer - this->minPlayerMapTime;
-                this->localPlayerMapTime = this->matchTimesArray[param_1 + -1];
+                this->localPlayerMapTime = this->matchTimesArray[param_1 - 1];
                 iVar3 = 0;
                 this->ticksAheadOfSlowestPlayer = 0;
                 this->ticksBehindFastestPlayer = 0;

@@ -56,7 +56,7 @@ namespace Synchrony {
                 OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
             DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = (int)local_4[0];
             DAT_GameSynchronyState::instance.unknownIncrementBy40_01
-                = DAT_GameSynchronyState::instance.unknownIncrementBy40_01 + -0x28;
+                = DAT_GameSynchronyState::instance.unknownIncrementBy40_01 - 0x28;
             if (DAT_GameSynchronyState::instance
                     .currentPlayerFullIDArray[DAT_GameSynchronyState::instance.DAT_GameCommandParam0]
                 == 0xffffffff) {
@@ -65,9 +65,8 @@ namespace Synchrony {
             } else if (DAT_GameSynchronyState::instance.DAT_GameCommandParam0
                 != DAT_GameSynchronyState::instance.currentPlayerSlotID) {
                 if (DAT_GameSynchronyState::instance.DPLAYX_4A != (IDirectPlay4A*)0x0) {
-                    DAT_GameSynchronyState::instance.DPLAYX_4A
-                        ->DestroyPlayer(DAT_GameSynchronyState::instance
-                                .currentPlayerFullIDArray[DAT_GameSynchronyState::instance.DAT_GameCommandParam0]);
+                    DAT_GameSynchronyState::instance.DPLAYX_4A->DestroyPlayer(DAT_GameSynchronyState::instance
+                            .currentPlayerFullIDArray[DAT_GameSynchronyState::instance.DAT_GameCommandParam0]);
                 }
                 MACRO_CALL_MEMBER(OpenSHC::Game::GameStateStructures_Func::destroyPlayerCompletely, DAT_GameState::ptr)(
                     DAT_GameSynchronyState::instance.DAT_GameCommandParam0);
@@ -109,7 +108,7 @@ namespace Synchrony {
                 DAT_GameSynchronyState::instance.connectionNoticeShown = 1;
                 pcVar3 = MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                     DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION,
-                    (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1)));
+                    (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1));
                 pcVar4 = DAT_GameSynchronyState::instance.receivedChatMessage;
                 do {
                     cVar1 = *pcVar3;

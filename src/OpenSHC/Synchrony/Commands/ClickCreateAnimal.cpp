@@ -49,25 +49,24 @@ namespace Synchrony {
             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
                 DAT_GameSynchronyState::ptr)(&DAT_GameSynchronyState::instance.DAT_GameCommandParam2, 1,
                 OpenSHC::Commands::GCPL_DYNAMIC_COMMAND_DATA_ADDRESS, OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
-            if (((DAT_GameSynchronyState::instance.DAT_GameCommandParam0 < ((GameCommandScheduling)400))
-                    && (DAT_GameSynchronyState::instance.DAT_GameCommandParam1 < 400))
-                && (*(char*)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1 * 400 + 0x21aec98
-                        + DAT_GameSynchronyState::instance.DAT_GameCommandParam0)
-                    != '\0')) {
+            if (DAT_GameSynchronyState::instance.DAT_GameCommandParam0 < (GameCommandScheduling)400
+                && DAT_GameSynchronyState::instance.DAT_GameCommandParam1 < 400
+                && *(char*)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1 * 400 + 0x21aec98
+                       + DAT_GameSynchronyState::instance.DAT_GameCommandParam0)
+                    != '\0') {
                 MACRO_CALL_MEMBER(OpenSHC::Map::Units::TribesState_Func::createAnimal, DAT_TribesState::ptr)(
                     (OpenSHC::Commands::MappersEnum)DAT_GameSynchronyState::instance.DAT_GameCommandParam2,
-                    (uint)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0)),
-                    (uint)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1)),
-                    (int)((int)((uint)
+                    (uint)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0),
+                    (uint)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1),
+                    (int)((uint)
                         * (byte*)((OpenSHC::Commands::MappersEnum)((OpenSHC::Commands::MappersEnum)((
                             OpenSHC::Commands::MappersEnum)(DAT_ViewportRenderState::instance
                                                                 .translationMatrix[DAT_GameSynchronyState::instance
                                                                         .DAT_GameCommandParam1]
                                                                 .addXgetTile
-                            + 0x1d32c38 + DAT_GameSynchronyState::instance.DAT_GameCommandParam0)))))));
+                            + 0x1d32c38 + DAT_GameSynchronyState::instance.DAT_GameCommandParam0))))));
             }
         }
-        return;
     }
 
 }

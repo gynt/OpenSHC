@@ -16,7 +16,6 @@ namespace Text {
             textGroupIndex, textNumInGroup);
         MACRO_CALL_MEMBER(Text::TextManager_Func::renderInGameTextWithShadow, this)(
             _textAddress, xPosition, yPosition, textShift, color, param_7, fontSize, param_9, blendStrength);
-        return;
     }
 
 }

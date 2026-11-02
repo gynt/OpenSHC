@@ -66,9 +66,9 @@ namespace Synchrony {
             MACRO_CALL_MEMBER(OpenSHC::Map::Units::UnitsState_Func::relayTribeInstruction, DAT_UnitsState::ptr)(
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam0,
                 (UnitInstructionType)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1)),
-                (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam2)),
-                (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam3)),
-                (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam4)));
+                (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam2),
+                (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam3),
+                (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam4));
         }
     }
 

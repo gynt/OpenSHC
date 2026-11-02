@@ -65,11 +65,11 @@ namespace Synchrony {
                     = DAT_GameSynchronyState::instance.DAT_GameCommandParam1 / 2;
             }
             MACRO_CALL_MEMBER(OpenSHC::Map::Buildings::BuildingsState_Func::giveBackResourceForDestroyedBuilding,
-                DAT_BuildingsState::ptr)(-1, (int)((int)(DAT_GameSynchronyState::instance.protocolInvokerPlayerID)),
-                (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1)));
+                DAT_BuildingsState::ptr)(-1, (int)(DAT_GameSynchronyState::instance.protocolInvokerPlayerID),
+                (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam1));
             MACRO_CALL_MEMBER(OpenSHC::Map::TileMapState_Func::spawnEraserTileEffect, DAT_TileMapState::ptr)(
                 DAT_GameSynchronyState::instance.protocolInvokerPlayerID,
-                (int)((int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0)));
+                (int)(DAT_GameSynchronyState::instance.DAT_GameCommandParam0));
         }
     }
 

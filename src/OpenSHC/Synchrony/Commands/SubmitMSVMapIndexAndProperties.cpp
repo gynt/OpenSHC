@@ -11,6 +11,7 @@
 #include "OpenSHC/Commands/GameCommandParameterReadWrite.hpp"
 #include "OpenSHC/Commands/GameCommandScheduling.hpp"
 #include "OpenSHC/Commands/GameCommandType.hpp"
+#include "OpenSHC/IO/Base64State.hpp"
 #include "OpenSHC/IO/FileResourceType.hpp"
 #include "OpenSHC/WindowsHelper/Enums/BOOLEnum.hpp"
 
@@ -21,7 +22,6 @@
 #include "OpenSHC/Globals/DAT_WideCharMultiByteState.hpp"
 #include "OpenSHC/Globals/FilePackagerObj.hpp"
 #include "OpenSHC/Globals/MSVC_SecurityCookie.hpp"
-#include "OpenSHC/IO/Base64State.hpp"
 
 namespace OpenSHC {
 namespace Synchrony {
@@ -30,9 +30,9 @@ namespace Synchrony {
     using OpenSHC::Commands::GameCommandParameterReadWrite;
     using OpenSHC::Commands::GameCommandScheduling;
     using OpenSHC::Commands::GameCommandType;
+    using OpenSHC::IO::Base64State;
     using OpenSHC::IO::FileResourceType;
     using OpenSHC::WindowsHelper::Enums::BOOLEnum;
-    using OpenSHC::IO::Base64State;
 
     // FUNCTION: STRONGHOLDCRUSADER 0x00489E30
     void Commands::SubmitMSVMapIndexAndProperties()
@@ -59,7 +59,7 @@ namespace Synchrony {
             numberOfSymbols = 1000;
             pcVar4 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                 DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance
-                    .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance.DAT_GameCommandParam0 + -1]);
+                    .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance.DAT_GameCommandParam0 - 1]);
             MACRO_CALL_MEMBER(OpenSHC::Util::WideCharMultiByteState_Func::multiByteToWideCharWithSize,
                 DAT_WideCharMultiByteState::ptr)(local_fb0, (LPCSTR)((int)(pcVar4)), numberOfSymbols);
             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
@@ -70,7 +70,7 @@ namespace Synchrony {
                 OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS, OpenSHC::Commands::GCPRW_SERIALIZE_INTO_PARAM_1);
             pcVar5 = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                 DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance
-                    .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance.DAT_GameCommandParam0 + -1]);
+                    .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance.DAT_GameCommandParam0 - 1]);
             pcVar4 = _msvFile;
             do {
                 cVar1 = *pcVar5;
@@ -108,8 +108,8 @@ namespace Synchrony {
                 WVar2 = *pWVar6;
                 pWVar6 = pWVar6 + 1;
             } while (WVar2 != L'\0');
-            MACRO_CALL(OpenSHC::IO_Func::Base64Encode)((char*)local_fb0,
-                (int)((int)((pWVar6 - (local_fb0 + 1) >> 1) * 2)), (char*)((int)(_msvFile)), &local_1794);
+            MACRO_CALL(OpenSHC::IO_Func::Base64Encode)(
+                (char*)local_fb0, (int)((pWVar6 - (local_fb0 + 1) >> 1) * 2), (char*)((int)(_msvFile)), &local_1794);
             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,
                 DAT_GameSynchronyState::ptr)(&local_17a0, 4, OpenSHC::Commands::GCPL_FIXED_COMMAND_DATA_ADDRESS,
                 OpenSHC::Commands::GCPRW_DESERIALIZE_FROM_PARAM1);
@@ -131,7 +131,8 @@ namespace Synchrony {
                 BVar7 = MACRO_CALL_MEMBER(
                     OpenSHC::IO::ResourceManager_Func::doesFileOfActiveResourceExist, DAT_ResourceManager::ptr)();
                 if (BVar7) {
-                    MACRO_CALL_MEMBER(OpenSHC::IO::FilePackager_Func::readMapHeader, FilePackagerObj::ptr)((OpenSHC::Commands::GameCommandType)FALSE);
+                    MACRO_CALL_MEMBER(OpenSHC::IO::FilePackager_Func::readMapHeader, FilePackagerObj::ptr)(
+                        (OpenSHC::Commands::GameCommandType)FALSE);
                     if ((DAT_GameSynchronyState::instance.savedMapTimeInTicks == local_1798)
                         && (DAT_GameSynchronyState::instance.savedUnitsCRC32Hash == local_179c))
                         goto LAB_0048a0c8;
@@ -139,7 +140,9 @@ namespace Synchrony {
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam0 = 0;
                 DAT_GameSynchronyState::instance.DAT_GameCommandParam1 = local_17a0;
                 MACRO_CALL_MEMBER(
-                    OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)((OpenSHC::Commands::GameCommandType)(OpenSHC::Commands::GCT_LOAD_MAP_HEADER | OpenSHC::Commands::GCT_MULTIPLAYER_ANNOUNCE_HOST));
+                    OpenSHC::Synchrony::GameSynchronyState_Func::queueCommand, DAT_GameSynchronyState::ptr)(
+                    (OpenSHC::Commands::GameCommandType)(OpenSHC::Commands::GCT_LOAD_MAP_HEADER
+                        | OpenSHC::Commands::GCT_MULTIPLAYER_ANNOUNCE_HOST));
             }
         }
     LAB_0048a0c8:;

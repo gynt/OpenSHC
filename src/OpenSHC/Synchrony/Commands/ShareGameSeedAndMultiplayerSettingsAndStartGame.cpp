@@ -51,7 +51,7 @@ namespace Synchrony {
             lpMultiByteStr = MACRO_CALL_MEMBER(OpenSHC::IO::ResourceManager_Func::mapNames_getLoadedMapNameForIndex,
                 DAT_ResourceManager::ptr)(DAT_MenuTextInputState::instance
                     .DAT_ArrayOfMapIndices[DAT_GameSynchronyState::instance.DAT_MapSelectionScrollOffset
-                        + DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected + -1]);
+                        + DAT_GameSynchronyState::instance.DAT_MapSelectionRelativeSelected - 1]);
             MACRO_CALL_MEMBER(OpenSHC::Util::WideCharMultiByteState_Func::multiByteToWideCharWithSize,
                 DAT_WideCharMultiByteState::ptr)(local_7d8, (LPCSTR)((int)(lpMultiByteStr)), numberOfSymbols);
             MACRO_CALL_MEMBER(OpenSHC::Synchrony::GameSynchronyState_Func::serializeOrDeserializeCommandParameter,

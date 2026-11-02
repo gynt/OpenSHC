@@ -74,7 +74,7 @@ namespace Text {
         if (0 < numInGroup) {
             _char = *_textPtr;
             do {
-                numInGroup = numInGroup + -1;
+                numInGroup = numInGroup - 1;
                 while (_char != '\0') {
                     _textPtr = _textPtr + 1;
                     _char = *_textPtr;

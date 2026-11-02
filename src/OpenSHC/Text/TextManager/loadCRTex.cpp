@@ -112,7 +112,6 @@ namespace Text {
             MACRO_CALL_MEMBER(Text::TextManager_Func::resetTextClipRange, this)();
             this->field13_0x34 = 0;
         }
-        return;
     }
 
 }

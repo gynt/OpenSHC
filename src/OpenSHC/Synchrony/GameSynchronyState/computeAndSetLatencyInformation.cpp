@@ -56,7 +56,7 @@ namespace Synchrony {
             if (0 < this->limit) {
                 piVar3 = this->historicalLagInfoPerPlayer[uVar1][0] + 1;
                 do {
-                    (*(int (*)[2])(piVar3 + -1))[0] = this->connectionLagInfoArray[uVar1].subtractedMapTicks;
+                    (*(int (*)[2])(piVar3 - 1))[0] = this->connectionLagInfoArray[uVar1].subtractedMapTicks;
                     *piVar3 = this->connectionLagInfoArray[uVar1].subtractedTime;
                     _counter = _counter + 1;
                     piVar3 = piVar3 + 2;
@@ -82,7 +82,7 @@ namespace Synchrony {
                     _sum_2 = _sum_2 + piVar3[-5];
                     _sum = _sum + *piVar3;
                     piVar3 = piVar3 + 2;
-                    _countdown = _countdown + -1;
+                    _countdown = _countdown - 1;
                 } while (_countdown);
             }
             int _div = _sum_2 / this->limit;
