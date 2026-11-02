@@ -28,11 +28,10 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x0047E420
         void WaitingForHost::MenuItemRenderFunction_WaitingForHost_Button(int param_1, ...)
         {
-            int yParam;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                 AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
             int xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
-            yParam = DAT_ButtonY::instance + 6;
+            int yParam = DAT_ButtonY::instance + 6;
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                     DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MULTIPLAYER_CONNECTION, param_1),

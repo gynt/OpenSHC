@@ -31,7 +31,6 @@ namespace UI {
         void General::MenuItemRenderFunction_General_EventButtonAndData(int param_1, ...)
         {
             int iVar1;
-            int yParam;
             BGR24 color;
             if (param_1 != -1) {
                 MACRO_CALL(OpenSHC::UI::Rendering_Func::RenderScenarioButtonWithText)(param_1);
@@ -40,7 +39,7 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                 AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
             int xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
-            yParam = DAT_ButtonY::instance + 6;
+            int yParam = DAT_ButtonY::instance + 6;
             if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
                 iVar1 = DAT_MapPropertiesState::instance.scenarioEvents[DAT_MapPropertiesState::instance.currentEventID]
                             .header.month;

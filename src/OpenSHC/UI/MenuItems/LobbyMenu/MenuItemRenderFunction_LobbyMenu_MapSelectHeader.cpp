@@ -30,11 +30,8 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00427740
         void LobbyMenu::MenuItemRenderFunction_LobbyMenu_MapSelectHeader(int param_1, ...)
         {
-            int yParam;
-            int numInGroup;
-            int iVar3;
-            numInGroup = -1;
-            iVar3 = 0;
+            int numInGroup = -1;
+            int iVar3 = 0;
             BOOLEnum BVar1 = MACRO_CALL(OpenSHC::UI::Helpers_Func::AModalDialogIsActiveButIsNotQuitting)();
             if ((BVar1 == FALSE)
                 && (DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_ROUNDTABLE)) {
@@ -60,7 +57,7 @@ namespace UI {
                     DAT_PencilRenderCore::ptr)(FALSE, 1, (int)(DAT_ButtonBackgroundBlendStrength::instance));
                 int iVar2 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
                 iVar2 = (iVar2 / 32) + 0x20;
-                yParam = DAT_ButtonY::instance + 5;
+                int yParam = DAT_ButtonY::instance + 5;
                 iVar3 = DAT_ButtonX::instance + iVar3;
                 BVar1 = FALSE;
                 if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {

@@ -23,9 +23,8 @@ namespace UI {
         void BuildingAndStatusMenu::MenuItemRenderFunction_BuildingAndStatusMenu_AvailablePeasantsTextDownRight(
             int param_1, ...)
         {
-            int xParam;
             int yParam = DAT_ButtonY::instance + 0x98;
-            xParam = DAT_ButtonX::instance - 5;
+            int xParam = DAT_ButtonX::instance - 5;
             /*
               added by script: "Available Peasants"
              */

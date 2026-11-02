@@ -30,15 +30,8 @@ namespace UI {
         void EditScenario::MenuItemRenderFunction_EditScenario_EventAndInvasionList(int param_1, ...)
         {
             byte bVar1;
-            int iVar3;
-            int iVar4;
             BGR24 color;
             bool bVar5;
-            TextAlignment TVar6;
-            BGR24 BVar7;
-            int iVar8;
-            BOOLEnum BVar9;
-            int iVar10;
             if (DAT_MapPropertiesState::instance.eventListSelection >= DAT_MapPropertiesState::instance.eventsCount) {
                 DAT_MapPropertiesState::instance.eventListSelection = DAT_MapPropertiesState::instance.eventsCount - 1;
             }
@@ -56,13 +49,13 @@ namespace UI {
                 || (color = 0xc2f0eb, DAT_ButtonCurrentlyInteracting::instance != FALSE)) {
                 color = 0xccfaff;
             }
-            iVar10 = 0;
-            BVar9 = FALSE;
-            iVar8 = 0x12;
-            BVar7 = 0xccfaff;
-            TVar6 = OpenSHC::Text::TTA_LEFT;
-            iVar3 = DAT_ButtonY::instance + 4;
-            iVar4 = DAT_ButtonX::instance + 8;
+            int iVar10 = 0;
+            BOOLEnum BVar9 = FALSE;
+            int iVar8 = 0x12;
+            BGR24 BVar7 = 0xccfaff;
+            TextAlignment TVar6 = OpenSHC::Text::TTA_LEFT;
+            int iVar3 = DAT_ButtonY::instance + 4;
+            int iVar4 = DAT_ButtonX::instance + 8;
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                     DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MONTHS,

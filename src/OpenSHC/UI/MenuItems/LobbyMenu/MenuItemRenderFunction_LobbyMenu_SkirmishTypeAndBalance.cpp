@@ -48,10 +48,9 @@ namespace UI {
         {
             int iVar2;
             int iVar3;
-            int _goldMultiplier;
             BOOLEnum BVar1 = MACRO_CALL(OpenSHC::UI::Helpers_Func::AModalDialogIsActiveButIsNotQuitting)();
             if (BVar1 == FALSE) {
-                _goldMultiplier = 1;
+                int _goldMultiplier = 1;
                 if (((((DAT_MenuModalComposition1::instance.activeModalDialogID != OpenSHC::UI::Enums::MMT_ROUNDTABLE)
                           && (DAT_MenuModalComposition1::instance.activeModalDialogID
                               != OpenSHC::UI::Enums::MMT_BASIC_AI_LORD_SELECT))

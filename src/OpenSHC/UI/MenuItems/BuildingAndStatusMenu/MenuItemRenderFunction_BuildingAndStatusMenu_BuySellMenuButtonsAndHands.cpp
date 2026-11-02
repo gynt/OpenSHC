@@ -33,8 +33,6 @@ namespace UI {
         {
             ResourceTypeInt RVar1;
             int iVar3;
-            int iVar4;
-            DWORD _now;
             int iVar5;
             TextAlignment TVar6;
             uint uVar7;
@@ -58,7 +56,7 @@ namespace UI {
             } else {
                 MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                         MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
-                iVar4 = param_1 + 5;
+                int iVar4 = param_1 + 5;
                 if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
                     iVar11 = 0x11;
                     iVar11 = MACRO_CALL_MEMBER(
@@ -163,7 +161,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText2, DAT_TextManagerObject::ptr)(
                     OpenSHC::DE::SHCDE::TEXT_IN_TRADEPOST, iVar5 + 8, DAT_MenuHandlerState::instance.x + 0xdc,
                     DAT_MenuHandlerState::instance.y + 0x243, OpenSHC::Text::TTA_LEFT, 0, 0x12, FALSE);
-                _now = timeGetTime();
+                DWORD _now = timeGetTime();
                 if (1000 < (int)(_now
                         - DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                             .timeStorageMarketFailState)) {

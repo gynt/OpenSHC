@@ -27,15 +27,13 @@ namespace UI {
         void BuildingAndStatusMenu::MenuItemRenderFunction_BuildingAndStatusMenu_OutpostUnitSelection(int param_1, ...)
         {
             int yParam;
-            uint uVar1;
-            int iVar2;
             TextAlignment alignment;
             uint backgroundColor;
             int fontSize;
             BOOLEnum keepOffsetX;
             int blendStrength;
-            uVar1 = 1 << ((byte)param_1 & 0x1f);
-            iVar2 = 0;
+            uint uVar1 = 1 << ((byte)param_1 & 0x1f);
+            int iVar2 = 0;
             if (DAT_BuildingsState::instance.buildings[DAT_BuildingsState::instance.menuSelectedBuildingID].buildingType
                 == OpenSHC::Map::Buildings::BT_OUTPOST_ARABIAN) {
                 iVar2 = 9;
@@ -89,7 +87,8 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                     DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_IN_OUTPOST, iVar2 + 1 + param_1),
-                DAT_ButtonW::instance / 2 + DAT_ButtonX::instance, yParam, alignment, uVar1, backgroundColor, fontSize, keepOffsetX, blendStrength);
+                DAT_ButtonW::instance / 2 + DAT_ButtonX::instance, yParam, alignment, uVar1, backgroundColor, fontSize,
+                keepOffsetX, blendStrength);
         }
 
     }

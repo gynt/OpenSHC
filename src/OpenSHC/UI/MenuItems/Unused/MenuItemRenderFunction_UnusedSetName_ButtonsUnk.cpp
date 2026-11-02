@@ -30,7 +30,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00426750
         void Unused::MenuItemRenderFunction_UnusedSetName_ButtonsUnk(int param_1, ...)
         {
-            int yParam;
             bool bVar1;
             if (DAT_GameCore::instance.isNameEntryActive == TRUE) {
                 bVar1 = param_1 == 8;
@@ -48,7 +47,7 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                 AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
             int xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
-            yParam = DAT_ButtonY::instance + 6;
+            int yParam = DAT_ButtonY::instance + 6;
             if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,

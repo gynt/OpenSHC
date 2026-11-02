@@ -21,16 +21,11 @@ namespace UI {
         void ChooseNetworkServiceProvider::MenuItemRenderFunction_ChooseNetworkServiceProvider_InputLabels(
             int param_1, ...)
         {
-            int iVar2;
-            int iVar3;
-            int iVar4;
-            int iVar5;
-            int iVar6;
-            iVar6 = 1;
-            iVar5 = 0;
-            iVar4 = 400;
-            iVar3 = 0;
-            iVar2 = 0;
+            int iVar6 = 1;
+            int iVar5 = 0;
+            int iVar4 = 400;
+            int iVar3 = 0;
+            int iVar2 = 0;
             /*
               Text:   0x0e => Phone Number (Only needed if Joining)   0x0C => "Host's IP Address (Only needed if
               Joining)"   0x0D => "Ip port"

@@ -37,7 +37,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x0047C670
         void NetworkSessions::MenuItemRenderFunction_NetworkSessions_Buttons(int param_1, ...)
         {
-            int yParam;
             if (param_1 == -10000) {
                 MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                         MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
@@ -49,7 +48,7 @@ namespace UI {
                     DAT_ButtonCurrentlyInteracting::instance = FALSE;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                    yParam = DAT_ButtonY::instance + 6;
+                    int yParam = DAT_ButtonY::instance + 6;
                     int xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
                     /*
                       Text:   0x8 => Join

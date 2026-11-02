@@ -40,7 +40,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004AD480
         void AlliesOrder::MenuItemRenderFunction_AlliesOrder_Main(int param_1, ...)
         {
-            int iVar1;
             int iVar2;
             if (param_1 == -2) {
                 MACRO_CALL(
@@ -65,7 +64,7 @@ namespace UI {
                 }
                 return;
             }
-            iVar1 = param_1;
+            int iVar1 = param_1;
             if (param_1 <= 6) {
                 if (param_1 == -1)
                     goto LAB_004ad69c;

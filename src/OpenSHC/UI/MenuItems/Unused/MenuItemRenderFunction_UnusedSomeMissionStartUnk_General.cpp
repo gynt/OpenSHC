@@ -32,7 +32,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00426FB0
         void Unused::MenuItemRenderFunction_UnusedSomeMissionStartUnk_General(int param_1, ...)
         {
-            int yParam;
             uint foregroundColor;
             uint backgroundColor;
             if ((DAT_MenuTextInputState::instance.currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU)
@@ -54,7 +53,7 @@ namespace UI {
                     foregroundColor = 0xa2ff;
                 }
                 int xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
-                yParam = DAT_ButtonY::instance + 8;
+                int yParam = DAT_ButtonY::instance + 8;
                 MACRO_CALL_MEMBER(
                     OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,

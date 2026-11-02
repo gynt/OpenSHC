@@ -34,10 +34,8 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004BBA60
         void General::MenuItemRenderFunction_General_CreateEventCallbackFunction(int param_1, ...)
         {
-            int yParam;
-            int iVar2;
             int iVar1 = -1;
-            iVar2 = 2;
+            int iVar2 = 2;
             switch (param_1) {
             case 0x5b:
             case 0xdd:
@@ -104,7 +102,7 @@ namespace UI {
             case 0x92:
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                yParam = DAT_ButtonY::instance + 6;
+                int yParam = DAT_ButtonY::instance + 6;
                 iVar1 = (int)DAT_ButtonW::instance / 2 - 0xf + DAT_ButtonX::instance;
                 /*
                   "Bandits"

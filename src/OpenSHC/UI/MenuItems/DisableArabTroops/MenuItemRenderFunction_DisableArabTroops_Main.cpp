@@ -34,7 +34,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004BB680
         void DisableArabTroops::MenuItemRenderFunction_DisableArabTroops_Main(int param_1, ...)
         {
-            int yParam;
             if ((uint)param_1 <= 7) {
                 MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                         MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
@@ -52,7 +51,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                 int xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
-                yParam = DAT_ButtonY::instance + 6;
+                int yParam = DAT_ButtonY::instance + 6;
                 /*
                   added by script: "Exit"
                  */

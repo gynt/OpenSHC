@@ -38,10 +38,9 @@ namespace UI {
         void FindingNetworkSessions::MenuItemActionHandler_FindingNetworkSessions_Buttons(
             FindingNetworkSessions_ButtonParameters param_1, ...)
         {
-            uint uVar1;
             int _status;
             DPSESSIONDESC2 local_54;
-            uVar1 = MSVC_SecurityCookie::instance ^ (uint)&local_54;
+            uint uVar1 = MSVC_SecurityCookie::instance ^ (uint)&local_54;
             if (param_1 < (FindingNetworkSessions_ButtonParameters)0x80000000) {
                 if (param_1 != (FindingNetworkSessions_ButtonParameters)3) {
                     if ((param_1 == UI::Multiplayer::FNSBP_JOIN)

@@ -42,9 +42,7 @@ namespace UI {
             int iVar3;
             int iVar4;
             eTextSections offsetIndex;
-            int iVar5;
             BOOLEnum keepOffsetX;
-            int _gmID;
             /*
               first render resource type in condensed form
              */
@@ -65,7 +63,7 @@ namespace UI {
                 if (actionParam == 0xe) {
                     actionParam = 0x17;
                 }
-                _gmID = actionParam * 2 + 0x269;
+                int _gmID = actionParam * 2 + 0x269;
                 if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                     _gmID = actionParam * 2 + 0x26a;
                 }
@@ -97,7 +95,7 @@ namespace UI {
                 return;
             }
             iVar1 = DAT_ButtonX::instance;
-            iVar5 = DAT_ButtonY::instance;
+            int iVar5 = DAT_ButtonY::instance;
             /*
               then draw the rest
              */

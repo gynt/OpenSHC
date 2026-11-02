@@ -34,7 +34,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00426D30
         void Unused::MenuItemRenderFunction_UnusedEconomicMissionSelect_MissionSelect(int param_1, ...)
         {
-            int xParam;
             uint color_00;
             if ((DAT_MenuTextInputState::instance.currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU)
                 && (DAT_MenuModalComposition1::instance.activeModalDialogID == OpenSHC::UI::Enums::MMT_NONE)) {
@@ -61,7 +60,7 @@ namespace UI {
                         DAT_TextManagerObject::ptr)(-0x20 - param_1, (int)(DAT_ButtonX::instance + 8),
                         (int)(DAT_ButtonY::instance + 5), OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x13, FALSE, 0);
                     int yParam = DAT_ButtonY::instance + 5;
-                    xParam = DAT_ButtonX::instance + 0x1e;
+                    int xParam = DAT_ButtonX::instance + 0x1e;
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                             DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_MISSION_NAMES, -0xb - param_1),

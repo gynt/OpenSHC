@@ -45,8 +45,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004C1070
         void TraderSettings::MenuItemRenderFunction_TraderSettings(int param_1, ...)
         {
-            int iVar1;
-            int iVar2;
             DAT_TextureRenderCoreObject::instance.drawBufferChoiceValue = OpenSHC::Rendering::Enums::RT_SCREEN_MENU;
             if (param_1 < 0) {
                 int const traderIndex = -1 - param_1;
@@ -56,8 +54,8 @@ namespace UI {
                         != FALSE);
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                iVar2 = ((int*)((int)DAT_MissionAestheticsDefinedData::ptr + 0x345c))[traderIndex];
-                iVar1 = iVar2 * 2 + 0x8d;
+                int iVar2 = ((int*)((int)DAT_MissionAestheticsDefinedData::ptr + 0x345c))[traderIndex];
+                int iVar1 = iVar2 * 2 + 0x8d;
                 if (iVar1 == 0x9d) {
                     iVar1 = 0x9b;
                 }

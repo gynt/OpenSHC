@@ -30,7 +30,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004BFA60
         void NewInvasion::MenuItemRenderFunction_NewInvasion_Buttons(int param_1, ...)
         {
-            int yParam;
             int iVar1 = -1;
             switch (param_1) {
             case 9:
@@ -104,7 +103,7 @@ namespace UI {
                     DAT_ButtonCurrentlyInteracting::instance = TRUE;
                     MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                         AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
-                    yParam = DAT_ButtonY::instance + 6;
+                    int yParam = DAT_ButtonY::instance + 6;
                     iVar1 = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,

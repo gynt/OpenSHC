@@ -28,12 +28,11 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00491C50
         void EnterTitleOnGameStart::MenuItemRenderFunction_EnterTitleOnGameStart_Button(int param_1, ...)
         {
-            int yParam;
             TextAlignment TVar2;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                 AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
             int xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
-            yParam = DAT_ButtonY::instance + 7;
+            int yParam = DAT_ButtonY::instance + 7;
             if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
                 TVar2 = OpenSHC::Text::TTA_CENTER;
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(

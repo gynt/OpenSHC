@@ -46,9 +46,6 @@ namespace UI {
             int iVar3;
             int iVar4;
             int iVar6;
-            TextAlignment TVar7;
-            BGR24 BVar9;
-            int iVar10;
             BOOLEnum BVar2 = MACRO_CALL(OpenSHC::UI::Helpers_Func::AModalDialogIsActiveButIsNotQuitting)();
             if (BVar2 != FALSE) {
                 return;
@@ -57,9 +54,9 @@ namespace UI {
                 iVar3 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
                 iVar4 = (iVar3 / 32) + 0x20;
                 BVar2 = FALSE;
-                iVar10 = 0x13;
-                BVar9 = 0xc2f0eb;
-                TVar7 = OpenSHC::Text::TTA_LEFT;
+                int iVar10 = 0x13;
+                BGR24 BVar9 = 0xc2f0eb;
+                TextAlignment TVar7 = OpenSHC::Text::TTA_LEFT;
                 iVar3 = DAT_ButtonX::instance;
                 iVar6 = DAT_ButtonY::instance;
                 /*

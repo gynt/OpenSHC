@@ -34,7 +34,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00492A90
         void SaveLoadMap::MenuItemRenderFunction_SaveLoadMap_Buttons(int param_1, ...)
         {
-            int yParam;
             BGR24 color;
             if ((DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SOLITARY)
                 || (DAT_GameSynchronyState::instance.currentGameMode == OpenSHC::Game::GM_SKIRMISH_SINGLE_PLAYER)) {
@@ -85,7 +84,7 @@ namespace UI {
                 color = 0xccfaff;
             }
         LAB_00492b46:
-            yParam = DAT_ButtonY::instance + 7;
+            int yParam = DAT_ButtonY::instance + 7;
             int xParam = DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,

@@ -30,7 +30,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004BB3E0
         void BuildingAvailability::MenuItemRenderFunction_BuildingAvailability_TableRows(int param_1, ...)
         {
-            int xParam;
             BGR24 color;
             int _structIndex;
             _structIndex = DAT_MissionAestheticsDefinedData::instance.BuildingAvailabilityStructIndexForNameArray
@@ -48,7 +47,7 @@ namespace UI {
             } else {
                 color = 0xccfaff;
             }
-            xParam = DAT_ButtonX::instance + 0x14;
+            int xParam = DAT_ButtonX::instance + 0x14;
             int yParam = DAT_ButtonY::instance + 6;
             MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,

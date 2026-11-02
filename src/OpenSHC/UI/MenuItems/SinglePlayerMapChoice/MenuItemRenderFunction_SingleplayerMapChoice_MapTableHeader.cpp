@@ -29,10 +29,7 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x0042DBB0
         void SinglePlayerMapChoice::MenuItemRenderFunction_SingleplayerMapChoice_MapTableHeader(int param_1, ...)
         {
-            int yParam;
-            int xParam;
-            int numInGroup;
-            numInGroup = -1;
+            int numInGroup = -1;
             /*
               the original dispatches with a `sub eax, K; je` chain (0x42dbb8), MSVC's
               sparse switch, and the `case 1` body sits first
@@ -59,8 +56,8 @@ namespace UI {
             if (numInGroup != -1) {
                 int iVar1 = (DAT_ButtonBackgroundBlendStrength::instance - 0x20) * 0x20;
                 iVar1 = (iVar1 / 32) + 0x20;
-                yParam = DAT_ButtonY::instance + 3;
-                xParam = DAT_ButtonX::instance + 8;
+                int yParam = DAT_ButtonY::instance + 3;
+                int xParam = DAT_ButtonX::instance + 8;
                 if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,

@@ -28,11 +28,10 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004934F0
         void General::MenuItemRenderFunction_General_GameOptionsTextButton(int param_1, ...)
         {
-            int yParam;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                 AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
             int xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
-            yParam = DAT_ButtonY::instance + 7;
+            int yParam = DAT_ButtonY::instance + 7;
             /*
               the original pushes this call's arguments inside each arm and converges only on
               the inner call (`push 0x4a` at 0x493544), so the call was written out twice

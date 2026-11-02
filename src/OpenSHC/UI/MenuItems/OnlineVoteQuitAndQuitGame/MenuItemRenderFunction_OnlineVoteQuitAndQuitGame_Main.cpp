@@ -28,11 +28,8 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00493850
         void OnlineVoteQuitAndQuitGame::MenuItemRenderFunction_OnlineVoteQuitAndQuitGame_Main(int param_1, ...)
         {
-            int yParam;
-            eTextSections offsetIndex;
-            int numInGroup;
-            numInGroup = 0;
-            offsetIndex = ((eTextSections)0);
+            int numInGroup = 0;
+            eTextSections offsetIndex = ((eTextSections)0);
             switch (param_1) {
             case 1:
                 offsetIndex = OpenSHC::DE::SHCDE::TEXT_GAME_OPTIONS;
@@ -54,7 +51,7 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                 AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
             int xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
-            yParam = DAT_ButtonY::instance + 7;
+            int yParam = DAT_ButtonY::instance + 7;
             if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,

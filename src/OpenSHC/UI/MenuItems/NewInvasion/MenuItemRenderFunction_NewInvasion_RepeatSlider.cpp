@@ -34,7 +34,6 @@ namespace UI {
         void NewInvasion::MenuItemRenderFunction_NewInvasion_RepeatSlider(
             int param_1, int thumbXPos, int sliderValue, int thumbWidth, BOOLEnum isDragged)
         {
-            int xParam;
             DAT_ButtonCurrentlyInteracting::instance = FALSE;
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                 AlphaAndButtonSurfaceObj::ptr)(-1, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
@@ -55,7 +54,7 @@ namespace UI {
                 sliderValue, (int)(DAT_ButtonW::instance + 0x14 + DAT_ButtonX::instance),
                 (int)(DAT_ButtonY::instance + 6), OpenSHC::Text::TTA_LEFT, 0xccfaff, 0x12, FALSE, 0);
             int yParam = DAT_ButtonY::instance + 6;
-            xParam = DAT_ButtonX::instance - 0x96;
+            int xParam = DAT_ButtonX::instance - 0x96;
             /*
               added by script: "Repeat"
              */

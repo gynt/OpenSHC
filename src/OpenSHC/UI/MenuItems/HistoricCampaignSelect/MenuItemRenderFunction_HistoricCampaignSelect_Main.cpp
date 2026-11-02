@@ -37,7 +37,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004255D0
         void HistoricCampaignSelect::MenuItemRenderFunction_HistoricCampaignSelect_Main(int param_1, ...)
         {
-            int xParam;
             if (DAT_UnknownGFXIndex::instance != 1) {
                 if ((param_1 == 5) || (DAT_ButtonCurrentlyInteracting::instance != FALSE)) {
                     if ((DAT_TextureRenderCoreObject::instance.unknownSfxAndGmRelatedFlag != FALSE) && (param_1 < 5)) {
@@ -69,7 +68,7 @@ namespace UI {
                 }
                 if (param_1 < 5) {
                     int yParam = DAT_ButtonY::instance + 0xf;
-                    xParam = DAT_ButtonX::instance + 0x1e;
+                    int xParam = DAT_ButtonX::instance + 0x1e;
                     MACRO_CALL_MEMBER(
                         OpenSHC::Text::TextManager_Func::renderInGameTextWithShadow, DAT_TextManagerObject::ptr)(
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,

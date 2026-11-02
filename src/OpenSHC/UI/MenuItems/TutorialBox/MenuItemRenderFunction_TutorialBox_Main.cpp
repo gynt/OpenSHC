@@ -33,9 +33,7 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x004BD0F0
         void TutorialBox::MenuItemRenderFunction_TutorialBox_Main(int param_1, ...)
         {
-            int yParam;
-            int numInGroup;
-            numInGroup = 1;
+            int numInGroup = 1;
             if (DAT_00df5540::instance == 0) {
                 if (param_1 == 2) {
                     numInGroup = 2;
@@ -52,7 +50,7 @@ namespace UI {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                     AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
                 int xParam = ((int)DAT_ButtonW::instance >> 1) + DAT_ButtonX::instance;
-                yParam = DAT_ButtonY::instance + 8;
+                int yParam = DAT_ButtonY::instance + 8;
                 if (DAT_ButtonCurrentlyInteracting::instance != FALSE) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                         MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,

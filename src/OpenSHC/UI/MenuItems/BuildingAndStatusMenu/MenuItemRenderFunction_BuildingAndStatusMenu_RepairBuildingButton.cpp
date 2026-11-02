@@ -36,7 +36,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00466320
         void BuildingAndStatusMenu::MenuItemRenderFunction_BuildingAndStatusMenu_RepairBuildingButton(int param_1, ...)
         {
-            int yParam;
             BGR24 color_00;
             int iVar3 = DAT_BuildingsState::instance.menuSelectedBuildingID;
             DAT_ButtonUnknownZero::instance
@@ -66,7 +65,7 @@ namespace UI {
                 color_00 = 0x7caaaf;
             }
             BVar1 = FALSE;
-            yParam = DAT_ButtonY::instance + 7;
+            int yParam = DAT_ButtonY::instance + 7;
             iVar3 = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
             /*
               added by script: "Repair"

@@ -27,12 +27,11 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x0043E4E0
         void BuildingAndStatusMenu::MenuItemRenderFunction_BuildingAndStatusMenu_StatusMainMenuButtons(int param_1, ...)
         {
-            int yParam;
             if (DAT_MenuTextInputState::instance.currentModalDialog == OpenSHC::UI::Enums::MMT_NO_MENU) {
                 MACRO_CALL(OpenSHC::UI::MenuItems::General_Func::
                         MenuItemRenderFunction_General_RenderCurrentButtonWithPossibleAlphaTexOnScreenMenuSurface)();
                 int xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
-                yParam = DAT_ButtonY::instance + 10;
+                int yParam = DAT_ButtonY::instance + 10;
                 MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderTextToScreen, DAT_TextManagerObject::ptr)(
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::getTextStringInGroupAtOffset,
                         DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_REPORT_BUTTONS, param_1 - 0x47),

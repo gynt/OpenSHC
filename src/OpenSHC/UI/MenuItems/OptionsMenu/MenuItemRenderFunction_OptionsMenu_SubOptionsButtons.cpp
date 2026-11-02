@@ -28,7 +28,6 @@ namespace UI {
         // FUNCTION: STRONGHOLDCRUSADER 0x00491A30
         void OptionsMenu::MenuItemRenderFunction_OptionsMenu_SubOptionsButtons(int param_1, ...)
         {
-            int yParam;
             TextAlignment TVar2;
             int iVar3;
             BOOLEnum BVar4;
@@ -36,7 +35,7 @@ namespace UI {
             MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::AlphaAndButtonSurface_Func::renderBasicButton,
                 AlphaAndButtonSurfaceObj::ptr)(0, OpenSHC::Rendering::Enums::RT_CONTEXT_BASED);
             int xParam = (int)DAT_ButtonW::instance / 2 + DAT_ButtonX::instance;
-            yParam = DAT_ButtonY::instance + 7;
+            int yParam = DAT_ButtonY::instance + 7;
             if (DAT_ButtonCurrentlyInteracting::instance == FALSE) {
                 iVar5 = 4;
                 BVar4 = FALSE;
