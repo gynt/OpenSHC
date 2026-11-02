@@ -341,10 +341,10 @@ Diff patterns that were reliable (more in the cheat sheet):
   Keep it per site even so: over the UI view and modal folders the same sweep paid on 6 of 9 files but cost
   `MenuView_CrusadeMap_Prepare` 12.8 points on its three sites, more than it gained anywhere, so applied wholesale
   it is a net loss of 0.065 of namespace average. "Worth sweeping" means worth trying everywhere, not keeping
-  everywhere. The yield varies a lot by namespace and is not the ~60% the UI folders suggest: 6 of 9, 4 of 7 and
-  5 of 7 there, but 29 of 35 over `Map`, where the sweep was worth +0.35 of namespace average on its own. Four of
-  the six Map losers are `Update<Building>` functions, which hints the exception tracks a code shape rather than a
-  namespace - unconfirmed, worth checking on the next batch.
+  everywhere, and do not try to predict the yield: over five namespaces it is 6 of 9, 4 of 7, 5 of 7, 29 of 35 and
+  1 of 4 - a 25% to 83% range with nothing that forecasts it. It was worth +0.35 of namespace average over `Map`
+  at 83% and cost three functions out of four over `Synchrony`. Budget it as a per-site lever and measure every
+  file; two attempts to state a rate here (first "~60% every time", then "83% on Map") were both premature.
 - **Rule 12's two forms are not interchangeable, and the choice is a code-generation one.**
   `string-literals.hpp` gives `char const* const s_x = S_X;`, a pointer *variable*, so a use is a load where the
   original materialises the string address as an immediate; `string-macros.hpp` gives `S_X`, which expands to the
@@ -364,11 +364,15 @@ Diff patterns that were reliable (more in the cheat sheet):
   Confirm either on reccmp and revert per file: 5 of 33 swapped files lost in one namespace, 3 of 26 in another,
   6 of 41 and 3 of 22 over `Map`, and 2 of 9 then 1 of 5 flipped sites lost. A `quick_diff` gain is a candidate,
   not a result.
-  The gap widens with the size of the selection. Over `Map`'s 298 functions the swap took 77 of 218 sites for
-  +1.38 of namespace average, while the flip took 8 of 726 - a 1.1% hit rate, about two hours of compiles - for
-  +0.05. Run the swap first and do not skip the flip on that basis alone, though: `UpdateOutpostBuilding` gained
-  5.3 points from a flip after its arm swap had been reverted for costing 0.2, so the two are not substitutes and
-  a function one cannot help may still pay on the other.
+  Unlike the `<= 0` sweep both have held their ranges over five namespaces, so the ordering is worth relying on:
+  the swap takes 20-36% of its sites and was worth +0.19 to +1.38 per namespace, the flip 1-8% and +0.02 to +0.05.
+  Run the swap first; do not skip the flip on its hit rate. It produced +5.3 on `UpdateOutpostBuilding` and +16.4
+  on `AskForPlayerSlotAssignment`, and in both cases the *arm swap* on that same function had been reverted for
+  costing a fraction - the two levers are not substitutes, and a function one cannot help may pay well on the other.
+  A low candidate count is not a reason to skip either. `Synchrony` at a 69.4% baseline offered only 44 swap sites
+  against `Map`'s 218 and kept 20% of them against 36%, yet each kept site was worth 0.032 of namespace average
+  against Map's 0.018 - what survives in a worked-over namespace is the few large functions nobody has
+  restructured, and `ProcessAllyRequestingGoods` went 65.7% -> 94.8% on one swap.
 - **Rule 11 pays on a field at a computed offset and loses on a loop induction pointer.** Resolving
   `(int)DAT_X::ptr + i * 4 + OFFSET` into the array the header declares was worth 3.5 points on
   `MenuItemActionHandler_UnusedChooseAvailableKeeps_Main` and 4.4 on
