@@ -56,14 +56,14 @@ namespace Map {
                             iVar2 = iVar2 + 1;
                         } while (iVar2 < 0x32);
                         *piVar1 = 600;
-                    } else if (iVar2 < 1) {
-                        if (iVar2 < 0) {
-                            *piVar1 = iVar2 + 1;
-                        }
-                    } else {
+                    } else if (iVar2 >= 1) {
                         *piVar1 = iVar2 - 1;
                         if (iVar2 - 1 == 0) {
                             *piVar1 = -1000;
+                        }
+                    } else {
+                        if (iVar2 < 0) {
+                            *piVar1 = iVar2 + 1;
                         }
                     }
                 }

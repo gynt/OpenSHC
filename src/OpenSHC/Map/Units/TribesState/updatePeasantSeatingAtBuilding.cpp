@@ -29,9 +29,7 @@ namespace Map {
             local_8 = 0;
             if (param_2 < 2) {
                 param_2 = 1;
-            } else if (param_2 < 4) {
-                param_2 = ((byte)SEC_RNG::instance.currentNumber2 & 1) + 1;
-            } else {
+            } else if (param_2 >= 4) {
                 if (param_2 < 8) {
                     uVar2 = (byte)SEC_RNG::instance.currentNumber2 & 3;
                 } else {
@@ -42,6 +40,8 @@ namespace Map {
                     uVar2 = (byte)SEC_RNG::instance.currentNumber2 & 0xf;
                 }
                 param_2 = uVar2 + 1;
+            } else {
+                param_2 = ((byte)SEC_RNG::instance.currentNumber2 & 1) + 1;
             }
         LAB_00522291:
             iVar4 = 1;

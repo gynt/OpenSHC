@@ -85,24 +85,24 @@ namespace Map {
             }
             if (_macemenCount < 1) {
                 DAT_TroopValueState::instance.attackInfo.macemenTribeCount = 0;
-            } else if (_macemenLimit < _macemenCount) {
+            } else if (_macemenLimit >= _macemenCount) {
+                DAT_TroopValueState::instance.attackInfo.macemenTribeCount = 1;
+            } else {
                 DAT_TroopValueState::instance.attackInfo.macemenTribeCount = _macemenCount / _macemenLimit + 1;
                 _count = _knightCount;
                 if (100 < DAT_TroopValueState::instance.attackInfo.macemenTribeCount) {
                     DAT_TroopValueState::instance.attackInfo.macemenTribeCount = 100;
                 }
-            } else {
-                DAT_TroopValueState::instance.attackInfo.macemenTribeCount = 1;
             }
             if (_count < 1) {
                 DAT_TroopValueState::instance.attackInfo.knightTribeCount = 0;
-            } else if (_knightLimit < _count) {
+            } else if (_knightLimit >= _count) {
+                DAT_TroopValueState::instance.attackInfo.knightTribeCount = 1;
+            } else {
                 DAT_TroopValueState::instance.attackInfo.knightTribeCount = _count / _knightLimit + 1;
                 if (100 < DAT_TroopValueState::instance.attackInfo.knightTribeCount) {
                     DAT_TroopValueState::instance.attackInfo.knightTribeCount = 100;
                 }
-            } else {
-                DAT_TroopValueState::instance.attackInfo.knightTribeCount = 1;
             }
             local_14 = 0;
             if (0 < DAT_TroopValueState::instance.attackInfo.macemenTribeCount) {

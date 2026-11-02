@@ -324,7 +324,9 @@ namespace Map {
                                         goto LAB_00526908;
                                     }
                                 } else {
-                                    if (this->tribes[tribeID].unkIsAnimalTribe == 0) {
+                                    if (this->tribes[tribeID].unkIsAnimalTribe != 0) {
+                                        _modulo = 3;
+                                    } else {
                                         if ((_isDefensiveStructure) || (_bool1))
                                             goto LAB_00526908;
                                         if (_unitType == Map::Units::UT_S_CATAPULT
@@ -336,8 +338,6 @@ namespace Map {
                                         } else {
                                             _modulo = 2;
                                         }
-                                    } else {
-                                        _modulo = 3;
                                     }
                                 LAB_0052690c:
                                     MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::
@@ -516,12 +516,12 @@ namespace Map {
                                 short sVar3 = DAT_UnitsState::instance.units[_targetUnitID].topSpeedDelayIndex;
                                 short sVar10
                                     = (short)DAT_UnitSelectionDefinedData::instance.UnitInstructionMoveDelay[sVar3];
-                                if (this->tribes[tribeID].unkIsAnimalTribe == 0) {
+                                if (this->tribes[tribeID].unkIsAnimalTribe != 0) {
+                                    sVar10 = sVar10 * 3;
+                                } else {
                                     if (-1 < this->field6_0x18) {
                                         sVar10 = sVar10 * 2;
                                     }
-                                } else {
-                                    sVar10 = sVar10 * 3;
                                 }
                                 DAT_UnitsState::instance.units[_targetUnitID].moveInstructionSpeedDelayTracker = sVar10;
                                 if (this->field6_0x18 < 0) {

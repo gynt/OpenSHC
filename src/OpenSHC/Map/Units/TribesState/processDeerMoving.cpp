@@ -49,13 +49,13 @@ namespace Map {
             iVar6 = DAT_WildlifeState::instance.grid[_x10][_y10].field18_0x48;
             sVar2 = (ushort)this->tribes[tribeID].size;
             this->tribes[tribeID].unkIsAnimalTribe = 1;
-            if (sVar2 < 0x1f) {
-                this->tribes[tribeID].herdMinSize = sVar2 / 2;
-                this->tribes[tribeID].herdMaxSize = sVar2 * 2;
-            } else {
+            if (sVar2 >= 0x1f) {
                 MACRO_CALL_MEMBER(Map::Units::TribesState_Func::trimTribeToSize, this)(tribeID, (int)(30));
                 this->tribes[tribeID].herdMinSize = 0xf;
                 this->tribes[tribeID].herdMaxSize = 0x3c;
+            } else {
+                this->tribes[tribeID].herdMinSize = sVar2 / 2;
+                this->tribes[tribeID].herdMaxSize = sVar2 * 2;
             }
             if ((iVar4 + iVar6 != 0) && (this->tribes[tribeID].predatorNearby == 0)) {
                 this->tribes[tribeID].predatorNearby = 1;

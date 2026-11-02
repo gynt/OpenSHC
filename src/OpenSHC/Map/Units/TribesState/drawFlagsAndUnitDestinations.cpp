@@ -87,10 +87,10 @@ namespace Map {
                                     2);
                             }
                         } else {
-                            if (sVar1 < 8) {
-                                iVar4 = (8 - sVar1) * 4;
-                            } else {
+                            if (sVar1 >= 8) {
                                 iVar4 = 0;
+                            } else {
+                                iVar4 = (8 - sVar1) * 4;
                             }
                             tile = (int)DAT_UnitsState::instance.units[_unitID].plannedDestinationX
                                 + DAT_ViewportRenderState::instance
@@ -114,12 +114,7 @@ namespace Map {
                                 (int)(DAT_UnitsState::instance.units[_unitID].attackAtTileY),
                                 (int)(DAT_UnitsState::instance.units[_unitID].unkAttackRelated));
                         } else {
-                            if (UVar2 == Map::Units::UIT_FILL_MOAT) {
-                                iVar4 = (int)DAT_UnitsState::instance.units[_unitID].targetX
-                                    + DAT_ViewportRenderState::instance
-                                          .translationMatrix[DAT_UnitsState::instance.units[_unitID].targetY]
-                                          .addXgetTile;
-                            } else {
+                            if (UVar2 != Map::Units::UIT_FILL_MOAT) {
                                 if (UVar2 != Map::Units::UIT_DIG_MOAT) {
                                     if (UVar2 == Map::Units::UIT_UNIT_ATTACK_UNIT) {
                                         sVar1 = DAT_UnitsState::instance.units[_unitID]
@@ -161,6 +156,11 @@ namespace Map {
                                     }
                                     continue;
                                 }
+                                iVar4 = (int)DAT_UnitsState::instance.units[_unitID].targetX
+                                    + DAT_ViewportRenderState::instance
+                                          .translationMatrix[DAT_UnitsState::instance.units[_unitID].targetY]
+                                          .addXgetTile;
+                            } else {
                                 iVar4 = (int)DAT_UnitsState::instance.units[_unitID].targetX
                                     + DAT_ViewportRenderState::instance
                                           .translationMatrix[DAT_UnitsState::instance.units[_unitID].targetY]

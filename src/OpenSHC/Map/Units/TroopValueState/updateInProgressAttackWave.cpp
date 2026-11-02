@@ -37,13 +37,13 @@ namespace Map {
             if (this->attackInfo.attackWaveTicker[attackID] == 0) {
                 this->attackInfo.someCounter1 = this->attackInfo.someCounter1 + 1;
                 MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::aiRecomputeAttacks2, this)(1, attackID);
-                if (this->attackInfo.tentPoints < 1) {
-                    MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::placeSiegeTentsAndAssignEngineers, this)(
-                        attackID, 0);
-                } else {
+                if (this->attackInfo.tentPoints >= 1) {
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::placeSiegeTentsAndAssignEngineers, this)(
                         attackID, 1);
                     MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::placeTunnelForEveryTunneler, this)(attackID);
+                } else {
+                    MACRO_CALL_MEMBER(Map::Units::TroopValueState_Func::placeSiegeTentsAndAssignEngineers, this)(
+                        attackID, 0);
                 }
                 tribeSizeSumLimit = *(int*)((int)this->attackInfo.townValuesArray + (char)_playerID * 0x177bc - 4);
                 if (tribeSizeSumLimit) {

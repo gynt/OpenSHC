@@ -18,9 +18,7 @@ namespace Map {
             /*
               is engineer
              */
-            if (unitType == 0x1e) {
-                _index = 1;
-            } else {
+            if (unitType != 0x1e) {
                 /*
                   is tunneler
                  */
@@ -51,6 +49,8 @@ namespace Map {
                         }
                     }
                 }
+            } else {
+                _index = 1;
             }
             psVar1 = DAT_GameState::instance.playerDataArray[playerID].freshUnitTribeIDs + _index;
             _tribe = (int)*psVar1;

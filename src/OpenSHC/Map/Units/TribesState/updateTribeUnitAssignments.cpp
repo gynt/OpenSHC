@@ -27,12 +27,7 @@ namespace Map {
                     int _tribeID = DAT_CurrentTribeID::instance;
                     if (_state != 3) {
                         int _tribeSize = this->tribes[DAT_CurrentTribeID::instance].size;
-                        if (_tribeSize <= 0) {
-                            int _tribeTime = this->tribes[DAT_CurrentTribeID::instance].time;
-                            if (_tribeTime && (int)DAT_GameCore::instance.mapTimeInTicks <= (int)_tribeTime
-                                && _tribeTime)
-                                goto LAB_00527425;
-                        } else {
+                        if (_tribeSize > 0) {
                             int local_4 = 0;
                             if (0 < _tribeSize) {
                                 do {
@@ -58,6 +53,11 @@ namespace Map {
                                     goto LAB_00527425;
                                 }
                             }
+                        } else {
+                            int _tribeTime = this->tribes[DAT_CurrentTribeID::instance].time;
+                            if (_tribeTime && (int)DAT_GameCore::instance.mapTimeInTicks <= (int)_tribeTime
+                                && _tribeTime)
+                                goto LAB_00527425;
                         }
                     }
                     MACRO_CALL_MEMBER(Map::Units::TribesState_Func::clearTribe, this)(_tribeID);

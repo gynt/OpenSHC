@@ -59,15 +59,15 @@ namespace Map {
                 } else if (_ptrptrCurrentSelectionID == Map::Units::UT_A_SLINGER) {
                     _distance = DAT_EntityDefinedData::instance.EntityTypeArrayForProjectileRange[0x21]
                         * DAT_EntityDefinedData::instance.EntityTypeArrayForProjectileRange[0x21];
-                } else if (_ptrptrCurrentSelectionID == Map::Units::UT_A_HARCHER) {
-                    _distance = DAT_EntityDefinedData::instance.EntityTypeArrayForProjectileRange[1]
-                        * DAT_EntityDefinedData::instance.EntityTypeArrayForProjectileRange[1];
-                } else {
+                } else if (_ptrptrCurrentSelectionID != Map::Units::UT_A_HARCHER) {
                     _distance = unitID;
                     if (_ptrptrCurrentSelectionID == Map::Units::UT_A_FIRETHROWER) {
                         _distance = DAT_EntityDefinedData::instance.EntityTypeArrayForProjectileRange[0x22]
                             * DAT_EntityDefinedData::instance.EntityTypeArrayForProjectileRange[0x22];
                     }
+                } else {
+                    _distance = DAT_EntityDefinedData::instance.EntityTypeArrayForProjectileRange[1]
+                        * DAT_EntityDefinedData::instance.EntityTypeArrayForProjectileRange[1];
                 }
                 _xDifference = (int)DAT_UnitsState::instance.units[_otherUnitID].x
                     - (int)DAT_UnitsState::instance.units[unitID].x;
@@ -108,11 +108,11 @@ namespace Map {
             case Map::Units::UT_E_MACE:
             case Map::Units::UT_E_MONK:
                 UVar2 = DAT_UnitsState::instance.units[unitID].unitType;
-                if (UVar2 == Map::Units::UT_E_KNIGHT || UVar2 == Map::Units::UT_E_SWORD
+                if (UVar2 != Map::Units::UT_E_KNIGHT || UVar2 == Map::Units::UT_E_SWORD
                     || UVar2 == Map::Units::UT_LORD) {
-                    _otherX = 0x11;
-                } else {
                     _otherX = 0x15;
+                } else {
+                    _otherX = 0x11;
                 }
                 MACRO_CALL_MEMBER(Audio::SFX::SFXState_Func::playUnitSpeech, DAT_SFXState::ptr)(
                     (Map::Units::UnitType)_ptrptrCurrentSelectionID, _otherX);

@@ -44,10 +44,10 @@ namespace Map {
                         this->attackInfo.field_0x20f44 = 0;
                     } else if (this->attackInfo.spearmenAndMacemen < 2) {
                         this->attackInfo.field_0x20f44 = 1;
-                    } else if (this->attackInfo.spearmenAndMacemen < 4) {
-                        this->attackInfo.field_0x20f44 = this->attackInfo.spearmenAndMacemen - 1;
-                    } else {
+                    } else if (this->attackInfo.spearmenAndMacemen >= 4) {
                         this->attackInfo.field_0x20f44 = 3;
+                    } else {
+                        this->attackInfo.field_0x20f44 = this->attackInfo.spearmenAndMacemen - 1;
                     }
                     this->attackInfo.field_0x20f48 = (uint)(4 < this->attackInfo.pikemenSwordsmenAndMore) * 2 + 2;
                     if (this->attackInfo.spearmenAndMacemen < 0xb) {
@@ -69,21 +69,21 @@ namespace Map {
                         this->attackInfo.field_0x20f44 = 0;
                     } else if (this->attackInfo.spearmenAndMacemen < 2) {
                         this->attackInfo.field_0x20f44 = 1;
-                    } else if (this->attackInfo.spearmenAndMacemen < 5) {
-                        this->attackInfo.field_0x20f44 = this->attackInfo.spearmenAndMacemen - 1;
-                    } else {
+                    } else if (this->attackInfo.spearmenAndMacemen >= 5) {
                         this->attackInfo.field_0x20f44 = 4;
+                    } else {
+                        this->attackInfo.field_0x20f44 = this->attackInfo.spearmenAndMacemen - 1;
                     }
                     this->attackInfo.field_0x20f48 = ((this->attackInfo.pikemenSwordsmenAndMore < 6) - 1 & 3) + 2;
-                    if (this->attackInfo.spearmenAndMacemen < 0xd) {
-                        this->attackInfo.field_0x20f4c = (uint)(6 < this->attackInfo.spearmenAndMacemen) * 2 + 3;
-                    } else {
+                    if (this->attackInfo.spearmenAndMacemen >= 0xd) {
                         this->attackInfo.field_0x20f4c = 8;
-                    }
-                    if (this->attackInfo.pikemenSwordsmenAndMore < 0xb) {
-                        this->attackInfo.field_0x20f54 = (uint)(8 < this->attackInfo.pikemenSwordsmenAndMore) * 2 + 3;
                     } else {
+                        this->attackInfo.field_0x20f4c = (uint)(6 < this->attackInfo.spearmenAndMacemen) * 2 + 3;
+                    }
+                    if (this->attackInfo.pikemenSwordsmenAndMore >= 0xb) {
                         this->attackInfo.field_0x20f54 = 6;
+                    } else {
+                        this->attackInfo.field_0x20f54 = (uint)(8 < this->attackInfo.pikemenSwordsmenAndMore) * 2 + 3;
                     }
                     this->attackInfo.field_0x20f5c = 6;
                     this->attackInfo.field_0x20f58 = (0 < this->attackInfo.pikemenSwordsmenAndMore) + 2;

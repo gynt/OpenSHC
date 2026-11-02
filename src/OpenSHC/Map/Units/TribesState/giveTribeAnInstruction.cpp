@@ -1223,13 +1223,13 @@ namespace Map {
                 }
                 if (id | x | id != 0) {
                     sVar9 = this->tribes[_param_1_tribeID].selectionTargetUnitID;
-                    if (unitInstructionType == Map::Units::UIT_ATTACK_WALL
+                    if (unitInstructionType != Map::Units::UIT_ATTACK_WALL
                         || unitInstructionType == (UnitInstructionType)0x25) {
                         sVar8 = DAT_UnitsState::instance.units[sVar9].facingDirection;
-                        iVar12 = (int)DAT_UnitsState::instance.units[sVar9].owner;
+                        iVar12 = 0;
                     } else {
                         sVar8 = DAT_UnitsState::instance.units[sVar9].facingDirection;
-                        iVar12 = 0;
+                        iVar12 = (int)DAT_UnitsState::instance.units[sVar9].owner;
                     }
                     MACRO_CALL_MEMBER(Map::Navigation::PathFindingState_Func::
                                           findFreeSpaceNextToEnemyDefensiveStructureInSameAreaWithinDistance,

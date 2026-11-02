@@ -49,7 +49,9 @@ namespace Map {
                         BVar3 = MACRO_CALL_MEMBER(
                             Map::Units::UnitsState_Func::isComputerManagedNonPeasant, DAT_UnitsState::ptr)(_unitID);
                         if (!BVar3) {
-                            if (DAT_UnitsState::instance.units[_unitID].dying == 0) {
+                            if (DAT_UnitsState::instance.units[_unitID].dying != 0) {
+                                _countDying = _countDying + 1;
+                            } else {
                                 if (DAT_UnitsState::instance.units[_unitID].movementRelated != 8) {
                                     _countMoving = _countMoving + 1;
                                 }
@@ -80,8 +82,6 @@ namespace Map {
                                 if (this->tribes[tribeID].movementSpeed < _movementSpeed) {
                                     this->tribes[tribeID].movementSpeed = _movementSpeed;
                                 }
-                            } else {
-                                _countDying = _countDying + 1;
                             }
                         } else {
                             MACRO_CALL_MEMBER(Map::Units::TribesState_Func::removeUnitFromTribe, this)(
