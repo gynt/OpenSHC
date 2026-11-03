@@ -108,7 +108,6 @@ namespace UI {
             goodsRow = goodsRow + 5;
             goodsRowsRemaining = goodsRowsRemaining + -1;
         } while (goodsRowsRemaining != 0);
-        GameMode2Int gameModeBeforePopup = DAT_GameCore::instance.gameMode_2;
         if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_CAMPAIGN_MISSION) {
             if (startGoodsCount == 0)
                 return;
@@ -124,7 +123,7 @@ namespace UI {
         }
         int const goodsPopupState = DAT_GameState::instance.playerDataArray[countedPlayerSlotID].someCount45;
         if (goodsPopupState != 0) {
-            if (gameModeBeforePopup == OpenSHC::Game::GM_SIEGE_THAT) {
+            if (DAT_GameCore::instance.gameMode_2 == OpenSHC::Game::GM_SIEGE_THAT) {
                 int headingParam9 = 0;
                 BOOLEnum headingUseShadow = FALSE;
                 int headingFontSize = 0x11;
@@ -142,18 +141,15 @@ namespace UI {
                         DAT_TextManagerObject::ptr)(OpenSHC::DE::SHCDE::TEXT_STARTUP, 1),
                     headingX, headingY, (TextAlignment)((int)(headingAlignment)), headingColor, headingShadowColor,
                     headingFontSize, headingUseShadow, headingParam9);
-                gameModeBeforePopup = DAT_GameCore::instance.gameMode_2;
             } else {
                 if (goodsPopupState == 1) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText, DAT_TextManagerObject::ptr)(
                         OpenSHC::DE::SHCDE::TEXT_STARTUP, 0, posX, posY + 0x1e, OpenSHC::Text::TTA_LEFT, 0xb8eefb, 0,
                         0x11, FALSE);
-                    gameModeBeforePopup = DAT_GameCore::instance.gameMode_2;
                 } else if (goodsPopupState == 2) {
                     MACRO_CALL_MEMBER(OpenSHC::Text::TextManager_Func::renderText, DAT_TextManagerObject::ptr)(
                         OpenSHC::DE::SHCDE::TEXT_STARTUP, 2, posX, posY + 0x1e, OpenSHC::Text::TTA_LEFT, 0xb8eefb, 0,
                         0x11, FALSE);
-                    gameModeBeforePopup = DAT_GameCore::instance.gameMode_2;
                 }
             }
             int const scrolledPlayerSlotID = DAT_GameSynchronyState::instance.currentPlayerSlotID;
@@ -161,14 +157,13 @@ namespace UI {
                 = DAT_GameState::instance.playerDataArray[DAT_GameSynchronyState::instance.currentPlayerSlotID]
                       .someCount47
                 + 2;
-            int scrollCounter = DAT_GameState::instance.playerDataArray[scrolledPlayerSlotID].someCount47;
-            int const scrollIconIndex = scrollCounter >> 2;
-            scrollCounter -= 0x28;
-            if (scrollCounter < DAT_WindowAndDirectDraw::instance.resolutionX) {
+            int const scrollIconIndex = DAT_GameState::instance.playerDataArray[scrolledPlayerSlotID].someCount47 >> 2;
+            int const scrollX = DAT_GameState::instance.playerDataArray[scrolledPlayerSlotID].someCount47 - 0x28;
+            if (scrollX < DAT_WindowAndDirectDraw::instance.resolutionX) {
                 MACRO_CALL_MEMBER(OpenSHC::UI::Rendering::TextureRenderCore_Func::renderGM,
                     DAT_TextureRenderCoreObject::ptr)(OpenSHC::DE::SHCDE::GM_INTERFACE_ICONS2,
-                    scrollIconIndex + (0x22 - scrollIconIndex / 6) * 6, scrollCounter + posX, posY);
-            } else if (gameModeBeforePopup != OpenSHC::Game::GM_SIEGE_THAT) {
+                    scrollIconIndex + (0x22 - scrollIconIndex / 6) * 6, scrollX + posX, posY);
+            } else if (DAT_GameCore::instance.gameMode_2 != OpenSHC::Game::GM_SIEGE_THAT) {
                 DAT_GameState::instance.playerDataArray[scrolledPlayerSlotID].someCount47 = 0;
                 DAT_GameState::instance.playerDataArray[scrolledPlayerSlotID].someCount45 = 0;
             }
